@@ -1,11 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
+const chalk = require('chalk');
+
+let baseStyles = [
+  "color: #fff",
+  "background-color: #444",
+  "padding: 2px 4px",
+  "border-radius: 2px"
+].join(";");
 
 router.use("/api", apiRouter);
 
 router.get("/hello/world", function (req, res) {
   res.cookie("XSRF-TOKEN", req.csrfToken());
+
+  let x = 'Testing:';
+  let y = 'Text in red';
+
+  console.log('\n', chalk.white.bgRed.bold(`${x}`), chalk.white.bgRed.bold(`${y}`), '\n');
+
   res.send("Hello World!");
 });
 

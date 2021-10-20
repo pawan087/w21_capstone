@@ -9,8 +9,10 @@ import { Modal } from "./context/Modal";
 
 function App() {
   const dispatch = useDispatch();
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -18,7 +20,9 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+
       <button onClick={() => setShowModal(true)}>Modal</button>
+
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h1>Hello I am a Modal</h1>

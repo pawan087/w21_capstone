@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './SignupForm.css';
+import styles from './SignupForm.module.css';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
+
   const sessionUser = useSelector((state) => state.session.user);
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,8 +19,10 @@ function SignupFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (password === confirmPassword) {
       setErrors([]);
+
       return dispatch(sessionActions.signup({ email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
@@ -30,11 +34,11 @@ function SignupFormPage() {
 
   return (
     <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.signupform}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+
         <label>
           Email
           <input
@@ -44,6 +48,7 @@ function SignupFormPage() {
             required
           />
         </label>
+
         <label>
           Username
           <input
@@ -53,6 +58,7 @@ function SignupFormPage() {
             required
           />
         </label>
+
         <label>
           Password
           <input
@@ -62,6 +68,7 @@ function SignupFormPage() {
             required
           />
         </label>
+
         <label>
           Confirm Password
           <input
@@ -71,6 +78,7 @@ function SignupFormPage() {
             required
           />
         </label>
+
         <button type="submit">Sign Up</button>
       </form>
     </>

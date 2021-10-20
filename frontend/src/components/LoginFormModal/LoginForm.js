@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
-import "./LoginForm.css";
+import styles from './LoginForm.module.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
+
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setErrors([]);
+
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
@@ -22,13 +25,13 @@ function LoginForm() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form className={styles.loginform} onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
+
         <label>
           Username or Email
           <input
@@ -38,6 +41,7 @@ function LoginForm() {
             required
           />
         </label>
+
         <label>
           Password
           <input
@@ -47,6 +51,7 @@ function LoginForm() {
             required
           />
         </label>
+
         <button type="submit">Log In</button>
       </form>
     </>
