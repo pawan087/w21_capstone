@@ -70,7 +70,7 @@ module.exports = {
     return queryInterface.bulkDelete(
       "Reviews",
       {
-        userId: { [Op.in]: ["Demo-lition", "FakeUser1", "FakeUser2"] },
+        userId: { [Op.in]: [1, 2, 3] },
       },
       {}
     );

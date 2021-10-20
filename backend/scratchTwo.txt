@@ -13,3 +13,9 @@ npx sequelize model:generate --name FurtherSubcategory --attributes name:string
 npx sequelize model:generate --name Product --attributes name:string,description:string,brandID:integer,price:decimal,categoryID:integer,SucategoryID:integer,FurtherSubcategory:integer,Images:array,Rating:decimal
 
 npx sequelize model:generate --name Review --attributes userId:integer,productId:integer,content:string,rating:decimal
+
+npx sequelize model:generate --name ReviewLike --attributes userId:integer,reviewId:integer,like:boolean
+
+npx sequelize model:generate --name Question --attributes userId:integer,productId:integer,content:string
+
+npx sequelize model:generate --name Question --attributes userId:integer,productId:integer,content:string
