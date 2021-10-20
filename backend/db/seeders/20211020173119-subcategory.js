@@ -9,10 +9,16 @@ module.exports = {
           name: "Playstation 5",
         },
         {
-          name: "Cell Phones",
+          name: "Audio",
         },
         {
           name: "Puzzles",
+        },
+        {
+          name: "TV & Home Theater",
+        },
+        {
+          name: "Cell Phones",
         },
       ],
       {}
@@ -24,7 +30,15 @@ module.exports = {
     return queryInterface.bulkDelete(
       "Subcategories",
       {
-        name: { [Op.in]: ["Playstation 5", "Cell Phones", "Puzzles"] },
+        name: {
+          [Op.in]: [
+            "Playstation 5",
+            "Audio",
+            "TV & Home Theater",
+            "Cell Phones",
+            "Puzzles",
+          ],
+        },
       },
       {}
     );
