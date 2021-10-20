@@ -9,3 +9,5 @@ npx sequelize model:generate --name Category --attributes name:string
 npx sequelize model:generate --name Subcategory --attributes name:string
 
 npx sequelize model:generate --name FurtherSubcategory --attributes name:string
+
+npx sequelize model:generate --name Product --attributes name:string,description:string,brandID:integer,price:decimal,categoryID:integer,SucategoryID:integer,FurtherSubcategory:integer,Images:array,Rating:decimal
