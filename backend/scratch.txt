@@ -1,0 +1,117 @@
+Run 'openssl rand -base64 10' to generate a random JWT secret.
+
+CREATE USER gamestop_dev PASSWORD 'password' CREATEDB;
+
+npx dotenv sequelize db:create
+or
+CREATE DATABASE gamestop_app WITH OWNER gamestop_dev;
+
+fetch('/api/test', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `8mqNuTh0-H75D7NqnSdMX5KagKkCyfqv75Ow`
+  },
+  body: JSON.stringify({ hello: 'world' })
+}).then(res => res.json()).then(data => console.log(data));
+
+npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string <-- didn't have to run with solution
+
+npx dotenv sequelize db:migrate
+
+npx dotenv sequelize db:migrate:undo <-- to undo
+
+npx sequelize seed:generate --name demo-user <-- didn't have to run with solution
+
+npx dotenv sequelize db:seed:all
+npx dotenv sequelize db:seed:undo
+npx dotenv sequelize db:seed:undo:all
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `4wAEQGlf-MzGIRkKPPP9oP7W-ZfIubjfulqw`
+  },
+  body: JSON.stringify({ credential: 'Demo-lition', password: 'password' })
+}).then(res => res.json()).then(data => console.log(data));
+
+4wAEQGlf-MzGIRkKPPP9oP7W-ZfIubjfulqw
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `4wAEQGlf-MzGIRkKPPP9oP7W-ZfIubjfulqw`
+  },
+  body: JSON.stringify({ credential: 'demo@user.io', password: 'password' })
+}).then(res => res.json()).then(data => console.log(data));
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `4wAEQGlf-MzGIRkKPPP9oP7W-ZfIubjfulqw`
+  },
+  body: JSON.stringify({ credential: 'Demo-lition', password: 'Hello World!' })
+}).then(res => res.json()).then(data => console.log(data));
+
+m38UD57R-PuRLcdU9sgAqMKORj8PGMActGR8
+
+fetch('/api/session', {
+  method: 'DELETE',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `m38UD57R-PuRLcdU9sgAqMKORj8PGMActGR8`
+  }
+}).then(res => res.json()).then(data => console.log(data));
+
+ZmH1nJQK-fvFHEc-riYWpbAxQwlbFnK8W5nM
+
+fetch('/api/users', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `ZmH1nJQK-fvFHEc-riYWpbAxQwlbFnK8W5nM`
+  },
+  body: JSON.stringify({
+    email: 'spidey@spider.man',
+    username: 'Spidey',
+    password: 'password'
+  })
+}).then(res => res.json()).then(data => console.log(data));
+
+ASFImTJa-S1rMgbUJplntedzPKanDN_WVaQM
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `ASFImTJa-S1rMgbUJplntedzPKanDN_WVaQM`
+  },
+  body: JSON.stringify({ credential: '', password: 'password' })
+}).then(res => res.json()).then(data => console.log(data));
+
+fetch('/api/session', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `ASFImTJa-S1rMgbUJplntedzPKanDN_WVaQM`
+  },
+  body: JSON.stringify({ credential: 'Demo-lition', password: '' })
+}).then(res => res.json()).then(data => console.log(data));
+
+JpRGvnw6-6dHzJRRjjAhOoGEdwtQzaP64rgg
+
+fetch('/api/users', {
+  method: 'POST',
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `JpRGvnw6-6dHzJRRjjAhOoGEdwtQzaP64rgg`
+  },
+  body: JSON.stringify({
+    email: 'spidey@spider.man',
+    username: 'Spidey',
+    password: ''
+  })
+}).then(res => res.json()).then(data => console.log(data));

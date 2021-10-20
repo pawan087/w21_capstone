@@ -10,7 +10,7 @@ const setTokenCookie = (res, user) => {
   const token = jwt.sign(
     { data: user.toSafeObject() },
     secret,
-    { expiresIn: parseInt(expiresIn) }, // 604,800 seconds = 1 week
+    { expiresIn: parseInt(expiresIn) } // 604,800 seconds = 1 week
   );
 
   const isProduction = process.env.NODE_ENV === "production";
@@ -37,9 +37,11 @@ const restoreUser = (req, res, next) => {
 
     try {
       const { id } = jwtPayload.data;
+
       req.user = await User.scope("currentUser").findByPk(id);
     } catch (e) {
       res.clearCookie("token");
+
       return next();
     }
 
@@ -55,10 +57,11 @@ const requireAuth = [
   function (req, res, next) {
     if (req.user) return next();
 
-    const err = new Error('Unauthorized');
-    err.title = 'Unauthorized';
-    err.errors = ['Unauthorized'];
+    const err = new Error("Unauthorized");
+    err.title = "Unauthorized";
+    err.errors = ["Unauthorized"];
     err.status = 401;
+
     return next(err);
   },
 ];
