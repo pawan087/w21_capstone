@@ -85,8 +85,6 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static associate(models) {
-      // define association here
-
       User.hasMany(models.Review, { foreignKey: "userId" });
 
       User.hasMany(models.ReviewLike, { foreignKey: "userId" });
@@ -94,6 +92,8 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Question, { foreignKey: "userId" });
 
       User.hasMany(models.Answer, { foreignKey: "userId" });
+
+      User.hasMany(models.AnswerLike, { foreignKey: "userId" });
     }
   }
 

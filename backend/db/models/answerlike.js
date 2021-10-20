@@ -1,23 +1,23 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class ReviewLike extends Model {
+  class AnswerLike extends Model {
     static associate(models) {
-      ReviewLike.belongsTo(models.User, { foreignKey: "userId" });
+      AnswerLike.belongsTo(models.User, { foreignKey: "userId" });
 
-      ReviewLike.belongsTo(models.Review, { foreignKey: "reviewId" });
+      AnswerLike.belongsTo(models.Review, { foreignKey: "reviewId" });
     }
   }
-  ReviewLike.init(
+  AnswerLike.init(
     {
       userId: { type: DataTypes.INTEGER, allowNull: false },
-      reviewId: { type: DataTypes.INTEGER, allowNull: false },
+      answerId: { type: DataTypes.INTEGER, allowNull: false },
       like: { type: DataTypes.BOOLEAN, allowNull: false },
     },
     {
       sequelize,
-      modelName: "ReviewLike",
+      modelName: "AnswerLike",
     }
   );
-  return ReviewLike;
+  return AnswerLike;
 };
