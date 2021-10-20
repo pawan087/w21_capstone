@@ -23,7 +23,7 @@ module.exports = {
         references: { model: "Brands" },
       },
       price: {
-        type: Sequelize.DECIMAL(10, 2),
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       categoryId: {
@@ -46,7 +46,7 @@ module.exports = {
         defaultValue: [],
       },
       rating: {
-        type: Sequelize.DECIMAL(1, 1),
+        type: Sequelize.DECIMAL,
         allowNull: true,
       },
       createdAt: {

@@ -9,7 +9,7 @@ module.exports = {
           name: "Apple",
         },
         {
-          name: "Western Digital",
+          name: "Rockstar Games",
         },
         {
           name: "Pokemon",
@@ -23,7 +23,7 @@ module.exports = {
     return queryInterface.bulkDelete(
       "Brands",
       {
-        name: { [Op.in]: ["Apple", "Western Digital", "Pokemon"] },
+        name: { [Op.in]: ["Apple", "Rockstar Games", "Pokemon"] },
       },
       {}
     );},
