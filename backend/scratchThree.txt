@@ -1,9 +1,0 @@
-name - Grand Theft Auto V
-description - When a young street hustler, a retired bank robber and a terrifying psychopath land themselves in trouble, they must pull off a series of dangerous heists to survive in a city in which they can trust nobody, least of all each other.
-brand - Rockstar Games
-price - 19.99
-categoryID - 1
-subCategoryID - 1
-furtherSubCategoryId - null
-images - ['https://media.gamestop.com/i/gamestop/10161250/Grand-Theft-Auto-V-Premium-Edition---PlayStation-4?$pdp$$&fmt=webp']
-rating - 5
