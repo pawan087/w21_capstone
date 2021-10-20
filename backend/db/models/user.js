@@ -119,32 +119,32 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          len: [1, 50],
+          len: [0, 50],
         },
       },
       lastName: {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          len: [1, 50],
+          len: [0, 50],
         },
       },
       phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
       },
       address1: {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          len: [1, 100],
+          len: [0, 100],
         },
       },
       address2: {
         type: DataTypes.STRING,
         allowNull: true,
         validate: {
-          len: [1, 100],
+          len: [0, 100],
         },
       },
       recentlyViewed: {
