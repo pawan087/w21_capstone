@@ -6,25 +6,29 @@ module.exports = {
       "Categories",
       [
         {
-          name: "Playstation 5",
+          name: "Video Games",
         },
         {
-          name: "Cell Phones",
+          name: "Toys & Games",
         },
         {
-          name: "Puzzles",
+          name: "Electronics",
         },
       ],
       {}
     );
   },
 
-  down: async (queryInterface, Sequelize) => {    const Op = Sequelize.Op;
+  down: async (queryInterface, Sequelize) => {
+    const Op = Sequelize.Op;
     return queryInterface.bulkDelete(
       "Categories",
       {
-        name: { [Op.in]: ["Playstation 5", "Cell Phones", "Puzzles"] },
+        name: {
+          [Op.in]: ["Video Games", "Toys & Games", "Electronics"],
+        },
       },
       {}
-    );},
+    );
+  },
 };

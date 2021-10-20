@@ -5,3 +5,5 @@ npx sequelize seed:generate --name demo-customer
 npx sequelize model:generate --name Brand --attributes name:string
 
 npx sequelize model:generate --name Category --attributes name:string
+
+npx sequelize model:generate --name Subcategory --attributes name:string
