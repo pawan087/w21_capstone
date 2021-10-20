@@ -1,0 +1,3 @@
+npx sequelize model:generate --name Customer --attributes username:string,email:string,hashedPassword:string,cart:array
+
+npx sequelize seed:generate --name demo-customer
