@@ -64,6 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       password,
       firstName,
       lastName,
+      phone,
       address1,
       address2,
     }) {
@@ -75,6 +76,7 @@ module.exports = (sequelize, DataTypes) => {
         hashedPassword,
         firstName,
         lastName,
+        phone,
         address1,
         address2,
       });

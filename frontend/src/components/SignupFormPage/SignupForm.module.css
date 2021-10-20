@@ -1,7 +1,7 @@
 
 .signupform {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
     border: 1px solid black;
     position: fixed;
