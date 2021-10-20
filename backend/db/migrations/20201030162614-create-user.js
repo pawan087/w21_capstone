@@ -22,6 +22,34 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      firstName: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      lastName: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      phone: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      address1: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      address2: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      recentlyViewed: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        defaultValue: [],
+      },
+      cart: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        defaultValue: [],
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

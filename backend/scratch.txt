@@ -24,7 +24,8 @@ npx sequelize model:generate --name User --attributes username:string,email:stri
 
 npx dotenv sequelize db:migrate
 
-npx dotenv sequelize db:migrate:undo <-- to undo
+npx dotenv sequelize db:migrate:undo
+npx dotenv sequelize db:migrate:undo:all
 
 npx sequelize seed:generate --name demo-user <-- didn't have to run with solution
 

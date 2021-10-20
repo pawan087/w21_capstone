@@ -1,12 +1,36 @@
 "use strict";
+
 const { Model, Validator } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const {
+        id,
+        username,
+        email,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+        recentlyViewed,
+        cart,
+      } = this; // context will be the User instance
+
+      return {
+        id,
+        username,
+        email,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+        recentlyViewed,
+        cart,
+      };
     }
 
     validatePassword(password) {
@@ -34,13 +58,25 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async signup({ username, email, password }) {
+    static async signup({
+      username,
+      email,
+      password,
+      firstName,
+      lastName,
+      address1,
+      address2,
+    }) {
       const hashedPassword = bcrypt.hashSync(password);
 
       const user = await User.create({
         username,
         email,
         hashedPassword,
+        firstName,
+        lastName,
+        address1,
+        address2,
       });
 
       return await User.scope("currentUser").findByPk(user.id);
@@ -78,6 +114,48 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [60, 60],
         },
+      },
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 50],
+        },
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 50],
+        },
+      },
+      phone: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      address1: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 100],
+        },
+      },
+      address2: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [1, 100],
+        },
+      },
+      recentlyViewed: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        allowNull: false,
+        defaultValue: [],
+      },
+      cart: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        allowNull: false,
+        defaultValue: [],
       },
     },
     {
