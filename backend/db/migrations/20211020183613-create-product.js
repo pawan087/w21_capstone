@@ -14,7 +14,7 @@ module.exports = {
         unique: true,
       },
       description: {
-        type: Sequelize.STRING(1000),
+        type: Sequelize.STRING(2000),
         allowNull: true,
       },
       brandId: {

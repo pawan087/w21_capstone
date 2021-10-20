@@ -6,7 +6,7 @@ module.exports = {
       "Brands",
       [
         {
-          name: "Apple",
+          name: "Microsoft",
         },
         {
           name: "Rockstar Games",
@@ -14,17 +14,37 @@ module.exports = {
         {
           name: "Pokemon",
         },
+        {
+          name: "Apple",
+        },
+        {
+          name: "Helix",
+        },
+        {
+          name: "Vizio",
+        },
       ],
       {}
     );
   },
 
-  down: async (queryInterface, Sequelize) => {    const Op = Sequelize.Op;
+  down: async (queryInterface, Sequelize) => {
+    const Op = Sequelize.Op;
     return queryInterface.bulkDelete(
       "Brands",
       {
-        name: { [Op.in]: ["Apple", "Rockstar Games", "Pokemon"] },
+        name: {
+          [Op.in]: [
+            "Microsoft",
+            "Rockstar Games",
+            "Pokemon",
+            "Apple",
+            "Helix",
+            "Vizio",
+          ],
+        },
       },
       {}
-    );},
+    );
+  },
 };

@@ -15,7 +15,7 @@ module.exports = {
           name: "Puzzles",
         },
         {
-          name: "TV & Home Theater",
+          name: "TV & Home Theater"
         },
         {
           name: "Cell Phones",
