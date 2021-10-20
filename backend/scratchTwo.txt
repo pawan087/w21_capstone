@@ -18,4 +18,4 @@ npx sequelize model:generate --name ReviewLike --attributes userId:integer,revie
 
 npx sequelize model:generate --name Question --attributes userId:integer,productId:integer,content:string
 
-npx sequelize model:generate --name Question --attributes userId:integer,productId:integer,content:string
+npx sequelize model:generate --name Answer --attributes userId:integer,questionId:integer,content:string
