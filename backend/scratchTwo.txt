@@ -21,3 +21,5 @@ npx sequelize model:generate --name Question --attributes userId:integer,product
 npx sequelize model:generate --name Answer --attributes userId:integer,questionId:integer,content:string
 
 npx sequelize model:generate --name AnswerLike --attributes userId:integer,answerId:integer,like:boolean
+
+npx sequelize model:generate --name cartItem --attributes userId:integer,productId:integer,quantity:integer
