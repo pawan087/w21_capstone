@@ -1,3 +1,8 @@
+set ubuntu version 1 and restarted postgresql
+
+npm installed in wsl for back end
+npm installed in cmder for front end
+
 Run 'openssl rand -base64 10' to generate a random JWT secret.
 
 CREATE USER gamestop_dev PASSWORD 'password' CREATEDB;
@@ -115,3 +120,8 @@ fetch('/api/users', {
     password: ''
   })
 }).then(res => res.json()).then(data => console.log(data));
+
+window.store.dispatch(window.sessionActions.login({
+  credential: 'Demo-lition',
+  password: 'password'
+}));
