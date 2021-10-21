@@ -1,20 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
+import LoginFormModal from "../LoginFormModal";
 
-import styles from './Navigation.module.css';
+import styles from "./Navigation.module.css";
 
-function Navigation({ isLoaded }){
-  const sessionUser = useSelector(state => state.session.user);
+function Navigation({ isLoaded }) {
+  const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
 
   if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
+    sessionLinks = <ProfileButton user={sessionUser} />;
   } else {
     sessionLinks = (
       <>
@@ -28,7 +26,11 @@ function Navigation({ isLoaded }){
   return (
     <ul className={styles.navbar}>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+
+        <NavLink to="/products">Products</NavLink>
 
         {isLoaded && sessionLinks}
       </li>
