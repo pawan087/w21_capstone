@@ -10,6 +10,7 @@ import ProductDetail from "./ProductDetail";
 import QuestionCard from "./QuestionCard";
 import ReviewCard from "./ReviewCard";
 import { setAllQuestions } from "../../store/questions.js";
+import NewCartItem from "./NewCartItem.js";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -78,6 +79,8 @@ function ProductPage() {
         avgRating={avgRating}
         product={product}
       />
+
+      <NewCartItem productId={params.id} />
 
       <ReviewCard productReviews={productReviews} />
 

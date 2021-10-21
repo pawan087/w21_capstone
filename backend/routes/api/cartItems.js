@@ -22,4 +22,27 @@ router.get(
   })
 );
 
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { userId, productId, quantity } = req.body;
+
+    await cartItem.create({
+      userId,
+      productId,
+      quantity,
+    });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const cartItems = await cartItem.findAll(options);
+
+    res.json(cartItems);
+  })
+);
+
 module.exports = router;
