@@ -17,26 +17,6 @@ export const setAllProducts = () => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
-export const updateProduct = (data) => async (dispatch) => {
-  const { id, rating } = data;
-
-  console.log('yee', data);
-  
-  const res = await csrfFetch("/api/products/update", {
-    method: "PUT",
-    body: JSON.stringify({
-      id,
-      rating,
-    }),
-  });
-
-  if (res.ok) {
-    const data = await res.json();
-
-    dispatch(load(data));
-  } else return "READ THUNK ERROR: BAD REQUEST";
-};
-
 const initialState = [];
 
 const productReducer = (state = initialState, action) => {

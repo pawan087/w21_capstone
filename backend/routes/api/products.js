@@ -59,18 +59,4 @@ router.get(
   })
 );
 
-router.put(
-  "/update",
-  asyncHandler(async (req, res) => {
-    const { id, rating } = req.body;
-
-    const product = await Product.findByPk(id);
-    await product.update({ rating: rating });
-
-    const products = await Product.findAll();
-
-    res.json(products);
-  })
-);
-
 module.exports = router;

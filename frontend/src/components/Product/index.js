@@ -7,7 +7,9 @@ import { setAllProducts, updateProduct } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import ProductDetail from "./ProductDetail";
+import QuestionCard from "./QuestionCard";
 import ReviewCard from "./ReviewCard";
+import { setAllQuestions } from "../../store/questions.js";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -16,6 +18,7 @@ function ProductPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const reviews = useSelector((state) => state.reviews);
+  const questions = useSelector((state) => state.questions);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const product = products?.filter((product) => +product.id === +params.id);
@@ -55,10 +58,15 @@ function ProductPage() {
 
   const avgRating = sum / productReviews?.length;
 
+  const productQuestions = questions?.filter((question) => {
+    return question.productId === +params.id;
+  });
+
   useEffect(() => {
     dispatch(setAllProducts());
     dispatch(setAllReviews());
     dispatch(setAllReviewLikes());
+    dispatch(setAllQuestions());
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/" />;
@@ -70,7 +78,10 @@ function ProductPage() {
         avgRating={avgRating}
         product={product}
       />
+
       <ReviewCard productReviews={productReviews} />
+
+      <QuestionCard productQuestions={productQuestions} />
     </>
   );
 }
