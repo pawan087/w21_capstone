@@ -1,0 +1,19 @@
+.title {
+  background-color: black;
+  color: white;
+}
+
+.image {
+  height: 100px;
+  width: 100px;
+}
+
+.questionTitle {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.answersTitle {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}

@@ -16,6 +16,7 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: "123 Main St.",
           address2: "San Jose, CA 95127",
+          cart: [1, 4],
         },
         {
           email: faker.internet.email(),
@@ -26,6 +27,7 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: "456 White Ave.",
           address2: "San Ramon, CA 94583",
+          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -36,6 +38,7 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: "789 Black Rd.",
           address2: "Martinez, CA 94553",
+          cart: [3, 6],
         },
       ],
       {}
