@@ -13,7 +13,7 @@ export default function Items({ shoppingCartItems }) {
           <div key={item.id}>
             <h4>Item {i + 1}</h4>
 
-            <li>{item.product.name}</li>
+            <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
             <li>{item.product.Brand.name}</li>
 

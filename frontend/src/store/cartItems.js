@@ -36,6 +36,29 @@ export const createCartItem = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const consolidateCartItems = (data) => async (dispatch) => {
+  const { idToDelete1, idToDelete2, sumQuantity, productId, userId } = data;
+
+  console.log("TESTING");
+
+  const res = await csrfFetch("/api/cartitems/consolidate", {
+    method: "POST",
+    body: JSON.stringify({
+      idToDelete1,
+      idToDelete2,
+      sumQuantity,
+      productId,
+      userId,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 const initialState = [];
 
 const cartItemReducer = (state = initialState, action) => {

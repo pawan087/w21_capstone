@@ -45,4 +45,34 @@ router.post(
   })
 );
 
+router.post(
+  "/consolidate",
+  asyncHandler(async (req, res) => {
+    const { idToDelete1, idToDelete2, sumQuantity, productId, userId } =
+      req.body;
+
+    const cartItem1 = await cartItem.findByPk(idToDelete1);
+    await cartItem1.destroy();
+
+    const cartItem2 = await cartItem.findByPk(idToDelete2);
+    await cartItem2.destroy();
+
+    await cartItem.create({
+      userId,
+      productId,
+      quantity: sumQuantity,
+    });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const cartItems = await cartItem.findAll(options);
+
+    res.json(cartItems);
+  })
+);
+
 module.exports = router;
