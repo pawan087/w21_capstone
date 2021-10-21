@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
@@ -11,6 +11,7 @@ export default function Orders() {
   const user = useSelector((state) => state.session.user);
   const cartItems = useSelector((state) => state.cartItems);
   const products = useSelector((state) => state.products);
+  const orders = useSelector((state) => state.orders);
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem.userId === user.id;

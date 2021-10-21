@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
-import styles from "./ProductPage.module.css";
+// import styles from "./ProductPage.module.css";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";

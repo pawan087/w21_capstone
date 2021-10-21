@@ -48,10 +48,6 @@ function Navigation({ isLoaded }) {
         <NavLink to="/orders">Orders</NavLink>
 
         <select onChange={productPage} name="products" id="products">
-          <option value="none" value="DEFAULT" hidden>
-            Select a Product
-          </option>
-
           {products?.map((product) => (
             <option key={product.id} value={product.id}>
               {product.name}

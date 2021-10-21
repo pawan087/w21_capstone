@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styles from "./ProductPage.module.css";
+import React, { useEffect } from "react";
+// import styles from "./ProductPage.module.css";
 import { setAllAnswerLikes } from "../../store/answerLikes";
 import { useDispatch, useSelector } from "react-redux";
 
