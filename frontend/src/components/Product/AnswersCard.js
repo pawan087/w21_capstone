@@ -42,9 +42,9 @@ export default function AnswersCard({ questionId, answers }) {
 
   return (
     <div>
-      {answersAndLikes?.map((answer) => {
+      {answersAndLikes?.map((answer, i) => {
         return (
-          <div key={answer.id}>
+          <div key={i}>
             <li>{answer.User.username}</li>
 
             <li>{answer.content}</li>

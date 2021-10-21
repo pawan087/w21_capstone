@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import styles from "./Cart.module.css";
 import { deleteCartItem } from "../../store/cartItems";
 
@@ -25,7 +25,7 @@ export default function Items({ shoppingCartItems }) {
     <div>
       {shoppingCartItems?.map((item, i) => {
         return (
-          <div key={item.id}>
+          <div key={i}>
             <h4>Item {i + 1}</h4>
 
             <a href={`/products/${item.product.id}`}>{item.product.name}</a>

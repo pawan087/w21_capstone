@@ -48,8 +48,8 @@ function Navigation({ isLoaded }) {
         <NavLink to="/orders">Orders</NavLink>
 
         <select onChange={productPage} name="products" id="products">
-          {products?.map((product) => (
-            <option key={product.id} value={product.id}>
+          {products?.map((product, i) => (
+            <option key={i} value={product.id}>
               {product.name}
             </option>
           ))}

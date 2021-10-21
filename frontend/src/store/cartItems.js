@@ -60,8 +60,6 @@ export const consolidateCartItems = (data) => async (dispatch) => {
 export const deleteCartItem = (data) => async (dispatch) => {
   const { idToDelete } = data;
 
-  console.log('TESTING', idToDelete)
-
   const res = await csrfFetch("/api/cartitems", {
     method: "DELETE",
     body: JSON.stringify({

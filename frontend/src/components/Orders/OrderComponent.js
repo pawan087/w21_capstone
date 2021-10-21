@@ -4,9 +4,9 @@ import styles from "./Orders.module.css";
 export default function OrderComponent({ usersOrdersAndItems }) {
   return (
     <div>
-      {usersOrdersAndItems.map((order, i) => {
+      {usersOrdersAndItems.map((order, j) => {
         return (
-          <div key={i}>
+          <div key={j}>
             {order?.items.map((item, i) => {
               return (
                 <div key={i}>

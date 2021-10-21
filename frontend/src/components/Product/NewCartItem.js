@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { createCartItem, setAllCartItems } from "../../store/cartItems.js";
+import { createCartItem } from "../../store/cartItems.js";
 
 function NewCartItem({ productId }) {
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ function NewCartItem({ productId }) {
           onChange={(e) => setQuantity(e.target.value)}
           value={quantity}
           min={1}
-          defaultValue={1}
           type="number"
         />
       </label>
