@@ -30,6 +30,10 @@ function Navigation({ isLoaded }) {
     history.push(`/products/${selection}`);
   };
 
+  // <option value="none" value="DEFAULT" disabled hidden>
+  //   Select a Product
+  // </option>;
+
   return (
     <ul className={styles.navbar}>
       <li>
@@ -40,7 +44,7 @@ function Navigation({ isLoaded }) {
         <NavLink to="/products">Products</NavLink>
 
         <select onChange={productPage} name="products" id="products">
-          <option value="none" selected disabled hidden>
+          <option value="none" value="DEFAULT" hidden>
             Select a Product
           </option>
 

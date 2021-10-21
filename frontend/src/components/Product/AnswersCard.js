@@ -6,13 +6,13 @@ export default function AnswersCard({ answers }) {
     <div>
       {answers?.map((answer) => {
         return (
-          <>
+          <div key={answer.id}>
             <li>{answer.User.username}</li>
 
             <li>{answer.content}</li>
 
             <br />
-          </>
+          </div>
         );
       })}
     </div>

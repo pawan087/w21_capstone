@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       AnswerLike.belongsTo(models.User, { foreignKey: "userId" });
 
-      AnswerLike.belongsTo(models.Review, { foreignKey: "reviewId" });
+      AnswerLike.belongsTo(models.Answer, { foreignKey: "answerId" });
     }
   }
   AnswerLike.init(

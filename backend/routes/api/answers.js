@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { User, Answer } = require("../../db/models");
+const { User, Answer, AnswerLike } = require("../../db/models");
 
 const router = express.Router();
 
@@ -27,15 +27,15 @@ router.get(
   "/likes",
   asyncHandler(async (req, res) => {
     const options = {
-      include: [{ model: Review, attributes: ["productId"] }],
+      include: [{ model: User, attributes: ["username"] }],
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
     };
 
-    const reviewLikes = await ReviewLike.findAll(options);
+    const answerLikes = await AnswerLike.findAll(options);
 
-    res.json(reviewLikes);
+    res.json(answerLikes);
   })
 );
 
