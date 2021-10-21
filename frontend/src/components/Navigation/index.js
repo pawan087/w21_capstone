@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -8,6 +8,8 @@ import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const products = useSelector((state) => state.products);
+  const history = useHistory();
 
   let sessionLinks;
 
@@ -23,6 +25,12 @@ function Navigation({ isLoaded }) {
     );
   }
 
+  const productPage = () => {
+    const selection = document.getElementById("products").value;
+    history.push(`/products/${selection}`);
+
+  };
+
   return (
     <ul className={styles.navbar}>
       <li>
@@ -31,6 +39,12 @@ function Navigation({ isLoaded }) {
         </NavLink>
 
         <NavLink to="/products">Products</NavLink>
+
+        <select onChange={productPage} name="products" id="products">
+          {products?.map((product) => (
+            <option value={product.id}>{product.name}</option>
+          ))}
+        </select>
 
         {isLoaded && sessionLinks}
       </li>

@@ -7,6 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import ProductsPage from "./components/Products";
+import ProductPage from "./components/Product";
+import { setAllProducts } from "../src/store/products";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
+    dispatch(setAllProducts());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -31,14 +34,17 @@ function App() {
       )}
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route path="/login" exact={true}>
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route path="/signup" exact={true}>
             <SignupFormPage />
           </Route>
-          <Route path="/products">
+          <Route path="/products" exact={true}>
             <ProductsPage />
+          </Route>
+          <Route path="/products/:id" exact={true}>
+            <ProductPage />
           </Route>
         </Switch>
       )}
