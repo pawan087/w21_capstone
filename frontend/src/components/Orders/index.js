@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
-import { setAllCartItems } from "../../store/cartItems.js";
+// import { setAllCartItems } from "../../store/cartItems.js";
+import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders } from "../../store/orders.js";
 import OrderComponent from "./OrderComponent";
@@ -10,7 +11,8 @@ import OrderComponent from "./OrderComponent";
 export default function Orders() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const cartItems = useSelector((state) => state.cartItems);
+  // const cartItems = useSelector((state) => state.cartItems);
+  const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
   const orders = useSelector((state) => state.orders);
 
@@ -21,17 +23,17 @@ export default function Orders() {
   let usersOrdersAndItems = [];
 
   usersOrders?.forEach((order) => {
-    const orderItems = [];
+    const orderItemsArr = [];
 
-    cartItems?.forEach((item) => {
+    orderItems?.forEach((item) => {
       if (order.items.includes(item.id)) {
-        orderItems.push(item);
+        orderItemsArr.push(item);
       }
     });
 
     let obj = {
       ...order,
-      items: orderItems,
+      items: orderItemsArr,
     };
 
     delete obj.userId;
@@ -58,7 +60,8 @@ export default function Orders() {
 
   useEffect(() => {
     dispatch(setAllProducts());
-    dispatch(setAllCartItems());
+    // dispatch(setAllCartItems());
+    dispatch(setAllOrderItems());
     dispatch(setAllOrders());
   }, [dispatch]);
 

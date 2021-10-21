@@ -55,6 +55,7 @@ router.use("/products", productsRouter);
 router.use("/reviews", reviewsRouter);
 router.use("/questions", questionsRouter);
 router.use("/answers", answersRouter);
+router.use("/cartitems", cartItemRouter);
 router.use("/orderitems", orderItemRouter);
 router.use("/orders", ordersRouter);
 
