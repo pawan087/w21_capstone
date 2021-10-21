@@ -23,7 +23,7 @@ router.get(
 
     const options = {
       include: [
-        { model: Category, as: 'Category', attributes: ["name"] },
+        { model: Category, as: "Category", attributes: ["name"] },
         { model: Brand, attributes: ["name"] },
         { model: Subcategory, attributes: ["name"] },
         { model: FurtherSubcategory, attributes: ["name"] },
@@ -39,7 +39,7 @@ router.get(
         ],
       },
       // order: [['name', 'ASC']]
-      order: [['id', 'ASC']]
+      order: [["id", "ASC"]],
     };
 
     // const products = await Product.findByPk(1, options);
@@ -54,6 +54,20 @@ router.get(
     // })
 
     // console.log("PRODUCTS ---------->>>>>", products.Brand.name);
+
+    res.json(products);
+  })
+);
+
+router.put(
+  "/update",
+  asyncHandler(async (req, res) => {
+    const { id, rating } = req.body;
+
+    const product = await Product.findByPk(id);
+    await product.update({ rating: rating });
+
+    const products = await Product.findAll();
 
     res.json(products);
   })

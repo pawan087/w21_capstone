@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import styles from "./ProductPage.module.css";
-import { setAllProducts } from "../../store/products.js";
+import { setAllProducts, updateProduct } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import ProductDetail from "./ProductDetail";
@@ -47,6 +47,14 @@ function ProductPage() {
     }
   });
 
+  let sum = 0;
+
+  productReviews?.forEach((review) => {
+    sum += +review.rating;
+  });
+
+  const avgRating = sum / productReviews?.length;
+
   useEffect(() => {
     dispatch(setAllProducts());
     dispatch(setAllReviews());
@@ -57,7 +65,11 @@ function ProductPage() {
 
   return (
     <>
-      <ProductDetail product={product} />
+      <ProductDetail
+        num={productReviews?.length}
+        avgRating={avgRating}
+        product={product}
+      />
       <ReviewCard productReviews={productReviews} />
     </>
   );
