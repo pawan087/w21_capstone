@@ -95,4 +95,24 @@ router.delete(
   })
 );
 
+router.put(
+  "/update",
+  asyncHandler(async (req, res) => {
+    const { id, quantity } = req.body;
+
+    const cartItemToUpdate = await cartItem.findByPk(id);
+    await cartItemToUpdate.update({ quantity });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const cartItems = await cartItem.findAll(options);
+
+    res.json(cartItems);
+  })
+);
+
 module.exports = router;

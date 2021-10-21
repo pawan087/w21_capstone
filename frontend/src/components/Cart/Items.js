@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Cart.module.css";
-import EditQuantity from "./EditQuantity";
-import { deleteCartItem } from "../../store/cartItems";
+import { deleteCartItem, editCartItem } from "../../store/cartItems";
 
 export default function Items({ shoppingCartItems }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [quantity, setQuantity] = useState();
+  const [editBool, setEditBool] = useState(false);
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -16,11 +17,23 @@ export default function Items({ shoppingCartItems }) {
   const handleSubmit = (e, idToDelete) => {
     e.preventDefault();
 
-    setLoading(true);
+    setLoading2(true);
 
     dispatch(deleteCartItem({ idToDelete }));
 
-    setTimeout(() => setLoading(false), 1000);
+    setTimeout(() => setLoading2(false), 1000);
+  };
+
+  const handleSubmit2 = async (e, id) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    dispatch(editCartItem({ id, quantity }));
+
+    await setTimeout(() => setLoading(false), 1000);
+
+    setEditBool(false);
   };
 
   return (
@@ -32,7 +45,36 @@ export default function Items({ shoppingCartItems }) {
 
             <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
-            <EditQuantity item={item} />
+            <div>
+              <li>Quantity: {!editBool && item.quantity}</li>
+
+              {editBool && (
+                <input
+                  onChange={(e) => setQuantity(e.target.value)}
+                  defaultValue={item.quantity}
+                  min={0}
+                  type="number"
+                />
+              )}
+
+              {!editBool && (
+                <button onClick={() => setEditBool(true)}>Edit</button>
+              )}
+
+              {"     "}
+
+              {editBool && (
+                <button onClick={(e) => handleSubmit2(e, item.id)}>
+                  Update
+                </button>
+              )}
+
+              <li>
+                Total: ${formatter.format(+item.product.price * item.quantity)}
+              </li>
+
+              {loading && <span>Cart Updated</span>}
+            </div>
 
             <br />
 
@@ -49,7 +91,7 @@ export default function Items({ shoppingCartItems }) {
               Remove from Cart
             </button>
 
-            {loading && <p>Cart Updating...</p>}
+            {loading2 && <p>Cart Updating...</p>}
 
             <br />
             <br />
