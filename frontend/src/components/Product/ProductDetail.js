@@ -8,6 +8,7 @@ function ProductDetail({ num, product, avgRating }) {
   });
 
   let rating = formatter.format(num)
+  
   return (
     <>
       <h2 className={styles.title}>Product Page</h2>

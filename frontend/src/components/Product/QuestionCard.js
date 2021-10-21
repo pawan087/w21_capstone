@@ -37,7 +37,7 @@ export default function QuestionCard({ productQuestions }) {
       {questionsWithAnswers?.map((question) => {
         return (
           <div key={question.id}>
-            <h5>Question</h5>
+            <h5 className={styles.questionTitle}>Question</h5>
 
             <li>{question.User.username}</li>
 
@@ -45,7 +45,7 @@ export default function QuestionCard({ productQuestions }) {
 
             <br />
 
-            <h5>Answers:</h5>
+            <h5 className={styles.answersTitle}>Answer(s):</h5>
 
             <AnswerCard questionId={question.id} answers={question.answers} />
           </div>

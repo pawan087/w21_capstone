@@ -23,20 +23,20 @@ router.get(
   })
 );
 
-router.get(
-  "/likes",
-  asyncHandler(async (req, res) => {
-    const options = {
-      include: [{ model: Review, attributes: ["productId"] }],
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    };
+// router.get(
+//   "/likes",
+//   asyncHandler(async (req, res) => {
+//     const options = {
+//       include: [{ model: Review, attributes: ["productId"] }],
+//       attributes: {
+//         exclude: ["createdAt", "updatedAt"],
+//       },
+//     };
 
-    const reviewLikes = await ReviewLike.findAll(options);
+//     const reviewLikes = await ReviewLike.findAll(options);
 
-    res.json(reviewLikes);
-  })
-);
+//     res.json(reviewLikes);
+//   })
+// );
 
 module.exports = router;

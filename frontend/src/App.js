@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
+import Cart from "./components/Cart/index";
 import { setAllProducts } from "../src/store/products";
 
 function App() {
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/products/:id" exact={true}>
             <ProductPage />
+          </Route>
+          <Route path="/cart" exact={true}>
+            <Cart />
           </Route>
         </Switch>
       )}
