@@ -28,7 +28,6 @@ function Navigation({ isLoaded }) {
   const productPage = () => {
     const selection = document.getElementById("products").value;
     history.push(`/products/${selection}`);
-
   };
 
   return (
@@ -42,7 +41,9 @@ function Navigation({ isLoaded }) {
 
         <select onChange={productPage} name="products" id="products">
           {products?.map((product) => (
-            <option value={product.id}>{product.name}</option>
+            <option key={product.id} value={product.id}>
+              {product.name}
+            </option>
           ))}
         </select>
 

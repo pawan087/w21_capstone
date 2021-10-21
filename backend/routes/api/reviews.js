@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { Review } = require("../../db/models");
+const { Review, User } = require("../../db/models");
 
 const router = express.Router();
 
@@ -17,18 +17,14 @@ router.get(
     //   const spots = await Product.findAll(options);
 
     const options = {
+      include: [{ model: User, attributes: ["username"] }],
       attributes: {
-        exclude: [
-          "createdAt",
-          "updatedAt",
-        ],
+        exclude: ["createdAt", "updatedAt"],
       },
     };
 
     // const products = await Product.findByPk(1, options);
     const reviews = await Review.findAll(options);
-
-    console.log(reviews);
 
     // Albums.findAll({
     //   include: [{
@@ -39,6 +35,8 @@ router.get(
     // })
 
     // console.log("PRODUCTS ---------->>>>>", products.Brand.name);
+
+    // console.log(reviews);
 
     res.json(reviews);
   })
