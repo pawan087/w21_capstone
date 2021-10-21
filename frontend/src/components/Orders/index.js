@@ -5,6 +5,7 @@ import styles from "./Orders.module.css";
 import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders } from "../../store/orders.js";
+import OrderComponent from "./OrderComponent";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -13,31 +14,47 @@ export default function Orders() {
   const products = useSelector((state) => state.products);
   const orders = useSelector((state) => state.orders);
 
-  const usersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem.userId === user.id;
+  const usersOrders = orders?.filter((order) => {
+    return order.userId === +user.id;
   });
 
-  //   const shoppingCartItems = [];
+  let usersOrdersAndItems = [];
 
-  //   usersCartItems?.forEach((cartItem) => {
-  //     let id1 = cartItem.productId;
+  usersOrders?.forEach((order) => {
+    const orderItems = [];
 
-  //     products?.forEach((product) => {
-  //       let id2 = product.id;
+    cartItems?.forEach((item) => {
+      if (order.items.includes(item.id)) {
+        orderItems.push(item);
+      }
+    });
 
-  //       if (id1 === id2) {
-  //         let item = {
-  //           ...cartItem,
-  //           product: product,
-  //         };
+    let obj = {
+      ...order,
+      items: orderItems,
+    };
 
-  //         delete item.productId;
-  //         delete item.userId;
+    delete obj.userId;
 
-  //         shoppingCartItems.push(item);
-  //       }
-  //     });
-  //   });
+    obj.items?.forEach((item) => {
+      delete item.userId;
+      let itemsAndProducts = [];
+      let id1 = item.productId;
+      products?.forEach((product) => {
+        let id2 = product.id;
+        if (+id1 === +id2) {
+          itemsAndProducts.push({ product: product, quantity: item.quantity });
+        }
+      });
+
+      obj.itemsArr = itemsAndProducts;
+      delete obj.items;
+      obj.items = obj.itemsArr;
+      delete obj.itemsArr;
+    });
+
+    usersOrdersAndItems.push(obj);
+  });
 
   useEffect(() => {
     dispatch(setAllProducts());
@@ -52,6 +69,8 @@ export default function Orders() {
       <h2 className={styles.title}>Orders Page</h2>
 
       <h4 className={styles.ordersTitle}>{user.username}'s Past Orders</h4>
+
+      <OrderComponent usersOrdersAndItems={usersOrdersAndItems} />
     </div>
   );
 }
