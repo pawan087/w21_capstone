@@ -6,6 +6,7 @@ import reviews from "./reviews";
 import reviewLikes from "./reviewLikes";
 import questions from "./questions";
 import answers from "./answers";
+import answerLikes from "./answerLikes";
 
 const rootReducer = combineReducers({
   session,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   reviewLikes,
   questions,
   answers,
+  answerLikes,
 });
 
 let enhancer;

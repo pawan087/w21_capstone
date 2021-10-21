@@ -47,7 +47,7 @@ export default function QuestionCard({ productQuestions }) {
 
             <h5>Answers:</h5>
 
-            <AnswerCard answers={question.answers} />
+            <AnswerCard questionId={question.id} answers={question.answers} />
           </div>
         );
       })}
