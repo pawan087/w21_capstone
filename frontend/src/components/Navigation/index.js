@@ -45,6 +45,8 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/cart">Shopping Cart</NavLink>
 
+        <NavLink to="/orders">Orders</NavLink>
+
         <select onChange={productPage} name="products" id="products">
           <option value="none" value="DEFAULT" hidden>
             Select a Product

@@ -1,0 +1,14 @@
+.title {
+  background-color: black;
+  color: white;
+}
+
+.image {
+  height: 100px;
+  width: 100px;
+}
+
+.ordersTitle {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}

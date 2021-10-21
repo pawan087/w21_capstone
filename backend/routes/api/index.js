@@ -6,6 +6,8 @@ const reviewsRouter = require("./reviews");
 const questionsRouter = require("./questions");
 const answersRouter = require("./answers");
 const cartItemRouter = require("./cartItems");
+const ordersRouter = require("./orders");
+
 /*
 
 // GET /api/set-token-cookie
@@ -53,5 +55,6 @@ router.use("/reviews", reviewsRouter);
 router.use("/questions", questionsRouter);
 router.use("/answers", answersRouter);
 router.use("/cartitems", cartItemRouter);
+router.use('/orders', ordersRouter)
 
 module.exports = router;
