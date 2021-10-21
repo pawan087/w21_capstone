@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
@@ -16,14 +16,34 @@ function ProductPage() {
   const reviews = useSelector((state) => state.reviews);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
-  const productReviewLikes = reviewLikes?.filter((reviewLike) => {
-    return reviewLike.Review.productId === +params.id;
-  });
-
   const product = products?.filter((product) => +product.id === +params.id);
-  const productReviews = reviews?.filter(
-    (review) => +review.productId === +params.id
-  );
+  let productReviews = [];
+
+  reviews?.forEach((review) => {
+    if (review.productId === +params.id) {
+      let id1 = review.id;
+      let likeCount = 0;
+      let dislikeCount = 0;
+
+      reviewLikes?.forEach((reviewLike) => {
+        let id2 = reviewLike.reviewId;
+
+        if (id1 === id2) {
+          if (reviewLike.like === true) {
+            likeCount++;
+          } else {
+            dislikeCount++;
+          }
+        }
+      });
+
+      productReviews.push({
+        ...review,
+        likeCount: likeCount,
+        dislikeCount: dislikeCount,
+      });
+    }
+  });
 
   useEffect(() => {
     dispatch(setAllProducts());
@@ -52,10 +72,6 @@ function ProductPage() {
       <h4 className={styles.title}>Reviews</h4>
 
       {productReviews?.map((review) => {
-        {
-          var likeCount = 0;
-          var dislikeCount = 0;
-        }
         return (
           <div key={review.id}>
             <li>{review.User.username}</li>
@@ -64,26 +80,16 @@ function ProductPage() {
 
             <li>{review.rating} Stars</li>
 
-            {productReviewLikes?.forEach((reviewLike) => {
-              if (reviewLike.reviewId === review.id) {
-                if (reviewLike.like === true) {
-                  likeCount++;
-                } else {
-                  dislikeCount++;
-                }
-              }
-            })}
-
-            {likeCount === 1 ? (
-              <li>{likeCount} Like</li>
+            {review.likeCount === 1 ? (
+              <li>{review.likeCount} Like</li>
             ) : (
-              <li>{likeCount} Likes</li>
+              <li>{review.likeCount} Likes</li>
             )}
 
-            {dislikeCount === 1 ? (
-              <li>{dislikeCount} Dislike</li>
+            {review.dislikeCount === 1 ? (
+              <li>{review.dislikeCount} Dislike</li>
             ) : (
-              <li>{dislikeCount} Dislikes</li>
+              <li>{review.dislikeCount} Dislikes</li>
             )}
 
             <br />
