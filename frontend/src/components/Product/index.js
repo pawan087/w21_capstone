@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import styles from "./ProductPage.module.css";
 import { setAllProducts } from "../../store/products.js";
+import { setAllReviews } from "../../store/reviews.js";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function ProductPage() {
 
   useEffect(() => {
     dispatch(setAllProducts());
+    dispatch(setAllReviews());
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/" />;
@@ -23,9 +25,7 @@ function ProductPage() {
     <>
       <h2 className={styles.title}>Product Page</h2>
 
-
-        <li>{product[0]?.name}</li>
-
+      <li>{product[0]?.name}</li>
     </>
   );
 }
