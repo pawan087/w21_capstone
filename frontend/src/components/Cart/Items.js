@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Cart.module.css";
+import EditQuantity from "./EditQuantity";
 import { deleteCartItem } from "../../store/cartItems";
 
 export default function Items({ shoppingCartItems }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+  const [quantity, setQuantity] = useState();
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -30,13 +32,7 @@ export default function Items({ shoppingCartItems }) {
 
             <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
-            <li>{item.product.Brand.name}</li>
-
-            <li>Quantity: {item.quantity}</li>
-
-            <li>
-              Total: ${formatter.format(+item.product.price * item.quantity)}
-            </li>
+            <EditQuantity item={item} />
 
             <br />
 
