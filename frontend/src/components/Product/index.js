@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import styles from "./ProductPage.module.css";
-import { setAllProducts, updateProduct } from "../../store/products.js";
+import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import ProductDetail from "./ProductDetail";
