@@ -75,4 +75,24 @@ router.post(
   })
 );
 
+router.delete(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { idToDelete } = req.body;
+
+    const cartItemToDelete = await cartItem.findByPk(idToDelete);
+    await cartItemToDelete.destroy();
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const cartItems = await cartItem.findAll(options);
+
+    res.json(cartItems);
+  })
+);
+
 module.exports = router;

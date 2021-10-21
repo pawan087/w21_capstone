@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
+import { deleteCartItem } from "../../store/cartItems";
+
 export default function Items({ shoppingCartItems }) {
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  const handleSubmit = (e, idToDelete) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    dispatch(deleteCartItem({ idToDelete }));
+
+    setTimeout(() => setLoading(false), 1000);
+  };
 
   return (
     <div>
@@ -30,6 +45,15 @@ export default function Items({ shoppingCartItems }) {
               alt="productImage"
               src={item.product.images[0]}
             ></img>
+
+            <br />
+            <br />
+
+            <button onClick={(e) => handleSubmit(e, item.id)}>
+              Remove from Cart
+            </button>
+
+            {loading && <p>Cart Updating...</p>}
 
             <br />
             <br />

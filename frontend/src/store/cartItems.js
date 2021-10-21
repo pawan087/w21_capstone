@@ -39,8 +39,6 @@ export const createCartItem = (data) => async (dispatch) => {
 export const consolidateCartItems = (data) => async (dispatch) => {
   const { idToDelete1, idToDelete2, sumQuantity, productId, userId } = data;
 
-  console.log("TESTING");
-
   const res = await csrfFetch("/api/cartitems/consolidate", {
     method: "POST",
     body: JSON.stringify({
@@ -49,6 +47,25 @@ export const consolidateCartItems = (data) => async (dispatch) => {
       sumQuantity,
       productId,
       userId,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const deleteCartItem = (data) => async (dispatch) => {
+  const { idToDelete } = data;
+
+  console.log('TESTING', idToDelete)
+
+  const res = await csrfFetch("/api/cartitems", {
+    method: "DELETE",
+    body: JSON.stringify({
+      idToDelete,
     }),
   });
 
