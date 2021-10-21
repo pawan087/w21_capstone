@@ -40,6 +40,10 @@ function Navigation({ isLoaded }) {
         <NavLink to="/products">Products</NavLink>
 
         <select onChange={productPage} name="products" id="products">
+          <option value="none" selected disabled hidden>
+            Select a Product
+          </option>
+
           {products?.map((product) => (
             <option key={product.id} value={product.id}>
               {product.name}

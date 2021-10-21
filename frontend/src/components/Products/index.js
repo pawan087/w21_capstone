@@ -21,7 +21,12 @@ function ProductsPage() {
       <h2 className={styles.title}>Products Page</h2>
 
       {products?.map((product) => (
-        <li key={product?.id}>{product?.name}</li>
+        <>
+          <a href={`/products/${product.id}`} key={product?.id}>
+            {product?.name}
+          </a>
+          <br />
+        </>
       ))}
     </>
   );

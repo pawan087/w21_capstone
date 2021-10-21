@@ -6,6 +6,8 @@ import styles from "./ProductPage.module.css";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
+import ProductDetail from "./ProductDetail";
+import ReviewCard from "./ReviewCard";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -55,47 +57,8 @@ function ProductPage() {
 
   return (
     <>
-      <h2 className={styles.title}>Product Page</h2>
-
-      <li>{product[0]?.name}</li>
-
-      <li>{product[0]?.description}</li>
-
-      <li>${product[0]?.price}</li>
-
-      <img
-        className={styles.image}
-        alt="productImage"
-        src={product[0]?.images[0]}
-      ></img>
-
-      <h4 className={styles.title}>Reviews</h4>
-
-      {productReviews?.map((review) => {
-        return (
-          <div key={review.id}>
-            <li>{review.User.username}</li>
-
-            <li>{review.content}</li>
-
-            <li>{review.rating} Stars</li>
-
-            {review.likeCount === 1 ? (
-              <li>{review.likeCount} Like</li>
-            ) : (
-              <li>{review.likeCount} Likes</li>
-            )}
-
-            {review.dislikeCount === 1 ? (
-              <li>{review.dislikeCount} Dislike</li>
-            ) : (
-              <li>{review.dislikeCount} Dislikes</li>
-            )}
-
-            <br />
-          </div>
-        );
-      })}
+      <ProductDetail product={product} />
+      <ReviewCard productReviews={productReviews} />
     </>
   );
 }
