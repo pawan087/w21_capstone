@@ -69,8 +69,8 @@ export default function Items({ shoppingCartItems }) {
   });
 
   if (arr?.length > 0) {
-    arr?.forEach((duplicate, i) => {
-      dispatch(
+    arr?.forEach(async (duplicate, i) => {
+      await dispatch(
         consolidateCartItems({
           idToDelete1: duplicate.idToDelete1,
           idToDelete2: duplicate.idToDelete2,
