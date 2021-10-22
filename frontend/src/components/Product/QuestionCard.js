@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./ProductPage.module.css";
 import { setAllAnswers } from "../../store/answers.js";
@@ -18,7 +18,7 @@ export default function QuestionCard({ productQuestions }) {
     answers?.forEach((answer) => {
       let id2 = answer.questionId;
 
-      if (id1 == id2) {
+      if (id1 === id2) {
         arr.push(answer);
       }
     });
@@ -34,9 +34,9 @@ export default function QuestionCard({ productQuestions }) {
     <>
       <h4 className={styles.title}>Q&A</h4>
 
-      {questionsWithAnswers?.map((question) => {
+      {questionsWithAnswers?.map((question, i) => {
         return (
-          <div key={question.id}>
+          <div key={i}>
             <h5 className={styles.questionTitle}>Question</h5>
 
             <li>{question.User.username}</li>

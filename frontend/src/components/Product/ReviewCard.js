@@ -6,9 +6,9 @@ function ReviewCard({ productReviews }) {
     <>
       <h4 className={styles.title}>Reviews</h4>
 
-      {productReviews?.map((review) => {
+      {productReviews?.map((review, i) => {
         return (
-          <div key={review.id}>
+          <div key={i}>
             <li>{review.User.username}</li>
 
             <li>{review.content}</li>

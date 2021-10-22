@@ -6,6 +6,7 @@ const reviewsRouter = require("./reviews");
 const questionsRouter = require("./questions");
 const answersRouter = require("./answers");
 const cartItemRouter = require("./cartItems");
+const orderItemRouter = require("./orderItems");
 const ordersRouter = require("./orders");
 
 /*
@@ -55,6 +56,7 @@ router.use("/reviews", reviewsRouter);
 router.use("/questions", questionsRouter);
 router.use("/answers", answersRouter);
 router.use("/cartitems", cartItemRouter);
-router.use('/orders', ordersRouter)
+router.use("/orderitems", orderItemRouter);
+router.use("/orders", ordersRouter);
 
 module.exports = router;

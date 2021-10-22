@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styles from "./ProductPage.module.css";
+import React, { useEffect } from "react";
+// import styles from "./ProductPage.module.css";
 import { setAllAnswerLikes } from "../../store/answerLikes";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,9 +42,9 @@ export default function AnswersCard({ questionId, answers }) {
 
   return (
     <div>
-      {answersAndLikes?.map((answer) => {
+      {answersAndLikes?.map((answer, i) => {
         return (
-          <div key={answer.id}>
+          <div key={i}>
             <li>{answer.User.username}</li>
 
             <li>{answer.content}</li>

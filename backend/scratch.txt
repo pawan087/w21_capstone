@@ -28,7 +28,7 @@ npx dotenv sequelize db:migrate:undo
 npx dotenv sequelize db:migrate:undo:all
 
 npx sequelize seed:generate --name demo-user <-- didn't have to run with solution
-
+npx sequelize seed:generate --name orderItem
 npx dotenv sequelize db:seed:all
 npx dotenv sequelize db:seed:undo
 npx dotenv sequelize db:seed:undo:all
