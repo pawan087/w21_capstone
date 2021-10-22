@@ -45,7 +45,7 @@ export default function OrderConfirmation() {
       createOrderItemsAndOrder({
         user,
         cartItems: shoppingCartItems,
-        lastOrderId: orderItems[orderItems.length - 1].id,
+        lastOrderId: orderItems[orderItems?.length - 1].id,
       })
     );
 

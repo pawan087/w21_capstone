@@ -8,25 +8,6 @@ export default function OrderComponent({ usersOrdersAndItems }) {
   const [address1, setAddress1] = useState("");
   const [address2, setAddress2] = useState("");
 
-  function AddMinutesToDate(date, minutes) {
-    return new Date(date.getTime() + minutes * 60000);
-  }
-
-  function DateFormat(date) {
-    var days = date.getDate();
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    var strTime =
-      days + "/" + month + "/" + year + "/ " + hours + ":" + minutes;
-    return strTime;
-  }
-
-  let curTime = new Date();
-  let laterTime = AddMinutesToDate(curTime, 60);
-
   const handleSubmit = () => {
     setBool(true);
   };
@@ -43,19 +24,12 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     // dispatch edit order
   };
 
-  const func = (order) => {
-    let orderDate = order.updatedAt;
-    let orderDate2 = new Date(orderDate).getTime();
-    // console.log(orderDate2 < curTime)
-  };
-
   return (
     <div>
       {usersOrdersAndItems
         .map((order, j) => {
           return (
             <div key={j}>
-              {func(order)}
               <h4 className={styles.orderTitle}>Order {j + 1}</h4>
 
               {order?.items.map((item, i) => {
@@ -70,9 +44,8 @@ export default function OrderComponent({ usersOrdersAndItems }) {
                     ></img>
 
                     <h5>Order Status: Processing</h5>
-      
-                    <h5>Quantity: {!bool && item.quantity}</h5>
 
+                    <h5>Quantity: {!bool && item.quantity}</h5>
 
                     {bool && (
                       <input

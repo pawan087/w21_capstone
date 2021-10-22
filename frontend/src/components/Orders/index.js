@@ -48,7 +48,7 @@ export default function Orders() {
 
     let itemsAndProducts = [];
 
-    obj.allItemsArr?.forEach((item) => {
+    obj?.allItemsArr?.forEach((item) => {
       delete item.userId;
 
       let id1 = item.productId;
@@ -128,21 +128,21 @@ export default function Orders() {
 
       <h4 className={styles.ordersTitle}>Current Orders</h4>
 
-      {currentOrders.length === 0 && (
+      {currentOrders?.length === 0 && (
         <h5>No orders are currently processing</h5>
       )}
 
-      {currentOrders.length > 0 && (
+      {currentOrders?.length > 0 && (
         <NewOrderComponent usersOrdersAndItems={currentOrders} />
       )}
       <h4 className={styles.ordersTitle}>Previous Orders</h4>
 
-      {previousOrders.length === 0 && <h5>You have no previous orders</h5>}
+      {previousOrders?.length === 0 && <h5>You have no previous orders</h5>}
 
       <OrderComponent usersOrdersAndItems={previousOrders} />
 
       <div className="clearOrderHistoryMenu">
-        {previousOrders.length > 0 && !bool && (
+        {previousOrders?.length > 0 && !bool && (
           <h4 onClick={openMenu} className={styles.orderTitle}>
             Clear Order History
           </h4>
