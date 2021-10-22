@@ -12,7 +12,7 @@ router.get(
   asyncHandler(async (req, res) => {
     const options = {
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["createdAt"],
       },
     };
 
@@ -97,7 +97,7 @@ router.put(
     if (address1 && address2) {
       orderToUpdate.update({ address1, address2 });
     }
-    
+
     const orderItemId = orderItem.id;
     const orderItemToUpdate = await orderItem.findByPk(orderItemId);
 

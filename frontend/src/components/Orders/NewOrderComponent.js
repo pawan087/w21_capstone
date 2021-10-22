@@ -55,6 +55,7 @@ export default function OrderComponent({ usersOrdersAndItems }) {
         .map((order, j) => {
           return (
             <div key={j}>
+              {func(order)}
               <h4 className={styles.orderTitle}>Order {j + 1}</h4>
 
               {order?.items.map((item, i) => {
@@ -68,14 +69,10 @@ export default function OrderComponent({ usersOrdersAndItems }) {
                       src={item?.product?.images[0]}
                     ></img>
 
-                    <h5>
-                      Order Status: Shipped{" "}
-                      <a href={`/products/${item.product.id}`}>
-                        (Leave a review)
-                      </a>
-                    </h5>
-
+                    <h5>Order Status: Processing</h5>
+      
                     <h5>Quantity: {!bool && item.quantity}</h5>
+
 
                     {bool && (
                       <input
@@ -96,6 +93,36 @@ export default function OrderComponent({ usersOrdersAndItems }) {
                   {order.address1}, {order.address2}
                 </p>
               )}
+
+              {bool && (
+                <div>
+                  <div>
+                    <input
+                      onChange={(e) => setAddress1(e.target.value)}
+                      type="text"
+                      defaultValue={order.address1}
+                    ></input>
+                  </div>
+                  <div>
+                    <input
+                      onChange={(e) => setAddress2(e.target.value)}
+                      type="text"
+                      defaultValue={order.address2}
+                    ></input>
+                  </div>
+                </div>
+              )}
+
+              <br />
+              {!bool && <button onClick={handleSubmit}>Edit</button>}
+
+              {bool && (
+                <button onClick={(e) => handleSubmit3(e, order)}>Submit</button>
+              )}
+
+              {"     "}
+
+              {bool && <button onClick={handleSubmit2}>Cancel</button>}
             </div>
           );
         })
