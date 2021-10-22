@@ -7,6 +7,7 @@ import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders, deleteOrders } from "../../store/orders.js";
 import OrderComponent from "./OrderComponent";
+import Delayed from "./Delayed";
 import NewOrderComponent from "./NewOrderComponent";
 
 export default function Orders() {
