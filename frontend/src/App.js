@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
+import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
 import { setAllProducts } from "../src/store/products";
@@ -51,6 +52,9 @@ function App() {
           <Route path="/cart" exact={true}>
             <Cart />
           </Route>
+          {/*<Route path="/confirm/:id" exact={true}>
+            <OrderConfirmation />
+      </Route>*/}
           <Route path="/orders" exact={true}>
             <Orders />
           </Route>

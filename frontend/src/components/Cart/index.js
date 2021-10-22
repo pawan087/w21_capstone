@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
-import { createOrder } from "../../store/orders";
+import { createOrder, createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import {
   setAllCartItems,
@@ -86,36 +86,34 @@ export default function Cart() {
   }
 
   const handleSubmit = async () => {
-    shoppingCartItems?.forEach(async (cartItem) => {
-      const res = await dispatch(
-        createOrderItem({
-          userId: user.id,
-          productId: cartItem.product.id,
-          quantity: cartItem.quantity,
-        })
-      );
-    });
-
-    await dispatch(setAllOrderItems());
+    // shoppingCartItems?.forEach(async (cartItem) => {
+    //   await dispatch(
+    //     createOrderItem({
+    //       userId: user.id,
+    //       productId: cartItem.product.id,
+    //       quantity: cartItem.quantity,
+    //     })
+    //   );
+    // });
 
     setOrderConfirmBool(true);
   };
 
   const handleSubmit2 = async () => {
-    let reversed = orderItems.reverse();
-    let arr = [];
+    // await dispatch(
+    //   createOrder({
+    //     userId: user.id,
+    //     items: arr,
+    //     address1: user.address1,
+    //     address2: user.address2,
+    //   })
+    // );
 
-    for (let i = 0; i < shoppingCartItems?.length; i++) {
-      let item = reversed[i];
-      await arr.push(item.id);
-    }
-
-    await dispatch(
-      createOrder({
-        userId: user.id,
-        items: arr,
-        address1: user.address1,
-        address2: user.address2,
+    dispatch(
+      createOrderItemsAndOrder({
+        user,
+        cartItems: shoppingCartItems,
+        lastOrderId: orderItems[orderItems.length - 1].id,
       })
     );
 

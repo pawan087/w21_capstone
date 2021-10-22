@@ -17,6 +17,25 @@ export const setAllOrders = () => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const createOrderItemsAndOrder = (data) => async (dispatch) => {
+  const { user, cartItems, lastOrderId } = data;
+
+  const res = await csrfFetch("/api/orders/complete", {
+    method: "POST",
+    body: JSON.stringify({
+      user,
+      cartItems,
+      lastOrderId,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 export const createOrder = (data) => async (dispatch) => {
   const { userId, items, address1, address2 } = data;
 

@@ -40,10 +40,14 @@ export default function Orders() {
 
     obj.items?.forEach((item) => {
       delete item.userId;
+
       let itemsAndProducts = [];
+
       let id1 = item.productId;
+
       products?.forEach((product) => {
         let id2 = product.id;
+        
         if (+id1 === +id2) {
           itemsAndProducts.push({ product: product, quantity: item.quantity });
         }
