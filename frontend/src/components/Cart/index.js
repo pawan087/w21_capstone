@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
-import { createOrder, createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import {
   setAllCartItems,
   consolidateCartItems,
-  createCartItem,
 } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
-import { createOrderItem } from "../../store/orderItems.js";
 import Items from "./Items";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const user = useSelector((state) => state.session.user);
   const cartItems = useSelector((state) => state.cartItems);
-  const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [orderConfirmBool, setOrderConfirmBool] = useState(false);
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem.userId === user.id;
@@ -85,44 +82,8 @@ export default function Cart() {
     });
   }
 
-  const handleSubmit = async () => {
-    // shoppingCartItems?.forEach(async (cartItem) => {
-    //   await dispatch(
-    //     createOrderItem({
-    //       userId: user.id,
-    //       productId: cartItem.product.id,
-    //       quantity: cartItem.quantity,
-    //     })
-    //   );
-    // });
-
-    setOrderConfirmBool(true);
-  };
-
-  const handleSubmit2 = async () => {
-    // await dispatch(
-    //   createOrder({
-    //     userId: user.id,
-    //     items: arr,
-    //     address1: user.address1,
-    //     address2: user.address2,
-    //   })
-    // );
-
-    dispatch(
-      createOrderItemsAndOrder({
-        user,
-        cartItems: shoppingCartItems,
-        lastOrderId: orderItems[orderItems.length - 1].id,
-      })
-    );
-
-    return;
-  };
-
-  const handleSubmit3 = () => {
-    setOrderConfirmBool(false);
-    return;
+  const handleSubmit = () => {
+    history.push("/confirm");
   };
 
   useEffect(() => {
@@ -139,25 +100,19 @@ export default function Cart() {
 
       <h4 className={styles.cartTitle}>{user.username}'s Cart</h4>
 
+      {shoppingCartItems.length === 0 && <h5>This cart is empty.</h5>}
+
       <Items shoppingCartItems={shoppingCartItems} />
 
-      <h4 className={styles.cartTitle}>Place Your Order</h4>
-
-      <button onClick={handleSubmit}>Submit</button>
-
-      <br />
-
-      {orderConfirmBool && (
+      {shoppingCartItems.length !== 0 && (
         <div>
-          <h4 className={styles.cartTitle}>Are you sure?</h4>
+          <h4 className={styles.cartTitle}>Place Your Order</h4>
 
-          <button onClick={handleSubmit2}>Confirm</button>
-
-          {"     "}
-
-          <button onClick={handleSubmit3}>Cancel</button>
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       )}
+
+      <br />
     </div>
   );
 }

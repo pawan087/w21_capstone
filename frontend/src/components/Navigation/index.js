@@ -19,7 +19,9 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
+
         <NavLink to="/login">Log In</NavLink>
+
         <NavLink to="/signup">Sign Up</NavLink>
       </>
     );
@@ -27,12 +29,9 @@ function Navigation({ isLoaded }) {
 
   const productPage = () => {
     const selection = document.getElementById("products").value;
+
     history.push(`/products/${selection}`);
   };
-
-  // <option value="none" value="DEFAULT" disabled hidden>
-  //   Select a Product
-  // </option>;
 
   return (
     <ul className={styles.navbar}>
@@ -47,7 +46,17 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/orders">Orders</NavLink>
 
-        <select onChange={productPage} name="products" id="products">
+        <select
+          name="originId"
+          defaultValue="chooseProduct"
+          onChange={productPage}
+          name="products"
+          id="products"
+        >
+          <option value="chooseProduct" disabled>
+            Select a Product
+          </option>
+
           {products?.map((product, i) => (
             <option key={i} value={product.id}>
               {product.name}

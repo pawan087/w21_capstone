@@ -34,23 +34,25 @@ router.post(
 
     console.log("\n");
 
-    console.log(cartItems);
-
     let len = cartItems.length;
 
     for (let i = 1; i <= cartItems.length; i++) {
       items.push(lastOrderId + i);
     }
 
-    await cartItems.forEach(async (cartItem) => {
-      const productId = cartItem.product.id;
-      const quantity = cartItem.quantity;
+    await cartItems.forEach(async (cartitem) => {
+      const productId = cartitem.product.id;
+      const quantity = cartitem.quantity;
 
       await orderItem.create({
         userId,
         productId,
         quantity,
       });
+
+
+      const cartItemToDelete = await cartItem.findByPk(cartitem.id);
+      await cartItemToDelete.destroy();
     });
 
     console.log("\n");

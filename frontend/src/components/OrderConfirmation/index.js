@@ -1,35 +1,59 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import styles from "./OrderConfirmation.module.css";
+import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
-import { createOrder } from "../../store/orders";
 
 export default function OrderConfirmation() {
+  const history = useHistory();
   const dispatch = useDispatch();
-  const params = useParams();
 
-  const orderItems = useSelector((state) => state.orderItems);
   const user = useSelector((state) => state.session.user);
+  const cartItems = useSelector((state) => state.cartItems);
+  const orderItems = useSelector((state) => state.orderItems);
+  const products = useSelector((state) => state.products);
+
+  const usersCartItems = cartItems?.filter((cartItem) => {
+    return cartItem.userId === user.id;
+  });
+
+  const shoppingCartItems = [];
+
+  usersCartItems?.forEach((cartItem) => {
+    let id1 = cartItem.productId;
+
+    products?.forEach((product) => {
+      let id2 = product.id;
+
+      if (id1 === id2) {
+        let item = {
+          ...cartItem,
+          product: product,
+        };
+
+        delete item.productId;
+        delete item.userId;
+
+        shoppingCartItems.push(item);
+      }
+    });
+  });
 
   const handleSubmit = async () => {
-    let arr = [];
-
-    for (let i = 0; i < params.id; i++) {
-      let item = orderItems[orderItems.length - i - 1];
-      arr.push(item.id);
-    }
-
     await dispatch(
-      createOrder({
-        userId: user.id,
-        items: arr,
-        address1: user.address1,
-        address2: user.address2,
+      createOrderItemsAndOrder({
+        user,
+        cartItems: shoppingCartItems,
+        lastOrderId: orderItems[orderItems.length - 1].id,
       })
     );
 
-    return;
+    history.push("/orders");
+  };
+
+  const handleSubmit2 = async () => {
+    history.push("/cart");
   };
 
   useEffect(() => {
@@ -44,7 +68,7 @@ export default function OrderConfirmation() {
 
       {"     "}
 
-      <button>Cancel</button>
+      <button onClick={handleSubmit2}>Cancel</button>
     </div>
   );
 }

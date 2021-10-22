@@ -52,9 +52,9 @@ function App() {
           <Route path="/cart" exact={true}>
             <Cart />
           </Route>
-          {/*<Route path="/confirm/:id" exact={true}>
+          <Route path="/confirm" exact={true}>
             <OrderConfirmation />
-      </Route>*/}
+          </Route>
           <Route path="/orders" exact={true}>
             <Orders />
           </Route>
