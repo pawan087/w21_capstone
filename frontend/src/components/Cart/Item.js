@@ -61,7 +61,7 @@ export default function ItemComponent({ item, i }) {
       <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
       <div>
-      <li>Quantity: {!editBool && item.quantity}</li>
+        <li>Quantity: {!editBool && item.quantity}</li>
 
         {editBool && (
           <input
@@ -108,9 +108,7 @@ export default function ItemComponent({ item, i }) {
       <br />
       <br />
 
-      <button onClick={(e) => handleSubmit(e, item.id)}>
-        Remove from Cart
-      </button>
+      <button onClick={(e) => handleSubmit(e, item.id)}>Remove</button>
 
       {loading2 && <p>Cart Updating...</p>}
 

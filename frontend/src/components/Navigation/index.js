@@ -50,7 +50,6 @@ function Navigation({ isLoaded }) {
           name="originId"
           defaultValue="chooseProduct"
           onChange={productPage}
-          name="products"
           id="products"
         >
           <option value="chooseProduct" disabled>

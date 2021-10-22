@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
@@ -6,6 +6,7 @@ import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllCartItems, emptyCart } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import Items from "./Items";
+import Delayed from "./Delayed";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -15,11 +16,15 @@ export default function Cart() {
   const cartItems = useSelector((state) => state.cartItems);
   const products = useSelector((state) => state.products);
 
-  const usersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem.userId === user.id;
+  const [usersCartItems, setUsersCartItems] = useState([]);
+
+  cartItems?.forEach((cartItem) => {
+    if (cartItem.userId === user.id) {
+      setUsersCartItems([...usersCartItems, cartItem]);
+    }
   });
 
-  const shoppingCartItems = [];
+  const [shoppingCartItems, setShoppingCartItems] = useState([]);
 
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
@@ -36,7 +41,7 @@ export default function Cart() {
         delete item.productId;
         delete item.userId;
 
-        shoppingCartItems.push(item);
+        setShoppingCartItems([...shoppingCartItems, item]);
       }
     });
   });
@@ -71,11 +76,11 @@ export default function Cart() {
 
       <h4 className={styles.cartTitle}>{user.username}'s Cart</h4>
 
-      {shoppingCartItems.length === 0 && <h5>This cart is empty.</h5>}
+      {shoppingCartItems?.length === 0 && <h5>This cart is empty.</h5>}
 
       <Items shoppingCartItems={shoppingCartItems} />
 
-      {shoppingCartItems.length > 1 && (
+      {shoppingCartItems?.length > 1 && (
         <button onClick={handleSubmit2}>Empty Cart</button>
       )}
 

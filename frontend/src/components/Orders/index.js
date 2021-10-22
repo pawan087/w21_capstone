@@ -3,9 +3,11 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
 import { setAllOrderItems } from "../../store/orderItems.js";
+import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders, deleteOrders } from "../../store/orders.js";
 import OrderComponent from "./OrderComponent";
+import Delayed from "./Delayed";
 import NewOrderComponent from "./NewOrderComponent";
 
 export default function Orders() {
@@ -22,7 +24,7 @@ export default function Orders() {
   }
 
   let curTime = new Date();
-  let pastTime = AddMinutesToDate(curTime, 10); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
+  let pastTime = AddMinutesToDate(curTime, -100); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
 
   const usersOrders = orders?.filter((order) => {
     return order.userId === +user.id;
@@ -48,7 +50,7 @@ export default function Orders() {
 
     let itemsAndProducts = [];
 
-    obj.allItemsArr?.forEach((item) => {
+    obj?.allItemsArr?.forEach((item) => {
       delete item.userId;
 
       let id1 = item.productId;
@@ -96,6 +98,7 @@ export default function Orders() {
     dispatch(setAllProducts());
     dispatch(setAllOrderItems());
     dispatch(setAllOrders());
+    dispatch(setAllCartItems());
   }, [dispatch]);
 
   if (!user) return <Redirect to="/" />;
@@ -128,21 +131,21 @@ export default function Orders() {
 
       <h4 className={styles.ordersTitle}>Current Orders</h4>
 
-      {currentOrders.length === 0 && (
+      {currentOrders?.length === 0 && (
         <h5>No orders are currently processing</h5>
       )}
 
-      {currentOrders.length > 0 && (
+      {currentOrders?.length > 0 && (
         <NewOrderComponent usersOrdersAndItems={currentOrders} />
       )}
       <h4 className={styles.ordersTitle}>Previous Orders</h4>
 
-      {previousOrders.length === 0 && <h5>You have no previous orders</h5>}
+      {previousOrders?.length === 0 && <h5>You have no previous orders</h5>}
 
       <OrderComponent usersOrdersAndItems={previousOrders} />
 
       <div className="clearOrderHistoryMenu">
-        {previousOrders.length > 0 && !bool && (
+        {previousOrders?.length > 0 && !bool && (
           <h4 onClick={openMenu} className={styles.orderTitle}>
             Clear Order History
           </h4>

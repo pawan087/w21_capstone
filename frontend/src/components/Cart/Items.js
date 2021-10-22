@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import styles from "./Cart.module.css";
 import ItemComponent from "./Item";
@@ -13,7 +13,8 @@ export default function Items({ shoppingCartItems }) {
   let idToDelete2;
   let productId;
 
-  let arr = [];
+  const [arr, setArr] = useState([]);
+  // let arr = [];
 
   shoppingCartItems?.forEach((item1, i) => {
     let sumQuantity = 0;
@@ -31,7 +32,8 @@ export default function Items({ shoppingCartItems }) {
         productId = item2.product.id;
         sumQuantity += item2.quantity + item1.quantity;
 
-        arr.push({ idToDelete1, idToDelete2, productId, sumQuantity });
+        // arr.push({ idToDelete1, idToDelete2, productId, sumQuantity });
+        setArr([...arr, { idToDelete1, idToDelete2, productId, sumQuantity }]);
       }
     }
   });
@@ -48,7 +50,7 @@ export default function Items({ shoppingCartItems }) {
         })
       );
     });
-  }, [dispatch]);
+  }, [dispatch, arr, user]);
 
   return (
     <div>
@@ -59,7 +61,6 @@ export default function Items({ shoppingCartItems }) {
           </div>
         );
       })}
-
     </div>
   );
 }
