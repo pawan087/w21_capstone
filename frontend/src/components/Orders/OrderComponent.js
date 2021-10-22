@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { editOrder } from "../../store/orders";
+// import { editOrder } from "../../store/orders";
 import styles from "./Orders.module.css";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
