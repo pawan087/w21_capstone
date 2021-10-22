@@ -74,6 +74,23 @@ export const deleteCartItem = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const emptyCart = (data) => async (dispatch) => {
+  const { idsToDeleteArr } = data;
+
+  const res = await csrfFetch("/api/cartitems/bulk", {
+    method: "DELETE",
+    body: JSON.stringify({
+      idsToDeleteArr,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 export const editCartItem = (data) => async (dispatch) => {
   const { id, quantity } = data;
 

@@ -25,6 +25,18 @@ export default function ItemComponent({ item, i }) {
     setTimeout(() => setLoading2(false), 1000);
   };
 
+  const handleSubmit3 = (e, idToDelete) => {
+    e.preventDefault();
+
+    setEditBool(false);
+
+    setLoading2(true);
+
+    dispatch(deleteCartItem({ idToDelete }));
+
+    setTimeout(() => setLoading2(false), 1000);
+  };
+
   const handleSubmit2 = async (e, id, originalQuantity) => {
     if (quantity === originalQuantity) {
       setEditBool(false);
@@ -49,7 +61,7 @@ export default function ItemComponent({ item, i }) {
       <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
       <div>
-        <li>Quantity: {!editBool && item.quantity}</li>
+      <li>Quantity: {!editBool && item.quantity}</li>
 
         {editBool && (
           <input
@@ -69,6 +81,10 @@ export default function ItemComponent({ item, i }) {
             <button onClick={(e) => handleSubmit2(e, item.id, item.quantity)}>
               Update
             </button>
+
+            {"     "}
+
+            <button onClick={(e) => handleSubmit3(e, item.id)}>Remove</button>
 
             {"     "}
 

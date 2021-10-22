@@ -3,7 +3,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
 import { setAllOrderItems } from "../../store/orderItems.js";
-import { setAllCartItems } from "../../store/cartItems.js";
+import { setAllCartItems, emptyCart } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import Items from "./Items";
 
@@ -53,6 +53,18 @@ export default function Cart() {
 
   if (!user) return <Redirect to="/" />;
 
+  const handleSubmit2 = () => {
+    let idsToDeleteArr = [];
+
+    shoppingCartItems?.forEach((item) => {
+      idsToDeleteArr.push(item.id);
+    });
+
+    dispatch(emptyCart({ idsToDeleteArr }));
+
+    dispatch(setAllCartItems());
+  };
+
   return (
     <div>
       <h2 className={styles.title}>Shopping Cart Page</h2>
@@ -62,6 +74,10 @@ export default function Cart() {
       {shoppingCartItems.length === 0 && <h5>This cart is empty.</h5>}
 
       <Items shoppingCartItems={shoppingCartItems} />
+
+      {shoppingCartItems.length > 1 && (
+        <button onClick={handleSubmit2}>Empty Cart</button>
+      )}
 
       {shoppingCartItems.length !== 0 && (
         <div>
