@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import styles from "./Cart.module.css";
 import ItemComponent from "./Item";
@@ -32,19 +33,21 @@ export default function Items({ shoppingCartItems }) {
     }
   });
 
-  if (arr?.length > 0) {
-    arr?.forEach(async (duplicate, i) => {
-      await dispatch(
-        consolidateCartItems({
-          idToDelete1: duplicate.idToDelete1,
-          idToDelete2: duplicate.idToDelete2,
-          sumQuantity: duplicate.sumQuantity,
-          productId: duplicate.productId,
-          userId: user.id,
-        })
-      );
-    });
-  }
+  useEffect(() => {
+    if (arr?.length > 0) {
+      arr?.forEach(async (duplicate, i) => {
+        await dispatch(
+          consolidateCartItems({
+            idToDelete1: duplicate.idToDelete1,
+            idToDelete2: duplicate.idToDelete2,
+            sumQuantity: duplicate.sumQuantity,
+            productId: duplicate.productId,
+            userId: user.id,
+          })
+        );
+      });
+    }
+  }, [dispatch]);
 
   return (
     <div>
