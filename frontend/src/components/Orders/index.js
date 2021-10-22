@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllProducts } from "../../store/products.js";
-import { setAllOrders } from "../../store/orders.js";
+import { setAllOrders, deleteOrders } from "../../store/orders.js";
 import OrderComponent from "./OrderComponent";
 import NewOrderComponent from "./NewOrderComponent";
 
@@ -22,7 +22,7 @@ export default function Orders() {
   }
 
   let curTime = new Date();
-  let pastTime = AddMinutesToDate(curTime, -1);
+  let pastTime = AddMinutesToDate(curTime, 10); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
 
   const usersOrders = orders?.filter((order) => {
     return order.userId === +user.id;
@@ -108,6 +108,18 @@ export default function Orders() {
     setBool(false);
   };
 
+  const clearPastOrderHistory = async () => {
+    let idsToDeleteArr = [];
+
+    previousOrders?.forEach((order) => {
+      idsToDeleteArr.push(order.id);
+    });
+
+    await dispatch(deleteOrders({ idsToDeleteArr }));
+
+    await dispatch(setAllOrders());
+  };
+
   return (
     <div onClick={handleClickOutside}>
       <h2 className={styles.title}>Orders Page</h2>
@@ -130,7 +142,7 @@ export default function Orders() {
       <OrderComponent usersOrdersAndItems={previousOrders} />
 
       <div className="clearOrderHistoryMenu">
-        {!bool && (
+        {previousOrders.length > 0 && !bool && (
           <h4 onClick={openMenu} className={styles.orderTitle}>
             Clear Order History
           </h4>
@@ -142,7 +154,7 @@ export default function Orders() {
           </h4>
         )}
 
-        {bool && <button onClick={() => console.log("yee")}>Clear</button>}
+        {bool && <button onClick={clearPastOrderHistory}>Clear</button>}
       </div>
     </div>
   );

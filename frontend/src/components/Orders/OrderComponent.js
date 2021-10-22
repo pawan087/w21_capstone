@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-// import { editOrder } from "../../store/orders";
+import { editOrder, deleteOrder } from "../../store/orders";
 import styles from "./Orders.module.css";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
+  const dispatch = useDispatch();
   const [bool, setBool] = useState(false);
   const [quantity, setQuantity] = useState(0);
   const [address1, setAddress1] = useState("");
@@ -43,10 +45,8 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     // dispatch edit order
   };
 
-  const func = (order) => {
-    let orderDate = order.updatedAt;
-    let orderDate2 = new Date(orderDate).getTime();
-    // console.log(orderDate2 < curTime)
+  const deletePreviousOrder = async (id) => {
+    await dispatch(deleteOrder({ id }));
   };
 
   return (
@@ -96,6 +96,12 @@ export default function OrderComponent({ usersOrdersAndItems }) {
                   {order.address1}, {order.address2}
                 </p>
               )}
+
+              {
+                <button onClick={() => deletePreviousOrder(order.id)}>
+                  Remove
+                </button>
+              }
             </div>
           );
         })
