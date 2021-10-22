@@ -13,8 +13,7 @@ export default function Items({ shoppingCartItems }) {
   let idToDelete2;
   let productId;
 
-  const [arr, setArr] = useState([]);
-  // let arr = [];
+  let arr = [];
 
   shoppingCartItems?.forEach((item1, i) => {
     let sumQuantity = 0;
@@ -32,8 +31,7 @@ export default function Items({ shoppingCartItems }) {
         productId = item2.product.id;
         sumQuantity += item2.quantity + item1.quantity;
 
-        // arr.push({ idToDelete1, idToDelete2, productId, sumQuantity });
-        setArr([...arr, { idToDelete1, idToDelete2, productId, sumQuantity }]);
+        arr.push({ idToDelete1, idToDelete2, productId, sumQuantity });
       }
     }
   });

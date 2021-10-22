@@ -6,7 +6,7 @@ import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllCartItems, emptyCart } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import Items from "./Items";
-import Delayed from "./Delayed";
+// import Delayed from "./Delayed";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -16,15 +16,11 @@ export default function Cart() {
   const cartItems = useSelector((state) => state.cartItems);
   const products = useSelector((state) => state.products);
 
-  const [usersCartItems, setUsersCartItems] = useState([]);
-
-  cartItems?.forEach((cartItem) => {
-    if (cartItem.userId === user.id) {
-      setUsersCartItems([...usersCartItems, cartItem]);
-    }
+  const usersCartItems = cartItems?.filter((cartItem) => {
+    return cartItem.userId === user.id;
   });
 
-  const [shoppingCartItems, setShoppingCartItems] = useState([]);
+  const shoppingCartItems = [];
 
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
@@ -41,7 +37,7 @@ export default function Cart() {
         delete item.productId;
         delete item.userId;
 
-        setShoppingCartItems([...shoppingCartItems, item]);
+        shoppingCartItems.push(item);
       }
     });
   });
@@ -52,7 +48,9 @@ export default function Cart() {
 
   useEffect(() => {
     dispatch(setAllProducts());
+
     dispatch(setAllOrderItems());
+
     dispatch(setAllCartItems());
   }, [dispatch]);
 
@@ -69,7 +67,6 @@ export default function Cart() {
 
     dispatch(setAllCartItems());
   };
-
   return (
     <div>
       <h2 className={styles.title}>Shopping Cart Page</h2>
