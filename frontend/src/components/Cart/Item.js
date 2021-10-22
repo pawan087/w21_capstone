@@ -7,7 +7,7 @@ export default function ItemComponent({ item, i }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
-  const [quantity, setQuantity] = useState();
+  const [quantity, setQuantity] = useState(item.quantity);
   const [editBool, setEditBool] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -25,7 +25,12 @@ export default function ItemComponent({ item, i }) {
     setTimeout(() => setLoading2(false), 1000);
   };
 
-  const handleSubmit2 = async (e, id) => {
+  const handleSubmit2 = async (e, id, originalQuantity) => {
+    if (quantity === originalQuantity) {
+      setEditBool(false);
+      return;
+    }
+
     e.preventDefault();
 
     setLoading(true);
@@ -61,7 +66,9 @@ export default function ItemComponent({ item, i }) {
 
         {editBool && (
           <>
-            <button onClick={(e) => handleSubmit2(e, item.id)}>Update</button>
+            <button onClick={(e) => handleSubmit2(e, item.id, item.quantity)}>
+              Update
+            </button>
 
             {"     "}
 

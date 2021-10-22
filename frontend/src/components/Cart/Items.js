@@ -1,48 +1,12 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Cart.module.css";
-import { deleteCartItem, editCartItem } from "../../store/cartItems";
+// import styles from "./Cart.module.css";
 import ItemComponent from "./Item";
-import {
-  setAllCartItems,
-  consolidateCartItems,
-} from "../../store/cartItems.js";
+import { consolidateCartItems } from "../../store/cartItems.js";
 
 export default function Items({ shoppingCartItems }) {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
-  // const [loading, setLoading] = useState(false);
-  // const [loading2, setLoading2] = useState(false);
-  // const [quantity, setQuantity] = useState();
-  // const [editBool, setEditBool] = useState(false);
-
-  // const formatter = new Intl.NumberFormat("en-US", {
-  //   minimumFractionDigits: 2,
-  //   maximumFractionDigits: 2,
-  // });
-
-  // const handleSubmit = (e, idToDelete) => {
-  //   e.preventDefault();
-
-  //   setLoading2(true);
-
-  //   dispatch(deleteCartItem({ idToDelete }));
-
-  //   setTimeout(() => setLoading2(false), 1000);
-  // };
-
-  // const handleSubmit2 = async (e, id) => {
-  //   e.preventDefault();
-
-  //   setLoading(true);
-
-  //   dispatch(editCartItem({ id, quantity }));
-
-  //   await setTimeout(() => setLoading(false), 1000);
-
-  //   setEditBool(false);
-  // };
 
   let sumQuantity = 0;
   let idToDelete1;
