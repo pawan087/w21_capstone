@@ -33,30 +33,31 @@ export default function Orders() {
 
     let obj = {
       ...order,
-      items: orderItemsArr,
+      allItemsArr: [...orderItemsArr],
     };
 
     delete obj.userId;
 
-    obj.items?.forEach((item) => {
-      delete item.userId;
+    let itemsAndProducts = [];
 
-      let itemsAndProducts = [];
+    obj.allItemsArr?.forEach((item) => {
+      delete item.userId;
 
       let id1 = item.productId;
 
       products?.forEach((product) => {
         let id2 = product.id;
-        
+
         if (+id1 === +id2) {
           itemsAndProducts.push({ product: product, quantity: item.quantity });
         }
       });
 
       obj.itemsArr = itemsAndProducts;
-      delete obj.items;
+
       obj.items = obj.itemsArr;
       delete obj.itemsArr;
+      delete obj.allItemsArr;
     });
 
     usersOrdersAndItems.push(obj);
