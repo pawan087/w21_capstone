@@ -101,7 +101,12 @@ router.put(
     const { id, quantity } = req.body;
 
     const cartItemToUpdate = await cartItem.findByPk(id);
-    await cartItemToUpdate.update({ quantity });
+
+    if (quantity > 0) {
+      await cartItemToUpdate.update({ quantity });
+    } else {
+      await cartItemToUpdate.destroy();
+    }
 
     const options = {
       attributes: {

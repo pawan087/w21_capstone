@@ -22,4 +22,22 @@ router.get(
   })
 );
 
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { userId, items, address1, address2 } = req.body;
+
+    await Order.create({
+      userId,
+      items,
+      address1,
+      address2,
+    });
+
+    const orders = await Order.findAll();
+
+    res.json(orders);
+  })
+);
+
 module.exports = router;

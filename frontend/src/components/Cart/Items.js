@@ -64,9 +64,15 @@ export default function Items({ shoppingCartItems }) {
               {"     "}
 
               {editBool && (
-                <button onClick={(e) => handleSubmit2(e, item.id)}>
-                  Update
-                </button>
+                <>
+                  <button onClick={(e) => handleSubmit2(e, item.id)}>
+                    Update
+                  </button>
+
+                  {"     "}
+
+                  <button onClick={() => setEditBool(false)}>Cancel</button>
+                </>
               )}
 
               <li>

@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const SET_ORDERS = "orders/SET_ORDERS";
 
 const load = (orders) => ({
@@ -7,6 +9,26 @@ const load = (orders) => ({
 
 export const setAllOrders = () => async (dispatch) => {
   const res = await fetch("/api/orders");
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const createOrder = (data) => async (dispatch) => {
+  const { userId, items, address1, address2 } = data;
+
+  const res = await csrfFetch("/api/orders", {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      items,
+      address1,
+      address2,
+    }),
+  });
 
   if (res.ok) {
     const data = await res.json();

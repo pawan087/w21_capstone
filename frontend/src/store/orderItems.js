@@ -1,4 +1,4 @@
-// import { csrfFetch } from "./csrf";
+import { csrfFetch } from "./csrf";
 
 const SET_ORDER_ITEMS = "orderItems/SET_ORDER_ITEMS";
 
@@ -17,41 +17,25 @@ export const setAllOrderItems = () => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
-// export const createOrderItem = (data) => async (dispatch) => {
-//   const { userId, productId, quantity } = data;
+export const createOrderItem = (data) => async (dispatch) => {
+  const { userId, productId, quantity } = data;
 
-//   const res = await csrfFetch("/api/orderitems", {
-//     method: "POST",
-//     body: JSON.stringify({
-//       userId,
-//       productId,
-//       quantity,
-//     }),
-//   });
+  const res = await csrfFetch("/api/orderitems", {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      productId,
+      quantity,
+    }),
+  });
 
-//   if (res.ok) {
-//     const data = await res.json();
 
-//     dispatch(load(data));
-//   } else return "READ THUNK ERROR: BAD REQUEST";
-// };
-
-// export const deleteOrderItem = (data) => async (dispatch) => {
-//   const { idToDelete } = data;
-
-//   const res = await csrfFetch("/api/orderitems", {
-//     method: "DELETE",
-//     body: JSON.stringify({
-//       idToDelete,
-//     }),
-//   });
-
-//   if (res.ok) {
-//     const data = await res.json();
-
-//     dispatch(load(data));
-//   } else return "READ THUNK ERROR: BAD REQUEST";
-// };
+  if (res.ok) {
+    const data = await res.json();
+    const id = data.id;
+    return id;
+  }
+};
 
 const initialState = [];
 

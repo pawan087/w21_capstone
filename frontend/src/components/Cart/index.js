@@ -1,19 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Cart.module.css";
+import { createOrder } from "../../store/orders";
+import { setAllOrderItems } from "../../store/orderItems.js";
 import {
   setAllCartItems,
   consolidateCartItems,
+  createCartItem,
 } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
+import { createOrderItem } from "../../store/orderItems.js";
 import Items from "./Items";
 
 export default function Cart() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const cartItems = useSelector((state) => state.cartItems);
+  const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
+  const [orderConfirmBool, setOrderConfirmBool] = useState(false);
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem.userId === user.id;
@@ -79,8 +85,51 @@ export default function Cart() {
     });
   }
 
+  const handleSubmit = async () => {
+    shoppingCartItems?.forEach(async (cartItem) => {
+      const res = await dispatch(
+        createOrderItem({
+          userId: user.id,
+          productId: cartItem.product.id,
+          quantity: cartItem.quantity,
+        })
+      );
+    });
+
+    await dispatch(setAllOrderItems());
+
+    setOrderConfirmBool(true);
+  };
+
+  const handleSubmit2 = async () => {
+    let reversed = orderItems.reverse();
+    let arr = [];
+
+    for (let i = 0; i < shoppingCartItems?.length; i++) {
+      let item = reversed[i];
+      await arr.push(item.id);
+    }
+
+    await dispatch(
+      createOrder({
+        userId: user.id,
+        items: arr,
+        address1: user.address1,
+        address2: user.address2,
+      })
+    );
+
+    return;
+  };
+
+  const handleSubmit3 = () => {
+    setOrderConfirmBool(false);
+    return;
+  };
+
   useEffect(() => {
     dispatch(setAllProducts());
+    dispatch(setAllOrderItems());
     dispatch(setAllCartItems());
   }, [dispatch]);
 
@@ -93,6 +142,24 @@ export default function Cart() {
       <h4 className={styles.cartTitle}>{user.username}'s Cart</h4>
 
       <Items shoppingCartItems={shoppingCartItems} />
+
+      <h4 className={styles.cartTitle}>Place Your Order</h4>
+
+      <button onClick={handleSubmit}>Submit</button>
+
+      <br />
+
+      {orderConfirmBool && (
+        <div>
+          <h4 className={styles.cartTitle}>Are you sure?</h4>
+
+          <button onClick={handleSubmit2}>Confirm</button>
+
+          {"     "}
+
+          <button onClick={handleSubmit3}>Cancel</button>
+        </div>
+      )}
     </div>
   );
 }

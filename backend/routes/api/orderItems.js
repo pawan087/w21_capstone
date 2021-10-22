@@ -27,42 +27,13 @@ router.post(
   asyncHandler(async (req, res) => {
     const { userId, productId, quantity } = req.body;
 
-    await orderItem.create({
+    const newOrderItem = await orderItem.create({
       userId,
       productId,
       quantity,
     });
 
-    const options = {
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    };
-
-    const orderItems = await orderItem.findAll(options);
-
-    res.json(orderItems);
-  })
-);
-
-
-router.delete(
-  "/",
-  asyncHandler(async (req, res) => {
-    const { idToDelete } = req.body;
-
-    const orderItemToDelete = await orderItem.findByPk(idToDelete);
-    await orderItemToDelete.destroy();
-
-    const options = {
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    };
-
-    const orderItems = await orderItem.findAll(options);
-
-    res.json(orderItems);
+    res.json(newOrderItem);
   })
 );
 
