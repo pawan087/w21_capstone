@@ -32,7 +32,9 @@ router.post(
     const address2 = user.address2;
     const items = [];
 
-    // console.log("\n");
+    console.log("\n");
+
+    console.log(cartItems);
 
     let len = cartItems.length;
 
@@ -42,7 +44,7 @@ router.post(
 
     await cartItems.forEach(async (cartItem) => {
       const productId = cartItem.product.id;
-      const quantity = cartItems.quantity;
+      const quantity = cartItem.quantity;
 
       await orderItem.create({
         userId,
@@ -51,7 +53,7 @@ router.post(
       });
     });
 
-    // console.log("\n");
+    console.log("\n");
 
     await Order.create({
       userId,

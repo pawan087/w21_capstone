@@ -76,7 +76,7 @@ export default function Orders() {
     <div>
       <h2 className={styles.title}>Orders Page</h2>
 
-      <h4 className={styles.ordersTitle}>{user.username}'s Past Orders</h4>
+      <h4 className={styles.ordersTitle}>{user?.username}'s Past Orders</h4>
 
       <OrderComponent usersOrdersAndItems={usersOrdersAndItems} />
     </div>

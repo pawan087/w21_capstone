@@ -14,12 +14,12 @@ export default function OrderComponent({ usersOrdersAndItems }) {
               {order?.items.map((item, i) => {
                 return (
                   <div key={i}>
-                    <h4>{item.product.name}</h4>
+                    <h4>{item?.product?.name}</h4>
 
                     <img
                       alt="productImage"
                       className={styles.image}
-                      src={item.product.images[0]}
+                      src={item?.product?.images[0]}
                     ></img>
 
                     <h5>Quantity: {item.quantity}</h5>
