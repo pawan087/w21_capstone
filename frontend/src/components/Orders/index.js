@@ -57,7 +57,10 @@ export default function Orders() {
 
       obj.items = obj.itemsArr;
       delete obj.itemsArr;
-      delete obj.allItemsArr;
+      // obj.allItemsArr?.forEach((item) => {
+      //   delete item.productId;
+      //   delete item.quantity;
+      // })
     });
 
     usersOrdersAndItems.push(obj);

@@ -9,6 +9,7 @@ export default function Items({ shoppingCartItems }) {
   const [loading2, setLoading2] = useState(false);
   const [quantity, setQuantity] = useState();
   const [editBool, setEditBool] = useState(false);
+
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
