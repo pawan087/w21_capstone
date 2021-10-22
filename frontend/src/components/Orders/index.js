@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
 import { setAllOrderItems } from "../../store/orderItems.js";
+import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders, deleteOrders } from "../../store/orders.js";
 import OrderComponent from "./OrderComponent";
@@ -22,7 +23,7 @@ export default function Orders() {
   }
 
   let curTime = new Date();
-  let pastTime = AddMinutesToDate(curTime, 10); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
+  let pastTime = AddMinutesToDate(curTime, -100); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
 
   const usersOrders = orders?.filter((order) => {
     return order.userId === +user.id;
@@ -96,6 +97,7 @@ export default function Orders() {
     dispatch(setAllProducts());
     dispatch(setAllOrderItems());
     dispatch(setAllOrders());
+    dispatch(setAllCartItems());
   }, [dispatch]);
 
   if (!user) return <Redirect to="/" />;

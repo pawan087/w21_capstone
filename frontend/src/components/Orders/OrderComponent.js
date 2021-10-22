@@ -18,7 +18,7 @@ export default function OrderComponent({ usersOrdersAndItems }) {
             <div key={j}>
               <h4 className={styles.orderTitle}>Order {j + 1}</h4>
 
-              {order?.items.map((item, i) => {
+              {order?.items?.map((item, i) => {
                 return (
                   <div key={i}>
                     <h4>{item?.product?.name}</h4>
@@ -31,7 +31,7 @@ export default function OrderComponent({ usersOrdersAndItems }) {
 
                     <h5>
                       Order Status: Shipped{" "}
-                      <a href={`/products/${item?.product.id}`}>
+                      <a href={`/products/${item?.product?.id}`}>
                         (Leave a review)
                       </a>
                     </h5>

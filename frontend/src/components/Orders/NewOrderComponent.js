@@ -21,6 +21,10 @@ export default function OrderComponent({ usersOrdersAndItems }) {
 
     console.log(order);
 
+    setQuantity(quantity);
+    setAddress1(address1);
+    setAddress2(address2);
+
     // dispatch edit order
   };
 
