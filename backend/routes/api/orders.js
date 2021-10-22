@@ -12,7 +12,53 @@ router.get(
   asyncHandler(async (req, res) => {
     const options = {
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["createdAt"],
+      },
+    };
+
+    const orders = await Order.findAll(options);
+
+    res.json(orders);
+  })
+);
+
+router.delete(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    orderToDelete = await Order.findByPk(id);
+
+    await orderToDelete.destroy();
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt"],
+      },
+    };
+
+    const orders = await Order.findAll(options);
+
+    res.json(orders);
+  })
+);
+
+router.delete(
+  "/clear",
+  asyncHandler(async (req, res) => {
+    const { idsToDeleteArr } = req.body;
+
+    let orderToDelete;
+
+    idsToDeleteArr.forEach(async (id) => {
+      orderToDelete = await Order.findByPk(id);
+
+      await orderToDelete.destroy();
+    });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt"],
       },
     };
 
@@ -31,8 +77,6 @@ router.post(
     const address1 = user.address1;
     const address2 = user.address2;
     const items = [];
-
-    console.log("\n");
 
     let len = cartItems.length;
 
@@ -53,8 +97,6 @@ router.post(
       const cartItemToDelete = await cartItem.findByPk(cartitem.id);
       await cartItemToDelete.destroy();
     });
-
-    console.log("\n");
 
     await Order.create({
       userId,
@@ -97,7 +139,7 @@ router.put(
     if (address1 && address2) {
       orderToUpdate.update({ address1, address2 });
     }
-    
+
     const orderItemId = orderItem.id;
     const orderItemToUpdate = await orderItem.findByPk(orderItemId);
 

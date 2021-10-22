@@ -95,6 +95,31 @@ router.delete(
   })
 );
 
+router.delete(
+  "/bulk",
+  asyncHandler(async (req, res) => {
+    const { idsToDeleteArr } = req.body;
+
+    let itemToDelete;
+
+    idsToDeleteArr.forEach(async (id) => {
+      itemToDelete = await cartItem.findByPk(id);
+
+      await itemToDelete.destroy();
+    });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const cartItems = await cartItem.findAll(options);
+
+    res.json(cartItems);
+  })
+);
+
 router.put(
   "/update",
   asyncHandler(async (req, res) => {

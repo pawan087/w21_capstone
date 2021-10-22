@@ -57,6 +57,40 @@ export const editOrder = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const deleteOrder = (data) => async (dispatch) => {
+  const { id } = data;
+
+  const res = await csrfFetch("/api/orders", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const deleteOrders = (data) => async (dispatch) => {
+  const { idsToDeleteArr } = data;
+
+  const res = await csrfFetch("/api/orders/clear", {
+    method: "DELETE",
+    body: JSON.stringify({
+      idsToDeleteArr,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 const initialState = [];
 
 const orderReducer = (state = initialState, action) => {
