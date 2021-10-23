@@ -41,7 +41,8 @@ export default function OrderConfirmation() {
     });
   });
 
-  const x = orderItems[orderItems?.length - 1].id;
+  const x = orderItems[orderItems?.length - 1]?.id;
+
   console.log("LAST ID", x);
 
   console.log("SHOPPING CART ITEMS LENGTH", shoppingCartItems?.length);
@@ -54,7 +55,7 @@ export default function OrderConfirmation() {
         lastOrderId: orderItems[orderItems?.length - 1].id,
       })
     );
-    
+
     history.push("/orders");
   };
 

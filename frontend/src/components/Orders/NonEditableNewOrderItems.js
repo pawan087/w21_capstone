@@ -13,7 +13,7 @@ export default function NewOrderItems({ item, i }) {
 
       <h5>Order Status: Processing</h5>
 
-      <h5>Quantity: item.quantity</h5>
+      <h5>Quantity: {item.quantity}</h5>
     </div>
   );
 }

@@ -75,12 +75,6 @@ router.post(
     const address2 = user.address2;
     const items = [];
 
-    let len = cartItems.length;
-
-    for (let i = 1; i <= cartItems.length; i++) {
-      items.push(lastOrderId + i);
-    }
-
     await cartItems.forEach(async (cartitem) => {
       const productId = cartitem.product.id;
       const quantity = cartitem.quantity;
@@ -94,6 +88,10 @@ router.post(
       const cartItemToDelete = await cartItem.findByPk(cartitem.id);
       await cartItemToDelete.destroy();
     });
+
+    for (let i = 1; i <= cartItems.length; i++) {
+      items.push(lastOrderId + i);
+    }
 
     await Order.create({
       userId,
