@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import { Modal } from "./context/Modal";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
+import EditOrderPage from "./components/Orders/EditOrderPage";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path="/orders" exact={true}>
             <Orders />
+          </Route>
+          <Route path="/edit/:id/:num" exact={true}>
+            <EditOrderPage />
           </Route>
         </Switch>
       )}

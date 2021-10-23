@@ -56,30 +56,6 @@ export default function NewOrderItems({ order, item, i }) {
       <h5>Order Status: Processing</h5>
 
       <h5>Quantity: {!bool && item.quantity}</h5>
-
-      {bool && (
-        <input
-          onChange={(e) => setQuantity(e.target.value)}
-          defaultValue={item.quantity}
-          min={0}
-          type="number"
-        />
-      )}
-
-      <br />
-      {!bool && <button onClick={handleSubmit}>Edit</button>}
-
-      <br />
-
-      {bool && <button onClick={(e) => handleSubmit3(e, order)}>Submit</button>}
-
-      {"     "}
-
-      {bool && <button onClick={(e) => handleSubmit3(e, order)}>Delete</button>}
-
-      {"     "}
-
-      {bool && <button onClick={handleSubmit2}>Cancel</button>}
     </div>
   );
 }

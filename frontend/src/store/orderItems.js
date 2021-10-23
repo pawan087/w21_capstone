@@ -37,6 +37,25 @@ export const createOrderItem = (data) => async (dispatch) => {
   }
 };
 
+export const editOrderItem = (data) => async (dispatch) => {
+  const { orderItemId, quantity } = data;
+
+  const res = await csrfFetch("/api/orderitems/update", {
+    method: "PUT",
+    body: JSON.stringify({
+      orderItemId,
+      quantity,
+    }),
+  });
+
+
+  if (res.ok) {
+    const data = await res.json();
+    const id = data.id;
+    return id;
+  }
+};
+
 const initialState = [];
 
 const orderItemReducer = (state = initialState, action) => {

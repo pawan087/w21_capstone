@@ -22,6 +22,26 @@ router.get(
   })
 );
 
+router.put(
+  "/update",
+  asyncHandler(async (req, res) => {
+    const { orderItemId, quantity } = req.body;
+
+    const orderItemToUpdate = await orderItem.findByPk(orderItemId);
+    await orderItemToUpdate.update({ quantity });
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const orderItems = await orderItem.findAll(options);
+
+    res.json(orderItems);
+  })
+);
+
 router.post(
   "/",
   asyncHandler(async (req, res) => {
