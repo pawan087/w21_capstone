@@ -1,10 +1,16 @@
 import { csrfFetch } from "./csrf";
 
 const SET_ORDERS = "orders/SET_ORDERS";
+const SET_TEST = "test/SET_TESTS";
 
 const load = (orders) => ({
   type: SET_ORDERS,
   orders,
+});
+
+const load2 = (test) => ({
+  type: SET_TEST,
+  test,
 });
 
 export const setAllOrders = () => async (dispatch) => {
@@ -32,7 +38,7 @@ export const createOrderItemsAndOrder = (data) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
 
-    dispatch(load(data));
+    dispatch(load2(data));
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
@@ -99,6 +105,20 @@ const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_ORDERS:
       newState = action.orders;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+const initialState2 = [];
+
+export const testReducer = (state = initialState2, action) => {
+  let newState;
+
+  switch (action.type) {
+    case SET_TEST:
+      newState = action.test;
       return newState;
     default:
       return state;

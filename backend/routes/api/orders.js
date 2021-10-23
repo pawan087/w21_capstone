@@ -101,7 +101,6 @@ router.post(
     });
 
     const orders = await Order.findAll();
-
     res.json(orders);
   })
 );

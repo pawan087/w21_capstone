@@ -48,7 +48,7 @@ export default function NewOrderItems({ orderItemId, orderId, item }) {
 
     orderItems?.forEach((orderItem) => {
       if (
-        orderItem?.productId === item?.product.id &&
+        orderItem?.productId === item?.product?.id &&
         orderItem?.quantity === item?.quantity
       ) {
         orderItemId = orderItem?.id;

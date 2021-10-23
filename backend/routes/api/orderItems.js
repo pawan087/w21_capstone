@@ -59,9 +59,9 @@ router.delete(
   asyncHandler(async (req, res) => {
     const { orderItemId, orderId } = req.body;
 
-    orderItemToDelete = await orderItem.findByPk(orderItemId);
+    // orderItemToDelete = await orderItem.findByPk(orderItemId);
 
-    await orderItemToDelete.destroy();
+    // await orderItemToDelete.destroy();
 
     orderToUpdate = await Order.findByPk(orderId);
 
