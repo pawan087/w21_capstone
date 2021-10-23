@@ -66,6 +66,7 @@ export default function EditOrderPage() {
     return order.id === +params.id;
   });
 
+
   useEffect(() => {
     dispatch(setAllOrderItems());
     dispatch(setAllOrders());
@@ -82,9 +83,10 @@ export default function EditOrderPage() {
       {thisPagesOrder[0]?.items.map((item, i) => {
         return (
           <NewOrderItems
-            orderItemId={arr[i]?.id}
+            orderItemIds={params.items}
             orderId={+params.id}
             item={item}
+            i={i}
             key={i}
           />
         );

@@ -17,9 +17,17 @@ export default function OrderComponent({ usersOrdersAndItems }) {
   const handleSubmit = async (order, j) => {
     let arr = usersOrdersAndItems;
 
-    await dispatch(setOrderItemsToEdit({ arr }));
-  
-    history.push(`/edit/${order.id}/${j + 1}`);
+    let str = "";
+
+    arr[j]?.allItemsArr.forEach((x) => {
+      str += `${x.id}_`;
+    });
+
+    // console.log(str);
+
+    // await dispatch(setOrderItemsToEdit({ arr: arr[j] }));
+
+    history.push(`/edit/${order.id}/${j + 1}/${str}`);
   };
 
   return (

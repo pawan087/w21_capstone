@@ -9,8 +9,7 @@ import {
 } from "../../store/orderItems";
 import styles from "./Orders.module.css";
 
-
-export default function NewOrderItems({ orderItemId, orderId, item }) {
+export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -29,6 +28,11 @@ export default function NewOrderItems({ orderItemId, orderId, item }) {
     setBool(false);
   };
 
+  let arr = orderItemIds?.split("_");
+  // console.log(arr[i]);
+
+  const orderItemId = arr[i];
+
   const handleSubmit3 = async (e) => {
     e.preventDefault();
 
@@ -38,8 +42,9 @@ export default function NewOrderItems({ orderItemId, orderId, item }) {
       return;
     }
 
-    await dispatch(editOrderItem({ orderItemId: orderItemId, quantity }));
+    await dispatch(editOrderItem({ orderItemId: +orderItemId, quantity }));
     await dispatch(setAllOrderItems());
+
     history.push("/orders");
   };
 
