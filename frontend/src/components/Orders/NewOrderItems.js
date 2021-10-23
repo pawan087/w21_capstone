@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Orders.module.css";
 import { useHistory } from "react-router-dom";
-import { editOrderItem, setAllOrderItems } from "../../store/orderItems";
+import {
+  editOrderItem,
+  setAllOrderItems,
+  deleteOrderItem,
+} from "../../store/orderItems";
 import { setAllOrders } from "../../store/orders.js";
 
-export default function NewOrderItems({ order, item, i }) {
+export default function NewOrderItems({ orderItemId, orderId, item }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [bool, setBool] = useState(false);
@@ -22,29 +26,41 @@ export default function NewOrderItems({ order, item, i }) {
     setBool(false);
   };
 
-  const handleSubmit3 = (e) => {
+  const handleSubmit3 = async (e) => {
     e.preventDefault();
 
     setQuantity(quantity);
-    if (quantity === item.quantity) {
+
+    if (+quantity === 0 || +quantity === item.quantity) {
       return;
     }
-    setAddress1(address1);
-    setAddress2(address2);
+
+    await dispatch(editOrderItem({ orderItemId: orderItemId, quantity }));
+
+    await dispatch(setAllOrderItems());
+
+    history.push("/orders");
+  };
+
+  const handleSubmit4 = () => {
+    let orderItemId;
 
     orderItems?.forEach((orderItem) => {
       if (
-        orderItem.productId === item.product.id &&
-        orderItem.quantity === item.quantity
+        orderItem?.productId === item?.product.id &&
+        orderItem?.quantity === item?.quantity
       ) {
-        dispatch(editOrderItem({ orderItemId: orderItem.id, quantity }));
-        history.push("/orders");
+        orderItemId = orderItem?.id;
       }
     });
+
+    dispatch(deleteOrderItem({ orderItemId: orderItemId, orderId: orderId }));
+
+    history.push("/orders");
   };
 
   return (
-    <div key={i}>
+    <div>
       <h4>{item?.product?.name}</h4>
 
       <img
@@ -52,8 +68,6 @@ export default function NewOrderItems({ order, item, i }) {
         className={styles.image}
         src={item?.product?.images[0]}
       ></img>
-
-      <h5>Order Status: Processing</h5>
 
       <h5>Quantity: {!bool && item.quantity}</h5>
 
@@ -71,15 +85,15 @@ export default function NewOrderItems({ order, item, i }) {
 
       <br />
 
-      {bool && <button onClick={(e) => handleSubmit3(e, order)}>Submit</button>}
+      {bool && <button onClick={(e) => handleSubmit3(e)}>Submit</button>}
 
       {"     "}
 
-      {bool && <button onClick={(e) => handleSubmit3(e, order)}>Delete</button>}
+      {bool && <button onClick={handleSubmit4}>Delete</button>}
 
       {"     "}
 
-      {bool && <button onClick={handleSubmit2}>Cancel</button>}
+      {bool && <button onClick={handleSubmit4}>Cancel</button>}
     </div>
   );
 }

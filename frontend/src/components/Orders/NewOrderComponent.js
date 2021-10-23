@@ -2,12 +2,25 @@ import React, { useState } from "react";
 // import { editOrder } from "../../store/orders";
 import { Redirect, useHistory } from "react-router-dom";
 import styles from "./Orders.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import NewOrderItems from "./NewOrderItems";
 import NonEditableNewOrderItems from "./NonEditableNewOrderItems";
+import { setOrderItemsToEdit } from "../../store/orderItems";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
+  const dispatch = useDispatch();
   const [bool, setBool] = useState(false);
   const history = useHistory();
+  let orderItemIds = [];
+  usersOrdersAndItems.forEach((orderAndItem) => {
+    orderItemIds.push(orderAndItem.id);
+  });
+
+  const handleSubmit = async (order, j) => {
+    let arr = usersOrdersAndItems;
+    await dispatch(setOrderItemsToEdit({ arr }));
+    history.push(`/edit/${order.id}/${j + 1}`);
+  };
 
   return (
     <div>
@@ -31,11 +44,7 @@ export default function OrderComponent({ usersOrdersAndItems }) {
                 </p>
               )}
 
-              <button
-                onClick={() => history.push(`/edit/${order.id}/${j + 1}`)}
-              >
-                Edit Order
-              </button>
+              <button onClick={() => handleSubmit(order, j)}>Edit Order</button>
 
               {"     "}
 

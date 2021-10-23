@@ -41,6 +41,7 @@ export default function Orders() {
       }
     });
 
+
     let obj = {
       ...order,
       allItemsArr: [...orderItemsArr],
@@ -57,6 +58,7 @@ export default function Orders() {
 
       products?.forEach((product) => {
         let id2 = product.id;
+
 
         if (+id1 === +id2) {
           itemsAndProducts.push({ product: product, quantity: item.quantity });

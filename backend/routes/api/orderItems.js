@@ -3,7 +3,7 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { orderItem } = require("../../db/models");
+const { orderItem, Order } = require("../../db/models");
 
 const router = express.Router();
 
@@ -54,6 +54,51 @@ router.post(
     });
 
     res.json(newOrderItem);
+  })
+);
+
+router.delete(
+  "/",
+  asyncHandler(async (req, res) => {
+    const { orderItemId, orderId } = req.body;
+
+    orderItemToDelete = await orderItem.findByPk(orderItemId);
+
+    await orderItemToDelete.destroy();
+
+    orderToUpdate = await Order.findByPk(orderId);
+
+    let items = [...orderToUpdate.items];
+    let userId = orderToUpdate.userId;
+    let address1 = orderToUpdate.address1;
+    let address2 = orderToUpdate.address2;
+
+    const index = orderToUpdate.items.indexOf(orderItemId);
+
+    if (index > -1) {
+      items.splice(index, 1);
+    }
+
+    await orderToUpdate.destroy();
+
+    if (items.length > 0) {
+      await Order.create({
+        userId,
+        items,
+        address1,
+        address2,
+      });
+    }
+
+    const options = {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const orderItems = await orderItem.findAll(options);
+
+    res.json(orderItems);
   })
 );
 

@@ -11,6 +11,7 @@ export default function EditOrderPage() {
   const orders = useSelector((state) => state.orders);
   const params = useParams();
   const user = useSelector((state) => state.session.user);
+  const arr = useSelector((state) => state.orderItemToEditReducer);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
   const [bool, setBool] = useState(false);
@@ -68,6 +69,7 @@ export default function EditOrderPage() {
     dispatch(setAllOrderItems());
     dispatch(setAllOrders());
   }, [dispatch]);
+
   return (
     <div>
       <h2 className={styles.title}>Edit Order Page</h2>
@@ -77,7 +79,13 @@ export default function EditOrderPage() {
       </div>
 
       {thisPagesOrder[0]?.items.map((item, i) => {
-        return <NewOrderItems item={item} i={i} />;
+        return (
+          <NewOrderItems
+            orderItemId={arr[i]?.id}
+            orderId={+params.id}
+            item={item}
+          />
+        );
       })}
 
       <h4>Shipping Address: </h4>
