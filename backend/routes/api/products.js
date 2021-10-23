@@ -1,15 +1,13 @@
 const express = require("express");
-const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
-const { handleValidationErrors } = require("../../utils/validation");
-const { setTokenCookie, restoreUser } = require("../../utils/auth");
-const { Product } = require("../../db/models");
 const {
   Brand,
   Category,
   Subcategory,
   FurtherSubcategory,
+  Product,
 } = require("../../db/models");
+
 const router = express.Router();
 
 router.get(
@@ -52,8 +50,6 @@ router.get(
     //     where: { name: 'Al Green' } //
     //   }]
     // })
-
-    // console.log("PRODUCTS ---------->>>>>", products.Brand.name);
 
     res.json(products);
   })

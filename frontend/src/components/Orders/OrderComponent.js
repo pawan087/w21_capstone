@@ -1,7 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+
+import SubOrderComponent from "./SubOrderComponent";
 import { deleteOrder } from "../../store/orders";
 import styles from "./Orders.module.css";
-import { useDispatch } from "react-redux";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
   const dispatch = useDispatch();
@@ -19,26 +21,7 @@ export default function OrderComponent({ usersOrdersAndItems }) {
               <h4 className={styles.orderTitle}>Order {j + 1}</h4>
 
               {order?.items?.map((item, i) => {
-                return (
-                  <div key={i}>
-                    <h4>{item?.product?.name}</h4>
-
-                    <img
-                      alt="productImage"
-                      className={styles.image}
-                      src={item?.product?.images[0]}
-                    ></img>
-
-                    <h5>
-                      Order Status: Shipped{" "}
-                      <a href={`/products/${item?.product?.id}`}>
-                        (Leave a review)
-                      </a>
-                    </h5>
-
-                    <h5>Quantity: {item.quantity}</h5>
-                  </div>
-                );
+                return <SubOrderComponent key={i} item={item} i={i} />;
               })}
 
               <h4>Shipping Address: </h4>

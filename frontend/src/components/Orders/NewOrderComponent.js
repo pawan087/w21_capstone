@@ -1,31 +1,25 @@
-import React, { useState } from "react";
-// import { editOrder } from "../../store/orders";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import NonEditableNewOrderItems from "./NonEditableNewOrderItems";
+import { setOrderItemsToEdit } from "../../store/orderItems";
 import styles from "./Orders.module.css";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
-  const [bool, setBool] = useState(false);
-  const [quantity, setQuantity] = useState(0);
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleSubmit = () => {
-    setBool(true);
-  };
+  let orderItemIds = [];
+  usersOrdersAndItems.forEach((orderAndItem) => {
+    orderItemIds.push(orderAndItem.id);
+  });
 
-  const handleSubmit2 = () => {
-    setBool(false);
-  };
+  const handleSubmit = async (order, j) => {
+    let arr = usersOrdersAndItems;
 
-  const handleSubmit3 = (e, order) => {
-    e.preventDefault();
-
-    console.log(order);
-
-    setQuantity(quantity);
-    setAddress1(address1);
-    setAddress2(address2);
-
-    // dispatch edit order
+    await dispatch(setOrderItemsToEdit({ arr }));
+  
+    history.push(`/edit/${order.id}/${j + 1}`);
   };
 
   return (
@@ -38,68 +32,26 @@ export default function OrderComponent({ usersOrdersAndItems }) {
 
               {order?.items.map((item, i) => {
                 return (
-                  <div key={i}>
-                    <h4>{item?.product?.name}</h4>
-
-                    <img
-                      alt="productImage"
-                      className={styles.image}
-                      src={item?.product?.images[0]}
-                    ></img>
-
-                    <h5>Order Status: Processing</h5>
-
-                    <h5>Quantity: {!bool && item.quantity}</h5>
-
-                    {bool && (
-                      <input
-                        onChange={(e) => setQuantity(e.target.value)}
-                        defaultValue={item.quantity}
-                        min={0}
-                        type="number"
-                      />
-                    )}
-                  </div>
+                  <NonEditableNewOrderItems
+                    key={i}
+                    item={item}
+                    i={i}
+                    order={order}
+                  />
                 );
               })}
 
               <h4>Shipping Address: </h4>
 
-              {!bool && (
-                <p>
-                  {order.address1}, {order.address2}
-                </p>
-              )}
+              <p>
+                {order.address1}, {order.address2}
+              </p>
 
-              {bool && (
-                <div>
-                  <div>
-                    <input
-                      onChange={(e) => setAddress1(e.target.value)}
-                      type="text"
-                      defaultValue={order.address1}
-                    ></input>
-                  </div>
-                  <div>
-                    <input
-                      onChange={(e) => setAddress2(e.target.value)}
-                      type="text"
-                      defaultValue={order.address2}
-                    ></input>
-                  </div>
-                </div>
-              )}
-
-              <br />
-              {!bool && <button onClick={handleSubmit}>Edit</button>}
-
-              {bool && (
-                <button onClick={(e) => handleSubmit3(e, order)}>Submit</button>
-              )}
+              <button onClick={() => handleSubmit(order, j)}>Edit Order</button>
 
               {"     "}
 
-              {bool && <button onClick={handleSubmit2}>Cancel</button>}
+              <button>Cancel Order</button>
             </div>
           );
         })
@@ -107,3 +59,22 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     </div>
   );
 }
+
+// {bool && (
+//   <div>
+//     <div>
+//       <input
+//         onChange={(e) => setAddress1(e.target.value)}
+//         type="text"
+//         defaultValue={order.address1}
+//       ></input>
+//     </div>
+//     <div>
+//       <input
+//         onChange={(e) => setAddress2(e.target.value)}
+//         type="text"
+//         defaultValue={order.address2}
+//       ></input>
+//     </div>
+//   </div>
+// )}

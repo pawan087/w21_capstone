@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-// import styles from "./ProductPage.module.css";
-import { setAllAnswerLikes } from "../../store/answerLikes";
 import { useDispatch, useSelector } from "react-redux";
+
+import { setAllAnswerLikes } from "../../store/answerLikes";
+// import styles from "./ProductPage.module.css";
 
 export default function AnswersCard({ questionId, answers }) {
   const dispatch = useDispatch();

@@ -1,14 +1,15 @@
 .profile-dropdown {
-    position: absolute;
-  }
+  position: absolute;
+}
 
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-  }
+.navbar {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+}
 
-  .navbar * {
-    margin: 0.5em;
-    list-style-type: none;
-  }
+.navbar * {
+  margin: 0.5em;
+  list-style-type: none;
+}
+

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+
 import { createCartItem } from "../../store/cartItems.js";
 
 function NewCartItem({ productId }) {
@@ -17,10 +18,7 @@ function NewCartItem({ productId }) {
     e.preventDefault();
 
     setImageLoading(true);
-
     dispatch(createCartItem({ userId: user.id, productId: +productId, quantity }));
-    // dispatch(setAllCartItems())
-
     setTimeout(() => setImageLoading(false), 1000);
   };
 
