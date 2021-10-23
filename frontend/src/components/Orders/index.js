@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Orders.module.css";
+
+import NewOrderComponent from "./NewOrderComponent";
+import OrderComponent from "./OrderComponent";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders, deleteOrders } from "../../store/orders.js";
-import OrderComponent from "./OrderComponent";
-// import Delayed from "./Delayed";
-import NewOrderComponent from "./NewOrderComponent";
+import styles from "./Orders.module.css";
 
 export default function Orders() {
   const dispatch = useDispatch();
+
   const user = useSelector((state) => state.session.user);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
@@ -41,7 +42,6 @@ export default function Orders() {
       }
     });
 
-
     let obj = {
       ...order,
       allItemsArr: [...orderItemsArr],
@@ -58,7 +58,6 @@ export default function Orders() {
 
       products?.forEach((product) => {
         let id2 = product.id;
-
 
         if (+id1 === +id2) {
           itemsAndProducts.push({ product: product, quantity: item.quantity });

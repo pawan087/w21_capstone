@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ProductPage.module.css";
 
 function ProductDetail({ num, product, avgRating }) {
@@ -8,7 +7,7 @@ function ProductDetail({ num, product, avgRating }) {
   });
 
   let rating = formatter.format(num)
-  
+
   return (
     <>
       <h2 className={styles.title}>Product Page</h2>

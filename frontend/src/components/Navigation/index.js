@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
-
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
+  const history = useHistory();
+  
   const sessionUser = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
-  const history = useHistory();
 
   let sessionLinks;
 

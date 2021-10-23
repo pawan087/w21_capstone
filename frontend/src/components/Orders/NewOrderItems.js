@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Orders.module.css";
 import { useHistory } from "react-router-dom";
+
 import {
   editOrderItem,
   setAllOrderItems,
   deleteOrderItem,
 } from "../../store/orderItems";
-import { setAllOrders } from "../../store/orders.js";
+import styles from "./Orders.module.css";
+
 
 export default function NewOrderItems({ orderItemId, orderId, item }) {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const orderItems = useSelector((state) => state.orderItems);
+
   const [bool, setBool] = useState(false);
   const [quantity, setQuantity] = useState(0);
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const orderItems = useSelector((state) => state.orderItems);
+  // const [address1, setAddress1] = useState("");
+  // const [address2, setAddress2] = useState("");
 
   const handleSubmit = () => {
     setBool(true);
@@ -36,9 +39,7 @@ export default function NewOrderItems({ orderItemId, orderId, item }) {
     }
 
     await dispatch(editOrderItem({ orderItemId: orderItemId, quantity }));
-
     await dispatch(setAllOrderItems());
-
     history.push("/orders");
   };
 
@@ -93,7 +94,7 @@ export default function NewOrderItems({ orderItemId, orderId, item }) {
 
       {"     "}
 
-      {bool && <button onClick={handleSubmit4}>Cancel</button>}
+      {bool && <button onClick={handleSubmit2}>Cancel</button>}
     </div>
   );
 }

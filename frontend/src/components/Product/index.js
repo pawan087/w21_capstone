@@ -2,15 +2,16 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
-// import styles from "./ProductPage.module.css";
-import { setAllProducts } from "../../store/products.js";
-import { setAllReviews } from "../../store/reviews.js";
-import { setAllReviewLikes } from "../../store/reviewLikes";
+
+import NewCartItem from "./NewCartItem.js";
 import ProductDetail from "./ProductDetail";
 import QuestionCard from "./QuestionCard";
 import ReviewCard from "./ReviewCard";
+import { setAllProducts } from "../../store/products.js";
+import { setAllReviews } from "../../store/reviews.js";
+import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
-import NewCartItem from "./NewCartItem.js";
+// import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();

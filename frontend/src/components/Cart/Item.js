@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import styles from "./Cart.module.css";
+
 import { deleteCartItem, editCartItem } from "../../store/cartItems";
+import styles from "./Cart.module.css";
 
 export default function ItemComponent({ item, i }) {
   const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [quantity, setQuantity] = useState(item.quantity);
@@ -19,9 +21,7 @@ export default function ItemComponent({ item, i }) {
     e.preventDefault();
 
     setLoading2(true);
-
     dispatch(deleteCartItem({ idToDelete }));
-
     setTimeout(() => setLoading2(false), 1000);
   };
 
@@ -29,28 +29,23 @@ export default function ItemComponent({ item, i }) {
     e.preventDefault();
 
     setEditBool(false);
-
     setLoading2(true);
-
     dispatch(deleteCartItem({ idToDelete }));
-
     setTimeout(() => setLoading2(false), 1000);
   };
 
   const handleSubmit2 = async (e, id, originalQuantity) => {
     if (quantity === originalQuantity) {
       setEditBool(false);
+
       return;
     }
 
     e.preventDefault();
 
     setLoading(true);
-
     dispatch(editCartItem({ id, quantity }));
-
     await setTimeout(() => setLoading(false), 1000);
-
     setEditBool(false);
   };
 

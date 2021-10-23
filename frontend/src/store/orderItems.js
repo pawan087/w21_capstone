@@ -30,7 +30,6 @@ export const setOrderItemsToEdit =
     dispatch(load2(arr));
   };
 
-
 export const createOrderItem = (data) => async (dispatch) => {
   const { userId, productId, quantity } = data;
 

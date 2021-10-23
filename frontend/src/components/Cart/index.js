@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Cart.module.css";
+
+import Items from "./Items";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllCartItems, emptyCart } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
-import Items from "./Items";
-// import Delayed from "./Delayed";
+import styles from "./Cart.module.css";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -48,9 +48,7 @@ export default function Cart() {
 
   useEffect(() => {
     dispatch(setAllProducts());
-
     dispatch(setAllOrderItems());
-
     dispatch(setAllCartItems());
   }, [dispatch]);
 
@@ -64,7 +62,6 @@ export default function Cart() {
     });
 
     dispatch(emptyCart({ idsToDeleteArr }));
-
     dispatch(setAllCartItems());
   };
   return (

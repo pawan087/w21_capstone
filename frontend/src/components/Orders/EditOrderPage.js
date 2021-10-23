@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./Orders.module.css";
 import { useParams } from "react-router";
+
+import NewOrderItems from "./NewOrderItems";
 import { setAllOrders, deleteOrders } from "../../store/orders.js";
 import { setAllOrderItems } from "../../store/orderItems.js";
-import NewOrderItems from "./NewOrderItems";
+import styles from "./Orders.module.css";
 
 export default function EditOrderPage() {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ export default function EditOrderPage() {
             orderItemId={arr[i]?.id}
             orderId={+params.id}
             item={item}
+            key={i}
           />
         );
       })}

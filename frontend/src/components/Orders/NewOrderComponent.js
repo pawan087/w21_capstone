@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-// import { editOrder } from "../../store/orders";
-import { Redirect, useHistory } from "react-router-dom";
-import styles from "./Orders.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import NewOrderItems from "./NewOrderItems";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import NonEditableNewOrderItems from "./NonEditableNewOrderItems";
 import { setOrderItemsToEdit } from "../../store/orderItems";
+import styles from "./Orders.module.css";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
   const dispatch = useDispatch();
-  const [bool, setBool] = useState(false);
   const history = useHistory();
+
   let orderItemIds = [];
   usersOrdersAndItems.forEach((orderAndItem) => {
     orderItemIds.push(orderAndItem.id);
@@ -18,7 +16,9 @@ export default function OrderComponent({ usersOrdersAndItems }) {
 
   const handleSubmit = async (order, j) => {
     let arr = usersOrdersAndItems;
+
     await dispatch(setOrderItemsToEdit({ arr }));
+  
     history.push(`/edit/${order.id}/${j + 1}`);
   };
 
@@ -32,17 +32,20 @@ export default function OrderComponent({ usersOrdersAndItems }) {
 
               {order?.items.map((item, i) => {
                 return (
-                  <NonEditableNewOrderItems item={item} i={i} order={order} />
+                  <NonEditableNewOrderItems
+                    key={i}
+                    item={item}
+                    i={i}
+                    order={order}
+                  />
                 );
               })}
 
               <h4>Shipping Address: </h4>
 
-              {!bool && (
-                <p>
-                  {order.address1}, {order.address2}
-                </p>
-              )}
+              <p>
+                {order.address1}, {order.address2}
+              </p>
 
               <button onClick={() => handleSubmit(order, j)}>Edit Order</button>
 

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import styles from "./Cart.module.css";
+
 import ItemComponent from "./Item";
 import { consolidateCartItems } from "../../store/cartItems.js";
+// import styles from "./Cart.module.css";
 
 export default function Items({ shoppingCartItems }) {
   const dispatch = useDispatch();
@@ -12,7 +13,6 @@ export default function Items({ shoppingCartItems }) {
   let idToDelete1;
   let idToDelete2;
   let productId;
-
   let arr = [];
 
   shoppingCartItems?.forEach((item1, i) => {
@@ -48,7 +48,7 @@ export default function Items({ shoppingCartItems }) {
         })
       );
     });
-  }, [dispatch, arr, user]);
+  });
 
   return (
     <div>
