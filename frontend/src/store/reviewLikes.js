@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const SET_REVIEW_LIKES = "reviewLikes/SET_REVIEW_LIKES";
 
 const load = (reviewLikes) => ({
@@ -7,6 +9,41 @@ const load = (reviewLikes) => ({
 
 export const setAllReviewLikes = () => async (dispatch) => {
   const res = await fetch("/api/reviews/likes");
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const createLike = (data) => async (dispatch) => {
+  const { userId, reviewId, like } = data;
+
+  const res = await csrfFetch("/api/reviews/likes", {
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      reviewId,
+      like,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const deleteLike = (id) => async (dispatch) => {
+
+  const res = await csrfFetch("/api/reviews/likes", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id,
+    }),
+  });
 
   if (res.ok) {
     const data = await res.json();
