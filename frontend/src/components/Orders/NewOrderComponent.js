@@ -1,12 +1,10 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import NonEditableNewOrderItems from "./NonEditableNewOrderItems";
-import { setOrderItemsToEdit } from "../../store/orderItems";
+// import { setOrderItemsToEdit } from "../../store/orderItems";
 import styles from "./Orders.module.css";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   let orderItemIds = [];
@@ -17,9 +15,15 @@ export default function OrderComponent({ usersOrdersAndItems }) {
   const handleSubmit = async (order, j) => {
     let arr = usersOrdersAndItems;
 
-    await dispatch(setOrderItemsToEdit({ arr }));
-  
-    history.push(`/edit/${order.id}/${j + 1}`);
+    let str = "";
+
+    arr[j]?.allItemsArr.forEach((x) => {
+      str += `${x.id}_`;
+    });
+
+    history.push(
+      `/edit/${order.id}/${j + 1}/${str}/${order.address1}/${order.address2}`
+    );
   };
 
   return (
@@ -59,22 +63,3 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     </div>
   );
 }
-
-// {bool && (
-//   <div>
-//     <div>
-//       <input
-//         onChange={(e) => setAddress1(e.target.value)}
-//         type="text"
-//         defaultValue={order.address1}
-//       ></input>
-//     </div>
-//     <div>
-//       <input
-//         onChange={(e) => setAddress2(e.target.value)}
-//         type="text"
-//         defaultValue={order.address2}
-//       ></input>
-//     </div>
-//   </div>
-// )}

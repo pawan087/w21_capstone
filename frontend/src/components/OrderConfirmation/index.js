@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
-import { createOrderItemsAndOrder } from "../../store/orders";
+import {
+  createOrderItemsAndOrder,
+} from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import styles from "./OrderConfirmation.module.css";
 
@@ -41,7 +42,8 @@ export default function OrderConfirmation() {
     });
   });
 
-  const x = orderItems[orderItems?.length - 1].id;
+  const x = orderItems[orderItems?.length - 1]?.id;
+
   console.log("LAST ID", x);
 
   console.log("SHOPPING CART ITEMS LENGTH", shoppingCartItems?.length);
@@ -54,7 +56,7 @@ export default function OrderConfirmation() {
         lastOrderId: orderItems[orderItems?.length - 1].id,
       })
     );
-    
+
     history.push("/orders");
   };
 

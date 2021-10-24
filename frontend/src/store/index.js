@@ -7,7 +7,6 @@ import reviewLikes from "./reviewLikes";
 import questions from "./questions";
 import answers from "./answers";
 import answerLikes from "./answerLikes";
-import { orderItemToEditReducer } from "./orderItems";
 import cartItems from "./cartItems";
 import orders from "./orders";
 import orderItems from "./orderItems";
@@ -23,7 +22,6 @@ const rootReducer = combineReducers({
   cartItems,
   orders,
   orderItems,
-  orderItemToEditReducer,
 });
 
 let enhancer;

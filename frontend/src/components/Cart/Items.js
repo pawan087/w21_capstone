@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ItemComponent from "./Item";
 import { consolidateCartItems } from "../../store/cartItems.js";
+import { setAllOrderItems } from "../../store/orderItems.js";
 // import styles from "./Cart.module.css";
 
 export default function Items({ shoppingCartItems }) {
@@ -35,6 +36,10 @@ export default function Items({ shoppingCartItems }) {
       }
     }
   });
+
+  useEffect(() => {
+    dispatch(setAllOrderItems());
+  }, [dispatch]);
 
   useEffect(() => {
     arr?.forEach(async (duplicate, i) => {

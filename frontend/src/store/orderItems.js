@@ -9,10 +9,6 @@ const load = (orderItems) => ({
   orderItems,
 });
 
-const load2 = (arr) => ({
-  type: SET_ORDER_ITEMS_TO_EDIT,
-  arr,
-});
 
 export const setAllOrderItems = () => async (dispatch) => {
   const res = await fetch("/api/orderitems");
@@ -23,13 +19,6 @@ export const setAllOrderItems = () => async (dispatch) => {
     dispatch(load(data));
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
-
-export const setOrderItemsToEdit =
-  ({ arr }) =>
-  async (dispatch) => {
-    dispatch(load2(arr));
-  };
-
 export const createOrderItem = (data) => async (dispatch) => {
   const { userId, productId, quantity } = data;
 
