@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+
 import {
   createLike,
   setAllReviewLikes,
@@ -10,7 +10,6 @@ import {
 
 export default function ReviewLikeComponent({ review }) {
   const dispatch = useDispatch();
-  const params = useParams();
   const reviewLikes = useSelector((state) => state.reviewLikes);
   const user = useSelector((state) => state.session.user);
 

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import ReactStars from "react-rating-stars-component";
-import StarPicker from "react-star-picker";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setAllQuestions, editQuestion } from "../../store/questions";
+import {
+  setAllQuestions,
+  editQuestion,
+  deleteQuestion,
+} from "../../store/questions";
 import styles from "./ProductPage.module.css";
 
 export default function IndividualQuestion({
@@ -14,9 +16,20 @@ export default function IndividualQuestion({
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
+  const answerLikes = useSelector((state) => state.answerLikes);
 
   const [bool, setBool] = useState(false);
   const [content, setContent] = useState(question.content);
+
+  // I was having a React console.warning when deleting a question
+  // and adding the following helped rid of it
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
+  // From: https://stackoverflow.com/questions/54954385/react-useeffect-causing-cant-perform-a-react-state-update-on-an-unmounted-comp
 
   let curTime = new Date();
 
@@ -29,9 +42,24 @@ export default function IndividualQuestion({
   };
 
   const handleSubmit2 = async () => {
-    // await dispatch(deleteReview({ id: review.id }));
+    let answersIdsArr = [];
+    let answerLikeIdsArr = [];
 
-    // await dispatch(setAllReviews());
+    question?.answers?.forEach((answer) => {
+      answersIdsArr.push(answer.id);
+
+      answerLikes?.forEach((answerLike) => {
+        if (answerLike.answerId === answer.id) {
+          answerLikeIdsArr.push(answerLike.id);
+        }
+      });
+    });
+
+    await dispatch(
+      deleteQuestion({ id: question.id, answersIdsArr, answerLikeIdsArr })
+    );
+
+    await dispatch(setAllQuestions());
 
     setBool(false);
   };

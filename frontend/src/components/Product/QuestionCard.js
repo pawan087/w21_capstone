@@ -36,7 +36,7 @@ export default function QuestionCard({ productQuestions }) {
     <>
       <h4 className={styles.title}>Q&A</h4>
 
-      {questionsWithAnswers?.map((question, i) => {
+      {questionsWithAnswers?.reverse().map((question, i) => {
         return (
           <div key={i}>
             <IndividualQuestion
