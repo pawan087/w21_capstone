@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { deleteCartItem, editCartItem } from "../../store/cartItems";
+import { setAllOrderItems } from "../../store/orderItems.js";
 import styles from "./Cart.module.css";
 
 export default function ItemComponent({ item, i }) {
@@ -48,6 +49,11 @@ export default function ItemComponent({ item, i }) {
     await setTimeout(() => setLoading(false), 1000);
     setEditBool(false);
   };
+
+
+  useEffect(() => {
+    dispatch(setAllOrderItems());
+  }, [dispatch]);
 
   return (
     <div>
