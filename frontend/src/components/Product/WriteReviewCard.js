@@ -34,6 +34,9 @@ export default function WriteReviewCard() {
 
     await dispatch(setAllReviews());
 
+    setContent("");
+    setRating(0);
+
     setTimeout(() => setLoading(false), 1000);
   };
 

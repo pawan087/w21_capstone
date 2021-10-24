@@ -11,6 +11,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   const params = useParams();
 
   const user = useSelector((state) => state.session.user);
+  const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const [bool, setBool] = useState(false);
   const [content, setContent] = useState(review.content);
@@ -31,7 +32,15 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   };
 
   const handleSubmit2 = async () => {
-    await dispatch(deleteReview(review.id));
+    let arr = [];
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (reviewLike.reviewId === review.id) {
+        arr.push(reviewLike.id);
+      }
+    });
+    
+    await dispatch(deleteReview({ id: review.id, arr }));
 
     await dispatch(setAllReviews());
 

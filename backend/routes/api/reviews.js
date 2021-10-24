@@ -69,7 +69,15 @@ router.put(
 router.delete(
   "/",
   asyncHandler(async (req, res) => {
-    const { id } = req.body;
+    const { id, arr } = req.body;
+
+    if (arr.length) {
+      arr.forEach(async (id) => {
+        reviewLikeToDelete = await ReviewLike.findByPk(id);
+
+        await reviewLikeToDelete.destroy();
+      });
+    }
 
     reviewToDelete = await Review.findByPk(id);
 

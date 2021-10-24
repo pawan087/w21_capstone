@@ -37,11 +37,14 @@ export const createReview = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
-export const deleteReview = (id) => async (dispatch) => {
+export const deleteReview = (data) => async (dispatch) => {
+  const { id, arr } = data;
+
   const res = await csrfFetch("/api/reviews", {
     method: "DELETE",
     body: JSON.stringify({
       id,
+      arr,
     }),
   });
 
