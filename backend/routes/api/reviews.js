@@ -123,10 +123,6 @@ router.post(
   asyncHandler(async (req, res) => {
     const { userId, reviewId, like } = req.body;
 
-    // console.log("\n", +userId, "\n");
-    // console.log("\n", +reviewId, "\n");
-    // console.log("\n", like, "\n");
-
     await ReviewLike.create({
       userId: +userId,
       reviewId: +reviewId,

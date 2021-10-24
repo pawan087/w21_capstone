@@ -47,8 +47,9 @@ export default function ReviewLikeComponent({ review }) {
     }
   };
 
-  const handleDislike = () => {
+  const handleDislike = async () => {
     let alreadyDisliked = false;
+    let id;
 
     reviewLikes?.forEach((reviewLike) => {
       if (
@@ -58,14 +59,25 @@ export default function ReviewLikeComponent({ review }) {
       ) {
         console.log("Already disliked");
         alreadyDisliked = true;
+        id = reviewLike.id;
       }
     });
 
     if (alreadyDisliked) {
-      console.log("Delete Disike");
+      console.log("Delete Dislike");
+
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
     } else {
       console.log("Not disliked");
       console.log("Create Dislike");
+
+      await dispatch(
+        createLike({ userId: user.id, reviewId: review.id, like: false })
+      );
+
+      await dispatch(setAllReviewLikes());
     }
   };
 

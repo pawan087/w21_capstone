@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+
+import { Modal } from "./context/Modal";
+import { setAllProducts } from "../src/store/products";
+import * as sessionActions from "./store/session";
+
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
-import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import { Modal } from "./context/Modal";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
-import { setAllProducts } from "../src/store/products";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,24 +43,31 @@ function App() {
           <Route path="/login" exact={true}>
             <LoginFormPage />
           </Route>
+
           <Route path="/signup" exact={true}>
             <SignupFormPage />
           </Route>
+
           <Route path="/products" exact={true}>
             <ProductsPage />
           </Route>
+
           <Route path="/products/:id" exact={true}>
             <ProductPage />
           </Route>
+
           <Route path="/cart" exact={true}>
             <Cart />
           </Route>
+
           <Route path="/confirm" exact={true}>
             <OrderConfirmation />
           </Route>
+
           <Route path="/orders" exact={true}>
             <Orders />
           </Route>
+
           <Route path="/edit/:id/:num/:items/:address1/:address2" exact={true}>
             <EditOrderPage />
           </Route>

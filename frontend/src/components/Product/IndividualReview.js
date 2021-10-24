@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
+import StarPicker from "react-star-picker";
 import { useDispatch, useSelector } from "react-redux";
 
 import ReviewLikeComponent from "./ReviewLikeComponent";
@@ -107,19 +108,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
         </div>
       )}
 
-      {!bool && (
-        <ReactStars
-          disabled={true}
-          value={+review.rating}
-          count={5}
-          size={24}
-          isHalf={true}
-          emptyIcon={<i className="far fa-star"></i>}
-          halfIcon={<i className="fa fa-star-half-alt"></i>}
-          fullIcon={<i className="fa fa-star"></i>}
-          activeColor="#ffd700"
-        />
-      )}
+      {!bool && <StarPicker disabled={true} value={+review.rating} halfStars />}
 
       <br />
 
@@ -148,3 +137,17 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     </div>
   );
 }
+
+// {!bool && (
+//   <ReactStars
+//     disabled={true}
+//     value={+review.rating}
+//     count={5}
+//     size={24}
+//     isHalf={true}
+//     emptyIcon={<i className="far fa-star"></i>}
+//     halfIcon={<i className="fa fa-star-half-alt"></i>}
+//     fullIcon={<i className="fa fa-star"></i>}
+//     activeColor="#ffd700"
+//   />
+// )}

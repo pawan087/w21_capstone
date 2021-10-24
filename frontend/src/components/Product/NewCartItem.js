@@ -22,7 +22,7 @@ function NewCartItem({ productId }) {
     dispatch(
       createCartItem({ userId: user.id, productId: +productId, quantity })
     );
-    
+
     setTimeout(() => setLoading(false), 1000);
   };
 
@@ -32,6 +32,7 @@ function NewCartItem({ productId }) {
 
       <label>
         Quantity
+        {"     "}
         <input
           onChange={(e) => setQuantity(e.target.value)}
           value={quantity}
