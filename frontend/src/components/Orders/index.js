@@ -25,7 +25,9 @@ export default function Orders() {
   }
 
   let curTime = new Date();
-  let pastTime = AddMinutesToDate(curTime, -100); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
+
+  // -0.5 is half a second
+  let pastTime = AddMinutesToDate(curTime, -0.5); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
 
   const usersOrders = orders?.filter((order) => {
     return order.userId === +user.id;

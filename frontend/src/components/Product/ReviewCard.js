@@ -10,22 +10,26 @@ function ReviewCard({ productReviews }) {
       {productReviews?.map((review, i) => {
         return (
           <div key={i}>
-            <li>{review.User.username}</li>
+            <h4 className={styles.orderTitle}>Review {i + 1}</h4>
 
-            <li>{review.content}</li>
+            <h5>by: {review.User.username}</h5>
 
-            <li>{review.rating} Stars</li>
+            <h4>{review.content}</h4>
+
+            <h4>{review.rating} Stars</h4>
 
             {review.likeCount === 1 ? (
-              <li>{review.likeCount} Like</li>
+              <span>{review.likeCount} Like</span>
             ) : (
-              <li>{review.likeCount} Likes</li>
+              <span>{review.likeCount} Likes</span>
             )}
 
+            {"     &     "}
+
             {review.dislikeCount === 1 ? (
-              <li>{review.dislikeCount} Dislike</li>
+              <span>{review.dislikeCount} Dislike</span>
             ) : (
-              <li>{review.dislikeCount} Dislikes</li>
+              <span>{review.dislikeCount} Dislikes</span>
             )}
 
             <br />

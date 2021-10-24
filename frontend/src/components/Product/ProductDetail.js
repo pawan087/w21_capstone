@@ -6,21 +6,25 @@ function ProductDetail({ num, product, avgRating }) {
     maximumFractionDigits: 2,
   });
 
-  let rating = formatter.format(num)
+  let rating = formatter.format(avgRating)
 
   return (
     <>
       <h2 className={styles.title}>Product Page</h2>
 
-      <li>{product[0]?.name}</li>
+      <h4>{product[0]?.name}</h4>
 
       {num !== 0 && <li>
         {rating} Stars ({num} reviews)
       </li>}
 
+      <li>${product[0]?.price}</li>
+
+      <br></br>
+      
       <li>{product[0]?.description}</li>
 
-      <li>${product[0]?.price}</li>
+
 
       <br />
 
