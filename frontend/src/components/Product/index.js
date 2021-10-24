@@ -12,7 +12,7 @@ import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
-import styles from "./ProductPage.module.css";
+// import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();

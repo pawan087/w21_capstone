@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import ReactStars from "react-rating-stars-component";
-import { render } from "react-dom";
+
 
 import { createReview, setAllReviews } from "../../store/reviews";
 import styles from "./ProductPage.module.css";
@@ -26,6 +26,10 @@ export default function WriteReviewCard() {
   };
 
   const handleSubmit = async () => {
+    if (content === "") {
+      return;
+    }
+
     setLoading(true);
 
     await dispatch(

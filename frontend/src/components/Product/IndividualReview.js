@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router";
 
+import ReviewLikeComponent from "./ReviewLikeComponent";
 import { setAllReviews, editReview, deleteReview } from "../../store/reviews";
 import styles from "./ProductPage.module.css";
 
 export default function IndividualReview({ review, i, productReviewsLength }) {
   const dispatch = useDispatch();
-  const params = useParams();
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
@@ -39,7 +38,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
         arr.push(reviewLike.id);
       }
     });
-    
+
     await dispatch(deleteReview({ id: review.id, arr }));
 
     await dispatch(setAllReviews());
@@ -98,7 +97,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
             count={5}
             onChange={ratingChanged}
             size={24}
-            value={review.rating}
+            value={+review.rating}
             isHalf={true}
             emptyIcon={<i className="far fa-star"></i>}
             halfIcon={<i className="fa fa-star-half-alt"></i>}
@@ -111,7 +110,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
       {!bool && (
         <ReactStars
           disabled={true}
-          value={review.rating}
+          value={+review.rating}
           count={5}
           size={24}
           isHalf={true}
@@ -124,19 +123,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
       <br />
 
-      {review.likeCount === 1 ? (
-        <span>{review.likeCount} Like</span>
-      ) : (
-        <span>{review.likeCount} Likes</span>
-      )}
-
-      {"     &     "}
-
-      {review.dislikeCount === 1 ? (
-        <span>{review.dislikeCount} Dislike</span>
-      ) : (
-        <span>{review.dislikeCount} Dislikes</span>
-      )}
+      {!bool && <ReviewLikeComponent review={review} />}
 
       <br />
       <br />

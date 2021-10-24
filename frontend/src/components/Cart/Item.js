@@ -10,7 +10,7 @@ export default function ItemComponent({ item, i }) {
 
   const [loading, setLoading] = useState(false);
   const [loading2, setLoading2] = useState(false);
-  const [quantity, setQuantity] = useState(item.quantity);
+  const [quantity, setQuantity] = useState(+item.quantity);
   const [editBool, setEditBool] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -36,7 +36,7 @@ export default function ItemComponent({ item, i }) {
   };
 
   const handleSubmit2 = async (e, id, originalQuantity) => {
-    if (quantity === originalQuantity) {
+    if (+quantity === originalQuantity) {
       setEditBool(false);
 
       return;
@@ -50,19 +50,23 @@ export default function ItemComponent({ item, i }) {
     setEditBool(false);
   };
 
-
   useEffect(() => {
     dispatch(setAllOrderItems());
   }, [dispatch]);
 
   return (
     <div>
-      <h4>Item {i + 1}</h4>
+      <h4 className={styles.cartTitle2}>Item {i + 1}</h4>
 
       <a href={`/products/${item.product.id}`}>{item.product.name}</a>
 
+      <br />
+      <br />
+
       <div>
         <li>Quantity: {!editBool && item.quantity}</li>
+
+        <br />
 
         {editBool && (
           <input
@@ -93,7 +97,13 @@ export default function ItemComponent({ item, i }) {
           </>
         )}
 
-        <li>Total: ${formatter.format(+item.product.price * item.quantity)}</li>
+        <br />
+        <br />
+
+
+        <div>
+          Total: ${formatter.format(+item.product.price * item.quantity)}
+        </div>
 
         {loading && <span>Cart Updated</span>}
       </div>
