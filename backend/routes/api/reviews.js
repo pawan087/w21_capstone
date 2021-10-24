@@ -164,4 +164,32 @@ router.delete(
   })
 );
 
+router.put(
+  "/likes",
+  asyncHandler(async (req, res) => {
+    const { userId, reviewId, like, idToDelete } = req.body;
+
+    reviewLikeToDelete = await ReviewLike.findByPk(+idToDelete);
+
+    await reviewLikeToDelete.destroy();
+
+    await ReviewLike.create({
+      userId: +userId,
+      reviewId: +reviewId,
+      like,
+    });
+
+    const options = {
+      include: [{ model: Review, attributes: ["productId"] }],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const reviewLikes = await ReviewLike.findAll(options);
+
+    res.json(reviewLikes);
+  })
+);
+
 module.exports = router;

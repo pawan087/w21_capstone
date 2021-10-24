@@ -37,11 +37,30 @@ export const createLike = (data) => async (dispatch) => {
 };
 
 export const deleteLike = (id) => async (dispatch) => {
-
   const res = await csrfFetch("/api/reviews/likes", {
     method: "DELETE",
     body: JSON.stringify({
       id,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const deleteTheOpposingAndCreateLike = (data) => async (dispatch) => {
+  const { userId, reviewId, like, idToDelete } = data;
+
+  const res = await csrfFetch("/api/reviews/likes", {
+    method: "PUT",
+    body: JSON.stringify({
+      userId,
+      reviewId,
+      like,
+      idToDelete,
     }),
   });
 
