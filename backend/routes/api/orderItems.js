@@ -59,7 +59,7 @@ router.delete(
   asyncHandler(async (req, res) => {
     const { orderItemId, orderId } = req.body;
 
-    // orderItemToDelete = await orderItem.findByPk(orderItemId);
+    orderItemToDelete = await orderItem.findByPk(orderItemId);
 
     // await orderItemToDelete.destroy();
 
@@ -75,6 +75,8 @@ router.delete(
     if (index > -1) {
       items.splice(index, 1);
     }
+
+    // console.log("\n\n\n", index, '\n\n\n');
 
     await orderToUpdate.destroy();
 

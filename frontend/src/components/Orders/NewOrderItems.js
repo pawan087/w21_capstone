@@ -7,6 +7,7 @@ import {
   setAllOrderItems,
   deleteOrderItem,
 } from "../../store/orderItems";
+import { setAllOrders } from "../../store/orders.js";
 import styles from "./Orders.module.css";
 
 export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
@@ -29,7 +30,6 @@ export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
   };
 
   let arr = orderItemIds?.split("_");
-  // console.log(arr[i]);
 
   const orderItemId = arr[i];
 
@@ -48,19 +48,12 @@ export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
     history.push("/orders");
   };
 
-  const handleSubmit4 = () => {
-    let orderItemId;
+  const handleSubmit4 = async () => {
+    await dispatch(
+      deleteOrderItem({ orderItemId: +orderItemId, orderId: orderId })
+    );
 
-    orderItems?.forEach((orderItem) => {
-      if (
-        orderItem?.productId === item?.product?.id &&
-        orderItem?.quantity === item?.quantity
-      ) {
-        orderItemId = orderItem?.id;
-      }
-    });
-
-    dispatch(deleteOrderItem({ orderItemId: orderItemId, orderId: orderId }));
+    await dispatch(setAllOrders());
 
     history.push("/orders");
   };
