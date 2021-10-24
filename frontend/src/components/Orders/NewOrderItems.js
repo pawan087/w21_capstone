@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -14,10 +14,10 @@ export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const orderItems = useSelector((state) => state.orderItems);
+  // const orderItems = useSelector((state) => state.orderItems);
 
   const [bool, setBool] = useState(false);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(item.quantity);
   // const [address1, setAddress1] = useState("");
   // const [address2, setAddress2] = useState("");
 
@@ -38,8 +38,12 @@ export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
 
     setQuantity(quantity);
 
-    if (+quantity === 0 || +quantity === item.quantity) {
+    if (+quantity === 0) {
       return;
+    }
+
+    if (+quantity === item.quantity) {
+      history.push("/orders");
     }
 
     await dispatch(editOrderItem({ orderItemId: +orderItemId, quantity }));

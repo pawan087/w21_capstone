@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 import NewOrderItems from "./NewOrderItems";
-import { setAllOrders, deleteOrders } from "../../store/orders.js";
+import { setAllOrders } from "../../store/orders.js";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import styles from "./Orders.module.css";
 
@@ -12,10 +12,11 @@ export default function EditOrderPage() {
   const orders = useSelector((state) => state.orders);
   const params = useParams();
   const user = useSelector((state) => state.session.user);
-  const arr = useSelector((state) => state.orderItemToEditReducer);
+  // const arr = useSelector((state) => state.orderItemToEditReducer);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [bool, setBool] = useState(false);
+  // const [bool, setBool] = useState(false);
+  const bool = false;
   const usersOrders = orders?.filter((order) => {
     return order.userId === +user.id;
   });

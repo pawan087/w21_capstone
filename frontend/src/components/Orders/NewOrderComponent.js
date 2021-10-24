@@ -1,12 +1,10 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import NonEditableNewOrderItems from "./NonEditableNewOrderItems";
-import { setOrderItemsToEdit } from "../../store/orderItems";
+// import { setOrderItemsToEdit } from "../../store/orderItems";
 import styles from "./Orders.module.css";
 
 export default function OrderComponent({ usersOrdersAndItems }) {
-  const dispatch = useDispatch();
   const history = useHistory();
 
   let orderItemIds = [];
@@ -22,10 +20,6 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     arr[j]?.allItemsArr.forEach((x) => {
       str += `${x.id}_`;
     });
-
-    // console.log(str);
-
-    // await dispatch(setOrderItemsToEdit({ arr: arr[j] }));
 
     history.push(`/edit/${order.id}/${j + 1}/${str}`);
   };
