@@ -10,16 +10,20 @@ function NewCartItem({ productId }) {
   const user = useSelector((state) => state.session.user);
 
   const [quantity, setQuantity] = useState(1);
-  const [imageLoading, setImageLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     if (!user) return <Redirect to="/" />;
 
     e.preventDefault();
 
-    setImageLoading(true);
-    dispatch(createCartItem({ userId: user.id, productId: +productId, quantity }));
-    setTimeout(() => setImageLoading(false), 1000);
+    setLoading(true);
+
+    dispatch(
+      createCartItem({ userId: user.id, productId: +productId, quantity })
+    );
+    
+    setTimeout(() => setLoading(false), 1000);
   };
 
   return (
@@ -40,7 +44,7 @@ function NewCartItem({ productId }) {
 
       <button type="submit">Add to Cart</button>
 
-      {imageLoading && <p>Cart Updated</p>}
+      {loading && <p>Cart Updated</p>}
     </form>
   );
 }

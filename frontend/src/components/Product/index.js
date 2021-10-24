@@ -7,11 +7,12 @@ import NewCartItem from "./NewCartItem.js";
 import ProductDetail from "./ProductDetail";
 import QuestionCard from "./QuestionCard";
 import ReviewCard from "./ReviewCard";
+import WriteReviewCard from "./WriteReviewCard";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
-// import styles from "./ProductPage.module.css";
+import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -83,7 +84,18 @@ function ProductPage() {
 
       <NewCartItem productId={params.id} />
 
+      <br></br>
+      <br></br>
+
       <ReviewCard productReviews={productReviews} />
+
+      <br></br>
+      <br></br>
+
+      <WriteReviewCard />
+
+      <br></br>
+      <br></br>
 
       <QuestionCard productQuestions={productQuestions} />
     </>
