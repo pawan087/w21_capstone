@@ -3,10 +3,14 @@ import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setAllQuestions } from "../../store/questions";
+import { setAllQuestions, editQuestion } from "../../store/questions";
 import styles from "./ProductPage.module.css";
 
-export default function IndividualQuestion({ question, i, productQuestionsLength }) {
+export default function IndividualQuestion({
+  question,
+  i,
+  productQuestionsLength,
+}) {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
@@ -17,9 +21,9 @@ export default function IndividualQuestion({ question, i, productQuestionsLength
   let curTime = new Date();
 
   const handleSubmit = async () => {
-    // await dispatch(editQuestion({ id: question.id, content }));
+    await dispatch(editQuestion({ id: question.id, content }));
 
-    // await dispatch(setAllQuestions());
+    await dispatch(setAllQuestions());
 
     setBool(false);
   };
@@ -34,7 +38,9 @@ export default function IndividualQuestion({ question, i, productQuestionsLength
 
   return (
     <div>
-      <h4 className={styles.orderTitle}>Question {productQuestionsLength - i}</h4>
+      <h4 className={styles.orderTitle}>
+        Question {productQuestionsLength - i}
+      </h4>
 
       <h4>By: {question.User.username}</h4>
 
@@ -70,11 +76,11 @@ export default function IndividualQuestion({ question, i, productQuestionsLength
       {!bool && <h4>{question.content}</h4>}
 
       {bool && (
-          <textarea
-            type="text"
-            onChange={(e) => setContent(e.target.value)}
-            defaultValue={question.content}
-          ></textarea>
+        <textarea
+          type="text"
+          onChange={(e) => setContent(e.target.value)}
+          defaultValue={question.content}
+        ></textarea>
       )}
 
       <br />

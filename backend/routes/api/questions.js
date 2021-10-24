@@ -25,16 +25,33 @@ router.post(
   asyncHandler(async (req, res) => {
     const { userId, productId, content } = req.body;
 
-    // console.log("\n", +userId, "\n");
-    // console.log("\n", +productId, "\n");
-    // console.log("\n", content, "\n");
-    // console.log("\n", +rating, "\n");
-
     await Question.create({
       userId: +userId,
       productId: +productId,
       content,
     });
+
+    const options = {
+      include: [{ model: User, attributes: ["username"] }],
+      attributes: {
+        exclude: ["updatedAt"],
+      },
+    };
+
+    const questions = await Question.findAll(options);
+
+    res.json(questions);
+  })
+);
+
+router.put(
+  "/update",
+  asyncHandler(async (req, res) => {
+    const { id, content } = req.body;
+
+    const questionToUpdate = await Question.findByPk(id);
+
+    await questionToUpdate.update({ content });
 
     const options = {
       include: [{ model: User, attributes: ["username"] }],

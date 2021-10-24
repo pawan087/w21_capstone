@@ -36,6 +36,21 @@ export const createQuestion = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const editQuestion = (data) => async (dispatch) => {
+  const { id, content } = data;
+
+  const res = await csrfFetch("/api/questions/update", {
+    method: "PUT",
+    body: JSON.stringify({ id, content }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 const initialState = [];
 
 const questionReducer = (state = initialState, action) => {
