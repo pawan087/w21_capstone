@@ -8,6 +8,7 @@ import ProductDetail from "./ProductDetail";
 import QuestionCard from "./QuestionCard";
 import ReviewCard from "./ReviewCard";
 import WriteReviewCard from "./WriteReviewCard";
+import AskQuestionCard from "./AskQuestionCard";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
@@ -98,6 +99,11 @@ function ProductPage() {
       <br></br>
 
       <QuestionCard productQuestions={productQuestions} />
+
+      <br></br>
+      <br></br>
+
+      <AskQuestionCard />
     </>
   );
 }
