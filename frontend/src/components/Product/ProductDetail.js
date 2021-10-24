@@ -18,10 +18,12 @@ function ProductDetail({ num, product, avgRating }) {
         {rating} Stars ({num} reviews)
       </li>}
 
+      <br/>
+
       <li>${product[0]?.price}</li>
 
       <br></br>
-      
+
       <li>{product[0]?.description}</li>
 
 
