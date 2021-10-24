@@ -21,7 +21,9 @@ export default function OrderComponent({ usersOrdersAndItems }) {
       str += `${x.id}_`;
     });
 
-    history.push(`/edit/${order.id}/${j + 1}/${str}`);
+    history.push(
+      `/edit/${order.id}/${j + 1}/${str}/${order.address1}/${order.address2}`
+    );
   };
 
   return (
@@ -61,22 +63,3 @@ export default function OrderComponent({ usersOrdersAndItems }) {
     </div>
   );
 }
-
-// {bool && (
-//   <div>
-//     <div>
-//       <input
-//         onChange={(e) => setAddress1(e.target.value)}
-//         type="text"
-//         defaultValue={order.address1}
-//       ></input>
-//     </div>
-//     <div>
-//       <input
-//         onChange={(e) => setAddress2(e.target.value)}
-//         type="text"
-//         defaultValue={order.address2}
-//       ></input>
-//     </div>
-//   </div>
-// )}

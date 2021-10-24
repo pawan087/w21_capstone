@@ -59,7 +59,7 @@ function App() {
           <Route path="/orders" exact={true}>
             <Orders />
           </Route>
-          <Route path="/edit/:id/:num/:items" exact={true}>
+          <Route path="/edit/:id/:num/:items/:address1/:address2" exact={true}>
             <EditOrderPage />
           </Route>
         </Switch>
