@@ -6,7 +6,7 @@ import styles from "./ProductPage.module.css";
 function ReviewCard({ productReviews }) {
   return (
     <>
-      <h4 className={styles.title}>Reviews</h4>
+      <h2 className={styles.title}>Reviews</h2>
 
       {productReviews
         ?.map((review, i) => {

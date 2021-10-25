@@ -10,7 +10,7 @@ router.get(
     const options = {
       include: [{ model: User, attributes: ["username"] }],
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["updatedAt"],
       },
     };
 

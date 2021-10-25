@@ -34,7 +34,7 @@ export default function QuestionCard({ productQuestions }) {
 
   return (
     <>
-      <h4 className={styles.title}>Q&A</h4>
+      <h2 className={styles.title}>Questions</h2>
 
       {questionsWithAnswers?.reverse().map((question, i) => {
         return (
@@ -47,7 +47,9 @@ export default function QuestionCard({ productQuestions }) {
 
             <br />
 
-            <h5 className={styles.answersTitle}>Answer(s):</h5>
+            <h4 className={styles.title}>
+              Question {productQuestions?.length - i}'s Answer(s):
+            </h4>
 
             <AnswerCard questionId={question.id} answers={question.answers} />
           </div>

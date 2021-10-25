@@ -66,9 +66,9 @@ export default function IndividualQuestion({
 
   return (
     <div>
-      <h4 className={styles.orderTitle}>
+      <h3 className={styles.title}>
         Question {productQuestionsLength - i}
-      </h4>
+      </h3>
 
       <h4>By: {question.User.username}</h4>
 
@@ -111,8 +111,6 @@ export default function IndividualQuestion({
         ></textarea>
       )}
 
-      <br />
-      <br />
 
       {!bool && question.userId === user.id && (
         <button onClick={() => setBool(true)}>Edit</button>

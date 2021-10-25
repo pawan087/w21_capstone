@@ -46,7 +46,7 @@ export default function WriteReviewCard() {
 
   return (
     <div>
-      <div className={styles.title}>Write a Review</div>
+      <h3 className={styles.title}>Write a Review</h3>
 
       <br></br>
 

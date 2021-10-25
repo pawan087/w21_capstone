@@ -49,7 +49,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
   return (
     <div>
-      <h4 className={styles.orderTitle}>Review {productReviewsLength - i}</h4>
+      <h3 className={styles.orderTitle}>Review {productReviewsLength - i}</h3>
 
       <h4>By: {review.User.username}</h4>
 

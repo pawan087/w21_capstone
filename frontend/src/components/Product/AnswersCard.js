@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import IndividualAnswer from "./IndividualAnswer";
+import LeaveAnswerCard from "./LeaveAnswerCard";
 import { setAllAnswerLikes } from "../../store/answerLikes";
 // import styles from "./ProductPage.module.css";
 
@@ -46,26 +48,23 @@ export default function AnswersCard({ questionId, answers }) {
       {answersAndLikes?.map((answer, i) => {
         return (
           <div key={i}>
-            <li>{answer.User.username}</li>
-
-            <li>{answer.content}</li>
-
-            {answer.likeCount === 1 ? (
-              <li>{answer.likeCount} Like</li>
-            ) : (
-              <li>{answer.likeCount} Likes</li>
-            )}
-
-            {answer.dislikeCount === 1 ? (
-              <li>{answer.dislikeCount} Dislike</li>
-            ) : (
-              <li>{answer.dislikeCount} Dislikes</li>
-            )}
-
-            <br />
+            <IndividualAnswer
+              answer={answer}
+              key={i}
+              i={i}
+              len={answersAndLikes?.length}
+            />
           </div>
         );
       })}
+
+      {answersAndLikes?.length === 0 && (
+        <p>No one has answered this question, yet. Be the first!</p>
+      )}
+
+      <br />
+
+      <LeaveAnswerCard />
     </div>
   );
 }
