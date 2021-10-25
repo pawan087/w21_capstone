@@ -119,12 +119,23 @@ router.delete(
 
 router.put(
   "/update",
+  singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const { id, rating, content } = req.body;
 
+    let imageUrl;
+
+    if (req.file) {
+      imageUrl = await singlePublicFileUpload(req.file);
+    }
+
     const reviewToUpdate = await Review.findByPk(id);
 
-    await reviewToUpdate.update({ rating, content });
+    if (imageUrl) {
+      await reviewToUpdate.update({ rating, content, imageUrl });
+    } else {
+      await reviewToUpdate.update({ rating, content });
+    }
 
     const options = {
       include: [{ model: User, attributes: ["username"] }],

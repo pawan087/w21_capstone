@@ -21,7 +21,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
-  const [uploadMsg, setUploadMsg] = useState("Update Review Image");
+  const [uploadMsg, setUploadMsg] = useState("Update Image");
   const [imageLoading, setImageLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
@@ -33,11 +33,74 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   let curTime = new Date();
 
   const handleSubmit = async () => {
-    await dispatch(editReview({ id: review.id, rating: rating, content }));
+    if (content === "") {
+      return;
+    }
+
+    setLoading(true);
+
+    if (image) {
+      setImageLoading(true);
+    }
+
+    if (!image && review.imageUrl === null) {
+      console.log(
+        "\n\n\n\n\n",
+        "NO IMAGE SELECTED & NO ORIGINAL IMAGE",
+        "\n\n\n\n\n"
+      );
+
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
+    }
+
+    if (!image && review.imageUrl !== null) {
+      console.log(
+        "\n\n\n\n\n",
+        "NO IMAGE SELECTED WITH AN ORIGINAL IMAGE",
+        "\n\n\n\n\n"
+      );
+
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
+    }
+
+    if (image && review.imageUrl === null) {
+      console.log(
+        "\n\n\n\n\n",
+        "IMAGE SELECTED & NO ORIGINAL IMAGE",
+        "\n\n\n\n\n"
+      );
+
+      await dispatch(
+        editReview({ id: review.id, content, rating: rating, image })
+      );
+    }
+
+    if (image && review.imageUrl) {
+      console.log(
+        "\n\n\n\n\n",
+        "IMAGE SELECTED WITH ORIGINAL IMAGE",
+        "\n\n\n\n\n"
+      );
+
+      await dispatch(
+        editReview({ id: review.id, content, rating: rating, image })
+      );
+    }
 
     await dispatch(setAllReviews());
 
+    if (image) {
+      setImageLoading(false);
+    }
+
+    setLoading(false);
     setBool(false);
+    setBool2(false);
+    setContent(review.content);
+    setRating(review.rating);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
   };
 
   useEffect(() => {
@@ -224,7 +287,11 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
           {"     "}
 
-          <button onClick={handleSubmit2}>Remove</button>
+          <button onClick={handleSubmit2}>Remove Review</button>
+
+          {"     "}
+
+          <button onClick={handleSubmit2}>Delete Image</button>
 
           {"     "}
 

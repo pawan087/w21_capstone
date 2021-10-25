@@ -62,11 +62,21 @@ export const deleteReview = (data) => async (dispatch) => {
 };
 
 export const editReview = (data) => async (dispatch) => {
-  const { id, rating, content } = data;
+  const { id, rating, content, image } = data;
+
+  const formData = new FormData();
+  formData.append("id", id);
+  formData.append("content", content);
+  formData.append("rating", rating);
+
+  if (image) formData.append("image", image);
 
   const res = await csrfFetch("/api/reviews/update", {
     method: "PUT",
-    body: JSON.stringify({ id, rating, content }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (res.ok) {
