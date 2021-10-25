@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReviewLikeComponent from "./ReviewLikeComponent";
 import { setAllReviews, editReview, deleteReview } from "../../store/reviews";
 import styles from "./ProductPage.module.css";
+import "./upload.css";
 
 export default function IndividualReview({ review, i, productReviewsLength }) {
   const dispatch = useDispatch();
@@ -112,7 +113,12 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
       <br />
 
-      {!bool && <ReviewLikeComponent review={review} />}
+      {review.imageUrl !== null && <img alt='reviewImage' src={review.imageUrl} className='pic'></img>}
+
+      <br />
+      <br />
+
+      {!bool && <ReviewLikeComponent className={styles.pic} review={review} />}
 
       <br />
       <br />

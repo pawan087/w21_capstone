@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
       productId: { type: DataTypes.INTEGER, allowNull: false },
       content: { type: DataTypes.STRING(1000), allowNull: false },
       rating: { type: DataTypes.DECIMAL, allowNull: true },
+      imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,
