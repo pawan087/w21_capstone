@@ -37,13 +37,12 @@ export const createCartItem = (data) => async (dispatch) => {
 };
 
 export const consolidateCartItems = (data) => async (dispatch) => {
-  const { idToDelete1, idToDelete2, sumQuantity, productId, userId } = data;
+  const { idsToDeleteArr, sumQuantity, productId, userId } = data;
 
   const res = await csrfFetch("/api/cartitems/consolidate", {
     method: "POST",
     body: JSON.stringify({
-      idToDelete1,
-      idToDelete2,
+      idsToDeleteArr,
       sumQuantity,
       productId,
       userId,

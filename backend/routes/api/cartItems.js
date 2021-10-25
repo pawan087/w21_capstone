@@ -45,14 +45,12 @@ router.post(
 router.post(
   "/consolidate",
   asyncHandler(async (req, res) => {
-    const { idToDelete1, idToDelete2, sumQuantity, productId, userId } =
-      req.body;
+    const { idsToDeleteArr, sumQuantity, productId, userId } = req.body;
 
-    const cartItem1 = await cartItem.findByPk(idToDelete1);
-    await cartItem1.destroy();
-
-    const cartItem2 = await cartItem.findByPk(idToDelete2);
-    await cartItem2.destroy();
+    idsToDeleteArr[0].forEach(async (id) => {
+      const cartItemToDelete = await cartItem.findByPk(+id);
+      await cartItemToDelete.destroy();
+    });
 
     await cartItem.create({
       userId,

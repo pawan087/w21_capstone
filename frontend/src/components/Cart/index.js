@@ -54,15 +54,15 @@ export default function Cart() {
 
   if (!user) return <Redirect to="/" />;
 
-  const handleSubmit2 = () => {
+  const handleSubmit2 = async () => {
     let idsToDeleteArr = [];
 
     shoppingCartItems?.forEach((item) => {
       idsToDeleteArr.push(item.id);
     });
 
-    dispatch(emptyCart({ idsToDeleteArr }));
-    dispatch(setAllCartItems());
+    await dispatch(emptyCart({ idsToDeleteArr }));
+    await dispatch(setAllCartItems());
   };
   return (
     <div>
@@ -72,7 +72,7 @@ export default function Cart() {
 
       {shoppingCartItems?.length === 0 && <h5>This cart is empty.</h5>}
 
-      <Items shoppingCartItems={shoppingCartItems} />
+      <Items />
 
       {shoppingCartItems?.length > 1 && (
         <button onClick={handleSubmit2}>Empty Cart</button>

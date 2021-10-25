@@ -1,59 +1,90 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ItemComponent from "./Item";
-import { consolidateCartItems } from "../../store/cartItems.js";
+import {
+  consolidateCartItems,
+  setAllCartItems,
+} from "../../store/cartItems.js";
 import { setAllOrderItems } from "../../store/orderItems.js";
 // import styles from "./Cart.module.css";
 
-export default function Items({ shoppingCartItems }) {
+export default function Items() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
 
-  let idToDelete1;
-  let idToDelete2;
-  let productId;
-  let arr = [];
+  const cartItems = useSelector((state) => state.cartItems);
+  const products = useSelector((state) => state.products);
 
-  shoppingCartItems?.forEach((item1, i) => {
-    let sumQuantity = 0;
+  const usersCartItems = cartItems?.filter((cartItem) => {
+    return cartItem.userId === user.id;
+  });
 
-    let id1 = item1.product.id;
+  const shoppingCartItems = [];
 
-    for (let j = i + 1; j < shoppingCartItems.length; j++) {
-      let item2 = shoppingCartItems[j];
+  usersCartItems?.forEach((cartItem) => {
+    let id1 = cartItem.productId;
 
-      let id2 = item2.product.id;
+    products?.forEach((product) => {
+      let id2 = product.id;
 
       if (id1 === id2) {
-        idToDelete1 = item1.id;
-        idToDelete2 = item2.id;
-        productId = item2.product.id;
-        sumQuantity += item2.quantity + item1.quantity;
+        let item = {
+          ...cartItem,
+          product: product,
+        };
 
-        arr.push({ idToDelete1, idToDelete2, productId, sumQuantity });
+        delete item.productId;
+        delete item.userId;
+
+        shoppingCartItems.push(item);
+      }
+    });
+  });
+
+  let obj = {};
+
+  shoppingCartItems.forEach((item) => {
+    obj[item.product.id] = { ids: new Set(), quantity: 0 };
+  });
+
+  shoppingCartItems?.forEach((cartItem1, i) => {
+    let id1 = cartItem1.id;
+    let productId1 = cartItem1.product.id;
+    let quantity1 = cartItem1.quantity;
+
+    if (obj[productId1]) {
+      obj[productId1].quantity += quantity1;
+    }
+
+    for (let j = i + 1; j < shoppingCartItems?.length; j++) {
+      let cartItem2 = shoppingCartItems[j];
+      let id2 = cartItem2?.id;
+      let productId2 = cartItem2?.product.id;
+
+      if (productId1 === productId2) {
+        obj[productId1].ids.add(id1);
+        obj[productId1].ids.add(id2);
       }
     }
   });
 
-  useEffect(() => {
-    dispatch(setAllOrderItems());
-  }, [dispatch]);
+  console.log("\n\n\n", obj, "\n\n\n");
 
-  useEffect(() => {
-    arr?.forEach(async (duplicate, i) => {
-      await dispatch(
-        consolidateCartItems({
-          idToDelete1: duplicate.idToDelete1,
-          idToDelete2: duplicate.idToDelete2,
-          sumQuantity: duplicate.sumQuantity,
-          productId: duplicate.productId,
-          userId: user.id,
-        })
-      );
-    });
-  });
+  useEffect(async () => {
+    await dispatch(setAllCartItems());
+    await dispatch(setAllOrderItems());
+
+    // await dispatch(
+    //   consolidateCartItems({
+    //     idsToDeleteArr: arr2,
+    //     sumQuantity: sum,
+    //     productId,
+    //     userId: user.id,
+    //   })
+    // );
+  }, [dispatch]);
 
   return (
     <div>

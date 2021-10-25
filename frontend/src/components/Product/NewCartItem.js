@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { createCartItem } from "../../store/cartItems.js";
+import { createCartItem, setAllCartItems } from "../../store/cartItems.js";
 
 function NewCartItem({ productId }) {
   const dispatch = useDispatch();
@@ -12,16 +12,18 @@ function NewCartItem({ productId }) {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (!user) return <Redirect to="/" />;
 
     e.preventDefault();
 
     setLoading(true);
 
-    dispatch(
+    await dispatch(
       createCartItem({ userId: user.id, productId: +productId, quantity })
     );
+
+    // await dispatch(setAllCartItems());
 
     setTimeout(() => setLoading(false), 1000);
   };
