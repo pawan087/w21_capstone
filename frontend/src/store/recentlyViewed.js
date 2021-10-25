@@ -7,11 +7,24 @@ const load = (recentlyViewed) => ({
   recentlyViewed,
 });
 
+export const setAllRecentlyViewed = (id) => async (dispatch) => {
+  const res = await csrfFetch("/api/recent", {
+    method: "POST",
+    body: JSON.stringify({ id }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 export const addToRecent = (data) => async (dispatch) => {
   const { productId, userId } = data;
 
   const res = await csrfFetch("/api/recent", {
-    method: "POST",
+    method: "PUT",
     body: JSON.stringify({ productId, userId }),
   });
 

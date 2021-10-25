@@ -8,6 +8,19 @@ const router = express.Router();
 router.post(
   "/",
   asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    const user = await User.findByPk(id);
+
+    // console.log("\n\n\n", id, "\n\n\n");
+
+    res.json(user.recentlyViewed);
+  })
+);
+
+router.put(
+  "/",
+  asyncHandler(async (req, res) => {
     const { userId, productId } = req.body;
 
     const userToUpdate = await User.findByPk(userId);

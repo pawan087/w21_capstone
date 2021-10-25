@@ -5,15 +5,16 @@ import { Redirect } from "react-router-dom";
 import Recent from "./Recent.js";
 import styles from "./ProductsPage.module.css";
 import { setAllProducts } from "../../store/products.js";
+import { setAllRecentlyViewed } from "../../store/recentlyViewed";
 
 function ProductsPage() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
-
   useEffect(() => {
     dispatch(setAllProducts());
+    dispatch(setAllRecentlyViewed(user.id));
   }, [dispatch]);
 
   if (!user) return <Redirect to="/" />;

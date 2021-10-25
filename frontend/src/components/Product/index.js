@@ -55,10 +55,6 @@ function ProductPage() {
     }
   });
 
-  const test = () => {
-    dispatch(addToRecent({ productId: +params.id, userId: user.id }));
-  };
-
   let sum = 0;
 
   productReviews?.forEach((review) => {
@@ -72,6 +68,7 @@ function ProductPage() {
   });
 
   useEffect(() => {
+    dispatch(addToRecent({ productId: +params.id, userId: user.id }));
     dispatch(setAllProducts());
     dispatch(setAllReviews());
     dispatch(setAllReviewLikes());
@@ -82,8 +79,6 @@ function ProductPage() {
 
   return (
     <>
-      <button onClick={test}>Add to Recently Viewed</button>
-
       <ProductDetail
         num={productReviews?.length}
         avgRating={avgRating}
