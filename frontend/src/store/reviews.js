@@ -70,6 +70,34 @@ export const editReview = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const upload = (data) => async (dispatch) => {
+  const { image } = data;
+  const formData = new FormData();
+
+  // for multiple files
+  // if (images && images.length !== 0) {
+  //   for (var i = 0; i < images.length; i++) {
+  //     formData.append("images", images[i]);
+  //   }
+  // }
+
+  // for single file
+  if (image) formData.append("image", image);
+
+  // console.log(image);
+
+  const res = await csrfFetch(`/api/reviews/images`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+
+  //   const data = await res.json();
+  //   dispatch(setUser(data.user));
+};
+
 const initialState = [];
 
 const reviewReducer = (state = initialState, action) => {

@@ -6,6 +6,7 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import ImageUpload from "./components/Product/ImageUpload";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
@@ -38,7 +39,7 @@ function App() {
           <h1>Hello I am a Modal</h1>
         </Modal>
       )}
-      
+
       {isLoaded && (
         <Switch>
           <Route path="/login" exact={true}>
@@ -71,6 +72,10 @@ function App() {
 
           <Route path="/edit/:id/:num/:items/:address1/:address2" exact={true}>
             <EditOrderPage />
+          </Route>
+
+          <Route path="/upload" exact={true}>
+            <ImageUpload />
           </Route>
         </Switch>
       )}

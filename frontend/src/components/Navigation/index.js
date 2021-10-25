@@ -8,7 +8,7 @@ import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
   const history = useHistory();
-  
+
   const sessionUser = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
 
@@ -46,6 +46,8 @@ function Navigation({ isLoaded }) {
         <NavLink to="/cart">Shopping Cart</NavLink>
 
         <NavLink to="/orders">Orders</NavLink>
+
+        <NavLink to="/upload">Image Upload</NavLink>
 
         <select
           name="originId"

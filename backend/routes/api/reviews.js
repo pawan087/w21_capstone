@@ -1,6 +1,13 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+
 const { Review, User, ReviewLike } = require("../../db/models");
+const {
+  singleMulterUpload,
+  singlePublicFileUpload,
+  multipleMulterUpload,
+  multiplePublicFileUpload,
+} = require("../../awsS3");
 
 const router = express.Router();
 
@@ -189,6 +196,16 @@ router.put(
     const reviewLikes = await ReviewLike.findAll(options);
 
     res.json(reviewLikes);
+  })
+);
+
+// Image Upload Test
+router.post(
+  "/images",
+  singleMulterUpload("image"),
+  asyncHandler(async (req, res) => {
+    // const profileImageUrl = await singlePublicFileUpload(req.file);
+    // console.log("\n\n\n", profileImageUrl, "\n\n\n");
   })
 );
 
