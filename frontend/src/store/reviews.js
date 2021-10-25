@@ -18,16 +18,22 @@ export const setAllReviews = () => async (dispatch) => {
 };
 
 export const createReview = (data) => async (dispatch) => {
-  const { userId, productId, content, rating } = data;
+  const { userId, productId, content, rating, image } = data;
+
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("productId", productId);
+  formData.append("content", content);
+  formData.append("rating", rating);
+
+  if (image) formData.append("image", image);
 
   const res = await csrfFetch("/api/reviews", {
     method: "POST",
-    body: JSON.stringify({
-      userId,
-      productId,
-      content,
-      rating,
-    }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (res.ok) {
@@ -68,34 +74,6 @@ export const editReview = (data) => async (dispatch) => {
 
     dispatch(load(data));
   } else return "READ THUNK ERROR: BAD REQUEST";
-};
-
-export const upload = (data) => async (dispatch) => {
-  const { image } = data;
-  const formData = new FormData();
-
-  // for multiple files
-  // if (images && images.length !== 0) {
-  //   for (var i = 0; i < images.length; i++) {
-  //     formData.append("images", images[i]);
-  //   }
-  // }
-
-  // for single file
-  if (image) formData.append("image", image);
-
-  // console.log(image);
-
-  const res = await csrfFetch(`/api/reviews/images`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-    body: formData,
-  });
-
-  //   const data = await res.json();
-  //   dispatch(setUser(data.user));
 };
 
 const initialState = [];

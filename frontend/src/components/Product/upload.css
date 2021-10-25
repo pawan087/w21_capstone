@@ -48,6 +48,13 @@ input.file {
   right: 10px;
 }
 
+.pic2 {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+
 .pic {
   height: 250px;
   width: 250px;

@@ -4,7 +4,6 @@ import { useParams } from "react-router";
 import ReactStars from "react-rating-stars-component";
 
 import { createReview, setAllReviews } from "../../store/reviews";
-import { upload } from "../../store/reviews";
 import "./upload.css";
 import styles from "./ProductPage.module.css";
 
@@ -21,7 +20,7 @@ export default function WriteReviewCard() {
   const [uploadMsg, setUploadMsg] = useState("Upload Picture (Optional)");
   const [imageLoading, setImageLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState();
+  const [preview, setPreview] = useState("");
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -29,6 +28,10 @@ export default function WriteReviewCard() {
 
   const clear = () => {
     setContent("");
+    setRating(0);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
   };
 
   const handleSubmit = async () => {
@@ -37,22 +40,41 @@ export default function WriteReviewCard() {
     }
 
     setLoading(true);
-    setImageLoading(true);
+
+    if (image) {
+      setImageLoading(true);
+    }
 
     await dispatch(
-      createReview({ userId: user.id, productId: params.id, content, rating })
+      createReview({
+        userId: user.id,
+        productId: params.id,
+        content,
+        rating,
+        image,
+      })
     );
 
     await dispatch(setAllReviews());
 
     setContent("");
     setRating(0);
-    setImageLoading(false);
-    setTimeout(() => setLoading(false), 1000);
+    setPreview("");
+    setRating(0);
+
+    if (image) {
+      setImageLoading(false);
+    }
+
+    setUploadMsg("Upload Picture (Optional)");
+    setLoading(false);
+    setSelectedFile();
+
+    // window.location.reload();
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     if (!selectedFile) {
       setPreview(undefined);
       return;
@@ -69,7 +91,7 @@ export default function WriteReviewCard() {
   const updateImage = (e) => {
     const file = e.target.files[0];
 
-    setUploadMsg(file["name"]);
+    setUploadMsg(file["name"].slice(0, 39));
     setSelectedFile(e.target.files[0]);
 
     if (file) setImage(file);
@@ -133,12 +155,14 @@ export default function WriteReviewCard() {
         </div>
       </div>
 
+      {image && (
+        <div>
+          <br />
+          {preview && <img className="pic2" src={preview} alt="picToUpload" />}
+        </div>
+      )}
+
       <br />
-
-      {image && <img className="pic" src={preview} alt="picToUpload" />}
-
-      <br />
-
 
       {imageLoading && <p>Image Uploading...</p>}
 

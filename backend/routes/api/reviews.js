@@ -45,20 +45,34 @@ router.get(
 
 router.post(
   "/",
+  singleMulterUpload("image"),
   asyncHandler(async (req, res) => {
     const { userId, productId, content, rating } = req.body;
 
-    // console.log("\n", +userId, "\n");
-    // console.log("\n", +productId, "\n");
-    // console.log("\n", content, "\n");
-    // console.log("\n", +rating, "\n");
+    let imageUrl;
 
-    await Review.create({
-      userId: +userId,
-      productId: +productId,
-      content,
-      rating: +rating,
-    });
+    if (req.file) {
+      imageUrl = await singlePublicFileUpload(req.file);
+    }
+
+    // console.log("\n\n\n", req.file, "\n\n\n");
+
+    if (imageUrl) {
+      await Review.create({
+        userId: +userId,
+        productId: +productId,
+        content,
+        rating: +rating,
+        imageUrl,
+      });
+    } else {
+      await Review.create({
+        userId: +userId,
+        productId: +productId,
+        content,
+        rating: +rating,
+      });
+    }
 
     const options = {
       include: [{ model: User, attributes: ["username"] }],
