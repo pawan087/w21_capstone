@@ -47,3 +47,9 @@ input.file {
   position: absolute;
   right: 10px;
 }
+
+.pic {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}

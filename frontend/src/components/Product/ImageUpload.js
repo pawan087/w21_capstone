@@ -1,40 +1,50 @@
-import React from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { upload } from "../../store/reviews";
-// import styles from "./ProductPage.module.css";
 import "./upload.css";
 
 export default function ImageUpload() {
   const dispatch = useDispatch();
 
   const [image, setImage] = useState(null);
-  const [errors, setErrors] = useState([]);
-  const [uploadMsg, setUploadMsg] = useState("Upload Profile Picture");
+  const [images, setImages] = useState([]);
+  const [uploadMsg, setUploadMsg] = useState("Upload Picture");
+  const [imageLoading, setImageLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setImageLoading(true);
 
-    let newErrors = [];
+    // dispatch(upload({ image }));
 
-    // console.log(image);
-
-    dispatch(upload({ image }));
+    setImageLoading(false);
   };
 
-  const updateFile = (e) => {
-    const file = e.target.files[0];
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
 
-    if (file) setImage(file);
-  };
+    const objectUrl = URL.createObjectURL(selectedFile);
+
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
   const updateImage = (e) => {
     const file = e.target.files[0];
 
     setUploadMsg(file["name"]);
+    setSelectedFile(e.target.files[0]);
 
-    setImage(file);
+    if (file) setImage(file);
   };
 
   return (
@@ -48,8 +58,10 @@ export default function ImageUpload() {
           accept="image/*"
           onChange={updateImage}
         />
+
         <div class="inputContainer fakefile">
           <label className="uploadLabel">{uploadMsg}</label>
+
           <div className="uploadPic">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,11 +81,7 @@ export default function ImageUpload() {
         </div>
       </div>
 
-      <br />
-
-      <label>
-        <input type="file" onChange={updateFile} />
-      </label>
+      {image && <img className="pic" src={preview} alt="picToUpload" />}
 
       <br />
       <br />
