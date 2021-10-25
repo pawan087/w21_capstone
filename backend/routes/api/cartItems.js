@@ -42,34 +42,6 @@ router.post(
   })
 );
 
-router.post(
-  "/consolidate",
-  asyncHandler(async (req, res) => {
-    const { idsToDeleteArr, sumQuantity, productId, userId } = req.body;
-
-    idsToDeleteArr[0].forEach(async (id) => {
-      const cartItemToDelete = await cartItem.findByPk(+id);
-      await cartItemToDelete.destroy();
-    });
-
-    await cartItem.create({
-      userId,
-      productId,
-      quantity: sumQuantity,
-    });
-
-    const options = {
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    };
-
-    const cartItems = await cartItem.findAll(options);
-
-    res.json(cartItems);
-  })
-);
-
 router.delete(
   "/",
   asyncHandler(async (req, res) => {
@@ -95,11 +67,13 @@ router.delete(
   asyncHandler(async (req, res) => {
     const { idsToDeleteArr } = req.body;
 
+    // console.log('\n\n\n', idsToDeleteArr, '\n\n\n')
+
     let itemToDelete;
 
     idsToDeleteArr.forEach(async (id) => {
       itemToDelete = await cartItem.findByPk(id);
-
+      // console.log(!!itemToDelete)
       await itemToDelete.destroy();
     });
 

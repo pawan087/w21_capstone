@@ -62,8 +62,10 @@ export default function Cart() {
     });
 
     await dispatch(emptyCart({ idsToDeleteArr }));
+
     await dispatch(setAllCartItems());
   };
+
   return (
     <div>
       <h2 className={styles.title}>Shopping Cart Page</h2>
@@ -72,7 +74,7 @@ export default function Cart() {
 
       {shoppingCartItems?.length === 0 && <h5>This cart is empty.</h5>}
 
-      <Items />
+      <Items shoppingCartItems={shoppingCartItems} />
 
       {shoppingCartItems?.length > 1 && (
         <button onClick={handleSubmit2}>Empty Cart</button>
