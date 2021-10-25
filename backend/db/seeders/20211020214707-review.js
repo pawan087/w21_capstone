@@ -10,6 +10,7 @@ module.exports = {
           productId: 1,
           content: "This is single handedly the best video game of all time.",
           rating: 5,
+          imageUrl: 'https://sd.keepcalms.com/i-w600/i-love-gta-5-online-but-i-love-my-life-too.jpg'
         },
         {
           userId: 2,

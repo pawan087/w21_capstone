@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import { useDispatch, useSelector } from "react-redux";
 
 import ReviewLikeComponent from "./ReviewLikeComponent";
-import { setAllReviews, editReview, deleteReview } from "../../store/reviews";
+import {
+  setAllReviews,
+  editReview,
+  deleteReview,
+  deleteImage,
+} from "../../store/reviews";
 import styles from "./ProductPage.module.css";
+import "./upload.css";
 
 export default function IndividualReview({ review, i, productReviewsLength }) {
   const dispatch = useDispatch();
@@ -14,8 +20,16 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const [bool, setBool] = useState(false);
+  const [bool2, setBool2] = useState(false);
   const [content, setContent] = useState(review.content);
   const [rating, setRating] = useState(review.rating);
+
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [uploadMsg, setUploadMsg] = useState("Update Image");
+  const [imageLoading, setImageLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState("");
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -24,12 +38,83 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   let curTime = new Date();
 
   const handleSubmit = async () => {
-    await dispatch(editReview({ id: review.id, rating: rating, content }));
+    if (content === "") {
+      return;
+    }
+
+    setLoading(true);
+
+    if (image) {
+      setImageLoading(true);
+    }
+
+    if (!image && review.imageUrl === null) {
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
+    }
+
+    if (!image && review.imageUrl !== null) {
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
+    }
+
+    if (image && review.imageUrl === null) {
+      await dispatch(
+        editReview({ id: review.id, content, rating: rating, image })
+      );
+    }
+
+    if (image && review.imageUrl) {
+      await dispatch(
+        editReview({ id: review.id, content, rating: rating, image })
+      );
+    }
 
     await dispatch(setAllReviews());
 
+    if (image) {
+      setImageLoading(false);
+    }
+
+    setLoading(false);
     setBool(false);
+    setBool2(false);
+    setContent(review.content);
+    setRating(review.rating);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
   };
+
+  const handleSubmit3 = async () => {
+    setLoading(true);
+
+    await dispatch(deleteImage(review.id));
+
+    await dispatch(setAllReviews());
+
+    setLoading(false);
+    setBool(false);
+    setBool2(false);
+    setContent(review.content);
+    setRating(review.rating);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
+  };
+
+  useEffect(() => {
+    // window.scrollTo(0, 0);
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
 
   const handleSubmit2 = async () => {
     let arr = [];
@@ -45,6 +130,27 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     await dispatch(setAllReviews());
 
     setBool(false);
+  };
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+
+    setBool2(true);
+
+    setUploadMsg(file["name"].slice(0, 39));
+    setSelectedFile(e.target.files[0]);
+
+    if (file) setImage(file);
+  };
+
+  const clear = () => {
+    setBool(false);
+    setBool2(false);
+    setContent(review.content);
+    setRating(review.rating);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
   };
 
   return (
@@ -105,6 +211,51 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
             fullIcon={<i className="fa fa-star"></i>}
             activeColor="#ffd700"
           />
+
+          <br />
+
+          <div className="fileinputs">
+            <input
+              className="inputContainer file"
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+            />
+
+            <div class="inputContainer fakefile">
+              <label className="uploadLabel">{uploadMsg}</label>
+
+              <div className="uploadPic">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {image && (
+            <div>
+              <br />
+              {preview && (
+                <img className="pic2" src={preview} alt="picToUpload" />
+              )}
+            </div>
+          )}
+
+          <br />
+
+          {imageLoading && <p>Image Uploading...</p>}
         </div>
       )}
 
@@ -112,7 +263,14 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
       <br />
 
-      {!bool && <ReviewLikeComponent review={review} />}
+      {review.imageUrl !== null && !bool2 && (
+        <img alt="reviewImage" src={review.imageUrl} className="pic"></img>
+      )}
+
+      <br />
+      <br />
+
+      {!bool && <ReviewLikeComponent className={styles.pic} review={review} />}
 
       <br />
       <br />
@@ -127,11 +285,15 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
           {"     "}
 
-          <button onClick={handleSubmit2}>Remove</button>
+          <button onClick={handleSubmit2}>Remove Review</button>
 
           {"     "}
 
-          <button onClick={() => setBool(false)}>Cancel</button>
+          <button onClick={handleSubmit3}>Delete Image</button>
+
+          {"     "}
+
+          <button onClick={clear}>Cancel</button>
         </div>
       )}
     </div>

@@ -13,13 +13,14 @@ import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
+import { addToRecent } from "../../store/recentlyViewed";
 // import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const reviews = useSelector((state) => state.reviews);
   const questions = useSelector((state) => state.questions);
@@ -67,13 +68,14 @@ function ProductPage() {
   });
 
   useEffect(() => {
+    dispatch(addToRecent({ productId: +params.id, userId: user.id }));
     dispatch(setAllProducts());
     dispatch(setAllReviews());
     dispatch(setAllReviewLikes());
     dispatch(setAllQuestions());
   }, [dispatch]);
 
-  if (!sessionUser) return <Redirect to="/" />;
+  if (!user) return <Redirect to="/" />;
 
   return (
     <>

@@ -8,6 +8,7 @@ const answersRouter = require("./answers");
 const cartItemRouter = require("./cartItems");
 const orderItemRouter = require("./orderItems");
 const ordersRouter = require("./orders");
+const recentlyViewedRouter = require("./recent");
 
 /*
 
@@ -58,5 +59,6 @@ router.use("/answers", answersRouter);
 router.use("/cartitems", cartItemRouter);
 router.use("/orderitems", orderItemRouter);
 router.use("/orders", ordersRouter);
+router.use("/recent", recentlyViewedRouter);
 
 module.exports = router;

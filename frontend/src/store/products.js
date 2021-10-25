@@ -17,6 +17,8 @@ export const setAllProducts = () => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+
+
 const initialState = [];
 
 const productReducer = (state = initialState, action) => {

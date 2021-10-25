@@ -18,16 +18,22 @@ export const setAllReviews = () => async (dispatch) => {
 };
 
 export const createReview = (data) => async (dispatch) => {
-  const { userId, productId, content, rating } = data;
+  const { userId, productId, content, rating, image } = data;
+
+  const formData = new FormData();
+  formData.append("userId", userId);
+  formData.append("productId", productId);
+  formData.append("content", content);
+  formData.append("rating", rating);
+
+  if (image) formData.append("image", image);
 
   const res = await csrfFetch("/api/reviews", {
     method: "POST",
-    body: JSON.stringify({
-      userId,
-      productId,
-      content,
-      rating,
-    }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (res.ok) {
@@ -56,11 +62,36 @@ export const deleteReview = (data) => async (dispatch) => {
 };
 
 export const editReview = (data) => async (dispatch) => {
-  const { id, rating, content } = data;
+  const { id, rating, content, image } = data;
+
+  const formData = new FormData();
+  formData.append("id", id);
+  formData.append("content", content);
+  formData.append("rating", rating);
+
+  if (image) formData.append("image", image);
 
   const res = await csrfFetch("/api/reviews/update", {
     method: "PUT",
-    body: JSON.stringify({ id, rating, content }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
+export const deleteImage = (id) => async (dispatch) => {
+  const res = await csrfFetch("/api/reviews/image", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id,
+    }),
   });
 
   if (res.ok) {
