@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
 
 import { createAnswer, setAllAnswers } from "../../store/answers";
-import styles from "./ProductPage.module.css";
+// import styles from "./ProductPage.module.css";
 
-export default function LeaveAnswerCard() {
+export default function LeaveAnswerCard({ questionId }) {
   const dispatch = useDispatch();
-  const params = useParams();
 
   const user = useSelector((state) => state.session.user);
 
@@ -25,11 +23,11 @@ export default function LeaveAnswerCard() {
 
     setLoading(true);
 
-    // await dispatch(
-    //   createAnswer({ userId: user.id, questionId: params.id, content })
-    // );
+    await dispatch(
+      createAnswer({ userId: user.id, questionId: questionId, content })
+    );
 
-    // await dispatch(setAllAnswers());
+    await dispatch(setAllAnswers());
 
     setContent("");
 

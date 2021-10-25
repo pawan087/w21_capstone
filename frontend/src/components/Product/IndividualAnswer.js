@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AnswerLikeComponent from "./AnswerLikeComponent";
-// import { setAllAnswers, editAnswer, deleteAnswer } from "../../store/answers";
-import { setAllAnswerLikes } from "../../store/answerLikes";
+import { setAllAnswers, editAnswer, deleteAnswer } from "../../store/answers";
 import styles from "./ProductPage.module.css";
 
 export default function IndividualAnswer({ answer, i, len }) {
@@ -18,9 +17,9 @@ export default function IndividualAnswer({ answer, i, len }) {
   let curTime = new Date();
 
   const handleSubmit = async () => {
-    // await dispatch(editAnswer({ id: answer.id, content }));
+    await dispatch(editAnswer({ id: answer.id, content }));
 
-    // await dispatch(setAllAnswers());
+    await dispatch(setAllAnswers());
 
     setBool(false);
   };
@@ -28,18 +27,19 @@ export default function IndividualAnswer({ answer, i, len }) {
   const handleSubmit2 = async () => {
     let arr = [];
 
-    // answerLikes?.forEach((answerLike) => {
-    //   if (answerLike.answerId === answer.id) {
-    //     arr.push(answerLike.id);
-    //   }
-    // });
+    answerLikes?.forEach((answerLike) => {
+      if (answerLike.answerId === answer.id) {
+        arr.push(answerLike.id);
+      }
+    });
 
-    // await dispatch(deleteAnswer({ id: answer.id, arr }));
+    await dispatch(deleteAnswer({ id: answer.id, arr }));
 
-    // await dispatch(setAllAnswers());
+    await dispatch(setAllAnswers());
 
     setBool(false);
   };
+
   return (
     <div>
       <h5 className={styles.orderTitle}>Answer {len - i}</h5>
@@ -84,8 +84,6 @@ export default function IndividualAnswer({ answer, i, len }) {
           defaultValue={answer.content}
         ></textarea>
       )}
-
-      <br />
 
       {!bool && <AnswerLikeComponent answer={answer} />}
 

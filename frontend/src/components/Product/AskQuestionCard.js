@@ -38,7 +38,7 @@ export default function AskQuestionCard() {
 
   return (
     <div>
-      <div className={styles.title}>Post a Question</div>
+      <h3 className={styles.title}>Post a Question</h3>
 
       <br></br>
 

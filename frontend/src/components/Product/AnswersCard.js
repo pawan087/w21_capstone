@@ -63,8 +63,9 @@ export default function AnswersCard({ questionId, answers }) {
       )}
 
       <br />
+      <br />
 
-      <LeaveAnswerCard />
+      <LeaveAnswerCard questionId={questionId} />
     </div>
   );
 }

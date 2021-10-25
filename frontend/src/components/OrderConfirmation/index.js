@@ -44,9 +44,9 @@ export default function OrderConfirmation() {
 
   const x = orderItems[orderItems?.length - 1]?.id;
 
-  console.log("LAST ID", x);
+  // console.log("LAST ID", x);
 
-  console.log("SHOPPING CART ITEMS LENGTH", shoppingCartItems?.length);
+  // console.log("SHOPPING CART ITEMS LENGTH", shoppingCartItems?.length);
 
   const handleSubmit = async () => {
     await dispatch(
