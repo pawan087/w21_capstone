@@ -150,6 +150,27 @@ router.put(
   })
 );
 
+router.delete(
+  "/image",
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    const reviewToUpdate = await Review.findByPk(+id);
+    await reviewToUpdate.update({ imageUrl: null });
+
+    const options = {
+      include: [{ model: User, attributes: ["username"] }],
+      attributes: {
+        exclude: ["updatedAt"],
+      },
+    };
+
+    const reviews = await Review.findAll(options);
+
+    res.json(reviews);
+  })
+);
+
 router.post(
   "/likes",
   asyncHandler(async (req, res) => {

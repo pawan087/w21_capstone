@@ -4,7 +4,12 @@ import StarPicker from "react-star-picker";
 import { useDispatch, useSelector } from "react-redux";
 
 import ReviewLikeComponent from "./ReviewLikeComponent";
-import { setAllReviews, editReview, deleteReview } from "../../store/reviews";
+import {
+  setAllReviews,
+  editReview,
+  deleteReview,
+  deleteImage,
+} from "../../store/reviews";
 import styles from "./ProductPage.module.css";
 import "./upload.css";
 
@@ -44,44 +49,20 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     }
 
     if (!image && review.imageUrl === null) {
-      console.log(
-        "\n\n\n\n\n",
-        "NO IMAGE SELECTED & NO ORIGINAL IMAGE",
-        "\n\n\n\n\n"
-      );
-
       await dispatch(editReview({ id: review.id, rating: rating, content }));
     }
 
     if (!image && review.imageUrl !== null) {
-      console.log(
-        "\n\n\n\n\n",
-        "NO IMAGE SELECTED WITH AN ORIGINAL IMAGE",
-        "\n\n\n\n\n"
-      );
-
       await dispatch(editReview({ id: review.id, rating: rating, content }));
     }
 
     if (image && review.imageUrl === null) {
-      console.log(
-        "\n\n\n\n\n",
-        "IMAGE SELECTED & NO ORIGINAL IMAGE",
-        "\n\n\n\n\n"
-      );
-
       await dispatch(
         editReview({ id: review.id, content, rating: rating, image })
       );
     }
 
     if (image && review.imageUrl) {
-      console.log(
-        "\n\n\n\n\n",
-        "IMAGE SELECTED WITH ORIGINAL IMAGE",
-        "\n\n\n\n\n"
-      );
-
       await dispatch(
         editReview({ id: review.id, content, rating: rating, image })
       );
@@ -92,6 +73,23 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     if (image) {
       setImageLoading(false);
     }
+
+    setLoading(false);
+    setBool(false);
+    setBool2(false);
+    setContent(review.content);
+    setRating(review.rating);
+    setUploadMsg("Upload Picture (Optional)");
+    setPreview("");
+    setSelectedFile();
+  };
+
+  const handleSubmit3 = async () => {
+    setLoading(true);
+
+    await dispatch(deleteImage(review.id));
+
+    await dispatch(setAllReviews());
 
     setLoading(false);
     setBool(false);
@@ -291,7 +289,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
           {"     "}
 
-          <button onClick={handleSubmit2}>Delete Image</button>
+          <button onClick={handleSubmit3}>Delete Image</button>
 
           {"     "}
 

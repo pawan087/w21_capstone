@@ -10,6 +10,7 @@ import answerLikes from "./answerLikes";
 import cartItems from "./cartItems";
 import orders from "./orders";
 import orderItems from "./orderItems";
+import recentlyViewed from "./recentlyViewed";
 
 const rootReducer = combineReducers({
   session,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   cartItems,
   orders,
   orderItems,
+  recentlyViewed,
 });
 
 let enhancer;

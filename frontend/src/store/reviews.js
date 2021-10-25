@@ -86,6 +86,21 @@ export const editReview = (data) => async (dispatch) => {
   } else return "READ THUNK ERROR: BAD REQUEST";
 };
 
+export const deleteImage = (id) => async (dispatch) => {
+  const res = await csrfFetch("/api/reviews/image", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id,
+    }),
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    dispatch(load(data));
+  } else return "READ THUNK ERROR: BAD REQUEST";
+};
+
 const initialState = [];
 
 const reviewReducer = (state = initialState, action) => {

@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+
+import Recent from "./Recent.js";
 import styles from "./ProductsPage.module.css";
 import { setAllProducts } from "../../store/products.js";
 
 function ProductsPage() {
   const dispatch = useDispatch();
 
-  const sessionUser = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(setAllProducts());
   }, [dispatch]);
 
-  if (!sessionUser) return <Redirect to="/" />;
+  if (!user) return <Redirect to="/" />;
 
   return (
     <>
@@ -23,9 +25,14 @@ function ProductsPage() {
       {products?.map((product, i) => (
         <div key={i}>
           <a href={`/products/${product.id}`}>{product?.name}</a>
+
           <br />
         </div>
       ))}
+
+      <br />
+
+      <Recent user={user} products={products} />
     </>
   );
 }
