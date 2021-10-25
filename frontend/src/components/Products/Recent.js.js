@@ -14,8 +14,6 @@ export default function Recent({ products }) {
     }
   });
 
-  console.log(products);
-
   return (
     <div>
       <h2 className={styles.title}>Recently Viewed</h2>
