@@ -1,28 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const apiRouter = require("./api");
-const chalk = require('chalk');
+const chalk = require("chalk");
 
 let baseStyles = [
   "color: #fff",
   "background-color: #444",
   "padding: 2px 4px",
-  "border-radius: 2px"
+  "border-radius: 2px",
 ].join(";");
 
 router.use("/api", apiRouter);
 
-router.get("/hello/world", function (req, res) {
-  res.cookie("XSRF-TOKEN", req.csrfToken());
+// router.get("/hello/world", function (req, res) {
+//   res.cookie("XSRF-TOKEN", req.csrfToken());
 
-  let x = 'Testing:';
-  let y = 'Text in red';
+//   let x = 'Testing:';
+//   let y = 'Text in red';
 
-  console.log('\n', chalk.white.bgRed.bold(`${x}`), chalk.white.bgRed.bold(`${y}`), '\n');
+//   console.log('\n', chalk.white.bgRed.bold(`${x}`), chalk.white.bgRed.bold(`${y}`), '\n');
 
-  res.send("Hello World!");
-});
-
+//   res.send("Hello World!");
+// });
 
 // Static routes
 // Serve React build files in production
