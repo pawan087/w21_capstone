@@ -94,10 +94,10 @@ router.put(
   asyncHandler(async (req, res) => {
     const { id, quantity } = req.body;
 
-    const cartItemToUpdate = await cartItem.findByPk(id);
+    const cartItemToUpdate = await cartItem.findByPk(+id);
 
-    if (quantity > 0) {
-      await cartItemToUpdate.update({ quantity });
+    if (+quantity > 0) {
+      await cartItemToUpdate.update({ quantity: +quantity });
     } else {
       await cartItemToUpdate.destroy();
     }

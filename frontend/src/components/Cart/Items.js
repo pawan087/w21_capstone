@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import ItemComponent from "./Item";
-import {
-  consolidateCartItems,
-  setAllCartItems,
-} from "../../store/cartItems.js";
+import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllOrderItems } from "../../store/orderItems.js";
 // import styles from "./Cart.module.css";
 
 export default function Items({ shoppingCartItems }) {
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    await dispatch(setAllCartItems());
-    await dispatch(setAllOrderItems());
+  // console.log('DO WE NEED TO MAKE THE FOLLOWING ASYNC w/ AWAIT')
+  useEffect(() => {
+    dispatch(setAllCartItems());
+    dispatch(setAllOrderItems());
   }, [dispatch]);
 
   return (

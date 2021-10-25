@@ -17,7 +17,7 @@ export default function Cart() {
   const products = useSelector((state) => state.products);
 
   const usersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem.userId === user.id;
+    return cartItem?.userId === user?.id;
   });
 
   const shoppingCartItems = [];
