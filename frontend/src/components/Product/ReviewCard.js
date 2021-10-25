@@ -1,37 +1,25 @@
 import React from "react";
 
+import IndividualReview from "./IndividualReview";
 import styles from "./ProductPage.module.css";
 
 function ReviewCard({ productReviews }) {
   return (
     <>
-      <h4 className={styles.title}>Reviews</h4>
+      <h2 className={styles.title}>Reviews</h2>
 
-      {productReviews?.map((review, i) => {
-        return (
-          <div key={i}>
-            <li>{review.User.username}</li>
-
-            <li>{review.content}</li>
-
-            <li>{review.rating} Stars</li>
-
-            {review.likeCount === 1 ? (
-              <li>{review.likeCount} Like</li>
-            ) : (
-              <li>{review.likeCount} Likes</li>
-            )}
-
-            {review.dislikeCount === 1 ? (
-              <li>{review.dislikeCount} Dislike</li>
-            ) : (
-              <li>{review.dislikeCount} Dislikes</li>
-            )}
-
-            <br />
-          </div>
-        );
-      })}
+      {productReviews
+        ?.map((review, i) => {
+          return (
+            <IndividualReview
+              review={review}
+              i={i}
+              key={i}
+              productReviewsLength={productReviews?.length}
+            />
+          );
+        })
+        .reverse()}
 
       {productReviews?.length === 0 && <p>Sorry, no reviews.</p>}
     </>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import IndividualQuestion from "./IndividualQuestion.js";
 import AnswerCard from "./AnswersCard.js";
 import { setAllAnswers } from "../../store/answers.js";
 import styles from "./ProductPage.module.css";
@@ -33,20 +34,22 @@ export default function QuestionCard({ productQuestions }) {
 
   return (
     <>
-      <h4 className={styles.title}>Q&A</h4>
+      <h2 className={styles.title}>Questions</h2>
 
-      {questionsWithAnswers?.map((question, i) => {
+      {questionsWithAnswers?.reverse().map((question, i) => {
         return (
           <div key={i}>
-            <h5 className={styles.questionTitle}>Question</h5>
-
-            <li>{question.User.username}</li>
-
-            <li>{question.content}</li>
+            <IndividualQuestion
+              question={question}
+              i={i}
+              productQuestionsLength={productQuestions?.length}
+            />
 
             <br />
 
-            <h5 className={styles.answersTitle}>Answer(s):</h5>
+            <h4 className={styles.title}>
+              Question {productQuestions?.length - i}'s Answer(s):
+            </h4>
 
             <AnswerCard questionId={question.id} answers={question.answers} />
           </div>
