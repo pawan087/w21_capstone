@@ -1,13 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAllAnswerLikes } from "../../store/answerLikes";
 
-// import {
-//   createLike,
-//   setAllAnswerLikes,
-//   deleteLike,
-//   deleteTheOpposingAndCreateLike,
-// } from "../../store/answerLikes";
+import {
+  createLike,
+  setAllAnswerLikes,
+  deleteLike,
+  deleteTheOpposingAndCreateLike,
+} from "../../store/answerLikes";
 
 export default function AnswerLikeComponent({ answer }) {
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ export default function AnswerLikeComponent({ answer }) {
         answerLike.answerId === answer.id &&
         answerLike.like
       ) {
-        console.log("Already liked");
+        // console.log("Already liked");
         alreadyLiked = true;
         id = answerLike.id;
       }
@@ -42,31 +41,31 @@ export default function AnswerLikeComponent({ answer }) {
     });
 
     if (alreadyLiked) {
-      console.log("Delete Like");
+      // console.log("Delete Like");
 
-      //   await dispatch(deleteLike(id));
+      await dispatch(deleteLike(id));
 
-      //   await dispatch(setAllAnswerLikes());
+      await dispatch(setAllAnswerLikes());
     } else {
-      console.log("Not liked");
-      console.log("Create Like");
+      // console.log("Not liked");
+      // console.log("Create Like");
 
       if (alreadyDisliked) {
-        // await dispatch(
-        //   deleteTheOpposingAndCreateLike({
-        //     userId: user.id,
-        //     answerId: answer.id,
-        //     like: false,
-        //     idToDelete: id2,
-        //   })
-        // );
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            answerId: answer.id,
+            like: true,
+            idToDelete: id2,
+          })
+        );
       } else {
-        // await dispatch(
-        //   createLike({ userId: user.id, answerId: answer.id, like: true })
-        // );
+        await dispatch(
+          createLike({ userId: user.id, answerId: answer.id, like: true })
+        );
       }
 
-      //   await dispatch(setAllAnswerLikes());
+      await dispatch(setAllAnswerLikes());
     }
   };
 
@@ -100,28 +99,28 @@ export default function AnswerLikeComponent({ answer }) {
 
     if (alreadyDisliked) {
       // console.log("Delete Dislike");
-      //   await dispatch(deleteLike(id));
-      //   await dispatch(setAllAnswerLikes());
+      await dispatch(deleteLike(id));
+      await dispatch(setAllAnswerLikes());
     } else {
       // console.log("Not disliked");
       // console.log("Create Dislike");
 
       if (alreadyLiked) {
-        // await dispatch(
-        //   deleteTheOpposingAndCreateLike({
-        //     userId: user.id,
-        //     answerId: answer.id,
-        //     like: false,
-        //     idToDelete: id2,
-        //   })
-        // );
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            answerId: answer.id,
+            like: false,
+            idToDelete: id2,
+          })
+        );
       } else {
-        // await dispatch(
-        //   createLike({ userId: user.id, answerId: answer.id, like: false })
-        // );
+        await dispatch(
+          createLike({ userId: user.id, answerId: answer.id, like: false })
+        );
       }
 
-      //   await dispatch(setAllAnswerLikes());
+      await dispatch(setAllAnswerLikes());
     }
   };
 

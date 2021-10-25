@@ -112,4 +112,78 @@ router.delete(
   })
 );
 
+router.post(
+  "/likes",
+  asyncHandler(async (req, res) => {
+    const { userId, answerId, like } = req.body;
+
+    await AnswerLike.create({
+      userId: +userId,
+      answerId: +answerId,
+      like,
+    });
+
+    const options = {
+      include: [{ model: User, attributes: ["username"] }],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const answerLikes = await AnswerLike.findAll(options);
+
+    res.json(answerLikes);
+  })
+);
+
+router.delete(
+  "/likes",
+  asyncHandler(async (req, res) => {
+    const { id } = req.body;
+
+    answerLike = await AnswerLike.findByPk(+id);
+
+    await answerLike.destroy();
+
+    const options = {
+      include: [{ model: User, attributes: ["username"] }],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const answerLikes = await AnswerLike.findAll(options);
+
+    res.json(answerLikes);
+  })
+);
+
+router.put(
+  "/likes",
+  asyncHandler(async (req, res) => {
+    const { userId, answerId, like, idToDelete } = req.body;
+
+    answerLike = await AnswerLike.findByPk(+idToDelete);
+
+    await answerLike.destroy();
+
+    await AnswerLike.create({
+      userId: +userId,
+      answerId: +answerId,
+      like,
+    });
+
+    const options = {
+      include: [{ model: User, attributes: ["username"] }],
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+    };
+
+    const answerLikes = await AnswerLike.findAll(options);
+
+    res.json(answerLikes);
+  })
+);
+
 module.exports = router;

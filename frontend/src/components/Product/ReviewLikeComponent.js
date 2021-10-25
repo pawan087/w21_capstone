@@ -25,7 +25,7 @@ export default function ReviewLikeComponent({ review }) {
         reviewLike.reviewId === review.id &&
         reviewLike.like
       ) {
-        console.log("Already liked");
+        // console.log("Already liked");
         alreadyLiked = true;
         id = reviewLike.id;
       }
@@ -41,21 +41,21 @@ export default function ReviewLikeComponent({ review }) {
     });
 
     if (alreadyLiked) {
-      console.log("Delete Like");
+      // console.log("Delete Like");
 
       await dispatch(deleteLike(id));
 
       await dispatch(setAllReviewLikes());
     } else {
-      console.log("Not liked");
-      console.log("Create Like");
+      // console.log("Not liked");
+      // console.log("Create Like");
 
       if (alreadyDisliked) {
         await dispatch(
           deleteTheOpposingAndCreateLike({
             userId: user.id,
             reviewId: review.id,
-            like: false,
+            like: true,
             idToDelete: id2,
           })
         );
