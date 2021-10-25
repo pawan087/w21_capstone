@@ -1,30 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { createCartItem } from "../../store/cartItems.js";
+import {
+  createCartItem,
+  setAllCartItems,
+  editCartItem,
+} from "../../store/cartItems.js";
 
 function NewCartItem({ productId }) {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.session.user);
+  const cartItems = useSelector((state) => state.cartItems);
+
+  const usersCartItems = cartItems?.filter((cartItem) => {
+    return cartItem.userId === user.id && cartItem.productId === +productId;
+  });
 
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    if (!user) return <Redirect to="/" />;
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user) return <Redirect to="/" />;
 
     setLoading(true);
 
-    dispatch(
-      createCartItem({ userId: user.id, productId: +productId, quantity })
-    );
+    if (usersCartItems.length > 0) {
+      dispatch(
+        editCartItem({
+          id: +usersCartItems[0]?.id,
+          quantity: +usersCartItems[0]?.quantity + +quantity,
+        })
+      );
+    } else {
+      await dispatch(
+        createCartItem({ userId: user.id, productId: +productId, quantity })
+      );
+    }
+
+    await dispatch(setAllCartItems());
 
     setTimeout(() => setLoading(false), 1000);
   };
+
+  useEffect(() => {
+    dispatch(setAllCartItems());
+  }, [dispatch]);
 
   return (
     <form onSubmit={handleSubmit}>

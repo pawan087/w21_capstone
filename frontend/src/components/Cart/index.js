@@ -17,7 +17,7 @@ export default function Cart() {
   const products = useSelector((state) => state.products);
 
   const usersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem.userId === user.id;
+    return cartItem?.userId === user?.id;
   });
 
   const shoppingCartItems = [];
@@ -54,16 +54,18 @@ export default function Cart() {
 
   if (!user) return <Redirect to="/" />;
 
-  const handleSubmit2 = () => {
+  const handleSubmit2 = async () => {
     let idsToDeleteArr = [];
 
     shoppingCartItems?.forEach((item) => {
       idsToDeleteArr.push(item.id);
     });
 
-    dispatch(emptyCart({ idsToDeleteArr }));
-    dispatch(setAllCartItems());
+    await dispatch(emptyCart({ idsToDeleteArr }));
+
+    await dispatch(setAllCartItems());
   };
+
   return (
     <div>
       <h2 className={styles.title}>Shopping Cart Page</h2>

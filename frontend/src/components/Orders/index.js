@@ -30,7 +30,7 @@ export default function Orders() {
   let pastTime = AddMinutesToDate(curTime, -0.5); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
 
   const usersOrders = orders?.filter((order) => {
-    return order.userId === +user.id;
+    return order?.userId === +user?.id;
   });
 
   let usersOrdersAndItems = [];
