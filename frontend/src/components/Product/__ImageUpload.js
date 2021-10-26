@@ -59,7 +59,7 @@ export default function ImageUpload() {
           onChange={updateImage}
         />
 
-        <div class="inputContainer fakefile">
+        <div className="inputContainer fakefile">
           <label className="uploadLabel">{uploadMsg}</label>
 
           <div className="uploadPic">

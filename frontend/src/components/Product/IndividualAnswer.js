@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import AnswerLikeComponent from "./AnswerLikeComponent";
@@ -13,6 +13,10 @@ export default function IndividualAnswer({ answer, i, len }) {
 
   const [bool, setBool] = useState(false);
   const [content, setContent] = useState("answer.content");
+
+  useEffect(() => {
+    return () => setBool(false);
+  }, [dispatch]);
 
   let curTime = new Date();
 

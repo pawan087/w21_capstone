@@ -47,7 +47,13 @@ function NewCartItem({ productId }) {
   };
 
   useEffect(() => {
-    dispatch(setAllCartItems());
+    const ayeSink = async () => {
+      await dispatch(setAllCartItems());
+    };
+
+    ayeSink();
+
+    return () => setLoading(false);
   }, [dispatch]);
 
   return (

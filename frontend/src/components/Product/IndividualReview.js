@@ -23,8 +23,6 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   const [bool2, setBool2] = useState(false);
   const [content, setContent] = useState(review.content);
   const [rating, setRating] = useState(review.rating);
-
-  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [uploadMsg, setUploadMsg] = useState("Update Image");
   const [imageLoading, setImageLoading] = useState(false);
@@ -41,8 +39,6 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     if (content === "") {
       return;
     }
-
-    setLoading(true);
 
     if (image) {
       setImageLoading(true);
@@ -74,7 +70,6 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
       setImageLoading(false);
     }
 
-    setLoading(false);
     setBool(false);
     setBool2(false);
     setContent(review.content);
@@ -85,13 +80,10 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   };
 
   const handleSubmit3 = async () => {
-    setLoading(true);
-
     await dispatch(deleteImage(review.id));
 
     await dispatch(setAllReviews());
 
-    setLoading(false);
     setBool(false);
     setBool2(false);
     setContent(review.content);
@@ -115,6 +107,14 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
+
+  useEffect(() => {
+    return () => setBool(false);
+  }, [dispatch]);
+
+  useEffect(() => {
+    return () => setBool2(false);
+  }, [dispatch]);
 
   const handleSubmit2 = async () => {
     let arr = [];
@@ -222,7 +222,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
               onChange={updateImage}
             />
 
-            <div class="inputContainer fakefile">
+            <div className="inputContainer fakefile">
               <label className="uploadLabel">{uploadMsg}</label>
 
               <div className="uploadPic">
@@ -289,7 +289,9 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
 
           {"     "}
 
-          <button onClick={handleSubmit3}>Delete Image</button>
+          {review.imageUrl && (
+            <button onClick={handleSubmit3}>Delete Image</button>
+          )}
 
           {"     "}
 

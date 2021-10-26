@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Carousel from "react-grid-carousel";
 
 import styles from "./ProductsPage.module.css";
 
@@ -20,14 +21,24 @@ export default function Recent({ products }) {
 
       <br />
 
-      <div className={styles.pics}>
-        {recentlyViewedProducts?.map((product) => {
-          return (
-            <a href={`products/${product.id}`}>
-              <img className={styles.pic} src={product?.images[0]}></img>
-            </a>
-          );
-        })}
+      <div className={styles.container}>
+        <Carousel shoDots cols={5} rows={1} gap={0} loop>
+          {recentlyViewedProducts.map((product, i) => (
+            <Carousel.Item className={styles.item} key={i}>
+              <a href={`products/${product.id}`}>
+                <img alt={product.name} className={styles.center} src={product.images[0]} />
+              </a>
+            </Carousel.Item>
+          ))}
+
+          {recentlyViewedProducts.map((product, i) => (
+            <Carousel.Item className={styles.item} key={i}>
+              <a href={`products/${product.id}`}>
+                <img alt={product.name} className={styles.center} src={product.images[0]} />
+              </a>
+            </Carousel.Item>
+          ))}
+        </Carousel>
       </div>
     </div>
   );

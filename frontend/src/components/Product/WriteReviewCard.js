@@ -133,7 +133,7 @@ export default function WriteReviewCard() {
           onChange={updateImage}
         />
 
-        <div class="inputContainer fakefile">
+        <div className="inputContainer fakefile">
           <label className="uploadLabel">{uploadMsg}</label>
 
           <div className="uploadPic">

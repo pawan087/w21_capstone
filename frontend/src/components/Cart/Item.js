@@ -51,7 +51,13 @@ export default function ItemComponent({ item, i }) {
   };
 
   useEffect(() => {
-    dispatch(setAllOrderItems());
+    const ayeSink = async () => {
+      await dispatch(setAllOrderItems());
+    };
+
+    ayeSink();
+
+    return () => setLoading(false);
   }, [dispatch]);
 
   return (
@@ -99,7 +105,6 @@ export default function ItemComponent({ item, i }) {
 
         <br />
         <br />
-
 
         <div>
           Total: ${formatter.format(+item.product.price * item.quantity)}

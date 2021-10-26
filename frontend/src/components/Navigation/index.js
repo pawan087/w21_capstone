@@ -47,6 +47,8 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/orders">Orders</NavLink>
 
+        <NavLink to="/test">Test</NavLink>
+
         <select
           name="originId"
           defaultValue="chooseProduct"
