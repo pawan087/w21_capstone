@@ -12,6 +12,7 @@ function ProductsPage() {
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
+  
   useEffect(() => {
     dispatch(setAllProducts());
     dispatch(setAllRecentlyViewed(user.id));

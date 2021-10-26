@@ -74,7 +74,7 @@ function App() {
             <EditOrderPage />
           </Route>
 
-          <Route path="/test" exact={true}>
+          <Route path="/search/:criteria" exact={true}>
             <Test />
           </Route>
         </Switch>
