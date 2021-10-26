@@ -1,10 +1,19 @@
 import styles from "./ProductPage.module.css";
+import ReactImageZoom from "react-image-zoom";
+import StarPicker from "react-star-picker";
 
 function ProductDetail({ num, product, avgRating }) {
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  const props = {
+    width: 470,
+    zoomWidth: 825,
+    zoomPosition: "original",
+    img: `${product[0]?.images[0]}`,
+  };
 
   let rating = formatter.format(avgRating);
 
@@ -13,36 +22,54 @@ function ProductDetail({ num, product, avgRating }) {
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
-            <img
-              className={styles.picOfProduct}
-              src={product[0]?.images[0]}
-              alt="picOfProduct"
-            />
+            <ReactImageZoom className={styles.pic} {...props} />
           </div>
 
           <div className={styles.descriptionContainer}>
             <div className={styles.descriptionLabel}>Product Description</div>
 
             <div className={styles.descriptionText}>
-              {product[0].description}
+              {product[0]?.description}
             </div>
           </div>
         </div>
 
         <div className={styles.rightContainer}>
           <div className={styles.productDetailContainer}>
-            <div className={styles.productNameContainer}>Product Name</div>
-
-            <div className={styles.productBrandContainer}>Product Brand</div>
-
-            <div className={styles.ratingContainer}>
-              <div className={styles.starRating}>Stars</div>
-
-              <div className={styles.textRating}>4.3 (385) Ratings</div>
+            <div className={styles.productNameContainer}>
+              {product[0]?.name}
             </div>
 
-            <div className={styles.addToCartButtonContainer}>
-              <button className={styles.addToCartButton}>ADD TO CART</button>
+            <div className={styles.productBrandContainer}>
+              {product[0]?.Brand?.name}
+            </div>
+
+            <div className={styles.ratingContainer}>
+              <div className={styles.starsContainer}>
+                <div className={styles.starRating}>
+                  <StarPicker
+                    starDimension="10px"
+                    disabled={true}
+                    value={rating}
+                    halfStars
+                  />
+                </div>
+              </div>
+
+              <div className={styles.textRating}>
+                <span className={styles.bold}>{rating}</span>{" "}
+                <span className={styles.underline}>({num})</span> Ratings
+              </div>
+            </div>
+
+            <div className={styles.priceContainer}>
+              <div className={styles.price}>${product[0]?.price}</div>
+            </div>
+
+            <div className={styles.buttonContainer}>
+              <div className={styles.addToCartButtonContainer}>
+                <button className={styles.addToCartButton}>ADD TO CART</button>
+              </div>
             </div>
           </div>
         </div>
@@ -97,3 +124,19 @@ function ProductDetail({ num, product, avgRating }) {
 }
 
 export default ProductDetail;
+
+// <ReactImageMagnify
+//   {...{ enlargedImagePosition: "over" }}
+//   {...{
+//     smallImage: {
+//       alt: "productPic",
+//       isFluidWidth: true,
+//       src: product[0]?.images[0],
+//     },
+//     largeImage: {
+//       src: product[0]?.images[0],
+//       width: 1200,
+//       height: 1800,
+//     },
+//   }}
+// />;

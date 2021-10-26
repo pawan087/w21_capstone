@@ -36,10 +36,12 @@
   justify-items: center;
   align-content: center;
   align-self: center;
-  background-color: red;
+  border-bottom: 1px solid rgb(217, 217, 217);
+  /* background-color: red; */
   height: auto;
   width: 1275px;
   margin: 0 auto;
+  margin-bottom: 50px;
 }
 
 .ratingContainer {
@@ -54,26 +56,124 @@
   align-content: center;
   align-self: center;
   align-items: center;
-  background-color: yellow;
   height: 100%;
   width: 65%;
 }
 
 .rightContainer {
   text-align: left;
-  background-color: pink;
+  /* border: 1px solid black; */
+  background-color: white;
   height: auto;
   width: 35%;
 }
 
 .imageContainer {
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
   height: 470px;
   width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
 }
 
-.picOfProduct {
-  height: 100%;
+.imageContainer:hover {
+  display: block;
+}
+
+.descriptionContainer {
+  margin-top: 25px;
+}
+
+.descriptionLabel {
+  font-size: 19px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.descriptionContainer {
+  padding-bottom: 50px;
+}
+
+.productNameContainer {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 22.5px;
+}
+
+.productBrandContainer {
+  margin-top: 5px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.ratingContainer {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+}
+
+.starRating {
+  transform: scale(0.7);
+}
+
+.starsContainer {
+  transform: translateX(-27.5px);
+}
+
+.textRating {
+  font-size: 12.5px;
+  transform: translate(-40px, 11px);
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(231, 35, 13);
+  letter-spacing: -0.5px;
+}
+
+.priceContainer {
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid rgb(217, 217, 217);
+}
+
+.addToCartButtonContainer {
+  width: 450px;
+  height: 45px;
+}
+
+.addToCartButton {
+  color: white;
+  font-weight: bold;
+  background-color: rgb(231, 35, 13);
+  font-size: 12.5px;
+  outline: none;
+  border: none;
   width: 100%;
-  object-fit: contain;
+  height: 100%;
+}
+
+.buttonContainer {
+  /* border-bottom: 1px solid rgb(217, 217, 217);
+  padding-bottom: 25px; */
 }

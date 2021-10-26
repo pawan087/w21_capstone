@@ -6,6 +6,7 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import ImageZoom from "./components/ImageZoom";
 import Search from "./components/Products/Testing.js";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -33,7 +34,7 @@ function App() {
   return (
     <>
       <MyNavBar />
-      
+
       <Navigation isLoaded={isLoaded} />
 
       <button onClick={() => setShowModal(true)}>Modal</button>
@@ -84,6 +85,10 @@ function App() {
 
           <Route path="/profile" exact={true}>
             <EditUser />
+          </Route>
+
+          <Route path="/test" exact={true}>
+            <ImageZoom />
           </Route>
         </Switch>
       )}

@@ -22,5 +22,8 @@
     "url": "https://github.com/pawan087/w21_capstone/issues"
   },
   "homepage": "https://github.com/pawan087/w21_capstone#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-inner-image-zoom": "^2.1.0"
+  }
 }
