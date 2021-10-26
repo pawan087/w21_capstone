@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
         phone,
         address1,
         address2,
-        recentlyViewed,
         cart,
       } = this; // context will be the User instance
 
@@ -28,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         phone,
         address1,
         address2,
-        recentlyViewed,
         cart,
       };
     }

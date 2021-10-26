@@ -62,6 +62,8 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/orders">Orders</NavLink>
 
+        <NavLink to="/profile">Edit User Profile</NavLink>
+
         <select
           name="originId"
           defaultValue="chooseProduct"

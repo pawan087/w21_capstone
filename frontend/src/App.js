@@ -6,13 +6,14 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
-import Test from "./components/Products/Testing.js";
+import Search from "./components/Products/Testing.js";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
+import EditUser from "./components/EditUser.js/EditUser";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
@@ -75,7 +76,11 @@ function App() {
           </Route>
 
           <Route path="/search/:criteria" exact={true}>
-            <Test />
+            <Search />
+          </Route>
+
+          <Route path="/profile" exact={true}>
+            <EditUser />
           </Route>
         </Switch>
       )}

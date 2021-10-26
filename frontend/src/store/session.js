@@ -67,6 +67,53 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+export const profileEdit = (data) => async (dispatch) => {
+  const {
+    id,
+    username,
+    email,
+    newPassword,
+    password,
+    firstName,
+    lastName,
+    phone,
+    address1,
+    address2,
+  } = data;
+
+  const response = await csrfFetch("/api/session/edit", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      username,
+      email,
+      newPassword,
+      password,
+      firstName,
+      lastName,
+      phone,
+      address1,
+      address2,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+
+    dispatch(setUser(data));
+
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch("/api/session", {
     method: "DELETE",

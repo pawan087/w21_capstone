@@ -1,6 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
 
 const { handleValidationErrors } = require("../../utils/validation");
 const { setTokenCookie, restoreUser } = require("../../utils/auth");
@@ -34,6 +35,112 @@ router.post(
       err.title = "Login failed";
       err.errors = ["The provided credentials were invalid."];
       return next(err);
+    }
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Edit
+router.put(
+  "/edit",
+  asyncHandler(async (req, res, next) => {
+    const {
+      id,
+      username,
+      email,
+      newPassword,
+      password,
+      firstName,
+      lastName,
+      phone,
+      address1,
+      address2,
+    } = req.body;
+
+    const user = await User.findByPk(id);
+
+    console.log("\n\n\n", user, "\n\n\n");
+    
+    let validPassword = bcrypt.compareSync(
+      password,
+      user.hashedPassword.toString()
+    );
+
+    if (!validPassword) {
+      const err = new Error("Incorrect Password");
+
+      err.status = 401;
+      err.title = "Incorrect Password";
+      err.errors = ["The provided password was invalid."];
+
+      return next(err);
+    }
+
+    let hashedPassword;
+
+    if (newPassword) {
+      hashedPassword = bcrypt.hashSync(newPassword);
+    }
+
+    console.log(
+      "\n\n\n",
+      {
+        id,
+        username,
+        email,
+        newPassword: hashedPassword,
+        password,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+      },
+      "\n\n\n"
+    );
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    if (newPassword && password !== newPassword) {
+      console.log("\n\n\n", "UPDATE PASSWORD", "\n\n\n");
+
+      await user.update({
+        username,
+        email,
+        password,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+      });
+    }
+
+    if (!newPassword) {
+      console.log("\n\n\n", "DO NOT UPDATE PASSWORD", "\n\n\n");
+
+      await user.update({
+        username,
+        email,
+        firstName,
+        lastName,
+        phone,
+        address1,
+        address2,
+      });
     }
 
     await setTokenCookie(res, user);
