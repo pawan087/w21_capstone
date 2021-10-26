@@ -67,7 +67,7 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-export const profileEdit = (data) => async (dispatch) => {
+export const profileEdit = (obj) => async (dispatch) => {
   const {
     id,
     username,
@@ -79,7 +79,7 @@ export const profileEdit = (data) => async (dispatch) => {
     phone,
     address1,
     address2,
-  } = data;
+  } = obj;
 
   const response = await csrfFetch("/api/session/edit", {
     method: "PUT",
@@ -97,21 +97,30 @@ export const profileEdit = (data) => async (dispatch) => {
     }),
   });
 
-  if (response.ok) {
-    const data = await response.json();
+  const data = await response.json();
+  dispatch(setUser(data));
 
-    dispatch(setUser(data));
+  return data;
 
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
+  // const data = await response.json();
 
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ["An error occurred. Please try again."];
-  }
+  // console.log(data);
+
+  // if (response.ok) {
+  //   const data = await response.json();
+
+  //   dispatch(setUser(data));
+
+  //   return null;
+  // } else if (response.status < 500) {
+  //   const data = await response.json();
+
+  //   if (data.errors) {
+  //     return data.errors;
+  //   }
+  // } else {
+  //   return ["An error occurred. Please try again."];
+  // }
 };
 
 export const logout = () => async (dispatch) => {

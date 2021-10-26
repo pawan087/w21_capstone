@@ -8,27 +8,26 @@ import styles from "./EditUser.module.css";
 export default function EditUser() {
   const dispatch = useDispatch();
   const history = useHistory();
-//   const bcrypt = require('bcrypt');
 
   const user = useSelector((state) => state.session.user);
 
   const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email);
+  const [username, setUsername] = useState(user?.username);
+  const [email, setEmail] = useState(user?.email);
   const [oldPassword, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [phone, setPhone] = useState(user.phone);
-  const [address1, setAddress1] = useState(user.address1);
-  const [address2, setAddress2] = useState(user.address2);
+  const [firstName, setFirstName] = useState(user?.firstName);
+  const [lastName, setLastName] = useState(user?.lastName);
+  const [phone, setPhone] = useState(user?.phone);
+  const [address1, setAddress1] = useState(user?.address1);
+  const [address2, setAddress2] = useState(user?.address2);
   const [repeatPassword, setRepeatPassword] = useState("");
 
   const onProfileEdit = async (e) => {
     e.preventDefault();
 
     if (password === repeatPassword) {
-      const data = await dispatch(
+      return dispatch(
         profileEdit({
           id: user.id,
           username,
@@ -41,13 +40,10 @@ export default function EditUser() {
           address1,
           address2,
         })
-      );
-
-      //   history.push(`/users/${user.id}`);
-
-      if (data) {
-        setErrors(data);
-      }
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     } else {
       setErrors(["Passwords do not match"]);
     }
