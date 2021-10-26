@@ -73,7 +73,7 @@ function ProductPage() {
     dispatch(setAllReviews());
     dispatch(setAllReviewLikes());
     dispatch(setAllQuestions());
-  }, [dispatch]);
+  }, [params.id, user.id, dispatch]);
 
   if (!user) return <Redirect to="/" />;
 

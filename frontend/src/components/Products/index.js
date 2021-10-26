@@ -15,7 +15,7 @@ function ProductsPage() {
   useEffect(() => {
     dispatch(setAllProducts());
     dispatch(setAllRecentlyViewed(user.id));
-  }, [dispatch]);
+  }, [user.id, dispatch]);
 
   if (!user) return <Redirect to="/" />;
 

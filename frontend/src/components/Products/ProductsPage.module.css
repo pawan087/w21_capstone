@@ -3,16 +3,19 @@
   color: white;
 }
 
-.pic {
-  height: 250px;
-  width: 250px;
-  object-fit: cover;
+.center {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
 }
 
-.pics {
-  display: flex;
-  flex-direction: row;
-  gap: 6.25%;
-  height: 12.5%;
-  width: 12.5%;
+.container {
+  width: 1000px;
 }
