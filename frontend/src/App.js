@@ -14,6 +14,7 @@ import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
 import EditUser from "./components/EditUser.js/EditUser";
+import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
@@ -31,6 +32,8 @@ function App() {
 
   return (
     <>
+      <MyNavBar />
+      
       <Navigation isLoaded={isLoaded} />
 
       <button onClick={() => setShowModal(true)}>Modal</button>

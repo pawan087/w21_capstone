@@ -26,3 +26,11 @@
 .bars {
   width: 50%;
 }
+
+.outerContainer {
+  display: flex;
+}
+
+.ratingContainer {
+  display: flex;
+}

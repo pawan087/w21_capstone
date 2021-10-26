@@ -10,35 +10,76 @@ function ProductDetail({ num, product, avgRating }) {
 
   return (
     <>
-      <h2 className={styles.title}>Product Page</h2>
+      <div className={styles.outerContainer}>
+        <div className={styles.leftContainer}>
+          <div className={styles.imageContainer}>Photo</div>
 
-      <h4>{product[0]?.name}</h4>
+          <div className={styles.descriptionContainer}>Description</div>
+        </div>
 
-      {num !== 0 && (
-        <li>
-          {rating} Stars ({num} reviews)
-        </li>
-      )}
+        <div className={styles.rightContainer}>
+          <div className={styles.productDetailContainer}>
+            <div className={styles.productNameContainer}>Product Name</div>
 
-      <br />
+            <div className={styles.productBrandContainer}>Product Brand</div>
 
-      <li>${product[0]?.price}</li>
+            <div className={styles.ratingContainer}>
+              <div className={styles.starRating}>Stars</div>
 
-      <br></br>
+              <div className={styles.textRating}>4.3 (385) Ratings</div>
+            </div>
 
-      <li>{product[0]?.description}</li>
+            <div className={styles.addToCartButtonContainer}>
+              <button className={styles.addToCartButton}>ADD TO CART</button>
+            </div>
+          </div>
+        </div>
 
-      <br />
-      <br />
+        {"          "}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+      {"          "}
+      <div>
+        <h2 className={styles.title}>Product Page</h2>
 
-      <img
-        className={styles.image}
-        alt="productImage"
-        src={product[0]?.images[0]}
-      ></img>
+        <h4>{product[0]?.name}</h4>
 
-      <br />
-      <br />
+        {num !== 0 && (
+          <li>
+            {rating} Stars ({num} reviews)
+          </li>
+        )}
+
+        <br />
+
+        <li>${product[0]?.price}</li>
+
+        <br></br>
+
+        <li>{product[0]?.description}</li>
+
+        <br />
+        <br />
+
+        <img
+          className={styles.image}
+          alt="productImage"
+          src={product[0]?.images[0]}
+        ></img>
+
+        <br />
+        <br />
+      </div>
     </>
   );
 }
