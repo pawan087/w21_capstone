@@ -12,9 +12,21 @@ function ProductDetail({ num, product, avgRating }) {
     <>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
-          <div className={styles.imageContainer}>Photo</div>
+          <div className={styles.imageContainer}>
+            <img
+              className={styles.picOfProduct}
+              src={product[0]?.images[0]}
+              alt="picOfProduct"
+            />
+          </div>
 
-          <div className={styles.descriptionContainer}>Description</div>
+          <div className={styles.descriptionContainer}>
+            <div className={styles.descriptionLabel}>Product Description</div>
+
+            <div className={styles.descriptionText}>
+              {product[0].description}
+            </div>
+          </div>
         </div>
 
         <div className={styles.rightContainer}>
