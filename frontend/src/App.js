@@ -14,6 +14,7 @@ import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
 import EditUser from "./components/EditUser.js/EditUser";
+// import Search from "./components/Search/index";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";

@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
+import SearchComponent from "../Search";
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
-  const history = useHistory();
-
   const sessionUser = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
-
-  const [criteria, setCriteria] = useState("");
 
   let sessionLinks;
 
@@ -30,25 +27,6 @@ function Navigation({ isLoaded }) {
     );
   }
 
-  const handleSubmit = () => {
-    const searchCriteria = criteria.split(" ").join("_").toLowerCase();
-
-    history.push(`/search/${searchCriteria}`);
-  };
-
-  const productPage = () => {
-    const selection = document.getElementById("products").value;
-
-    history.push(`/products/${selection}`);
-  };
-
-  const handleKeypress = (e) => {
-    //it triggers by pressing the enter key
-    if (e.key === "Enter") {
-      handleSubmit(e);
-    }
-  };
-
   return (
     <ul className={styles.navbar}>
       <li>
@@ -64,39 +42,41 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/profile">Edit User Profile</NavLink>
 
-        <select
-          name="originId"
-          defaultValue="chooseProduct"
-          onChange={productPage}
-          id="products"
-        >
-          <option value="chooseProduct" disabled>
-            Select a Product
-          </option>
-
-          {products?.map((product, i) => (
-            <option key={i} value={product.id}>
-              {product.name}
-            </option>
-          ))}
-        </select>
-
-        <input
-          type="text"
-          onChange={(e) => setCriteria(e.target.value)}
-          value={criteria}
-          placeholder="Search"
-          onKeyPress={handleKeypress}
-        ></input>
-
-        <button onClick={handleSubmit}>Find</button>
-
         {isLoaded && sessionLinks}
+
+        <br />
+
+        <SearchComponent products={products} />
       </li>
     </ul>
   );
 }
 
-// <NavLink to="/test">Test</NavLink>
-
 export default Navigation;
+
+// <input
+//   type="text"
+//   onChange={(e) => setCriteria(e.target.value)}
+//   value={criteria}
+//   placeholder="Search"
+//   onKeyPress={handleKeypress}
+// ></input>
+
+// <button onClick={handleSubmit}>Find</button>
+
+// <select
+//   name="originId"
+//   defaultValue="chooseProduct"
+//   onChange={productPage}
+//   id="products"
+// >
+//   <option value="chooseProduct" disabled>
+//     Select a Product
+//   </option>
+
+//   {products?.map((product, i) => (
+//     <option key={i} value={product.id}>
+//       {product.name}
+//     </option>
+//   ))}
+// </select>
