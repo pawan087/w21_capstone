@@ -10,16 +10,17 @@ module.exports = (sequelize, DataTypes) => {
         id,
         username,
         email,
+        hashedPassword,
         firstName,
         lastName,
         phone,
         address1,
         address2,
-        recentlyViewed,
         cart,
       } = this; // context will be the User instance
 
       return {
+        hashedPassword,
         id,
         username,
         email,
@@ -28,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
         phone,
         address1,
         address2,
-        recentlyViewed,
         cart,
       };
     }
@@ -179,12 +179,12 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
       defaultScope: {
         attributes: {
-          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"],
+          exclude: ["email", "createdAt", "updatedAt"], // should exclude hashed password ?
         },
       },
       scopes: {
         currentUser: {
-          attributes: { exclude: ["hashedPassword"] },
+          attributes: { exclude: ["updatedAt"] }, // should exclude hashed password ?
         },
         loginUser: {
           attributes: {},

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -11,6 +11,8 @@ function Navigation({ isLoaded }) {
 
   const sessionUser = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
+
+  const [criteria, setCriteria] = useState("");
 
   let sessionLinks;
 
@@ -28,10 +30,23 @@ function Navigation({ isLoaded }) {
     );
   }
 
+  const handleSubmit = () => {
+    const searchCriteria = criteria.split(" ").join("_").toLowerCase();
+
+    history.push(`/search/${searchCriteria}`);
+  };
+
   const productPage = () => {
     const selection = document.getElementById("products").value;
 
     history.push(`/products/${selection}`);
+  };
+
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
   };
 
   return (
@@ -47,7 +62,7 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/orders">Orders</NavLink>
 
-        <NavLink to="/test">Test</NavLink>
+        <NavLink to="/profile">Edit User Profile</NavLink>
 
         <select
           name="originId"
@@ -66,10 +81,22 @@ function Navigation({ isLoaded }) {
           ))}
         </select>
 
+        <input
+          type="text"
+          onChange={(e) => setCriteria(e.target.value)}
+          value={criteria}
+          placeholder="Search"
+          onKeyPress={handleKeypress}
+        ></input>
+
+        <button onClick={handleSubmit}>Find</button>
+
         {isLoaded && sessionLinks}
       </li>
     </ul>
   );
 }
+
+// <NavLink to="/test">Test</NavLink>
 
 export default Navigation;
