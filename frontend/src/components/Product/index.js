@@ -83,6 +83,7 @@ function ProductPage() {
         num={productReviews?.length}
         avgRating={avgRating}
         product={product}
+        reviews={productReviews}
       />
 
       <NewCartItem productId={params.id} />

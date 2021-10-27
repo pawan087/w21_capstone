@@ -24,7 +24,7 @@
 }
 
 .bars {
-  width: 50%;
+  width: 320px;
 }
 
 .outerContainer {
@@ -39,9 +39,21 @@
   border-bottom: 1px solid rgb(217, 217, 217);
   /* background-color: red; */
   height: auto;
-  width: 1275px;
+  width: 1400px;
   margin: 0 auto;
   margin-bottom: 40px;
+}
+
+.description a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.description a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .ratingContainer {
@@ -57,7 +69,7 @@
   align-self: center;
   align-items: center;
   height: 100%;
-  width: 65%;
+  width: 100%;
 }
 
 .rightContainer {
@@ -182,7 +194,7 @@
 .categoryContainer {
   display: flex;
   height: 30px;
-  width: 1275px;
+  width: 1400px;
   margin: 0 auto;
   font-size: 16px;
   color: rgba(0, 0, 0, 0.68);
@@ -203,4 +215,17 @@
 
 .lighter {
   color: rgba(0, 0, 0, 0.33);
+}
+
+.labelWithBars {
+  position: relative;
+}
+
+.starsLabel {
+  transform: translateX(-65px);
+  font-weight: bold;
+}
+
+.stars {
+  transform: translateY(-20px)
 }

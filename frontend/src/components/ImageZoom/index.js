@@ -1,29 +1,22 @@
 import React from "react";
-import ReactImageMagnify from "react-image-magnify";
-
-import ReactImageZoom from 'react-image-zoom';
+import ShowMoreText from "react-show-more-text";
 
 export default function ImageZoom() {
+  const executeOnClick = (isExpanded) => {
+    console.log(isExpanded);
+}
   return (
-    <div className="fluid">
-      <div className="fluid__image-container">
-        <ReactImageMagnify
-          {...{
-            smallImage: {
-              alt: "Wristwatch by Ted Baker London",
-              width: 10,
-              height: 10,
-              isFluidWidth: true,
-              src: 'https://i.etsystatic.com/22145649/r/il/4d52e5/2524896116/il_1140xN.2524896116_sctg.jpg',
-            },
-            largeImage: {
-              src: 'https://i.etsystatic.com/22145649/r/il/4d52e5/2524896116/il_1140xN.2524896116_sctg.jpg',
-              width: 1200,
-              height: 1800,
-            },
-          }}
-        />
-      </div>
+    <div>
+      <ShowMoreText
+        lines={3}
+        more="View more"
+        less="View less"
+        className="content-css"
+        expanded={false}
+        width={1000}
+        truncatedEndingComponent={" ... "}
+      >
+      </ShowMoreText>
     </div>
   );
 }

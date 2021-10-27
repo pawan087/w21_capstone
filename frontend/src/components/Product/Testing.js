@@ -29,17 +29,18 @@ export default function Testing({ reviews }) {
     4: "success",
   };
 
+
   return (
     <div className={styles.bars}>
       {arr?.map((x, i) => {
         return (
-          <div>
-            <div>{i + 1} Star Reviews</div>
+          <div className={styles.labelWithBars}>
+            <div className={styles.starsLabel}>{i + 1} {i + 1 > 1 ? 'Stars' : 'Star'}</div>
 
-            <Progress color={colors[x[0]]} value={(x[1] / sum) * 100} />
+            <Progress className={styles.stars} color={'black'} value={(x[1] / sum) * 100} />
           </div>
         );
-      })}
+      }).reverse()}
     </div>
   );
 }

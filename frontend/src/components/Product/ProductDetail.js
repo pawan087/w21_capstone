@@ -2,8 +2,9 @@ import styles from "./ProductPage.module.css";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
 import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
+import ShowMoreText from "react-show-more-text";
 
-function ProductDetail({ num, product, avgRating }) {
+function ProductDetail({ num, product, avgRating, reviews }) {
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -11,7 +12,7 @@ function ProductDetail({ num, product, avgRating }) {
 
   const props = {
     width: 470,
-    zoomWidth: 775,
+    zoomWidth: 900,
     zoomPosition: "original",
     img: `${product[0]?.images[0]}`,
   };
@@ -36,7 +37,7 @@ function ProductDetail({ num, product, avgRating }) {
         )}
 
         <div className={styles.furtherSubcategory}>
-          {product[0]?.FurtherSubcategory.name}
+          {product[0]?.FurtherSubcategory?.name}
         </div>
       </div>
       <div className={styles.outerContainer}>
@@ -48,9 +49,18 @@ function ProductDetail({ num, product, avgRating }) {
           <div className={styles.descriptionContainer}>
             <div className={styles.descriptionLabel}>Product Description</div>
 
-            <div className={styles.descriptionText}>
+            <div className={styles.descriptionText}></div>
+            <ShowMoreText
+              lines={3}
+              more="View more"
+              less="View less"
+              className={styles.description}
+              expanded={false}
+              truncatedEndingComponent={" ... "}
+            >
+              {" "}
               {product[0]?.description}
-            </div>
+            </ShowMoreText>
           </div>
         </div>
 
@@ -95,7 +105,7 @@ function ProductDetail({ num, product, avgRating }) {
         </div>
       </div>
 
-      <RatingsandReviews />
+      <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
       <div>
         <h2 className={styles.title}>Product Page</h2>
