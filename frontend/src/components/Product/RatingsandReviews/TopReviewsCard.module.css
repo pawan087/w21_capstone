@@ -1,0 +1,70 @@
+.topReviewsContainer {
+  background-color: aqua;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+  /* margin: 0 auto; */
+  width: 100vw;
+}
+
+.topReviewsTopContainer {
+  background-color: red;
+}
+
+.topReviewsMiddleContainer {
+  background-color: rosybrown;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.reviewCard1,
+.reviewCard2,
+.reviewCard3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+}
+
+.reviewCardMiddleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+}
+
+.reviewCardBottomContainer {
+  background-color: salmon;
+  display: flex;
+}
+
+.topReviewsBottomContainer {
+  background-color: skyblue;
+}
+
+.topReviewsBottomContainer {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-content: center;
+    align-self: center;
+}

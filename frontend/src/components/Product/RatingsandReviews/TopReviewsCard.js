@@ -28,7 +28,7 @@ export default function TopReviewsCard() {
             <div className={styles.reviewContent}>REVIEW CONTENT GOES HERE</div>
           </div>
 
-          <div className={styles.bottomContainer}>
+          <div className={styles.reviewCardBottomContainer}>
             <div className={styles.helpfulContainer}>Helpful?</div>
 
             <div className={styles.likeButtonContainer}>
@@ -64,7 +64,7 @@ export default function TopReviewsCard() {
             <div className={styles.reviewContent}>REVIEW CONTENT GOES HERE</div>
           </div>
 
-          <div className={styles.middleContainerMiddleContainer}>
+          <div className={styles.reviewCardBottomContainer}>
             <div className={styles.helpfulContainer}>Helpful?</div>
 
             <div className={styles.likeButtonContainer}>
@@ -100,7 +100,7 @@ export default function TopReviewsCard() {
             <div className={styles.reviewContent}>REVIEW CONTENT GOES HERE</div>
           </div>
 
-          <div className={styles.bottomContainer}>
+          <div className={styles.reviewCardBottomContainer}>
             <div className={styles.helpfulContainer}>Helpful?</div>
 
             <div className={styles.likeButtonContainer}>
@@ -118,7 +118,7 @@ export default function TopReviewsCard() {
         </div>
       </div>
 
-      <div className={styles.bottomContainer}>
+      <div className={styles.topReviewsBottomContainer}>
         <div className={styles.showAllButton}>SHOW ALL REVIEWS</div>
       </div>
     </div>
