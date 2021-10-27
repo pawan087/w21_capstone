@@ -33,13 +33,13 @@ export default function TopReviewsCard() {
 
             <div className={styles.likeButtonContainer}>
               <button className={styles.likeButton}>
-                THUMBS UP GOES HERE YES #
+                YES 0
               </button>
             </div>
 
             <div className={styles.dislikeButtonContainer}>
               <button className={styles.dislikeButton}>
-                THUMBS DOWN GOES HERE YES #
+                NO 0
               </button>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function TopReviewsCard() {
       </div>
 
       <div className={styles.topReviewsBottomContainer}>
-        <div className={styles.showAllButton}>SHOW ALL REVIEWS</div>
+        <div className={styles.showAllButton}>Show All Reviews</div>
       </div>
     </div>
   );
