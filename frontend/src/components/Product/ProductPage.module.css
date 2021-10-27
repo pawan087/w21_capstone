@@ -41,7 +41,7 @@
   height: auto;
   width: 1275px;
   margin: 0 auto;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .ratingContainer {
@@ -132,7 +132,7 @@
 }
 
 .textRating {
-  font-size: 12.5px;
+  font-size: 13px;
   transform: translate(-40px, 11px);
 }
 
@@ -152,6 +152,7 @@
 }
 
 .priceContainer {
+  margin-top: 2.5px;
   padding-bottom: 15px;
   margin-bottom: 25px;
   border-bottom: 1px solid rgb(217, 217, 217);
@@ -176,4 +177,30 @@
 .buttonContainer {
   /* border-bottom: 1px solid rgb(217, 217, 217);
   padding-bottom: 25px; */
+}
+
+.categoryContainer {
+  display: flex;
+  height: 30px;
+  width: 1275px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.68);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  justify-self: center;
+  justify-items: center;
+  align-content: center;
+  align-self: center;
+
+}
+
+.categoryContainer div {
+  margin-right: 15px;
+}
+
+.lighter {
+  color: rgba(0, 0, 0, 0.33);
 }

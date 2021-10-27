@@ -1,6 +1,7 @@
 import styles from "./ProductPage.module.css";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
+import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
 
 function ProductDetail({ num, product, avgRating }) {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -10,15 +11,34 @@ function ProductDetail({ num, product, avgRating }) {
 
   const props = {
     width: 470,
-    zoomWidth: 825,
+    zoomWidth: 775,
     zoomPosition: "original",
     img: `${product[0]?.images[0]}`,
   };
+
+  console.log(product[0]);
 
   let rating = formatter.format(avgRating);
 
   return (
     <>
+      <div className={styles.categoryContainer}>
+        <div className={styles.category}>{product[0]?.Category?.name}</div>
+
+        <div className={styles.lighter}>/</div>
+
+        <div className={styles.subcategory}>
+          {product[0]?.Subcategory?.name}
+        </div>
+
+        {product[0]?.FurtherSubcategory && (
+          <div className={styles.lighter}>/</div>
+        )}
+
+        <div className={styles.furtherSubcategory}>
+          {product[0]?.FurtherSubcategory.name}
+        </div>
+      </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
@@ -57,7 +77,7 @@ function ProductDetail({ num, product, avgRating }) {
               </div>
 
               <div className={styles.textRating}>
-                <span className={styles.bold}>{rating}</span>{" "}
+                {!rating && <span className={styles.bold}>{rating}</span>}{" "}
                 <span className={styles.underline}>({num})</span> Ratings
               </div>
             </div>
@@ -73,21 +93,10 @@ function ProductDetail({ num, product, avgRating }) {
             </div>
           </div>
         </div>
-
-        {"          "}
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </div>
-      {"          "}
+
+      <RatingsandReviews />
+
       <div>
         <h2 className={styles.title}>Product Page</h2>
 
