@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import styles from "./RatingandReviews.module.css";
 import StarPicker from "react-star-picker";
 import Testing from "../Testing";
+import TopReviewsCard from "./TopReviewsCard";
 
-export default function RatingsandReviews({avgRating, reviews}) {
+export default function RatingsandReviews({ avgRating, reviews }) {
   const [bool, setBool] = useState(false);
 
   return (
@@ -49,39 +50,42 @@ export default function RatingsandReviews({avgRating, reviews}) {
         )}
       </div>
 
-
-      {bool && <div className={styles.bottomContainer}>
-        <div className={styles.leftContainer}>
-          <div className={styles.leftTopContainer}>
-            <div className={styles.reviewNumber}>
-              {" "}
-              {avgRating}
-              <div className={styles.starsContainer}>
-                <div className={styles.starRating}>
-                  <StarPicker
-                    starDimension="10px"
-                    disabled={true}
-                    value={avgRating}
-                    halfStars
-                  />
+      {bool && (
+        <div className={styles.bottomContainer}>
+          <div className={styles.leftContainer}>
+            <div className={styles.leftTopContainer}>
+              <div className={styles.reviewNumber}>
+                {" "}
+                {avgRating}
+                <div className={styles.starsContainer}>
+                  <div className={styles.starRating}>
+                    <StarPicker
+                      starDimension="10px"
+                      disabled={true}
+                      value={avgRating}
+                      halfStars
+                    />
+                  </div>
                 </div>
               </div>
+
+              <div className={styles.ratingText}>{reviews.length} Ratings</div>
             </div>
 
-            <div className={styles.ratingText}>{reviews.length} Ratings</div>
+            <div className={styles.leftBottomContainer}>
+              <button className={styles.writeReview}>Write A Review</button>
+            </div>
           </div>
 
-          <div className={styles.leftBottomContainer}>
-            <button className={styles.writeReview}>Write A Review</button>
+          <div className={styles.rightContainer}>
+            <div className={styles.barChartsContainer}>
+              <Testing reviews={reviews} />
+            </div>
           </div>
         </div>
+      )}
 
-        <div className={styles.rightContainer}>
-          <div className={styles.barChartsContainer}>
-            <Testing reviews={reviews} />
-          </div>
-        </div>
-      </div>}
+      <TopReviewsCard />
     </div>
   );
 }
