@@ -15,17 +15,9 @@ export default function TopReviewsCard({ reviews, avgRating }) {
       <div className={styles.topReviewsMiddleContainer}>
         {/* MAP START */}
 
-        <div className={styles.carnival}>
-          <Carousel shoDots cols={3} rows={1} gap={0} loop>
-            {reviews?.map((review, i) => {
-              return (
-                <Carousel.Item className={styles.item} key={i}>
-                  <IndividualTopReview review={review} avgRating={avgRating} />
-                </Carousel.Item>
-              );
-            })}
-          </Carousel>
-        </div>
+        {lastThree?.map((review) => {
+          return <IndividualTopReview review={review} avgRating={avgRating} />;
+        })}
 
         {/* MAP END */}
       </div>
@@ -35,3 +27,4 @@ export default function TopReviewsCard({ reviews, avgRating }) {
     </div>
   );
 }
+

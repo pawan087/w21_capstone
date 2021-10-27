@@ -85,7 +85,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </div>
       )}
 
-      <TopReviewsCard />
+      <TopReviewsCard reviews={reviews} avgRating={avgRating} />
     </div>
   );
 }
