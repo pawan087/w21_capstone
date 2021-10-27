@@ -87,8 +87,8 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               </div>
 
               <div className={styles.textRating}>
-                {!rating && <span className={styles.bold}>{rating}</span>}{" "}
-                <span className={styles.underline}>({num})</span> Ratings
+                {!rating && <span className={styles.bold}>{rating}</span>} (
+                {num}) Ratings
               </div>
             </div>
 

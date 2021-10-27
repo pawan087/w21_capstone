@@ -5,7 +5,7 @@ import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
 
 export default function RatingsandReviews({ avgRating, reviews }) {
-  const [bool, setBool] = useState(false);
+  const [bool, setBool] = useState(true); // <-- set to false after dev
 
   return (
     <div className={styles.outerContainer}>
@@ -85,7 +85,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </div>
       )}
 
-      <TopReviewsCard reviews={reviews} avgRating={avgRating} />
+      {bool && <TopReviewsCard reviews={reviews} avgRating={avgRating} />}
     </div>
   );
 }

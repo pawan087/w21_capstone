@@ -1,0 +1,39 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+  }
+
+  img {
+    height: 100px;
+  }
+
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .pagination a {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #6c7ac9;
+    color: #6c7ac9;
+  }
+
+  .pagination__link {
+    font-weight: bold;
+  }
+
+  .pagination__linkactive a {
+    color: #fff;
+    background: #6c7ac9;
+  }
+
+  .pagination__linkdisabled a {
+    color: rgb(198, 197, 202);
+    border: 1px solid rgb(198, 197, 202);
+  }
