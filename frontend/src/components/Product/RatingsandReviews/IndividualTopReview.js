@@ -10,16 +10,6 @@ export default function IndividualTopReview({ review, avgRating }) {
 
   let curTime = new Date();
 
-  // Math.abs(
-  //   Math.round((curTime - new Date(review.createdAt)) / (1000 * 60 * 60 * 24))
-  // );
-
-  //   console.log(review);
-
-  /*
-      RATING - review.rating, USERNAME - review.User.username, DAYS AGO - review.createdAt
-      CONTENT - review.content, LIKES - review.likeCount, DISLIKES - review.dislikeCount
-      */
   return (
     <div className={styles.reviewCard1}>
       <div className={styles.reviewCardTopContainer}>

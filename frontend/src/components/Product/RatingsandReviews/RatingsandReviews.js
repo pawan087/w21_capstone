@@ -5,10 +5,16 @@ import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
+import ReactStars from "react-rating-stars-component";
 
 export default function RatingsandReviews({ avgRating, reviews }) {
   const [bool, setBool] = useState(false); // <-- set to false after dev
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true); // <-- set to true after dev
+  const [rating, setRating] = useState();
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
 
   const show = () => {
     setVisible(true);
@@ -101,8 +107,8 @@ export default function RatingsandReviews({ avgRating, reviews }) {
       {bool && <TopReviewsCard reviews={reviews} avgRating={avgRating} />}
 
       <Rodal
-        width={835}
-        height={545}
+        width={1265}
+        height={790}
         animation={"slideDown"}
         visible={visible}
         onClose={hide}
@@ -113,7 +119,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
             <div className={styles.writeReviewSubtitle}>
               <div className={styles.productImageContainer}>
-                <img></img>
+                <img
+                  className={styles.writeReviewProductPic}
+                  src={"https://shortpixel.com/img/robot_lookleft_wink_big.png"}
+                ></img>
               </div>
 
               <div className={styles.productNameContainer}>
@@ -126,26 +135,36 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             <div className={styles.ratingContainer}>
               <div className={styles.ratingTitle}>Overall Rating</div>
 
-              <div className={styles.starsContainer}>Stars go here</div>
+              <div className={styles.writeReviewStarsContainer}>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChanged}
+                  size={25}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
             </div>
-          </div>
 
-          <div className={styles.bottomContainer}>
-            <div className={styles.emailInputContainer}>
-              <input className={styles.emailInput} type="text"></input>
-            </div>
+            <div className={styles.reviewInputsContainer}>
+              <div className={styles.emailInputContainer}>
+                <input placeholder={'chahal.pawanpreet@gmail.com'}  className={styles.emailInput} type="email"></input>
+              </div>
 
-            <div className={styles.reviewInputContainer}>
-              <textarea className={styles.reviewInput}></textarea>
-            </div>
-
-            <div className={styles.addPhotoContainer}>
-              <button className={styles.addPhotoButton}>Add Photo</button>
+              <div className={styles.contentInputContainer}>
+                <textarea type='text' placeholder='Your review' className={styles.reviewInput}></textarea>
+                <div className={styles.addPhotoContainer}>
+                  <button className={styles.addPhotoButton}>Add Photo</button>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className={styles.writeReviewBottomContainer}>
-            <button>POST REVIEW</button>
+            <button className={styles.writeReviewButton}>POST REVIEW</button>
           </div>
         </div>
       </Rodal>
