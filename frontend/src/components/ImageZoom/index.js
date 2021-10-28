@@ -6,7 +6,6 @@ import IndividualAllReview from "../Product/RatingsandReviews/IndividualAllRevie
 
 export default function Pagination({ arr }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const products = useSelector((state) => state.products);
   const [data, setData] = useState(arr);
 
   const PER_PAGE = 3;
@@ -16,7 +15,7 @@ export default function Pagination({ arr }) {
     window.scrollTo({
       top: 1250,
       left: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
 
@@ -26,9 +25,11 @@ export default function Pagination({ arr }) {
     ?.slice(offset, offset + PER_PAGE)
     ?.map((review) => <IndividualAllReview review={review} />);
 
-  console.log(data);
+  const pageCount = Math.ceil(data?.length / PER_PAGE);
 
-  const pageCount = Math.ceil(data.length / PER_PAGE);
+  useEffect(() => {
+    setData(arr);
+  }, [arr]);
 
   return (
     <>

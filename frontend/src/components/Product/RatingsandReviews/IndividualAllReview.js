@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./IndividualAllReviews.module.css";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 import "rodal/lib/rodal.css";
 
-export default function IndividualTopReview({ review, avgRating }) {
+export default function IndividualTopReview({ review }) {
   const [visible, setVisible] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -129,7 +129,7 @@ export default function IndividualTopReview({ review, avgRating }) {
         animation={"slideDown"}
         visible={visible}
         onClose={hide}
-  
+
       >
         <div         className={styles.red}>
           <img
