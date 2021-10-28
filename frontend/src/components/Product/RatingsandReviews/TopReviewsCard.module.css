@@ -2,11 +2,6 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
   margin: 0 auto;
   width: 1400px;
   height: 365px;
@@ -24,11 +19,11 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between;
   justify-self: space-between;
   justify-items: space-between;
   align-content: space-between;
-  align-self: space-between;
+  align-self: space-between; */
 }
 
 .reviewCard1,
@@ -37,11 +32,11 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  /* justify-content: left;
   justify-self: left;
   justify-items: left;
   align-content: left;
-  align-self: left;
+  align-self: left; */
   margin-left: 10px;
   width: 435px;
   height: 250px;
@@ -51,7 +46,6 @@
 .reviewCardMiddleContainer {
   display: flex;
   flex-direction: column;
-  /* background-color: rosybrown; */
   padding-left: 20px;
 }
 
@@ -67,11 +61,11 @@
   display: flex;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center;
   justify-self: center;
   justify-items: center;
   align-content: center;
-  align-self: center;
+  align-self: center; */
 }
 
 .topReviewsBottomContainer {

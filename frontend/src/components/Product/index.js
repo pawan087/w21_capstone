@@ -14,7 +14,6 @@ import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
 import { addToRecent } from "../../store/recentlyViewed";
-// import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -60,6 +59,7 @@ function ProductPage() {
   productReviews?.forEach((review) => {
     sum += +review.rating;
   });
+
 
   const avgRating = sum / productReviews?.length;
 

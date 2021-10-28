@@ -18,8 +18,6 @@ export default function Test() {
     }
   });
 
-  console.log(searchResults);
-
   return (
     <div>
       <h2>

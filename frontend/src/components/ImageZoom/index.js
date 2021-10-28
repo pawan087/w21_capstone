@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
-import styles from "./styles.module.css";
 
 import IndividualAllReview from "../Product/RatingsandReviews/IndividualAllReview";
+import styles from "./styles.module.css";
 
 export default function Pagination({ arr }) {
   const [currentPage, setCurrentPage] = useState(0);
@@ -24,7 +23,7 @@ export default function Pagination({ arr }) {
 
   const currentPageData = data
     ?.slice(offset, offset + PER_PAGE)
-    ?.map((review) => <IndividualAllReview review={review} />);
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
   const pageCount = Math.ceil(data?.length / PER_PAGE);
 
@@ -42,7 +41,6 @@ export default function Pagination({ arr }) {
             className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
-            className={styles.svg}
           >
             <path
               fillRule="evenodd"

@@ -143,19 +143,3 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 }
 
 export default ProductDetail;
-
-// <ReactImageMagnify
-//   {...{ enlargedImagePosition: "over" }}
-//   {...{
-//     smallImage: {
-//       alt: "productPic",
-//       isFluidWidth: true,
-//       src: product[0]?.images[0],
-//     },
-//     largeImage: {
-//       src: product[0]?.images[0],
-//       width: 1200,
-//       height: 1800,
-//     },
-//   }}
-// />;

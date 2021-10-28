@@ -1,11 +1,8 @@
 .allReviewsContainer {
-  /* background-color: red; */
   margin-top: 25px;
-
 }
 
 .topContainer {
-  /* background-color: yellowgreen; */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -13,11 +10,11 @@
 }
 
 .topMiddleContainer {
-    text-align: right;
+  text-align: right;
 }
 
 .topBottomContainer {
-    display: flex;
+  display: flex;
 }
 
 .allReviewsTitle {
@@ -25,10 +22,10 @@
   font-weight: bold;
 }
 
-.numReviews{
+.numReviews {
   font-weight: normal;
   font-size: 15px;
-  color: rgba(0,0,0,.5);
+  color: rgba(0, 0, 0, 0.5);
   margin-left: 25px;
 }
 
@@ -40,7 +37,7 @@
 .button {
   position: relative;
   outline: 0;
-  border: 1px solid rgb(0,0,0,.75);
+  border: 1px solid rgb(0, 0, 0, 0.75);
   min-width: 195px;
   height: 40px;
   background-color: white;
@@ -68,7 +65,7 @@
 
 .filterIcon {
   width: 22.5px;
-  height:22.5px;
+  height: 22.5px;
   margin-right: 15px;
   margin-bottom: 30px;
 }
@@ -79,8 +76,7 @@
   height: 160px;
 }
 
-
 .menuItem:hover {
-  background-color: rgba(0,0,0,.75);
+  background-color: rgba(0, 0, 0, 0.75);
   color: white;
 }

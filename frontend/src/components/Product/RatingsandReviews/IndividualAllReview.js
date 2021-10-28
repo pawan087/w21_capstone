@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import styles from "./IndividualAllReviews.module.css";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
+
+import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
 export default function IndividualTopReview({ review }) {
@@ -62,21 +63,35 @@ export default function IndividualTopReview({ review }) {
         <div className={styles.reviewCardMiddleContainer}>
           <div className={styles.username}>{review?.User?.username}</div>
 
-          <div className={styles.timeAgo}>
-            {Math.abs(
-              Math.round(
-                (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
-              )
-            )}{" "}
-            days ago
-          </div>
+          {Math.abs(
+            Math.round(
+              (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
+            )
+          ) !== 0 && (
+            <div className={styles.timeAgo}>
+              {Math.abs(
+                Math.round(
+                  (curTime - new Date(review?.createdAt)) /
+                    (1000 * 60 * 60 * 24)
+                )
+              )}{" "}
+              days ago
+            </div>
+          )}
+
+          {Math.abs(
+            Math.round(
+              (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
+            )
+          ) < 1 && <div className={styles.timeAgo}>Today</div>}
 
           <div className={styles.reviewWithPic}>
             <div className={styles.reviewContent}>{review?.content}</div>
 
             {review?.imageUrl && (
-              <div onClick={show} className={styles.picContainer}>
+              <div className={styles.picContainer}>
                 <img
+                  onClick={show}
                   className={styles.pic}
                   alt={"reviewPic"}
                   src={review.imageUrl}
@@ -126,12 +141,12 @@ export default function IndividualTopReview({ review }) {
       <Rodal
         width={835}
         height={545}
-        animation={"slideDown"}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
         visible={visible}
         onClose={hide}
-
       >
-        <div         className={styles.red}>
+        <div className={styles.reviewImageModal}>
           <img
             className={styles.modalImage}
             src={review?.imageUrl}

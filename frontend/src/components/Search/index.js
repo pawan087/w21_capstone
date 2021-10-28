@@ -64,7 +64,6 @@ export default function SearchComponent({ products }) {
               border: "none",
               borderRadius: "4px",
               backgroundColor: "rgb(240,240,240)",
-              boxShadow: "none",
               hoverBackgroundColor: "white",
               color: "rgb(51,51,51)",
               fontSize: "14px",

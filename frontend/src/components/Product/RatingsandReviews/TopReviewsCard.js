@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import styles from "./TopReviewsCard.module.css";
-import IndividualTopReview from "./IndividualTopReview";
 import Carousel from "react-grid-carousel";
+
+import IndividualTopReview from "./IndividualTopReview";
 import AllReviewsContainer from "./AllReviewsContainer";
-import Rodal from "rodal";
-import "rodal/lib/rodal.css";
+import styles from "./TopReviewsCard.module.css";
 
 export default function TopReviewsCard({ reviews, avgRating }) {
   const [bool, setBool] = useState(false);
@@ -24,8 +23,6 @@ export default function TopReviewsCard({ reviews, avgRating }) {
           </div>
 
           <div className={styles.topReviewsMiddleContainer}>
-            {/* MAP START */}
-
             <div className={styles.carnival}>
               <Carousel shoDots cols={3} rows={1} gap={0} loop>
                 {reviews
@@ -42,8 +39,6 @@ export default function TopReviewsCard({ reviews, avgRating }) {
                   .reverse()}
               </Carousel>
             </div>
-
-            {/* MAP END */}
           </div>
 
           <div className={styles.topReviewsBottomContainer}>

@@ -1,34 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { createReview, setAllReviews } from "../../../store/reviews";
-import styles from "./RatingandReviews.module.css";
+import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
+import Rodal from "rodal";
+
 import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
-import Rodal from "rodal";
+import { createReview, setAllReviews } from "../../../store/reviews";
+import styles from "./RatingandReviews.module.css";
 import "rodal/lib/rodal.css";
-import ReactStars from "react-rating-stars-component";
-import { remove, set } from "js-cookie";
 
 export default function RatingsandReviews({ avgRating, reviews }) {
   const dispatch = useDispatch();
   const params = useParams();
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   const user = useSelector((state) => state.session.user);
+  const products = useSelector((state) => state.products);
 
+  const thisPagesProuct = products?.filter((product) => {
+    return product.id === +params.id;
+  });
+  const [bool2, setBool2] = useState(false);
   const [bool, setBool] = useState(false); // <-- set to false after dev
   const [visible, setVisible] = useState(false); // <-- set to true after dev
-  const [visible2, setVisible2] = useState(true); // <-- set to false after dev
-  const [rating, setRating] = useState();
+  const [visible2, setVisible2] = useState(false); // <-- set to false after dev
+  const [rating, setRating] = useState(0);
 
   const [content, setContent] = useState("");
-  const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [uploadMsg, setUploadMsg] = useState("Upload Picutre");
-  const [imageLoading, setImageLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
+
+  const contentSetter = (e) => {
+    setContent(e.target.value);
+    setBool2(false);
+  };
+
+  const show = () => {
+    setVisible(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+    clear();
+  };
+
+  const show2 = () => {
+    setVisible2(true);
+    setVisible(false);
+  };
+
+  const hide2 = () => {
+    setVisible2(false);
+    setVisible(true);
+  };
+
+  const addPhoto = () => {
+    if (!selectedFile) return;
+
+    setVisible2(false);
+    setVisible(true);
+  };
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -44,13 +82,8 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const handleSubmit = async () => {
     if (content === "") {
+      setBool2(true);
       return;
-    }
-
-    setLoading(true);
-
-    if (image) {
-      setImageLoading(true);
     }
 
     await dispatch(
@@ -70,40 +103,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setPreview("");
     setRating(0);
 
-    if (image) {
-      setImageLoading(false);
-    }
-
     setUploadMsg("Upload Picture");
-    setLoading(false);
     setSelectedFile();
-
+    hide();
     // window.location.reload();
-  };
-
-  const show = () => {
-    setVisible(true);
-  };
-
-  const hide = () => {
-    setVisible(false);
-  };
-
-  const show2 = () => {
-    setVisible2(true);
-    setVisible(false);
-  };
-
-  const hide2 = () => {
-    setVisible2(false);
-    setVisible(true);
-  };
-
-  const addPhoto = () => {
-    if (!selectedFile) return;
-
-    setVisible2(false);
-    setVisible(true);
   };
 
   useEffect(() => {
@@ -184,7 +187,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             <div className={styles.leftTopContainer}>
               <div className={styles.reviewNumber}>
                 {" "}
-                {avgRating}
+                {formatter.format(avgRating)}
                 <div className={styles.starsContainer}>
                   <div className={styles.starRating}>
                     <StarPicker
@@ -233,12 +236,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
               <div className={styles.productImageContainer}>
                 <img
                   className={styles.writeReviewProductPic}
+                  alt={'picOfProductInReviewModal'}
                   src={"https://shortpixel.com/img/robot_lookleft_wink_big.png"}
                 ></img>
               </div>
 
               <div className={styles.productNameContainer}>
-                Product name goes here
+                {thisPagesProuct[0]?.name}
               </div>
             </div>
           </div>
@@ -268,17 +272,21 @@ export default function RatingsandReviews({ avgRating, reviews }) {
                   className={styles.emailInput}
                   type="email"
                   value={user.email}
+                  readOnly
                 ></input>
               </div>
 
               <div className={styles.contentInputContainer}>
                 <textarea
                   value={content}
-                  onChange={(e) => setContent(e.target.value)}
+                  onChange={(e) => contentSetter(e)}
                   type="text"
                   placeholder="Your review"
                   className={styles.reviewInput}
                 ></textarea>
+
+                {bool2 && <div className={styles.required}>Required</div>}
+
                 <div className={styles.addPhotoContainer}>
                   {!selectedFile && (
                     <button onClick={show2} className={styles.addPhotoButton}>
@@ -321,7 +329,9 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           </div>
 
           <div className={styles.writeReviewBottomContainer}>
-            <button className={styles.writeReviewButton}>POST REVIEW</button>
+            <button onClick={handleSubmit} className={styles.writeReviewButton}>
+              POST REVIEW
+            </button>
           </div>
         </div>
       </Rodal>
@@ -369,10 +379,17 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             )}
 
             <div className={styles.removePhotoContainer}>
-              {selectedFile && <div onClick={removePhoto} className={styles.removePhoto}>
-                Remove Photo
-              </div>}
-              {!selectedFile && <div onClick={removePhoto} className={styles.removePhoto2}></div>}
+              {selectedFile && (
+                <div onClick={removePhoto} className={styles.removePhoto}>
+                  Remove Photo
+                </div>
+              )}
+              {!selectedFile && (
+                <div
+                  onClick={removePhoto}
+                  className={styles.removePhoto2}
+                ></div>
+              )}
             </div>
           </div>
 

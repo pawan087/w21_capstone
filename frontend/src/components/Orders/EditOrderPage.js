@@ -15,7 +15,6 @@ export default function EditOrderPage() {
 
   const user = useSelector((state) => state.session.user);
 
-  // const arr = useSelector((state) => state.orderItemToEditReducer);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
 

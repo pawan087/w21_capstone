@@ -16,10 +16,6 @@
 .outerContainer {
   display: flex;
   justify-content: space-between;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
   align-items: center;
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
@@ -58,12 +54,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
   align-self: center;
-  align-items: center;
   margin-right: 25px;
 }
 
@@ -78,20 +69,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
-  align-items: center;
 }
 
 .middleSection {
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
-  align-items: center;
   width: 995px;
   margin-right: 55px;
   margin-left: 55px;
@@ -101,11 +81,6 @@
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
   align-items: center;
 }
 
@@ -122,10 +97,6 @@
   font-weight: bold;
   color: black;
   justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
   align-items: center;
   background-color: rgb(221, 221, 221);
   border-radius: 1000em;
@@ -156,10 +127,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
   align-items: center;
   color: white;
   height: 5px;

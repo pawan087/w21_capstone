@@ -5,12 +5,12 @@
 
 .center {
   display: flex;
-  justify-content: center;
+  /* justify-content: center;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center;
-  align-items: center;
+  align-items: center; */
   height: 200px;
   width: 200px;
   object-fit: contain;

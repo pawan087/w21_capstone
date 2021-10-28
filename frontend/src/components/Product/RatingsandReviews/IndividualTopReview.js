@@ -1,6 +1,7 @@
 import React from "react";
-import styles from "./TopReviewsCard.module.css";
 import StarPicker from "react-star-picker";
+
+import styles from "./TopReviewsCard.module.css";
 
 export default function IndividualTopReview({ review, avgRating }) {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -49,14 +50,27 @@ export default function IndividualTopReview({ review, avgRating }) {
       <div className={styles.reviewCardMiddleContainer}>
         <div className={styles.username}>{review?.User?.username}</div>
 
-        <div className={styles.timeAgo}>
-          {Math.abs(
-            Math.round(
-              (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
-            )
-          )}{" "}
-          days ago
-        </div>
+        {Math.abs(
+          Math.round(
+            (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
+          )
+        ) !== 0 && (
+          <div className={styles.timeAgo}>
+            {Math.abs(
+              Math.round(
+                (curTime - new Date(review?.createdAt)) /
+                  (1000 * 60 * 60 * 24)
+              )
+            )}{" "}
+            days ago
+          </div>
+        )}
+
+        {Math.abs(
+          Math.round(
+            (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
+          )
+        ) < 1 && <div className={styles.timeAgo}>Today</div>}
 
         <div className={styles.reviewContent}>{review?.content}</div>
       </div>

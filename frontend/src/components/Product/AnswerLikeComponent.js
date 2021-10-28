@@ -25,7 +25,6 @@ export default function AnswerLikeComponent({ answer }) {
         answerLike.answerId === answer.id &&
         answerLike.like
       ) {
-        // console.log("Already liked");
         alreadyLiked = true;
         id = answerLike.id;
       }
@@ -41,15 +40,10 @@ export default function AnswerLikeComponent({ answer }) {
     });
 
     if (alreadyLiked) {
-      // console.log("Delete Like");
-
       await dispatch(deleteLike(id));
 
       await dispatch(setAllAnswerLikes());
     } else {
-      // console.log("Not liked");
-      // console.log("Create Like");
-
       if (alreadyDisliked) {
         await dispatch(
           deleteTheOpposingAndCreateLike({
@@ -82,7 +76,6 @@ export default function AnswerLikeComponent({ answer }) {
         answerLike.answerId === answer.id &&
         !answerLike.like
       ) {
-        // console.log("Already disliked");
         alreadyDisliked = true;
         id = answerLike.id;
       }
@@ -98,13 +91,9 @@ export default function AnswerLikeComponent({ answer }) {
     });
 
     if (alreadyDisliked) {
-      // console.log("Delete Dislike");
       await dispatch(deleteLike(id));
       await dispatch(setAllAnswerLikes());
     } else {
-      // console.log("Not disliked");
-      // console.log("Create Dislike");
-
       if (alreadyLiked) {
         await dispatch(
           deleteTheOpposingAndCreateLike({

@@ -11,7 +11,10 @@ export default function Testing({ reviews }) {
   }
 
   reviews?.forEach((review) => {
-    obj[Math.floor(review.rating)] += 1;
+    if (review?.rating !== '0') {
+
+      obj[Math.floor(review?.rating)] += 1;
+    }
   });
 
   let arr = Object.entries(obj);
@@ -22,22 +25,21 @@ export default function Testing({ reviews }) {
     sum += x[1];
   });
 
-  let colors = {
-    1: "danger",
-    2: "warning",
-    3: "info",
-    4: "success",
-  };
-
+  // let colors = {
+  //   1: "danger",
+  //   2: "warning",
+  //   3: "info",
+  //   4: "success",
+  // };
 
   return (
     <div className={styles.bars}>
       {arr?.map((x, i) => {
         return (
-          <div className={styles.labelWithBars}>
+          <div key={i} className={styles.labelWithBars}>
             <div className={styles.starsLabel}>{i + 1} {i + 1 > 1 ? 'Stars' : 'Star'}</div>
 
-            <Progress className={styles.stars} color={'black'} value={(x[1] / sum) * 100} />
+            <Progress max={100} className={styles.stars} color={'black'} value={(x[1]/sum * 100)} />
           </div>
         );
       }).reverse()}

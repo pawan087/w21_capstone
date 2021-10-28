@@ -1,6 +1,5 @@
-.topReviewsContainer {
+/* .topReviewsContainer {
   text-align: left;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   justify-self: center;
@@ -11,14 +10,14 @@
   width: 1400px;
   height: 365px;
   margin-top: 25px;
-}
+} */
 
 .topReviewsTopContainer {
   background-color: #ffffff;
   height: 40px;
 }
 
-.topReviewsMiddleContainer {
+/* .topReviewsMiddleContainer {
   height: 250px;
   width: 1400px;
   background-color: #ffffff;
@@ -29,7 +28,7 @@
   justify-items: space-between;
   align-content: space-between;
   align-self: space-between;
-}
+} */
 
 .reviewCard1,
 .reviewCard2,
@@ -37,13 +36,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  /* background-color: red; */
-  justify-self: left;
-  justify-items: left;
-  align-content: left;
   transform: translateX(-10px);
-  align-self: left;
   position: relative;
   margin-left: 10px;
   width: 1400px;
@@ -65,7 +58,7 @@
   /* margin-bottom; */
 }
 
-.topReviewsBottomContainer {
+/* .topReviewsBottomContainer {
   background-color: #ffffff;
   height: 90px;
   width: 1400px;
@@ -77,22 +70,22 @@
   justify-items: center;
   align-content: center;
   align-self: center;
-}
+} */
 
-.topReviewsBottomContainer {
+/* .topReviewsBottomContainer {
   display: flex;
   justify-content: center;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center;
-}
+} */
 
-.topReviewTitle {
+/* .topReviewTitle {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
-}
+} */
 
 .reviewCardTopContainer {
   display: flex;
@@ -198,33 +191,27 @@
   width: 1400px;
 }
 
-
-.picContainer {
-  /* position: absolute;
-  left: 350px; */
-}
-
 .pic {
   width: 120px;
   height: 120px;
   object-fit: cover;
   margin-bottom: 25px;
   margin-right: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .reviewWithPic {
   display: flex;
-  /* text-align: center; */
   flex-direction: column;
 }
 
-
-.modalImage  {
-  width: 835px;
-  height: 515px;
+.modalImage {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.red {
-  /* background-color: red; */
+.reviewImageModal {
+  width: 100%;
+  height: 100%;
 }

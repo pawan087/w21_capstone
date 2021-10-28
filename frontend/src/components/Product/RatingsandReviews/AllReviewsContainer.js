@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import styles from "./AllReviewsContainer.module.css";
 import Pagination from "../../ImageZoom";
-import { Menu, MenuItem, MenuButton, SubMenu } from "@szhsin/react-menu";
+import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
+// import { SubMenu } from "@szhsin/react-menu";
+
+import styles from "./AllReviewsContainer.module.css";
 import "@szhsin/react-menu/dist/index.css";
 
 export default function AllReviewsContainer({ reviews }) {
