@@ -9,7 +9,8 @@ import ReactStars from "react-rating-stars-component";
 
 export default function RatingsandReviews({ avgRating, reviews }) {
   const [bool, setBool] = useState(false); // <-- set to false after dev
-  const [visible, setVisible] = useState(true); // <-- set to true after dev
+  const [visible, setVisible] = useState(false); // <-- set to true after dev
+  const [visible2, setVisible2] = useState(true); // <-- set to false after dev
   const [rating, setRating] = useState();
 
   const ratingChanged = (newRating) => {
@@ -22,6 +23,16 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const hide = () => {
     setVisible(false);
+  };
+
+  const show2 = () => {
+    setVisible2(true);
+    setVisible(false);
+  };
+
+  const hide2 = () => {
+    setVisible2(false);
+    setVisible(true);
   };
 
   return (
@@ -109,7 +120,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
       <Rodal
         width={1265}
         height={790}
-        animation={"slideDown"}
+        animation={"zoom"}
         visible={visible}
         onClose={hide}
       >
@@ -151,13 +162,23 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
             <div className={styles.reviewInputsContainer}>
               <div className={styles.emailInputContainer}>
-                <input placeholder={'chahal.pawanpreet@gmail.com'}  className={styles.emailInput} type="email"></input>
+                <input
+                  placeholder={"chahal.pawanpreet@gmail.com"}
+                  className={styles.emailInput}
+                  type="email"
+                ></input>
               </div>
 
               <div className={styles.contentInputContainer}>
-                <textarea type='text' placeholder='Your review' className={styles.reviewInput}></textarea>
+                <textarea
+                  type="text"
+                  placeholder="Your review"
+                  className={styles.reviewInput}
+                ></textarea>
                 <div className={styles.addPhotoContainer}>
-                  <button className={styles.addPhotoButton}>Add Photo</button>
+                  <button onClick={show2} className={styles.addPhotoButton}>
+                    Add Photo
+                  </button>
                 </div>
               </div>
             </div>
@@ -165,6 +186,59 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
           <div className={styles.writeReviewBottomContainer}>
             <button className={styles.writeReviewButton}>POST REVIEW</button>
+          </div>
+        </div>
+      </Rodal>
+      <Rodal
+        animation={"zoom"}
+        width={685}
+        height={505}
+        visible={visible2}
+        onClose={hide2}
+      >
+        <div className={styles.addPhotoOuterContainer}>
+          <div className={styles.addPhotoTopContainer}>
+            <div className={styles.addPhotoTitle}>Add Photo</div>
+          </div>
+
+          <div className={styles.addPhotoMiddleContainer}>
+            {false && <div className={styles.addPhotoEmptyPreviewContainer}>
+              <div className={styles.cameraIcon}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>}
+
+            {true && <div className={styles.addPhotoPreviewContainer}>
+              <img
+                className={styles.photoPreview}
+                src="https://d279m997dpfwgl.cloudfront.net/wp/2020/05/pencil-standardized-test-1000x667.jpg"
+              ></img>
+            </div>}
+
+            <div className={styles.removePhotoContainer}>
+              <div className={styles.removePhoto}>Remove Photo</div>
+            </div>
+          </div>
+
+          <div className={styles.addPhotoLowerContainer}>
+            <div className={styles.selectFileContainer}>
+              <input type="file"></input>
+            </div>
+
+            <div className={styles.addPhotoButtonContainer}>
+              <button className={styles.addPhotoButton2}>ADD PHOTO</button>
+            </div>
           </div>
         </div>
       </Rodal>
