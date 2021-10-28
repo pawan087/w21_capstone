@@ -27,7 +27,8 @@
     "react-star-picker": "^2.0.8",
     "reactstrap": "^8.10.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "rodal": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

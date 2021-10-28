@@ -13,6 +13,11 @@ export default function Pagination({ arr }) {
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
+    window.scrollTo({
+      top: 1250,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
   const offset = currentPage * PER_PAGE;
@@ -29,8 +34,34 @@ export default function Pagination({ arr }) {
     <>
       <div className={styles.holder}>{currentPageData}</div>
       <ReactPaginate
-        previousLabel={"←"}
-        nextLabel={"→"}
+        previousLabel={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+        }
+        nextLabel={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+              clipRule="evenodd"
+            />
+          </svg>
+        }
         pageCount={pageCount}
         onPageChange={handlePageClick}
         containerClassName={styles.pagination}

@@ -159,7 +159,7 @@
   width: 17.5px;
   height: 17.5px;
   top: 5px;
-  left: 10px;
+  left: 9px;
 }
 
 .thumbsDownIcon {
@@ -216,4 +216,15 @@
   display: flex;
   /* text-align: center; */
   flex-direction: column;
+}
+
+
+.modalImage  {
+  width: 835px;
+  height: 515px;
+  object-fit: contain;
+}
+
+.red {
+  /* background-color: red; */
 }

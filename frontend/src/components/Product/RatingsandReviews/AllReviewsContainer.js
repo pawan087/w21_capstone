@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AllReviewsContainer.module.css";
-import IndividualAllReview from "./IndividualAllReview";
+// import IndividualAllReview from "./IndividualAllReview";
 import Pagination from "../../ImageZoom";
 
 export default function AllReviewsContainer({ reviews }) {
