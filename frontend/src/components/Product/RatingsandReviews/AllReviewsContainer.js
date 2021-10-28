@@ -1,18 +1,15 @@
 import React from "react";
 import styles from "./AllReviewsContainer.module.css";
 import IndividualAllReview from "./IndividualAllReview";
-import ReactPaginate from 'react-paginate';
-
+import Pagination from "../../ImageZoom";
 
 export default function AllReviewsContainer({ reviews }) {
-  console.log(reviews);
   return (
     <div className={styles.allReviewsContainer}>
       <div className={styles.topContainer}>
         <div className={styles.topTopContainer}>
           <div className={styles.allReviewsTitle}>
             All Reviews{" "}
-            <span className={styles.numReviews}>1 - 5 of 201 Reviews</span>
           </div>
         </div>
 
@@ -59,13 +56,11 @@ export default function AllReviewsContainer({ reviews }) {
           <div className={styles.filterText}>Filter</div>
         </div>
       </div>
-      {/* MAPPING */}
-
-      {reviews?.map((review) => {
+      {/* reviews?.map((review) => {
         return <IndividualAllReview review={review} />;
-      })}
+      }) */}
 
-      {/* MAPPING */}
+      <Pagination arr={reviews} />
     </div>
   );
 }

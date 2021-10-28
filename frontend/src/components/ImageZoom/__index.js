@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import styles from "./styles.module.css";
-import IndividualAllReview from "../Product/RatingsandReviews/IndividualAllReview";
 
-export default function Pagination({ arr }) {
+export default function Pagination({arr}) {
   const [currentPage, setCurrentPage] = useState(0);
   const products = useSelector((state) => state.products);
-  const [data, setData] = useState(arr);
+  const [data, setData] = useState(products);
 
-  const PER_PAGE = 3;
+  const PER_PAGE = 2;
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
@@ -18,15 +17,13 @@ export default function Pagination({ arr }) {
   const offset = currentPage * PER_PAGE;
 
   const currentPageData = data
-    ?.slice(offset, offset + PER_PAGE)
-    ?.map((review) => <IndividualAllReview review={review} />);
-
-  console.log(data);
+    .slice(offset, offset + PER_PAGE)
+    .map((product) => <img className={styles.img} src={product?.images[0]} />);
 
   const pageCount = Math.ceil(data.length / PER_PAGE);
 
   return (
-    <>
+    <div className={styles.App}>
       <div className={styles.holder}>{currentPageData}</div>
       <ReactPaginate
         previousLabel={"←"}
@@ -39,6 +36,6 @@ export default function Pagination({ arr }) {
         disabledClassName={styles.pagination__linkdisabled}
         activeClassName={styles.pagination__linkactive}
       />
-    </>
+    </div>
   );
 }
