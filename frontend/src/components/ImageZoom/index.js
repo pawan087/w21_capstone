@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 import styles from "./styles.module.css";
+
 import IndividualAllReview from "../Product/RatingsandReviews/IndividualAllReview";
 
 export default function Pagination({ arr }) {
@@ -41,6 +42,7 @@ export default function Pagination({ arr }) {
             className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
+            className={styles.svg}
           >
             <path
               fillRule="evenodd"
@@ -63,6 +65,7 @@ export default function Pagination({ arr }) {
             />
           </svg>
         }
+        marginPagesDisplayed={500}
         pageCount={pageCount}
         onPageChange={handlePageClick}
         containerClassName={styles.pagination}

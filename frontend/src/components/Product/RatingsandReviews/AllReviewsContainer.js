@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./AllReviewsContainer.module.css";
 import Pagination from "../../ImageZoom";
 import { Menu, MenuItem, MenuButton, SubMenu } from "@szhsin/react-menu";

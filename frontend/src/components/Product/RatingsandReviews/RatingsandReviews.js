@@ -3,9 +3,20 @@ import styles from "./RatingandReviews.module.css";
 import StarPicker from "react-star-picker";
 import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
+import Rodal from "rodal";
+import "rodal/lib/rodal.css";
 
 export default function RatingsandReviews({ avgRating, reviews }) {
   const [bool, setBool] = useState(false); // <-- set to false after dev
+  const [visible, setVisible] = useState(false);
+
+  const show = () => {
+    setVisible(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+  };
 
   return (
     <div className={styles.outerContainer}>
@@ -73,7 +84,9 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             </div>
 
             <div className={styles.leftBottomContainer}>
-              <button className={styles.writeReview}>Write A Review</button>
+              <button onClick={show} className={styles.writeReview}>
+                Write A Review
+              </button>
             </div>
           </div>
 
@@ -86,6 +99,56 @@ export default function RatingsandReviews({ avgRating, reviews }) {
       )}
 
       {bool && <TopReviewsCard reviews={reviews} avgRating={avgRating} />}
+
+      <Rodal
+        width={835}
+        height={545}
+        animation={"slideDown"}
+        visible={visible}
+        onClose={hide}
+      >
+        <div className={styles.writeReviewOuterContainer}>
+          <div className={styles.writeReviewTopContainer}>
+            <div className={styles.writeReviewTitle}>Write a review</div>
+
+            <div className={styles.writeReviewSubtitle}>
+              <div className={styles.productImageContainer}>
+                <img></img>
+              </div>
+
+              <div className={styles.productNameContainer}>
+                Product name goes here
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewMiddleContainer}>
+            <div className={styles.ratingContainer}>
+              <div className={styles.ratingTitle}>Overall Rating</div>
+
+              <div className={styles.starsContainer}>Stars go here</div>
+            </div>
+          </div>
+
+          <div className={styles.bottomContainer}>
+            <div className={styles.emailInputContainer}>
+              <input className={styles.emailInput} type="text"></input>
+            </div>
+
+            <div className={styles.reviewInputContainer}>
+              <textarea className={styles.reviewInput}></textarea>
+            </div>
+
+            <div className={styles.addPhotoContainer}>
+              <button className={styles.addPhotoButton}>Add Photo</button>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewBottomContainer}>
+            <button>POST REVIEW</button>
+          </div>
+        </div>
+      </Rodal>
     </div>
   );
 }
