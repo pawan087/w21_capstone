@@ -291,6 +291,7 @@
   width: 685px;
   transform: translate(-15px, -15px);
   height: 505px;
+  background-color: rgb(247, 247, 247);
 }
 
 .addPhotoTopContainer {
@@ -310,7 +311,7 @@
 /* CONTROLS PIC MODAL HEIGHT */
 .addPhotoMiddleContainer {
   /* background-color: skyblue; */
-  height: 325px;
+  height: 350px;
   width: 100%;
 }
 
@@ -347,7 +348,7 @@
 .addPhotoPreviewContainer {
   background-color: rgb(204, 204, 204);
   width: 320px;
-  height: 320px;
+  height: 275px;
   margin: 0 auto;
   margin-top: 25px;
   display: flex;
@@ -361,7 +362,12 @@
   border: 2px solid rgb(144, 144, 144);
 }
 
+.addPhotoEmptyPreviewContainer {
+  margin-bottom: 7.5px;
+}
+
 .addPhotoPreviewContainer {
+  margin-bottom: 10px;
   border: none;
 }
 
@@ -378,7 +384,7 @@
 .photoPreview {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   background-color: rgb(247, 247, 247);
 }
 
@@ -386,21 +392,28 @@
   /* background-color: tomato; */
   padding-bottom: 15px;
   text-align: center;
+  background-color: rgb(247, 247, 247);
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-.removePhoto {
+.removePhoto,
+.removePhoto2 {
   margin-left: 20px;
-  height: 100%;
+  height: 22.5px;
   width: 105px;
   background-color: rgb(217, 217, 217);
   font-size: 12.5px;
   font-weight: bold;
 }
 
+.removePhoto2 {
+  background-color: transparent;
+}
+
 .addPhotoButtonContainer {
-  width: 95px;
-  height: 35px;
+  margin-top: 15px;
+  width: 105px;
+  height: 25px;
 }
 
 .addPhotoButton2 {
@@ -417,4 +430,27 @@
 
 .selectFileContainer {
   margin-top: 25px;
+}
+
+.selectedReviewImagePreviewContainer {
+  /* background-color: springgreen; */
+  width: 100%;
+  height: 62.5px;
+}
+.selectedReviewImagePreview {
+  width: 130px;
+  height: 40px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  background-color: white;
+  object-fit: cover;
+}
+
+.removeImageIconContainer {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 129px;
+  color: rgba(238, 42, 40, 0.8);
 }
