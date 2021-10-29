@@ -44,6 +44,10 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: 20px;
 }
+/* 
+.reviewCard1:hover {
+  border: 1px solid rgba(0, 0, 0, 0.33);
+} */
 
 .reviewCardMiddleContainer {
   display: flex;

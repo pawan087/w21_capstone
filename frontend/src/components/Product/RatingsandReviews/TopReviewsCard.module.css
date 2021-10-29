@@ -43,6 +43,11 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.reviewCard1:hover {
+  border: 1px solid rgba(0, 0, 0, 0.33);
+
+}
+
 .reviewCardMiddleContainer {
   display: flex;
   flex-direction: column;
@@ -184,4 +189,11 @@
 
 .carnival {
   width: 1400px;
+}
+
+.deleteReview {
+  color: rgba(0, 0, 0, 0.75);
+  text-decoration: underline;
+  font-size: 12.5px;
+  transform: translate(30px, -140px);
 }

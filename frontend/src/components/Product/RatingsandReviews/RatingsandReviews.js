@@ -14,21 +14,24 @@ import "rodal/lib/rodal.css";
 export default function RatingsandReviews({ avgRating, reviews }) {
   const dispatch = useDispatch();
   const params = useParams();
+
+  const user = useSelector((state) => state.session.user);
+  const products = useSelector((state) => state.products);
+  
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
-  const user = useSelector((state) => state.session.user);
-  const products = useSelector((state) => state.products);
 
-  const thisPagesProuct = products?.filter((product) => {
+  const thisPagesProduct = products?.filter((product) => {
     return product.id === +params.id;
   });
   const [bool2, setBool2] = useState(false);
   const [bool, setBool] = useState(false); // <-- set to false after dev
   const [visible, setVisible] = useState(false); // <-- set to true after dev
   const [visible2, setVisible2] = useState(false); // <-- set to false after dev
+  const [visible3, setVisible3] = useState(false); // <-- set to false after dev
   const [rating, setRating] = useState(0);
 
   const [content, setContent] = useState("");
@@ -49,6 +52,9 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const hide = () => {
     setVisible(false);
     clear();
+    // setVisible3(true);
+
+    // setTimeout(setVisible3(false), 3000);
   };
 
   const show2 = () => {
@@ -61,11 +67,18 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setVisible(true);
   };
 
+  const hide3 = () => {
+    setVisible2(false);
+    setVisible(true);
+  };
+
   const addPhoto = () => {
     if (!selectedFile) return;
 
     setVisible2(false);
     setVisible(true);
+
+    setBool2(false);
   };
 
   const ratingChanged = (newRating) => {
@@ -106,6 +119,8 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setUploadMsg("Upload Picture");
     setSelectedFile();
     hide();
+    setVisible3(true);
+    setTimeout(() => setVisible3(false), 2000)
     // window.location.reload();
   };
 
@@ -137,6 +152,8 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setSelectedFile();
     setUploadMsg("Upload Picture");
   };
+
+  // console.log(thisPagesProduct[0]?.images[0])
 
   return (
     <div className={styles.outerContainer}>
@@ -236,13 +253,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
               <div className={styles.productImageContainer}>
                 <img
                   className={styles.writeReviewProductPic}
-                  alt={'picOfProductInReviewModal'}
-                  src={"https://shortpixel.com/img/robot_lookleft_wink_big.png"}
+                  alt={"picOfProductInReviewModal"}
+                  src={thisPagesProduct[0]?.images[0]}
                 ></img>
               </div>
 
               <div className={styles.productNameContainer}>
-                {thisPagesProuct[0]?.name}
+                {thisPagesProduct[0]?.name}
               </div>
             </div>
           </div>
@@ -436,6 +453,19 @@ export default function RatingsandReviews({ avgRating, reviews }) {
               </div>
             )}
           </div>
+        </div>
+      </Rodal>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={visible3}
+        onClose={hide3}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          Your review was submitted!
         </div>
       </Rodal>
     </div>

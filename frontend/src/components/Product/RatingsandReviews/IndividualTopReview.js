@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import StarPicker from "react-star-picker";
+import Rodal from "rodal";
 
 import styles from "./TopReviewsCard.module.css";
+import "rodal/lib/rodal.css";
 
-export default function IndividualTopReview({ review, avgRating }) {
+export default function IndividualTopReview({ review }) {
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
+
+  const user = useSelector((state) => state.session.user);
+
+  const [visible, setVisible] = useState(false); // <-- set to true after dev
+
+  const hide = () => {
+    setVisible(false);
+  };
 
   let curTime = new Date();
 
@@ -58,8 +69,7 @@ export default function IndividualTopReview({ review, avgRating }) {
           <div className={styles.timeAgo}>
             {Math.abs(
               Math.round(
-                (curTime - new Date(review?.createdAt)) /
-                  (1000 * 60 * 60 * 24)
+                (curTime - new Date(review?.createdAt)) / (1000 * 60 * 60 * 24)
               )
             )}{" "}
             days ago
@@ -92,6 +102,10 @@ export default function IndividualTopReview({ review, avgRating }) {
             </div>{" "}
             YES {review?.likeCount}
           </button>
+
+          {review.userId === user.id && (
+            <div className={styles.deleteReview}>Remove</div>
+          )}
         </div>
 
         <div className={styles.dislikeButtonContainer}>
@@ -110,6 +124,37 @@ export default function IndividualTopReview({ review, avgRating }) {
           </button>
         </div>
       </div>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={visible}
+        onClose={hide}
+      >
+        <div className={styles.deleteReviewConfirmationModal}>
+          <div className={styles.firstContainer}>
+            <div className={styles.modalTitle}>REMOVE PRODUCT?</div>
+          </div>
+
+          <div className={styles.secondContainer}>
+            <div className={styles.reviewUsername}>USERNAME</div>
+
+            <div className={styles.reviewContent}>Review Content</div>
+          </div>
+
+          <div className={styles.thirdContainer}>
+            <div className={styles.cancelButtonContainer}>
+              <button className={styles.cancelButton}>CANCEL</button>
+            </div>
+
+            <div className={styles.yesButtonContainer}>
+              <button className={styles.yesButton}>YES</button>
+            </div>
+          </div>
+        </div>
+      </Rodal>
     </div>
   );
 }

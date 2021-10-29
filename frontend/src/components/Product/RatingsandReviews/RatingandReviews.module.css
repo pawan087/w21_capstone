@@ -166,14 +166,14 @@
 }
 
 .productNameContainer {
-  font-size: 15px;
+  font-size: 17.5px;
   color: rgba(0, 0, 0, 0.75);
 }
 
 .ratingTitle {
   font-size: 17.5px;
   color: rgba(0, 0, 0, 0.75);
-  margin-right: 100px;
+  margin-right: 40px;
 }
 
 .writeReviewStarsContainer {
@@ -209,6 +209,7 @@
   width: 97.5%;
   position: relative;
   min-height: 160px;
+  /* height: 200px; */
 }
 
 .reviewInput {
@@ -375,11 +376,14 @@
 .removePhoto,
 .removePhoto2 {
   margin-left: 20px;
-  height: 22.5px;
+  height: 30px;
   width: 105px;
   background-color: rgb(217, 217, 217);
   font-size: 12.5px;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .removePhoto2 {
@@ -437,4 +441,16 @@
   z-index: 50;
   top: 0px;
   left: 12.5px;
+}
+
+.reviewSubmissionConfirmationContainer {
+  background-color: rgb(205,225,206);
+  width: 1145px;
+  height: 55px;
+  transform: translate(-15px, -15px);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgb(71,112,72);
+  padding-top: 12.5px;
+  border: 1px solid rgba(0, 0, 0, 0.5)
 }
