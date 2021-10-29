@@ -26,16 +26,16 @@ export default function IndividualTopReview({ review }) {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false); // <-- set to true after dev
   const [visible3, setVisible3] = useState(false);
-  const [showEditReview, setShowEditReview] = useState(true);
+  const [showEditReview, setShowEditReview] = useState(false);
   const [showAddPic, setShowAddPic] = useState(false);
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState("");
-  const [preview, setPreview] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
-  const [uploadMsg, setUploadMsg] = useState("Upload Picutre");
+  const [rating, setRating] = useState(review?.rating);
+  const [content, setContent] = useState(review?.content);
+  const [preview, setPreview] = useState(review.imageUrl);
+  const [selectedFile, setSelectedFile] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState("Upload Picture");
 
   const thisPagesProduct = products?.filter((product) => {
     return product.id === +params.id;
@@ -47,10 +47,23 @@ export default function IndividualTopReview({ review }) {
 
   const showShowAddPic = () => {
     setShowAddPic(true);
+
+    if (rating.imageUrl) {
+      setPreview(rating.imageUrl);
+    }
   };
 
   const closeEditReview = () => {
     setShowEditReview(false);
+
+    setPreview(null);
+    setImage("");
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
+
+    if (review.imageUrl) {
+      setPreview(review.imageUrl);
+    }
   };
 
   const closeAddPic = () => {
@@ -68,6 +81,8 @@ export default function IndividualTopReview({ review }) {
   };
 
   const removePhoto = () => {
+    setPreview(null);
+    setImage("");
     setSelectedFile();
     setUploadMsg("Upload Picture");
   };
@@ -100,12 +115,34 @@ export default function IndividualTopReview({ review }) {
     setTimeout(() => setVisible3(false), 2000);
   };
 
-  const handleSubmit = async () => {};
+  const handleSubmit = async () => {
+    if (!image && !preview) {
+      if (review.imageUrl) {
+        console.log("DELETE ORIGINAL IMAGE WITH NO NEW IMAGE");
+      } else {
+        console.log("NO ORIGINAL IMAGE AND NO IMAGE TO UPLOAD");
+      }
+      return;
+    }
+
+    if (!image && preview) {
+      console.log("KEEP ORIGINAL IMAGE");
+      return;
+    }
+
+    if (image) {
+      if (review.imageUrl) {
+        console.log("REPLACE ORIGINAL IMAGE WITH NEW IMAGE");
+      } else {
+        console.log("UPLOAD NEW PICTURE (NO REPLACING)");
+      }
+      return;
+    }
+  };
 
   useEffect(() => {
     // window.scrollTo(0, 0);
     if (!selectedFile) {
-      setPreview(undefined);
       return;
     }
 
@@ -128,7 +165,7 @@ export default function IndividualTopReview({ review }) {
 
   const addPhoto = () => {
     if (!selectedFile) return;
-    
+
     setShowAddPic(false);
     setShowEditReview(true);
   };
@@ -200,7 +237,9 @@ export default function IndividualTopReview({ review }) {
 
             {review.userId === user.id && (
               <div className={styles.reviewLinks}>
-                <div className={styles.editLink}>Edit</div>
+                <div onClick={showShowEditReview} className={styles.editLink}>
+                  Edit
+                </div>
                 <div onClick={show2} className={styles.removeLink}>
                   Remove
                 </div>
@@ -390,7 +429,7 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.writeReviewOuterContainer}>
           <div className={styles.writeReviewTopContainer}>
-            <div className={styles.writeReviewTitle}>Write a review</div>
+            <div className={styles.writeReviewTitle}>Edit review</div>
 
             <div className={styles.writeReviewSubtitle}>
               <div className={styles.productImageContainer}>
@@ -420,6 +459,7 @@ export default function IndividualTopReview({ review }) {
                   count={5}
                   onChange={ratingChanged}
                   size={25}
+                  value={+rating}
                   isHalf={true}
                   emptyIcon={<i className="far fa-star"></i>}
                   halfIcon={<i className="fa fa-star-half-alt"></i>}
@@ -452,13 +492,16 @@ export default function IndividualTopReview({ review }) {
                 {false && <div className={styles.required}>Required</div>}
 
                 <div className={styles.addPhotoContainer}>
-                  {!selectedFile && (
-                    <button onClick={showShowAddPic} className={styles.addPhotoButton}>
+                  {!preview && (
+                    <button
+                      onClick={showShowAddPic}
+                      className={styles.addPhotoButton}
+                    >
                       Add Photo
                     </button>
                   )}
 
-                  {selectedFile && (
+                  {preview && (
                     <div className={styles.selectedReviewImagePreviewContainer}>
                       <img
                         className={styles.selectedReviewImagePreview}
@@ -468,7 +511,7 @@ export default function IndividualTopReview({ review }) {
                     </div>
                   )}
 
-                  {selectedFile && (
+                  {preview && (
                     <div
                       onClick={removePhoto}
                       className={styles.removeImageIconContainer}
@@ -494,7 +537,7 @@ export default function IndividualTopReview({ review }) {
 
           <div className={styles.writeReviewBottomContainer}>
             <button onClick={handleSubmit} className={styles.writeReviewButton}>
-              POST REVIEW
+              SUBMIT
             </button>
           </div>
 
