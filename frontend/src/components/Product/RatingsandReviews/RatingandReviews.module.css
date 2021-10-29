@@ -109,6 +109,7 @@
 
 /* WRITE NEW REVIEW */
 
+
 .writeReviewOuterContainer {
   display: flex;
   flex-direction: column;
@@ -310,23 +311,17 @@
   justify-self: center;
   justify-items: center;
   align-content: center;
-  /* background-color: royalblue; */
   align-self: center;
   margin: 0 auto;
 }
 
 .selectFileContainer {
   display: flex;
-  /* background-color: red; */
   flex-direction: column;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center;
-}
-
-.fileInputs {
-  background-color: yellow;
 }
 
 .addPhotoMiddleContainer {
