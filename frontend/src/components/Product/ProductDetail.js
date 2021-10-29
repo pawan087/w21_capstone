@@ -1,8 +1,10 @@
 import styles from "./ProductPage.module.css";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
-import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
 import ShowMoreText from "react-show-more-text";
+
+import RecentlyViewedCard from "./RecentlyViewedCard";
+import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
   const formatter = new Intl.NumberFormat("en-US", {
@@ -104,6 +106,8 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       </div>
 
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
+
+      <RecentlyViewedCard />
 
       <div>
         <h2 className={styles.title}>Product Page</h2>
