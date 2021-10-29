@@ -1,29 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
+import { useParams } from "react-router";
 import ReactLoading from "react-loading";
 
 import {
   setAllReviews,
-  editReview,
+  // editReview,
   deleteReview,
-  deleteImage,
+  // deleteImage,
 } from "../../../store/reviews";
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
+  const params = useParams();
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
+  const products = useSelector((state) => state.products);
 
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false); // <-- set to true after dev
   const [visible3, setVisible3] = useState(false);
+  const [showEditReview, setShowEditReview] = useState(true);
+  const [showAddPic, setShowAddPic] = useState(false);
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
+  const [rating, setRating] = useState(0);
+  const [content, setContent] = useState("");
+  const [preview, setPreview] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [uploadMsg, setUploadMsg] = useState("Upload Picutre");
+
+  const thisPagesProduct = products?.filter((product) => {
+    return product.id === +params.id;
+  });
+
+  const showShowEditReview = () => {
+    setShowEditReview(true);
+  };
+
+  const showShowAddPic = () => {
+    setShowAddPic(true);
+  };
+
+  const closeEditReview = () => {
+    setShowEditReview(false);
+  };
+
+  const closeAddPic = () => {
+    setShowAddPic(false);
+  };
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+    // setBool3(false);
+  };
+
+  const contentSetter = (e) => {
+    setContent(e.target.value);
+    // setBool2(false);
+  };
+
+  const removePhoto = () => {
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
+  };
 
   const hide3 = () => {
     // setVisible2(false);
@@ -51,6 +98,39 @@ export default function IndividualTopReview({ review }) {
     setBool(true);
     setVisible3(true);
     setTimeout(() => setVisible3(false), 2000);
+  };
+
+  const handleSubmit = async () => {};
+
+  useEffect(() => {
+    // window.scrollTo(0, 0);
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+
+    setUploadMsg(file["name"].slice(0, 36));
+    setSelectedFile(e.target.files[0]);
+
+    if (file) setImage(file);
+  };
+
+  const addPhoto = () => {
+    if (!selectedFile) return;
+    
+    setShowAddPic(false);
+    setShowEditReview(true);
   };
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -295,6 +375,243 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
           Your review was removed!
+        </div>
+      </Rodal>
+
+      {/* EDIT REVIEW */}
+
+      <Rodal
+        width={1265}
+        height={790}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        visible={showEditReview}
+        onClose={closeEditReview}
+      >
+        <div className={styles.writeReviewOuterContainer}>
+          <div className={styles.writeReviewTopContainer}>
+            <div className={styles.writeReviewTitle}>Write a review</div>
+
+            <div className={styles.writeReviewSubtitle}>
+              <div className={styles.productImageContainer}>
+                <img
+                  className={styles.writeReviewProductPic}
+                  alt={"picOfProductInReviewModal"}
+                  src={thisPagesProduct[0]?.images[0]}
+                ></img>
+              </div>
+
+              <div className={styles.productNameContainer}>
+                {thisPagesProduct[0]?.name}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewMiddleContainer}>
+            <div className={styles.ratingContainer}>
+              {true && <div className={styles.ratingTitle}>Overall Rating</div>}
+
+              {false && (
+                <div className={styles.ratingTitle2}>Overall Rating</div>
+              )}
+
+              <div className={styles.writeReviewStarsContainer}>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChanged}
+                  size={25}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
+            </div>
+
+            <div className={styles.reviewInputsContainer}>
+              <div className={styles.emailInputContainer}>
+                <input
+                  placeholder={"Your email"}
+                  className={styles.emailInput}
+                  type="email"
+                  value={user.email}
+                  readOnly
+                ></input>
+              </div>
+
+              <div className={styles.contentInputContainer}>
+                <textarea
+                  value={content}
+                  onChange={(e) => contentSetter(e)}
+                  type="text"
+                  placeholder="Your review"
+                  className={styles.reviewInput}
+                ></textarea>
+
+                {false && <div className={styles.required}>Required</div>}
+
+                <div className={styles.addPhotoContainer}>
+                  {!selectedFile && (
+                    <button onClick={showShowAddPic} className={styles.addPhotoButton}>
+                      Add Photo
+                    </button>
+                  )}
+
+                  {selectedFile && (
+                    <div className={styles.selectedReviewImagePreviewContainer}>
+                      <img
+                        className={styles.selectedReviewImagePreview}
+                        alt="selectedReviewImage"
+                        src={preview}
+                      />
+                    </div>
+                  )}
+
+                  {selectedFile && (
+                    <div
+                      onClick={removePhoto}
+                      className={styles.removeImageIconContainer}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewBottomContainer}>
+            <button onClick={handleSubmit} className={styles.writeReviewButton}>
+              POST REVIEW
+            </button>
+          </div>
+
+          {loading && (
+            <div className={styles.loader}>
+              <ReactLoading
+                type={"spin"}
+                color={"rgba(0,0,0,.75)"}
+                height={"0px"}
+                width={"57.5px"}
+              />
+            </div>
+          )}
+        </div>
+      </Rodal>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={685}
+        height={505}
+        visible={showAddPic}
+        onClose={closeAddPic}
+      >
+        <div className={styles.addPhotoOuterContainer}>
+          <div className={styles.addPhotoTopContainer}>
+            <div className={styles.addPhotoTitle}>Add Photo</div>
+          </div>
+
+          <div className={styles.addPhotoMiddleContainer}>
+            {!selectedFile && (
+              <div className={styles.addPhotoEmptyPreviewContainer}>
+                <div className={styles.cameraIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {selectedFile && (
+              <div className={styles.addPhotoPreviewContainer}>
+                <img
+                  className={styles.photoPreview}
+                  src={preview}
+                  alt={"previewOfImage"}
+                ></img>
+              </div>
+            )}
+
+            <div className={styles.removePhotoContainer}>
+              {selectedFile && (
+                <div onClick={removePhoto} className={styles.removePhoto}>
+                  Remove Photo
+                </div>
+              )}
+              {!selectedFile && (
+                <div
+                  onClick={removePhoto}
+                  className={styles.removePhoto2}
+                ></div>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.addPhotoLowerContainer}>
+            {!selectedFile && (
+              <div className={styles.selectFileContainer}>
+                <div className="fileinputs">
+                  <input
+                    className="inputContainer file"
+                    type="file"
+                    accept="image/*"
+                    onChange={updateImage}
+                  />
+
+                  <div className="inputContainer fakefile">
+                    <label className="uploadLabel">{uploadMsg}</label>
+
+                    <div className="uploadPic">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {selectedFile && (
+              <div className={styles.addPhotoButtonContainer}>
+                <button onClick={addPhoto} className={styles.addPhotoButton2}>
+                  ADD PHOTO
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </Rodal>
     </>
