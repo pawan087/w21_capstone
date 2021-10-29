@@ -340,3 +340,22 @@
   border: 2.5px solid rgb(231, 35, 13);
   border-radius: 5px;
 }
+
+.reviewSubmissionConfirmationContainer {
+  background-color: rgba(231,35,13,.25);
+  width: 1145px;
+  height: 55px;
+  transform: translate(-15px, -15px);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgba(231,35,13,.75);
+  padding-top: 12.5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

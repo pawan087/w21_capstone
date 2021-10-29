@@ -13,7 +13,7 @@ export default function Testing({ reviews }) {
   reviews?.forEach((review) => {
     if (review?.rating !== '0') {
 
-      obj[Math.floor(review?.rating)] += 1;
+      obj[Math.round(review?.rating)] += 1;
     }
   });
 

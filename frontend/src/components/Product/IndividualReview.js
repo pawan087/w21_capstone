@@ -128,8 +128,9 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     await dispatch(deleteReview({ id: review.id, arr }));
 
     await dispatch(setAllReviews());
-
     setBool(false);
+    setBool2(false);
+
   };
 
   const updateImage = (e) => {
@@ -148,7 +149,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     setBool2(false);
     setContent(review.content);
     setRating(review.rating);
-    setUploadMsg("Upload Picture (Optional)");
+    setUploadMsg("Upload Picture");
     setPreview("");
     setSelectedFile();
   };

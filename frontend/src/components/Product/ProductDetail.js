@@ -17,8 +17,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     img: `${product[0]?.images[0]}`,
   };
 
-  console.log(product[0]);
-
   let rating = formatter.format(avgRating);
 
   return (

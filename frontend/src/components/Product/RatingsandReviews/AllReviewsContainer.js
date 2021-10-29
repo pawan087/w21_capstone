@@ -57,6 +57,7 @@ export default function AllReviewsContainer({ reviews }) {
       return a.rating - +b.rating;
     });
     e.stopPropagation = true;
+    // setArr([...lowestToHighestRating]);
     setData([...lowestToHighestRating]);
     setSortBy("Lowest to Highest Rating");
   };
@@ -74,8 +75,12 @@ export default function AllReviewsContainer({ reviews }) {
 
   useEffect(() => {
     setData(reversed);
-
+    setSortBy("Most Recent");
   }, [reviews]);
+
+  // useEffect(() => {
+
+  // }, [reversed]);
 
   return (
     <div className={styles.allReviewsContainer}>

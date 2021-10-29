@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
+import ReactLoading from "react-loading";
 
 import {
   setAllReviews,
@@ -15,12 +16,24 @@ import "rodal/lib/rodal.css";
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false); // <-- set to true after dev
+  const [visible3, setVisible3] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [bool, setBool] = useState(true);
+
+  const hide3 = () => {
+    // setVisible2(false);
+    // setVisible(true);
+    setVisible3(false);
+  };
 
   const handleSubmit2 = async () => {
+    setLoading(true);
+    setBool(false);
     let arr = [];
 
     reviewLikes?.forEach((reviewLike) => {
@@ -33,7 +46,11 @@ export default function IndividualTopReview({ review }) {
 
     await dispatch(setAllReviews());
 
+    setLoading(false);
     setVisible2(false);
+    setBool(true);
+    setVisible3(true);
+    setTimeout(() => setVisible3(false), 2000);
   };
 
   const formatter = new Intl.NumberFormat("en-US", {
@@ -54,6 +71,7 @@ export default function IndividualTopReview({ review }) {
   };
 
   const hide2 = () => {
+    setLoading(false);
     setVisible2(false);
   };
 
@@ -100,12 +118,14 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.username}>
             {review?.User?.username}
 
-            <div className={styles.reviewLinks}>
-              <div className={styles.editLink}>Edit</div>
-              <div onClick={show2} className={styles.removeLink}>
-                Remove
+            {review.userId === user.id && (
+              <div className={styles.reviewLinks}>
+                <div className={styles.editLink}>Edit</div>
+                <div onClick={show2} className={styles.removeLink}>
+                  Remove
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {Math.abs(
@@ -219,13 +239,25 @@ export default function IndividualTopReview({ review }) {
             </div>
           </div>
 
-          <div className={styles.secondContainer}>
-            <div className={styles.reviewUsername}>
-              {review?.User?.username}:
-            </div>
+          {bool && (
+            <div className={styles.secondContainer}>
+              <div className={styles.reviewUsername}>
+                {review?.User?.username}:
+              </div>
 
-            <div className={styles.deleteReviewContent}>{review?.content}</div>
-          </div>
+              <div className={styles.deleteReviewContent}>
+                {review?.content}
+              </div>
+            </div>
+          )}
+
+          {!bool && (
+            <div className={styles.secondContainer}>
+              <div className={styles.reviewUsername}></div>
+
+              <div className={styles.deleteReviewContent}></div>
+            </div>
+          )}
 
           <div className={styles.thirdContainer}>
             <div className={styles.cancelButtonContainer}>
@@ -240,6 +272,29 @@ export default function IndividualTopReview({ review }) {
               </button>
             </div>
           </div>
+          {loading && (
+            <div className={styles.loader}>
+              <ReactLoading
+                type={"spin"}
+                color={"rgba(0,0,0,.75)"}
+                height={"0px"}
+                width={"57.5px"}
+              />
+            </div>
+          )}
+        </div>
+      </Rodal>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={visible3}
+        onClose={hide3}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          Your review was removed!
         </div>
       </Rodal>
     </>
