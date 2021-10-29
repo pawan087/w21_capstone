@@ -444,13 +444,19 @@
 }
 
 .reviewSubmissionConfirmationContainer {
-  background-color: rgb(205,225,206);
+  background-color: rgb(205, 225, 206);
   width: 1145px;
   height: 55px;
   transform: translate(-15px, -15px);
   padding-left: 20px;
   font-size: 15px;
-  color: rgb(71,112,72);
+  color: rgb(71, 112, 72);
   padding-top: 12.5px;
-  border: 1px solid rgba(0, 0, 0, 0.5)
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.ratingTitle2 {
+  color: rgba(238, 42, 40, 0.8);
+  font-size: 17.5px;
+  margin-right: 40px;
 }

@@ -45,7 +45,6 @@
 
 .reviewCard1:hover {
   border: 1px solid rgba(0, 0, 0, 0.33);
-
 }
 
 .reviewCardMiddleContainer {
@@ -196,4 +195,11 @@
   text-decoration: underline;
   font-size: 12.5px;
   transform: translate(30px, -140px);
+}
+
+.deleteReviewConfirmationModal {
+  position: absolute;
+  width: 500px;
+  height: 370px;
+  background-color: red;
 }

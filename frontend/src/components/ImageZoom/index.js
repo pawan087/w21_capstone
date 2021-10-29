@@ -32,7 +32,7 @@ export default function Pagination({ arr }) {
   }, [arr]);
 
   return (
-    <>
+    <div>
       <div className={styles.holder}>{currentPageData}</div>
       <ReactPaginate
         previousLabel={
@@ -72,6 +72,6 @@ export default function Pagination({ arr }) {
         disabledClassName={styles.pagination__linkdisabled}
         activeClassName={styles.pagination__linkactive}
       />
-    </>
+    </div>
   );
 }

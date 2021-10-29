@@ -17,21 +17,26 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
-  
+  const deleteConfirmation = useSelector(
+    (state) => state.deleteConfirmationReducer
+  );
+
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
-
   const thisPagesProduct = products?.filter((product) => {
     return product.id === +params.id;
   });
+
+  const [bool3, setBool3] = useState(false);
   const [bool2, setBool2] = useState(false);
   const [bool, setBool] = useState(false); // <-- set to false after dev
   const [visible, setVisible] = useState(false); // <-- set to true after dev
   const [visible2, setVisible2] = useState(false); // <-- set to false after dev
   const [visible3, setVisible3] = useState(false); // <-- set to false after dev
+  const [visible4, setVisible4] = useState(false); // <-- set to false after dev
   const [rating, setRating] = useState(0);
 
   const [content, setContent] = useState("");
@@ -47,6 +52,14 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const show = () => {
     setVisible(true);
+  };
+
+  const show4 = () => {
+    setVisible4(true);
+  };
+
+  const hide4 = () => {
+    setVisible4(false);
   };
 
   const hide = () => {
@@ -68,8 +81,9 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   };
 
   const hide3 = () => {
-    setVisible2(false);
-    setVisible(true);
+    // setVisible2(false);
+    // setVisible(true);
+    setVisible3(false);
   };
 
   const addPhoto = () => {
@@ -83,6 +97,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
+    setBool3(false);
   };
 
   const clear = () => {
@@ -91,11 +106,24 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setUploadMsg("Upload Picture");
     setPreview("");
     setSelectedFile();
+    setBool2(false);
+    setBool3(false);
   };
 
   const handleSubmit = async () => {
+    if (content === "" && rating === 0) {
+      setBool2(true);
+      setBool3(true);
+      return;
+    }
+
     if (content === "") {
       setBool2(true);
+      return;
+    }
+
+    if (rating === 0) {
+      setBool3(true);
       return;
     }
 
@@ -120,7 +148,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setSelectedFile();
     hide();
     setVisible3(true);
-    setTimeout(() => setVisible3(false), 2000)
+    setTimeout(() => setVisible3(false), 2000);
     // window.location.reload();
   };
 
@@ -137,7 +165,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+  }, [deleteConfirmation, selectedFile]);
 
   const updateImage = (e) => {
     const file = e.target.files[0];
@@ -266,7 +294,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
           <div className={styles.writeReviewMiddleContainer}>
             <div className={styles.ratingContainer}>
-              <div className={styles.ratingTitle}>Overall Rating</div>
+              {!bool3 && (
+                <div className={styles.ratingTitle}>Overall Rating</div>
+              )}
+
+              {bool3 && (
+                <div className={styles.ratingTitle2}>Overall Rating</div>
+              )}
 
               <div className={styles.writeReviewStarsContainer}>
                 <ReactStars

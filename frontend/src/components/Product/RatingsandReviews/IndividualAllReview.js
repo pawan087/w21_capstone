@@ -1,12 +1,40 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
+import {
+  setAllReviews,
+  editReview,
+  deleteReview,
+  deleteImage,
+} from "../../../store/reviews";
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
 export default function IndividualTopReview({ review }) {
+  const dispatch = useDispatch();
+
+  const reviewLikes = useSelector((state) => state.reviewLikes);
+
   const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false); // <-- set to true after dev
+
+  const handleSubmit2 = async () => {
+    let arr = [];
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (reviewLike.reviewId === review.id) {
+        arr.push(reviewLike.id);
+      }
+    });
+
+    await dispatch(deleteReview({ id: review.id, arr }));
+
+    await dispatch(setAllReviews());
+
+    setVisible2(false);
+  };
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
@@ -19,6 +47,14 @@ export default function IndividualTopReview({ review }) {
 
   const hide = () => {
     setVisible(false);
+  };
+
+  const show2 = () => {
+    setVisible2(true);
+  };
+
+  const hide2 = () => {
+    setVisible2(false);
   };
 
   let curTime = new Date();
@@ -61,7 +97,16 @@ export default function IndividualTopReview({ review }) {
         </div>
 
         <div className={styles.reviewCardMiddleContainer}>
-          <div className={styles.username}>{review?.User?.username}</div>
+          <div className={styles.username}>
+            {review?.User?.username}
+
+            <div className={styles.reviewLinks}>
+              <div className={styles.editLink}>Edit</div>
+              <div onClick={show2} className={styles.removeLink}>
+                Remove
+              </div>
+            </div>
+          </div>
 
           {Math.abs(
             Math.round(
@@ -152,6 +197,49 @@ export default function IndividualTopReview({ review }) {
             src={review?.imageUrl}
             alt="reviewImageModal"
           />
+        </div>
+      </Rodal>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={500}
+        height={370}
+        visible={visible2}
+        onClose={hide2}
+      >
+        <div className={styles.deleteReviewConfirmationModal}>
+          <div className={styles.firstContainer}>
+            <div className={styles.modalTitle}>REMOVE REVIEW?</div>
+          </div>
+
+          <div className={styles.onePointFiveContainer}>
+            <div className={styles.confirmationText}>
+              Are you sure you want to remove the following review?
+            </div>
+          </div>
+
+          <div className={styles.secondContainer}>
+            <div className={styles.reviewUsername}>
+              {review?.User?.username}:
+            </div>
+
+            <div className={styles.deleteReviewContent}>{review?.content}</div>
+          </div>
+
+          <div className={styles.thirdContainer}>
+            <div className={styles.cancelButtonContainer}>
+              <button onClick={hide2} className={styles.cancelButton}>
+                CANCEL
+              </button>
+            </div>
+
+            <div className={styles.yesButtonContainer}>
+              <button onClick={handleSubmit2} className={styles.yesButton}>
+                YES
+              </button>
+            </div>
+          </div>
         </div>
       </Rodal>
     </>
