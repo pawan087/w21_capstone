@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
 
@@ -6,6 +7,26 @@ import styles from "./RecentlyViewed.module.css";
 
 export default function IndividualRecentlyViewed({ product }) {
   const history = useHistory();
+
+  const reviews = useSelector((state) => state.reviews);
+
+  let productReviews = [];
+
+  reviews?.forEach((review) => {
+    if (review.productId === product.id) {
+      productReviews.push({
+        ...review,
+      });
+    }
+  });
+
+  let sum = 0;
+
+  productReviews?.forEach((review) => {
+    sum += +review.rating;
+  });
+
+  const avgRating = sum / productReviews?.length;
 
   const movePage = (id) => {
     history.push(`/products/${id}`);
@@ -41,7 +62,7 @@ export default function IndividualRecentlyViewed({ product }) {
             <StarPicker
               starDimension="10px"
               disabled={true}
-              value={+product.rating}
+              value={avgRating}
               halfStars
             />
           </div>

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Carousel from "react-grid-carousel";
 
+import { setAllProducts } from "../../store/products";
 import IndividualRecentlyViewed from "./IndividualRecentlyViewed";
 import styles from "./RecentlyViewed.module.css";
 
 export default function RecentlyViewedCard() {
   const params = useParams();
+  const dispatch = useDispatch();
 
   const [bool, setBool] = useState(true); // <-- set to false after dev
 
@@ -18,10 +20,13 @@ export default function RecentlyViewedCard() {
 
   products?.forEach((product) => {
     if (recentlyViewed.includes(+product.id) && product.id !== +params.id) {
-      console.log(product);
       recentlyViewedProducts.push(product);
     }
   });
+
+  // useEffect(() => {
+  //   dispatch(setAllProducts());
+  // }, [dispatch]);
 
   return (
     <div className={styles.topReviewsContainer}>

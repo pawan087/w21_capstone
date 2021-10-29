@@ -7,6 +7,7 @@ import RecentlyViewedCard from "./RecentlyViewedCard";
 import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
+  console.log(num);
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,

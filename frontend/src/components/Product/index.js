@@ -24,7 +24,7 @@ function ProductPage() {
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const reviews = useSelector((state) => state.reviews);
-  const questions = useSelector((state) => state.questions);
+  // const questions = useSelector((state) => state.questions);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const product = products?.filter((product) => +product.id === +params.id);
