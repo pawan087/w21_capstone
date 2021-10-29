@@ -145,8 +145,8 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   };
 
   const clear = () => {
-    setBool(false);
-    setBool2(false);
+    // setBool(false);
+    // setBool2(false);
     setContent(review.content);
     setRating(review.rating);
     setUploadMsg("Upload Picture");

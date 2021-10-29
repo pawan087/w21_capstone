@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import ReactLoading from "react-loading";
 import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
-import { useParams } from "react-router";
-import ReactLoading from "react-loading";
 
 import {
   setAllReviews,
-  // editReview,
+  editReview,
   deleteReview,
-  // deleteImage,
+  deleteImage,
 } from "../../../store/reviews";
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
@@ -26,6 +26,7 @@ export default function IndividualTopReview({ review }) {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false); // <-- set to true after dev
   const [visible3, setVisible3] = useState(false);
+  const [contentRequired, setContentRequired] = useState(false);
   const [showEditReview, setShowEditReview] = useState(false);
   const [showAddPic, setShowAddPic] = useState(false);
   const [image, setImage] = useState(null);
@@ -43,6 +44,10 @@ export default function IndividualTopReview({ review }) {
 
   const showShowEditReview = () => {
     setShowEditReview(true);
+
+    if (rating.imageUrl) {
+      setPreview(rating.imageUrl);
+    }
   };
 
   const showShowAddPic = () => {
@@ -72,12 +77,11 @@ export default function IndividualTopReview({ review }) {
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
-    // setBool3(false);
   };
 
   const contentSetter = (e) => {
     setContent(e.target.value);
-    // setBool2(false);
+    setContentRequired(false);
   };
 
   const removePhoto = () => {
@@ -116,28 +120,50 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleSubmit = async () => {
+    setLoading(true);
+
+    if (content === "") {
+      console.log("CONTENT REQUIRED");
+      setContentRequired(true);
+      return;
+    }
+
     if (!image && !preview) {
       if (review.imageUrl) {
-        console.log("DELETE ORIGINAL IMAGE WITH NO NEW IMAGE");
+        console.log("REMOVE ORIGINAL IMAGE");
+        await dispatch(deleteImage(review.id));
       } else {
         console.log("NO ORIGINAL IMAGE AND NO IMAGE TO UPLOAD");
+        await dispatch(editReview({ id: review.id, rating: rating, content }));
       }
-      return;
     }
 
     if (!image && preview) {
       console.log("KEEP ORIGINAL IMAGE");
-      return;
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
     }
 
     if (image) {
       if (review.imageUrl) {
         console.log("REPLACE ORIGINAL IMAGE WITH NEW IMAGE");
+        await dispatch(
+          editReview({ id: review.id, content, rating: rating, image })
+        );
       } else {
         console.log("UPLOAD NEW PICTURE (NO REPLACING)");
+        await dispatch(
+          editReview({ id: review.id, content, rating: rating, image })
+        );
       }
-      return;
     }
+
+    await dispatch(setAllReviews());
+    setShowEditReview(false);
+    setLoading(false);
+    // setPreview(null);
+    setImage("");
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
   };
 
   useEffect(() => {
@@ -489,7 +515,9 @@ export default function IndividualTopReview({ review }) {
                   className={styles.reviewInput}
                 ></textarea>
 
-                {false && <div className={styles.required}>Required</div>}
+                {contentRequired && (
+                  <div className={styles.required}>Required</div>
+                )}
 
                 <div className={styles.addPhotoContainer}>
                   {!preview && (
