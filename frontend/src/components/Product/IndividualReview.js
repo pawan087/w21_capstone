@@ -128,8 +128,9 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     await dispatch(deleteReview({ id: review.id, arr }));
 
     await dispatch(setAllReviews());
-
     setBool(false);
+    setBool2(false);
+
   };
 
   const updateImage = (e) => {
@@ -148,7 +149,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     setBool2(false);
     setContent(review.content);
     setRating(review.rating);
-    setUploadMsg("Upload Picture (Optional)");
+    setUploadMsg("Upload Picture");
     setPreview("");
     setSelectedFile();
   };
@@ -301,17 +302,3 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     </div>
   );
 }
-
-// {!bool && (
-//   <ReactStars
-//     disabled={true}
-//     value={+review.rating}
-//     count={5}
-//     size={24}
-//     isHalf={true}
-//     emptyIcon={<i className="far fa-star"></i>}
-//     halfIcon={<i className="fa fa-star-half-alt"></i>}
-//     fullIcon={<i className="fa fa-star"></i>}
-//     activeColor="#ffd700"
-//   />
-// )}

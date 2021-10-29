@@ -1,5 +1,6 @@
 import React from "react";
 
+import Testing from "./Testing";
 import IndividualReview from "./IndividualReview";
 import styles from "./ProductPage.module.css";
 
@@ -7,6 +8,13 @@ function ReviewCard({ productReviews }) {
   return (
     <>
       <h2 className={styles.title}>Reviews</h2>
+
+      <br />
+
+      {productReviews?.length > 0 && <Testing reviews={productReviews} />}
+
+      <br />
+      <br />
 
       {productReviews
         ?.map((review, i) => {

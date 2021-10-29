@@ -46,7 +46,7 @@ export default function SearchComponent({ products }) {
   return (
     <div className="App">
       <header className="App-header">
-        <div style={{ width: 400, marginBottom: 20 }}>
+        <div>
           <ReactSearchAutocomplete
             onKeyPres={handleKeypress}
             items={products}
@@ -58,26 +58,27 @@ export default function SearchComponent({ products }) {
             onFocus={handleOnFocus}
             onClear={handleOnClear}
             showIcon={true}
+            placeholder='Search games, consoles and more'
             styling={{
-              height: "50px",
-              border: "1px solid darkgrey",
+              height: "45px",
+              border: "none",
               borderRadius: "4px",
-              backgroundColor: "white",
-              boxShadow: "none",
-              hoverBackgroundColor: "lightgrey",
-              color: "black",
-              fontSize: "12px",
+              backgroundColor: "rgb(240,240,240)",
+              hoverBackgroundColor: "white",
+              color: "rgb(51,51,51)",
+              fontSize: "14px",
               fontFamily: "Arial",
-              iconColor: "grey",
-              lineColor: "lightgrey",
-              placeholderColor: "darkgrey",
+              iconColor: "rgb(51,51,51)",
+              lineColor: "white",
+              placeholderColor: "rgb(51,51,51)",
               clearIconMargin: "3px 8px 0 0",
+              boxShadow: "200px"
             }}
           />
         </div>
       </header>
 
-      <button onClick={handleSubmit}>Search</button>
+      {false && <button onClick={handleSubmit}>Search</button>}
     </div>
   );
 }

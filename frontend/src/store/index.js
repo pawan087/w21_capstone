@@ -11,6 +11,7 @@ import cartItems from "./cartItems";
 import orders from "./orders";
 import orderItems from "./orderItems";
 import recentlyViewed from "./recentlyViewed";
+import deleteConfirmationReducer from "./deleteConfirmation";
 
 const rootReducer = combineReducers({
   session,
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   orders,
   orderItems,
   recentlyViewed,
+  deleteConfirmationReducer,
 });
 
 let enhancer;

@@ -14,7 +14,6 @@ import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { setAllQuestions } from "../../store/questions.js";
 import { addToRecent } from "../../store/recentlyViewed";
-// import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -61,6 +60,7 @@ function ProductPage() {
     sum += +review.rating;
   });
 
+
   const avgRating = sum / productReviews?.length;
 
   const productQuestions = questions?.filter((question) => {
@@ -83,6 +83,7 @@ function ProductPage() {
         num={productReviews?.length}
         avgRating={avgRating}
         product={product}
+        reviews={productReviews}
       />
 
       <NewCartItem productId={params.id} />

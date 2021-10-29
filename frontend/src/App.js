@@ -6,6 +6,7 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import ImageZoom from "./components/ImageZoom";
 import Search from "./components/Products/Testing.js";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -14,7 +15,7 @@ import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
 import EditUser from "./components/EditUser.js/EditUser";
-// import Search from "./components/Search/index";
+import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index";
@@ -32,6 +33,8 @@ function App() {
 
   return (
     <>
+      <MyNavBar />
+
       <Navigation isLoaded={isLoaded} />
 
       <button onClick={() => setShowModal(true)}>Modal</button>
@@ -82,6 +85,10 @@ function App() {
 
           <Route path="/profile" exact={true}>
             <EditUser />
+          </Route>
+
+          <Route path="/test" exact={true}>
+            <ImageZoom />
           </Route>
         </Switch>
       )}

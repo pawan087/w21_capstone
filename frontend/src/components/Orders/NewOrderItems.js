@@ -14,12 +14,8 @@ export default function NewOrderItems({ orderId, item, orderItemIds, i }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  // const orderItems = useSelector((state) => state.orderItems);
-
   const [bool, setBool] = useState(false);
   const [quantity, setQuantity] = useState(item.quantity);
-  // const [address1, setAddress1] = useState("");
-  // const [address2, setAddress2] = useState("");
 
   const handleSubmit = () => {
     setBool(true);

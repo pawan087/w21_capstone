@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createAnswer, setAllAnswers } from "../../store/answers";
-// import styles from "./ProductPage.module.css";
 
 export default function LeaveAnswerCard({ questionId }) {
   const dispatch = useDispatch();

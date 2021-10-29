@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import IndividualAnswer from "./IndividualAnswer";
 import LeaveAnswerCard from "./LeaveAnswerCard";
 import { setAllAnswerLikes } from "../../store/answerLikes";
-// import styles from "./ProductPage.module.css";
 
 export default function AnswersCard({ questionId, answers }) {
   const dispatch = useDispatch();

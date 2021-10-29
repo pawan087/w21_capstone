@@ -10,16 +10,16 @@ function SignupFormPage() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  // const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
-  // const [username, setUsername] = useState("pawan087");
-  // const [password, setPassword] = useState("password");
-  // const [confirmPassword, setConfirmPassword] = useState("password");
-  // const [firstName, setFirstName] = useState("Pawan");
-  // const [lastName, setLastName] = useState("Chahal");
-  // const [phone, setPhone] = useState("4082594824");
-  // const [address1, setAddress1] = useState("6144 Evangeline Dr.");
-  // const [address2, setAddress2] = useState("San Jose, CA 95123");
-  // const [errors, setErrors] = useState([]);
+/*   const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
+  const [username, setUsername] = useState("pawan087");
+  const [password, setPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("password");
+  const [firstName, setFirstName] = useState("Pawan");
+  const [lastName, setLastName] = useState("Chahal");
+  const [phone, setPhone] = useState("4082594824");
+  const [address1, setAddress1] = useState("6144 Evangeline Dr.");
+  const [address2, setAddress2] = useState("San Jose, CA 95123");
+  const [errors, setErrors] = useState([]); */
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");

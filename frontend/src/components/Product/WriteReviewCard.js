@@ -89,12 +89,14 @@ export default function WriteReviewCard() {
   }, [selectedFile]);
 
   const updateImage = (e) => {
+    // setLoading(true);
     const file = e.target.files[0];
 
     setUploadMsg(file["name"].slice(0, 39));
     setSelectedFile(e.target.files[0]);
 
     if (file) setImage(file);
+    // setLoading(false);
   };
 
   return (
