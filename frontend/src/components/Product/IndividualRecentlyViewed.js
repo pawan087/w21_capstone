@@ -1,39 +1,47 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
 
 import styles from "./RecentlyViewed.module.css";
 
-export default function IndividualRecentlyViewed() {
+export default function IndividualRecentlyViewed({ product }) {
+  const history = useHistory();
+
+  const movePage = (id) => {
+    history.push(`/products/${id}`);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <div className={styles.reviewCard1}>
+    <div onClick={() => movePage(product.id)} className={styles.reviewCard1}>
       <div className={styles.reviewCardTopContainer}>
         <div className={styles.productImageContainer}>
           <img
             alt={"productImage"}
-            src={
-              "https://media.gamestop.com/i/gamestop/11108954/Microsoft-Xbox-Series-X-Wireless-Controller-Carbon-Black?$pdp$$&fmt=webp"
-            }
+            src={product?.images[0]}
             className={styles.productImage}
           ></img>
         </div>
       </div>
 
       <div className={styles.reviewCardBottomContainer}>
-        <div className={styles.productPriceTag}>$144.99</div>
+        <div className={styles.productPriceTag}>${product.price}</div>
 
         <div className={styles.productDetail}>
-          <div className={styles.productName}>
-            Xbox One Series 2 Elite Wireless Controller
-          </div>
+          <div className={styles.productName}>{product.name}</div>
 
-          <div className={styles.productBrand}>Xbox One</div>
+          <div className={styles.productBrand}>{product.Brand.name}</div>
         </div>
         <div className={styles.starsContainer}>
           <div className={styles.stars}>
             <StarPicker
               starDimension="10px"
               disabled={true}
-              value={5}
+              value={+product.rating}
               halfStars
             />
           </div>
