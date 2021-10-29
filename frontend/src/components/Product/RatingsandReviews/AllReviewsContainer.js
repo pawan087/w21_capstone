@@ -12,10 +12,10 @@ export default function AllReviewsContainer({ reviews }) {
   const [sortBy, setSortBy] = useState("Most Recent");
   const [currentPage, setCurrentPage] = useState(0);
 
-  const copy = [...reviews];
+  let copy = [...reviews];
   const reversed = copy?.reverse();
-  const [arr, setArr] = useState(reviews);
-  const [data, setData] = useState(reviews);
+
+  const [data, setData] = useState([]);
 
   const PER_PAGE = 3;
 
@@ -38,7 +38,7 @@ export default function AllReviewsContainer({ reviews }) {
 
   const setRecent = (e) => {
     e.stopPropagation = true;
-    setArr([...reversed]);
+    setData([...reversed]);
     setSortBy("Most Recent");
   };
 
@@ -46,8 +46,9 @@ export default function AllReviewsContainer({ reviews }) {
     let highestToLowestRating = copy?.sort(function (a, b) {
       return +b.rating - +a.rating;
     });
+
     e.stopPropagation = true;
-    setArr([...highestToLowestRating]);
+    setData([...highestToLowestRating]);
     setSortBy("Highest to Lowest Rating");
   };
 
@@ -56,7 +57,7 @@ export default function AllReviewsContainer({ reviews }) {
       return a.rating - +b.rating;
     });
     e.stopPropagation = true;
-    setArr([...lowestToHighestRating]);
+    setData([...lowestToHighestRating]);
     setSortBy("Lowest to Highest Rating");
   };
 
@@ -64,14 +65,17 @@ export default function AllReviewsContainer({ reviews }) {
     let mostHelpful = copy?.sort(function (a, b) {
       return +b.likeCount - +a.likeCount;
     });
+
     e.stopPropagation = true;
-    setArr([...mostHelpful]);
+    setData([...mostHelpful]);
+
     setSortBy("Most Helpful");
   };
 
   useEffect(() => {
-    setData(arr);
-  }, [arr, reviews, data, currentPageData]);
+    setData(reversed);
+
+  }, [reviews]);
 
   return (
     <div className={styles.allReviewsContainer}>
@@ -131,8 +135,6 @@ export default function AllReviewsContainer({ reviews }) {
           </Menu>
         </div>
       </div>
-
-      {/* <Pagination arr={reviews} /> */}
 
       <div>
         <div className={styles.holder}>{currentPageData}</div>
