@@ -109,7 +109,6 @@
 
 /* WRITE NEW REVIEW */
 
-
 .writeReviewOuterContainer {
   display: flex;
   flex-direction: column;
@@ -298,6 +297,11 @@
   width: 100%;
 }
 
+.uploadPic {
+  width: 20px;
+  height: 20px;
+}
+
 .addPhotoLowerContainer {
   height: 60px;
   display: flex;
@@ -306,17 +310,23 @@
   justify-self: center;
   justify-items: center;
   align-content: center;
+  /* background-color: royalblue; */
   align-self: center;
   margin: 0 auto;
 }
 
 .selectFileContainer {
   display: flex;
+  /* background-color: red; */
   flex-direction: column;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center;
+}
+
+.fileInputs {
+  background-color: yellow;
 }
 
 .addPhotoMiddleContainer {

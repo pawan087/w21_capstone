@@ -108,38 +108,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
       <RecentlyViewedCard />
-
-      <div>
-        <h2 className={styles.title}>Product Page</h2>
-
-        <h4>{product[0]?.name}</h4>
-
-        {num !== 0 && (
-          <li>
-            {rating} Stars ({num} reviews)
-          </li>
-        )}
-
-        <br />
-
-        <li>${product[0]?.price}</li>
-
-        <br></br>
-
-        <li>{product[0]?.description}</li>
-
-        <br />
-        <br />
-
-        <img
-          className={styles.image}
-          alt="productImage"
-          src={product[0]?.images[0]}
-        ></img>
-
-        <br />
-        <br />
-      </div>
     </>
   );
 }
