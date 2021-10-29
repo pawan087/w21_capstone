@@ -111,7 +111,8 @@
 .reviewContent {
   margin-top: 10px;
   font-size: 15px;
-  max-height: 75px;
+  /* max-height: 45px; */
+  height: 45px;
   margin-bottom: 25px;
   color: rgb(122, 122, 122);
 }

@@ -12,6 +12,12 @@ import {
   deleteReview,
   deleteImage,
 } from "../../../store/reviews";
+import {
+  createLike,
+  setAllReviewLikes,
+  deleteLike,
+  deleteTheOpposingAndCreateLike,
+} from "../../../store/reviewLikes";
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
@@ -28,6 +34,7 @@ export default function IndividualTopReview({ review }) {
   const [visible3, setVisible3] = useState(false);
   const [contentRequired, setContentRequired] = useState(false);
   const [showEditReview, setShowEditReview] = useState(false);
+  const [editConfirmation, setEditConfirmation] = useState(false);
   const [showAddPic, setShowAddPic] = useState(false);
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -37,6 +44,10 @@ export default function IndividualTopReview({ review }) {
   const [preview, setPreview] = useState(review.imageUrl);
   const [selectedFile, setSelectedFile] = useState(false);
   const [uploadMsg, setUploadMsg] = useState("Upload Picture");
+
+  const closeEditConfirmation = () => {
+    setEditConfirmation(false);
+  };
 
   const thisPagesProduct = products?.filter((product) => {
     return product.id === +params.id;
@@ -164,6 +175,8 @@ export default function IndividualTopReview({ review }) {
     setImage("");
     setSelectedFile();
     setUploadMsg("Upload Picture");
+    setEditConfirmation(true);
+    setTimeout(() => setEditConfirmation(false), 2000);
   };
 
   useEffect(() => {
@@ -219,6 +232,108 @@ export default function IndividualTopReview({ review }) {
   };
 
   let curTime = new Date();
+
+  const handleLike = async () => {
+    let alreadyLiked = false;
+    let alreadyDisliked = false;
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        // console.log("Already liked");
+        alreadyLiked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyLiked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyDisliked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: true,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: true })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
+
+  const handleDislike = async () => {
+    let alreadyDisliked = false;
+    let alreadyLiked = false;
+
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        alreadyLiked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyDisliked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyLiked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: false,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: false })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
 
   return (
     <>
@@ -315,7 +430,7 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.helpfulContainer}>Helpful?</div>
 
           <div className={styles.likeButtonContainer}>
-            <button className={styles.likeButton}>
+            <button onClick={handleLike} className={styles.likeButton}>
               <div className={styles.thumbsUpIcon}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -331,7 +446,7 @@ export default function IndividualTopReview({ review }) {
           </div>
 
           <div className={styles.dislikeButtonContainer}>
-            <button className={styles.dislikeButton}>
+            <button onClick={handleDislike} className={styles.dislikeButton}>
               <div className={styles.thumbsDownIcon}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -440,6 +555,19 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
           Your review was removed!
+        </div>
+      </Rodal>
+
+      <Rodal
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={editConfirmation}
+        onClose={closeEditConfirmation}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          Changes submitted!
         </div>
       </Rodal>
 
