@@ -466,6 +466,7 @@ export default function IndividualTopReview({ review }) {
       </div>
 
       <Rodal
+        closeOnEsc={true}
         width={835}
         height={545}
         enterAnimation={"zoom"}
@@ -483,6 +484,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={500}
@@ -548,6 +550,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={1145}
@@ -561,6 +564,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={1145}
@@ -576,6 +580,7 @@ export default function IndividualTopReview({ review }) {
       {/* EDIT REVIEW */}
 
       <Rodal
+        closeOnEsc={true}
         width={1265}
         height={790}
         enterAnimation={"zoom"}
@@ -709,6 +714,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={685}

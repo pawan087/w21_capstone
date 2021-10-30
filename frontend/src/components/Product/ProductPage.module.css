@@ -148,6 +148,7 @@
 
 .bold {
   font-weight: bold;
+  margin-right: 2.5px;
 }
 
 .underline {
@@ -194,12 +195,12 @@
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
+  margin-top: 15px;
   /* justify-content: left;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center; */
-
 }
 
 .categoryContainer div {
@@ -220,5 +221,51 @@
 }
 
 .stars {
-  transform: translateY(-20px)
+  transform: translateY(-20px);
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ADD TO CART CONFIRMATION MODAL */
+
+.addToCartConfirmationOuterContainer {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: auto;
+  background-color: red;
+  transform: translate(-15px, -15px);
+}
+
+.confirmation1stContainer {
+  display: flex;
+  width: 400px;
+  background-color: green;
+  height: 70px;
+}
+
+.confirmation2ndContainer {
+  display: flex;
+  width: 400px;
+  height: 115px;
+  background-color: skyblue;
+}
+
+.viewCartButtonContainer {
+  display: flex;
+  width: 400px;
+  height: 65px;
+  background-color: yellow;
+}
+
+.keepShoppingCancelLink {
+  height: 35px;
+  width: 400px;
+  background-color: pink;
+  display: flex;
 }

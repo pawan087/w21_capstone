@@ -275,12 +275,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         )}
 
         {reviews.length === 0 && bool && (
-          <div onClick={show}  className={styles.noReviews}>
+          <div onClick={show} className={styles.noReviews}>
             Be the first to review this product
           </div>
         )}
 
         <Rodal
+          closeOnEsc={true}
           width={1265}
           height={790}
           enterAnimation={"zoom"}
@@ -419,6 +420,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </Rodal>
 
         <Rodal
+          closeOnEsc={true}
           enterAnimation={"zoom"}
           leaveAnimation={"fade"}
           width={685}
@@ -523,6 +525,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </Rodal>
 
         <Rodal
+          closeOnEsc={true}
           enterAnimation={"zoom"}
           leaveAnimation={"fade"}
           width={1145}

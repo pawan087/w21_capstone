@@ -36,7 +36,7 @@ function App() {
     <>
       <MyNavBar />
 
-      <Navigation isLoaded={isLoaded} />
+      {false && <Navigation isLoaded={isLoaded} />}
 
       {false && <button onClick={() => setShowModal(true)}>Modal</button>}
 

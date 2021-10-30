@@ -17,6 +17,11 @@ export default function MyNavBar() {
   const products = useSelector((state) => state.products);
   const cartItems = useSelector((state) => state.cartItems);
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   let inCartProducts = [];
   let cartSubtotal = 0;
 
@@ -44,138 +49,142 @@ export default function MyNavBar() {
   }, [dispatch]);
 
   return (
-    <div className={styles.outerContainer}>
-      <div className={styles.leftSection}>
-        <div className={styles.leftMenuButtonContainer}>
-          <div className={styles.leftMenuButton}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
+    <div className={styles.myNavbar}>
+      <div className={styles.outerContainer}>
+        <div className={styles.leftSection}>
+          <div className={styles.leftMenuButtonContainer}>
+            <div className={styles.leftMenuButton}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </div>
+
+            <div className={styles.leftMenuLabel}>Shop</div>
           </div>
 
-          <div className={styles.leftMenuLabel}>Shop</div>
-        </div>
-
-        <div className={styles.navLogoContainer}>
-          <div onClick={() => history.push("/")} className={styles.navLogo}>
-            <img
-              src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw27bacb5e/images/svg-icons/logo-gs-2.svg"
-              alt="logo"
-            ></img>
+          <div className={styles.navLogoContainer}>
+            <div onClick={() => history.push("/")} className={styles.navLogo}>
+              <img
+                src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw27bacb5e/images/svg-icons/logo-gs-2.svg"
+                alt="logo"
+              ></img>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.middleSection}>
-        <div className={styles.searchBarContainer}>
-          <SearchComponent products={products} />
+        <div className={styles.middleSection}>
+          <div className={styles.searchBarContainer}>
+            <SearchComponent products={products} />
+          </div>
         </div>
-      </div>
 
-      <div className={styles.rightSection}>
-        <div className={styles.rightMenuButtonContainer}>
-          <div className={styles.userInitials}>
-            {user && `${user.firstName[0]}${user.lastName[0]}`}
+        <div className={styles.rightSection}>
+          <div className={styles.rightMenuButtonContainer}>
+            <div className={styles.userInitials}>
+              {user && `${user.firstName[0]}${user.lastName[0]}`}
+            </div>
+
+            <div className={styles.accountLabel}>Account</div>
           </div>
 
-          <div className={styles.accountLabel}>Account</div>
-        </div>
-
-        <Menu
-          arrow={true}
-          align={"end"}
-          className={styles.menu}
-          menuButton={
-            <MenuButton className={styles.button}>
-              <div className={styles.cartButtonContainer}>
-                <div className={styles.carButton}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-
-                <div className={styles.cartLabel}>Cart</div>
-
-                {user && (
-                  <div className={styles.numOfCartItems}>
-                    {inCartProducts.length !== 0 && sum}
+          <Menu
+            arrow={true}
+            align={"end"}
+            className={styles.menu}
+            menuButton={
+              <MenuButton className={styles.button}>
+                <div className={styles.cartButtonContainer}>
+                  <div className={styles.carButton}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
                   </div>
-                )}
-              </div>
-            </MenuButton>
-          }
-        >
-          {inCartProducts?.map((product, i) => {
-            // console.log(product.images[0]);
-            return (
-              <MenuItem key={i} className={styles.menuItemOuterContainer}>
-                <div className={styles.menuItemLeftContainer}>
-                  <div className={styles.menuItemProductImageContainer}>
-                    <img
-                      className={styles.menuItemProductImage}
-                      alt="productImageInSubMenu"
-                      src={product?.images[0]}
-                    ></img>
-                  </div>
-                </div>
 
-                <div className={styles.menuItemRightContainer}>
-                  <div className={styles.menuItemRightTopContainer}>
-                    <div className={styles.menuItemProductName}>
-                      {product?.name}
+                  <div className={styles.cartLabel}>Cart</div>
+
+                  {user && (
+                    <div className={styles.numOfCartItems}>
+                      {inCartProducts.length !== 0 && sum}
                     </div>
-
-                    <div className={styles.menuItemProductQuantity}>
-                      Qty {product?.quantity}
+                  )}
+                </div>
+              </MenuButton>
+            }
+          >
+            {inCartProducts?.map((product, i) => {
+              // console.log(product.images[0]);
+              return (
+                <MenuItem key={i} className={styles.menuItemOuterContainer}>
+                  <div className={styles.menuItemLeftContainer}>
+                    <div className={styles.menuItemProductImageContainer}>
+                      <img
+                        className={styles.menuItemProductImage}
+                        alt="productImageInSubMenu"
+                        src={product?.images[0]}
+                      ></img>
                     </div>
                   </div>
 
-                  <div className={styles.menuItemRightBottomContainer}>
-                    <div className={styles.removeLink}>Remove</div>
+                  <div className={styles.menuItemRightContainer}>
+                    <div className={styles.menuItemRightTopContainer}>
+                      <div className={styles.menuItemProductName}>
+                        {product?.name}
+                      </div>
 
-                    <div className={styles.priceTag}>${product.price}</div>
+                      <div className={styles.menuItemProductQuantity}>
+                        Qty {product?.quantity}
+                      </div>
+                    </div>
+
+                    <div className={styles.menuItemRightBottomContainer}>
+                      <div className={styles.removeLink}>Remove</div>
+
+                      <div className={styles.priceTag}>${product.price}</div>
+                    </div>
                   </div>
+                </MenuItem>
+              );
+            })}
+
+            <MenuItem className={styles.lowerSubMenuContainer}>
+              <div className={styles.lowerSubMenuContainerTopContainer}>
+                <div classNam={styles.itemCountLabel}>{sum} items</div>
+
+                <div className={styles.cartTotal}>
+                  Subtotal: ${formatter.format(cartSubtotal)}
                 </div>
-              </MenuItem>
-            );
-          })}
-
-          <MenuItem className={styles.lowerSubMenuContainer}>
-            <div className={styles.lowerSubMenuContainerTopContainer}>
-              <div classNam={styles.itemCountLabel}>{sum} items</div>
-
-              <div className={styles.cartTotal}>Subtotal: ${cartSubtotal}</div>
-            </div>
-
-            <div className={styles.lowerSubMenuContainerBottomContainer}>
-              <div classNam={styles.viewCartButtonContainer}>
-                <button className={styles.viewCartButton}>VIEW CART</button>
               </div>
-            </div>
-          </MenuItem>
-        </Menu>
+
+              <div className={styles.lowerSubMenuContainerBottomContainer}>
+                <div classNam={styles.viewCartButtonContainer}>
+                  <button className={styles.viewCartButton}>VIEW CART</button>
+                </div>
+              </div>
+            </MenuItem>
+          </Menu>
+        </div>
       </div>
     </div>
   );

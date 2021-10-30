@@ -1,15 +1,38 @@
-import styles from "./ProductPage.module.css";
+import React, { useState } from "react";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
 import ShowMoreText from "react-show-more-text";
+import Rodal from "rodal";
+import ReactLoading from "react-loading";
 
+import styles from "./ProductPage.module.css";
 import RecentlyViewedCard from "./RecentlyViewedCard";
 import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
+import "rodal/lib/rodal.css";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
+  const [loader, setLoader] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(true); // set to false, true for testing
+
+  const showConfirmationModal = () => {
+    setConfirmationModal(true);
+  };
+
+  const hideConfirmationModal = () => {
+    setConfirmationModal(false);
+  };
+
+  const showLoader = () => {
+    setLoader(true);
+  };
+
+  const hideLoader = () => {
+    setLoader(false);
+  };
+
   const formatter = new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
   });
 
   const props = {
@@ -86,10 +109,14 @@ function ProductDetail({ num, product, avgRating, reviews }) {
                 </div>
               </div>
 
-              <div className={styles.textRating}>
-                {!rating && <span className={styles.bold}>{rating}</span>} (
-                {num}) Ratings
-              </div>
+              {!!avgRating && (
+                <div className={styles.textRating}>
+                  <span className={styles.bold}>
+                    {formatter.format(avgRating)}
+                  </span>{" "}
+                  ({num}) {num === 1 ? "Rating" : "Ratings"}
+                </div>
+              )}
             </div>
 
             <div className={styles.priceContainer}>
@@ -108,6 +135,46 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
       <RecentlyViewedCard />
+
+      {loader && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgba(0,0,0,.75)"}
+            /*           color={"rgb(231,35,13)"} */
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={400}
+        height={285}
+        visible={confirmationModal}
+        onClose={hideConfirmationModal}
+      >
+        <div className={styles.addToCartConfirmationOuterContainer}>
+          <div className={styles.confirmation1stContainer}>
+            <div className={styles.checkMarkIcon}>CHECK MARK ICON</div>
+            <div className={styles.confirmationTitle}>Added to Cart</div>
+          </div>
+
+          <div className={styles.confirmation2ndContainer}>
+            <div className={styles.confirmationProductImage}>PRODUCT IMAGE</div>
+            <div className={styles.confirmationProductName}>PRODUCT NAME</div>
+          </div>
+
+          <div className={styles.viewCartButtonContainer}>
+            <button className={styles.viewCartButton}>VIEW CART</button>
+          </div>
+
+          <div className={styles.keepShoppingCancelLink}>Keep Shopping</div>
+        </div>
+      </Rodal>
     </>
   );
 }

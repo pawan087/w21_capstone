@@ -13,6 +13,15 @@
   list-style-type: none;
 }
 
+.myNavbar {
+  background-color: white;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.0625), 0 3px 6px rgba(0,0,0,0.0625);
+}
+
 .outerContainer {
   display: flex;
   justify-content: space-between;
@@ -20,6 +29,7 @@
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
   width: 1400px;
+
 }
 
 .leftSection {
@@ -100,6 +110,7 @@
 .userInitials {
   height: 25px;
   width: 25px;
+  font-size: 12px;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -144,9 +155,10 @@
   justify-content: center;
   align-items: center;
   color: white;
-  height: 4px;
-  width: 4px;
+  height:3px;
+  width: 3px;
   border-radius: 1000em;
+  font-size: 12.5px;
   padding: 10px;
   position: absolute;
   right: -10px;
@@ -180,17 +192,18 @@
   /* background-color: yellow; */
   width: 380px;
   height: 125px;
+  cursor: default;
 }
 
 .menuItemOuterContainer:hover {
   background-color: rgba(0, 0, 0, 0.015625);
-  /* border: 1px solid rgba(0, 0, 0, 0.0625) */
 }
 
 .menuItemLeftContainer {
   /* background-color: tomato; */
   height: 125px;
   width: 140px;
+  cursor: default;
   display: flex;
 }
 
@@ -215,6 +228,7 @@
   /* background-color: yellow; */
   width:100%;
   height: 100%;
+  cursor: default;
 }
 
 .menuItemRightBottomContainer {
@@ -254,6 +268,7 @@
   margin-top: 10px;
   color:rgba(0, 0, 0, 1);
   transform: translate(-25px, 0px);
+  cursor: pointer;
 }
 
 .removeLink:hover {
@@ -270,6 +285,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.25);
   margin-top: 5px;
   height: 125px;
+  cursor: default;
   width: 380px;
   /* background-color: rgba(88, 33, 33, 0.0325); */
   display: flex;
@@ -288,9 +304,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  cursor: default;
   font-size: 15px;
   color:rgba(0, 0, 0, 1);
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 .cartTotal {
