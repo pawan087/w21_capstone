@@ -42,8 +42,6 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/profile">Edit User Profile</NavLink>
 
-        <NavLink to="/test">Test</NavLink>
-
         {isLoaded && sessionLinks}
 
         <br />
