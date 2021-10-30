@@ -62,6 +62,7 @@ export default function IndividualTopReview({ review }) {
   };
 
   const showShowAddPic = () => {
+    setShowEditReview(false);
     setShowAddPic(true);
 
     if (rating.imageUrl) {
@@ -84,6 +85,7 @@ export default function IndividualTopReview({ review }) {
 
   const closeAddPic = () => {
     setShowAddPic(false);
+    setShowEditReview(true);
   };
 
   const ratingChanged = (newRating) => {
@@ -603,10 +605,6 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.writeReviewMiddleContainer}>
             <div className={styles.ratingContainer}>
               {true && <div className={styles.ratingTitle}>Overall Rating</div>}
-
-              {false && (
-                <div className={styles.ratingTitle2}>Overall Rating</div>
-              )}
 
               <div className={styles.writeReviewStarsContainer}>
                 <ReactStars
