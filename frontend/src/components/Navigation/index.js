@@ -43,10 +43,6 @@ function Navigation({ isLoaded }) {
         <NavLink to="/profile">Edit User Profile</NavLink>
 
         {isLoaded && sessionLinks}
-
-        <br />
-
-        <SearchComponent products={products} />
       </li>
     </ul>
   );

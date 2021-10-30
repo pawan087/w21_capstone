@@ -70,12 +70,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   };
 
   const hide2 = () => {
-
     if (!selectedFile) {
       setSelectedFile();
       setImage(null);
     }
-
 
     setVisible2(false);
     setVisible(true);
@@ -233,7 +231,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           )}
         </div>
 
-        {bool && (
+        {reviews.length !== 0 && bool && (
           <div className={styles.bottomContainer}>
             <div className={styles.leftContainer}>
               <div className={styles.leftTopContainer}>
@@ -272,7 +270,15 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           </div>
         )}
 
-        {bool && <TopReviewsCard reviews={reviews} avgRating={avgRating} />}
+        {reviews.length !== 0 && bool && (
+          <TopReviewsCard reviews={reviews} avgRating={avgRating} />
+        )}
+
+        {reviews.length === 0 && bool && (
+          <div onClick={show}  className={styles.noReviews}>
+            Be the first to review this product
+          </div>
+        )}
 
         <Rodal
           width={1265}

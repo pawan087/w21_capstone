@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
+import styles from "./Search.module.css";
+
 export default function SearchComponent({ products }) {
   const history = useHistory();
   const [criteria, setCriteria] = useState("");
+
   const handleOnSearch = (string, results) => {
     // console.log(string, results);
     setCriteria(string);
@@ -15,9 +18,12 @@ export default function SearchComponent({ products }) {
   };
 
   const handleOnSelect = (item) => {
-    // console.log(item);
+    // console.log(item.id);
 
     setCriteria(item.name);
+    handleOnClear();
+
+    history.push(`/products/${item.id}`);
   };
 
   const handleOnFocus = () => {
@@ -28,7 +34,9 @@ export default function SearchComponent({ products }) {
     // console.log("Cleared");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    console.log(searchCriteria);
+
     const searchCriteria = criteria.split(" ").join("_").toLowerCase();
 
     history.push(`/search/${searchCriteria}`);
@@ -44,8 +52,8 @@ export default function SearchComponent({ products }) {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={styles.container}>
+      <header>
         <div>
           <ReactSearchAutocomplete
             onKeyPres={handleKeypress}
@@ -55,24 +63,25 @@ export default function SearchComponent({ products }) {
             onSearch={handleOnSearch}
             onHover={handleOnHover}
             onSelect={handleOnSelect}
+            maxResults={5}
             onFocus={handleOnFocus}
             onClear={handleOnClear}
             showIcon={true}
-            placeholder='Search games, consoles and more'
+            placeholder="Search games, consoles and more"
             styling={{
               height: "45px",
               border: "none",
               borderRadius: "4px",
-              backgroundColor: "rgb(240,240,240)",
+              backgroundColor: "rgba(240,240,240)",
               hoverBackgroundColor: "white",
               color: "rgb(51,51,51)",
               fontSize: "14px",
               fontFamily: "Arial",
               iconColor: "rgb(51,51,51)",
-              lineColor: "white",
+              lineColor: "rgba(0,0,0,.25)",
               placeholderColor: "rgb(51,51,51)",
               clearIconMargin: "3px 8px 0 0",
-              boxShadow: "200px"
+              boxShadow: "200px",
             }}
           />
         </div>

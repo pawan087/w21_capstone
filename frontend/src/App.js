@@ -38,7 +38,7 @@ function App() {
 
       <Navigation isLoaded={isLoaded} />
 
-      <button onClick={() => setShowModal(true)}>Modal</button>
+      {false && <button onClick={() => setShowModal(true)}>Modal</button>}
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

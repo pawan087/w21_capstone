@@ -475,3 +475,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.noReviews {
+  text-decoration: underline;
+  /* background-color: rebeccapurple; */
+  font-size: 12.5px;
+  transform: translate(-5px, 0px);
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.noReviews:hover {
+  color: rgb(231,35,13);
+}
