@@ -6,6 +6,7 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
 import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
@@ -88,7 +89,9 @@ function App() {
           </Route>
         </Switch>
       )}
-      
+
+      <ScrollUpButton />
+
       <Footer />
     </>
   );

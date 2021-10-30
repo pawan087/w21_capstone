@@ -2,15 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
-import { CircleArrow as ScrollUpButton } from "react-scroll-up-button"; //Add this line Here
-import ScrollButton from "./ScrollUpButton";
 
-// import NewCartItem from "./NewCartItem.js";
+import NewCartItem from "./NewCartItem.js";
 import ProductDetail from "./ProductDetail";
-// import QuestionCard from "./QuestionCard";
-// import ReviewCard from "./ReviewCard";
-// import WriteReviewCard from "./WriteReviewCard";
-// import AskQuestionCard from "./AskQuestionCard";
+import QuestionCard from "./QuestionCard";
+import ReviewCard from "./ReviewCard";
+import WriteReviewCard from "./WriteReviewCard";
+import AskQuestionCard from "./AskQuestionCard";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
@@ -24,7 +22,7 @@ function ProductPage() {
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const reviews = useSelector((state) => state.reviews);
-  // const questions = useSelector((state) => state.questions);
+  const questions = useSelector((state) => state.questions);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const product = products?.filter((product) => +product.id === +params.id);
@@ -64,9 +62,9 @@ function ProductPage() {
 
   const avgRating = sum / productReviews?.length;
 
-  // const productQuestions = questions?.filter((question) => {
-  //   return question.productId === +params.id;
-  // });
+  const productQuestions = questions?.filter((question) => {
+    return question.productId === +params.id;
+  });
 
   useEffect(() => {
     dispatch(addToRecent({ productId: +params.id, userId: user.id }));
@@ -86,8 +84,6 @@ function ProductPage() {
         product={product}
         reviews={productReviews}
       />
-
-      <ScrollButton />
     </>
   );
 }
