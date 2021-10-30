@@ -17,8 +17,18 @@ export default function MyNavBar() {
   const products = useSelector((state) => state.products);
   const cartItems = useSelector((state) => state.cartItems);
 
-  let thisUsersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem?.userId === user?.id;
+  let inCartProducts = [];
+  let cartSubtotal = 0;
+
+  cartItems.forEach((cartItem) => {
+    if (cartItem?.userId === user?.id) {
+      products?.forEach((product) => {
+        if (product.id === cartItem.productId) {
+          inCartProducts.push({ ...product, quantity: cartItem.quantity });
+          cartSubtotal += cartItem.quantity * product.price;
+        }
+      });
+    }
   });
 
   let sum = 0;
@@ -28,8 +38,6 @@ export default function MyNavBar() {
       sum += cartItem.quantity;
     }
   });
-
-  console.log(thisUsersCartItems);
 
   useEffect(() => {
     dispatch(setAllCartItems());
@@ -112,78 +120,53 @@ export default function MyNavBar() {
 
                 {user && (
                   <div className={styles.numOfCartItems}>
-                    {thisUsersCartItems.length !== 0 && sum}
+                    {inCartProducts.length !== 0 && sum}
                   </div>
                 )}
               </div>
             </MenuButton>
           }
         >
-          <MenuItem className={styles.menuItemOuterContainer}>
-            <div className={styles.menuItemLeftContainer}>
-              <div className={styles.menuItemProductImageContainer}>
-                <img
-                  className={styles.menuItemProductImage}
-                  alt="productImageInSubMenu"
-                  src={
-                    "https://media.gamestop.com/i/gamestop/11149084/Marvels-Guardians-of-the-Galaxy-Cosmic-Deluxe-Edition---Xbox-One?$pdp$$&fmt=webp"
-                  }
-                ></img>
-              </div>
-            </div>
-
-            <div className={styles.menuItemRightContainer}>
-              <div className={styles.menuItemRightTopContainer}>
-                <div className={styles.menuItemProductName}>
-                  Microsoft Xbox Series X Wireless Stereo Gaming Headset
+          {inCartProducts?.map((product, i) => {
+            // console.log(product.images[0]);
+            return (
+              <MenuItem key={i} className={styles.menuItemOuterContainer}>
+                <div className={styles.menuItemLeftContainer}>
+                  <div className={styles.menuItemProductImageContainer}>
+                    <img
+                      className={styles.menuItemProductImage}
+                      alt="productImageInSubMenu"
+                      src={product?.images[0]}
+                    ></img>
+                  </div>
                 </div>
 
-                <div className={styles.menuItemProductQuantity}>Qty 3</div>
-              </div>
+                <div className={styles.menuItemRightContainer}>
+                  <div className={styles.menuItemRightTopContainer}>
+                    <div className={styles.menuItemProductName}>
+                      {product?.name}
+                    </div>
 
-              <div className={styles.menuItemRightBottomContainer}>
-                <div className={styles.removeLink}>Remove</div>
+                    <div className={styles.menuItemProductQuantity}>
+                      Qty {product?.quantity}
+                    </div>
+                  </div>
 
-                <div className={styles.priceTag}>$834.33</div>
-              </div>
-            </div>
-          </MenuItem>
+                  <div className={styles.menuItemRightBottomContainer}>
+                    <div className={styles.removeLink}>Remove</div>
 
-          <MenuItem className={styles.menuItemOuterContainer}>
-            <div className={styles.menuItemLeftContainer}>
-              <div className={styles.menuItemProductImageContainer}>
-                <img
-                  className={styles.menuItemProductImage}
-                  alt="productImageInSubMenu"
-                  src={
-                    "https://media.gamestop.com/i/gamestop/10138857/Sony-PlayStation-4-Slim-500GB-Console-Black?$pdp$$&fmt=webp"
-                  }
-                ></img>
-              </div>
-            </div>
-
-            <div className={styles.menuItemRightContainer}>
-              <div className={styles.menuItemRightTopContainer}>
-                <div className={styles.menuItemProductName}>
-                  Microsoft Xbox Series X Wireless Stereo Gaming Headset
+                    <div className={styles.priceTag}>${product.price}</div>
+                  </div>
                 </div>
-
-                <div className={styles.menuItemProductQuantity}>Qty 3</div>
-              </div>
-
-              <div className={styles.menuItemRightBottomContainer}>
-                <div className={styles.removeLink}>Remove</div>
-
-                <div className={styles.priceTag}>$834.33</div>
-              </div>
-            </div>
-          </MenuItem>
+              </MenuItem>
+            );
+          })}
 
           <MenuItem className={styles.lowerSubMenuContainer}>
             <div className={styles.lowerSubMenuContainerTopContainer}>
-              <div classNam={styles.itemCountLabel}>7 items</div>
+              <div classNam={styles.itemCountLabel}>{sum} items</div>
 
-              <div className={styles.cartTotal}>Subtotal: $2,113.54</div>
+              <div className={styles.cartTotal}>Subtotal: ${cartSubtotal}</div>
             </div>
 
             <div className={styles.lowerSubMenuContainerBottomContainer}>
