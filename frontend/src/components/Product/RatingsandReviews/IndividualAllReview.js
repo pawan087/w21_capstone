@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import ReactLoading from "react-loading";
 import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
+import {
+  motion,
+  Frame,
+  useTransform,
+  useMotionValue,
+} from "framer-motion/dist/framer-motion";
 
 import {
   setAllReviews,
@@ -22,8 +28,20 @@ import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
 export default function IndividualTopReview({ review }) {
+  const constraintsRef = useRef(null);
   const dispatch = useDispatch();
   const params = useParams();
+
+  const x = useMotionValue(200);
+  const y = useMotionValue(200);
+
+  const rotateX = useTransform(y, [0, 400], [45, -45]);
+  const rotateY = useTransform(x, [0, 400], [-45, 45]);
+
+  function handleMouse(event) {
+    x.set(event.pageX);
+    y.set(event.pageY);
+  }
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);

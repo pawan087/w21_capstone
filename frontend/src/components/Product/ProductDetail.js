@@ -4,6 +4,7 @@ import StarPicker from "react-star-picker";
 import ShowMoreText from "react-show-more-text";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
+import { FaCheck } from "react-icons/fa";
 
 import styles from "./ProductPage.module.css";
 import RecentlyViewedCard from "./RecentlyViewedCard";
@@ -12,7 +13,7 @@ import "rodal/lib/rodal.css";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
   const [loader, setLoader] = useState(false);
-  const [confirmationModal, setConfirmationModal] = useState(true); // set to false, true for testing
+  const [confirmationModal, setConfirmationModal] = useState(false); // set to false, true for testing
 
   const showConfirmationModal = () => {
     setConfirmationModal(true);
@@ -125,7 +126,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
             <div className={styles.buttonContainer}>
               <div className={styles.addToCartButtonContainer}>
-                <button className={styles.addToCartButton}>ADD TO CART</button>
+                <button onClick={() => showConfirmationModal()} className={styles.addToCartButton}>ADD TO CART</button>
               </div>
             </div>
           </div>
@@ -150,22 +151,35 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
       <Rodal
         closeOnEsc={true}
-        enterAnimation={"zoom"}
-        leaveAnimation={"fade"}
+        enterAnimation={"slideDown"}
+        leaveAnimation={"slideDown"}
         width={400}
-        height={285}
+        height={315}
         visible={confirmationModal}
         onClose={hideConfirmationModal}
       >
         <div className={styles.addToCartConfirmationOuterContainer}>
           <div className={styles.confirmation1stContainer}>
-            <div className={styles.checkMarkIcon}>CHECK MARK ICON</div>
+            <div className={styles.checkMarkIcon}>
+              {" "}
+              <FaCheck style={{ display: "inline" }} />
+            </div>
             <div className={styles.confirmationTitle}>Added to Cart</div>
           </div>
 
           <div className={styles.confirmation2ndContainer}>
-            <div className={styles.confirmationProductImage}>PRODUCT IMAGE</div>
-            <div className={styles.confirmationProductName}>PRODUCT NAME</div>
+            <div className={styles.confirmationProductImage}>
+              <img
+                className={styles.confirmPic}
+                alt="confirmationPic"
+                src={
+                  "https://media.gamestop.com/i/gamestop/11112058/Deathloop---PlayStation-5?$pdp2x$"
+                }
+              />
+            </div>
+            <div className={styles.confirmationProductName}>
+              Grand Theft Auto V
+            </div>
           </div>
 
           <div className={styles.viewCartButtonContainer}>

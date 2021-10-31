@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 
+
 import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
 import Footer from "./components/Footer";
@@ -86,6 +88,10 @@ function App() {
 
           <Route path="/profile" exact={true}>
             <EditUser />
+          </Route>
+
+          <Route path="/test" exact={true}>
+            <Test />
           </Route>
         </Switch>
       )}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
 import { Button } from "./Styles";
 

@@ -2,6 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
+import {
+  motion,
+  Frame,
+  useTransform,
+  useMotionValue,
+} from "framer-motion/dist/framer-motion";
 
 import styles from "./RecentlyViewed.module.css";
 
@@ -9,6 +15,17 @@ export default function IndividualRecentlyViewed({ product }) {
   const history = useHistory();
 
   const reviews = useSelector((state) => state.reviews);
+
+  const x = useMotionValue(200);
+  const y = useMotionValue(200);
+
+  const rotateX = useTransform(y, [0, 400], [45, -45]);
+  const rotateY = useTransform(x, [0, 400], [-45, 45]);
+
+  function handleMouse(event) {
+    x.set(event.pageX);
+    y.set(event.pageY);
+  }
 
   let productReviews = [];
 

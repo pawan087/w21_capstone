@@ -1,6 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  motion,
+  Frame,
+  useTransform,
+  useMotionValue,
+} from "framer-motion/dist/framer-motion";
+
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 // import { SubMenu } from "@szhsin/react-menu";
 
@@ -10,12 +17,19 @@ import "@szhsin/react-menu/dist/index.css";
 import SearchComponent from "../Search";
 
 export default function MyNavBar() {
+  const constraintsRef = useRef(null);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const cartItems = useSelector((state) => state.cartItems);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const rotateX = useTransform(y, [-100, 100], [60, -60]);
+  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -74,12 +88,33 @@ export default function MyNavBar() {
           </div>
 
           <div className={styles.navLogoContainer}>
-            <div onClick={() => history.push("/")} className={styles.navLogo}>
+            <motion.div
+              dragTransition={{ bounceStiffness: 400, bounceDamping: 17.5 }}
+              style={{
+                x: x,
+                y: y,
+                rotateX: rotateX,
+                rotateY: rotateY,
+                cursor: "grab",
+              }}
+              drag
+              dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
+              dragElastic={0.6}
+              whileTap={{ cursor: "grabbing" }}
+              onClick={() => history.push("/")}
+              className={styles.navLogo}
+            >
               <img
                 src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw27bacb5e/images/svg-icons/logo-gs-2.svg"
                 alt="logo"
+                style={{
+                  pointerEvents: "none",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                }}
               ></img>
-            </div>
+            </motion.div>
           </div>
         </div>
 
