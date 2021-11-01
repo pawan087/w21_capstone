@@ -37,7 +37,6 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const [visible, setVisible] = useState(false); // <-- set to true after dev
   const [visible2, setVisible2] = useState(false); // <-- set to false after dev
   const [visible3, setVisible3] = useState(false); // <-- set to false after dev
-  const [visible4, setVisible4] = useState(false); // <-- set to false after dev
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
 
@@ -56,14 +55,6 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setVisible(true);
   };
 
-  const show4 = () => {
-    setVisible4(true);
-  };
-
-  const hide4 = () => {
-    setVisible4(false);
-  };
-
   const hide = () => {
     setLoading(false);
     setVisible(false);
@@ -79,12 +70,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   };
 
   const hide2 = () => {
-
     if (!selectedFile) {
       setSelectedFile();
       setImage(null);
     }
-
 
     setVisible2(false);
     setVisible(true);
@@ -242,7 +231,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           )}
         </div>
 
-        {bool && (
+        {reviews.length !== 0 && bool && (
           <div className={styles.bottomContainer}>
             <div className={styles.leftContainer}>
               <div className={styles.leftTopContainer}>
@@ -281,9 +270,18 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           </div>
         )}
 
-        {bool && <TopReviewsCard reviews={reviews} avgRating={avgRating} />}
+        {reviews.length !== 0 && bool && (
+          <TopReviewsCard reviews={reviews} avgRating={avgRating} />
+        )}
+
+        {reviews.length === 0 && bool && (
+          <div onClick={show} className={styles.noReviews}>
+            Be the first to review this product
+          </div>
+        )}
 
         <Rodal
+          closeOnEsc={true}
           width={1265}
           height={790}
           enterAnimation={"zoom"}
@@ -420,7 +418,9 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             )}
           </div>
         </Rodal>
+
         <Rodal
+          closeOnEsc={true}
           enterAnimation={"zoom"}
           leaveAnimation={"fade"}
           width={685}
@@ -525,6 +525,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </Rodal>
 
         <Rodal
+          closeOnEsc={true}
           enterAnimation={"zoom"}
           leaveAnimation={"fade"}
           width={1145}

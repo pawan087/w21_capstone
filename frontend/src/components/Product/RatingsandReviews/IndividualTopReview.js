@@ -1,13 +1,127 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import StarPicker from "react-star-picker";
 
+import {
+  createLike,
+  setAllReviewLikes,
+  deleteLike,
+  deleteTheOpposingAndCreateLike,
+} from "../../../store/reviewLikes";
 import styles from "./TopReviewsCard.module.css";
 
 export default function IndividualTopReview({ review }) {
+  const dispatch = useDispatch();
+
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
+
+  const user = useSelector((state) => state.session.user);
+  const reviewLikes = useSelector((state) => state.reviewLikes);
+
+  const handleLike = async () => {
+    let alreadyLiked = false;
+    let alreadyDisliked = false;
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        // console.log("Already liked");
+        alreadyLiked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyLiked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyDisliked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: true,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: true })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
+
+  const handleDislike = async () => {
+    let alreadyDisliked = false;
+    let alreadyLiked = false;
+
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        alreadyLiked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyDisliked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyLiked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: false,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: false })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
 
   let curTime = new Date();
 
@@ -78,7 +192,7 @@ export default function IndividualTopReview({ review }) {
         <div className={styles.helpfulContainer}>Helpful?</div>
 
         <div className={styles.likeButtonContainer}>
-          <button className={styles.likeButton}>
+          <button onClick={handleLike} className={styles.likeButton}>
             <div className={styles.thumbsUpIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +208,7 @@ export default function IndividualTopReview({ review }) {
         </div>
 
         <div className={styles.dislikeButtonContainer}>
-          <button className={styles.dislikeButton}>
+          <button onClick={handleDislike} className={styles.dislikeButton}>
             <div className={styles.thumbsDownIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

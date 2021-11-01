@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
+import { AnimatePresence } from "framer-motion/dist/framer-motion";
 import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
-import ImageZoom from "./components/ImageZoom";
+import Test from "./components/Test";
+import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
+import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
@@ -22,6 +25,7 @@ import Cart from "./components/Cart/index";
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -35,9 +39,9 @@ function App() {
     <>
       <MyNavBar />
 
-      <Navigation isLoaded={isLoaded} />
+      {false && <Navigation isLoaded={isLoaded} />}
 
-      <button onClick={() => setShowModal(true)}>Modal</button>
+      {false && <button onClick={() => setShowModal(true)}>Modal</button>}
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -46,52 +50,61 @@ function App() {
       )}
 
       {isLoaded && (
-        <Switch>
-          <Route path="/login" exact={true}>
-            <LoginFormPage />
-          </Route>
+        <AnimatePresence exitBeforeEnter>
+          <Switch location={location} key={location.pathname}>
+            <Route path="/login" exact={true}>
+              <LoginFormPage />
+            </Route>
 
-          <Route path="/signup" exact={true}>
-            <SignupFormPage />
-          </Route>
+            <Route path="/signup" exact={true}>
+              <SignupFormPage />
+            </Route>
 
-          <Route path="/products" exact={true}>
-            <ProductsPage />
-          </Route>
+            <Route path="/products" exact={true}>
+              <ProductsPage />
+            </Route>
 
-          <Route path="/products/:id" exact={true}>
-            <ProductPage />
-          </Route>
+            <Route path="/products/:id" exact={true}>
+              <ProductPage />
+            </Route>
 
-          <Route path="/cart" exact={true}>
-            <Cart />
-          </Route>
+            <Route path="/cart" exact={true}>
+              <Cart />
+            </Route>
 
-          <Route path="/confirm" exact={true}>
-            <OrderConfirmation />
-          </Route>
+            <Route path="/confirm" exact={true}>
+              <OrderConfirmation />
+            </Route>
 
-          <Route path="/orders" exact={true}>
-            <Orders />
-          </Route>
+            <Route path="/orders" exact={true}>
+              <Orders />
+            </Route>
 
-          <Route path="/edit/:id/:num/:items/:address1/:address2" exact={true}>
-            <EditOrderPage />
-          </Route>
+            <Route
+              path="/edit/:id/:num/:items/:address1/:address2"
+              exact={true}
+            >
+              <EditOrderPage />
+            </Route>
 
-          <Route path="/search/:criteria" exact={true}>
-            <Search />
-          </Route>
+            <Route path="/search/:criteria" exact={true}>
+              <Search />
+            </Route>
 
-          <Route path="/profile" exact={true}>
-            <EditUser />
-          </Route>
+            <Route path="/profile" exact={true}>
+              <EditUser />
+            </Route>
 
-          <Route path="/test" exact={true}>
-            <ImageZoom />
-          </Route>
-        </Switch>
+            <Route path="/test" exact={true}>
+              <Test />
+            </Route>
+          </Switch>
+        </AnimatePresence>
       )}
+
+      <ScrollUpButton />
+
+      <Footer />
     </>
   );
 }

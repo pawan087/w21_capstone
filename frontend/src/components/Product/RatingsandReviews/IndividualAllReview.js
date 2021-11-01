@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import ReactLoading from "react-loading";
+import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
-import ReactLoading from "react-loading";
 
 import {
   setAllReviews,
@@ -10,20 +12,97 @@ import {
   deleteReview,
   deleteImage,
 } from "../../../store/reviews";
+import {
+  createLike,
+  setAllReviewLikes,
+  deleteLike,
+  deleteTheOpposingAndCreateLike,
+} from "../../../store/reviewLikes";
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
+  const params = useParams();
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
+  const products = useSelector((state) => state.products);
 
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false); // <-- set to true after dev
   const [visible3, setVisible3] = useState(false);
+  const [contentRequired, setContentRequired] = useState(false);
+  const [showEditReview, setShowEditReview] = useState(false);
+  const [editConfirmation, setEditConfirmation] = useState(false);
+  const [showAddPic, setShowAddPic] = useState(false);
+  const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
+  const [rating, setRating] = useState(review?.rating);
+  const [content, setContent] = useState(review?.content);
+  const [preview, setPreview] = useState(review.imageUrl);
+  const [selectedFile, setSelectedFile] = useState(false);
+  const [uploadMsg, setUploadMsg] = useState("Upload Picture");
+
+  const closeEditConfirmation = () => {
+    setEditConfirmation(false);
+  };
+
+  const thisPagesProduct = products?.filter((product) => {
+    return product.id === +params.id;
+  });
+
+  const showShowEditReview = () => {
+    setShowEditReview(true);
+
+    if (rating.imageUrl) {
+      setPreview(rating.imageUrl);
+    }
+  };
+
+  const showShowAddPic = () => {
+    setShowEditReview(false);
+    setShowAddPic(true);
+
+    if (rating.imageUrl) {
+      setPreview(rating.imageUrl);
+    }
+  };
+
+  const closeEditReview = () => {
+    setShowEditReview(false);
+
+    setPreview(null);
+    setImage("");
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
+
+    if (review.imageUrl) {
+      setPreview(review.imageUrl);
+    }
+  };
+
+  const closeAddPic = () => {
+    setShowAddPic(false);
+    setShowEditReview(true);
+  };
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
+
+  const contentSetter = (e) => {
+    setContent(e.target.value);
+    setContentRequired(false);
+  };
+
+  const removePhoto = () => {
+    setPreview(null);
+    setImage("");
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
+  };
 
   const hide3 = () => {
     // setVisible2(false);
@@ -53,6 +132,79 @@ export default function IndividualTopReview({ review }) {
     setTimeout(() => setVisible3(false), 2000);
   };
 
+  const handleSubmit = async () => {
+    setLoading(true);
+
+    if (content === "") {
+      setContentRequired(true);
+      return;
+    }
+
+    if (!image && !preview) {
+      if (review.imageUrl) {
+        await dispatch(deleteImage(review.id));
+      } else {
+        await dispatch(editReview({ id: review.id, rating: rating, content }));
+      }
+    }
+
+    if (!image && preview) {
+      await dispatch(editReview({ id: review.id, rating: rating, content }));
+    }
+
+    if (image) {
+      if (review.imageUrl) {
+        await dispatch(
+          editReview({ id: review.id, content, rating: rating, image })
+        );
+      } else {
+        await dispatch(
+          editReview({ id: review.id, content, rating: rating, image })
+        );
+      }
+    }
+
+    await dispatch(setAllReviews());
+    setShowEditReview(false);
+    setLoading(false);
+    // setPreview(null);
+    setImage("");
+    setSelectedFile();
+    setUploadMsg("Upload Picture");
+    setEditConfirmation(true);
+    setTimeout(() => setEditConfirmation(false), 2000);
+  };
+
+  useEffect(() => {
+    // window.scrollTo(0, 0);
+    if (!selectedFile) {
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+
+    setUploadMsg(file["name"].slice(0, 36));
+    setSelectedFile(e.target.files[0]);
+
+    if (file) setImage(file);
+  };
+
+  const addPhoto = () => {
+    if (!selectedFile) return;
+
+    setShowAddPic(false);
+    setShowEditReview(true);
+  };
+
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
@@ -76,6 +228,108 @@ export default function IndividualTopReview({ review }) {
   };
 
   let curTime = new Date();
+
+  const handleLike = async () => {
+    let alreadyLiked = false;
+    let alreadyDisliked = false;
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        // console.log("Already liked");
+        alreadyLiked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyLiked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyDisliked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: true,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: true })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
+
+  const handleDislike = async () => {
+    let alreadyDisliked = false;
+    let alreadyLiked = false;
+
+    let id;
+    let id2;
+
+    reviewLikes?.forEach((reviewLike) => {
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        !reviewLike.like
+      ) {
+        alreadyDisliked = true;
+        id = reviewLike.id;
+      }
+
+      if (
+        reviewLike.userId === user.id &&
+        reviewLike.reviewId === review.id &&
+        reviewLike.like
+      ) {
+        alreadyLiked = true;
+        id2 = reviewLike.id;
+      }
+    });
+
+    if (alreadyDisliked) {
+      await dispatch(deleteLike(id));
+
+      await dispatch(setAllReviewLikes());
+    } else {
+      if (alreadyLiked) {
+        await dispatch(
+          deleteTheOpposingAndCreateLike({
+            userId: user.id,
+            reviewId: review.id,
+            like: false,
+            idToDelete: id2,
+          })
+        );
+      } else {
+        await dispatch(
+          createLike({ userId: user.id, reviewId: review.id, like: false })
+        );
+      }
+
+      await dispatch(setAllReviewLikes());
+    }
+  };
 
   return (
     <>
@@ -120,7 +374,9 @@ export default function IndividualTopReview({ review }) {
 
             {review.userId === user.id && (
               <div className={styles.reviewLinks}>
-                <div className={styles.editLink}>Edit</div>
+                <div onClick={showShowEditReview} className={styles.editLink}>
+                  Edit
+                </div>
                 <div onClick={show2} className={styles.removeLink}>
                   Remove
                 </div>
@@ -170,7 +426,7 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.helpfulContainer}>Helpful?</div>
 
           <div className={styles.likeButtonContainer}>
-            <button className={styles.likeButton}>
+            <button onClick={handleLike} className={styles.likeButton}>
               <div className={styles.thumbsUpIcon}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +442,7 @@ export default function IndividualTopReview({ review }) {
           </div>
 
           <div className={styles.dislikeButtonContainer}>
-            <button className={styles.dislikeButton}>
+            <button onClick={handleDislike} className={styles.dislikeButton}>
               <div className={styles.thumbsDownIcon}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -204,6 +460,7 @@ export default function IndividualTopReview({ review }) {
       </div>
 
       <Rodal
+        closeOnEsc={true}
         width={835}
         height={545}
         enterAnimation={"zoom"}
@@ -221,6 +478,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={500}
@@ -272,6 +530,7 @@ export default function IndividualTopReview({ review }) {
               </button>
             </div>
           </div>
+
           {loading && (
             <div className={styles.loader}>
               <ReactLoading
@@ -286,6 +545,7 @@ export default function IndividualTopReview({ review }) {
       </Rodal>
 
       <Rodal
+        closeOnEsc={true}
         enterAnimation={"zoom"}
         leaveAnimation={"fade"}
         width={1145}
@@ -295,6 +555,261 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
           Your review was removed!
+        </div>
+      </Rodal>
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={editConfirmation}
+        onClose={closeEditConfirmation}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          Changes submitted!
+        </div>
+      </Rodal>
+
+      {/* EDIT REVIEW */}
+
+      <Rodal
+        closeOnEsc={true}
+        width={1265}
+        height={790}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        visible={showEditReview}
+        onClose={closeEditReview}
+      >
+        <div className={styles.writeReviewOuterContainer}>
+          <div className={styles.writeReviewTopContainer}>
+            <div className={styles.writeReviewTitle}>Edit review</div>
+
+            <div className={styles.writeReviewSubtitle}>
+              <div className={styles.productImageContainer}>
+                <img
+                  className={styles.writeReviewProductPic}
+                  alt={"picOfProductInReviewModal"}
+                  src={thisPagesProduct[0]?.images[0]}
+                ></img>
+              </div>
+
+              <div className={styles.productNameContainer}>
+                {thisPagesProduct[0]?.name}
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewMiddleContainer}>
+            <div className={styles.ratingContainer}>
+              {true && <div className={styles.ratingTitle}>Overall Rating</div>}
+
+              <div className={styles.writeReviewStarsContainer}>
+                <ReactStars
+                  count={5}
+                  onChange={ratingChanged}
+                  size={25}
+                  value={+rating}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+              </div>
+            </div>
+
+            <div className={styles.reviewInputsContainer}>
+              <div className={styles.emailInputContainer}>
+                <input
+                  placeholder={"Your email"}
+                  className={styles.emailInput}
+                  type="email"
+                  value={user.email}
+                  readOnly
+                ></input>
+              </div>
+
+              <div className={styles.contentInputContainer}>
+                <textarea
+                  value={content}
+                  onChange={(e) => contentSetter(e)}
+                  type="text"
+                  placeholder="Your review"
+                  className={styles.reviewInput}
+                ></textarea>
+
+                {contentRequired && (
+                  <div className={styles.required}>Required</div>
+                )}
+
+                <div className={styles.addPhotoContainer}>
+                  {!preview && (
+                    <button
+                      onClick={showShowAddPic}
+                      className={styles.addPhotoButton}
+                    >
+                      Add Photo
+                    </button>
+                  )}
+
+                  {preview && (
+                    <div className={styles.selectedReviewImagePreviewContainer}>
+                      <img
+                        className={styles.selectedReviewImagePreview}
+                        alt="selectedReviewImage"
+                        src={preview}
+                      />
+                    </div>
+                  )}
+
+                  {preview && (
+                    <div
+                      onClick={removePhoto}
+                      className={styles.removeImageIconContainer}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.writeReviewBottomContainer}>
+            <button onClick={handleSubmit} className={styles.writeReviewButton}>
+              SUBMIT
+            </button>
+          </div>
+
+          {loading && (
+            <div className={styles.loader}>
+              <ReactLoading
+                type={"spin"}
+                color={"rgba(0,0,0,.75)"}
+                height={"0px"}
+                width={"57.5px"}
+              />
+            </div>
+          )}
+        </div>
+      </Rodal>
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={685}
+        height={505}
+        visible={showAddPic}
+        onClose={closeAddPic}
+      >
+        <div className={styles.addPhotoOuterContainer}>
+          <div className={styles.addPhotoTopContainer}>
+            <div className={styles.addPhotoTitle}>Add Photo</div>
+          </div>
+
+          <div className={styles.addPhotoMiddleContainer}>
+            {!selectedFile && (
+              <div className={styles.addPhotoEmptyPreviewContainer}>
+                <div className={styles.cameraIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+
+            {selectedFile && (
+              <div className={styles.addPhotoPreviewContainer}>
+                <img
+                  className={styles.photoPreview}
+                  src={preview}
+                  alt={"previewOfImage"}
+                ></img>
+              </div>
+            )}
+
+            <div className={styles.removePhotoContainer}>
+              {selectedFile && (
+                <div onClick={removePhoto} className={styles.removePhoto}>
+                  Remove Photo
+                </div>
+              )}
+              {!selectedFile && (
+                <div
+                  onClick={removePhoto}
+                  className={styles.removePhoto2}
+                ></div>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.addPhotoLowerContainer}>
+            {!selectedFile && (
+              <div className={styles.selectFileContainer}>
+                <div className="fileinputs">
+                  <input
+                    className="inputContainer file"
+                    type="file"
+                    accept="image/*"
+                    onChange={updateImage}
+                  />
+
+                  <div className="inputContainer fakefile">
+                    <label className="uploadLabel">{uploadMsg}</label>
+
+                    <div className="uploadPic">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {selectedFile && (
+              <div className={styles.addPhotoButtonContainer}>
+                <button onClick={addPhoto} className={styles.addPhotoButton2}>
+                  ADD PHOTO
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </Rodal>
     </>

@@ -67,16 +67,28 @@ export default function Cart() {
   };
 
   return (
-    <div className={styles.cartOuterContainer}>
+    <>
+      <h2 className={styles.title}>Shopping Cart Page</h2>
 
+      <h4 className={styles.cartTitle}>{user.username}'s Cart</h4>
 
-                  <div className={styles.cartLeftContainer}>Items Mapped Here</div>
+      {shoppingCartItems?.length === 0 && <h5>This cart is empty.</h5>}
 
+      <Items shoppingCartItems={shoppingCartItems} />
 
-                  <div className={styles.cartRightContainer}>Items Mapped Here</div>
+      {shoppingCartItems?.length > 1 && (
+        <button onClick={handleSubmit2}>Empty Cart</button>
+      )}
 
+      {shoppingCartItems.length !== 0 && (
+        <div>
+          <h4 className={styles.cartTitle}>Place Your Order</h4>
 
+          <button onClick={handleSubmit}>Submit</button>
+        </div>
+      )}
 
-    </div>
+      <br />
+    </>
   );
 }

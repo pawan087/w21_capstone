@@ -4,12 +4,10 @@ import { useSelector } from "react-redux";
 
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
-import SearchComponent from "../Search";
 import styles from "./Navigation.module.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-  const products = useSelector((state) => state.products);
 
   let sessionLinks;
 
@@ -42,13 +40,7 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/profile">Edit User Profile</NavLink>
 
-        <NavLink to="/test">Test</NavLink>
-
         {isLoaded && sessionLinks}
-
-        <br />
-
-        <SearchComponent products={products} />
       </li>
     </ul>
   );

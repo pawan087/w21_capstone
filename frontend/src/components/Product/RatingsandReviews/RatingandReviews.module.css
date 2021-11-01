@@ -105,7 +105,11 @@
   display: flex;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
+
+/* WRITE NEW REVIEW */
+
 
 .writeReviewOuterContainer {
   display: flex;
@@ -295,6 +299,11 @@
   width: 100%;
 }
 
+.uploadPic {
+  width: 20px;
+  height: 20px;
+}
+
 .addPhotoLowerContainer {
   height: 60px;
   display: flex;
@@ -466,4 +475,17 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.noReviews {
+  text-decoration: underline;
+  /* background-color: rebeccapurple; */
+  font-size: 12.5px;
+  transform: translate(-5px, 0px);
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.noReviews:hover {
+  color: rgb(231,35,13);
 }

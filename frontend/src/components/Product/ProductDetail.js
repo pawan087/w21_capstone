@@ -1,13 +1,84 @@
-import styles from "./ProductPage.module.css";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
-import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
 import ShowMoreText from "react-show-more-text";
+import Rodal from "rodal";
+import ReactLoading from "react-loading";
+import { FaCheck } from "react-icons/fa";
+
+import {
+  createCartItem,
+  setAllCartItems,
+  editCartItem,
+} from "../../store/cartItems.js";
+import RecentlyViewedCard from "./RecentlyViewedCard";
+import RatingsandReviews from "./RatingsandReviews/RatingsandReviews";
+import styles from "./ProductPage.module.css";
+import "rodal/lib/rodal.css";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const user = useSelector((state) => state.session.user);
+  const cartItems = useSelector((state) => state.cartItems);
+
+  const [loader, setLoader] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(false); // set to false, true for testing
+
+  const usersCartItems = cartItems?.filter((cartItem) => {
+    return (
+      cartItem?.userId === user?.id && cartItem?.productId === product[0]?.id
+    );
+  });
+
+  const quantity = 1;
+
+  const showConfirmationModal = () => {
+    setConfirmationModal(true);
+  };
+
+  const hideConfirmationModal = () => {
+    setConfirmationModal(false);
+  };
+
+  const showLoader = () => {
+    setLoader(true);
+  };
+
+  const hideLoader = () => {
+    setLoader(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    showLoader();
+
+    if (usersCartItems.length > 0) {
+      dispatch(
+        editCartItem({
+          id: +usersCartItems[0]?.id,
+          quantity: +usersCartItems[0]?.quantity + quantity,
+        })
+      );
+    } else {
+      await dispatch(
+        createCartItem({ userId: user.id, productId: product[0].id, quantity })
+      );
+    }
+
+    await dispatch(setAllCartItems());
+
+    hideLoader();
+    showConfirmationModal();
+  };
+
   const formatter = new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
   });
 
   const props = {
@@ -18,6 +89,16 @@ function ProductDetail({ num, product, avgRating, reviews }) {
   };
 
   let rating = formatter.format(avgRating);
+
+  useEffect(() => {
+    const ayeSink = async () => {
+      await dispatch(setAllCartItems());
+    };
+
+    ayeSink();
+
+    return () => setLoader(false);
+  }, [dispatch]);
 
   return (
     <>
@@ -84,10 +165,14 @@ function ProductDetail({ num, product, avgRating, reviews }) {
                 </div>
               </div>
 
-              <div className={styles.textRating}>
-                {!rating && <span className={styles.bold}>{rating}</span>} (
-                {num}) Ratings
-              </div>
+              {!!avgRating && (
+                <div className={styles.textRating}>
+                  <span className={styles.bold}>
+                    {formatter.format(avgRating)}
+                  </span>{" "}
+                  ({num}) {num === 1 ? "Rating" : "Ratings"}
+                </div>
+              )}
             </div>
 
             <div className={styles.priceContainer}>
@@ -96,7 +181,12 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
             <div className={styles.buttonContainer}>
               <div className={styles.addToCartButtonContainer}>
-                <button className={styles.addToCartButton}>ADD TO CART</button>
+                <button
+                  onClick={(e) => handleSubmit(e)}
+                  className={styles.addToCartButton}
+                >
+                  ADD TO CART
+                </button>
               </div>
             </div>
           </div>
@@ -105,37 +195,63 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
-      <div>
-        <h2 className={styles.title}>Product Page</h2>
+      <RecentlyViewedCard />
 
-        <h4>{product[0]?.name}</h4>
+      {loader && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgba(0,0,0,.75)"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
 
-        {num !== 0 && (
-          <li>
-            {rating} Stars ({num} reviews)
-          </li>
-        )}
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"slideDown"}
+        leaveAnimation={"slideDown"}
+        width={400}
+        height={315}
+        visible={confirmationModal}
+        onClose={hideConfirmationModal}
+      >
+        <div className={styles.addToCartConfirmationOuterContainer}>
+          <div className={styles.confirmation1stContainer}>
+            <div className={styles.checkMarkIcon}>
+              {" "}
+              <FaCheck style={{ display: "inline" }} />
+            </div>
+            <div className={styles.confirmationTitle}>Added to Cart</div>
+          </div>
 
-        <br />
+          <div className={styles.confirmation2ndContainer}>
+            <div className={styles.confirmationProductImage}>
+              <img
+                className={styles.confirmPic}
+                alt="confirmationPic"
+                src={product[0]?.images[0]}
+              />
+            </div>
+            <div className={styles.confirmationProductName}>
+              {product[0]?.name}
+            </div>
+          </div>
 
-        <li>${product[0]?.price}</li>
+          <div className={styles.viewCartButtonContainer}>
+            <button onClick={() => history.push('/cart')} className={styles.viewCartButton}>VIEW CART</button>
+          </div>
 
-        <br></br>
-
-        <li>{product[0]?.description}</li>
-
-        <br />
-        <br />
-
-        <img
-          className={styles.image}
-          alt="productImage"
-          src={product[0]?.images[0]}
-        ></img>
-
-        <br />
-        <br />
-      </div>
+          <div
+            onClick={() => hideConfirmationModal()}
+            className={styles.keepShoppingCancelLink}
+          >
+            Keep Shopping
+          </div>
+        </div>
+      </Rodal>
     </>
   );
 }
