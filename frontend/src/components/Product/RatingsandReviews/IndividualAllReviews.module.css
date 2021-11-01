@@ -222,8 +222,10 @@
   height: 100%;
 }
 
-.editLink, .removeLink {
+.editLink,
+.removeLink {
   cursor: pointer;
+  transition: 0.15s ease-in-out;
 }
 
 .reviewLinks {
@@ -241,6 +243,7 @@
 
 .editLink {
   margin-right: 20px;
+  transition: 0.15s ease-in-out;
 }
 
 .editLink:hover,
@@ -344,6 +347,13 @@
   font-size: 12.5px;
   border: 2.5px solid rgb(231, 35, 13);
   border-radius: 5px;
+  transition: 0.15s ease-in-out;
+}
+
+.cancelButton:hover {
+  background-color: #da362c;
+  color: white;
+  font-size: 12.75px;
 }
 
 .reviewSubmissionConfirmationContainer {

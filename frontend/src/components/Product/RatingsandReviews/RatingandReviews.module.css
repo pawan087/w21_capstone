@@ -484,6 +484,7 @@
   transform: translate(-5px, 0px);
   color: rgba(0, 0, 0, 0.75);
   cursor: pointer;
+  transition: 0.15s ease-in-out;
 }
 
 .noReviews:hover {

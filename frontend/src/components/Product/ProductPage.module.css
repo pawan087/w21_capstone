@@ -47,6 +47,7 @@
   text-decoration: none;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.75);
+  transition: 0.15s ease-in-out;
 }
 
 .description a:hover {
@@ -89,10 +90,11 @@
   justify-items: center;
   align-content: center;
   align-self: center;
+  transition: 0.15s ease-in-out;
 }
 
 .imageContainer:hover {
-  display: block;
+  /* display: block; */
 }
 
 .descriptionContainer {
@@ -284,6 +286,7 @@
   color: rgba(0, 0, 0, 1);
   text-decoration: underline;
   cursor: pointer;
+  transition: 0.15s ease-in-out;
 }
 
 .keepShoppingCancelLink:hover {

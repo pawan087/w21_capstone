@@ -21,7 +21,7 @@ import EditUser from "./components/EditUser.js/EditUser";
 import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation";
 import Orders from "./components/Orders";
-import Cart from "./components/Cart/index";
+import Cart from "./components/Cart/index.jsx";
 
 function App() {
   const dispatch = useDispatch();

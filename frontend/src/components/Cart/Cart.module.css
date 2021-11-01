@@ -17,3 +17,11 @@
   background-color: rgba(0, 0, 0, 0.25);
   color: white;
 }
+
+/* STYLED CART PAGE */
+
+.cartOuterContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(242,244,247);
+}
