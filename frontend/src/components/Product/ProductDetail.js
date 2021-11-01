@@ -200,7 +200,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
           <ReactLoading
             type={"bubbles"}
             color={"rgba(0,0,0,.75)"}
-            /*           color={"rgb(231,35,13)"} */
+            color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}
           />

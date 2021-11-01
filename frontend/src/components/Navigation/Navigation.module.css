@@ -324,8 +324,6 @@
   text-align: center;
   width: 380px;
   height: 65px;
-
-
 }
 
 .viewCartButtonContainer {
@@ -342,4 +340,116 @@
   font-size: 13px;
   font-weight: bold;
   background-color: rgb(231,35,13);
+}
+
+/* REMOVE CONFIRMATION */
+
+.deleteReviewConfirmationModal {
+  width: 500px;
+  height: 285px;
+  background-color: rgb(255, 255, 255);
+  transform: translate(-15px, -15px);
+}
+
+.firstContainer {
+  width: 500px;
+  height: 55px;
+}
+
+.modalTitle {
+  color: rgba(0, 0, 0, 1);
+  margin-top: 30px;
+  font-weight: 800;
+  font-size: 17.5px;
+  margin-left: 35px;
+  margin-bottom: 35px;
+}
+
+.confirmationText {
+  margin-left: 35px;
+  width: 420px;
+  height: 30px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.secondContainer {
+  margin-top: 35px;
+  margin-left: 35px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  /* background-color: salmon; */
+}
+
+.reviewUsername {
+  height: 160px;
+  /* background-color: teal; */
+  margin-right: 25px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.deleteReviewContent {
+  font-weight: normal;
+  height: 160px;
+  /* width: 350px; */
+  width: 320px;
+  overflow: auto;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.thirdContainer {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: right;
+  padding-right: 25px;
+  transform: translateY(-60px);
+}
+
+.cancelButton {
+  width: 85px;
+  height: 45px;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-weight: bold;
+  font-size: 12.5px;
+  border: 2.5px solid rgb(231, 35, 13);
+  border-radius: 5px;
+}
+
+.reviewSubmissionConfirmationContainer {
+  background-color: rgba(231, 35, 13, 0.25);
+  width: 1145px;
+  height: 55px;
+  transform: translate(-15px, -15px);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgba(231, 35, 13, 0.75);
+  padding-top: 12.5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.yesButtonContainer {
+  width: 60px;
+  height: 45px;
+  margin-left: 12.5px;
+}
+
+.yesButton {
+  width: 60px;
+  height: 45px;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  font-size: 12.5px;
+  border: none;
+  background-color: rgb(231, 35, 13);
 }

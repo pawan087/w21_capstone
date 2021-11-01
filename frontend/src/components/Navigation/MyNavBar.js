@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -6,11 +6,12 @@ import {
   useTransform,
   useMotionValue,
 } from "framer-motion/dist/framer-motion";
+import Rodal from "rodal";
+import ReactLoading from "react-loading";
 
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 // import { SubMenu } from "@szhsin/react-menu";
-
-import { setAllCartItems } from "../../store/cartItems";
+import { setAllCartItems, deleteCartItem } from "../../store/cartItems";
 import styles from "./Navigation.module.css";
 import "@szhsin/react-menu/dist/index.css";
 import SearchComponent from "../Search";
@@ -18,6 +19,21 @@ import SearchComponent from "../Search";
 export default function MyNavBar() {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [removeConfirmation, setRemoveConfirmation] = useState(false); // set to false, true for testing
+  const [loader, setLoader] = useState(false);
+  const [productName, setProductName] = useState();
+  const [productId, setProductId] = useState();
+
+  const showRemoveConfirmationModal = (name, id) => {
+    setProductName(name);
+    setProductId(id);
+    setRemoveConfirmation(true);
+  };
+
+  const hideRemoveConfirmationModal = () => {
+    setRemoveConfirmation(false);
+  };
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
@@ -55,6 +71,29 @@ export default function MyNavBar() {
       sum += cartItem.quantity;
     }
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let id;
+
+    cartItems?.forEach((cartItem) => {
+      if (cartItem.userId === user.id && cartItem.productId === productId) {
+        id = cartItem.id;
+      }
+    });
+
+    if (id) {
+      setLoader(true);
+
+      await dispatch(deleteCartItem({ idToDelete: id }));
+
+      await dispatch(setAllCartItems());
+    }
+
+    setLoader(false);
+    hideRemoveConfirmationModal();
+  };
 
   useEffect(() => {
     dispatch(setAllCartItems());
@@ -131,94 +170,197 @@ export default function MyNavBar() {
             <div className={styles.accountLabel}>Account</div>
           </div>
 
-          <Menu
-            arrow={true}
-            align={"end"}
-            className={styles.menu}
-            menuButton={
-              <MenuButton className={styles.button}>
-                <div className={styles.cartButtonContainer}>
-                  <div className={styles.carButton}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                      />
-                    </svg>
-                  </div>
-
-                  <div className={styles.cartLabel}>Cart</div>
-
-                  {user && (
-                    <div className={styles.numOfCartItems}>
-                      {inCartProducts.length !== 0 && sum}
+          {inCartProducts.length > 0 && (
+            <Menu
+              arrow={true}
+              align={"end"}
+              className={styles.menu}
+              menuButton={
+                <MenuButton className={styles.button}>
+                  <div className={styles.cartButtonContainer}>
+                    <div className={styles.carButton}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                        />
+                      </svg>
                     </div>
-                  )}
-                </div>
-              </MenuButton>
-            }
-          >
-            {inCartProducts?.map((product, i) => {
-              // console.log(product.images[0]);
-              return (
-                <MenuItem key={i} className={styles.menuItemOuterContainer}>
-                  <div className={styles.menuItemLeftContainer}>
-                    <div className={styles.menuItemProductImageContainer}>
-                      <img
-                        className={styles.menuItemProductImage}
-                        alt="productImageInSubMenu"
-                        src={product?.images[0]}
-                      ></img>
-                    </div>
-                  </div>
 
-                  <div className={styles.menuItemRightContainer}>
-                    <div className={styles.menuItemRightTopContainer}>
-                      <div className={styles.menuItemProductName}>
-                        {product?.name}
+                    <div className={styles.cartLabel}>Cart</div>
+
+                    {user && inCartProducts.length > 0 && (
+                      <div className={styles.numOfCartItems}>
+                        {inCartProducts.length !== 0 && sum}
                       </div>
-
-                      <div className={styles.menuItemProductQuantity}>
-                        Qty {product?.quantity}
+                    )}
+                  </div>
+                </MenuButton>
+              }
+            >
+              {inCartProducts?.map((product, i) => {
+                // console.log(product.images[0]);
+                return (
+                  <MenuItem key={i} className={styles.menuItemOuterContainer}>
+                    <div className={styles.menuItemLeftContainer}>
+                      <div className={styles.menuItemProductImageContainer}>
+                        <img
+                          className={styles.menuItemProductImage}
+                          alt="productImageInSubMenu"
+                          src={product?.images[0]}
+                        ></img>
                       </div>
                     </div>
 
-                    <div className={styles.menuItemRightBottomContainer}>
-                      <div className={styles.removeLink}>Remove</div>
+                    <div className={styles.menuItemRightContainer}>
+                      <div className={styles.menuItemRightTopContainer}>
+                        <div className={styles.menuItemProductName}>
+                          {product?.name}
+                        </div>
 
-                      <div className={styles.priceTag}>${product.price}</div>
+                        <div className={styles.menuItemProductQuantity}>
+                          Qty {product?.quantity}
+                        </div>
+                      </div>
+
+                      <div className={styles.menuItemRightBottomContainer}>
+                        <div
+                          onClick={() =>
+                            showRemoveConfirmationModal(
+                              product.name,
+                              product.id
+                            )
+                          }
+                          className={styles.removeLink}
+                        >
+                          Remove
+                        </div>
+
+                        <div className={styles.priceTag}>${product.price}</div>
+                      </div>
                     </div>
+                  </MenuItem>
+                );
+              })}
+
+              <MenuItem className={styles.lowerSubMenuContainer}>
+                <div className={styles.lowerSubMenuContainerTopContainer}>
+                  <div classNam={styles.itemCountLabel}>{sum} items</div>
+
+                  <div className={styles.cartTotal}>
+                    Subtotal: ${formatter.format(cartSubtotal)}
                   </div>
-                </MenuItem>
-              );
-            })}
-
-            <MenuItem className={styles.lowerSubMenuContainer}>
-              <div className={styles.lowerSubMenuContainerTopContainer}>
-                <div classNam={styles.itemCountLabel}>{sum} items</div>
-
-                <div className={styles.cartTotal}>
-                  Subtotal: ${formatter.format(cartSubtotal)}
                 </div>
+
+                <div className={styles.lowerSubMenuContainerBottomContainer}>
+                  <div classNam={styles.viewCartButtonContainer}>
+                    <button className={styles.viewCartButton}>VIEW CART</button>
+                  </div>
+                </div>
+              </MenuItem>
+            </Menu>
+          )}
+
+          {inCartProducts.length === 0 && (
+            <div
+              onClick={() => history.push("/products")}
+              className={styles.cartButtonContainer}
+            >
+              <div className={styles.carButton}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
               </div>
 
-              <div className={styles.lowerSubMenuContainerBottomContainer}>
-                <div classNam={styles.viewCartButtonContainer}>
-                  <button className={styles.viewCartButton}>VIEW CART</button>
+              <div className={styles.cartLabel}>Cart</div>
+
+              {user && inCartProducts.length > 0 && (
+                <div className={styles.numOfCartItems}>
+                  {inCartProducts.length !== 0 && sum}
                 </div>
-              </div>
-            </MenuItem>
-          </Menu>
+              )}
+            </div>
+          )}
         </div>
       </div>
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={500}
+        height={285}
+        visible={removeConfirmation}
+        onClose={hideRemoveConfirmationModal}
+      >
+        <div className={styles.deleteReviewConfirmationModal}>
+          <div className={styles.firstContainer}>
+            <div className={styles.modalTitle}>REMOVE PRODUCT?</div>
+          </div>
+
+          <div className={styles.onePointFiveContainer}>
+            <div className={styles.confirmationText}>
+              Are you sure you want to remove the following product from the
+              cart?
+            </div>
+          </div>
+
+          <div className={styles.secondContainer}>
+            <div className={styles.reviewUsername}>{productName}</div>
+          </div>
+
+          <div className={styles.thirdContainer}>
+            <div className={styles.cancelButtonContainer}>
+              <button
+                onClick={hideRemoveConfirmationModal}
+                className={styles.cancelButton}
+              >
+                CANCEL
+              </button>
+            </div>
+
+            <div className={styles.yesButtonContainer}>
+              <button
+                onClick={(e) => handleSubmit(e)}
+                className={styles.yesButton}
+              >
+                YES
+              </button>
+            </div>
+          </div>
+        </div>
+      </Rodal>
+
+      {loader && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgba(0,0,0,.75)"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
     </div>
   );
 }

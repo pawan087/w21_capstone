@@ -6,7 +6,6 @@ import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
-
 import {
   setAllReviews,
   editReview,
@@ -531,6 +530,7 @@ export default function IndividualTopReview({ review }) {
               </button>
             </div>
           </div>
+
           {loading && (
             <div className={styles.loader}>
               <ReactLoading
