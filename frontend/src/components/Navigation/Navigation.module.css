@@ -19,7 +19,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.0625), 0 3px 6px rgba(0,0,0,0.0625);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0625), 0 3px 6px rgba(0, 0, 0, 0.0625);
 }
 
 .outerContainer {
@@ -29,7 +29,6 @@
   margin: 0 auto;
   background-color: rgb(255, 255, 255);
   width: 1400px;
-
 }
 
 .leftSection {
@@ -57,7 +56,6 @@
 
   width: 5em;
 }
-
 
 .leftMenuLabel {
   font-size: 12px;
@@ -157,7 +155,7 @@
   justify-content: center;
   align-items: center;
   color: white;
-  height:3px;
+  height: 3px;
   width: 3px;
   border-radius: 1000em;
   font-size: 12.5px;
@@ -187,6 +185,11 @@
 .menuItem {
   /* width: 500px; */
   /* background-color: red; */
+}
+
+.cartSubMenu {
+  max-height: 750px;
+  overflow-y: auto;
 }
 
 .menuItemOuterContainer {
@@ -228,7 +231,7 @@
 
 .menuItemRightContainer {
   /* background-color: yellow; */
-  width:100%;
+  width: 100%;
   height: 100%;
   cursor: default;
 }
@@ -238,10 +241,10 @@
   justify-content: space-between;
 }
 
-.menuItemRightTopContainer{
+.menuItemRightTopContainer {
   display: flex;
   flex-direction: column;
-    transform: translate(-25px, 0px);
+  transform: translate(-25px, 0px);
 }
 
 .menuItemProductName {
@@ -268,13 +271,13 @@
   font-size: 12.5px;
   text-decoration: underline;
   margin-top: 10px;
-  color:rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
   transform: translate(-25px, 0px);
   cursor: pointer;
 }
 
 .removeLink:hover {
-  color: #E7230D;
+  color: #e7230d;
 }
 
 .priceTag {
@@ -308,7 +311,7 @@
   padding: 0 20px;
   cursor: default;
   font-size: 15px;
-  color:rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
   padding-bottom: 15px;
 }
 
@@ -339,7 +342,7 @@
   border: none;
   font-size: 13px;
   font-weight: bold;
-  background-color: rgb(231,35,13);
+  background-color: rgb(231, 35, 13);
 }
 
 /* REMOVE CONFIRMATION */

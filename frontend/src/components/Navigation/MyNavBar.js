@@ -206,50 +206,54 @@ export default function MyNavBar() {
                 </MenuButton>
               }
             >
-              {inCartProducts?.map((product, i) => {
-                // console.log(product.images[0]);
-                return (
-                  <MenuItem key={i} className={styles.menuItemOuterContainer}>
-                    <div className={styles.menuItemLeftContainer}>
-                      <div className={styles.menuItemProductImageContainer}>
-                        <img
-                          className={styles.menuItemProductImage}
-                          alt="productImageInSubMenu"
-                          src={product?.images[0]}
-                        ></img>
-                      </div>
-                    </div>
-
-                    <div className={styles.menuItemRightContainer}>
-                      <div className={styles.menuItemRightTopContainer}>
-                        <div className={styles.menuItemProductName}>
-                          {product?.name}
-                        </div>
-
-                        <div className={styles.menuItemProductQuantity}>
-                          Qty {product?.quantity}
+              <div className={styles.cartSubMenu}>
+                {inCartProducts?.map((product, i) => {
+                  // console.log(product.images[0]);
+                  return (
+                    <MenuItem key={i} className={styles.menuItemOuterContainer}>
+                      <div className={styles.menuItemLeftContainer}>
+                        <div className={styles.menuItemProductImageContainer}>
+                          <img
+                            className={styles.menuItemProductImage}
+                            alt="productImageInSubMenu"
+                            src={product?.images[0]}
+                          ></img>
                         </div>
                       </div>
 
-                      <div className={styles.menuItemRightBottomContainer}>
-                        <div
-                          onClick={() =>
-                            showRemoveConfirmationModal(
-                              product.name,
-                              product.id
-                            )
-                          }
-                          className={styles.removeLink}
-                        >
-                          Remove
+                      <div className={styles.menuItemRightContainer}>
+                        <div className={styles.menuItemRightTopContainer}>
+                          <div className={styles.menuItemProductName}>
+                            {product?.name}
+                          </div>
+
+                          <div className={styles.menuItemProductQuantity}>
+                            Qty {product?.quantity}
+                          </div>
                         </div>
 
-                        <div className={styles.priceTag}>${product.price}</div>
+                        <div className={styles.menuItemRightBottomContainer}>
+                          <div
+                            onClick={() =>
+                              showRemoveConfirmationModal(
+                                product.name,
+                                product.id
+                              )
+                            }
+                            className={styles.removeLink}
+                          >
+                            Remove
+                          </div>
+
+                          <div className={styles.priceTag}>
+                            ${product.price}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </MenuItem>
-                );
-              })}
+                    </MenuItem>
+                  );
+                })}
+              </div>
 
               <MenuItem className={styles.lowerSubMenuContainer}>
                 <div className={styles.lowerSubMenuContainerTopContainer}>
@@ -262,7 +266,12 @@ export default function MyNavBar() {
 
                 <div className={styles.lowerSubMenuContainerBottomContainer}>
                   <div classNam={styles.viewCartButtonContainer}>
-                    <button className={styles.viewCartButton}>VIEW CART</button>
+                    <button
+                      onClick={() => history.push("/cart")}
+                      className={styles.viewCartButton}
+                    >
+                      VIEW CART
+                    </button>
                   </div>
                 </div>
               </MenuItem>
@@ -271,7 +280,7 @@ export default function MyNavBar() {
 
           {inCartProducts.length === 0 && (
             <div
-              onClick={() => history.push("/products")}
+              onClick={() => history.push("/cart")}
               className={styles.cartButtonContainer}
             >
               <div className={styles.carButton}>

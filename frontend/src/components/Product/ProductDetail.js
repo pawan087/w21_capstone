@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
 import ShowMoreText from "react-show-more-text";
@@ -19,6 +20,7 @@ import "rodal/lib/rodal.css";
 
 function ProductDetail({ num, product, avgRating, reviews }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const cartItems = useSelector((state) => state.cartItems);
@@ -239,7 +241,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
           </div>
 
           <div className={styles.viewCartButtonContainer}>
-            <button className={styles.viewCartButton}>VIEW CART</button>
+            <button onClick={() => history.push('/cart')} className={styles.viewCartButton}>VIEW CART</button>
           </div>
 
           <div
