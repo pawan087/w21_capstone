@@ -35,8 +35,6 @@ export default function SearchComponent({ products }) {
   };
 
   const handleSubmit = (e) => {
-    console.log(searchCriteria);
-
     const searchCriteria = criteria.split(" ").join("_").toLowerCase();
 
     history.push(`/search/${searchCriteria}`);

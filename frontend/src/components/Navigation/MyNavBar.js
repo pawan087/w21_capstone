@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   motion,
-  Frame,
   useTransform,
   useMotionValue,
 } from "framer-motion/dist/framer-motion";
@@ -17,7 +16,6 @@ import "@szhsin/react-menu/dist/index.css";
 import SearchComponent from "../Search";
 
 export default function MyNavBar() {
-  const constraintsRef = useRef(null);
   const dispatch = useDispatch();
   const history = useHistory();
 

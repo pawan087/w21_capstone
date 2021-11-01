@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
-import styles from "./Test.module.css";
+// import styles from "./Test.module.css";
 import {
   motion,
-  Frame,
   useTransform,
   useMotionValue,
 } from "framer-motion/dist/framer-motion";

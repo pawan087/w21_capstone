@@ -1,7 +1,6 @@
 import React from "react";
 import {
   motion,
-  Frame,
   useTransform,
   useMotionValue,
 } from "framer-motion/dist/framer-motion";
