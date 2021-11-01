@@ -2,17 +2,23 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
+import {
+  motion,
+  // Frame,
+  // useTransform,
+  // useMotionValue,
+} from "framer-motion/dist/framer-motion";
 
-import NewCartItem from "./NewCartItem.js";
+// import NewCartItem from "./NewCartItem.js";
+// import QuestionCard from "./QuestionCard";
+// import ReviewCard from "./ReviewCard";
+// import AskQuestionCard from "./AskQuestionCard";
+// import { setAllQuestions } from "../../store/questions.js";
 import ProductDetail from "./ProductDetail";
-import QuestionCard from "./QuestionCard";
-import ReviewCard from "./ReviewCard";
 import WriteReviewCard from "./WriteReviewCard";
-import AskQuestionCard from "./AskQuestionCard";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
-import { setAllQuestions } from "../../store/questions.js";
 import { addToRecent } from "../../store/recentlyViewed";
 
 function ProductPage() {
@@ -22,7 +28,7 @@ function ProductPage() {
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
   const reviews = useSelector((state) => state.reviews);
-  const questions = useSelector((state) => state.questions);
+  // const questions = useSelector((state) => state.questions);
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const product = products?.filter((product) => +product.id === +params.id);
@@ -62,29 +68,35 @@ function ProductPage() {
 
   const avgRating = sum / productReviews?.length;
 
-  const productQuestions = questions?.filter((question) => {
-    return question.productId === +params.id;
-  });
+  // const productQuestions = questions?.filter((question) => {
+  //   return question.productId === +params.id;
+  // });
 
   useEffect(() => {
     dispatch(addToRecent({ productId: +params.id, userId: user.id }));
     dispatch(setAllProducts());
     dispatch(setAllReviews());
     dispatch(setAllReviewLikes());
-    dispatch(setAllQuestions());
+    // dispatch(setAllQuestions());
   }, [params.id, user.id, dispatch]);
 
   if (!user) return <Redirect to="/" />;
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <ProductDetail
         num={productReviews?.length}
         avgRating={avgRating}
         product={product}
         reviews={productReviews}
       />
-    </>
+
+      <WriteReviewCard />
+    </motion.div>
   );
 }
 
