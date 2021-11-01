@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
+import Select from "react-select";
 
 import Items from "./Items";
 import { setAllOrderItems } from "../../store/orderItems.js";
@@ -67,6 +68,53 @@ export default function Cart() {
     await dispatch(setAllCartItems());
   };
 
+  const options = [
+    { value: 1, label: "Qty 1" },
+    { value: 2, label: "Qty 2" },
+    { value: 3, label: "Qty 3" },
+    { value: 4, label: "Qty 4" },
+    { value: 5, label: "Qty 5" },
+  ];
+
+  const theme = (theme) => ({
+    ...theme,
+    colors: {
+      ...theme.colors,
+      primary25: "rgba(0,0,0,.0625)",
+      primary: "rgba(0,0,0,.75)",
+
+      // All possible overrides
+      // primary: '#2684FF',
+      // primary75: '#4C9AFF',
+      // primary50: '#B2D4FF',
+      // primary25: '#DEEBFF',
+
+      // danger: '#DE350B',
+      // dangerLight: '#FFBDAD',
+
+      // neutral0: 'hsl(0, 0%, 100%)',
+      // neutral5: 'hsl(0, 0%, 95%)',
+      // neutral10: 'hsl(0, 0%, 90%)',
+      // neutral20: 'hsl(0, 0%, 80%)',
+      // neutral30: 'hsl(0, 0%, 70%)',
+      // neutral40: 'hsl(0, 0%, 60%)',
+      // neutral50: 'hsl(0, 0%, 50%)',
+      // neutral60: 'hsl(0, 0%, 40%)',
+      // neutral70: 'hsl(0, 0%, 30%)',
+      // neutral80: 'hsl(0, 0%, 20%)',
+      // neutral90: 'hsl(0, 0%, 10%)',
+    },
+    // Other options you can use
+    // borderRadius: 4
+    // baseUnit: 4,
+    // controlHeight: 38
+    // menuGutter: baseUnit * 2
+  });
+
+  const handleQuantityChange = (value) => {
+    console.log('Value changed to -->', value);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -76,19 +124,41 @@ export default function Cart() {
     >
       <div className={styles.cartLeftContainer}>
         <div className={styles.leftTopContainer}>
-          <div className={styles.homeIconContainer}>Home Icon Goes Here</div>
+          <div className={styles.homeIconContainer}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+          </div>
 
-          <div className={styles.leftTopTitle}>Ship To Home: 2 Items</div>
+          <div className={styles.leftTopTitle}>
+            Ship To Home:{" "}
+            <span className={styles.itemCountNotBold}>2 Items</span>
+          </div>
         </div>
 
         <div className={styles.leftBottomContainer}>
           <div className={styles.leftBottom1stContainer}>
             <div className={styles.productImageContainer}>
-              <img src="" alt="shoppingCartImage" />
+              <img
+                className={styles.productImage}
+                src="https://media.gamestop.com/i/gamestop/11098255_gold/iPhone-11-Pro-Max-64GB---Unlocked-gold?$pdp2x$"
+                alt="shoppingCartImage"
+              />
             </div>
 
             <div className={styles.quantityContainer}>
-              <input className={styles.inputQunatity} type="number" />
+              <Select
+                placeholder={`Qty ${1}`}
+                options={options}
+                theme={theme}
+                defaultValue={options[0]}
+                onChange={(e) => handleQuantityChange(e.value)}
+              />
             </div>
           </div>
           <div className={styles.leftBottom2ndContainer}>
@@ -103,7 +173,7 @@ export default function Cart() {
             </div>
           </div>
           <div className={styles.leftBottom3rdContainer}>
-              <input className={styles.fakeRadio} type="radio" /> 
+            <input checked className={styles.fakeRadio} type="radio" /> 
             <div className={styles.fakeFreeShipping}>
               FREE shipping{" "}
               <span className={styles.shippingDetail}>on $35+ orders</span>
