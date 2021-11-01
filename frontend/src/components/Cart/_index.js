@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+// OLD CART PAGE USED FOR TESTING BACKEND
+
+/* import React, { useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -91,4 +93,4 @@ export default function Cart() {
       <br />
     </>
   );
-}
+} */
