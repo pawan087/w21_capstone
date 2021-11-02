@@ -28,7 +28,7 @@
   margin: 0 auto;
   /* margin-top: 35px; */
   padding-top: 35px;
-  margin-bottom: 25px;
+  /* padding-bottom: 5px; */
 }
 
 .cartLeftContainer {
@@ -122,6 +122,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: sticky;
+  top : 115px;
+  z-index: 100;
 }
 
 .right1stContainer {
@@ -293,11 +296,10 @@ input[type="radio"]:checked {
 
 .backContainer {
   width: 100%;
-  min-height: 807.5px;
+  min-height: 925px;
+  /* min-height: 817.5px; */
   background-color: rgb(242, 244, 247);
-  /* padding-bottom: 35px; */
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+  /* background-color: red; */
 }
 
 .right4thContainer {

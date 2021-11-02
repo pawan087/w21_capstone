@@ -93,9 +93,9 @@ export default function Cart() {
 
     await dispatch(setAllCartItems());
 
-    setLoader(false);
-
     hideRemoveConfirmationModal();
+
+    setTimeout(() => setLoader(false), 500);
   };
 
   const updateQuantity = async (id, val) => {
@@ -315,7 +315,12 @@ export default function Cart() {
               </div>
             </div>
             <div className={styles.right4thContainer}>
-              <button className={styles.button}>PROCEED TO CHECKOUT</button>
+              <button
+                onClick={() => history.push("/confirm")}
+                className={styles.button}
+              >
+                PROCEED TO CHECKOUT
+              </button>
             </div>
           </div>
         </div>

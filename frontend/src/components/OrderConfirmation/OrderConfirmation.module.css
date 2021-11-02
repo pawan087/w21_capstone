@@ -14,3 +14,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
+
+.cardContainer {
+  transform: scale(.5);
+}

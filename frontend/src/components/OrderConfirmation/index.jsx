@@ -16,7 +16,7 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [creditCardNumber, setCreditCardNumber] = useState();
+  const [creditCardNumber, setCreditCardNumber] = useState(5555555555555555);
   const [nameOnCard, setNameOnCard] = useState();
   const [expirationDate, setExpirationDate] = useState();
   const [focus, setFocus] = useState();
@@ -72,24 +72,35 @@ export default function OrderConfirmation() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Order Confirmation Page</h1>
+    <>
 
-      <button onClick={handleSubmit}>Submit Order</button>
 
-      <Cards
-        number={creditCardNumber}
-        name={"Pawan Chahal"}
-        expiry={"01/20"}
-        focused={focus}
-      />
-      <input
-        type="tel"
-        name="number"
-        placeholder="Card Number"
-        onChange={(e) => setCreditCardNumber(e.target.value)}
-        onFocus={(e) => handleInputFocus(e)}
-      />
-    </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <h1>Order Confirmation Page</h1>
+
+        <button onClick={handleSubmit}>Submit Order</button>
+
+        <div className={styles.cardContainer}>
+          <Cards
+            number={creditCardNumber}
+            name={"Pawan Chahal"}
+            expiry={"01/20"}
+            focused={focus}
+          />
+          <input
+            type="tel"
+            name="number"
+            placeholder="Card Number"
+            onChange={(e) => setCreditCardNumber(e.target.value)}
+            onFocus={(e) => handleInputFocus(e)}
+          />
+        </div>
+      </div>
+    </>
   );
 }
