@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { FaCheck } from "react-icons/fa";
 
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
@@ -80,9 +81,9 @@ export default function OrderConfirmation() {
           <div className={styles.left2ndContainer}>
             <div className={styles.userInfo}>
               <div className={styles.username}>Pawanpreet Chahal</div>
-              <div className={styles.username}>61 Arthur Road</div>
-              <div className={styles.username}>Martinez, CA 94553</div>
-              <div className={styles.username}>408 836 1037</div>
+              <div className={styles.address1}>61 Arthur Road</div>
+              <div className={styles.address2}>Martinez, CA 94553</div>
+              <div className={styles.phoneNumber}>408 836 1037</div>
             </div>
 
             <div className={styles.editLink}>Edit</div>
@@ -91,16 +92,33 @@ export default function OrderConfirmation() {
           <div className={styles.left3rdContainer}>
             <div className={styles.shippingNowTitle}>Shipping Now</div>
 
-            <div className={styles.productImage}>
-              <img src={""} alt={"confirmProductPic"} />
+            <div className={styles.productImagesContainer}>
+              <div className={styles.productImageContainer}>
+                <img
+                  className={styles.img}
+                  src={
+                    "https://media.gamestop.com/i/gamestop/11114627_graphite/iPhone-12-Pro-512GB---Unlocked-graphite?$pdp2x$"
+                  }
+                  alt={"confirmProductPic"}
+                />
+              </div>
 
-              <img src={""} alt={"confirmProductPic"} />
+              <div className={styles.productImageContainer}>
+                <img
+                  className={styles.img}
+                  src={
+                    "https://media.gamestop.com/i/gamestop/11114627_graphite/iPhone-12-Pro-512GB---Unlocked-graphite?$pdp2x$"
+                  }
+                  alt={"confirmProductPic"}
+                />
+              </div>
             </div>
           </div>
 
           <div className={styles.left4thContainer}>
             <div className={styles.arrivesContainer}>
-              () Arrives in 2- 4 days
+              <input checked className={styles.fakeRadio} type="radio" /> 
+              <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
             </div>
 
             <div className={styles.freeLabel}>FREE</div>
@@ -111,7 +129,10 @@ export default function OrderConfirmation() {
           </div>
 
           <div className={styles.left6thContainer}>
-            <div className={styles.creditCardTitle}>Credit Cart</div>
+            <div className={styles.creditCardTitle}>
+              <input checked className={styles.fakeRadio} type="radio" /> 
+              <div className={styles.ccTitle}>Credit Cart</div>
+            </div>
           </div>
 
           <div className={styles.left7thContainer}>
@@ -123,11 +144,11 @@ export default function OrderConfirmation() {
           <div className={styles.left8thContainer}>
             <div className={styles.left8thLeftContainer}>
               <div className={styles.leftInputContainer}>
-                <input type="tel" name="number" />
+                <input placeholder={"Card number"} type="tel" name="number" />
               </div>
 
               <div className={styles.rightInputContainer}>
-                <input type="tel" name="expiration" />
+                <input placeholder={"MM/YY"} type="tel" name="expiration" />
               </div>
             </div>
 
@@ -142,11 +163,16 @@ export default function OrderConfirmation() {
             <div className={styles.left9thLeftContainer}>
               <div className={styles.left9thLeftTopContainer}>
                 <div className={styles.left9thLeftTopLeftContainer}>
-                  Check Mark
+                  <FaCheck style={{ display: "inline", color: "red" }} />
                 </div>
                 <div className={styles.left9thLeftTopRightContainer}>
                   Billing address as same as shipping
                 </div>
+              </div>
+
+              <div className={styles.left9thLeftBottomContainer}>
+                <div className={styles.address12}>61 Arthur Road</div>
+                <div className={styles.address22}>Martinez, CA 94553</div>
               </div>
             </div>
 

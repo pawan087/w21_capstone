@@ -16,6 +16,300 @@
 }
 
 .cardContainer {
-  transform: scale(.5);
+  transform: scale(0.5);
 }
 
+/* CONFIRM PAGE STYLING */
+
+.outerContainer {
+  /* background-color: red; */
+  display: flex;
+  width: 1400px;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.leftContainer {
+  width: 920px;
+  /* background-color: pink; */
+  min-height: 975px;
+}
+
+.rightContainer {
+  position: sticky;
+  top: 105px;
+  z-index: 25;
+  background-color: yellow;
+  width: 455px;
+  min-height: 500px;
+  height: 500px;
+}
+
+.left1stContainer {
+  height: 50px;
+  /* background-color: skyblue; */
+  font-size: 22.5px;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 35px;
+}
+
+.left2ndContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 85px;
+  /* background-color: lightseagreen; */
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.75);
+  line-height: 18px;
+}
+
+.username {
+  font-weight: bold;
+  color: black;
+  /* padding-bottom: 5px; */
+}
+
+.editLink {
+  width: 25px;
+  height: 15px;
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.editLink:hover {
+  color: rgb(231,35,13)
+}
+
+.left3rdContainer {
+  height: 110px;
+  /* background-color: lightsteelblue; */
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.shippingNowTitle {
+  margin-bottom: 15px;
+}
+
+.productImagesContainer {
+  display: flex;
+}
+
+.productImageContainer {
+  height: 85px;
+  height: 55px;
+  margin-right: 10px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.left4thContainer {
+  height: 65px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 65px;
+}
+
+input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding: 4.5px;
+  /* background-color only for content */
+  background-clip: content-box;
+  border: 1px solid #bbbbbb;
+
+  border-radius: 50%;
+}
+
+/* appearance for checked radiobutton */
+input[type="radio"]:checked {
+  background-color: rgb(231,35,13);
+}
+
+.fakeRadio:checked {
+  background-color: rgb(231,35,13);
+}
+
+.fakeArrives {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.left4thContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrivesContainer {
+  display: flex;
+  margin-left: 20px;
+}
+
+.freeLabel {
+  margin-right: 20px;
+  color: rgb(31,153,106);
+}
+
+
+.left5thContainer {
+  height: 50px;
+  /* background-color: skyblue; */
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.paymentTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.left6thContainer {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.creditCardTitle {
+  display: flex;
+  margin-left: 20px;
+}
+
+.creditCardTitle {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.ccTitle {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.creditCardDetails {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 12.5px;
+  margin-left: 55px;
+}
+
+.left8thContainer {
+  display: flex;
+}
+
+.left8thLeftContainer {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: yellowgreen; */
+  width: 675px;
+}
+
+.left8thRightContainer {
+  margin-left: 25px;
+  height: 55px;
+  width: 220px;
+  /* background-color: hotpink; */
+}
+
+.left9thContainer {
+  display: flex;
+  /* background-color: lawngreen; */
+  height: 125px;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.left9thLeftContainer {
+  /* background-color: lightblue; */
+}
+
+.left9thRightContainer {
+  display: flex;
+  justify-content: center;
+  /* background-color: lightslategray; */
+  width: 230px;
+  margin-top: 30px;
+}
+
+.left9thLeftTopContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 55px;
+}
+
+.saveButtonContainer {
+  width: 230px;
+  height: 50px;
+  background-color: rgb(231,35,13);
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border: none;
+}
+
+.saveButton {
+  width: 230px;
+  height: 50px;
+  background-color: rgb(231,35,13);
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  font-size: 12.5px;
+}
+
+.left9thLeftTopLeftContainer {
+  height: 15px;
+  width: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left9thLeftTopRightContainer {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 12.5px;
+}
+
+.left9thLeftBottomContainer {
+  margin-top: 20px;
+  margin-left: 55px;
+}
+
+.address12, .address22 {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.leftInputContainer input {
+  box-sizing: border-box;
+  font-size: 15px;
+  padding: 7.5px;
+  width: 450px;
+  margin-left: 55px;
+  outline: none;
+}
+
+
+.rightInputContainer input {
+  font-size: 15px;
+  padding: 7.5px;
+  width: 150px;
+  outline: none;
+}
