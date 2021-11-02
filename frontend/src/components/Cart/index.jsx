@@ -18,11 +18,18 @@ export default function Cart() {
   const cartItems = useSelector((state) => state.cartItems);
   const products = useSelector((state) => state.products);
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem?.userId === user?.id;
   });
 
   const shoppingCartItems = [];
+  let num = 0;
+  let subtotal = 0;
 
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
@@ -38,6 +45,9 @@ export default function Cart() {
 
         delete item.productId;
         delete item.userId;
+
+        num += cartItem.quantity;
+        subtotal += product.price * cartItem.quantity;
 
         shoppingCartItems.push(item);
       }
@@ -138,52 +148,69 @@ export default function Cart() {
 
             <div className={styles.leftTopTitle}>
               Ship To Home:{" "}
-              <span className={styles.itemCountNotBold}>2 Items</span>
+              <span className={styles.itemCountNotBold}>{num} Items</span>
             </div>
           </div>
 
-          <div className={styles.leftBottomContainer}>
-            <div className={styles.leftBottom1stContainer}>
-              <div className={styles.productImageContainer}>
-                <img
-                  className={styles.productImage}
-                  src="https://media.gamestop.com/i/gamestop/11098255_gold/iPhone-11-Pro-Max-64GB---Unlocked-gold?$pdp2x$"
-                  alt="shoppingCartImage"
-                />
-              </div>
+          {shoppingCartItems?.map((cartItem) => {
+            return (
+              <div className={styles.leftBottomContainer}>
+                <div className={styles.leftBottom1stContainer}>
+                  <div
+                    onClick={() =>
+                      history.push(`/products/${cartItem.product.id}`)
+                    }
+                    className={styles.productImageContainer}
+                  >
+                    <img
+                      className={styles.productImage}
+                      src={cartItem.product.images[0]}
+                      alt="shoppingCartImage"
+                    />
+                  </div>
 
-              <div className={styles.quantityContainer}>
-                <Select
-                  placeholder={`Qty ${1}`}
-                  options={options}
-                  theme={theme}
-                  defaultValue={options[0]}
-                  onChange={(e) => handleQuantityChange(e.value)}
-                />
-              </div>
-            </div>
-            <div className={styles.leftBottom2ndContainer}>
-              <div className={styles.leftBottom2ndTopContainer}>
-                <div className={styles.cartProductName}>
-                  Microsoft Xbox Series X Stereo Headset
+                  <div className={styles.quantityContainer}>
+                    <Select
+                      options={options}
+                      theme={theme}
+                      defaultValue={options[cartItem?.quantity - 1]}
+                      onChange={(e) => handleQuantityChange(e.value)}
+                    />
+                  </div>
                 </div>
-                <div className={styles.cartProductBrandName}>Xbox Series X</div>
+                <div className={styles.leftBottom2ndContainer}>
+                  <div className={styles.leftBottom2ndTopContainer}>
+                    <div className={styles.cartProductName}>
+                      {cartItem?.product?.name}
+                    </div>
+                    <div className={styles.cartProductBrandName}>
+                      {cartItem?.product?.Brand?.name}
+                    </div>
+                  </div>
+                  <div className={styles.leftBottom2ndBottomContainer}>
+                    <div className={styles.removeFromCartLink}>Remove</div>
+                  </div>
+                </div>
+                <div className={styles.leftBottom3rdContainer}>
+                  <input checked className={styles.fakeRadio} type="radio" /> 
+                  <div className={styles.fakeFreeShipping}>
+                    FREE shipping{" "}
+                    <span className={styles.shippingDetail}>
+                      on $35+ orders
+                    </span>
+                    <span className={styles.fakeArrive}>
+                      Arrives in 2- 4 days
+                    </span>
+                  </div>
+                </div>
+                <div className={styles.leftBottom4thContainer}>
+                  <div className={styles.priceTag}>
+                    ${cartItem.product.price}
+                  </div>
+                </div>
               </div>
-              <div className={styles.leftBottom2ndBottomContainer}>
-                <div className={styles.removeFromCartLink}>Remove</div>
-              </div>
-            </div>
-            <div className={styles.leftBottom3rdContainer}>
-              <input checked className={styles.fakeRadio} type="radio" /> 
-              <div className={styles.fakeFreeShipping}>
-                FREE shipping{" "}
-                <span className={styles.shippingDetail}>on $35+ orders</span>
-              </div>
-            </div>
-            <div className={styles.leftBottom4thContainer}>
-              <div className={styles.priceTag}>$88.99</div>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         <div className={styles.cartRightContainer}>
@@ -193,10 +220,10 @@ export default function Cart() {
           <div className={styles.right2ndContainer}>
             <div className={styles.right2nd1stContainer}>
               <div className={styles.subtotalLabel}>
-                Subtotal <span className={styles.itemCount}>(2 items)</span>
+                Subtotal <span className={styles.itemCount}>({num} items)</span>
               </div>
 
-              <div className={styles.subtotalAmount}>$721.96</div>
+              <div className={styles.subtotalAmount}>${subtotal}</div>
             </div>
 
             <div className={styles.right2nd2ndContainer}>
@@ -208,13 +235,17 @@ export default function Cart() {
             <div className={styles.right2nd3rdContainer}>
               <div className={styles.estimatedTaxLabel}>Estimated Tax</div>
 
-              <div className={styles.estimatedTaxAmount}>$75.80</div>
+              <div className={styles.estimatedTaxAmount}>
+                ${formatter.format(subtotal * 0.0825)}
+              </div>
             </div>
           </div>
           <div className={styles.right3rdContainer}>
             <div className={styles.estimatedTotalLabel}>Estimated Total</div>
 
-            <div className={styles.estimatedTotalAmount}>$797.78</div>
+            <div className={styles.estimatedTotalAmount}>
+              ${formatter.format(subtotal * 0.0825 + subtotal)}
+            </div>
           </div>
           <div className={styles.right4thContainer}>
             <button className={styles.button}>PROCEED TO CHECKOUT</button>

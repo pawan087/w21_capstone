@@ -165,14 +165,14 @@ function ProductDetail({ num, product, avgRating, reviews }) {
                 </div>
               </div>
 
-              {!!avgRating && (
+              {
                 <div className={styles.textRating}>
                   <span className={styles.bold}>
-                    {formatter.format(avgRating)}
+                    {!!avgRating && formatter.format(avgRating)}
                   </span>{" "}
                   ({num}) {num === 1 ? "Rating" : "Ratings"}
                 </div>
-              )}
+              }
             </div>
 
             <div className={styles.priceContainer}>

@@ -54,6 +54,7 @@
   height: 260px;
   /* margin-bottom: 25px; */
   display: flex;
+  margin-bottom: 25px;
   /* border: 1px solid rgba(0, 0, 0, 0.25); */
 }
 
@@ -71,12 +72,13 @@
   height: 140px;
   width: 140px;
   margin-bottom: 15px;
-
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .productImage {
-  height: 100%;
-  width: 100%;
+  height: 95%;
+  width: 95%;
   object-fit: contain;
 }
 
@@ -102,7 +104,7 @@
 .leftBottom2ndTopContainer {
   height: 150px;
   width: 310px;
-  margin-left: 5px;
+  margin-left: 10px;
   /* background-color: palevioletred; */
 }
 
@@ -120,7 +122,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .right1stContainer {
@@ -197,6 +198,12 @@
   line-height: 17.5px;
   font-weight: bold;
   margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.cartProductName:hover {
+  color: rgb(231, 35, 13);
 }
 
 .cartProductBrandName {
@@ -210,7 +217,7 @@
   text-decoration: underline;
   transition: 0.15s ease-in-out;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 10px;
   margin-top: 27.5px;
 }
 
@@ -295,10 +302,20 @@ input[type="radio"]:checked {
   padding-bottom: 25px;
 }
 
-.estimatedTotalAmount, .estimatedTotalLabel {
+.estimatedTotalAmount,
+.estimatedTotalLabel {
   /* transform: translateY(-10px) */
 }
 
 .priceTag {
-  transform: translateX(-22.5px)
+  transform: translateX(-22.5px);
+}
+
+.fakeArrive {
+  display: block;
+  font-weight: normal;
+}
+
+.shippingDetail {
+  font-weight: normal;
 }
