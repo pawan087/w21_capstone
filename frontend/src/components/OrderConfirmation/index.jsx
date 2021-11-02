@@ -19,10 +19,21 @@ export default function OrderConfirmation() {
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
   const [creditCardNumber, setCreditCardNumber] = useState();
-  const [nameOnCard, setNameOnCard] = useState();
   const [expirationDate, setExpirationDate] = useState("");
   const [focus, setFocus] = useState();
   const [payed, setPayed] = useState(false);
+  const [firstName, setFirstName] = useState(user?.firstName);
+  const [lastName, setLastName] = useState(user?.lastName);
+  const [address1, setAddress1] = useState(user?.address1);
+  const [address2, setAddress2] = useState(user?.address2);
+  const [phone, setPhone] = useState(user?.phone);
+  const [showEdit, setShowEdit] = useState(false);
+  const [defaultOption, setDefaultOption] = useState(false);
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   const pay = () => {
     setPayed(true);
@@ -53,7 +64,7 @@ export default function OrderConfirmation() {
   });
 
   const shoppingCartItems = [];
-
+  let subtotal = 0;
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
 
@@ -70,6 +81,7 @@ export default function OrderConfirmation() {
         delete item.userId;
 
         shoppingCartItems.push(item);
+        subtotal += cartItem.quantity * product.price;
       }
     });
   });
@@ -98,46 +110,135 @@ export default function OrderConfirmation() {
     dispatch(setAllOrderItems());
   }, [dispatch]);
 
+  const clear = () => {
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setAddress1(user.address1);
+    setAddress2(user.address2);
+    setPhone(user.phone);
+    setShowEdit(false);
+  };
   return (
     <>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.left1stContainer}>Shipping</div>
 
-          <div className={styles.left2ndContainer}>
-            <div className={styles.userInfo}>
-              <div className={styles.username}>Pawanpreet Chahal</div>
-              <div className={styles.address1}>61 Arthur Road</div>
-              <div className={styles.address2}>Martinez, CA 94553</div>
-              <div className={styles.phoneNumber}>408 836 1037</div>
-            </div>
+          {!showEdit && (
+            <div className={styles.left2ndContainer}>
+              <div className={styles.userInfo}>
+                <div className={styles.username}>
+                  {user?.firstName} {user?.lastName}
+                </div>
+                <div className={styles.address1}>{user?.address1}</div>
+                <div className={styles.address2}>{user?.address2}</div>
+                <div className={styles.phoneNumber}>{user?.phone}</div>
+              </div>
 
-            <div className={styles.editLink}>Edit</div>
-          </div>
+              <div
+                onClick={() => setShowEdit(true)}
+                className={styles.editLink}
+              >
+                Edit
+              </div>
+            </div>
+          )}
+
+          {showEdit && (
+            <div className={styles.left2ndContainer2}>
+              <div className={styles.left2ndContainer21stContainer}>
+                <div className={styles.editFirstNameInput}>
+                  <input
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    type="text"
+                    placeHolder="First Name"
+                  />
+                </div>
+
+                <div className={styles.editLastNameInput}>
+                  <input
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    type="text"
+                    placeHolder="Last Name"
+                  />
+                </div>
+              </div>
+
+              <div className={styles.left2ndContainer22ndContainer}>
+                <div className={styles.editAddress1Input}>
+                  <input
+                    value={address1}
+                    onChange={(e) => setAddress1(e.target.value)}
+                    placeHolder="Street Address"
+                    type="text"
+                  />
+                </div>
+
+                <div className={styles.editAddress2Input}>
+                  <input
+                    value={address2}
+                    onChange={(e) => setAddress2(e.target.value)}
+                    placeHolder="City, State, Zip"
+                    type="text"
+                  />
+                </div>
+              </div>
+
+              <div className={styles.left2ndContainer23rdContainer}>
+                <div className={styles.editPhoneInput}>
+                  <input
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeHolder="Phone Number"
+                    type="text"
+                  />
+                </div>
+              </div>
+
+              <div className={styles.left2ndContainer24thContainer}>
+                <div
+                  onClick={() => setDefaultOption(!defaultOption)}
+                  className={styles.left9thLeftTopLeftContainer}
+                >
+                  {defaultOption && (
+                    <FaCheck style={{ display: "inline", color: "red" }} />
+                  )}
+                </div>
+
+                <div className={styles.setAsDefaultLabel}>
+                  Set as default shipping address
+                </div>
+              </div>
+
+              <div className={styles.left2ndContainer25thContainer}>
+                <div onClick={clear} className={styles.cancellation}>
+                  Cancel
+                </div>
+
+                <div className={styles.saveEditButton}>SAVE & CONTINUE</div>
+              </div>
+            </div>
+          )}
 
           <div className={styles.left3rdContainer}>
             <div className={styles.shippingNowTitle}>Shipping Now</div>
 
             <div className={styles.productImagesContainer}>
-              <div className={styles.productImageContainer}>
-                <img
-                  className={styles.img}
-                  src={
-                    "https://media.gamestop.com/i/gamestop/11114627_graphite/iPhone-12-Pro-512GB---Unlocked-graphite?$pdp2x$"
-                  }
-                  alt={"confirmProductPic"}
-                />
-              </div>
-
-              <div className={styles.productImageContainer}>
-                <img
-                  className={styles.img}
-                  src={
-                    "https://media.gamestop.com/i/gamestop/11114627_graphite/iPhone-12-Pro-512GB---Unlocked-graphite?$pdp2x$"
-                  }
-                  alt={"confirmProductPic"}
-                />
-              </div>
+              {shoppingCartItems?.map((cartItem, i) => {
+                return (
+                  <div key={i}>
+                    <div className={styles.productImageContainer}>
+                      <img
+                        className={styles.img}
+                        src={cartItem?.product?.images[0]}
+                        alt={"confirmProductPic"}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -205,7 +306,7 @@ export default function OrderConfirmation() {
                 <div className={styles.creditCardPicContainer}>
                   <Cards
                     number={creditCardNumber}
-                    name={"Pawan Chahal"}
+                    name={`${user.firstName} ${user.lastName}`}
                     expiry={expirationDate}
                     focused={focus}
                   />
@@ -226,8 +327,8 @@ export default function OrderConfirmation() {
               </div>
 
               <div className={styles.left9thLeftBottomContainer}>
-                <div className={styles.address12}>61 Arthur Road</div>
-                <div className={styles.address22}>Martinez, CA 94553</div>
+                <div className={styles.address12}>{address1}</div>
+                <div className={styles.address22}>{address2}</div>
               </div>
             </div>
 
@@ -253,7 +354,9 @@ export default function OrderConfirmation() {
           <div className={styles.right1stContainer}>
             <div className={styles.subtotalLabel}>Subtotal</div>
 
-            <div className={styles.subtotalValue}>$153.98</div>
+            <div className={styles.subtotalValue}>
+              ${formatter.format(subtotal)}
+            </div>
           </div>
 
           <div className={styles.right2ndContainer}>
@@ -265,13 +368,17 @@ export default function OrderConfirmation() {
           <div className={styles.right3rdContainer}>
             <div className={styles.taxLabel}>Tax</div>
 
-            <div className={styles.taxValue}>$16.18</div>
+            <div className={styles.taxValue}>
+              ${formatter.format(subtotal * 0.0825)}
+            </div>
           </div>
 
           <div className={styles.right4thContainer}>
             <div className={styles.totalLabel}>Total</div>
 
-            <div className={styles.totalValue}>$170.14</div>
+            <div className={styles.totalValue}>
+              ${formatter.format(subtotal * 0.0825 + subtotal)}
+            </div>
           </div>
 
           <div className={styles.spacer} />
