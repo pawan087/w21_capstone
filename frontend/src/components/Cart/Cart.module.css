@@ -123,8 +123,8 @@
   flex-direction: column;
   align-items: center;
   position: sticky;
-  top : 115px;
-  z-index: 100;
+  top: 115px;
+  z-index: 10;
 }
 
 .right1stContainer {
@@ -219,14 +219,11 @@
   color: rgba(0, 0, 0, 1);
   text-decoration: underline;
   transition: 0.15s ease-in-out;
-  cursor: pointer;
   margin-left: 10px;
   margin-top: 27.5px;
 }
 
-.removeFromCartLink:hover {
-  color: rgb(231, 35, 13);
-}
+
 
 input[type="radio"] {
   /* remove standard background appearance */
@@ -334,8 +331,8 @@ input[type="radio"]:checked {
 
 .shippingDetail {
   font-weight: normal;
+  margin-left: 5px;
 }
-
 
 .emptyCartContainer {
   padding-top: 40px;
@@ -344,7 +341,6 @@ input[type="radio"]:checked {
   margin: 0 auto;
   text-align: center;
 }
-
 
 /* REMOVE CONFIRMATION */
 
@@ -463,4 +459,14 @@ input[type="radio"]:checked {
   font-size: 12.5px;
   border: none;
   background-color: rgb(231, 35, 13);
+}
+
+.removeLink {
+  /* background-color: red; */
+  width: 50px;
+  cursor: pointer;
+}
+
+.removeLink:hover {
+  color: rgb(231, 35, 13);
 }

@@ -28,6 +28,7 @@ export default function Cart() {
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
+  const [qty, setQty] = useState();
 
   const showRemoveConfirmationModal = (name, id, id2) => {
     setProductName(name);
@@ -108,6 +109,7 @@ export default function Cart() {
 
   const updateQuantity = async (id, val) => {
     setLoader(true);
+    setQty(val);
 
     await dispatch(editCartItem({ id, quantity: val }));
 
@@ -115,6 +117,7 @@ export default function Cart() {
 
     setLoader(false);
   };
+
 
   const theme = (theme) => ({
     ...theme,
@@ -222,19 +225,17 @@ export default function Cart() {
                       </div>
                     </div>
                     <div className={styles.leftBottom2ndBottomContainer}>
-                      <div className={styles.removeFromCartLink}>
-                        <div
-                          onClick={() =>
-                            showRemoveConfirmationModal(
-                              cartItem.product.name,
-                              cartItem.product.id,
-                              cartItem.id
-                            )
-                          }
-                          className={styles.removeLink}
-                        >
-                          Remove
-                        </div>
+                      <div
+                        onClick={() =>
+                          showRemoveConfirmationModal(
+                            cartItem.product.name,
+                            cartItem.product.id,
+                            cartItem.id
+                          )
+                        }
+                        className={styles.removeFromCartLink}
+                      >
+                        Remove
                       </div>
                     </div>
                   </div>

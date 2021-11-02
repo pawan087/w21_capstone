@@ -59,10 +59,6 @@ export default function OrderConfirmation() {
     history.push("/orders");
   };
 
-  const handleSubmit2 = async () => {
-    history.push("/cart");
-  };
-
   const handleInputFocus = (e) => {
     setFocus(e.target.name);
   };

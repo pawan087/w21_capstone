@@ -73,13 +73,150 @@ export default function OrderConfirmation() {
 
   return (
     <>
+      <div className={styles.outerContainer}>
+        <div className={styles.leftContainer}>
+          <div className={styles.left1stContainer}>Shipping</div>
 
+          <div className={styles.left2ndContainer}>
+            <div className={styles.userInfo}>
+              <div className={styles.username}>Pawanpreet Chahal</div>
+              <div className={styles.username}>61 Arthur Road</div>
+              <div className={styles.username}>Martinez, CA 94553</div>
+              <div className={styles.username}>408 836 1037</div>
+            </div>
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+            <div className={styles.editLink}>Edit</div>
+          </div>
+
+          <div className={styles.left3rdContainer}>
+            <div className={styles.shippingNowTitle}>Shipping Now</div>
+
+            <div className={styles.productImage}>
+              <img src={""} alt={"confirmProductPic"} />
+
+              <img src={""} alt={"confirmProductPic"} />
+            </div>
+          </div>
+
+          <div className={styles.left4thContainer}>
+            <div className={styles.arrivesContainer}>
+              () Arrives in 2- 4 days
+            </div>
+
+            <div className={styles.freeLabel}>FREE</div>
+          </div>
+
+          <div className={styles.left5thContainer}>
+            <div className={styles.paymentTitle}>Payment</div>
+          </div>
+
+          <div className={styles.left6thContainer}>
+            <div className={styles.creditCardTitle}>Credit Cart</div>
+          </div>
+
+          <div className={styles.left7thContainer}>
+            <div className={styles.creditCardDetails}>
+              Visa, Mastercard, AMEX, Discover
+            </div>
+          </div>
+
+          <div className={styles.left8thContainer}>
+            <div className={styles.left8thLeftContainer}>
+              <div className={styles.leftInputContainer}>
+                <input type="tel" name="number" />
+              </div>
+
+              <div className={styles.rightInputContainer}>
+                <input type="tel" name="expiration" />
+              </div>
+            </div>
+
+            <div className={styles.left8thRightContainer}>
+              <div className={styles.creditCardPicContainer}>
+                CREDIT CARD PICTURE HERE
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.left9thContainer}>
+            <div className={styles.left9thLeftContainer}>
+              <div className={styles.left9thLeftTopContainer}>
+                <div className={styles.left9thLeftTopLeftContainer}>
+                  Check Mark
+                </div>
+                <div className={styles.left9thLeftTopRightContainer}>
+                  Billing address as same as shipping
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.left9thRightContainer}>
+              <div className={styles.saveButtonContainer}>
+                <button className={styles.saveButton}>SAVE & CONTINUE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.rightContainer}>
+          <div className={styles.right1stContainer}>
+            <div className={styles.subtotalLabel}>Subtotal</div>
+
+            <div className={styles.subtotalValue}>$153.98</div>
+          </div>
+
+          <div className={styles.right2ndContainer}>
+            <div className={styles.shippingLabel}>Shipping & Handling</div>
+
+            <div className={styles.fakeShippingValue}>FREE</div>
+          </div>
+
+          <div className={styles.right3rdContainer}>
+            <div className={styles.taxLabel}>Tax</div>
+
+            <div className={styles.taxValue}>$16.18</div>
+          </div>
+
+          <div className={styles.right4thContainer}>
+            <div className={styles.totalLabel}>Total</div>
+
+            <div className={styles.totalValue}>$170.14</div>
+          </div>
+
+          <div className={styles.right5thContainer}>
+            <div className={styles.placeOrderButtonContainer}>
+              <button className={styles.placeOrderButton}>Place Order</button>
+            </div>
+          </div>
+
+          <div className={styles.right6thContainer}>
+            <div className={styles.policyLabel}>Policy blah blah blah</div>
+          </div>
+
+          <div className={styles.right7thContainer}>
+            <div className={styles.cartLabel}>
+              Cart <p className={styles.lighterLabel}>(2 items)</p>
+            </div>
+          </div>
+
+          <div className={styles.right8thContainer}>
+            <div className={styles.cartItemImageContainer}>
+              <img
+                className={styles.cartItemImage}
+                src={""}
+                alt="cartItemImage"
+              />
+
+              <img
+                className={styles.cartItemImage}
+                src={""}
+                alt="cartItemImage"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div>
         <h1>Order Confirmation Page</h1>
 
