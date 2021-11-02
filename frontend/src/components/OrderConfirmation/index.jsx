@@ -18,10 +18,35 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [creditCardNumber, setCreditCardNumber] = useState(5555555555555555);
+  const [creditCardNumber, setCreditCardNumber] = useState();
   const [nameOnCard, setNameOnCard] = useState();
-  const [expirationDate, setExpirationDate] = useState();
+  const [expirationDate, setExpirationDate] = useState("");
   const [focus, setFocus] = useState();
+  const [payed, setPayed] = useState(false);
+
+  const pay = () => {
+    setPayed(true);
+  };
+
+  let regExp = /[a-zA-Z]/g;
+  let legitCard = false;
+  let legitExpirationDate = false;
+
+  if (regExp.test(creditCardNumber)) {
+    legitCard = false;
+  } else {
+    if (creditCardNumber.length === 16) {
+      legitCard = true;
+    }
+  }
+
+  let regExp2 = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/;
+
+  if (regExp2.test(expirationDate)) {
+    legitExpirationDate = true;
+  } else {
+    legitExpirationDate = false;
+  }
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem.userId === user.id;
@@ -145,25 +170,47 @@ export default function OrderConfirmation() {
           <div className={styles.left8thContainer}>
             <div className={styles.left8thLeftContainer}>
               <div className={styles.leftInputContainer}>
-                <input placeholder={"Card number"} type="tel" name="number" />
+                <input
+                  maxlength="16"
+                  onChange={(e) => setCreditCardNumber(e.target.value)}
+                  onFocus={(e) => handleInputFocus(e)}
+                  placeholder={"Card number"}
+                  type="tel"
+                  name="number"
+                />
+                {false && (
+                  <p className={styles.invalidCC}>
+                    Invalid credit card number.
+                  </p>
+                )}
               </div>
 
               <div className={styles.rightInputContainer}>
-                <input placeholder={"MM/YY"} type="tel" name="expiration" />
+                <input
+                  maxlength="5"
+                  placeholder={"MM/YY"}
+                  type="tel"
+                  name="expiration"
+                  onChange={(e) => setExpirationDate(e.target.value)}
+                  onFocus={(e) => handleInputFocus(e)}
+                />
+                {false && (
+                  <p className={styles.invalidExp}>Invalid expiration date.</p>
+                )}
               </div>
             </div>
 
             <div className={styles.left8thRightContainer}>
-              {
+              {creditCardNumber && (
                 <div className={styles.creditCardPicContainer}>
                   <Cards
                     number={creditCardNumber}
                     name={"Pawan Chahal"}
-                    expiry={"01/20"}
+                    expiry={expirationDate}
                     focused={focus}
                   />
                 </div>
-              }
+              )}
             </div>
           </div>
 
@@ -185,9 +232,19 @@ export default function OrderConfirmation() {
             </div>
 
             <div className={styles.left9thRightContainer}>
-              <div className={styles.saveButtonContainer}>
-                <button className={styles.saveButton}>SAVE & CONTINUE</button>
-              </div>
+              {legitCard && legitExpirationDate && (
+                <div className={styles.saveButtonContainer}>
+                  <button onClick={pay} className={styles.saveButton}>
+                    SAVE & CONTINUE
+                  </button>
+                </div>
+              )}
+
+              {(!legitCard || !legitExpirationDate) && (
+                <div className={styles.saveButtonContainer2}>
+                  <div className={styles.saveButton2}>SAVE & CONTINUE</div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -221,7 +278,14 @@ export default function OrderConfirmation() {
 
           <div className={styles.right5thContainer}>
             <div className={styles.placeOrderButtonContainer}>
-              <button className={styles.placeOrderButton}>Place Order</button>
+              {payed && (
+                <button className={styles.placeOrderButton}>Place Order</button>
+              )}
+              {!payed && (
+                <button className={styles.placeOrderButton2}>
+                  Place Order
+                </button>
+              )}
             </div>
           </div>
 
@@ -237,7 +301,15 @@ export default function OrderConfirmation() {
             <div className={styles.cartLabel}>
               Cart <span className={styles.lighterLabel}>(2 items)</span>{" "}
               <div className={styles.angleDown}>
-                <FaAngleDown style={{ display: "inline", color: "rgba(0,0,0,.5)", height: "20px", width: '20px' }} />
+                <FaAngleDown
+                  style={{
+                    display: "inline",
+                    color: "rgba(0,0,0,.5)",
+                    height: "20px",
+                    width: "20px",
+                    cursor: "pointer",
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -284,28 +356,6 @@ export default function OrderConfirmation() {
               </div>
             </div>
           )}
-        </div>
-      </div>
-
-      <div>
-        <h1>Order Confirmation Page</h1>
-
-        <button onClick={handleSubmit}>Submit Order</button>
-
-        <div className={styles.cardContainer}>
-          <Cards
-            number={creditCardNumber}
-            name={"Pawan Chahal"}
-            expiry={"01/20"}
-            focused={focus}
-          />
-          <input
-            type="tel"
-            name="number"
-            placeholder="Card Number"
-            onChange={(e) => setCreditCardNumber(e.target.value)}
-            onFocus={(e) => handleInputFocus(e)}
-          />
         </div>
       </div>
     </>
