@@ -1,12 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import Select from "react-select";
+import Rodal from "rodal";
+import ReactLoading from "react-loading";
 
-import Items from "./Items";
 import { setAllOrderItems } from "../../store/orderItems.js";
-import { setAllCartItems, emptyCart } from "../../store/cartItems.js";
+import {
+  setAllCartItems,
+  deleteCartItem,
+  editCartItem,
+} from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
 import styles from "./Cart.module.css";
 
@@ -17,6 +22,23 @@ export default function Cart() {
   const user = useSelector((state) => state.session.user);
   const cartItems = useSelector((state) => state.cartItems);
   const products = useSelector((state) => state.products);
+
+  const [removeConfirmation, setRemoveConfirmation] = useState(false); // set to false, true for testing
+  const [loader, setLoader] = useState(false);
+  const [productName, setProductName] = useState();
+  const [productId, setProductId] = useState();
+  const [cartItemId, setCartItemId] = useState();
+
+  const showRemoveConfirmationModal = (name, id, id2) => {
+    setProductName(name);
+    setProductId(id);
+    setCartItemId(id2);
+    setRemoveConfirmation(true);
+  };
+
+  const hideRemoveConfirmationModal = () => {
+    setRemoveConfirmation(false);
+  };
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -54,10 +76,6 @@ export default function Cart() {
     });
   });
 
-  const handleSubmit = () => {
-    history.push("/confirm");
-  };
-
   useEffect(() => {
     dispatch(setAllProducts());
     dispatch(setAllOrderItems());
@@ -66,16 +84,28 @@ export default function Cart() {
 
   if (!user) return <Redirect to="/" />;
 
-  const handleSubmit2 = async () => {
-    let idsToDeleteArr = [];
+  const removeFromCart = async (e) => {
+    e.preventDefault();
 
-    shoppingCartItems?.forEach((item) => {
-      idsToDeleteArr.push(item.id);
-    });
+    setLoader(true);
 
-    await dispatch(emptyCart({ idsToDeleteArr }));
+    await dispatch(deleteCartItem({ idToDelete: cartItemId }));
 
     await dispatch(setAllCartItems());
+
+    setLoader(false);
+
+    hideRemoveConfirmationModal();
+  };
+
+  const updateQuantity = async (id, val) => {
+    setLoader(true);
+
+    await dispatch(editCartItem({ id, quantity: val }));
+
+    await dispatch(setAllCartItems());
+
+    setLoader(false);
   };
 
   const options = [
@@ -121,10 +151,6 @@ export default function Cart() {
     // menuGutter: baseUnit * 2
   });
 
-  const handleQuantityChange = (value) => {
-    console.log("Value changed to -->", value);
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -132,126 +158,233 @@ export default function Cart() {
       exit={{ opacity: 0 }}
       className={styles.backContainer}
     >
-      <div className={styles.cartOuterContainer}>
-        <div className={styles.cartLeftContainer}>
-          <div className={styles.leftTopContainer}>
-            <div className={styles.homeIconContainer}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+      {shoppingCartItems.length > 0 && (
+        <div className={styles.cartOuterContainer}>
+          <div className={styles.cartLeftContainer}>
+            <div className={styles.leftTopContainer}>
+              <div className={styles.homeIconContainer}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              </div>
+
+              <div className={styles.leftTopTitle}>
+                Ship To Home:{" "}
+                <span className={styles.itemCountNotBold}>
+                  {num} {num === 1 ? "Item" : "Items"}
+                </span>
+              </div>
+            </div>
+
+            {shoppingCartItems?.map((cartItem) => {
+              return (
+                <div className={styles.leftBottomContainer}>
+                  <div className={styles.leftBottom1stContainer}>
+                    <div
+                      onClick={() =>
+                        history.push(`/products/${cartItem.product.id}`)
+                      }
+                      className={styles.productImageContainer}
+                    >
+                      <img
+                        className={styles.productImage}
+                        src={cartItem.product.images[0]}
+                        alt="shoppingCartImage"
+                      />
+                    </div>
+
+                    <div className={styles.quantityContainer}>
+                      <Select
+                        options={options}
+                        theme={theme}
+                        defaultValue={options[cartItem?.quantity - 1]}
+                        onChange={(e) => updateQuantity(cartItem.id, e.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles.leftBottom2ndContainer}>
+                    <div className={styles.leftBottom2ndTopContainer}>
+                      <div
+                        onClick={() =>
+                          history.push(`/products/${cartItem.product.id}`)
+                        }
+                        className={styles.cartProductName}
+                      >
+                        {cartItem?.product?.name}
+                      </div>
+                      <div className={styles.cartProductBrandName}>
+                        {cartItem?.product?.Brand?.name}
+                      </div>
+                    </div>
+                    <div className={styles.leftBottom2ndBottomContainer}>
+                      <div
+                        onClick={() =>
+                          showRemoveConfirmationModal(
+                            cartItem.product.name,
+                            cartItem.product.id,
+                            cartItem.id
+                          )
+                        }
+                        className={styles.removeFromCartLink}
+                      >
+                        Remove
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.leftBottom3rdContainer}>
+                    <input checked className={styles.fakeRadio} type="radio" /> 
+                    <div className={styles.fakeFreeShipping}>
+                      FREE shipping{" "}
+                      <span className={styles.shippingDetail}>
+                        on $10+ orders
+                      </span>
+                      <span className={styles.fakeArrive}>
+                        Arrives in 2- 4 days
+                      </span>
+                    </div>
+                  </div>
+                  {cartItem.quantity > 1 && (
+                    <div className={styles.leftBottom4thContainer}>
+                      <div className={styles.priceTag}>
+                        $
+                        {formatter.format(
+                          cartItem.product.price * cartItem.quantity
+                        )}{" "}
+                        <span className={styles.singlePrice}>
+                          ${cartItem.product.price}{" "}
+                          <span className={styles.smaller}>each</span>
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {cartItem.quantity === 1 && (
+                    <div className={styles.leftBottom4thContainer}>
+                      <div className={styles.priceTag}>
+                        ${cartItem.product.price}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <div className={styles.cartRightContainer}>
+            <div className={styles.right1stContainer}>
+              <div className={styles.rightTitle}>ORDER SUMMARY</div>
+            </div>
+            <div className={styles.right2ndContainer}>
+              <div className={styles.right2nd1stContainer}>
+                <div className={styles.subtotalLabel}>
+                  Subtotal{" "}
+                  <span className={styles.itemCount}>
+                    ({num} {num === 1 ? "Item" : "Items"})
+                  </span>
+                </div>
+
+                <div className={styles.subtotalAmount}>
+                  ${formatter.format(subtotal)}
+                </div>
+              </div>
+
+              <div className={styles.right2nd2ndContainer}>
+                <div className={styles.shippingLabel}>Shipping & Handling</div>
+
+                <div className={styles.fakeShippingCost}>FREE</div>
+              </div>
+
+              <div className={styles.right2nd3rdContainer}>
+                <div className={styles.estimatedTaxLabel}>Estimated Tax</div>
+
+                <div className={styles.estimatedTaxAmount}>
+                  ${formatter.format(subtotal * 0.0825)}
+                </div>
+              </div>
+            </div>
+            <div className={styles.right3rdContainer}>
+              <div className={styles.estimatedTotalLabel}>Estimated Total</div>
+
+              <div className={styles.estimatedTotalAmount}>
+                ${formatter.format(subtotal * 0.0825 + subtotal)}
+              </div>
+            </div>
+            <div className={styles.right4thContainer}>
+              <button className={styles.button}>PROCEED TO CHECKOUT</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {shoppingCartItems.length === 0 && (
+        <div className={styles.emptyCartContainer}>
+          Your Shopping Cart Is Empty
+        </div>
+      )}
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={500}
+        height={285}
+        visible={removeConfirmation}
+        onClose={hideRemoveConfirmationModal}
+      >
+        <div className={styles.deleteReviewConfirmationModal}>
+          <div className={styles.firstContainer}>
+            <div className={styles.modalTitle}>REMOVE PRODUCT?</div>
+          </div>
+
+          <div className={styles.onePointFiveContainer}>
+            <div className={styles.confirmationText}>
+              Are you sure you want to remove the following product from the
+              cart?
+            </div>
+          </div>
+
+          <div className={styles.secondContainer}>
+            <div className={styles.reviewUsername}>{productName}</div>
+          </div>
+
+          <div className={styles.thirdContainer}>
+            <div className={styles.cancelButtonContainer}>
+              <button
+                onClick={hideRemoveConfirmationModal}
+                className={styles.cancelButton}
               >
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
+                CANCEL
+              </button>
             </div>
 
-            <div className={styles.leftTopTitle}>
-              Ship To Home:{" "}
-              <span className={styles.itemCountNotBold}>{num} Items</span>
+            <div className={styles.yesButtonContainer}>
+              <button
+                onClick={(e) => removeFromCart(e)}
+                className={styles.yesButton}
+              >
+                YES
+              </button>
             </div>
-          </div>
-
-          {shoppingCartItems?.map((cartItem) => {
-            return (
-              <div className={styles.leftBottomContainer}>
-                <div className={styles.leftBottom1stContainer}>
-                  <div
-                    onClick={() =>
-                      history.push(`/products/${cartItem.product.id}`)
-                    }
-                    className={styles.productImageContainer}
-                  >
-                    <img
-                      className={styles.productImage}
-                      src={cartItem.product.images[0]}
-                      alt="shoppingCartImage"
-                    />
-                  </div>
-
-                  <div className={styles.quantityContainer}>
-                    <Select
-                      options={options}
-                      theme={theme}
-                      defaultValue={options[cartItem?.quantity - 1]}
-                      onChange={(e) => handleQuantityChange(e.value)}
-                    />
-                  </div>
-                </div>
-                <div className={styles.leftBottom2ndContainer}>
-                  <div className={styles.leftBottom2ndTopContainer}>
-                    <div className={styles.cartProductName}>
-                      {cartItem?.product?.name}
-                    </div>
-                    <div className={styles.cartProductBrandName}>
-                      {cartItem?.product?.Brand?.name}
-                    </div>
-                  </div>
-                  <div className={styles.leftBottom2ndBottomContainer}>
-                    <div className={styles.removeFromCartLink}>Remove</div>
-                  </div>
-                </div>
-                <div className={styles.leftBottom3rdContainer}>
-                  <input checked className={styles.fakeRadio} type="radio" /> 
-                  <div className={styles.fakeFreeShipping}>
-                    FREE shipping{" "}
-                    <span className={styles.shippingDetail}>
-                      on $35+ orders
-                    </span>
-                    <span className={styles.fakeArrive}>
-                      Arrives in 2- 4 days
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.leftBottom4thContainer}>
-                  <div className={styles.priceTag}>
-                    ${cartItem.product.price}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className={styles.cartRightContainer}>
-          <div className={styles.right1stContainer}>
-            <div className={styles.rightTitle}>ORDER SUMMARY</div>
-          </div>
-          <div className={styles.right2ndContainer}>
-            <div className={styles.right2nd1stContainer}>
-              <div className={styles.subtotalLabel}>
-                Subtotal <span className={styles.itemCount}>({num} items)</span>
-              </div>
-
-              <div className={styles.subtotalAmount}>${subtotal}</div>
-            </div>
-
-            <div className={styles.right2nd2ndContainer}>
-              <div className={styles.shippingLabel}>Shipping & Handling</div>
-
-              <div className={styles.fakeShippingCost}>FREE</div>
-            </div>
-
-            <div className={styles.right2nd3rdContainer}>
-              <div className={styles.estimatedTaxLabel}>Estimated Tax</div>
-
-              <div className={styles.estimatedTaxAmount}>
-                ${formatter.format(subtotal * 0.0825)}
-              </div>
-            </div>
-          </div>
-          <div className={styles.right3rdContainer}>
-            <div className={styles.estimatedTotalLabel}>Estimated Total</div>
-
-            <div className={styles.estimatedTotalAmount}>
-              ${formatter.format(subtotal * 0.0825 + subtotal)}
-            </div>
-          </div>
-          <div className={styles.right4thContainer}>
-            <button className={styles.button}>PROCEED TO CHECKOUT</button>
           </div>
         </div>
-      </div>
+      </Rodal>
+
+      {loader && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgba(0,0,0,.75)"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
     </motion.div>
   );
 }

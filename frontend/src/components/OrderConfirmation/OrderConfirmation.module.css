@@ -1,3 +1,5 @@
+@import "@repay/react-credit-card/dist/react-credit-card.css";
+
 .title {
   background-color: black;
   color: white;
@@ -12,4 +14,3 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
 }
-

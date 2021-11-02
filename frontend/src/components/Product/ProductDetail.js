@@ -27,6 +27,15 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
   const [loader, setLoader] = useState(false);
   const [confirmationModal, setConfirmationModal] = useState(false); // set to false, true for testing
+  const [limitQuantityModal, setLimitQuantityModal] = useState(false);
+
+  const showLimitQuantityModal = () => {
+    setLimitQuantityModal(true);
+  };
+
+  const hideLimitQuantityModal = () => {
+    setLimitQuantityModal(false);
+  };
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return (
@@ -58,6 +67,11 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     showLoader();
 
     if (usersCartItems.length > 0) {
+      if (usersCartItems[0].quantity === 5) {
+        setLoader(false);
+        showLimitQuantityModal();
+        return;
+      }
       dispatch(
         editCartItem({
           id: +usersCartItems[0]?.id,
@@ -175,7 +189,10 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               }
             </div>
 
-            <div className={styles.priceContainer}>
+            <div
+              onClick={showLimitQuantityModal}
+              className={styles.priceContainer}
+            >
               <div className={styles.price}>${product[0]?.price}</div>
             </div>
 
@@ -201,7 +218,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
         <div className={styles.loader}>
           <ReactLoading
             type={"bubbles"}
-            color={"rgba(0,0,0,.75)"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}
@@ -241,7 +257,12 @@ function ProductDetail({ num, product, avgRating, reviews }) {
           </div>
 
           <div className={styles.viewCartButtonContainer}>
-            <button onClick={() => history.push('/cart')} className={styles.viewCartButton}>VIEW CART</button>
+            <button
+              onClick={() => history.push("/cart")}
+              className={styles.viewCartButton}
+            >
+              VIEW CART
+            </button>
           </div>
 
           <div
@@ -250,6 +271,23 @@ function ProductDetail({ num, product, avgRating, reviews }) {
           >
             Keep Shopping
           </div>
+        </div>
+      </Rodal>
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={limitQuantityModal}
+        onClose={hideLimitQuantityModal}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          {product[0]?.name}{" "}
+          {
+            "cannot be added to the cart. You can only purchase 5 of this item per transaction."
+          }
         </div>
       </Rodal>
     </>

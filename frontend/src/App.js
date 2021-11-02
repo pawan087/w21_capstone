@@ -19,7 +19,7 @@ import ProductPage from "./components/Product";
 import EditOrderPage from "./components/Orders/EditOrderPage";
 import EditUser from "./components/EditUser.js/EditUser";
 import MyNavBar from "./components/Navigation/MyNavBar";
-import OrderConfirmation from "./components/OrderConfirmation";
+import OrderConfirmation from "./components/OrderConfirmation/index.jsx";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index.jsx";
 

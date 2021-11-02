@@ -24,10 +24,12 @@ export default function MyNavBar() {
   const [loader, setLoader] = useState(false);
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
+  const [cartItemId, setCartItemId] = useState();
 
-  const showRemoveConfirmationModal = (name, id) => {
+  const showRemoveConfirmationModal = (name, id, id2) => {
     setProductName(name);
     setProductId(id);
+    setCartItemId(id2);
     setRemoveConfirmation(true);
   };
 
@@ -57,7 +59,11 @@ export default function MyNavBar() {
     if (cartItem?.userId === user?.id) {
       products?.forEach((product) => {
         if (product.id === cartItem.productId) {
-          inCartProducts.push({ ...product, quantity: cartItem.quantity });
+          inCartProducts.push({
+            ...product,
+            quantity: cartItem.quantity,
+            cartItemId: cartItem.id,
+          });
           cartSubtotal += cartItem.quantity * product.price;
         }
       });
@@ -75,21 +81,11 @@ export default function MyNavBar() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let id;
+    setLoader(true);
 
-    cartItems?.forEach((cartItem) => {
-      if (cartItem.userId === user.id && cartItem.productId === productId) {
-        id = cartItem.id;
-      }
-    });
+    await dispatch(deleteCartItem({ idToDelete: cartItemId }));
 
-    if (id) {
-      setLoader(true);
-
-      await dispatch(deleteCartItem({ idToDelete: id }));
-
-      await dispatch(setAllCartItems());
-    }
+    await dispatch(setAllCartItems());
 
     setLoader(false);
     hideRemoveConfirmationModal();
@@ -237,7 +233,8 @@ export default function MyNavBar() {
                             onClick={() =>
                               showRemoveConfirmationModal(
                                 product.name,
-                                product.id
+                                product.id,
+                                product.cartItemId
                               )
                             }
                             className={styles.removeLink}
@@ -364,7 +361,7 @@ export default function MyNavBar() {
           <ReactLoading
             type={"bubbles"}
             color={"rgba(0,0,0,.75)"}
-            color={"rgb(231,35,13)"}
+            /*       color={"rgb(231,35,13)"} */
             height={"0px"}
             width={"120px"}
           />
