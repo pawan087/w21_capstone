@@ -90,11 +90,10 @@
   justify-items: center;
   align-content: center;
   align-self: center;
-  transition: 0.15s ease-in-out;
 }
 
 .imageContainer:hover {
-  /* display: block; */
+  display: block;
 }
 
 .descriptionContainer {
