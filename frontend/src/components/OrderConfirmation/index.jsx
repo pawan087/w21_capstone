@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { FaCheck } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
@@ -153,9 +154,16 @@ export default function OrderConfirmation() {
             </div>
 
             <div className={styles.left8thRightContainer}>
-              <div className={styles.creditCardPicContainer}>
-                CREDIT CARD PICTURE HERE
-              </div>
+              {
+                <div className={styles.creditCardPicContainer}>
+                  <Cards
+                    number={creditCardNumber}
+                    name={"Pawan Chahal"}
+                    expiry={"01/20"}
+                    focused={focus}
+                  />
+                </div>
+              }
             </div>
           </div>
 
@@ -209,6 +217,8 @@ export default function OrderConfirmation() {
             <div className={styles.totalValue}>$170.14</div>
           </div>
 
+          <div className={styles.spacer} />
+
           <div className={styles.right5thContainer}>
             <div className={styles.placeOrderButtonContainer}>
               <button className={styles.placeOrderButton}>Place Order</button>
@@ -216,30 +226,64 @@ export default function OrderConfirmation() {
           </div>
 
           <div className={styles.right6thContainer}>
-            <div className={styles.policyLabel}>Policy blah blah blah</div>
+            <div className={styles.policyLabel}>
+              By tapping Place Order, you agree to GameStop's{" "}
+              <span className={styles.underline}>Privacy Policy</span> and
+              <span className={styles.underline}> Conditions of Use</span>.
+            </div>
           </div>
 
           <div className={styles.right7thContainer}>
             <div className={styles.cartLabel}>
-              Cart <p className={styles.lighterLabel}>(2 items)</p>
+              Cart <span className={styles.lighterLabel}>(2 items)</span>{" "}
+              <div className={styles.angleDown}>
+                <FaAngleDown style={{ display: "inline", color: "rgba(0,0,0,.5)", height: "20px", width: '20px' }} />
+              </div>
             </div>
           </div>
 
-          <div className={styles.right8thContainer}>
-            <div className={styles.cartItemImageContainer}>
-              <img
-                className={styles.cartItemImage}
-                src={""}
-                alt="cartItemImage"
-              />
+          {false && (
+            <div className={styles.right8thContainer}>
+              <div className={styles.cartItemImageContainer}>
+                <img
+                  className={styles.cartItemImage}
+                  src={
+                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
+                  }
+                  alt="cartItemImage"
+                />
+              </div>
+              <span className={styles.productName}>
+                Xbox One Series 2 Elite Wireless Controller
+              </span>
 
-              <img
-                className={styles.cartItemImage}
-                src={""}
-                alt="cartItemImage"
-              />
+              <span className={styles.productPrice}>$144.99</span>
             </div>
-          </div>
+          )}
+
+          {true && (
+            <div className={styles.right8thContainer2}>
+              <div className={styles.cartItemImageContainer2}>
+                <img
+                  className={styles.cartItemImage}
+                  src={
+                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
+                  }
+                  alt="cartItemImage"
+                />
+              </div>
+
+              <div className={styles.cartItemImageContainer2}>
+                <img
+                  className={styles.cartItemImage}
+                  src={
+                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
+                  }
+                  alt="cartItemImage"
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
