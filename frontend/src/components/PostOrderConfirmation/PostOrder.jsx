@@ -45,47 +45,51 @@ export default function PostOrder() {
             <div className={styles.shippingDetailsHeader}>SHIPPING DETAILS</div>
           </div>
 
-          <div className={styles.mappableContainer}>
-            <div className={styles.imageContainer}>
-              <img
-                className={styles.productPicture}
-                src="https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp$$&fmt=webp"
-                alt="orderConfirmationProductImage"
-              />
-            </div>
+          {
+            <>
+              <div className={styles.mappableContainer}>
+                <div className={styles.imageContainer}>
+                  <img
+                    className={styles.productPicture}
+                    src="https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp$$&fmt=webp"
+                    alt="orderConfirmationProductImage"
+                  />
+                </div>
 
-            <div className={styles.productDetailCard}>
-              <div className={styles.productName}>
-                Original Slinky Classic 75th Anniversary Edition
+                <div className={styles.productDetailCard}>
+                  <div className={styles.productName}>
+                    Original Slinky Classic 75th Anniversary Edition
+                  </div>
+
+                  <div className={styles.productBrandName}>Platform Toys</div>
+
+                  <div className={styles.priceCard}>
+                    <div className={styles.priceLabel}>Price</div>
+
+                    <div className={styles.priceTag}>$4.99</div>
+                  </div>
+
+                  <div className={styles.quantityCard}>
+                    <div className={styles.quantityLabel}>Quantity</div>
+
+                    <div className={styles.quantityTag}>1</div>
+                  </div>
+
+                  <div className={styles.leftTotalCard}>
+                    <div className={styles.leftTotalLabel}>Total</div>
+
+                    <div className={styles.leftTotalValue}>$3.49</div>
+                  </div>
+                </div>
+
+                <div className={styles.shippingCard}>
+                  <div className={styles.shippingTitle}>Shipping Method</div>
+
+                  <div className={styles.fakeFree}>FREE</div>
+                </div>
               </div>
-
-              <div className={styles.productBrandName}>Platform Toys</div>
-
-              <div className={styles.priceCard}>
-                <div className={styles.priceLabel}>Price</div>
-
-                <div className={styles.priceTag}>$4.99</div>
-              </div>
-
-              <div className={styles.quantityCard}>
-                <div className={styles.quantityLabel}>Quantity</div>
-
-                <div className={styles.quantityTag}>1</div>
-              </div>
-
-              <div className={styles.leftTotalCard}>
-                <div className={styles.leftTotalLabel}>Total</div>
-
-                <div className={styles.leftTotalValue}>$3.49</div>
-              </div>
-            </div>
-
-            <div className={styles.shippingCard}>
-              <div className={styles.shippingTitle}>Shipping Method</div>
-
-              <div className={styles.fakeFree}>FREE</div>
-            </div>
-          </div>
+            </>
+          }
 
           <div className={styles.moneyCard}>
             <div className={styles.moneyContainer}>
@@ -128,7 +132,7 @@ export default function PostOrder() {
           </div>
 
           <div className={styles.topRightBottomContainer}>
-            <div className={styles.paymentHeader}>PAYMENT</div>
+            <div className={styles.shippingHeader}>PAYMENT</div>
 
             <div className={styles.addressLabel}>Billing Address</div>
 
@@ -142,23 +146,33 @@ export default function PostOrder() {
 
             <div className={styles.paymentLabel}>Payment Method</div>
 
-            <div className={styles.ccLabel}>Credit Card</div>
+            <div className={styles.email}>Credit Card</div>
 
             <div className={styles.usersName}>Pawan Chahal</div>
 
-            <div className={styles.ccNumber}>**** **** **** 2656</div>
+            <div className={styles.email}>************2656</div>
 
-            <div className={styles.expDate}>Expiration 01/23</div>
+            <div className={styles.email}>Expiration 01/23</div>
 
             <div className={styles.totalChargedAmount}>Amount: $10.31</div>
           </div>
-
-          <div className={styles.topRightBottomContainer}>BOTTOM</div>
         </div>
       </div>
 
       <div className={styles.bottomContainer}>
-        <div>{"RETURN TO SHIPPING >"}</div>
+        <div className={styles.returnLink}>
+          <span className={styles.toRed}>{"RETURN TO SHOPPING "}</span>
+          <FaAngleRight
+            style={{
+              cursor: "pointer",
+              marginLeft: "2.5px",
+              display: "inline",
+              height: "20px",
+              width: "20px",
+              color: "rgb(238,42,40)",
+            }}
+          />
+        </div>
       </div>
     </motion.div>
   );

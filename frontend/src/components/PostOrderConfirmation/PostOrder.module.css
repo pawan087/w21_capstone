@@ -2,14 +2,13 @@
   width: 100%;
   min-height: 875px;
   background-color: rgb(242, 244, 247);
-  background-color: lightgreen;
   padding-top: 35px;
 }
 
 .topContainer {
   min-height: 825px;
   width: 1400px;
-  background-color: skyblue;
+  background-color: rgb(242, 244, 247);
   display: flex;
   margin: 0 auto;
   justify-content: space-between;
@@ -18,7 +17,7 @@
 .topLeftContainer {
   min-height: 825px;
   width: 1050px;
-  background-color: yellow;
+  background-color: rgb(255, 255, 255);
 }
 
 .confirmationHeading {
@@ -28,7 +27,7 @@
   font-size: 22.5px;
   margin-top: 25px;
   margin-left: 25px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: 25px;
 }
 
@@ -58,7 +57,7 @@
   box-sizing: border-box;
   width: 235px;
   height: 50px;
-  background-color: red;
+  background-color: rgb(238, 42, 40);
   font-weight: bold;
   font-size: 12.5px;
   color: white;
@@ -88,14 +87,13 @@
   width: 1005px;
   margin: 0 auto;
   display: flex;
-  background-color: pink;
-  margin-bottom: ;
+  background-color: rgb(255, 255, 255);
 }
 
 .productsHeader {
   height: 55px;
   width: 605px;
-  background-color: skyblue;
+  background-color: rgb(246, 246, 246);
   display: flex;
   align-items: center;
   padding-left: 15px;
@@ -111,16 +109,17 @@
   font-weight: bold;
   padding-left: 15px;
   font-size: 12.5px;
-  background-color: lightsteelblue;
+  background-color: rgb(246, 246, 246);
 }
 
 .mappableContainer {
   height: 250px;
   width: 1005px;
-  background-color: lightsalmon;
+  background-color: rgb(255, 255, 255);
   margin: 0 auto;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .imageContainer {
@@ -137,10 +136,10 @@
 .productDetailCard {
   /* transform: translateY(-17.5px); */
   margin-left: 30px;
-  background-color: yellow;
+  background-color: rgb(255, 255, 255);
   height: 165px;
   width: 380px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.25); */
 }
 
 .productName {
@@ -173,7 +172,7 @@
 }
 
 .quantityCard {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 12.5px;
 }
 
@@ -183,7 +182,7 @@
 
 .leftTotalCard {
   display: flex;
-  margin-top: 20px;
+  margin-top: 15px;
   font-size: 12.5px;
   font-weight: bold;
 }
@@ -194,7 +193,7 @@
 
 .shippingCard {
   margin-left: 30px;
-  background-color: yellow;
+  background-color: rgb(255, 255, 255);
   height: 165px;
 }
 
@@ -212,10 +211,10 @@
 .moneyCard {
   display: flex;
   flex-direction: column;
-  height: 232.5px;
+  height: 227.5px;
   width: 1005px;
   margin: 0 auto;
-  background-color: red;
+  background-color: rgb(255, 255, 255);
   justify-content: center;
   align-items: end;
   padding-right: 45px;
@@ -236,9 +235,9 @@
 .taxCard {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8.75px;
-  padding-bottom: 8.75px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 17.5px;
+  padding-bottom: 17.5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .totalCard {
@@ -256,10 +255,94 @@
   flex-direction: column;
   width: 300px;
   height: 125px;
-  background-color: salmon;
+  background-color: rgb(255, 255, 255);
   font-size: 12.5px;
 }
 
 .freeShippingValue2 {
-    color: rgba(31, 153, 106, 1);
+  color: rgba(31, 153, 106, 1);
+}
+
+.topRightContainer {
+  height: 505px;
+  width: 340px;
+  background-color: rgb(242, 244, 247);
+  /* position: sticky;
+  top: 115px;
+  z-index: 49; */
+}
+
+.topRightTopContainer {
+  height: 170px;
+  width: 325px;
+  background-color: white;
+  margin-left: 15px;
+  margin-bottom: 25px;
+  padding-top: 22.5px;
+  padding-left: 22.5px;
+}
+
+.topRightBottomContainer {
+  height: 310px;
+  width: 325px;
+  margin-left: 15px;
+  background-color: white;
+  padding-top: 22.5px;
+  padding-left: 22.5px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.shippingHeader {
+  font-size: 15px;
+  font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.addressLabel {
+  font-size: 12.5px;
+  font-weight: bold;
+}
+
+.usersName,
+.address1,
+.address2,
+.phoneNumber,
+.email {
+  font-size: 12.5px;
+}
+
+.paymentLabel {
+  font-size: 12.5px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.totalChargedAmount {
+  font-size: 12.5px;
+  font-weight: bold;
+}
+
+.bottomContainer {
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 35px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  /* background-color: red; */
+}
+
+.returnLink {
+  width: 303px;
+  font-size: 12.5px;
+  font-weight: bold;
+  padding-bottom: 35px;
+  transform: translateX(892.5px);
+}
+
+.toRed:hover {
+  cursor: pointer;
+  color: rgb(238, 42, 40);
 }
