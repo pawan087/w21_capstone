@@ -16,6 +16,7 @@ import { updateProfile } from "../../store/session";
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import styles from "./OrderConfirmation.module.css";
+import { set } from "js-cookie";
 
 export default function OrderConfirmation() {
   const history = useHistory();
@@ -251,11 +252,16 @@ export default function OrderConfirmation() {
   };
 
   const submitOrder = async () => {
+    setLoader(true);
+
     await dispatch(
       setPostOrderInfo({
         shoppingCart: shoppingCartItems,
         cc: creditCardNumber,
         exp: expirationDate,
+        address1,
+        address2,
+        phone,
       })
     );
 
@@ -266,10 +272,17 @@ export default function OrderConfirmation() {
         lastOrderId: orderItems[orderItems?.length - 1].id,
         address1,
         address2,
+        creditCard: creditCardNumber,
+        expirationDate: expirationDate,
       })
     );
 
-    history.push("/orderconfirmation");
+    const func = () => {
+      setLoader(false);
+      history.push("/orderconfirmation");
+    };
+
+    setTimeout(() => func(), 500);
 
     return;
   };
@@ -657,8 +670,8 @@ export default function OrderConfirmation() {
             <div className={styles.cartLabel}>
               Cart{" "}
               <span className={styles.lighterLabel}>
-                ({itemCount}{" "}
-                {shoppingCartItems.length === 1 ? "item" : "items"})
+                ({itemCount} {shoppingCartItems.length === 1 ? "item" : "items"}
+                )
               </span>{" "}
               {false && (
                 <div className={styles.angleDown}>
@@ -731,7 +744,9 @@ export default function OrderConfirmation() {
           />
         </div>
       )}
-      <div onClick={() => history.push('/cart')} className={styles.untouchable}>Can't touch this</div>
+      <div onClick={() => history.push("/cart")} className={styles.untouchable}>
+        Can't touch this
+      </div>
     </motion.div>
   );
 }

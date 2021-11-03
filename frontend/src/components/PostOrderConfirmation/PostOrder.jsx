@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./PostOrder.module.css";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 
+import { setAllProducts } from "../../store/products";
+import { setAllOrderItems } from "../../store/orderItems";
+import { setAllOrders, deleteOrders } from "../../store/orders.js";
+import { setAllCartItems } from "../../store/cartItems.js";
+
 export default function PostOrder() {
+  const dispatch = useDispatch();
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  const user = useSelector((state) => state.session.user);
+  const justOrdered = useSelector((state) => state.postOrderReducer);
+  const orders = useSelector((state) => state.orders);
+
+  // console.log(String(new Date (orders[orders.length - 1]?.updatedAt)).slice(4, 15));
+  let subtotal = 0;
+  justOrdered?.shoppingCart?.forEach((x) => {
+    subtotal += x.quantity * x.product.price;
+    return;
+  });
+
+  useEffect(() => {
+    dispatch(setAllProducts());
+    dispatch(setAllOrderItems());
+    dispatch(setAllOrders());
+    dispatch(setAllCartItems());
+  }, [dispatch]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -25,11 +56,19 @@ export default function PostOrder() {
             <div className={styles.orderDetails}>
               <div className={styles.fakeOrderNumber}>
                 Order Number:{" "}
-                <span className={styles.lighter}>110000037735647</span>
+                <span className={styles.lighter}>
+                  11000000377356{orders[orders.length - 1]?.id}
+                </span>
               </div>
 
               <div className={styles.fakeOrderNumber}>
-                Order Date: <span className={styles.lighter}>11/03/2021</span>
+                Order Date:{" "}
+                <span className={styles.lighter}>
+                  {String(new Date(orders[orders.length - 1]?.updatedAt)).slice(
+                    4,
+                    15
+                  )}
+                </span>
               </div>
             </div>
 
@@ -45,57 +84,72 @@ export default function PostOrder() {
             <div className={styles.shippingDetailsHeader}>SHIPPING DETAILS</div>
           </div>
 
-          {
-            <>
-              <div className={styles.mappableContainer}>
-                <div className={styles.imageContainer}>
-                  <img
-                    className={styles.productPicture}
-                    src="https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp$$&fmt=webp"
-                    alt="orderConfirmationProductImage"
-                  />
-                </div>
-
-                <div className={styles.productDetailCard}>
-                  <div className={styles.productName}>
-                    Original Slinky Classic 75th Anniversary Edition
+          {justOrdered?.shoppingCart?.map((cartItem, i) => {
+            return (
+              <div key={i}>
+                <div className={styles.mappableContainer}>
+                  <div className={styles.imageContainer}>
+                    <img
+                      className={styles.productPicture}
+                      src={cartItem?.product?.images[0]}
+                      alt="orderConfirmationProductImage"
+                    />
                   </div>
 
-                  <div className={styles.productBrandName}>Platform Toys</div>
+                  <div className={styles.productDetailCard}>
+                    <div className={styles.productName}>
+                      {cartItem?.product?.name}
+                    </div>
 
-                  <div className={styles.priceCard}>
-                    <div className={styles.priceLabel}>Price</div>
+                    <div className={styles.productBrandName}>
+                      {cartItem?.product?.Brand?.name}
+                    </div>
 
-                    <div className={styles.priceTag}>$4.99</div>
+                    <div className={styles.priceCard}>
+                      <div className={styles.priceLabel}>Price</div>
+
+                      <div className={styles.priceTag}>
+                        ${cartItem?.product?.price}
+                      </div>
+                    </div>
+
+                    <div className={styles.quantityCard}>
+                      <div className={styles.quantityLabel}>Quantity</div>
+
+                      <div className={styles.quantityTag}>
+                        {cartItem?.quantity}
+                      </div>
+                    </div>
+
+                    <div className={styles.leftTotalCard}>
+                      <div className={styles.leftTotalLabel}>Total</div>
+
+                      <div className={styles.leftTotalValue}>
+                        $
+                        {formatter.format(
+                          cartItem?.quantity * cartItem?.product?.price
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  <div className={styles.quantityCard}>
-                    <div className={styles.quantityLabel}>Quantity</div>
+                  <div className={styles.shippingCard}>
+                    <div className={styles.shippingTitle}>Shipping Method</div>
 
-                    <div className={styles.quantityTag}>1</div>
+                    <div className={styles.fakeFree}>FREE</div>
                   </div>
-
-                  <div className={styles.leftTotalCard}>
-                    <div className={styles.leftTotalLabel}>Total</div>
-
-                    <div className={styles.leftTotalValue}>$3.49</div>
-                  </div>
-                </div>
-
-                <div className={styles.shippingCard}>
-                  <div className={styles.shippingTitle}>Shipping Method</div>
-
-                  <div className={styles.fakeFree}>FREE</div>
                 </div>
               </div>
-            </>
-          }
+            );
+          })}
 
           <div className={styles.moneyCard}>
             <div className={styles.moneyContainer}>
               <div className={styles.subtotalCard}>
                 <div className={styles.subtotalLabel}>Subtotal</div>
-                <div className={styles.subtotalValue}>$3.49</div>
+                <div className={styles.subtotalValue}>
+                  ${formatter.format(subtotal)}
+                </div>
               </div>
 
               <div className={styles.shippingCard2}>
@@ -105,12 +159,16 @@ export default function PostOrder() {
 
               <div className={styles.taxCard}>
                 <div className={styles.taxLabel}>Estimated Tax</div>
-                <div className={styles.taxValue}>$0.83</div>
+                <div className={styles.taxValue}>
+                  ${formatter.format(subtotal * 0.0825)}
+                </div>
               </div>
 
               <div className={styles.totalCard}>
                 <div className={styles.totalLabel}>Total</div>
-                <div className={styles.totalValue}>$10.31</div>
+                <div className={styles.totalValue}>
+                  ${formatter.format(subtotal + subtotal * 0.0825)}
+                </div>
               </div>
             </div>
           </div>
@@ -122,13 +180,15 @@ export default function PostOrder() {
 
             <div className={styles.addressLabel}>Shipping Address</div>
 
-            <div className={styles.usersName}>Pawan Chahal</div>
+            <div className={styles.usersName}>
+              {user.firstName} {user.lastName}
+            </div>
 
-            <div className={styles.address1}>303 Daybreak Court</div>
+            <div className={styles.address1}>{justOrdered?.address1}</div>
 
-            <div className={styles.address2}>San Ramon, CA 94583</div>
+            <div className={styles.address2}>{justOrdered?.address2}</div>
 
-            <div className={styles.phoneNumber}>4088361037</div>
+            <div className={styles.phoneNumber}>{justOrdered?.phone}</div>
           </div>
 
           <div className={styles.topRightBottomContainer}>
@@ -136,25 +196,33 @@ export default function PostOrder() {
 
             <div className={styles.addressLabel}>Billing Address</div>
 
-            <div className={styles.usersName}>Pawan Chahal</div>
+            <div className={styles.usersName}>
+              {user.firstName} {user.lastName}
+            </div>
 
-            <div className={styles.address1}>303 Daybreak Court</div>
+            <div className={styles.address1}>{justOrdered?.address1}</div>
 
-            <div className={styles.address2}>San Ramon, CA 94583</div>
+            <div className={styles.address2}>{justOrdered?.address2}</div>
 
-            <div className={styles.email}>chahal.pawanpreet@gmail.com</div>
+            <div className={styles.email}>{user?.email}</div>
 
             <div className={styles.paymentLabel}>Payment Method</div>
 
             <div className={styles.email}>Credit Card</div>
 
-            <div className={styles.usersName}>Pawan Chahal</div>
+            <div className={styles.usersName}>
+              {user.firstName} {user.lastName}
+            </div>
 
-            <div className={styles.email}>************2656</div>
+            <div className={styles.email}>
+              ************{justOrdered?.cc?.slice(justOrdered?.cc?.length - 4)}
+            </div>
 
-            <div className={styles.email}>Expiration 01/23</div>
+            <div className={styles.email}>{justOrdered?.exp}</div>
 
-            <div className={styles.totalChargedAmount}>Amount: $10.31</div>
+            <div className={styles.totalChargedAmount}>
+              Amount: ${formatter.format(subtotal + subtotal * 0.0825)}
+            </div>
           </div>
         </div>
       </div>

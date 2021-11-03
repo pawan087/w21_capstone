@@ -24,7 +24,15 @@ export const setAllOrders = () => async (dispatch) => {
 };
 
 export const createOrderItemsAndOrder = (data) => async (dispatch) => {
-  const { user, cartItems, lastOrderId, address1, address2 } = data;
+  const {
+    user,
+    cartItems,
+    lastOrderId,
+    address1,
+    address2,
+    creditCard,
+    expirationDate,
+  } = data;
 
   const res = await csrfFetch("/api/orders/complete", {
     method: "POST",
@@ -34,6 +42,8 @@ export const createOrderItemsAndOrder = (data) => async (dispatch) => {
       lastOrderId,
       address1,
       address2,
+      creditCard,
+      expirationDate,
     }),
   });
 

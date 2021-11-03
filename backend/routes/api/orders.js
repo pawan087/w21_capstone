@@ -68,7 +68,15 @@ router.delete(
 router.post(
   "/complete",
   asyncHandler(async (req, res) => {
-    const { user, cartItems, lastOrderId, address1, address2 } = req.body;
+    const {
+      user,
+      cartItems,
+      lastOrderId,
+      address1,
+      address2,
+      creditCard,
+      expirationDate,
+    } = req.body;
 
     const userId = user.id;
     // const address1 = user.address1;
@@ -98,6 +106,8 @@ router.post(
       items,
       address1,
       address2,
+      creditCard,
+      expirationDate,
     });
 
     const orders = await Order.findAll();

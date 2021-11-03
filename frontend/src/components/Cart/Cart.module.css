@@ -292,6 +292,7 @@ input[type="radio"]:checked {
 .backContainer {
   width: 100%;
   min-height: 925px;
+  min-height: 817.5px;
   /* min-height: 817.5px; */
   background-color: rgb(242, 244, 247);
   /* background-color: red; */
@@ -439,6 +440,7 @@ input[type="radio"]:checked {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 100;
   transform: translate(-50%, -50%);
 }
 
