@@ -22,6 +22,7 @@ import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation/index.jsx";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart/index.jsx";
+import PostOrder from "./components/PostOrderConfirmation/PostOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -97,6 +98,10 @@ function App() {
 
             <Route path="/test" exact={true}>
               <Test />
+            </Route>
+
+            <Route path="/orderconfirmation" exact={true}>
+              <PostOrder />
             </Route>
           </Switch>
         </AnimatePresence>

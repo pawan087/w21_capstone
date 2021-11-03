@@ -107,6 +107,7 @@ export default function OrderConfirmation() {
 
   const shoppingCartItems = [];
   let subtotal = 0;
+  let itemCount = 0;
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
 
@@ -124,6 +125,7 @@ export default function OrderConfirmation() {
 
         shoppingCartItems.push(item);
         subtotal += cartItem.quantity * product.price;
+        itemCount += cartItem.quantity;
       }
     });
   });
@@ -267,7 +269,7 @@ export default function OrderConfirmation() {
       })
     );
 
-    history.push("/orders");
+    history.push("/orderconfirmation");
 
     return;
   };
@@ -655,7 +657,7 @@ export default function OrderConfirmation() {
             <div className={styles.cartLabel}>
               Cart{" "}
               <span className={styles.lighterLabel}>
-                ({shoppingCartItems.length}{" "}
+                ({itemCount}{" "}
                 {shoppingCartItems.length === 1 ? "item" : "items"})
               </span>{" "}
               {false && (
