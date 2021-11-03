@@ -8,6 +8,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { FormField } from "react-form-input-fields";
 import "react-form-input-fields/dist/index.css";
 import ReactLoading from "react-loading";
+import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 
 import { motion } from "framer-motion/dist/framer-motion";
 import * as sessionActions from "../../store/session";
@@ -167,12 +168,12 @@ export default function OrderConfirmation() {
     }
 
     if (!phone) {
-      setWarningPhone(true);
+      // setWarningPhone(true);
     } else {
       setWarningPhone(false);
     }
 
-    if (firstName && lastName && address1 && address2 && phone) {
+    if (firstName && lastName && address1 && address2) {
       if (!defaultOption) {
         setShowEdit(false);
       } else {
@@ -245,6 +246,30 @@ export default function OrderConfirmation() {
     setCreditCardNumber("4024007103939509");
     setExpirationDate("09/25");
     pay();
+  };
+
+  const submitOrder = async () => {
+    await dispatch(
+      setPostOrderInfo({
+        shoppingCart: shoppingCartItems,
+        cc: creditCardNumber,
+        exp: expirationDate,
+      })
+    );
+
+    await dispatch(
+      createOrderItemsAndOrder({
+        user,
+        cartItems: shoppingCartItems,
+        lastOrderId: orderItems[orderItems?.length - 1].id,
+        address1,
+        address2,
+      })
+    );
+
+    history.push("/orders");
+
+    return;
   };
 
   return (
@@ -604,7 +629,12 @@ export default function OrderConfirmation() {
           <div className={styles.right5thContainer}>
             <div className={styles.placeOrderButtonContainer}>
               {payed && (
-                <button className={styles.placeOrderButton}>Place Order</button>
+                <button
+                  onClick={() => submitOrder()}
+                  className={styles.placeOrderButton}
+                >
+                  Place Order
+                </button>
               )}
 
               {!payed && (

@@ -24,7 +24,7 @@ export const setAllOrders = () => async (dispatch) => {
 };
 
 export const createOrderItemsAndOrder = (data) => async (dispatch) => {
-  const { user, cartItems, lastOrderId } = data;
+  const { user, cartItems, lastOrderId, address1, address2 } = data;
 
   const res = await csrfFetch("/api/orders/complete", {
     method: "POST",
@@ -32,6 +32,8 @@ export const createOrderItemsAndOrder = (data) => async (dispatch) => {
       user,
       cartItems,
       lastOrderId,
+      address1,
+      address2,
     }),
   });
 
@@ -108,19 +110,5 @@ const orderReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-// const initialState2 = [];
-
-// export const testReducer = (state = initialState2, action) => {
-//   let newState;
-
-//   switch (action.type) {
-//     case SET_TEST:
-//       newState = action.test;
-//       return newState;
-//     default:
-//       return state;
-//   }
-// };
 
 export default orderReducer;
