@@ -128,6 +128,40 @@ router.put(
   })
 );
 
+// Update
+router.put(
+  "/update",
+  asyncHandler(async (req, res, next) => {
+    const { id, firstName, lastName, phone, address1, address2 } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      firstName,
+      lastName,
+      phone,
+      address1,
+      address2,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
 // Log out
 router.delete("/", (_req, res) => {
   res.clearCookie("token");
