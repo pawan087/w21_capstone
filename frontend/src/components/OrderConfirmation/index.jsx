@@ -731,6 +731,7 @@ export default function OrderConfirmation() {
           />
         </div>
       )}
+      <div onClick={() => history.push('/cart')} className={styles.untouchable}>Can't touch this</div>
     </motion.div>
   );
 }

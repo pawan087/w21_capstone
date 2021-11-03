@@ -498,7 +498,7 @@ input[type="radio"]:checked {
   flex-direction: column;
   width: 60px;
   height: 60px;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .cartItemImage {
@@ -838,5 +838,17 @@ input[type="number"] {
 }
 
 .demoCard:hover {
-  color:rgba(31, 153, 106, .75)
+  color:rgba(31, 153, 106, 1)
+}
+
+.untouchable {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 225px;
+  height: 82.5px;
+  width: 100px;
+  background-color: red;
+  z-index: 1000;
+  opacity: 0;
 }
