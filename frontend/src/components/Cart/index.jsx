@@ -5,8 +5,6 @@ import { motion } from "framer-motion/dist/framer-motion";
 import Select from "react-select";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
-import { FaCheck } from "react-icons/fa";
-
 
 import { setAllOrderItems } from "../../store/orderItems.js";
 import {

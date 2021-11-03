@@ -64,8 +64,9 @@
   height: 85px;
   /* background-color: lightseagreen; */
   font-size: 15px;
-  color: rgba(0, 0, 0, 0.75);
-  line-height: 18px;
+  color: rgba(0, 0, 0, 1);
+  /* line-height: 20px; */
+  margin-bottom: 20px;
 }
 
 .username {
@@ -256,7 +257,7 @@ input[type="radio"]:checked {
 }
 
 .saveButtonContainer {
-  width: 230px;
+  width: 145px;
   height: 50px;
   background-color: rgb(231, 35, 13);
   color: white;
@@ -266,7 +267,7 @@ input[type="radio"]:checked {
 }
 
 .saveButtonContainer2 {
-  width: 230px;
+  width: 145px;
   height: 50px;
   background-color: rgb(231, 35, 13);
   color: white;
@@ -277,7 +278,7 @@ input[type="radio"]:checked {
 }
 
 .saveButton {
-  width: 230px;
+  width: 145px;
   height: 50px;
   background-color: rgb(231, 35, 13);
   color: white;
@@ -288,7 +289,7 @@ input[type="radio"]:checked {
 }
 
 .saveButton2 {
-  width: 230px;
+  width: 145px;
   height: 50px;
   background-color: rgb(231, 35, 13);
   color: white;
@@ -345,7 +346,7 @@ input[type="radio"]:checked {
 }
 
 .creditCardPicContainer {
-  transform: scale(0.55);
+  transform: scale(0.5);
   position: absolute;
   top: -85px;
   right: -30px;
@@ -437,6 +438,10 @@ input[type="radio"]:checked {
   font-weight: bold;
   font-size: 17.5px;
   opacity: 0.5;
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .right6thContainer {
@@ -493,7 +498,7 @@ input[type="radio"]:checked {
   flex-direction: column;
   width: 60px;
   height: 60px;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .cartItemImage {
@@ -564,25 +569,42 @@ input[type="number"] {
   display: flex;
 }
 
+.editLastNameInput {
+  width: 445px;
+}
+
+.editFirstNameInput {
+  width: 445px;
+  margin-right: 25px;
+}
+
 .editFirstNameInput input {
   width: 445px;
   height: 50px;
   margin-right: 25px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 15px;
   outline: none;
-  color: rgba(0, 0, 0, 0.75);
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 1);
+  border: 1px solid rgba(54, 34, 34, 0.25);
+}
+
+.editFirstNameInput input:focus {
+  border: 1px solid rgba(54, 34, 34, 0.5);
 }
 
 .editLastNameInput input {
   width: 450px;
   height: 50px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 15px;
   outline: none;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 1);
   border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.editLastNameInput input:focus {
+  border: 1px solid rgba(54, 34, 34, 0.5);
 }
 
 .left2ndContainer22ndContainer {
@@ -590,28 +612,56 @@ input[type="number"] {
   /* background-color: rosybrown; */
 }
 
+.editAddress1Input {
+  width: 920px;
+}
+
+.editAddress2Input {
+  width: 920px;
+}
+
 .editAddress1Input input {
   width: 920px;
   height: 50px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 15px;
   outline: none;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 1);
   border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.editAddress1Input input:focus {
+  border: 1px solid rgba(54, 34, 34, 0.5);
+}
+
+.editAddress2Input input:focus {
+  border: 1px solid rgba(54, 34, 34, 0.5);
+}
+
+.editPhoneInput input:focus {
+  border: 1px solid rgba(54, 34, 34, 0.5);
 }
 
 .editAddress1Input {
   margin-bottom: 35px;
 }
 
+.editAddress2Input {
+  transform: translateY(-5px);
+}
+
 .editAddress2Input input {
   width: 920px;
   height: 50px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 15px;
   outline: none;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 1);
   border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.editPhoneInput {
+  width: 445px;
 }
 
 .editPhoneInput input {
@@ -619,12 +669,13 @@ input[type="number"] {
   height: 50px;
   margin-right: 25px;
   padding-left: 10px;
-  font-size: 12.5px;
+  font-size: 15px;
   outline: none;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 1);
   border: 1px solid rgba(0, 0, 0, 0.25);
 }
 .editPhoneInput {
+  transform: translateY(-10px);
   margin-bottom: 25px;
 }
 
@@ -638,7 +689,8 @@ input[type="number"] {
 .setAsDefaultLabel {
   margin-left: 10px;
   font-size: 12.5px;
-  color: rgba(0, 0, 0, 1);
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .left2ndContainer25thContainer {
@@ -661,11 +713,130 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 35px;
+  cursor: pointer;
+}
+
+.saveEditButton2 {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: rgb(231, 35, 13);
+  font-weight: bold;
+  font-size: 12.5px;
+  width: 230px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 45px;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .cancellation {
   font-size: 15px;
   text-decoration: underline;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.75);
+  transition: 0.15s ease-in-out;
+}
+
+.cancellation:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+.warning {
+  color: rgb(231, 35, 13);
+  font-size: 12.5px;
+  transform: translateY(-20px);
+}
+
+.warning2 {
+  color: rgb(231, 35, 13);
+  font-size: 12.5px;
+  position: absolute;
+  transform: translateY(-20px);
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.plusTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.confirmedPaymentContainer {
+  margin-top: 25px;
+  display: flex;
+  /* background-color: red; */
+  /* height: 35px; */
+}
+
+.fakeCC {
+  transform: scale(0.25);
+  position: absolute;
+  top: -67.5px;
+  right: 65px;
+}
+
+.left8thRightContainer {
+  position: relative;
+  margin-left: 25px;
+  height: 55px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  /* background-color: hotpink; */
+}
+
+.ccInfoContainer {
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-150px);
+}
+
+.ccEnding {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.ccExpiration {
+  font-size: 12.5px;
+}
+
+.changeCC {
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 1);
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  transform: translate(450px, 0px);
+}
+
+.changeCC:hover {
+  color: rgb(231, 35, 13);
+}
+
+.demoCard {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.33);
+  text-decoration: underline;
+  cursor: pointer;
+  top: 42.5px;
+  right: 415px;
+}
+
+.demoCard:hover {
+  color:rgba(31, 153, 106, .75)
 }

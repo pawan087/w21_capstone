@@ -160,7 +160,9 @@ export default function MyNavBar() {
         <div className={styles.rightSection}>
           <div className={styles.rightMenuButtonContainer}>
             <div className={styles.userInitials}>
-              {user && `${user.firstName[0]}${user.lastName[0]}`}
+              {user?.firstName &&
+                user?.lastName &&
+                `${user.firstName[0]}${user.lastName[0]}`}
             </div>
 
             <div className={styles.accountLabel}>Account</div>

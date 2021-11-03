@@ -101,26 +101,34 @@ export const profileEdit = (obj) => async (dispatch) => {
   dispatch(setUser(data));
 
   return data;
+};
 
-  // const data = await response.json();
+export const updateProfile = (obj) => async (dispatch) => {
+  const {
+    id,
+    firstName,
+    lastName,
+    phone,
+    address1,
+    address2,
+  } = obj;
 
-  // console.log(data);
+  const response = await csrfFetch("/api/session/update", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      firstName,
+      lastName,
+      phone,
+      address1,
+      address2,
+    }),
+  });
 
-  // if (response.ok) {
-  //   const data = await response.json();
+  const data = await response.json();
+  dispatch(setUser(data));
 
-  //   dispatch(setUser(data));
-
-  //   return null;
-  // } else if (response.status < 500) {
-  //   const data = await response.json();
-
-  //   if (data.errors) {
-  //     return data.errors;
-  //   }
-  // } else {
-  //   return ["An error occurred. Please try again."];
-  // }
+  return data;
 };
 
 export const logout = () => async (dispatch) => {

@@ -5,7 +5,13 @@ import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
 import { FaCheck } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
+import { FormField } from "react-form-input-fields";
+import "react-form-input-fields/dist/index.css";
+import ReactLoading from "react-loading";
 
+import { motion } from "framer-motion/dist/framer-motion";
+import * as sessionActions from "../../store/session";
+import { updateProfile } from "../../store/session";
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import styles from "./OrderConfirmation.module.css";
@@ -29,14 +35,27 @@ export default function OrderConfirmation() {
   const [phone, setPhone] = useState(user?.phone);
   const [showEdit, setShowEdit] = useState(false);
   const [defaultOption, setDefaultOption] = useState(false);
+  const [warningFirstName, setWarningFirstName] = useState(false);
+  const [warningLastName, setWarningLastName] = useState(false);
+  const [warningAddress1, setWarningAddress1] = useState(false);
+  const [warningAddress2, setWarningAddress2] = useState(false);
+  const [warningPhone, setWarningPhone] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
 
-  const pay = () => {
-    setPayed(true);
+  const pay = async () => {
+    setLoader(true);
+
+    const func = () => {
+      setLoader(false);
+      setPayed(true);
+    };
+
+    await setTimeout(() => func(), 500);
   };
 
   let regExp = /[a-zA-Z]/g;
@@ -45,6 +64,7 @@ export default function OrderConfirmation() {
 
   if (regExp.test(creditCardNumber)) {
     legitCard = false;
+    // setPayed(false);
   } else {
     if (creditCardNumber.length === 16) {
       legitCard = true;
@@ -59,8 +79,29 @@ export default function OrderConfirmation() {
     legitExpirationDate = false;
   }
 
+  const ccNum = (e) => {
+    setCreditCardNumber(e.target.value);
+
+    setPayed(false);
+  };
+
+  const expNum = (e) => {
+    if (!e.target.value.includes("/")) {
+      let newExpNum;
+
+      if (e.target.value.length === 4) {
+        newExpNum = e.target.value.slice(0, 2) + "/" + e.target.value.slice(2);
+        setExpirationDate(newExpNum);
+        return;
+      }
+    }
+
+    setExpirationDate(e.target.value);
+    setPayed(false);
+  };
+
   const usersCartItems = cartItems?.filter((cartItem) => {
-    return cartItem.userId === user.id;
+    return cartItem.userId === user?.id;
   });
 
   const shoppingCartItems = [];
@@ -99,7 +140,61 @@ export default function OrderConfirmation() {
   };
 
   const handleSubmit2 = async () => {
-    history.push("/cart");
+    setLoader(true);
+
+    if (!firstName) {
+      setWarningFirstName(true);
+    } else {
+      setWarningFirstName(false);
+    }
+
+    if (!lastName) {
+      setWarningLastName(true);
+    } else {
+      setWarningLastName(false);
+    }
+
+    if (!address1) {
+      setWarningAddress1(true);
+    } else {
+      setWarningAddress1(false);
+    }
+
+    if (!address2) {
+      setWarningAddress2(true);
+    } else {
+      setWarningAddress2(false);
+    }
+
+    if (!phone) {
+      setWarningPhone(true);
+    } else {
+      setWarningPhone(false);
+    }
+
+    if (firstName && lastName && address1 && address2 && phone) {
+      if (!defaultOption) {
+        setShowEdit(false);
+      } else {
+        // EDIT USER
+        await dispatch(
+          updateProfile({
+            id: user.id,
+            firstName,
+            lastName,
+            phone,
+            address1,
+            address2,
+          })
+        );
+
+        await dispatch(sessionActions.restoreUser());
+        setDefaultOption(false);
+        setShowEdit(false);
+      }
+    }
+
+    setLoader(false);
   };
 
   const handleInputFocus = (e) => {
@@ -110,16 +205,54 @@ export default function OrderConfirmation() {
     dispatch(setAllOrderItems());
   }, [dispatch]);
 
+  const handleOnChange = (value) => {
+    setLastName(value);
+  };
+
+  const handleOnChange2 = (value) => {
+    setFirstName(value);
+  };
+
+  const handleOnChange3 = (value) => {
+    setAddress1(value);
+  };
+
+  const handleOnChange4 = (value) => {
+    setAddress2(value);
+  };
+
   const clear = () => {
     setFirstName(user.firstName);
     setLastName(user.lastName);
     setAddress1(user.address1);
     setAddress2(user.address2);
     setPhone(user.phone);
+    setWarningFirstName(false);
+    setWarningLastName(false);
+    setWarningAddress1(false);
+    setWarningAddress2(false);
+    setWarningPhone(false);
     setShowEdit(false);
+    setDefaultOption(false);
   };
+
+  const demoCard = () => {
+    if (creditCardNumber === "4024007103939509" && expirationDate === "09/25") {
+      setPayed(true);
+      return;
+    }
+
+    setCreditCardNumber("4024007103939509");
+    setExpirationDate("09/25");
+    pay();
+  };
+
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.left1stContainer}>Shipping</div>
@@ -128,11 +261,11 @@ export default function OrderConfirmation() {
             <div className={styles.left2ndContainer}>
               <div className={styles.userInfo}>
                 <div className={styles.username}>
-                  {user?.firstName} {user?.lastName}
+                  {firstName} {lastName}
                 </div>
-                <div className={styles.address1}>{user?.address1}</div>
-                <div className={styles.address2}>{user?.address2}</div>
-                <div className={styles.phoneNumber}>{user?.phone}</div>
+                <div className={styles.address1}>{address1}</div>
+                <div className={styles.address2}>{address2}</div>
+                <div className={styles.phoneNumber}>{phone}</div>
               </div>
 
               <div
@@ -148,52 +281,89 @@ export default function OrderConfirmation() {
             <div className={styles.left2ndContainer2}>
               <div className={styles.left2ndContainer21stContainer}>
                 <div className={styles.editFirstNameInput}>
-                  <input
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                  <FormField
                     type="text"
-                    placeHolder="First Name"
+                    standard="labeleffect"
+                    value={firstName}
+                    keys={"firstName"}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => handleOnChange2(value)}
+                    placeholder={"First Name"}
                   />
+                  {warningFirstName && (
+                    <div className={styles.warning}>First name is required</div>
+                  )}
                 </div>
 
                 <div className={styles.editLastNameInput}>
-                  <input
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                  <FormField
                     type="text"
-                    placeHolder="Last Name"
+                    standard="labeleffect"
+                    value={lastName}
+                    keys={"lastName"}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => handleOnChange(value)}
+                    placeholder={"Last Name"}
                   />
+                  {warningLastName && (
+                    <div className={styles.warning}>Last name is required</div>
+                  )}
                 </div>
               </div>
 
               <div className={styles.left2ndContainer22ndContainer}>
                 <div className={styles.editAddress1Input}>
-                  <input
-                    value={address1}
-                    onChange={(e) => setAddress1(e.target.value)}
-                    placeHolder="Street Address"
+                  <FormField
                     type="text"
+                    standard="labeleffect"
+                    value={address1}
+                    keys={"address1"}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => handleOnChange3(value)}
+                    placeholder={"Street Address"}
                   />
+
+                  {warningAddress1 && (
+                    <div className={styles.warning2}>
+                      Street address is required
+                    </div>
+                  )}
                 </div>
 
                 <div className={styles.editAddress2Input}>
-                  <input
-                    value={address2}
-                    onChange={(e) => setAddress2(e.target.value)}
-                    placeHolder="City, State, Zip"
+                  <FormField
                     type="text"
+                    standard="labeleffect"
+                    value={address2}
+                    keys={"address2"}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => handleOnChange4(value)}
+                    placeholder={"City, State, ZIP"}
                   />
+                  {warningAddress2 && (
+                    <div className={styles.warning2}>
+                      City/State/Zip is required
+                    </div>
+                  )}
                 </div>
               </div>
 
               <div className={styles.left2ndContainer23rdContainer}>
                 <div className={styles.editPhoneInput}>
-                  <input
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeHolder="Phone Number"
+                  <FormField
                     type="text"
+                    standard="labeleffect"
+                    value={phone}
+                    keys={"phone"}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => setPhone(value)}
+                    placeholder={"Phone Number"}
                   />
+                  {warningPhone && (
+                    <div className={styles.warning2}>
+                      Phone number is required
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -207,7 +377,10 @@ export default function OrderConfirmation() {
                   )}
                 </div>
 
-                <div className={styles.setAsDefaultLabel}>
+                <div
+                  onClick={() => setDefaultOption(!defaultOption)}
+                  className={styles.setAsDefaultLabel}
+                >
                   Set as default shipping address
                 </div>
               </div>
@@ -217,7 +390,12 @@ export default function OrderConfirmation() {
                   Cancel
                 </div>
 
-                <div className={styles.saveEditButton}>SAVE & CONTINUE</div>
+                <div
+                  onClick={() => handleSubmit2()}
+                  className={styles.saveEditButton}
+                >
+                  SAVE & CONTINUE
+                </div>
               </div>
             </div>
           )}
@@ -255,99 +433,139 @@ export default function OrderConfirmation() {
             <div className={styles.paymentTitle}>Payment</div>
           </div>
 
-          <div className={styles.left6thContainer}>
-            <div className={styles.creditCardTitle}>
-              <input checked className={styles.fakeRadio} type="radio" /> 
-              <div className={styles.ccTitle}>Credit Cart</div>
-            </div>
-          </div>
+          {!payed && (
+            <>
+              <div className={styles.left6thContainer}>
+                <div className={styles.creditCardTitle}>
+                  <input checked className={styles.fakeRadio} type="radio" /> 
+                  <div className={styles.ccTitle}>Credit Cart</div>
+                </div>
+              </div>
 
-          <div className={styles.left7thContainer}>
-            <div className={styles.creditCardDetails}>
-              Visa, Mastercard, AMEX, Discover
-            </div>
-          </div>
+              <div className={styles.left7thContainer}>
+                <div className={styles.creditCardDetails}>
+                  Visa, Mastercard, AMEX, Discover
+                </div>
+              </div>
 
-          <div className={styles.left8thContainer}>
-            <div className={styles.left8thLeftContainer}>
-              <div className={styles.leftInputContainer}>
-                <input
-                  maxlength="16"
-                  onChange={(e) => setCreditCardNumber(e.target.value)}
-                  onFocus={(e) => handleInputFocus(e)}
-                  placeholder={"Card number"}
-                  type="tel"
-                  name="number"
-                />
-                {false && (
-                  <p className={styles.invalidCC}>
-                    Invalid credit card number.
-                  </p>
+              <div className={styles.left8thContainer}>
+                <div className={styles.left8thLeftContainer}>
+                  <div className={styles.leftInputContainer}>
+                    <input
+                      maxlength="16"
+                      onChange={(e) => ccNum(e)}
+                      onFocus={(e) => handleInputFocus(e)}
+                      placeholder={"Card number"}
+                      type="tel"
+                      value={creditCardNumber}
+                      name="number"
+                    />
+
+                    {true && (
+                      <p onClick={() => demoCard()} className={styles.demoCard}>
+                        Pay with Demo Card
+                      </p>
+                    )}
+                  </div>
+
+                  <div className={styles.rightInputContainer}>
+                    <input
+                      maxlength="5"
+                      placeholder={"MM/YY"}
+                      type="tel"
+                      value={expirationDate}
+                      name="expiration"
+                      onChange={(e) => expNum(e)}
+                      onFocus={(e) => handleInputFocus(e)}
+                    />
+                    {false && (
+                      <p className={styles.invalidExp}>
+                        Invalid expiration date.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className={styles.left8thRightContainer}>
+                  {creditCardNumber && (
+                    <div className={styles.creditCardPicContainer}>
+                      <Cards
+                        number={creditCardNumber}
+                        name={`${user.firstName} ${user.lastName}`}
+                        expiry={expirationDate}
+                        focused={focus}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.left9thContainer}>
+                <div className={styles.left9thLeftContainer}>
+                  <div className={styles.left9thLeftTopContainer}>
+                    <div className={styles.left9thLeftTopLeftContainer}>
+                      <FaCheck style={{ display: "inline", color: "red" }} />
+                    </div>
+                    <div className={styles.left9thLeftTopRightContainer}>
+                      Billing address as same as shipping
+                    </div>
+                  </div>
+
+                  <div className={styles.left9thLeftBottomContainer}>
+                    <div className={styles.address12}>{address1}</div>
+                    <div className={styles.address22}>{address2}</div>
+                  </div>
+                </div>
+
+                <div className={styles.left9thRightContainer}>
+                  {legitCard && legitExpirationDate && (
+                    <div className={styles.saveButtonContainer}>
+                      <button onClick={pay} className={styles.saveButton}>
+                        SAVE & CONTINUE
+                      </button>
+                    </div>
+                  )}
+
+                  {(!legitCard || !legitExpirationDate) && (
+                    <div className={styles.saveButtonContainer2}>
+                      <div className={styles.saveButton2}>SAVE & CONTINUE</div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+          {payed && (
+            <div className={styles.confirmedPaymentContainer}>
+              <div className={styles.left8thRightContainer}>
+                {true && (
+                  <div className={styles.fakeCC}>
+                    <Cards
+                      number={creditCardNumber}
+                      name={`${user.firstName} ${user.lastName}`}
+                      expiry={expirationDate}
+                      focused={focus}
+                    />
+                  </div>
                 )}
               </div>
 
-              <div className={styles.rightInputContainer}>
-                <input
-                  maxlength="5"
-                  placeholder={"MM/YY"}
-                  type="tel"
-                  name="expiration"
-                  onChange={(e) => setExpirationDate(e.target.value)}
-                  onFocus={(e) => handleInputFocus(e)}
-                />
-                {false && (
-                  <p className={styles.invalidExp}>Invalid expiration date.</p>
-                )}
-              </div>
-            </div>
-
-            <div className={styles.left8thRightContainer}>
-              {creditCardNumber && (
-                <div className={styles.creditCardPicContainer}>
-                  <Cards
-                    number={creditCardNumber}
-                    name={`${user.firstName} ${user.lastName}`}
-                    expiry={expirationDate}
-                    focused={focus}
-                  />
+              <div className={styles.ccInfoContainer}>
+                <div className={styles.ccEnding}>
+                  Ending in{" "}
+                  {creditCardNumber.substr(creditCardNumber.length - 4)}
                 </div>
-              )}
-            </div>
-          </div>
-
-          <div className={styles.left9thContainer}>
-            <div className={styles.left9thLeftContainer}>
-              <div className={styles.left9thLeftTopContainer}>
-                <div className={styles.left9thLeftTopLeftContainer}>
-                  <FaCheck style={{ display: "inline", color: "red" }} />
-                </div>
-                <div className={styles.left9thLeftTopRightContainer}>
-                  Billing address as same as shipping
+                <div className={styles.ccExpiration}>
+                  Expires {expirationDate}
                 </div>
               </div>
 
-              <div className={styles.left9thLeftBottomContainer}>
-                <div className={styles.address12}>{address1}</div>
-                <div className={styles.address22}>{address2}</div>
+              <div onClick={() => setPayed(false)} className={styles.changeCC}>
+                Change Payment
               </div>
             </div>
-
-            <div className={styles.left9thRightContainer}>
-              {legitCard && legitExpirationDate && (
-                <div className={styles.saveButtonContainer}>
-                  <button onClick={pay} className={styles.saveButton}>
-                    SAVE & CONTINUE
-                  </button>
-                </div>
-              )}
-
-              {(!legitCard || !legitExpirationDate) && (
-                <div className={styles.saveButtonContainer2}>
-                  <div className={styles.saveButton2}>SAVE & CONTINUE</div>
-                </div>
-              )}
-            </div>
-          </div>
+          )}
         </div>
 
         <div className={styles.rightContainer}>
@@ -388,10 +606,9 @@ export default function OrderConfirmation() {
               {payed && (
                 <button className={styles.placeOrderButton}>Place Order</button>
               )}
+
               {!payed && (
-                <button className={styles.placeOrderButton2}>
-                  Place Order
-                </button>
+                <div className={styles.placeOrderButton2}>Place Order</div>
               )}
             </div>
           </div>
@@ -406,65 +623,82 @@ export default function OrderConfirmation() {
 
           <div className={styles.right7thContainer}>
             <div className={styles.cartLabel}>
-              Cart <span className={styles.lighterLabel}>(2 items)</span>{" "}
-              <div className={styles.angleDown}>
-                <FaAngleDown
-                  style={{
-                    display: "inline",
-                    color: "rgba(0,0,0,.5)",
-                    height: "20px",
-                    width: "20px",
-                    cursor: "pointer",
-                  }}
-                />
-              </div>
+              Cart{" "}
+              <span className={styles.lighterLabel}>
+                ({shoppingCartItems.length}{" "}
+                {shoppingCartItems.length === 1 ? "item" : "items"})
+              </span>{" "}
+              {false && (
+                <div className={styles.angleDown}>
+                  <FaAngleDown
+                    style={{
+                      display: "inline",
+                      color: "rgba(0,0,0,.5)",
+                      height: "20px",
+                      width: "20px",
+                      cursor: "pointer",
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
-          {false && (
+          {shoppingCartItems.length === 1 && (
             <div className={styles.right8thContainer}>
               <div className={styles.cartItemImageContainer}>
                 <img
                   className={styles.cartItemImage}
-                  src={
-                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
-                  }
+                  src={shoppingCartItems[0]?.product?.images[0]}
                   alt="cartItemImage"
                 />
               </div>
               <span className={styles.productName}>
-                Xbox One Series 2 Elite Wireless Controller
+                {shoppingCartItems[0]?.product?.name}
               </span>
 
-              <span className={styles.productPrice}>$144.99</span>
+              <span className={styles.productPrice}>
+                ${shoppingCartItems[0]?.product?.price}
+              </span>
             </div>
           )}
 
-          {true && (
+          {shoppingCartItems.length > 1 && (
             <div className={styles.right8thContainer2}>
-              <div className={styles.cartItemImageContainer2}>
-                <img
-                  className={styles.cartItemImage}
-                  src={
-                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
-                  }
-                  alt="cartItemImage"
-                />
-              </div>
+              {shoppingCartItems?.slice(0, 5)?.map((cartItem, i) => {
+                return (
+                  <div key={i}>
+                    <div className={styles.cartItemImageContainer2}>
+                      <img
+                        className={styles.cartItemImage}
+                        src={cartItem.product.images[0]}
+                        alt="cartItemImage"
+                      />
+                    </div>
+                  </div>
+                );
+              })}
 
-              <div className={styles.cartItemImageContainer2}>
-                <img
-                  className={styles.cartItemImage}
-                  src={
-                    "https://media.gamestop.com/i/gamestop/10178670/Microsoft-Xbox-Elite-Series-2-Wireless-Controller-Black?$thumb$"
-                  }
-                  alt="cartItemImage"
-                />
-              </div>
+              {shoppingCartItems.length > 5 && (
+                <div className={styles.plusTag}>
+                  +{shoppingCartItems.length - 5}
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
-    </>
+      {loader && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgba(0,0,0,.75)"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
+    </motion.div>
   );
 }
