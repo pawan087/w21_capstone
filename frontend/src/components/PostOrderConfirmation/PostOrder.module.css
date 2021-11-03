@@ -1,0 +1,265 @@
+.backContainer {
+  width: 100%;
+  min-height: 875px;
+  background-color: rgb(242, 244, 247);
+  background-color: lightgreen;
+  padding-top: 35px;
+}
+
+.topContainer {
+  min-height: 825px;
+  width: 1400px;
+  background-color: skyblue;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.topLeftContainer {
+  min-height: 825px;
+  width: 1050px;
+  background-color: yellow;
+}
+
+.confirmationHeading {
+  width: 1000px;
+  height: 55px;
+  font-weight: 900;
+  font-size: 22.5px;
+  margin-top: 25px;
+  margin-left: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  margin-bottom: 25px;
+}
+
+.confirmationSubheading {
+  font-size: 20px;
+  margin-left: 25px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 20px;
+}
+
+.orderDetailsAndButton {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 25px;
+}
+
+.orderDetails {
+  font-weight: bold;
+  font-size: 12.5px;
+}
+
+.lighter {
+  font-weight: normal;
+}
+
+.accountDashboardButton {
+  box-sizing: border-box;
+  width: 235px;
+  height: 50px;
+  background-color: red;
+  font-weight: bold;
+  font-size: 12.5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.accountDashboardButton:active {
+  transform: scale(0.9);
+  /* border: 2.5px solid black; */
+}
+
+.shippingNowHeader {
+  margin-top: 35px;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.tableHeaders {
+  height: 55px;
+  width: 1005px;
+  margin: 0 auto;
+  display: flex;
+  background-color: pink;
+  margin-bottom: ;
+}
+
+.productsHeader {
+  height: 55px;
+  width: 605px;
+  background-color: skyblue;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  font-weight: bold;
+  font-size: 12.5px;
+}
+
+.shippingDetailsHeader {
+  height: 55px;
+  width: 400px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding-left: 15px;
+  font-size: 12.5px;
+  background-color: lightsteelblue;
+}
+
+.mappableContainer {
+  height: 250px;
+  width: 1005px;
+  background-color: lightsalmon;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.imageContainer {
+  width: 180px;
+  height: 165px;
+}
+
+.productPicture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productDetailCard {
+  /* transform: translateY(-17.5px); */
+  margin-left: 30px;
+  background-color: yellow;
+  height: 165px;
+  width: 380px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.productName {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.productBrandName {
+  margin-top: 5px;
+  font-size: 12.5px;
+}
+
+.priceCard {
+  margin-top: 20px;
+}
+
+.priceCard,
+.quantityCard {
+  display: flex;
+}
+
+.priceLabel {
+  font-size: 12.5px;
+  margin-right: 110px;
+}
+
+.priceTag {
+  font-size: 12.5px;
+  color: rgba(31, 153, 106, 1);
+}
+
+.quantityCard {
+  margin-top: 20px;
+  font-size: 12.5px;
+}
+
+.quantityLabel {
+  margin-right: 90px;
+}
+
+.leftTotalCard {
+  display: flex;
+  margin-top: 20px;
+  font-size: 12.5px;
+  font-weight: bold;
+}
+
+.leftTotalLabel {
+  margin-right: 107.5px;
+}
+
+.shippingCard {
+  margin-left: 30px;
+  background-color: yellow;
+  height: 165px;
+}
+
+.shippingTitle {
+  font-weight: bold;
+  font-size: 12.5px;
+  margin-bottom: 10px;
+}
+
+.fakeFree {
+  font-size: 12.5px;
+  color: rgba(31, 153, 106, 1);
+}
+
+.moneyCard {
+  display: flex;
+  flex-direction: column;
+  height: 232.5px;
+  width: 1005px;
+  margin: 0 auto;
+  background-color: red;
+  justify-content: center;
+  align-items: end;
+  padding-right: 45px;
+}
+
+.subtotalCard {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17.5px;
+}
+
+.shippingCard2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 17.5px;
+}
+
+.taxCard {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8.75px;
+  padding-bottom: 8.75px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.totalCard {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.subtotalLabel {
+  font-weight: 12.5px;
+}
+
+.moneyContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 125px;
+  background-color: salmon;
+  font-size: 12.5px;
+}
+
+.freeShippingValue2 {
+    color: rgba(31, 153, 106, 1);
+}

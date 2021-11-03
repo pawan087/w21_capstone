@@ -29,8 +29,7 @@ export default function PostOrder() {
               </div>
 
               <div className={styles.fakeOrderNumber}>
-                Order Number:{" "}
-                <span className={styles.lighter}>110000037735647</span>
+                Order Date: <span className={styles.lighter}>11/03/2021</span>
               </div>
             </div>
 
@@ -48,7 +47,11 @@ export default function PostOrder() {
 
           <div className={styles.mappableContainer}>
             <div className={styles.imageContainer}>
-              <img src="" alt="orderConfirmationProductImage" />
+              <img
+                className={styles.productPicture}
+                src="https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp$$&fmt=webp"
+                alt="orderConfirmationProductImage"
+              />
             </div>
 
             <div className={styles.productDetailCard}>
@@ -65,9 +68,15 @@ export default function PostOrder() {
               </div>
 
               <div className={styles.quantityCard}>
-                <div className={styles.quantityLabel}>Price</div>
+                <div className={styles.quantityLabel}>Quantity</div>
 
                 <div className={styles.quantityTag}>1</div>
+              </div>
+
+              <div className={styles.leftTotalCard}>
+                <div className={styles.leftTotalLabel}>Total</div>
+
+                <div className={styles.leftTotalValue}>$3.49</div>
               </div>
             </div>
 
@@ -79,24 +88,26 @@ export default function PostOrder() {
           </div>
 
           <div className={styles.moneyCard}>
-            <div className={styles.subtotalCard}>
-              <div className={styles.subtotalLabel}>Subtotal</div>
-              <div className={styles.subtotalValue}>$3.49</div>
-            </div>
+            <div className={styles.moneyContainer}>
+              <div className={styles.subtotalCard}>
+                <div className={styles.subtotalLabel}>Subtotal</div>
+                <div className={styles.subtotalValue}>$3.49</div>
+              </div>
 
-            <div className={styles.shippingCard}>
-              <div className={styles.shippingLabel}>Shipping & Handling</div>
-              <div className={styles.freeShippingValue}>FREE</div>
-            </div>
+              <div className={styles.shippingCard2}>
+                <div className={styles.shippingLabel2}>Shipping & Handling</div>
+                <div className={styles.freeShippingValue2}>FREE</div>
+              </div>
 
-            <div className={styles.taxCard}>
-              <div className={styles.taxLabel}>Estimated Tax</div>
-              <div className={styles.taxValue}>$0.83</div>
-            </div>
+              <div className={styles.taxCard}>
+                <div className={styles.taxLabel}>Estimated Tax</div>
+                <div className={styles.taxValue}>$0.83</div>
+              </div>
 
-            <div className={styles.totalCard}>
-              <div className={styles.totalLabel}>Total</div>
-              <div className={styles.totalValue}>$10.31</div>
+              <div className={styles.totalCard}>
+                <div className={styles.totalLabel}>Total</div>
+                <div className={styles.totalValue}>$10.31</div>
+              </div>
             </div>
           </div>
         </div>
