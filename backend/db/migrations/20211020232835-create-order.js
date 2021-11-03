@@ -25,6 +25,14 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: false,
       },
+      creditCard: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      expirationDate: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

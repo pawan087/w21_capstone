@@ -47,6 +47,7 @@
   text-decoration: none;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.75);
+  transition: 0.15s ease-in-out;
 }
 
 .description a:hover {
@@ -284,6 +285,7 @@
   color: rgba(0, 0, 0, 1);
   text-decoration: underline;
   cursor: pointer;
+  transition: 0.15s ease-in-out;
 }
 
 .keepShoppingCancelLink:hover {
@@ -324,4 +326,16 @@
   width: 235px;
   height: 115px;
   overflow-y: hidden;
+}
+
+.reviewSubmissionConfirmationContainer {
+  background-color: rgba(231, 35, 13, 0.25);
+  width: 1145px;
+  height: 55px;
+  transform: translate(-15px, -15px);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgba(231, 35, 13, 0.75);
+  padding-top: 12.5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }

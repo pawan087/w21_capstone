@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Cards from "react-credit-cards";
+import "react-credit-cards/es/styles-compiled.css";
 
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
@@ -14,6 +16,10 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
+  const [creditCardNumber, setCreditCardNumber] = useState(5555555555555555);
+  const [nameOnCard, setNameOnCard] = useState();
+  const [expirationDate, setExpirationDate] = useState();
+  const [focus, setFocus] = useState();
 
   const usersCartItems = cartItems?.filter((cartItem) => {
     return cartItem.userId === user.id;
@@ -53,8 +59,8 @@ export default function OrderConfirmation() {
     history.push("/orders");
   };
 
-  const handleSubmit2 = async () => {
-    history.push("/cart");
+  const handleInputFocus = (e) => {
+    setFocus(e.target.name);
   };
 
   useEffect(() => {
@@ -63,13 +69,25 @@ export default function OrderConfirmation() {
 
   return (
     <div>
-      <h4 className={styles.cartTitle}>Are you sure?</h4>
+      <h1>Order Confirmation Page</h1>
 
-      <button onClick={handleSubmit}>Confirm</button>
+      <button onClick={handleSubmit}>Submit Order</button>
 
-      {"     "}
-
-      <button onClick={handleSubmit2}>Cancel</button>
+      <div className={styles.cardContainer}>
+        <Cards
+          number={creditCardNumber}
+          name={"Pawan Chahal"}
+          expiry={"01/20"}
+          focused={focus}
+        />
+        <input
+          type="tel"
+          name="number"
+          placeholder="Card Number"
+          onChange={(e) => setCreditCardNumber(e.target.value)}
+          onFocus={(e) => handleInputFocus(e)}
+        />
+      </div>
     </div>
   );
 }

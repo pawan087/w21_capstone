@@ -285,7 +285,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           width={1265}
           height={790}
           enterAnimation={"zoom"}
-          leaveAnimation={"fade"}
+          leaveAnimation={"slideDown"}
           visible={visible}
           onClose={hide}
         >

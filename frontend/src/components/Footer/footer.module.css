@@ -1,5 +1,9 @@
 .footer {
-  /* background-color: rebeccapurple; */
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
 }
 
 .footerContent {
@@ -7,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 0.75rem;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
 }
 
 .footerTop {
