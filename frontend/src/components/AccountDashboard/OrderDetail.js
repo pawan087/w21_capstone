@@ -1,8 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
 import styles from "./styles.module.css";
 
-export default function OrderDetail() {
+export default function OrderDetail({ order, status }) {
+  const history = useHistory();
+
+  console.log(order)
+
   return (
     <div className={styles.orderDetailContainer}>
       <div className={styles.orderDetailLeftContainer}>
@@ -18,7 +23,12 @@ export default function OrderDetail() {
                 }}
               />
             </div>
-            <span className={styles.backLinkLabel}>BACK TO MY ORDERS</span>
+            <span
+
+              className={styles.backLinkLabel}
+            >
+              BACK TO MY ORDERS
+            </span>
           </div>
           <div className={styles.leftTop2ndContainer}>
             ORDER: 1100000037735647
@@ -73,7 +83,7 @@ export default function OrderDetail() {
           <div className={styles.leftBottom2ndContainer}>
             <div className={styles.bottom2ndLeftContainer}>
               <img
-              className={styles.orderProductImage}
+                className={styles.orderProductImage}
                 alt="productImage"
                 src="https://media.gamestop.com/i/gamestop/11114265/Original-Slinky-Classic-75th-Anniversary-Edition?$thumb$"
               />

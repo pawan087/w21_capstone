@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import { FaPowerOff, FaPhoneAlt, FaAngleRight } from "react-icons/fa";
+import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
 import OrderDetail from "./OrderDetail";
@@ -15,6 +16,8 @@ import "@szhsin/react-menu/dist/index.css";
 export default function AccountDashboard() {
   const dispatch = useDispatch();
   const [sortBy, setSortBy] = useState("All Orders");
+  const [orderHistory, setOrderHistory] = useState(true);
+  const [orderDetail, setOrderDetail] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -133,6 +136,22 @@ export default function AccountDashboard() {
     bool = true;
   }
 
+  const [detailArr, setDetailArr] = useState([]);
+  const [status, setStatus] = useState("");
+
+  const showOrderDetail = (order, shippingStatus) => {
+    setOrderHistory(false);
+    setOrderDetail(true);
+    setDetailArr(order);
+    setStatus(shippingStatus);
+    return;
+  };
+
+  const showOrderHistory = () => {
+    setOrderDetail(false);
+    setOrderHistory(true);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -213,10 +232,33 @@ export default function AccountDashboard() {
             </div>
           }
 
-          <OrderDetail />
+          {orderDetail && <OrderDetail status={status} order={detailArr} />}
+
+          {orderDetail && (
+            <div className={styles.goBack}>
+              <div className={styles.leftTop1stContainer2}>
+                <div className={styles.leftChevronIconContainer}>
+                  <FaAngleLeft
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "rgb(238,42,40)",
+                    }}
+                  />
+                </div>
+                <span
+                  onClick={showOrderHistory}
+                  className={styles.backLinkLabel}
+                >
+                  BACK TO MY ORDERS
+                </span>
+              </div>
+            </div>
+          )}
 
           {
-            false && (
+            orderHistory && (
               /* RIGHT - ORDER HISTORY */
               <div className={styles.mainRightContainer}>
                 <div className={styles.right1stContainer}>
@@ -519,7 +561,12 @@ export default function AccountDashboard() {
                                   </div>
 
                                   <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
+                                    <div
+                                      onClick={() =>
+                                        showOrderDetail(x, "Shipped")
+                                      }
+                                      className={styles.orderDetailsLink}
+                                    >
                                       ORDER DETAILS
                                     </div>
 
@@ -540,6 +587,9 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right3rdContainer}>
                                   <div className={styles.orderStatusLabel}>
+                                    <div className={styles.fakeShipmentNumber}>
+                                      Shipment 1 of 1
+                                    </div>
                                     <span className={styles.notGreen}>
                                       Shipped:
                                     </span>{" "}
@@ -547,6 +597,11 @@ export default function AccountDashboard() {
                                       4,
                                       15
                                     )}
+                                    <div className={styles.fakeTrackingNumber}>
+                                      54599350{Math.floor(Math.random() * 10)}
+                                      {Math.floor(Math.random() * 10)}
+                                      {Math.floor(Math.random() * 10)}
+                                    </div>
                                   </div>
 
                                   <div className={styles.orderStatusLabel2}>

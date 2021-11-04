@@ -181,7 +181,7 @@
 /* RIGHT SIDE */
 
 .mainRightContainer {
-  margin-left: 25px;
+  margin-left: 00px;
   margin-bottom: 17.5px;
   /* background-color: yellowgreen; */
 }
@@ -263,6 +263,7 @@
 
 .right3rdContainer {
   display: flex;
+  padding-top: 5px;
 }
 
 .productImageContainer {
@@ -522,6 +523,17 @@
   font-size: 12.5px;
   font-weight: bold;
   margin-bottom: 20px;
+  opacity: 0;
+}
+
+.leftTop1stContainer2 {
+  display: flex;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .leftTop2ndContainer {
@@ -635,13 +647,13 @@
 .rightTop1stContainer {
   font-size: 17.5px;
   font-weight: bold;
-  margin-bottom: 10PX;
+  margin-bottom: 10px;
 }
 
 .rightTop1stContainer2 {
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 10PX;
+  margin-bottom: 10px;
 }
 
 .top2nd1stContainer,
@@ -649,7 +661,7 @@
 .top2nd3rdContainer {
   font-weight: bold;
   font-size: 15px;
-  margin-bottom: 10PX;
+  margin-bottom: 10px;
 }
 
 .shippingLabel,
@@ -665,12 +677,12 @@
 .top2nd3rdContainer {
   border-bottom: 1px solid rgb(0, 0, 0, 0.25);
   margin-bottom: 0;
-  padding-bottom: 10PX;
+  padding-bottom: 10px;
 }
 
 .rightTop3rdContainer {
   font-weight: bold;
-  margin-top: 10PX;
+  margin-top: 10px;
   border-bottom: 1px solid rgb(0, 0, 0, 0.25);
   padding-bottom: 12.5px;
 }
@@ -697,4 +709,23 @@
 }
 .address1Container {
   color: rgb(0, 0, 0, 0.75);
+}
+
+.fakeShipmentNumber {
+  font-weight: bold;
+  color: rgb(0, 0, 0, 0.75);
+}
+
+.fakeTrackingNumber {
+  font-weight: normal;
+  color: rgb(0, 0, 0, 1);
+  text-decoration: underline;
+  cursor: not-allowed;
+}
+
+.goBack {
+  position: absolute;
+  /* left: 505px;
+  top: 282.5px; */
+  transform: translate(342.5px, 22.5px);
 }
