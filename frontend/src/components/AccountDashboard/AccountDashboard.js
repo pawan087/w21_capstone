@@ -144,13 +144,31 @@ export default function AccountDashboard() {
     setOrderDetail(true);
     setDetailArr(order);
     setStatus(shippingStatus);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
     return;
   };
 
   const showOrderHistory = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
     setOrderDetail(false);
     setOrderHistory(true);
-  }
+  };
+
+  const clearAndShowOrderHistory = () => {
+    // Clean up
+    setOrderDetail(false);
+
+    // Show
+    setOrderHistory(true);
+  };
 
   return (
     <motion.div
@@ -198,7 +216,12 @@ export default function AccountDashboard() {
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
-                <div className={styles.sixthContainer}>Order History</div>
+                <div
+                  onClick={() => clearAndShowOrderHistory()}
+                  className={styles.sixthContainer}
+                >
+                  Order History
+                </div>
 
                 <div className={styles.fifthContainer}></div>
               </div>
@@ -232,7 +255,9 @@ export default function AccountDashboard() {
             </div>
           }
 
-          {orderDetail && <OrderDetail status={status} order={detailArr} />}
+          {orderDetail && (
+            <OrderDetail user={user} status={status} order={detailArr} />
+          )}
 
           {orderDetail && (
             <div className={styles.goBack}>
