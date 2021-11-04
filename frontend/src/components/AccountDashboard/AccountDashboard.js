@@ -280,7 +280,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
@@ -365,7 +365,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
@@ -449,7 +449,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
@@ -543,7 +543,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
@@ -635,7 +635,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
@@ -720,7 +720,7 @@ export default function AccountDashboard() {
 
                                 <div className={styles.right2nd2ndContainer}>
                                   Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal)}
+                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
                                 </div>
 
                                 <div className={styles.right2nd3rdContainer}>
