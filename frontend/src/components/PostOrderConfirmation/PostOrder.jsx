@@ -3,14 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./PostOrder.module.css";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
+import { useHistory } from "react-router";
 
 import { setAllProducts } from "../../store/products";
 import { setAllOrderItems } from "../../store/orderItems";
-import { setAllOrders, deleteOrders } from "../../store/orders.js";
+import { setAllOrders } from "../../store/orders.js";
 import { setAllCartItems } from "../../store/cartItems.js";
 
 export default function PostOrder() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -72,7 +74,10 @@ export default function PostOrder() {
               </div>
             </div>
 
-            <div className={styles.accountDashboardButton}>
+            <div
+              onClick={() => history.push("/dashboard")}
+              className={styles.accountDashboardButton}
+            >
               ACCOUNT DASHBOARD
             </div>
           </div>

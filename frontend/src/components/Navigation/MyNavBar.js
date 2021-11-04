@@ -95,6 +95,15 @@ export default function MyNavBar() {
     dispatch(setAllCartItems());
   }, [dispatch]);
 
+  const handleCartClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+    history.push("/cart");
+  };
+
   return (
     <div className={styles.myNavbar}>
       <div className={styles.outerContainer}>
@@ -266,7 +275,7 @@ export default function MyNavBar() {
                 <div className={styles.lowerSubMenuContainerBottomContainer}>
                   <div classNam={styles.viewCartButtonContainer}>
                     <button
-                      onClick={() => history.push("/cart")}
+                      onClick={handleCartClick}
                       className={styles.viewCartButton}
                     >
                       VIEW CART

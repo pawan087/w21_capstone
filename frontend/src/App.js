@@ -7,6 +7,7 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
@@ -102,6 +103,10 @@ function App() {
 
             <Route path="/orderconfirmation" exact={true}>
               <PostOrder />
+            </Route>
+
+            <Route path="/dashboard" exact={true}>
+              <AccountDashboard />
             </Route>
           </Switch>
         </AnimatePresence>
