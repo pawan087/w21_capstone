@@ -3,7 +3,6 @@ import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
 import styles from "./styles.module.css";
 
 export default function OrderDetail({ order, status, user }) {
-  console.log(order);
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -74,7 +73,7 @@ export default function OrderDetail({ order, status, user }) {
                 <div className={styles.leftBottom1stContainer}>
                   <div className={styles.bottom1stLeftContainer}>
                     <div className={styles.bottom1stLeftTopContainer}>
-                      Status: <span className={styles.greenLabel}>Shipped</span>
+                      Status: <span className={styles.greenLabel}>{status}</span>
                     </div>
 
                     <div className={styles.bottom1stLeftBottomContainer}>
@@ -170,7 +169,7 @@ export default function OrderDetail({ order, status, user }) {
 
           <div className={styles.userInfoContainer}>
             <div className={styles.userFullName}>
-              {user.firstName} {user.lastName}
+              {user?.firstName} {user?.lastName}
             </div>
             <div className={styles.address1Container}>{order.address1}</div>
             <div className={styles.address2Container}>{order.address2}</div>

@@ -34,6 +34,9 @@ export default function AllReviewsContainer({ reviews }) {
     ?.slice(offset, offset + PER_PAGE)
     ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
+
+   
+
   const pageCount = Math.ceil(data?.length / PER_PAGE);
 
   const setRecent = (e) => {

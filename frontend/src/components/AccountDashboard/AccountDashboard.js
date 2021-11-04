@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-import { FaPowerOff, FaPhoneAlt, FaAngleRight } from "react-icons/fa";
-import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
+import {
+  FaPowerOff,
+  FaPhoneAlt,
+  FaAngleRight,
+  FaAngleLeft,
+} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
 
 import OrderDetail from "./OrderDetail";
 import { setAllOrderItems } from "../../store/orderItems.js";
-import { setAllCartItems } from "../../store/cartItems.js";
+
 import { setAllProducts } from "../../store/products.js";
-import { setAllOrders, deleteOrders } from "../../store/orders.js";
+import { setAllOrders } from "../../store/orders.js";
 import styles from "./styles.module.css";
 import "@szhsin/react-menu/dist/index.css";
 
@@ -153,11 +158,6 @@ export default function AccountDashboard() {
   };
 
   const showOrderHistory = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
     setOrderDetail(false);
     setOrderHistory(true);
   };
@@ -170,6 +170,125 @@ export default function AccountDashboard() {
     setOrderHistory(true);
   };
 
+  const [currentPage, setCurrentPage] = useState(0);
+  let copy = [...usersOrdersAndItems];
+  const reversed = copy?.reverse();
+
+  const [data, setData] = useState([]);
+
+  const PER_PAGE = 3;
+
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+    window.scrollTo({
+      top: 1250,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
+
+  const offset = currentPage * PER_PAGE;
+
+  const currentPageData = data
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((x, i) => {
+      return (
+        <div key={i}>
+          <div className={styles.mappableOrdersContainer}>
+            <div className={styles.right2ndContainer}>
+              <div className={styles.right2nd1stContainer}>
+                <div className={styles.orderDate}>
+                  Online | {String(new Date(x?.updatedAt)).slice(4, 15)}
+                </div>
+              </div>
+
+              <div className={styles.right2nd2ndContainer}>
+                Order # 11000000377356{x?.id} | $
+                {formatter.format(x.orderTotal + x.orderTotal * 0.0825)}
+                <div className={styles.mappableOrderItemPicturesContainer}>
+                  {x?.items?.map((y, i) => {
+                    return (
+                      <div key={i} className={styles.productImageContainer}>
+                        <img
+                          alt={"productImage"}
+                          className={styles.orderImages}
+                          src={y?.product?.images[0]}
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {x?.items?.length > 5 && (
+                    <div className={styles.plusTag}>
+                      +{x?.items?.length - 5}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.right2nd3rdContainer}>
+                <div
+                  onClick={() => showOrderDetail(x, "Shipped")}
+                  className={styles.orderDetailsLink}
+                >
+                  ORDER DETAILS
+                </div>
+
+                <div className={styles.rightArrowIconContainer}>
+                  <FaAngleRight
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "rgb(238,42,40)",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.right3rdContainer}>
+              <div className={styles.orderStatusLabel}>
+                <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
+                <span className={styles.notGreen}>Shipped:</span>{" "}
+                {String(new Date(x?.updatedAt)).slice(4, 15)}
+                <div className={styles.fakeTrackingNumber}>
+                  54599350{Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                </div>
+              </div>
+
+              <div className={styles.orderStatusLabel2}>
+                Preparing for shipment
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+  const pageCount = Math.ceil(data?.length / PER_PAGE);
+
+  useEffect(() => {
+    setData(reversed);
+  }, [orders]);
+
+  const setAllTheOrders = () => {
+    setData([...reversed]);
+    setSortBy("All Orders");
+  };
+
+  const setLast30 = () => {
+    setData([...currentOrders]);
+    setSortBy("Last 30 Seconds");
+  };
+
+  const setLast60 = () => {
+    setData([...currentOrders, ...currentOrders2]);
+    setSortBy("Last 1 Minute");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -180,7 +299,7 @@ export default function AccountDashboard() {
 
       <div className={styles.dashboardHeaderContainer}>
         <div className={styles.dashboardHeader}>
-          <div className={styles.headerWelcome}>Welcome, {user.firstName}</div>
+          <div className={styles.headerWelcome}>Welcome, {user?.firstName}</div>
           <div className={styles.logoutLink}>LOG OUT</div>
         </div>
       </div>
@@ -255,9 +374,7 @@ export default function AccountDashboard() {
             </div>
           }
 
-          {orderDetail && (
-            <OrderDetail user={user} status={status} order={detailArr} />
-          )}
+          {orderDetail && <OrderDetail status={status} order={detailArr} />}
 
           {orderDetail && (
             <div className={styles.goBack}>
@@ -273,7 +390,7 @@ export default function AccountDashboard() {
                   />
                 </div>
                 <span
-                  onClick={showOrderHistory}
+                  onClick={() => showOrderHistory()}
                   className={styles.backLinkLabel}
                 >
                   BACK TO MY ORDERS
@@ -333,19 +450,19 @@ export default function AccountDashboard() {
                         }
                       >
                         <MenuItem
-                          onClick={() => setSortBy("All Orders")}
+                          onClick={() => setAllTheOrders()}
                           className={styles.menuItem}
                         >
                           All Orders
                         </MenuItem>
                         <MenuItem
-                          onClick={() => setSortBy("Last 30 Seconds")}
+                          onClick={() => setLast30()}
                           className={styles.menuItem}
                         >
                           Last 30 Seconds
                         </MenuItem>
                         <MenuItem
-                          onClick={() => setSortBy("Last 1 Minute")}
+                          onClick={() => setLast60()}
                           className={styles.menuItem}
                         >
                           Last 1 Minute
@@ -358,589 +475,202 @@ export default function AccountDashboard() {
                 {
                   sortBy === "All Orders" && (
                     <>
-                      {
-                        /* Last 30 Seconds */
-                        currentOrders?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
+                      {bool && (
+                        /* NO ORDERS */
+                        <div className={styles.noOrdersContainer}>
+                          <img
+                            className={styles.noneFoundPic}
+                            src={
+                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                            }
+                            alt={"noneFound"}
+                          ></img>
+                          No orders found for selected period.{" "}
+                          <div
+                            onClick={() => setAllTheOrders()}
+                            className={styles.viewAllButton}
+                          >
+                            VIEW ALL ORDERS
+                          </div>
+                        </div>
+                      )}
 
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    Order Processing
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Last 30 Sec */
-                      }
-
-                      {
-                        /* Last 60 Seconds */
-                        currentOrders2?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    Preparing for shipment
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Last 60 Sec */
-                      }
-
-                      {
-                        /* Past */
-                        previousOrders?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div
-                                      onClick={() =>
-                                        showOrderDetail(x, "Shipped")
-                                      }
-                                      className={styles.orderDetailsLink}
-                                    >
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    <div className={styles.fakeShipmentNumber}>
-                                      Shipment 1 of 1
-                                    </div>
-                                    <span className={styles.notGreen}>
-                                      Shipped:
-                                    </span>{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                    <div className={styles.fakeTrackingNumber}>
-                                      54599350{Math.floor(Math.random() * 10)}
-                                      {Math.floor(Math.random() * 10)}
-                                      {Math.floor(Math.random() * 10)}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Past */
-                      }
+                      <div className={styles.holder}>{currentPageData}</div>
+                      <ReactPaginate
+                        previousLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        nextLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        marginPagesDisplayed={500}
+                        pageCount={pageCount}
+                        onPageChange={handlePageClick}
+                        containerClassName={styles.pagination}
+                        previousLinkClassName={styles.pagination__link}
+                        nextLinkClassName={styles.pagination__link}
+                        disabledClassName={styles.pagination__linkdisabled}
+                        activeClassName={styles.pagination__linkactive}
+                      />
                     </>
                   )
-                  /* End All */
+                  /* End */
                 }
 
                 {
                   sortBy === "Last 30 Seconds" && (
                     <>
-                      {
-                        /* Last 30 Seconds */
-                        currentOrders?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
+                      {bool && (
+                        /* NO ORDERS */
+                        <div className={styles.noOrdersContainer}>
+                          <img
+                            className={styles.noneFoundPic}
+                            src={
+                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                            }
+                            alt={"noneFound"}
+                          ></img>
+                          No orders found for selected period.{" "}
+                          <div
+                            onClick={() => setAllTheOrders()}
+                            className={styles.viewAllButton}
+                          >
+                            VIEW ALL ORDERS
+                          </div>
+                        </div>
+                      )}
 
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    Order Processing
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Last 30 Sec */
-                      }
+                      <div className={styles.holder}>{currentPageData}</div>
+                      <ReactPaginate
+                        previousLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        nextLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        marginPagesDisplayed={500}
+                        pageCount={pageCount}
+                        onPageChange={handlePageClick}
+                        containerClassName={styles.pagination}
+                        previousLinkClassName={styles.pagination__link}
+                        nextLinkClassName={styles.pagination__link}
+                        disabledClassName={styles.pagination__linkdisabled}
+                        activeClassName={styles.pagination__linkactive}
+                      />
                     </>
                   )
-                  /* End All */
+                  /* End */
                 }
 
                 {
                   sortBy === "Last 1 Minute" && (
                     <>
-                      {
-                        /* Last 60 Seconds */
-                        currentOrders?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    Order Processing
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Last 60 Sec */
-                      }
-
-                      {
-                        /* Last 60 Seconds */
-                        currentOrders2?.map((x, i) => {
-                          return (
-                            <div key={i}>
-                              <div className={styles.mappableOrdersContainer}>
-                                <div className={styles.right2ndContainer}>
-                                  <div className={styles.right2nd1stContainer}>
-                                    <div className={styles.orderDate}>
-                                      Online |{" "}
-                                      {String(new Date(x?.updatedAt)).slice(
-                                        4,
-                                        15
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd2ndContainer}>
-                                    Order # 11000000377356{x?.id} | $
-                                    {formatter.format(
-                                      x.orderTotal + x.orderTotal * 0.0825
-                                    )}
-                                    <div
-                                      className={
-                                        styles.mappableOrderItemPicturesContainer
-                                      }
-                                    >
-                                      {x?.items?.map((y, i) => {
-                                        return (
-                                          <div
-                                            key={i}
-                                            className={
-                                              styles.productImageContainer
-                                            }
-                                          >
-                                            <img
-                                              alt={"productImage"}
-                                              className={styles.orderImages}
-                                              src={y?.product?.images[0]}
-                                            />
-                                          </div>
-                                        );
-                                      })}
-
-                                      {x?.items?.length > 5 && (
-                                        <div className={styles.plusTag}>
-                                          +{x?.items?.length - 5}
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className={styles.right2nd3rdContainer}>
-                                    <div className={styles.orderDetailsLink}>
-                                      ORDER DETAILS
-                                    </div>
-
-                                    <div
-                                      className={styles.rightArrowIconContainer}
-                                    >
-                                      <FaAngleRight
-                                        style={{
-                                          height: "20px",
-                                          width: "20px",
-                                          display: "inline",
-                                          color: "rgb(238,42,40)",
-                                        }}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <div className={styles.right3rdContainer}>
-                                  <div className={styles.orderStatusLabel}>
-                                    Preparing for shipment
-                                  </div>
-
-                                  <div className={styles.orderStatusLabel2}>
-                                    Preparing for shipment
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })
-                        /* End Last 60 Sec */
-                      }
+                      {bool && (
+                        /* NO ORDERS */
+                        <div className={styles.noOrdersContainer}>
+                          <img
+                            className={styles.noneFoundPic}
+                            src={
+                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                            }
+                            alt={"noneFound"}
+                          ></img>
+                          No orders found for selected period.{" "}
+                          <div
+                            onClick={() => setAllTheOrders()}
+                            className={styles.viewAllButton}
+                          >
+                            VIEW ALL ORDERS
+                          </div>
+                        </div>
+                      )}
+                      <div className={styles.holder}>{currentPageData}</div>
+                      <ReactPaginate
+                        previousLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        nextLabel={
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        }
+                        marginPagesDisplayed={500}
+                        pageCount={pageCount}
+                        onPageChange={handlePageClick}
+                        containerClassName={styles.pagination}
+                        previousLinkClassName={styles.pagination__link}
+                        nextLinkClassName={styles.pagination__link}
+                        disabledClassName={styles.pagination__linkdisabled}
+                        activeClassName={styles.pagination__linkactive}
+                      />
                     </>
                   )
                   /* End All */
                 }
-
-                {bool && (
-                  /* NO ORDERS */
-                  <div className={styles.noOrdersContainer}>
-                    <img
-                      className={styles.noneFoundPic}
-                      src={
-                        "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
-                      }
-                      alt={"noneFound"}
-                    ></img>
-                    No orders found for selected period.{" "}
-                    <div
-                      onClick={() => setSortBy("All Orders")}
-                      className={styles.viewAllButton}
-                    >
-                      VIEW ALL ORDERS
-                    </div>
-                  </div>
-                )}
               </div>
             )
             /* End Right Order History */
