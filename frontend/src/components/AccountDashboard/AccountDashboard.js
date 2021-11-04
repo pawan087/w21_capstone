@@ -144,11 +144,23 @@ export default function AccountDashboard() {
   const [detailArr, setDetailArr] = useState([]);
   const [status, setStatus] = useState("");
 
-  const showOrderDetail = (order, shippingStatus) => {
+  const showOrderDetail = (x) => {
     setOrderHistory(false);
     setOrderDetail(true);
-    setDetailArr(order);
-    setStatus(shippingStatus);
+    setDetailArr(x);
+
+    if (new Date(x.updatedAt) > pastTime) {
+      setStatus("Order Processing:");
+    }
+
+    if (new Date(x.updatedAt) < pastTime && new Date(x.updatedAt) > pastTime2) {
+      setStatus("Preparing for Shipment");
+    }
+
+    if (new Date(x.updatedAt) < pastTime && new Date(x.updatedAt) < pastTime2) {
+      setStatus("Shipped:");
+    }
+
     window.scrollTo({
       top: 0,
       left: 0,
@@ -228,7 +240,7 @@ export default function AccountDashboard() {
 
               <div className={styles.right2nd3rdContainer}>
                 <div
-                  onClick={() => showOrderDetail(x, "Shipped")}
+                  onClick={() => showOrderDetail(x)}
                   className={styles.orderDetailsLink}
                 >
                   ORDER DETAILS
@@ -250,7 +262,21 @@ export default function AccountDashboard() {
             <div className={styles.right3rdContainer}>
               <div className={styles.orderStatusLabel}>
                 <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
-                <span className={styles.notGreen}>Shipped:</span>{" "}
+                {new Date(x.updatedAt) > pastTime && (
+                  <span className={styles.notGreen2}>Order Processing: </span>
+                )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) > pastTime2 && (
+                    <span className={styles.notGreen}>
+                      Preparing for Shipment:{" "}
+                    </span>
+                  )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) < pastTime2 && (
+                    <span className={styles.notGreen}>Shipped: </span>
+                  )}
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
@@ -410,13 +436,24 @@ export default function AccountDashboard() {
                     </div>
                     <div className={styles.right1stLeftBottomContainer}>
                       {sortBy === "All Orders" && (
-                        <>{usersOrdersAndItems.length} Orders</>
+                        <>
+                          {usersOrdersAndItems.length}{" "}
+                          {usersOrdersAndItems.length === 1
+                            ? "Order"
+                            : "Orders"}
+                        </>
                       )}
                       {sortBy === "Last 30 Seconds" && (
-                        <>{currentOrders.length} Orders</>
+                        <>
+                          {currentOrders.length}{" "}
+                          {currentOrders.length === 1 ? "Order" : "Orders"}
+                        </>
                       )}
                       {sortBy === "Last 1 Minute" && (
-                        <>{currentOrders2.length} Orders</>
+                        <>
+                          {currentOrders2.length}{" "}
+                          {currentOrders2.length === 1 ? "Order" : "Orders"}
+                        </>
                       )}
                     </div>
                   </div>

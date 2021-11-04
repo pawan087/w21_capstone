@@ -197,6 +197,7 @@
 .right1stLeftTopContainer {
   font-weight: bold;
   font-size: 17.5px;
+  transform: translateY(-2.5px);
 }
 
 .right1stLeftBottomContainer {
@@ -325,7 +326,7 @@
   color: rgba(14, 134, 88, 1);
   font-weight: bold;
   /* margin-right: 200px; */
-  width: 137.5px;
+  width: 250px;
 }
 
 .mappableOrderItemPicturesContainer {
@@ -776,4 +777,10 @@
 .pagination__linkdisabled a {
   color: rgb(198, 197, 202);
   border: 1px solid rgb(198, 197, 202);
+}
+
+.notGreen2 {
+  font-weight: 12.5px;
+  color: rgba(0, 0, 0, 1);
+  font-weight: normal;
 }
