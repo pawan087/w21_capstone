@@ -1,0 +1,338 @@
+/* HEADER */
+
+.preHeader {
+  height: 35px;
+  background-color: rgb(214, 215, 214);
+}
+.dashboardHeaderContainer {
+  height: 85px;
+
+  background-color: rgb(108, 108, 108);
+}
+
+.dashboardHeader {
+  width: 1400px;
+  height: 85px;
+  background-color: rgb(108, 108, 108);
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerWelcome {
+  font-size: 20px;
+  color: rgb(246, 246, 246);
+}
+
+.logoutLink {
+  color: rgb(246, 246, 246);
+  font-size: 12.5px;
+  cursor: pointer;
+}
+
+/* MAIN CONTAINER */
+
+.mainContainer {
+  min-height: 697.5px;
+  width: 100%;
+  background-color: rgb(242, 244, 247);
+  display: flex;
+}
+
+.widthContainer {
+  display: flex;
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: rgb(242, 244, 247);
+}
+
+/* LEFT MENU */
+
+.mainLeftContainer {
+  height: 600px;
+  width: 305px;
+  margin-right: 20px;
+  /* margin-right: 25px; */
+  /* background-color: white; */
+}
+
+.mainLeftTopContainer {
+  width: 305px;
+  /* background-color: white; */
+  border-radius: 10px;
+  background-color: white;
+}
+
+.firstContainer {
+  display: flex;
+  /* background-color: yellow; */
+  height: 80px;
+  /* padding-top: 35px; */
+  padding-left: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+.powerIcon {
+  margin-right: 7.5px;
+}
+
+.accountHeader {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.secondContainer {
+  height: 35px;
+  /* background-color: yellowgreen; */
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 47.5px;
+}
+
+.thirdContainer,
+.fourthContainer,
+.fifthContainer {
+  height: 35px;
+  /* background-color: yellowgreen; */
+  font-size: 15px;
+  padding-left: 47.5px;
+}
+
+.fifthContainer {
+  margin-bottom: 35px;
+}
+
+.sixthContainer {
+  height: 35px;
+  /* background-color: yellowgreen; */
+  font-size: 15px;
+  padding-left: 47.5px;
+}
+
+.thirdContainer,
+.fourthContainer,
+.fifthContainer,
+.sixthContainer {
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.thirdContainer:hover,
+.fourthContainer:hover,
+.fifthContainer:hover,
+.sixthContainer:hover {
+  color: rgb(238, 42, 40);
+}
+
+.mainLeftBottomContainer {
+  background-color: rgb(242, 244, 247);
+  /* border: 1px solid red; */
+  padding-left: 20px;
+}
+
+.bottom1stContainer {
+  font-size: 12.5px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.bottom2ndContainer,
+.bottom3rdContainer {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.75);
+  margin-bottom: 5px;
+}
+
+.bottom4thContainer {
+  display: flex;
+}
+
+.bottom4thContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.phoneIcon {
+  margin-right: 10px;
+}
+
+.phoneNumber {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: bold;
+}
+
+/* RIGHT SIDE */
+
+.mainRightContainer {
+  margin-left: 25px;
+  /* background-color: yellowgreen; */
+}
+
+.right1stContainer {
+  display: flex;
+  width: 1055px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.right1stLeftTopContainer {
+  font-weight: bold;
+  font-size: 17.5px;
+}
+
+.right1stLeftBottomContainer {
+  font-size: 12.5px;
+}
+
+.right1stLeftContainer {
+  margin-bottom: 20px;
+}
+
+.menu {
+  z-index: 50;
+  width: 115px;
+  height: 45px;
+}
+
+.menuItem:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+.button {
+  position: relative;
+  outline: 0;
+  border: 1px solid rgb(0, 0, 0, 0.75);
+  min-width: 120px;
+  height: 40px;
+  background-color: rgb(242, 244, 247);
+  font-size: 15px;
+  padding-right: 30px;
+}
+
+.button span {
+  /* font-weight: bold; */
+}
+
+.downIcon {
+  width: 20px;
+  height: 12.5px;
+  position: absolute;
+  top: 5px;
+  right: 12.5px;
+}
+
+.menuItem:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+}
+
+.mappableOrdersContainer {
+  height: 160px;
+  border-radius: 10px;
+  /* background-color: red; */
+  background-color: rgb(255,255,255);
+}
+
+.right2ndContainer {
+  display: flex;
+}
+
+.right3rdContainer {
+  display: flex;
+}
+
+.productImageContainer {
+  width: 70px;
+  height: 70px;
+  margin: 0 5px;
+}
+
+.orderImages {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.right2ndContainer {
+  padding-top: 20px;
+  /* padding-left: 20px; */
+  display: flex;
+  /* background-color: yellow; */
+  justify-content: space-between;
+  margin: 0 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.orderDate {
+  color: rgba(0, 0, 0, 1);
+  font-size: 12.5px;
+}
+
+.right2nd2ndContainer {
+  font-size: 15px;
+}
+
+.orderDetailsLink {
+  font-weight: bold;
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.right2nd3rdContainer {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.right3rdContainer {
+  /* background-color: skyblue; */
+  display: flex;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+
+.orderStatusLabel {
+  font-size: 12.5px;
+  color: rgb(14, 134, 88);
+  font-weight: bold;
+  /* margin-right: 200px; */
+  width: 137.5px;
+}
+
+.mappableOrderItemPicturesContainer {
+  display: flex;
+}
+
+.filler {
+  display: flex;
+  flex-grow: 0.33;
+}
+
+.orderStatusLabel2 {
+  font-size: 12.5px;
+  color: rgb(14, 134, 88);
+  font-weight: bold;
+  /* margin-right: 200px; */
+  display: flex;
+  justify-content: right;
+  opacity: 0;
+}
+
+.plusTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 5px;
+}
