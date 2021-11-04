@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
 import styles from "./styles.module.css";
 
 export default function OrderDetail() {
@@ -8,7 +9,14 @@ export default function OrderDetail() {
         <div className={styles.orderDetailLeftTopContainer}>
           <div className={styles.leftTop1stContainer}>
             <div className={styles.leftChevronIconContainer}>
-              {"LEFT CHEVRON ICON"}
+              <FaAngleLeft
+                style={{
+                  height: "20px",
+                  width: "20px",
+                  display: "inline",
+                  color: "rgb(238,42,40)",
+                }}
+              />
             </div>
             <span className={styles.backLinkLabel}>BACK TO MY ORDERS</span>
           </div>
@@ -16,17 +24,24 @@ export default function OrderDetail() {
             ORDER: 1100000037735647
           </div>
           <div className={styles.leftTop3rdContainer}>
-            Ordered Date: 2 Nov 2021
+            <span>Ordered Date:</span> 2 Nov 2021
           </div>
           <div className={styles.leftTop4thContainer}>
-            Order Status: Shipped
+            <span>Order Status:</span> Shipped
           </div>
         </div>
 
         <div className={styles.orderDetailLeftMiddleContainer}>
           <div className={styles.leftMiddle1stContainer}>
             <div className={styles.shippingBoxIconContainer}>
-              {"SHIPPING BOX ICON"}
+              <FaBoxOpen
+                style={{
+                  height: "22.5px",
+                  width: "22.5px",
+                  display: "inline",
+                  color: "white",
+                }}
+              />
             </div>
 
             <div className={styles.shipLabel}>SHIP TO HOME</div>
@@ -48,7 +63,7 @@ export default function OrderDetail() {
               </div>
 
               <div className={styles.bottom1stLeftBottomContainer}>
-                Tracking: #545993504283
+                Tracking: <span>#545993504283</span>
               </div>
             </div>
 
@@ -57,7 +72,11 @@ export default function OrderDetail() {
 
           <div className={styles.leftBottom2ndContainer}>
             <div className={styles.bottom2ndLeftContainer}>
-              <img alt="productImage" src="" />
+              <img
+              className={styles.orderProductImage}
+                alt="productImage"
+                src="https://media.gamestop.com/i/gamestop/11114265/Original-Slinky-Classic-75th-Anniversary-Edition?$thumb$"
+              />
             </div>
 
             <div className={styles.bottom2ndRightContainer}>
@@ -108,7 +127,7 @@ export default function OrderDetail() {
         </div>
 
         <div className={styles.rightBottomContainer}>
-          <div className={styles.rightBottomTitleLabel}>Billing Address</div>
+          <div className={styles.rightTop1stContainer2}>BILLING ADDRESS</div>
 
           <div className={styles.userInfoContainer}>
             <div className={styles.userFullName}>Pawanpreet Chahal</div>
@@ -116,7 +135,7 @@ export default function OrderDetail() {
             <div className={styles.address2Container}>San Jose, CA 95127</div>
           </div>
 
-          <div className={styles.rightBottomTitleLabel}>Payment Method</div>
+          <div className={styles.rightBottomTitleLabel}>PAYMENT METHOD</div>
 
           <div className={styles.ccInfoContainer}>
             <div className={styles.userFullName}>Credit Card</div>

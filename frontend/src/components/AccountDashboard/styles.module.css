@@ -290,7 +290,7 @@
 }
 
 .orderDate {
-  color: rgba(0, 0, 0, .75);
+  color: rgba(0, 0, 0, 0.75);
   font-size: 12.5px;
 }
 
@@ -406,29 +406,31 @@
 /* ORDER DETAIL RIGHT CONTAINER */
 
 .orderDetailContainer {
-  background-color: yellow;
+  /* background-color: yellow; */
   width: 1055px;
-  margin-left: 30px;
+  margin-left: 0px;
   display: flex;
   justify-content: space-between;
 }
 
 .orderDetailLeftContainer {
-  background-color: red;
+  background-color: rgb(242, 244, 247);
   display: flex;
   flex-direction: column;
   width: 580px;
 }
 
 .orderDetailRightContainer {
-  background-color: skyblue;
+  /* background-color: skyblue; */
   display: flex;
-  width: 430px;
+  width: 455px;
   flex-direction: column;
+  height: 465px;
 }
 
 .orderDetailLeftTopContainer {
-  background-color: pink;
+  background-color: white;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -438,7 +440,8 @@
 }
 
 .orderDetailLeftMiddleContainer {
-  background-color: skyblue;
+  background-color: rgb(45, 47, 55);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -449,33 +452,249 @@
 
 .leftMiddle1stContainer {
   display: flex;
+  align-items: center;
 }
 
 .mappableOrderDetailLeftBottomContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: orange;
+  background-color: white;
   padding: 0 20px;
+  border-radius: 5px;
   height: 280px;
   margin-bottom: 15px;
 }
 
 .leftBottom1stContainer {
   display: flex;
-  background-color: palegreen;
+  background-color: rgb(242, 244, 247);
   justify-content: space-between;
   align-items: center;
   height: 60px;
+  padding: 0 15px;
+  margin-bottom: 20px;
 }
 
 .leftBottom2ndContainer {
   display: flex;
-  background-color: peru;
+  background-color: white;
   height: 150px;
 }
 
 .leftBottom3rdContainer {
   display: flex;
   justify-content: right;
+}
+
+.rightTopContainer {
+  background-color: white;
+  border-radius: 5px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.rightBottomContainer {
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  height: 225px;
+}
+
+.top2nd1stContainer,
+.top2nd2ndContainer,
+.top2nd3rdContainer,
+.rightTop3rdContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftTop1stContainer {
+  display: flex;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.leftTop2ndContainer {
+  font-weight: 900;
+  font-size: 17.5px;
+}
+
+.leftTop3rdContainer,
+.leftTop4thContainer {
+  font-size: 12.5px;
+}
+
+.leftTop3rdContainer span,
+.leftTop4thContainer span {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.leftTop4thContainer {
+  font-weight: bold;
+}
+
+.shippingBoxIconContainer {
+  margin-right: 10px;
+}
+
+.shipLabel {
+  font-size: 17.5px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.leftMiddle2ndContainer {
+  color: rgba(255, 255, 255, 0.68);
+  /* font-weight: bold; */
+  font-size: 12.5px;
+}
+
+.boldAddress {
+  color: white;
+  font-weight: normal;
+}
+
+.bottom1stLeftTopContainer {
+  font-size: 12.5px;
+  color: rgb(0, 0, 0, 0.75);
+}
+
+.greenLabel {
+  color: rgb(14, 134, 88);
+  font-weight: bold;
+}
+
+.bottom1stLeftBottomContainer {
+  font-size: 12.5px;
+  color: rgb(0, 0, 0, 0.75);
+}
+
+.bottom1stLeftBottomContainer span {
+  font-weight: bold;
+}
+
+.bottom1stRightContainer {
+  background-color: rgb(224, 59, 47);
+  height: 35px;
+  width: 130px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12.5px;
+  border-radius: 5px;
+}
+
+.bottom2ndLeftContainer {
+  height: 115px;
+  margin-right: 20px;
+  width: 115px;
+}
+
+.orderProductImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.secondRight1stContainer {
+  font-weight: 15px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.secondRight2ndContainer {
+  font-size: 12.5px;
+}
+
+.secondRight3rdContainer {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.productPrice {
+  font-weight: bold;
+  font-size: 17.5px;
+  transform: translateY(-15px);
+}
+
+.rightTop1stContainer {
+  font-size: 17.5px;
+  font-weight: bold;
+  margin-bottom: 10PX;
+}
+
+.rightTop1stContainer2 {
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10PX;
+}
+
+.top2nd1stContainer,
+.top2nd2ndContainer,
+.top2nd3rdContainer {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 10PX;
+}
+
+.shippingLabel,
+.taxLabel {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.fakeFreeShipping {
+  color: rgb(14, 134, 88);
+}
+
+.top2nd3rdContainer {
+  border-bottom: 1px solid rgb(0, 0, 0, 0.25);
+  margin-bottom: 0;
+  padding-bottom: 10PX;
+}
+
+.rightTop3rdContainer {
+  font-weight: bold;
+  margin-top: 10PX;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.25);
+  padding-bottom: 12.5px;
+}
+
+.userFullName {
+  font-size: 12.5px;
+  font-weight: bold;
+}
+
+.address1Container,
+.address2Container {
+  font-size: 12.5px;
+}
+
+.rightBottomTitleLabel {
+  margin-top: 12.5px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 12.5px;
+}
+
+.ccInfoContainer {
+  font-size: 12.5px;
+}
+.address1Container {
+  color: rgb(0, 0, 0, 0.75);
 }
