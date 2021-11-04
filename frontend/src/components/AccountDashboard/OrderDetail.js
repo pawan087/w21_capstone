@@ -79,7 +79,53 @@ export default function OrderDetail() {
         </div>
       </div>
 
-      <div className={styles.orderDetailRightContainer}>RIGHT</div>
+      <div className={styles.orderDetailRightContainer}>
+        <div className={styles.rightTopContainer}>
+          <div className={styles.rightTop1stContainer}>ORDER SUMMARY</div>
+
+          <div className={styles.rightTop2ndContainer}>
+            <div className={styles.top2nd1stContainer}>
+              <div className={styles.subtotalLabel}>Subtotal (1 item)</div>
+              <div className={styles.subtotalValue}>$3.49</div>
+            </div>
+
+            <div className={styles.top2nd2ndContainer}>
+              <div className={styles.shippingLabel}>Shipping & Handling</div>
+              <div className={styles.fakeFreeShipping}>FREE</div>
+            </div>
+
+            <div className={styles.top2nd3rdContainer}>
+              <div className={styles.taxLabel}>Tax</div>
+              <div className={styles.taxValue}>$0.83</div>
+            </div>
+          </div>
+
+          <div className={styles.rightTop3rdContainer}>
+            <div className={styles.totalLabel}>Total</div>
+
+            <div className={styles.totalValue}>$10.31</div>
+          </div>
+        </div>
+
+        <div className={styles.rightBottomContainer}>
+          <div className={styles.rightBottomTitleLabel}>Billing Address</div>
+
+          <div className={styles.userInfoContainer}>
+            <div className={styles.userFullName}>Pawanpreet Chahal</div>
+            <div className={styles.address1Container}>619 Davenport Drive</div>
+            <div className={styles.address2Container}>San Jose, CA 95127</div>
+          </div>
+
+          <div className={styles.rightBottomTitleLabel}>Payment Method</div>
+
+          <div className={styles.ccInfoContainer}>
+            <div className={styles.userFullName}>Credit Card</div>
+            <div className={styles.address1Container}>
+              Visa ************2656 Ex. 01/25
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

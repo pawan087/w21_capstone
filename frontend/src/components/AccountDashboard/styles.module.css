@@ -322,7 +322,7 @@
 .orderStatusLabel {
   font-size: 12.5px;
   color: rgba(14, 134, 88, 1);
-  /* font-weight: bold; */
+  font-weight: bold;
   /* margin-right: 200px; */
   width: 137.5px;
 }
@@ -401,4 +401,81 @@
 .viewAllButton:hover {
   background-color: rgb(238, 42, 40);
   color: white;
+}
+
+/* ORDER DETAIL RIGHT CONTAINER */
+
+.orderDetailContainer {
+  background-color: yellow;
+  width: 1055px;
+  margin-left: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderDetailLeftContainer {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: 580px;
+}
+
+.orderDetailRightContainer {
+  background-color: skyblue;
+  display: flex;
+  width: 430px;
+  flex-direction: column;
+}
+
+.orderDetailLeftTopContainer {
+  background-color: pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 165px;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.orderDetailLeftMiddleContainer {
+  background-color: skyblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  height: 85px;
+  margin-bottom: 15px;
+}
+
+.leftMiddle1stContainer {
+  display: flex;
+}
+
+.mappableOrderDetailLeftBottomContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: orange;
+  padding: 0 20px;
+  height: 280px;
+  margin-bottom: 15px;
+}
+
+.leftBottom1stContainer {
+  display: flex;
+  background-color: palegreen;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.leftBottom2ndContainer {
+  display: flex;
+  background-color: peru;
+  height: 150px;
+}
+
+.leftBottom3rdContainer {
+  display: flex;
+  justify-content: right;
 }

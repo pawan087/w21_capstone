@@ -213,8 +213,10 @@ export default function AccountDashboard() {
             </div>
           }
 
+          <OrderDetail />
+
           {
-            true && (
+            false && (
               /* RIGHT - ORDER HISTORY */
               <div className={styles.mainRightContainer}>
                 <div className={styles.right1stContainer}>
