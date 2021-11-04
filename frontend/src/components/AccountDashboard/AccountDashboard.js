@@ -4,6 +4,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import { FaPowerOff, FaPhoneAlt, FaAngleRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 
+import OrderDetail from "./OrderDetail";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllCartItems } from "../../store/cartItems.js";
 import { setAllProducts } from "../../store/products.js";
@@ -19,6 +20,8 @@ export default function AccountDashboard() {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+
+  let bool = false;
 
   const user = useSelector((state) => state.session.user);
   const orders = useSelector((state) => state.orders);
@@ -114,6 +117,22 @@ export default function AccountDashboard() {
     dispatch(setAllOrders());
   }, [dispatch]);
 
+  if (sortBy === "All Orders" && usersOrdersAndItems.length === 0) {
+    bool = true;
+  }
+
+  if (sortBy === "Last 30 Seconds" && currentOrders.length === 0) {
+    bool = true;
+  }
+
+  if (
+    sortBy === "Last 1 Minute" &&
+    currentOrders2.length === 0 &&
+    currentOrders.length === 0
+  ) {
+    bool = true;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -195,601 +214,653 @@ export default function AccountDashboard() {
           }
 
           {
-            /* RIGHT - ORDER HISTORY */
-            <div className={styles.mainRightContainer}>
-              <div className={styles.right1stContainer}>
-                <div className={styles.right1stLeftContainer}>
-                  <div className={styles.right1stLeftTopContainer}>
-                    Order History
+            true && (
+              /* RIGHT - ORDER HISTORY */
+              <div className={styles.mainRightContainer}>
+                <div className={styles.right1stContainer}>
+                  <div className={styles.right1stLeftContainer}>
+                    <div className={styles.right1stLeftTopContainer}>
+                      Order History
+                    </div>
+                    <div className={styles.right1stLeftBottomContainer}>
+                      {sortBy === "All Orders" && (
+                        <>{usersOrdersAndItems.length} Orders</>
+                      )}
+                      {sortBy === "Last 30 Seconds" && (
+                        <>{currentOrders.length} Orders</>
+                      )}
+                      {sortBy === "Last 1 Minute" && (
+                        <>{currentOrders2.length} Orders</>
+                      )}
+                    </div>
                   </div>
-                  <div className={styles.right1stLeftBottomContainer}>
-                    {usersOrdersAndItems.length} Orders
+
+                  <div className={styles.right1stRightContainer}>
+                    <div className={styles.orderSortingMenuContainer}>
+                      <Menu
+                        arrow={true}
+                        align={"center"}
+                        className={styles.menu}
+                        menuButton={
+                          <MenuButton className={styles.button}>
+                            <span>{sortBy}</span>
+                            <div className={styles.downIcon}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M19 9l-7 7-7-7"
+                                />
+                              </svg>
+                            </div>
+                          </MenuButton>
+                        }
+                      >
+                        <MenuItem
+                          onClick={() => setSortBy("All Orders")}
+                          className={styles.menuItem}
+                        >
+                          All Orders
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => setSortBy("Last 30 Seconds")}
+                          className={styles.menuItem}
+                        >
+                          Last 30 Seconds
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() => setSortBy("Last 1 Minute")}
+                          className={styles.menuItem}
+                        >
+                          Last 1 Minute
+                        </MenuItem>
+                      </Menu>
+                    </div>
                   </div>
                 </div>
 
-                <div className={styles.right1stRightContainer}>
-                  <div className={styles.orderSortingMenuContainer}>
-                    <Menu
-                      arrow={true}
-                      align={"center"}
-                      className={styles.menu}
-                      menuButton={
-                        <MenuButton className={styles.button}>
-                          <span>{sortBy}</span>
-                          <div className={styles.downIcon}>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-6 w-6"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M19 9l-7 7-7-7"
-                              />
-                            </svg>
-                          </div>
-                        </MenuButton>
+                {
+                  sortBy === "All Orders" && (
+                    <>
+                      {
+                        /* Last 30 Seconds */
+                        currentOrders?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    Order Processing
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Last 30 Sec */
                       }
+
+                      {
+                        /* Last 60 Seconds */
+                        currentOrders2?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    Preparing for shipment
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Last 60 Sec */
+                      }
+
+                      {
+                        /* Past */
+                        previousOrders?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    <span className={styles.notGreen}>
+                                      Shipped:
+                                    </span>{" "}
+                                    {String(new Date(x?.updatedAt)).slice(
+                                      4,
+                                      15
+                                    )}
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Past */
+                      }
+                    </>
+                  )
+                  /* End All */
+                }
+
+                {
+                  sortBy === "Last 30 Seconds" && (
+                    <>
+                      {
+                        /* Last 30 Seconds */
+                        currentOrders?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    Order Processing
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Last 30 Sec */
+                      }
+                    </>
+                  )
+                  /* End All */
+                }
+
+                {
+                  sortBy === "Last 1 Minute" && (
+                    <>
+                      {
+                        /* Last 60 Seconds */
+                        currentOrders?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    Order Processing
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Last 60 Sec */
+                      }
+
+                      {
+                        /* Last 60 Seconds */
+                        currentOrders2?.map((x, i) => {
+                          return (
+                            <div key={i}>
+                              <div className={styles.mappableOrdersContainer}>
+                                <div className={styles.right2ndContainer}>
+                                  <div className={styles.right2nd1stContainer}>
+                                    <div className={styles.orderDate}>
+                                      Online |{" "}
+                                      {String(new Date(x?.updatedAt)).slice(
+                                        4,
+                                        15
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd2ndContainer}>
+                                    Order # 11000000377356{x?.id} | $
+                                    {formatter.format(
+                                      x.orderTotal + x.orderTotal * 0.0825
+                                    )}
+                                    <div
+                                      className={
+                                        styles.mappableOrderItemPicturesContainer
+                                      }
+                                    >
+                                      {x?.items?.map((y, i) => {
+                                        return (
+                                          <div
+                                            key={i}
+                                            className={
+                                              styles.productImageContainer
+                                            }
+                                          >
+                                            <img
+                                              alt={"productImage"}
+                                              className={styles.orderImages}
+                                              src={y?.product?.images[0]}
+                                            />
+                                          </div>
+                                        );
+                                      })}
+
+                                      {x?.items?.length > 5 && (
+                                        <div className={styles.plusTag}>
+                                          +{x?.items?.length - 5}
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+
+                                  <div className={styles.right2nd3rdContainer}>
+                                    <div className={styles.orderDetailsLink}>
+                                      ORDER DETAILS
+                                    </div>
+
+                                    <div
+                                      className={styles.rightArrowIconContainer}
+                                    >
+                                      <FaAngleRight
+                                        style={{
+                                          height: "20px",
+                                          width: "20px",
+                                          display: "inline",
+                                          color: "rgb(238,42,40)",
+                                        }}
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className={styles.right3rdContainer}>
+                                  <div className={styles.orderStatusLabel}>
+                                    Preparing for shipment
+                                  </div>
+
+                                  <div className={styles.orderStatusLabel2}>
+                                    Preparing for shipment
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                        /* End Last 60 Sec */
+                      }
+                    </>
+                  )
+                  /* End All */
+                }
+
+                {bool && (
+                  /* NO ORDERS */
+                  <div className={styles.noOrdersContainer}>
+                    <img
+                      className={styles.noneFoundPic}
+                      src={
+                        "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                      }
+                      alt={"noneFound"}
+                    ></img>
+                    No orders found for selected period.{" "}
+                    <div
+                      onClick={() => setSortBy("All Orders")}
+                      className={styles.viewAllButton}
                     >
-                      <MenuItem
-                        onClick={() => setSortBy("All Orders")}
-                        className={styles.menuItem}
-                      >
-                        All Orders
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() => setSortBy("Last 30 Seconds")}
-                        className={styles.menuItem}
-                      >
-                        Last 30 Seconds
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() => setSortBy("Last 1 Minute")}
-                        className={styles.menuItem}
-                      >
-                        Last 1 Minute
-                      </MenuItem>
-                    </Menu>
+                      VIEW ALL ORDERS
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
-
-              {
-                sortBy === "All Orders" && (
-                  <>
-                    {
-                      /* Last 30 Seconds */
-                      currentOrders?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  Order Processing
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Last 30 Sec */
-                    }
-
-                    {
-                      /* Last 60 Seconds */
-                      currentOrders2?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  Preparing for shipment
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Last 60 Sec */
-                    }
-
-                    {
-                      /* Past */
-                      previousOrders?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  <span className={styles.notGreen}>
-                                    Shipped:
-                                  </span>{" "}
-                                  {String(new Date(x?.updatedAt)).slice(4, 15)}
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Past */
-                    }
-                  </>
-                )
-                /* End All */
-              }
-
-              {
-                sortBy === "Last 30 Seconds" && (
-                  <>
-                    {
-                      /* Last 30 Seconds */
-                      currentOrders?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  Order Processing
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Last 30 Sec */
-                    }
-                  </>
-                )
-                /* End All */
-              }
-
-              {
-                sortBy === "Last 1 Minute" && (
-                  <>
-                    {
-                      /* Last 60 Seconds */
-                      currentOrders?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  Order Processing
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Last 60 Sec */
-                    }
-
-                    {
-                      /* Last 60 Seconds */
-                      currentOrders2?.map((x, i) => {
-                        return (
-                          <div key={i}>
-                            <div className={styles.mappableOrdersContainer}>
-                              <div className={styles.right2ndContainer}>
-                                <div className={styles.right2nd1stContainer}>
-                                  <div className={styles.orderDate}>
-                                    Online |{" "}
-                                    {String(new Date(x?.updatedAt)).slice(
-                                      4,
-                                      15
-                                    )}
-                                  </div>
-                                </div>
-
-                                <div className={styles.right2nd2ndContainer}>
-                                  Order # 11000000377356{x?.id} | $
-                                  {formatter.format(x.orderTotal + (x.orderTotal * .0825))}
-                                </div>
-
-                                <div className={styles.right2nd3rdContainer}>
-                                  <div className={styles.orderDetailsLink}>
-                                    ORDER DETAILS
-                                  </div>
-
-                                  <div
-                                    className={styles.rightArrowIconContainer}
-                                  >
-                                    <FaAngleRight
-                                      style={{
-                                        height: "20px",
-                                        width: "20px",
-                                        display: "inline",
-                                        color: "rgb(238,42,40)",
-                                      }}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className={styles.right3rdContainer}>
-                                <div className={styles.orderStatusLabel}>
-                                  Preparing for shipment
-                                </div>
-
-                                <div
-                                  className={
-                                    styles.mappableOrderItemPicturesContainer
-                                  }
-                                >
-                                  {x?.items?.map((y, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={styles.productImageContainer}
-                                      >
-                                        <img
-                                          alt={"productImage"}
-                                          className={styles.orderImages}
-                                          src={y?.product?.images[0]}
-                                        />
-                                      </div>
-                                    );
-                                  })}
-
-                                  {x?.items?.length > 5 && (
-                                    <div className={styles.plusTag}>
-                                      +{x?.items?.length - 5}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className={styles.orderStatusLabel2}>
-                                  Preparing for shipment
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })
-                      /* End Last 60 Sec */
-                    }
-                  </>
-                )
-                /* End All */
-              }
-            </div>
+            )
             /* End Right Order History */
           }
         </div>

@@ -5,7 +5,7 @@
   background-color: rgb(214, 215, 214);
   position: sticky;
   top: 80px;
-  z-index: 100;
+  z-index: 48;
 }
 .dashboardHeaderContainer {
   height: 85px;
@@ -13,7 +13,7 @@
   background-color: rgb(108, 108, 108);
   position: sticky;
   top: 115px;
-  z-index: 100;
+  z-index: 48;
 }
 
 .dashboardHeader {
@@ -40,7 +40,7 @@
 /* MAIN CONTAINER */
 
 .mainContainer {
-  min-height: 805px;
+  min-height: 697.5px;
   width: 100%;
   background-color: rgb(242, 244, 247);
   display: flex;
@@ -64,13 +64,13 @@
   /* background-color: white; */
   position: sticky;
   top: 250px;
-  z-index: 100;
+  z-index: 48;
 }
 
 .mainLeftTopContainer {
   width: 305px;
   /* background-color: white; */
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
 }
 
@@ -140,6 +140,7 @@
   background-color: rgb(242, 244, 247);
   /* border: 1px solid red; */
   padding-left: 20px;
+  /* margin-top: 45px; */
 }
 
 .bottom1stContainer {
@@ -221,7 +222,7 @@
   position: relative;
   outline: 0;
   border: 1px solid rgb(0, 0, 0, 0.75);
-  min-width: 120px;
+  min-width: 160px;
   height: 40px;
   background-color: rgb(242, 244, 247);
   font-size: 15px;
@@ -246,12 +247,12 @@
 }
 
 .mappableOrdersContainer {
-  height: 137.5px;
-  border-radius: 10px;
+  height: 125px;
+  border-radius: 5px;
   /* background-color: red; */
   background-color: rgb(255, 255, 255);
   /* background-color: yellow; */
-  margin-bottom: 17.5px;
+  margin-bottom: 20px;
 }
 
 .right2ndContainer {
@@ -265,15 +266,16 @@
 }
 
 .productImageContainer {
-  width: 65px;
-  height: 65px;
-  margin: 0 20px;
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .orderImages {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .right2ndContainer {
@@ -284,11 +286,11 @@
   justify-content: space-between;
   margin: 0 20px;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .orderDate {
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, .75);
   font-size: 12.5px;
 }
 
@@ -318,15 +320,16 @@
 }
 
 .orderStatusLabel {
-  font-size: 10px;
-  color: rgb(14, 134, 88);
-  font-weight: bold;
+  font-size: 12.5px;
+  color: rgba(14, 134, 88, 1);
+  /* font-weight: bold; */
   /* margin-right: 200px; */
   width: 137.5px;
 }
 
 .mappableOrderItemPicturesContainer {
   display: flex;
+  position: absolute;
 }
 
 .filler {
@@ -355,7 +358,47 @@
 }
 
 .notGreen {
-  color: rgba(0, 0, 0, 0.75);
+  font-weight: 12.5px;
+  color: rgba(0, 0, 0, 1);
   font-weight: normal;
+}
 
+.noOrdersContainer {
+  /* background-color: red; */
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.viewAllButton {
+  margin-top: 25px;
+}
+
+.noneFoundPic {
+  margin-bottom: 25px;
+}
+
+.viewAllButton {
+  width: 330px;
+  font-size: 12.5px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgb(0, 0, 0, 0.75);
+  border: 2px solid rgb(238, 42, 40);
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.viewAllButton:hover {
+  background-color: rgb(238, 42, 40);
+  color: white;
 }
