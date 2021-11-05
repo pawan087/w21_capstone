@@ -740,6 +740,13 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .saveEditButton:hover {
   background-color: rgb(211, 18, 9);
 }

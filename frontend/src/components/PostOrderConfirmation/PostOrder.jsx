@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./PostOrder.module.css";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 import { useHistory } from "react-router";
+import ReactLoading from "react-loading";
 
+import Footer from "../Footer";
 import { setAllProducts } from "../../store/products";
 import { setAllOrderItems } from "../../store/orderItems";
 import { setAllOrders } from "../../store/orders.js";
@@ -30,12 +32,30 @@ export default function PostOrder() {
     return;
   });
 
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
-    dispatch(setAllProducts());
-    dispatch(setAllOrderItems());
-    dispatch(setAllOrders());
-    dispatch(setAllCartItems());
+    (async () => {
+      await dispatch(setAllProducts());
+      await dispatch(setAllOrderItems());
+      await dispatch(setAllOrders());
+      await dispatch(setAllCartItems());
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -247,6 +267,7 @@ export default function PostOrder() {
           />
         </div>
       </div>
+      <Footer />
     </motion.div>
   );
 }

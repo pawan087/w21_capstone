@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
@@ -8,18 +8,21 @@ import {
   // useTransform,
   // useMotionValue,
 } from "framer-motion/dist/framer-motion";
+import ReactLoading from "react-loading";
 
 // import NewCartItem from "./NewCartItem.js";
 // import QuestionCard from "./QuestionCard";
 // import ReviewCard from "./ReviewCard";
 // import AskQuestionCard from "./AskQuestionCard";
 // import { setAllQuestions } from "../../store/questions.js";
+import Footer from "../Footer";
 import ProductDetail from "./ProductDetail";
 import WriteReviewCard from "./WriteReviewCard";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
 import { addToRecent } from "../../store/recentlyViewed";
+import styles from "./ProductPage.module.css";
 
 function ProductPage() {
   const dispatch = useDispatch();
@@ -71,14 +74,32 @@ function ProductPage() {
   // const productQuestions = questions?.filter((question) => {
   //   return question.productId === +params.id;
   // });
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    dispatch(addToRecent({ productId: +params.id, userId: user.id }));
-    dispatch(setAllProducts());
-    dispatch(setAllReviews());
-    dispatch(setAllReviewLikes());
     // dispatch(setAllQuestions());
+    (async () => {
+      dispatch(addToRecent({ productId: +params.id, userId: user.id }));
+      dispatch(setAllProducts());
+      dispatch(setAllReviews());
+      dispatch(setAllReviewLikes());
+
+      setLoad(true);
+    })();
   }, [params.id, user.id, dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   if (!user) return <Redirect to="/" />;
 
@@ -96,6 +117,8 @@ function ProductPage() {
       />
 
       <WriteReviewCard />
+
+      <Footer />
     </motion.div>
   );
 }

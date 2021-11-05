@@ -9,7 +9,9 @@ import {
   FaAngleLeft,
 } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
+import ReactLoading from "react-loading";
 
+import Footer from "../../components/Footer";
 import OrderDetail from "./OrderDetail";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import { setAllProducts } from "../../store/products.js";
@@ -23,6 +25,7 @@ export default function AccountDashboard() {
   const [sortBy, setSortBy] = useState("All Orders");
   const [orderHistory, setOrderHistory] = useState(true);
   const [orderDetail, setOrderDetail] = useState(false);
+  const [load, setLoad] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -119,11 +122,37 @@ export default function AccountDashboard() {
     }
   });
 
+  const [detailArr, setDetailArr] = useState([]);
+  const [status, setStatus] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState([]);
+  let copy = [...usersOrdersAndItems];
+  const reversed = copy?.reverse();
+
   useEffect(() => {
-    dispatch(setAllProducts());
-    dispatch(setAllOrderItems());
-    dispatch(setAllOrders());
+    setData(reversed);
+  }, [orders]);
+  useEffect(() => {
+    (async () => {
+      await dispatch(setAllProducts());
+      await dispatch(setAllOrderItems());
+      await dispatch(setAllOrders());
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   if (sortBy === "All Orders" && usersOrdersAndItems.length === 0) {
     bool = true;
@@ -140,9 +169,6 @@ export default function AccountDashboard() {
   ) {
     bool = true;
   }
-
-  const [detailArr, setDetailArr] = useState([]);
-  const [status, setStatus] = useState("");
 
   const showOrderDetail = (x) => {
     setOrderHistory(false);
@@ -179,18 +205,12 @@ export default function AccountDashboard() {
     setOrderHistory(true);
   };
 
-  const [currentPage, setCurrentPage] = useState(0);
-  let copy = [...usersOrdersAndItems];
-  const reversed = copy?.reverse();
-
-  const [data, setData] = useState([]);
-
   const PER_PAGE = 3;
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
     window.scrollTo({
-      top: 1250,
+      top: 0,
       left: 0,
       behavior: "smooth",
     });
@@ -292,10 +312,6 @@ export default function AccountDashboard() {
     });
 
   const pageCount = Math.ceil(data?.length / PER_PAGE);
-
-  useEffect(() => {
-    setData(reversed);
-  }, [orders]);
 
   const setAllTheOrders = () => {
     setData([...reversed]);
@@ -711,6 +727,7 @@ export default function AccountDashboard() {
           }
         </div>
       </div>
+      <Footer />
     </motion.div>
   );
 }

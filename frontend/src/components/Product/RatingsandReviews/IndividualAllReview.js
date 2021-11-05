@@ -534,8 +534,8 @@ export default function IndividualTopReview({ review }) {
           {loading && (
             <div className={styles.loader}>
               <ReactLoading
-                type={"spin"}
-                color={"rgba(0,0,0,.75)"}
+                type={"bubbles"}
+                color={"rgb(231,35,13)"}
                 height={"0px"}
                 width={"57.5px"}
               />

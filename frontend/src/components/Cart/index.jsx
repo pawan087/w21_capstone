@@ -6,6 +6,7 @@ import Select from "react-select";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
 
+import Footer from "../Footer";
 import { setAllOrderItems } from "../../store/orderItems.js";
 import {
   setAllCartItems,
@@ -88,12 +89,30 @@ export default function Cart() {
     { value: 4, label: "Qty 4" },
     { value: 5, label: "Qty 5" },
   ];
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
-    dispatch(setAllProducts());
-    dispatch(setAllOrderItems());
-    dispatch(setAllCartItems());
+    (async () => {
+      await dispatch(setAllProducts());
+      await dispatch(setAllOrderItems());
+      await dispatch(setAllCartItems());
+
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   if (!user) return <Redirect to="/" />;
 
@@ -244,7 +263,12 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className={styles.leftBottom3rdContainer}>
-                    <input defaultChecked className={styles.fakeRadio} type="radio" /> 
+                    <input
+                      defaultChecked
+                      className={styles.fakeRadio}
+                      type="radio"
+                    />
+                     
                     <div className={styles.fakeFreeShipping}>
                       FREE shipping{" "}
                       <span className={styles.shippingDetail}>
@@ -396,6 +420,7 @@ export default function Cart() {
           />
         </div>
       )}
+      <Footer />
     </motion.div>
   );
 }

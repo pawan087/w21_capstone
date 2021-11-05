@@ -10,6 +10,7 @@ import "react-form-input-fields/dist/index.css";
 import ReactLoading from "react-loading";
 import { motion } from "framer-motion/dist/framer-motion";
 
+import Footer from '../Footer'
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 import * as sessionActions from "../../store/session";
 import { updateProfile } from "../../store/session";
@@ -25,9 +26,9 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [creditCardNumber, setCreditCardNumber] = useState('');
+  const [creditCardNumber, setCreditCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
-  const [focus, setFocus] = useState('');
+  const [focus, setFocus] = useState("");
   const [payed, setPayed] = useState(false);
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
@@ -209,9 +210,27 @@ export default function OrderConfirmation() {
     setFocus(e.target.name);
   };
 
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
-    dispatch(setAllOrderItems());
+    (async () => {
+      await dispatch(setAllOrderItems());
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   const handleOnChange = (value) => {
     setLastName(value);
@@ -761,6 +780,7 @@ export default function OrderConfirmation() {
       <div onClick={() => history.push("/cart")} className={styles.untouchable}>
         Can't touch this
       </div>
+      <Footer />
     </motion.div>
   );
 }

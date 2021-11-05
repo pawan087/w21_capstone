@@ -360,3 +360,10 @@
   padding-top: 12.5px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

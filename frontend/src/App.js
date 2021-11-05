@@ -114,9 +114,10 @@ function App() {
 
       <ScrollUpButton />
 
-      <Footer />
-    </>
-  );
-}
+      </>
+      );
+    }
 
-export default App;
+    export default App;
+
+    // <Footer />

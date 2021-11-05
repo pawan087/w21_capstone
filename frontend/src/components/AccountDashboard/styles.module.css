@@ -9,7 +9,6 @@
 }
 .dashboardHeaderContainer {
   height: 85px;
-
   background-color: rgb(108, 108, 108);
   position: sticky;
   top: 115px;
@@ -40,6 +39,7 @@
 /* MAIN CONTAINER */
 
 .mainContainer {
+  min-height: 650px;
   min-height: 697.5px;
   width: 100%;
   background-color: rgb(242, 244, 247);
@@ -62,9 +62,9 @@
   margin-right: 20px;
   /* margin-right: 25px; */
   /* background-color: white; */
-  position: sticky;
+  /* position: sticky;
   top: 250px;
-  z-index: 48;
+  z-index: 48; */
 }
 
 .mainLeftTopContainer {
@@ -249,6 +249,7 @@
 
 .mappableOrdersContainer {
   height: 125px;
+  height: 132.5px;
   border-radius: 5px;
   /* background-color: red; */
   background-color: rgb(255, 255, 255);
@@ -270,7 +271,7 @@
 .productImageContainer {
   width: 60px;
   height: 60px;
-  margin-top: 10px;
+  margin-top: 12.5px;
   margin-right: 10px;
 }
 
@@ -310,8 +311,11 @@
 .right2nd3rdContainer {
   display: flex;
   align-items: center;
-
   cursor: pointer;
+}
+
+.rightArrowIconContainer {
+  transform: translateY(1.5px);
 }
 
 .right3rdContainer {
@@ -619,7 +623,7 @@
 }
 
 .bottom1stRightContainer:hover {
-  background-color: rgba(224, 59, 47, .75);
+  background-color: rgba(224, 59, 47, 0.75);
 }
 
 .bottom2ndLeftContainer {
@@ -801,5 +805,12 @@
 }
 
 .backLinkLabel:hover {
-  color:rgb(224, 59, 47);
+  color: rgb(224, 59, 47);
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
