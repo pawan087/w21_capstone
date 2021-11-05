@@ -28,8 +28,13 @@ export default function MyNavBar() {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
 
+  const variants = {
+    closed: { width: 0 },
+    open: { width: 400 },
+  };
+
   function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("mySidebar").style.width = "400px";
     setVisible(true);
   }
 
@@ -39,7 +44,7 @@ export default function MyNavBar() {
   }
 
   function openNav2() {
-    document.getElementById("mySidebar2").style.width = "250px";
+    document.getElementById("mySidebar2").style.width = "400px";
     setVisible2(true);
   }
 
@@ -430,19 +435,43 @@ export default function MyNavBar() {
 
           {
             /* SIDE BAR RIGHT */
-            <div id="mySidebar2" className={styles.sidebar2}>
-              <a
-                href="javascript:void(0)"
-                className={styles.closebtn}
-                onClick={closeNav2}
-              >
-                &times;
-              </a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Clients</a>
-              <a href="#">Contact</a>
-            </div>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={visible2 ? "open" : "closed"}
+              transition={{
+                type: "spring",
+                stiffness: 350,
+                damping: 20,
+              }}
+              variants={variants}
+              id="mySidebar2"
+              className={styles.sidebar2}
+            >
+              <div className={styles.closebtn2}>
+                <span className={styles.sidebar2AccountLabel}>Account</span>{" "}
+                <span
+                  onClick={closeNav2}
+                  className={styles.closeSideBar2Button}
+                >
+                  &times;
+                </span>
+              </div>
+
+              <div className={styles.sidebar2SecondContainer}>
+                <div className={styles.sidebar2User}>Hi, Pawanpreet!</div>
+                <div className={styles.sidebar2PowerUp}>PowerUP Player</div>
+              </div>
+
+              <div className={styles.sidebar2MenuItemsContainer}>
+                <div className={styles.sidebar2MenuItem}>Account Overview</div>
+
+                <div className={styles.sidebar2MenuItem}>Orders</div>
+              </div>
+
+              <div className={styles.sidebar2MenuItemsContainer2}>
+                <div className={styles.sidebar2MenuItem2}>Sign Out</div>
+              </div>
+            </motion.div>
           }
         </>
 
