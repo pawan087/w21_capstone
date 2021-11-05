@@ -175,6 +175,7 @@ export default function OrderDetail({ order, status, user }) {
 
           <div className={styles.userInfoContainer}>
             <div className={styles.userFullName}>
+
               {user?.firstName} {user?.lastName}
             </div>
             <div className={styles.address1Container}>{order.address1}</div>

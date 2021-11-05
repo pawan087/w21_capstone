@@ -7,11 +7,12 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import AccountSettings from "./components/AccountDashboard/AccountSettings";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
@@ -107,6 +108,10 @@ function App() {
 
             <Route path="/orders" exact={true}>
               <AccountDashboard />
+            </Route>
+
+            <Route path="/account/:id" exact={true}>
+              <AccountSettings />
             </Route>
           </Switch>
         </AnimatePresence>

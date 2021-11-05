@@ -343,8 +343,8 @@ export default function AccountDashboard() {
         </div>
       </div>
 
-      <div className={styles.mainContainer}>
-        <div className={styles.widthContainer}>
+      <div className={styles.mainContainer2}>
+        <div className={styles.widthContainer2}>
           {
             /* LEFT MENU */
             <div className={styles.mainLeftContainer}>
@@ -384,7 +384,7 @@ export default function AccountDashboard() {
                 <div className={styles.fifthContainer}></div>
               </div>
 
-              <div className={styles.mainLeftBottomContainer}>
+              <div className={styles.mainLeftBottomContainer2}>
                 <div className={styles.bottom1stContainer}>CUSTOMER CARE</div>
 
                 <div className={styles.bottom2ndContainer}>
@@ -444,290 +444,28 @@ export default function AccountDashboard() {
           )}
 
           {
-            orderHistory && (
-              /* RIGHT - ORDER HISTORY */
-              <div className={styles.mainRightContainer}>
-                <div className={styles.right1stContainer}>
-                  <div className={styles.right1stLeftContainer}>
-                    <div className={styles.right1stLeftTopContainer}>
-                      Order History
-                    </div>
-                    <div className={styles.right1stLeftBottomContainer}>
-                      {sortBy === "All Orders" && (
-                        <>
-                          {usersOrdersAndItems.length}{" "}
-                          {usersOrdersAndItems.length === 1
-                            ? "Order"
-                            : "Orders"}
-                        </>
-                      )}
-                      {sortBy === "Last 30 Seconds" && (
-                        <>
-                          {currentOrders.length}{" "}
-                          {currentOrders.length === 1 ? "Order" : "Orders"}
-                        </>
-                      )}
-                      {sortBy === "Last 1 Minute" && (
-                        <>
-                          {currentOrders2.length}{" "}
-                          {currentOrders2.length === 1 ? "Order" : "Orders"}
-                        </>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={styles.right1stRightContainer}>
-                    <div className={styles.orderSortingMenuContainer}>
-                      <Menu
-                        arrow={true}
-                        align={"center"}
-                        className={styles.menu}
-                        menuButton={
-                          <MenuButton className={styles.button}>
-                            <span>{sortBy}</span>
-                            <div className={styles.downIcon}>
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M19 9l-7 7-7-7"
-                                />
-                              </svg>
-                            </div>
-                          </MenuButton>
-                        }
-                      >
-                        <MenuItem
-                          onClick={() => setAllTheOrders()}
-                          className={styles.menuItem}
-                        >
-                          All Orders
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => setLast30()}
-                          className={styles.menuItem}
-                        >
-                          Last 30 Seconds
-                        </MenuItem>
-                        <MenuItem
-                          onClick={() => setLast60()}
-                          className={styles.menuItem}
-                        >
-                          Last 1 Minute
-                        </MenuItem>
-                      </Menu>
-                    </div>
+            /* RIGHT - ACCOUNT SETTINGS SECTION */
+            <div className={styles.personalDataContainer}>
+              <div className={styles.pd1stContainer}>Personal Data</div>
+              <div className={styles.pd2ndContainer}>
+                <div className={styles.pd2nd1stContainer}>
+                  <div className={styles.pd2nd1st1stContainer}>NAME</div>
+                  <div className={styles.pd2nd1st2ndContainer}>
+                    Pawanpreet Chahal
                   </div>
                 </div>
-
-                {
-                  sortBy === "All Orders" && (
-                    <>
-                      {bool && (
-                        /* NO ORDERS */
-                        <div className={styles.noOrdersContainer}>
-                          <img
-                            className={styles.noneFoundPic}
-                            src={
-                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
-                            }
-                            alt={"noneFound"}
-                          ></img>
-                          No orders found for selected period.{" "}
-                          <div
-                            onClick={() => setAllTheOrders()}
-                            className={styles.viewAllButton}
-                          >
-                            VIEW ALL ORDERS
-                          </div>
-                        </div>
-                      )}
-
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
-                  )
-                  /* End */
-                }
-
-                {
-                  sortBy === "Last 30 Seconds" && (
-                    <>
-                      {bool && (
-                        /* NO ORDERS */
-                        <div className={styles.noOrdersContainer}>
-                          <img
-                            className={styles.noneFoundPic}
-                            src={
-                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
-                            }
-                            alt={"noneFound"}
-                          ></img>
-                          No orders found for selected period.{" "}
-                          <div
-                            onClick={() => setAllTheOrders()}
-                            className={styles.viewAllButton}
-                          >
-                            VIEW ALL ORDERS
-                          </div>
-                        </div>
-                      )}
-
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
-                  )
-                  /* End */
-                }
-
-                {
-                  sortBy === "Last 1 Minute" && (
-                    <>
-                      {bool && (
-                        /* NO ORDERS */
-                        <div className={styles.noOrdersContainer}>
-                          <img
-                            className={styles.noneFoundPic}
-                            src={
-                              "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
-                            }
-                            alt={"noneFound"}
-                          ></img>
-                          No orders found for selected period.{" "}
-                          <div
-                            onClick={() => setAllTheOrders()}
-                            className={styles.viewAllButton}
-                          >
-                            VIEW ALL ORDERS
-                          </div>
-                        </div>
-                      )}
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
-                  )
-                  /* End All */
-                }
+                <div className={styles.pd2nd2ndContainer}>Edit</div>
               </div>
-            )
+              <div className={styles.pd3rdContainer}>
+                <div className={styles.pd2nd1stContainer}>
+                  <div className={styles.pd2nd1st1stContainer}>EMAIL</div>
+                  <div className={styles.pd2nd1st2ndContainer}>
+                    chahal.pawanpreet@gmail.com
+                  </div>
+                </div>
+                <div className={styles.pd2nd2ndContainer}>Edit</div>
+              </div>
+            </div>
             /* End Right Order History */
           }
         </div>

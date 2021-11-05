@@ -35,6 +35,11 @@ export default function MyNavBar() {
     history.push("/orders");
   };
 
+  const sendToAccount = () => {
+    closeNav2();
+    history.push("/account/1");
+  };
+
   const variants = {
     closed: { width: "0px" },
     open: { width: "400px" },
@@ -539,7 +544,12 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2MenuItemsContainer}>
-                <div className={styles.sidebar2MenuItem}>Account Overview</div>
+                <div
+                  onClick={sendToAccount}
+                  className={styles.sidebar2MenuItem}
+                >
+                  Account Overview
+                </div>
 
                 <div onClick={sendToOrders} className={styles.sidebar2MenuItem}>
                   Orders
