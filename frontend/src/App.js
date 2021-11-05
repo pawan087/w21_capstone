@@ -78,7 +78,7 @@ function App() {
               <OrderConfirmation />
             </Route>
 
-            <Route path="/orders" exact={true}>
+            <Route path="/oldorders" exact={true}>
               <Orders />
             </Route>
 
@@ -105,7 +105,7 @@ function App() {
               <PostOrder />
             </Route>
 
-            <Route path="/dashboard" exact={true}>
+            <Route path="/orders" exact={true}>
               <AccountDashboard />
             </Route>
           </Switch>

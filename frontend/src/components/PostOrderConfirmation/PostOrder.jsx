@@ -95,7 +95,7 @@ export default function PostOrder() {
             </div>
 
             <div
-              onClick={() => history.push("/dashboard")}
+              onClick={() => history.push("/orders")}
               className={styles.accountDashboardButton}
             >
               ACCOUNT DASHBOARD
@@ -267,7 +267,7 @@ export default function PostOrder() {
           />
         </div>
       </div>
-      
+
       <Footer />
     </motion.div>
   );

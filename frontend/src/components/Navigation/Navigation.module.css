@@ -496,6 +496,8 @@
 
 /* SIDEBARS */
 
+/* RIGHT SIDE BAR */
+
 .background {
   position: fixed;
   top: 0;
@@ -504,20 +506,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
 }
-
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s;
-}
-
 .sidebar2 {
   height: 100%;
   width: 0;
@@ -528,57 +516,6 @@
   background-color: #111;
   overflow-x: hidden;
   padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-.openbtn {
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-#main {
-  transition: margin-left 0.5s;
-  padding: 20px;
-}
-
-.sidebar2 a {
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar2 a:hover {
-  color: #f1f1f1;
 }
 
 .sidebar2 .closebtn {
@@ -678,6 +615,7 @@
   transition: 0.15s ease-in-out;
   cursor: pointer;
   width: 400px;
+  color: black;
 }
 
 .sidebar2MenuItem:hover,
@@ -689,9 +627,222 @@
   transition: 0.15s ease-in-out;
   cursor: pointer;
   width: 400px;
+  color: black;
   text-decoration: underline;
 }
 
 .sidebar2MenuItem2:hover {
   color: rgb(231, 35, 13);
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* LEFT SIDE BAR */
+
+.background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.sidebar {
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+.sidebar .closebtn2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sidebarAccountLabel {
+  color: black;
+  font-size: 20px;
+  cursor: default;
+}
+
+.sidebarAccountLabel2 {
+  color: black;
+  font-size: 20px;
+  cursor: default;
+}
+
+.sidebar {
+  background-color: white;
+}
+
+.closebtn {
+  height: 55px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0625), 0 3px 6px rgba(0, 0, 0, 0.0625);
+}
+
+.closeSideBarButton {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 40px;
+  color: black;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.closeSideBarButton:hover {
+  color: rgba(0, 0, 0, 0.68);
+  font-size: 42.5px;
+}
+
+.sidebarSecondContainer {
+  height: 90px;
+  width: 400px;
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding-left: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
+  cursor: default;
+}
+
+.sidebarSecondContainer2 {
+  height: 90px;
+  width: 400px;
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding-left: 20px;
+  cursor: default;
+}
+
+.sidebarUser {
+  font-weight: 900;
+  cursor: default;
+  font-size: 25px;
+}
+
+.shopLabel {
+  font-weight: bold;
+  cursor: default;
+  font-size: 20px;
+}
+
+.sidebarPowerUp {
+  font-size: 12.5px;
+  transform: translateY(-2.5px);
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.sidebarMenuItemsContainer {
+  height: 100px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 15px;
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.sidebarMenuItemsContainer3 {
+  height: 285px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  font-size: 15px;
+  font-size: 17.5px;
+  color: rgba(0, 0, 0, 0.68);
+  transform: translateY(-20px);
+}
+
+.sidebarMenuItem,
+.sidebarMenuItem {
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  width: 400px;
+  color: black;
+}
+
+.sidebarMenuItem:hover,
+.sidebarMenuItem:hover {
+  color: rgb(231, 35, 13);
+}
+
+.sidebarMenuItem2 {
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  width: 400px;
+  color: black;
+  text-decoration: underline;
+}
+
+.sidebarMenuItem2:hover {
+  color: rgb(231, 35, 13);
+}
+
+.sidebarMenuItem3 {
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  font-size: 15px;
+  height: 70px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.75);
+  width: 400px;
+}
+
+.sidebarMenuItem3:hover,
+.sidebarMenuItem3:hover {
+  background-color: rgb(245,245,245);
+  color: black;
+}
+
+.fakeSidebarFooter {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 1000px;
+  cursor: default;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.gameStopLocaiton {
+  font-weight: bold;
+  font-size: 12.5px;
+}
+
+.gameStopStoreHours {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 12.5px;
+}
+
+.fakeSidebarFooterRight {
+  position: absolute;
+  left: 325px;
 }

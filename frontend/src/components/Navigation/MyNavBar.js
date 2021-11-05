@@ -8,6 +8,7 @@ import {
 } from "framer-motion/dist/framer-motion";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
+import { FaStoreAlt } from "react-icons/fa";
 
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 // import { SubMenu } from "@szhsin/react-menu";
@@ -27,30 +28,37 @@ export default function MyNavBar() {
   const [cartItemId, setCartItemId] = useState();
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [load, setLoad] = useState(false);
+
+  const sendToOrders = () => {
+    closeNav2();
+    history.push("/orders");
+  };
 
   const variants = {
+    closed: { width: "0px" },
+    open: { width: "400px" },
+  };
+
+  const variants1 = {
     closed: { width: 0 },
-    open: { width: 400 },
+    open: { width: 375 },
   };
 
   function openNav() {
-    document.getElementById("mySidebar").style.width = "400px";
     setVisible(true);
   }
 
   function closeNav() {
     setVisible(false);
-    document.getElementById("mySidebar").style.width = "0";
   }
 
   function openNav2() {
-    document.getElementById("mySidebar2").style.width = "400px";
     setVisible2(true);
   }
 
   function closeNav2() {
     setVisible2(false);
-    document.getElementById("mySidebar2").style.width = "0";
   }
 
   const showRemoveConfirmationModal = (name, id, id2) => {
@@ -119,8 +127,25 @@ export default function MyNavBar() {
   };
 
   useEffect(() => {
-    dispatch(setAllCartItems());
+    (async () => {
+      await dispatch(setAllCartItems());
+
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   const handleCartClick = () => {
     window.scrollTo({
@@ -414,19 +439,70 @@ export default function MyNavBar() {
 
           {
             /* SIDE BAR LEFT */
-            <div id="mySidebar" className={styles.sidebar}>
-              <a
-                href="javascript:void(0)"
-                className={styles.closebtn}
-                onClick={closeNav}
-              >
-                &times;
-              </a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Clients</a>
-              <a href="#">Contact</a>
-            </div>
+
+            <motion.div
+              initial={{ width: "0px" }}
+              animate={visible ? "open" : "closed"}
+              transition={{
+                type: "spring",
+                stiffness: 275,
+                damping: 20,
+              }}
+              variants={variants1}
+              className={styles.sidebar}
+            >
+              <div className={styles.closebtn}>
+                <span className={styles.sidebarAccountLabel2}>Shop</span>{" "}
+                <span onClick={closeNav} className={styles.closeSideBarButton}>
+                  &times;
+                </span>
+              </div>
+
+              <div className={styles.sidebarSecondContainer2}>
+                <div className={styles.shopLabel}>Shop By Category</div>
+              </div>
+
+              <div className={styles.sidebarMenuItemsContainer3}>
+                <div className={styles.sidebarMenuItem3}>Video Games</div>
+
+                <div className={styles.sidebarMenuItem3}>
+                  Consoles & Hardware
+                </div>
+
+                <div className={styles.sidebarMenuItem3}>
+                  Gaming Accessories
+                </div>
+
+                <div className={styles.sidebarMenuItem3}>Electronics</div>
+
+                <div className={styles.sidebarMenuItem3}>Toys & Games</div>
+
+                <div className={styles.sidebarMenuItem3}>Clothing</div>
+              </div>
+
+              <div className={styles.fakeSidebarFooter}>
+                <div className={styles.fakeSidebarFooterLeft}>
+                  <div className={styles.gameStopLocaiton}>
+                    Plaza San Jose - GameStop
+                  </div>
+                  <div className={styles.gameStopStoreHours}>
+                    Open until 9:00 PM
+                  </div>
+                </div>
+
+                <div className={styles.fakeSidebarFooterRight}>
+                  {" "}
+                  <FaStoreAlt
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "black",
+                    }}
+                  />
+                </div>
+              </div>
+            </motion.div>
           }
 
           {visible2 && (
@@ -440,7 +516,7 @@ export default function MyNavBar() {
               animate={visible2 ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 350,
+                stiffness: 275,
                 damping: 20,
               }}
               variants={variants}
@@ -465,7 +541,9 @@ export default function MyNavBar() {
               <div className={styles.sidebar2MenuItemsContainer}>
                 <div className={styles.sidebar2MenuItem}>Account Overview</div>
 
-                <div className={styles.sidebar2MenuItem}>Orders</div>
+                <div onClick={sendToOrders} className={styles.sidebar2MenuItem}>
+                  Orders
+                </div>
               </div>
 
               <div className={styles.sidebar2MenuItemsContainer2}>
