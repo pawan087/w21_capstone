@@ -1,59 +1,47 @@
-import "./test.css";
-import SideNav, {
-  Toggle,
-  Nav,
-  NavItem,
-  NavIcon,
-  NavText,
-} from "@trendmicro/react-sidenav";
-// Be sure to include styles at some point, probably during your bootstraping
-import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { useState } from "react";
+
+import styles from "./test.module.css";
 
 export default function Test() {
   const [visible, setVisible] = useState(false);
 
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    setVisible(true);
+    // document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav() {
+    setVisible(false);
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
   return (
     <div>
-      <div onClick={() => setVisible(!visible)} className="helloDiv">
-        Hello
-      </div>
-      {visible && (
-        <SideNav
-        expanded={true}
-          onSelect={(selected) => {
-            // Add your code here
-          }}
+      {visible && <div onClick={closeNav} className={styles.background} />}
+      <div id="mySidebar" className={styles.sidebar}>
+        <a
+          href="javascript:void(0)"
+          className={styles.closebtn}
+          onClick={closeNav}
         >
-          <SideNav.Toggle />
-          <SideNav.Nav defaultSelected="home">
-            <NavItem eventKey="home">
-              <NavIcon>
-                <i
-                  className="fa fa-fw fa-home"
-                  style={{ fontSize: "1.75em" }}
-                />
-              </NavIcon>
-              <NavText>Home</NavText>
-            </NavItem>
-            <NavItem eventKey="charts">
-              <NavIcon>
-                <i
-                  className="fa fa-fw fa-line-chart"
-                  style={{ fontSize: "1.75em" }}
-                />
-              </NavIcon>
-              <NavText>Charts</NavText>
-              <NavItem eventKey="charts/linechart">
-                <NavText>Line Chart</NavText>
-              </NavItem>
-              <NavItem eventKey="charts/barchart">
-                <NavText>Bar Chart</NavText>
-              </NavItem>
-            </NavItem>
-          </SideNav.Nav>
-        </SideNav>
-      )}
+          &times;
+        </a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div id="main">
+        <button className={styles.openbtn} onClick={openNav}>
+          &#9776; Open Sidebar
+        </button>
+        <h2>Collapsed Sidebar</h2>
+        <p>Content...</p>
+      </div>
     </div>
   );
 }

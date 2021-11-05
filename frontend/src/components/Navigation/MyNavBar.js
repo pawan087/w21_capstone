@@ -25,13 +25,30 @@ export default function MyNavBar() {
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
 
-  const byPassReactConsoleError = () => {
-    return productId;
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    setVisible(true);
+  }
+
+  function closeNav() {
+    setVisible(false);
+    document.getElementById("mySidebar").style.width = "0";
+  }
+
+  function openNav2() {
+    document.getElementById("mySidebar2").style.width = "250px";
+    setVisible2(true);
+  }
+
+  function closeNav2() {
+    setVisible2(false);
+    document.getElementById("mySidebar2").style.width = "0";
   }
 
   const showRemoveConfirmationModal = (name, id, id2) => {
-    byPassReactConsoleError();
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
@@ -113,7 +130,7 @@ export default function MyNavBar() {
     <div className={styles.myNavbar}>
       <div className={styles.outerContainer}>
         <div className={styles.leftSection}>
-          <div className={styles.leftMenuButtonContainer}>
+          <div onClick={openNav} className={styles.leftMenuButtonContainer}>
             <div className={styles.leftMenuButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +189,7 @@ export default function MyNavBar() {
         </div>
 
         <div className={styles.rightSection}>
-          <div className={styles.rightMenuButtonContainer}>
+          <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
             <div className={styles.userInitials}>
               {user?.firstName &&
                 user?.lastName &&
@@ -383,6 +400,54 @@ export default function MyNavBar() {
           />
         </div>
       )}
+
+      {
+        /* SIDE BARS */
+
+        <>
+          {visible && <div onClick={closeNav} className={styles.background} />}
+
+          {
+            /* SIDE BAR LEFT */
+            <div id="mySidebar" className={styles.sidebar}>
+              <a
+                href="javascript:void(0)"
+                className={styles.closebtn}
+                onClick={closeNav}
+              >
+                &times;
+              </a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+          }
+
+          {visible2 && (
+            <div onClick={closeNav2} className={styles.background} />
+          )}
+
+          {
+            /* SIDE BAR RIGHT */
+            <div id="mySidebar2" className={styles.sidebar2}>
+              <a
+                href="javascript:void(0)"
+                className={styles.closebtn}
+                onClick={closeNav2}
+              >
+                &times;
+              </a>
+              <a href="#">About</a>
+              <a href="#">Services</a>
+              <a href="#">Clients</a>
+              <a href="#">Contact</a>
+            </div>
+          }
+        </>
+
+        /* END SIDE BARS */
+      }
     </div>
   );
 }

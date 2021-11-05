@@ -267,6 +267,7 @@ export default function PostOrder() {
           />
         </div>
       </div>
+      
       <Footer />
     </motion.div>
   );
