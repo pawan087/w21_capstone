@@ -26,7 +26,12 @@ export default function MyNavBar() {
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
 
+  const byPassReactConsoleError = () => {
+    return productId;
+  }
+
   const showRemoveConfirmationModal = (name, id, id2) => {
+    byPassReactConsoleError();
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
@@ -265,7 +270,7 @@ export default function MyNavBar() {
 
               <MenuItem className={styles.lowerSubMenuContainer}>
                 <div className={styles.lowerSubMenuContainerTopContainer}>
-                  <div classNam={styles.itemCountLabel}>{sum} items</div>
+                  <div className={styles.itemCountLabel}>{sum} items</div>
 
                   <div className={styles.cartTotal}>
                     Subtotal: ${formatter.format(cartSubtotal)}
@@ -273,7 +278,7 @@ export default function MyNavBar() {
                 </div>
 
                 <div className={styles.lowerSubMenuContainerBottomContainer}>
-                  <div classNam={styles.viewCartButtonContainer}>
+                  <div className={styles.viewCartButtonContainer}>
                     <button
                       onClick={handleCartClick}
                       className={styles.viewCartButton}

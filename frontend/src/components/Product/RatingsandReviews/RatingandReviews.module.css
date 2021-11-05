@@ -78,6 +78,15 @@
   font-size: 15px;
   font-weight: bold;
   transform: translateY(-05px);
+  transition: 0.15s ease-in-out;
+}
+
+.writeReview:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.writeReview:active {
+  transform: scale(0.95);
 }
 
 .rightContainer {
@@ -109,7 +118,6 @@
 }
 
 /* WRITE NEW REVIEW */
-
 
 .writeReviewOuterContainer {
   display: flex;
@@ -252,7 +260,17 @@
   background-color: white;
   font-size: 12.5px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   color: rgba(0, 0, 0, 0.75);
+}
+
+.addPhotoButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.addPhotoButton:active {
+  transform: scale(0.95);
 }
 
 .writeReviewBottomContainer {
@@ -270,7 +288,16 @@
   background-color: black;
   color: white;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   font-size: 12.5px;
+}
+
+.writeReviewButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.writeReviewButton:active {
+  transform: scale(0.95);
 }
 
 .addPhotoOuterContainer {
@@ -373,6 +400,7 @@
   height: 100%;
   object-fit: cover;
   background-color: rgb(247, 247, 247);
+  transition: 0.15s ease-in-out;
 }
 
 .removePhotoContainer {
@@ -393,6 +421,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+.removePhoto:hover {
+  background-color: rgba(0, 0, 0, 0.175);
+}
+
+.removePhoto:active,
+.removePhoto2:active {
+  transform: scale(0.95);
 }
 
 .removePhoto2 {
@@ -414,7 +452,16 @@
   border: none;
   font-size: 11px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   margin-left: 20px;
+}
+
+.addPhotoButton2:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.addPhotoButton2:active {
+  transform: scale(0.95);
 }
 
 .selectFileContainer {
@@ -440,7 +487,13 @@
   height: 20px;
   top: 0;
   left: 129px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
   color: rgba(238, 42, 40, 0.8);
+}
+
+.removeImageIconContainer:active {
+  transform: scale(1.05);
 }
 
 .required {
@@ -488,5 +541,5 @@
 }
 
 .noReviews:hover {
-  color: rgb(231,35,13);
+  color: rgb(231, 35, 13);
 }

@@ -172,9 +172,19 @@
   background-color: rgb(231, 35, 13);
   color: white;
   outline: none;
+  border-radius: 5px;
   font-size: 12.5px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   border: none;
+}
+
+.button:hover {
+  background-color: rgb(211, 35, 13);
+}
+
+.button:active {
+  transform: scale(0.95);
 }
 
 .homeIconContainer {
@@ -278,9 +288,9 @@ input[type="radio"]:checked {
 }
 
 .fakeShippingCost {
-  color: rgb(231, 35, 13);
   font-size: 15px;
   font-weight: bold;
+  color: rgb(14, 134, 88);
 }
 
 .right3rdContainer {
@@ -423,6 +433,10 @@ input[type="radio"]:checked {
   font-size: 12.75px;
 }
 
+.cancelButton:active {
+  transform: scale(0.95);
+}
+
 .reviewSubmissionConfirmationContainer {
   background-color: rgba(231, 35, 13, 0.25);
   width: 1145px;
@@ -455,9 +469,19 @@ input[type="radio"]:checked {
   outline: none;
   color: white;
   font-weight: bold;
+  border-radius: 5px;
   font-size: 12.5px;
   border: none;
   background-color: rgb(231, 35, 13);
+  transition: 0.15s ease-in-out;
+}
+
+.yesButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.yesButton:active {
+  transform: scale(0.95);
 }
 
 .removeLink {

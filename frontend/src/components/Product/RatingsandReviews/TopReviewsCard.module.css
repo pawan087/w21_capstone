@@ -51,7 +51,7 @@
   width: 435px;
   height: 250px;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  /* transition: 0.15s ease-in-out; */
+  transition: 0.15s ease-in-out;
 }
 
 .tester {
@@ -149,18 +149,35 @@
   width: 95px;
   height: 35px;
   font-size: 12.5px;
+  /* border-radius: ; */
   font-weight: bold;
   outline: none;
   border: none;
   background-color: rgba(241, 241, 241);
   color: rgba(0, 0, 0, 0.68);
   position: relative;
+  transition: 0.15s ease-in-out;
+}
+
+.likeButton:hover,
+.dislikeButton:hover {
+  background-color: rgba(231, 231, 231);
+}
+
+.likeButton:active,
+.dislikeButton:active {
+  transform: scale(0.975);
 }
 
 .showAllButton {
   font-size: 17.5px;
   text-decoration: underline;
   color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.showAllButton:hover {
+  color: rgba(0, 0, 0, 1)
 }
 
 .thumbsUpIcon,

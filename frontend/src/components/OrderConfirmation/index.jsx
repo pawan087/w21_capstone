@@ -25,9 +25,9 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [creditCardNumber, setCreditCardNumber] = useState();
+  const [creditCardNumber, setCreditCardNumber] = useState('');
   const [expirationDate, setExpirationDate] = useState("");
-  const [focus, setFocus] = useState();
+  const [focus, setFocus] = useState('');
   const [payed, setPayed] = useState(false);
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
@@ -135,17 +135,17 @@ export default function OrderConfirmation() {
     });
   });
 
-  const handleSubmit = async () => {
-    await dispatch(
-      createOrderItemsAndOrder({
-        user,
-        cartItems: shoppingCartItems,
-        lastOrderId: orderItems[orderItems?.length - 1].id,
-      })
-    );
+  // const handleSubmit = async () => {
+  //   await dispatch(
+  //     createOrderItemsAndOrder({
+  //       user,
+  //       cartItems: shoppingCartItems,
+  //       lastOrderId: orderItems[orderItems?.length - 1].id,
+  //     })
+  //   );
 
-    history.push("/orders");
-  };
+  //   history.push("/orders");
+  // };
 
   const handleSubmit2 = async () => {
     setLoader(true);
@@ -471,8 +471,8 @@ export default function OrderConfirmation() {
 
           <div className={styles.left4thContainer}>
             <div className={styles.arrivesContainer}>
-              <input checked className={styles.fakeRadio} type="radio" /> 
-              <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
+               <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
             </div>
 
             <div className={styles.freeLabel}>FREE</div>
@@ -486,8 +486,12 @@ export default function OrderConfirmation() {
             <>
               <div className={styles.left6thContainer}>
                 <div className={styles.creditCardTitle}>
-                  <input checked className={styles.fakeRadio} type="radio" /> 
-                  <div className={styles.ccTitle}>Credit Cart</div>
+                  <input
+                    defaultChecked
+                    className={styles.fakeRadio}
+                    type="radio"
+                  />
+                   <div className={styles.ccTitle}>Credit Cart</div>
                 </div>
               </div>
 
@@ -501,7 +505,7 @@ export default function OrderConfirmation() {
                 <div className={styles.left8thLeftContainer}>
                   <div className={styles.leftInputContainer}>
                     <input
-                      maxlength="16"
+                      maxLength="16"
                       onChange={(e) => ccNum(e)}
                       onFocus={(e) => handleInputFocus(e)}
                       placeholder={"Card number"}
@@ -519,7 +523,7 @@ export default function OrderConfirmation() {
 
                   <div className={styles.rightInputContainer}>
                     <input
-                      maxlength="5"
+                      maxLength="5"
                       placeholder={"MM/YY"}
                       type="tel"
                       value={expirationDate}
@@ -543,6 +547,7 @@ export default function OrderConfirmation() {
                         name={`${user.firstName} ${user.lastName}`}
                         expiry={expirationDate}
                         focused={focus}
+                        cvc={"123"}
                       />
                     </div>
                   )}
@@ -595,6 +600,7 @@ export default function OrderConfirmation() {
                       name={`${user.firstName} ${user.lastName}`}
                       expiry={expirationDate}
                       focused={focus}
+                      cvc={"123"}
                     />
                   </div>
                 )}
@@ -746,7 +752,6 @@ export default function OrderConfirmation() {
         <div className={styles.loader}>
           <ReactLoading
             type={"bubbles"}
-            color={"rgba(0,0,0,.75)"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}

@@ -29,7 +29,12 @@ export default function Cart() {
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
 
+  // const byPassReactConsoleError = () => {
+  //   return productId;
+  // }
+
   const showRemoveConfirmationModal = (name, id, id2) => {
+    // byPassReactConsoleError();
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
@@ -181,9 +186,9 @@ export default function Cart() {
               </div>
             </div>
 
-            {shoppingCartItems?.map((cartItem) => {
+            {shoppingCartItems?.map((cartItem, i) => {
               return (
-                <div className={styles.leftBottomContainer}>
+                <div key={i} className={styles.leftBottomContainer}>
                   <div className={styles.leftBottom1stContainer}>
                     <div
                       onClick={() =>
@@ -239,7 +244,7 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className={styles.leftBottom3rdContainer}>
-                    <input checked className={styles.fakeRadio} type="radio" /> 
+                    <input defaultChecked className={styles.fakeRadio} type="radio" /> 
                     <div className={styles.fakeFreeShipping}>
                       FREE shipping{" "}
                       <span className={styles.shippingDetail}>
@@ -385,7 +390,6 @@ export default function Cart() {
         <div className={styles.loader}>
           <ReactLoading
             type={"bubbles"}
-            color={"rgba(0,0,0,.75)"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}

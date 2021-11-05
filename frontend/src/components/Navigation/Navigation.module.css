@@ -347,8 +347,19 @@
   outline: none;
   border: none;
   font-size: 13px;
+  border-radius: 5px;
   font-weight: bold;
   background-color: rgb(231, 35, 13);
+  transition: 0.15s ease-in-out;
+}
+
+.viewCartButton:hover {
+  background-color: rgba(231, 35, 13, 0.9);
+  background-color: rgb(211, 18, 9);
+}
+
+.viewCartButton:active {
+  transform: scale(0.95);
 }
 
 /* REMOVE CONFIRMATION */
@@ -433,6 +444,10 @@
   color: white;
   font-size: 12.75px;
 }
+.cancelButton:active {
+  transform: scale(0.95);
+}
+
 
 .reviewSubmissionConfirmationContainer {
   background-color: rgba(231, 35, 13, 0.25);
@@ -469,4 +484,13 @@
   font-size: 12.5px;
   border: none;
   background-color: rgb(231, 35, 13);
+  transition: 0.15s ease-in-out;
+}
+
+.yesButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.yesButton:active {
+  transform: scale(0.95);
 }

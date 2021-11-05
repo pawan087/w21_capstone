@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import {
@@ -7,12 +8,10 @@ import {
   FaAngleRight,
   FaAngleLeft,
 } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
 import OrderDetail from "./OrderDetail";
 import { setAllOrderItems } from "../../store/orderItems.js";
-
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders } from "../../store/orders.js";
 import styles from "./styles.module.css";
@@ -20,6 +19,7 @@ import "@szhsin/react-menu/dist/index.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
+
   const [sortBy, setSortBy] = useState("All Orders");
   const [orderHistory, setOrderHistory] = useState(true);
   const [orderDetail, setOrderDetail] = useState(false);
@@ -169,14 +169,11 @@ export default function AccountDashboard() {
     return;
   };
 
-  const showOrderHistory = () => {
-    setOrderDetail(false);
-    setOrderHistory(true);
-  };
-
   const clearAndShowOrderHistory = () => {
     // Clean up
     setOrderDetail(false);
+    setCurrentPage(0);
+    setAllTheOrders();
 
     // Show
     setOrderHistory(true);
@@ -416,7 +413,7 @@ export default function AccountDashboard() {
                   />
                 </div>
                 <span
-                  onClick={() => showOrderHistory()}
+                  onClick={() => clearAndShowOrderHistory()}
                   className={styles.backLinkLabel}
                 >
                   BACK TO MY ORDERS

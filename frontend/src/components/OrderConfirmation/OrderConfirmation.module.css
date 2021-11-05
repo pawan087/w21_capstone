@@ -286,6 +286,16 @@ input[type="radio"]:checked {
   outline: none;
   border: none;
   font-size: 12.5px;
+  border-radius: 5px;
+  transition: 0.15s ease-in-out;
+}
+
+.saveButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.viewCartButton:active {
+  transform: scale(0.95);
 }
 
 .saveButton2 {
@@ -424,8 +434,18 @@ input[type="radio"]:checked {
   outline: none;
   border: none;
   color: white;
+  transition: 0.15s ease-in-out;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 17.5px;
+}
+
+.placeOrderButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.placeOrderButton:active {
+  transform: scale(0.95);
 }
 
 .placeOrderButton2 {
@@ -456,6 +476,7 @@ input[type="radio"]:checked {
 
 .underline {
   text-decoration: underline;
+  cursor: not-allowed;
 }
 
 .right7thContainer {
@@ -710,11 +731,21 @@ input[type="number"] {
   font-size: 12.5px;
   width: 230px;
   height: 40px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 35px;
+  transition: 0.15s ease-in-out;
   cursor: pointer;
+}
+
+.saveEditButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.saveEditButton:active {
+  transform: scale(0.95);
 }
 
 .saveEditButton2 {
@@ -732,6 +763,7 @@ input[type="number"] {
   margin-left: 45px;
   opacity: 0.5;
   cursor: not-allowed;
+  transition: 0.15s ease-in-out;
 }
 
 .cancellation {
@@ -835,10 +867,11 @@ input[type="number"] {
   cursor: pointer;
   top: 42.5px;
   right: 415px;
+  transition: 0.15s ease-in-out;
 }
 
 .demoCard:hover {
-  color:rgba(31, 153, 106, 1)
+  color: rgba(31, 153, 106, 1);
 }
 
 .untouchable {

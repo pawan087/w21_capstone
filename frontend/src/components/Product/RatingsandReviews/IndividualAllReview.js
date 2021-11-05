@@ -585,7 +585,7 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.writeReviewOuterContainer}>
           <div className={styles.writeReviewTopContainer}>
-            <div className={styles.writeReviewTitle}>Edit review</div>
+            <div className={styles.writeReviewTitle}>Edit Review</div>
 
             <div className={styles.writeReviewSubtitle}>
               <div className={styles.productImageContainer}>
