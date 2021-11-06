@@ -400,6 +400,26 @@ export default function AccountDashboard() {
                         </span>
                       )}
                     </div>
+
+                    <div
+                      className={
+                        email.length === 0
+                          ? styles.emailInputContainerRed
+                          : styles.emailInputContainer
+                      }
+                    >
+                      <FormField
+                        type="text"
+                        standard="labeleffect"
+                        value={email}
+                        keys={"email"}
+                        className={styles.firstNameInput}
+                        effect={"effect_9"}
+                        handleOnChange={(value) => changeEmail(value)}
+                        placeholder={"Email"}
+                      />
+                      {/* Errors Go Here */}
+                    </div>
                   </div>
                   <div className={styles.editNameBottomContainer}>
                     {email.length > 0 && (

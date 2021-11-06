@@ -45,7 +45,8 @@ router.post(
   })
 );
 
-// Edit
+// Edit (Old)
+
 router.put(
   "/edit",
   asyncHandler(async (req, res, next) => {
@@ -128,7 +129,7 @@ router.put(
   })
 );
 
-// Update
+// Update (oldest)
 router.put(
   "/update",
   asyncHandler(async (req, res, next) => {
@@ -152,6 +153,67 @@ router.put(
       phone,
       address1,
       address2,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Update Name
+router.put(
+  "/name",
+  asyncHandler(async (req, res, next) => {
+    const { id, firstName, lastName } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      firstName,
+      lastName,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Update Email
+router.put(
+  "/email",
+  asyncHandler(async (req, res, next) => {
+    const { id, email } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      email,
     });
 
     await setTokenCookie(res, user);
