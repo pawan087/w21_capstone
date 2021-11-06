@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import {
@@ -21,6 +22,7 @@ import "@szhsin/react-menu/dist/index.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [sortBy, setSortBy] = useState("All Orders");
   const [orderHistory, setOrderHistory] = useState(true);
@@ -366,7 +368,12 @@ export default function AccountDashboard() {
 
                 <div className={styles.secondContainer}>ACCOUNT SETTINGS</div>
 
-                <div className={styles.thirdContainer}>Personal Data</div>
+                <div
+                  onClick={() => history.push("/account/1")}
+                  className={styles.thirdContainer}
+                >
+                  Personal Data
+                </div>
 
                 <div className={styles.fourthContainer}>Password</div>
 

@@ -1,142 +1,151 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
-import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-import {
-  FaPowerOff,
-  FaPhoneAlt,
-  FaAngleRight,
-  FaAngleLeft,
-} from "react-icons/fa";
-import ReactPaginate from "react-paginate";
+import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
 import ReactLoading from "react-loading";
+import { FormField } from "react-form-input-fields";
+import "react-form-input-fields/dist/index.css";
 
+import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
-import OrderDetail from "./OrderDetail";
-import { setAllOrderItems } from "../../store/orderItems.js";
-import { setAllProducts } from "../../store/products.js";
-import { setAllOrders } from "../../store/orders.js";
 import styles from "./styles.module.css";
 import "@szhsin/react-menu/dist/index.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
-
-  const [sortBy, setSortBy] = useState("All Orders");
-  const [orderHistory, setOrderHistory] = useState(true);
-  const [orderDetail, setOrderDetail] = useState(false);
-  const [load, setLoad] = useState(false);
-
-  const formatter = new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
-  let bool = false;
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
-  const orders = useSelector((state) => state.orders);
-  const orderItems = useSelector((state) => state.orderItems);
-  const products = useSelector((state) => state.products);
 
-  function AddMinutesToDate(date, minutes) {
-    return new Date(date.getTime() + minutes * 60000);
-  }
+  const [load, setLoad] = useState(false);
+  const [loader2, setLoader2] = useState(false);
+  const [editName, setEditName] = useState(false);
+  const [editEmail, setEditEmail] = useState(false);
+  const [email, setEmail] = useState(user.email);
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [invalidFirstName, setInvalidFirstName] = useState(false);
+  const [invalidLastName, setInvalidLastName] = useState(false);
+  const [invalidEmail, setInvalidEmail] = useState(false);
+  const [incorrectFormatEmail, setIncorrectFormatEmail] = useState(false);
 
-  let curTime = new Date();
+  const changeFirstName = (x) => {
+    setFirstName(x);
+    return;
+  };
 
-  // -0.5 is half a second
-  let pastTime = AddMinutesToDate(curTime, -0.5);
-  let pastTime2 = AddMinutesToDate(curTime, -1); // <-- Change to appropriate time deemed for 'order processing' (ie. 1 minute)
+  const changeLastName = (x) => {
+    setLastName(x);
+    return;
+  };
 
-  const usersOrders = orders?.filter((order) => {
-    return order?.userId === +user?.id;
-  });
+  const changeEmail = (x) => {
+    setEmail(x);
+    return;
+  };
 
-  let usersOrdersAndItems = [];
+  const showEditName = () => {
+    setEditEmail(false);
+    setEditName(true);
+  };
 
-  usersOrders?.forEach((order) => {
-    const orderItemsArr = [];
-    let orderTotal = 0;
+  const showEditEmail = () => {
+    setEditName(false);
+    setEditEmail(true);
+  };
 
-    orderItems?.forEach((item) => {
-      if (order.items.includes(item.id)) {
-        orderItemsArr.push(item);
-      }
-    });
+  const cancelEditName = () => {
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setInvalidFirstName(false);
+    setInvalidLastName(false);
+    setEditName(false);
+  };
 
-    let obj = {
-      ...order,
-      allItemsArr: [...orderItemsArr],
-    };
+  const cancelEditEmail = () => {
+    setEmail(user.email);
+    setInvalidEmail(false);
+    setIncorrectFormatEmail(false);
+    setEditEmail(false);
+  };
 
-    delete obj.userId;
+  const handleEmailWarning = () => {
+    if (!email) {
+      setInvalidEmail(true);
+      return;
+    }
+  };
 
-    let itemsAndProducts = [];
+  const handleWarning = () => {
+    if (!firstName) {
+      setInvalidFirstName(true);
+    }
 
-    obj?.allItemsArr?.forEach((item) => {
-      delete item.userId;
+    if (!lastName) {
+      setInvalidLastName(true);
+    }
 
-      let id1 = item.productId;
+    if (!firstName && lastName) {
+      setInvalidLastName(false);
+    }
 
-      products?.forEach((product) => {
-        let id2 = product.id;
+    if (!lastName && firstName) {
+      setInvalidFirstName(false);
+    }
+  };
 
-        if (+id1 === +id2) {
-          orderTotal += product.price * item.quantity;
-          itemsAndProducts.push({
-            product: product,
-            quantity: item.quantity,
-            price: formatter.format(product.price * item.quantity),
-          });
-        }
-      });
+  const saveNameChange = async () => {
+    setLoader2(true);
 
-      obj.itemsArr = itemsAndProducts;
+    setInvalidFirstName(false);
+    setInvalidLastName(false);
 
-      obj.items = obj.itemsArr;
-      delete obj.itemsArr;
-    });
-
-    usersOrdersAndItems.push({ ...obj, orderTotal });
-  });
-
-  const previousOrders = [];
-  const currentOrders = []; // 30 seconds ago
-  const currentOrders2 = []; // 1 minute ago
-
-  usersOrdersAndItems?.forEach((obj) => {
-    let updatedTime = new Date(obj.updatedAt);
-
-    if (updatedTime < pastTime) {
-      // previousOrders.push(obj);
-    } else {
-      currentOrders.push(obj);
+    if (firstName === user.firstName && lastName && user.lastName) {
+      // Didn't do anything
+      setLoader2(false);
+      cancelEditName();
       return;
     }
 
-    if (updatedTime < pastTime2) {
-      previousOrders.push(obj);
+    await dispatch(
+      sessionActions.updateName({ id: user.id, firstName, lastName })
+    );
+
+    await dispatch(sessionActions.restoreUser());
+
+    setInvalidFirstName(false);
+    setInvalidLastName(false);
+    setEditName(false);
+    setLoader2(false);
+  };
+
+  const saveEmailChange = () => {
+    setLoader2(true);
+
+    let regExp =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (regExp.test(email)) {
+      if (email === user.email) {
+        cancelEditEmail();
+        setLoader2(false);
+        return;
+      }
+
+      console.log("CORRECT FORMAT --> UPDATE EMAIL");
     } else {
-      currentOrders2.push(obj);
+      setInvalidEmail(false);
+      setIncorrectFormatEmail(true);
+      setLoader2(false);
+      return;
     }
-  });
+  };
 
-  const [detailArr, setDetailArr] = useState([]);
-  const [status, setStatus] = useState("");
-  const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState([]);
-  let copy = [...usersOrdersAndItems];
-  const reversed = copy?.reverse();
-
-  useEffect(() => {
-    setData(reversed);
-  }, [orders]);
   useEffect(() => {
     (async () => {
-      await dispatch(setAllProducts());
-      await dispatch(setAllOrderItems());
-      await dispatch(setAllOrders());
+      await dispatch(sessionActions.restoreUser());
+
       setLoad(true);
     })();
   }, [dispatch]);
@@ -154,178 +163,8 @@ export default function AccountDashboard() {
     );
   }
 
-  if (sortBy === "All Orders" && usersOrdersAndItems.length === 0) {
-    bool = true;
-  }
-
-  if (sortBy === "Last 30 Seconds" && currentOrders.length === 0) {
-    bool = true;
-  }
-
-  if (
-    sortBy === "Last 1 Minute" &&
-    currentOrders2.length === 0 &&
-    currentOrders.length === 0
-  ) {
-    bool = true;
-  }
-
-  const showOrderDetail = (x) => {
-    setOrderHistory(false);
-    setOrderDetail(true);
-    setDetailArr(x);
-
-    if (new Date(x.updatedAt) > pastTime) {
-      setStatus("Order Processing:");
-    }
-
-    if (new Date(x.updatedAt) < pastTime && new Date(x.updatedAt) > pastTime2) {
-      setStatus("Preparing for Shipment");
-    }
-
-    if (new Date(x.updatedAt) < pastTime && new Date(x.updatedAt) < pastTime2) {
-      setStatus("Shipped:");
-    }
-
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-    return;
-  };
-
-  const clearAndShowOrderHistory = () => {
-    // Clean up
-    setOrderDetail(false);
-    setCurrentPage(0);
-    setAllTheOrders();
-
-    // Show
-    setOrderHistory(true);
-  };
-
-  const PER_PAGE = 3;
-
-  function handlePageClick({ selected: selectedPage }) {
-    setCurrentPage(selectedPage);
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
-
-  const offset = currentPage * PER_PAGE;
-
-  const currentPageData = data
-    ?.slice(offset, offset + PER_PAGE)
-    ?.map((x, i) => {
-      return (
-        <div key={i}>
-          <div className={styles.mappableOrdersContainer}>
-            <div className={styles.right2ndContainer}>
-              <div className={styles.right2nd1stContainer}>
-                <div className={styles.orderDate}>
-                  Online | {String(new Date(x?.updatedAt)).slice(4, 15)}
-                </div>
-              </div>
-
-              <div className={styles.right2nd2ndContainer}>
-                Order # 11000000377356{x?.id} | $
-                {formatter.format(x.orderTotal + x.orderTotal * 0.0825)}
-                <div className={styles.mappableOrderItemPicturesContainer}>
-                  {x?.items?.map((y, i) => {
-                    return (
-                      <div key={i} className={styles.productImageContainer}>
-                        <img
-                          alt={"productImage"}
-                          className={styles.orderImages}
-                          src={y?.product?.images[0]}
-                        />
-                      </div>
-                    );
-                  })}
-
-                  {x?.items?.length > 5 && (
-                    <div className={styles.plusTag}>
-                      +{x?.items?.length - 5}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div className={styles.right2nd3rdContainer}>
-                <div
-                  onClick={() => showOrderDetail(x)}
-                  className={styles.orderDetailsLink}
-                >
-                  ORDER DETAILS
-                </div>
-
-                <div className={styles.rightArrowIconContainer}>
-                  <FaAngleRight
-                    style={{
-                      height: "20px",
-                      width: "20px",
-                      display: "inline",
-                      color: "rgb(238,42,40)",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.right3rdContainer}>
-              <div className={styles.orderStatusLabel}>
-                <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
-                {new Date(x.updatedAt) > pastTime && (
-                  <span className={styles.notGreen2}>Order Processing: </span>
-                )}
-
-                {new Date(x.updatedAt) < pastTime &&
-                  new Date(x.updatedAt) > pastTime2 && (
-                    <span className={styles.notGreen}>
-                      Preparing for Shipment:{" "}
-                    </span>
-                  )}
-
-                {new Date(x.updatedAt) < pastTime &&
-                  new Date(x.updatedAt) < pastTime2 && (
-                    <span className={styles.notGreen}>Shipped: </span>
-                  )}
-                {String(new Date(x?.updatedAt)).slice(4, 15)}
-                <div className={styles.fakeTrackingNumber}>
-                  54599350{Math.floor(Math.random() * 10)}
-                  {Math.floor(Math.random() * 10)}
-                  {Math.floor(Math.random() * 10)}
-                </div>
-              </div>
-
-              <div className={styles.orderStatusLabel2}>
-                Preparing for shipment
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    });
-
-  const pageCount = Math.ceil(data?.length / PER_PAGE);
-
-  const setAllTheOrders = () => {
-    setData([...reversed]);
-    setSortBy("All Orders");
-  };
-
-  const setLast30 = () => {
-    setData([...currentOrders]);
-    setSortBy("Last 30 Seconds");
-  };
-
-  const setLast60 = () => {
-    setData([...currentOrders, ...currentOrders2]);
-    setSortBy("Last 1 Minute");
+  const showOrderHistory = () => {
+    history.push("/orders");
   };
 
   return (
@@ -375,7 +214,7 @@ export default function AccountDashboard() {
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
                 <div
-                  onClick={() => clearAndShowOrderHistory()}
+                  onClick={() => showOrderHistory()}
                   className={styles.sixthContainer}
                 >
                   Order History
@@ -413,64 +252,209 @@ export default function AccountDashboard() {
             </div>
           }
 
-          {orderDetail && (
-            <OrderDetail user={user} status={status} order={detailArr} />
-          )}
-
-          {orderDetail && (
-            <div className={styles.goBack}>
-              <div className={styles.leftTop1stContainer2}>
-                <div
-                  onClick={() => clearAndShowOrderHistory()}
-                  className={styles.leftChevronIconContainer}
-                >
-                  <FaAngleLeft
-                    style={{
-                      height: "20px",
-                      width: "20px",
-                      display: "inline",
-                      color: "rgb(238,42,40)",
-                    }}
-                  />
-                </div>
-                <span
-                  onClick={() => clearAndShowOrderHistory()}
-                  className={styles.backLinkLabel}
-                >
-                  BACK TO MY ORDERS
-                </span>
-              </div>
-            </div>
-          )}
-
           {
             /* RIGHT - ACCOUNT SETTINGS SECTION */
             <div className={styles.personalDataContainer}>
               <div className={styles.pd1stContainer}>Personal Data</div>
-              <div className={styles.pd2ndContainer}>
-                <div className={styles.pd2nd1stContainer}>
-                  <div className={styles.pd2nd1st1stContainer}>NAME</div>
-                  <div className={styles.pd2nd1st2ndContainer}>
-                    Pawanpreet Chahal
+
+              {!editName && (
+                <div className={styles.pd2ndContainer}>
+                  <div className={styles.pd2nd1stContainer}>
+                    <div className={styles.pd2nd1st1stContainer}>NAME</div>
+                    <div className={styles.pd2nd1st2ndContainer}>
+                      {user?.firstName} {user?.lastName}
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => showEditName(true)}
+                    className={styles.pd2nd2ndContainer}
+                  >
+                    Edit
                   </div>
                 </div>
-                <div className={styles.pd2nd2ndContainer}>Edit</div>
-              </div>
-              <div className={styles.pd3rdContainer}>
-                <div className={styles.pd2nd1stContainer}>
-                  <div className={styles.pd2nd1st1stContainer}>EMAIL</div>
-                  <div className={styles.pd2nd1st2ndContainer}>
-                    chahal.pawanpreet@gmail.com
+              )}
+
+              {editName && (
+                <div className={styles.pd2ndContainer2}>
+                  <div className={styles.editNameTopContainer}>
+                    <div
+                      className={
+                        firstName.length === 0
+                          ? styles.nameInputContainerRed
+                          : styles.nameInputContainer
+                      }
+                    >
+                      <FormField
+                        type="text"
+                        standard="labeleffect"
+                        value={firstName}
+                        keys={"firstName"}
+                        className={styles.firstNameInput}
+                        effect={"effect_9"}
+                        handleOnChange={(value) => changeFirstName(value)}
+                        placeholder={"First Name"}
+                      />
+                      {invalidFirstName && (
+                        <span className={styles.requiredLabel}>
+                          Please fill out this field.
+                        </span>
+                      )}
+                    </div>
+
+                    <div
+                      className={
+                        lastName.length === 0
+                          ? styles.nameInputContainerRed
+                          : styles.nameInputContainer
+                      }
+                    >
+                      <FormField
+                        type="text"
+                        standard="labeleffect"
+                        value={lastName}
+                        keys={"lastName"}
+                        effect={"effect_9"}
+                        handleOnChange={(value) => changeLastName(value)}
+                        placeholder={"Last Name"}
+                      />
+                      {invalidLastName && (
+                        <span className={styles.requiredLabel}>
+                          Please fill out this field.
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className={styles.editNameBottomContainer}>
+                    {firstName.length > 0 && lastName.length > 0 && (
+                      <div
+                        onClick={() => saveNameChange()}
+                        className={styles.button1}
+                      >
+                        SAVE
+                      </div>
+                    )}
+                    {(firstName.length === 0 || lastName.length === 0) && (
+                      <div
+                        onClick={() => handleWarning()}
+                        className={styles.button3}
+                      >
+                        SAVE
+                      </div>
+                    )}
+                    <div
+                      onClick={() => cancelEditName()}
+                      className={styles.button2}
+                    >
+                      CANCEL
+                    </div>
                   </div>
                 </div>
-                <div className={styles.pd2nd2ndContainer}>Edit</div>
-              </div>
+              )}
+
+              {!editEmail && (
+                <div className={styles.pd3rdContainer}>
+                  <div className={styles.pd2nd1stContainer}>
+                    <div className={styles.pd2nd1st1stContainer}>EMAIL</div>
+                    <div className={styles.pd2nd1st2ndContainer}>
+                      {user?.email}
+                    </div>
+                  </div>
+                  <div
+                    onClick={() => showEditEmail()}
+                    className={styles.pd2nd2ndContainer}
+                  >
+                    Edit
+                  </div>
+                </div>
+              )}
+
+              {editEmail && (
+                <div className={styles.pd2ndContainer2}>
+                  <div className={styles.editNameTopContainer}>
+                    <div
+                      className={
+                        email.length === 0
+                          ? styles.emailInputContainerRed
+                          : styles.emailInputContainer
+                      }
+                    >
+                      <FormField
+                        type="text"
+                        standard="labeleffect"
+                        value={email}
+                        keys={"email"}
+                        className={styles.firstNameInput}
+                        effect={"effect_9"}
+                        handleOnChange={(value) => changeEmail(value)}
+                        placeholder={"Email"}
+                      />
+                      {incorrectFormatEmail && (
+                        <span className={styles.requiredLabel}>
+                          Please format your email: email@domain.com
+                        </span>
+                      )}
+                      {invalidEmail && (
+                        <span className={styles.requiredLabel}>
+                          Please fill out this field.
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className={styles.editNameBottomContainer}>
+                    {email.length > 0 && (
+                      <div
+                        onClick={() => saveEmailChange()}
+                        className={styles.button1}
+                      >
+                        SAVE
+                      </div>
+                    )}
+                    {email.length === 0 && (
+                      <div
+                        onClick={() => handleEmailWarning()}
+                        className={styles.button3}
+                      >
+                        SAVE
+                      </div>
+                    )}
+                    <div
+                      onClick={() => cancelEditEmail()}
+                      className={styles.button2}
+                    >
+                      CANCEL
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             /* End Right Order History */
           }
         </div>
       </div>
+
+      {loader2 && (
+        <div className={styles.loader}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
+
       <Footer />
     </motion.div>
   );
 }
+
+<FormField
+  type="text"
+  standard="labeleffect"
+  value={"firstName"}
+  keys={"firstName"}
+  effect={"effect_9"}
+  handleOnChange={(value) => console.log(value)}
+  placeholder={"First Name"}
+/>;

@@ -67,6 +67,8 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+// Old
+
 export const profileEdit = (obj) => async (dispatch) => {
   const {
     id,
@@ -103,15 +105,10 @@ export const profileEdit = (obj) => async (dispatch) => {
   return data;
 };
 
+// New
+
 export const updateProfile = (obj) => async (dispatch) => {
-  const {
-    id,
-    firstName,
-    lastName,
-    phone,
-    address1,
-    address2,
-  } = obj;
+  const { id, firstName, lastName, phone, address1, address2 } = obj;
 
   const response = await csrfFetch("/api/session/update", {
     method: "PUT",
@@ -130,6 +127,43 @@ export const updateProfile = (obj) => async (dispatch) => {
 
   return data;
 };
+
+export const updateName = (obj) => async (dispatch) => {
+  const { id, firstName, lastName } = obj;
+
+  const response = await csrfFetch("/api/session/name", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      firstName,
+      lastName,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+export const updateEmail = (obj) => async (dispatch) => {
+  const { id, email } = obj;
+
+  const response = await csrfFetch("/api/session/email", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      email,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// End New
 
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch("/api/session", {

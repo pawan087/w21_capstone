@@ -840,6 +840,13 @@
   transform: translate(-50%, -50%);
 }
 
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Account Settings Section */
 
 .personalDataContainer {
@@ -857,15 +864,24 @@
 }
 
 .pd1stContainer {
-  font-size: 27.5px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .pd2ndContainer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  width: 745px;
+  margin-bottom: 20px;
+}
+
+.pd2ndContainer2 {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   width: 745px;
   margin-bottom: 20px;
@@ -879,7 +895,7 @@
 
 .pd2nd1st2ndContainer {
   font-size: 15px;
-  color: rgb(0, 0, 0, 0.75);
+  color: rgb(0, 0, 0, 0.85);
   margin-bottom: 20px;
 }
 
@@ -901,4 +917,127 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   width: 745px;
   margin-bottom: 20px;
+}
+
+.editNameTopContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nameInputContainer {
+  width: 365px;
+  height: 55px;
+}
+
+.emailInputContainer {
+  width: 745px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  margin-bottom: 20px;
+  height: 55px;
+}
+
+.nameInputContainerRed {
+  width: 365px;
+  height: 55px;
+  border: 1px solid rgba(224, 59, 47, 1);
+  margin-bottom: 20px;
+}
+
+.emailInputContainerRed {
+  width: 745px;
+  margin-bottom: 20px;
+  height: 55px;
+  border: 1px solid rgba(224, 59, 47, 1);
+  margin-bottom: 20px;
+}
+
+.nameInputContainer2 {
+  width: 365px;
+  height: 55px;
+}
+
+.nameInputContainer {
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  margin-bottom: 20px;
+}
+
+.nameInputContainer2 {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.editNameBottomContainer {
+  display: flex;
+  margin-top: 2.5px;
+  margin-bottom: 20px;
+}
+
+.button1,
+.button2 {
+  width: 105px;
+  height: 40px;
+}
+
+.button1 {
+  background-color: rgba(224, 59, 47, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  margin-right: 12.5px;
+}
+
+.button3 {
+  width: 105px;
+  height: 40px;
+  background-color: rgba(224, 59, 47, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 12.5px;
+  cursor: not-allowed;
+  margin-right: 12.5px;
+}
+
+.button1:hover {
+  background-color: rgba(224, 59, 47, 1);
+}
+
+.button1:active {
+  transform: scale(0.95);
+}
+
+.button2 {
+  border: 1px solid rgba(0, 0, 0, 0.68);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.68);
+  font-weight: bold;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.button2:hover {
+  background-color: rgba(0, 0, 0, 0.03125);
+}
+
+.button2:active {
+  transform: scale(0.95);
+}
+
+.requiredLabel {
+  color: rgba(224, 59, 47, 1);
+  font-size: 12.5px;
+  position: absolute;
+  transform: translateY(-20px);
 }
