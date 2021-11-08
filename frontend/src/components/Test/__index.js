@@ -1,86 +1,66 @@
-import React, { useRef } from "react";
-import styles from "./Test.module.css";
-import {
-  motion,
-  Frame,
-  useTransform,
-  useMotionValue,
-} from "framer-motion/dist/framer-motion";
+import styles from "./test.module.css";
+import SideNav, {
+  Toggle,
+  Nav,
+  NavItem,
+  NavIcon,
+  NavText,
+} from "@trendmicro/react-sidenav";
+// Be sure to include styles at some point, probably during your bootstraping
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import { useState } from "react";
 
 export default function Test() {
-  const constraintsRef = useRef(null);
-
-  // const x = useMotionValue(0);
-  // const rotateY = useTransform(x, [-200, 0, 200], [-45, 0, 45], {
-  //   clamp: false,
-  // });
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-100, 100], [60, -60]);
-  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
+  const [visible, setVisible] = useState(false);
 
   return (
-    <motion.div
-      dragTransition={{ bounceStiffness: 400, bounceDamping: 10 }}
-      style={{
-        width: 150,
-        height: 150,
-        borderRadius: 30,
-        backgroundColor: "#fff",
-        x: x,
-        y: y,
-        rotateX: rotateX,
-        rotateY: rotateY,
-        cursor: "grab",
-      }}
-      drag
-      dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      dragElastic={0.6}
-      whileTap={{ cursor: "grabbing" }}
-    >
-      <img
-        alt="Toddler Korra bending water, earth, and fire"
-        src="https://media1.tenor.com/images/e3ee9db7e7c1a339e2006670c51b5b78/tenor.gif?itemid=9141214"
-        style={{
-          pointerEvents: "none",
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      />
-    </motion.div>
+    <div>
+      <div onClick={() => setVisible(!visible)} className={styles.helloDiv}>
+        Hello
+      </div>
+      {visible && (
+        <div
+          onClick={() => setVisible(!visible)}
+          className={styles.backGround}
+        />
+      )}
+      {visible && (
+        <SideNav
+          className={styles.sideNav}
+          expanded={true}
+          onSelect={(selected) => {
+            // Add your code here
+          }}
+        >
+          <SideNav.Toggle onClick={() => setVisible(!visible)} />
+          <SideNav.Nav defaultSelected="home">
+            <NavItem eventKey="home">
+              <NavIcon>
+                <i
+                  className="fa fa-fw fa-home"
+                  style={{ fontSize: "1.75em" }}
+                />
+              </NavIcon>
+              <NavText>Home</NavText>
+            </NavItem>
+            <NavItem eventKey="charts">
+              <NavIcon>
+                <i
+                  className="fa fa-fw fa-line-chart"
+                  style={{ fontSize: "1.75em" }}
+                />
+              </NavIcon>
+              <NavText>Charts</NavText>
+              <NavItem eventKey="charts/linechart">
+                <NavText>Line Chart</NavText>
+              </NavItem>
+              <NavItem eventKey="charts/barchart">
+                <NavText>Bar Chart</NavText>
+              </NavItem>
+            </NavItem>
+          </SideNav.Nav>
+        </SideNav>
+      )}
+    </div>
   );
 }
-
-// <motion.div className={styles.container} ref={constraintsRef}>
-// <div className={styles.body}>
-//   <motion.div
-//     className={styles.item}
-//     drag
-//     dragConstraints={constraintsRef}
-//   />
-// </div>
-// </motion.div>
-
-// <motion.div
-// drag
-// style={{
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//     width: '341.5px', /* maintain aspect ratio of dimensions of this original img source */
-//     height: '255px'
-// }}
-// >
-// <img
-// alt="Toddler Korra bending water, earth, and fire"
-// src="https://media1.tenor.com/images/e3ee9db7e7c1a339e2006670c51b5b78/tenor.gif?itemid=9141214"
-// style={{
-//     pointerEvents: 'none',
-//     width: '100%',
-//     height: '100%',
-//     objectFit: 'fill'
-// }}
-// />
-// </motion.div>

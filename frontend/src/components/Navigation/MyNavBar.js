@@ -8,6 +8,7 @@ import {
 } from "framer-motion/dist/framer-motion";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
+import { FaStoreAlt } from "react-icons/fa";
 
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 // import { SubMenu } from "@szhsin/react-menu";
@@ -25,6 +26,45 @@ export default function MyNavBar() {
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [load, setLoad] = useState(false);
+
+  const sendToOrders = () => {
+    closeNav2();
+    history.push("/orders");
+  };
+
+  const sendToAccount = () => {
+    closeNav2();
+    history.push("/account/1");
+  };
+
+  const variants = {
+    closed: { width: "0px" },
+    open: { width: "400px" },
+  };
+
+  const variants1 = {
+    closed: { width: 0 },
+    open: { width: 375 },
+  };
+
+  function openNav() {
+    setVisible(true);
+  }
+
+  function closeNav() {
+    setVisible(false);
+  }
+
+  function openNav2() {
+    setVisible2(true);
+  }
+
+  function closeNav2() {
+    setVisible2(false);
+  }
 
   const showRemoveConfirmationModal = (name, id, id2) => {
     setProductName(name);
@@ -92,8 +132,25 @@ export default function MyNavBar() {
   };
 
   useEffect(() => {
-    dispatch(setAllCartItems());
+    (async () => {
+      await dispatch(setAllCartItems());
+
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   const handleCartClick = () => {
     window.scrollTo({
@@ -108,7 +165,7 @@ export default function MyNavBar() {
     <div className={styles.myNavbar}>
       <div className={styles.outerContainer}>
         <div className={styles.leftSection}>
-          <div className={styles.leftMenuButtonContainer}>
+          <div onClick={openNav} className={styles.leftMenuButtonContainer}>
             <div className={styles.leftMenuButton}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +224,7 @@ export default function MyNavBar() {
         </div>
 
         <div className={styles.rightSection}>
-          <div className={styles.rightMenuButtonContainer}>
+          <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
             <div className={styles.userInitials}>
               {user?.firstName &&
                 user?.lastName &&
@@ -265,7 +322,7 @@ export default function MyNavBar() {
 
               <MenuItem className={styles.lowerSubMenuContainer}>
                 <div className={styles.lowerSubMenuContainerTopContainer}>
-                  <div classNam={styles.itemCountLabel}>{sum} items</div>
+                  <div className={styles.itemCountLabel}>{sum} items</div>
 
                   <div className={styles.cartTotal}>
                     Subtotal: ${formatter.format(cartSubtotal)}
@@ -273,7 +330,7 @@ export default function MyNavBar() {
                 </div>
 
                 <div className={styles.lowerSubMenuContainerBottomContainer}>
-                  <div classNam={styles.viewCartButtonContainer}>
+                  <div className={styles.viewCartButtonContainer}>
                     <button
                       onClick={handleCartClick}
                       className={styles.viewCartButton}
@@ -371,13 +428,143 @@ export default function MyNavBar() {
         <div className={styles.loader}>
           <ReactLoading
             type={"bubbles"}
-            color={"rgba(0,0,0,.75)"}
+            color={"rgb(231,35,13)"}
             /*       color={"rgb(231,35,13)"} */
             height={"0px"}
             width={"120px"}
           />
         </div>
       )}
+
+      {
+        /* SIDE BARS */
+
+        <>
+          {visible && <div onClick={closeNav} className={styles.background} />}
+
+          {
+            /* SIDE BAR LEFT */
+
+            <motion.div
+              initial={{ width: "0px" }}
+              animate={visible ? "open" : "closed"}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 50,
+              }}
+              variants={variants1}
+              className={styles.sidebar}
+            >
+              <div className={styles.closebtn}>
+                <span className={styles.sidebarAccountLabel2}>Shop</span>{" "}
+                <span onClick={closeNav} className={styles.closeSideBarButton}>
+                  &times;
+                </span>
+              </div>
+
+              <div className={styles.sidebarSecondContainer2}>
+                <div className={styles.shopLabel}>Shop By Category</div>
+              </div>
+
+              <div className={styles.sidebarMenuItemsContainer3}>
+                <div className={styles.sidebarMenuItem3}>Video Games</div>
+
+                <div className={styles.sidebarMenuItem3}>
+                  Consoles & Hardware
+                </div>
+
+                <div className={styles.sidebarMenuItem3}>
+                  Gaming Accessories
+                </div>
+
+                <div className={styles.sidebarMenuItem3}>Electronics</div>
+
+                <div className={styles.sidebarMenuItem3}>Toys & Games</div>
+
+                <div className={styles.sidebarMenuItem3}>Clothing</div>
+              </div>
+
+              <div className={styles.fakeSidebarFooter}>
+                <div className={styles.fakeSidebarFooterLeft}>
+                  <div className={styles.gameStopLocaiton}>
+                    Plaza San Jose - GameStop
+                  </div>
+                  <div className={styles.gameStopStoreHours}>
+                    Open until 9:00 PM
+                  </div>
+                </div>
+
+                <div className={styles.fakeSidebarFooterRight}>
+                  {" "}
+                  <FaStoreAlt
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "black",
+                    }}
+                  />
+                </div>
+              </div>
+            </motion.div>
+          }
+
+          {visible2 && (
+            <div onClick={closeNav2} className={styles.background} />
+          )}
+
+          {
+            /* SIDE BAR RIGHT */
+            <motion.div
+              initial={{ width: 0 }}
+              animate={visible2 ? "open" : "closed"}
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 50,
+              }}
+              variants={variants}
+              id="mySidebar2"
+              className={styles.sidebar2}
+            >
+              <div className={styles.closebtn2}>
+                <span className={styles.sidebar2AccountLabel}>Account</span>{" "}
+                <span
+                  onClick={closeNav2}
+                  className={styles.closeSideBar2Button}
+                >
+                  &times;
+                </span>
+              </div>
+
+              <div className={styles.sidebar2SecondContainer}>
+                <div className={styles.sidebar2User}>Hi, Pawanpreet!</div>
+                <div className={styles.sidebar2PowerUp}>PowerUP Player</div>
+              </div>
+
+              <div className={styles.sidebar2MenuItemsContainer}>
+                <div
+                  onClick={sendToAccount}
+                  className={styles.sidebar2MenuItem}
+                >
+                  Account Overview
+                </div>
+
+                <div onClick={sendToOrders} className={styles.sidebar2MenuItem}>
+                  Orders
+                </div>
+              </div>
+
+              <div className={styles.sidebar2MenuItemsContainer2}>
+                <div className={styles.sidebar2MenuItem2}>Sign Out</div>
+              </div>
+            </motion.div>
+          }
+        </>
+
+        /* END SIDE BARS */
+      }
     </div>
   );
 }

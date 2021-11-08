@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         id,
         username,
         email,
-        hashedPassword,
+        // hashedPassword,
         firstName,
         lastName,
         phone,
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       } = this; // context will be the User instance
 
       return {
-        hashedPassword,
+        // hashedPassword,
         id,
         username,
         email,
@@ -39,6 +39,12 @@ module.exports = (sequelize, DataTypes) => {
 
     static async getCurrentUserById(id) {
       return await User.scope("currentUser").findByPk(id);
+    }
+
+    static async checkPassword({ id, currentPassword }) {
+      const user = await User.scope("loginUser").findByPk(id);
+
+      return user.validatePassword(currentPassword);
     }
 
     static async login({ credential, password }) {
@@ -179,12 +185,12 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
       defaultScope: {
         attributes: {
-          exclude: ["email", "createdAt", "updatedAt"], // should exclude hashed password ?
+          exclude: ["email", "createdAt", "updatedAt", "hashedPassword"], // should exclude hashed password ?
         },
       },
       scopes: {
         currentUser: {
-          attributes: { exclude: ["updatedAt"] }, // should exclude hashed password ?
+          attributes: { exclude: ["updatedAt", "hashedPassword"] }, // should exclude hashed password ?
         },
         loginUser: {
           attributes: {},

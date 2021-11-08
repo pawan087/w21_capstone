@@ -143,6 +143,17 @@
   background-color: rgba(241, 241, 241);
   color: rgba(0, 0, 0, 0.68);
   position: relative;
+  transition: 0.15s ease-in-out;
+}
+
+.likeButton:hover,
+.dislikeButton:hover {
+  background-color: rgba(231, 231, 231);
+}
+
+.likeButton:active,
+.dislikeButton:active {
+  transform: scale(0.975);
 }
 
 .showAllButton {
@@ -330,6 +341,15 @@
   font-size: 12.5px;
   border: none;
   background-color: rgb(231, 35, 13);
+  transition: 0.15s ease-in-out;
+}
+
+.yesButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.yesButton:active {
+  transform: scale(0.95);
 }
 
 .cancelButtonContainer {
@@ -354,6 +374,10 @@
   background-color: #da362c;
   color: white;
   font-size: 12.75px;
+}
+
+.cancelButton:active {
+  transform: scale(0.95);
 }
 
 .reviewSubmissionConfirmationContainer {
@@ -519,6 +543,16 @@
   font-size: 12.5px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.75);
+  transition: 0.15s ease-in-out;
+}
+
+.addPhotoButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.addPhotoButton:active {
+  transform: scale(0.95);
 }
 
 .writeReviewBottomContainer {
@@ -537,6 +571,16 @@
   color: white;
   font-weight: bold;
   font-size: 12.5px;
+  transition: 0.15s ease-in-out;
+  /* border-radius: 5px; */
+}
+
+.writeReviewButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.writeReviewButton:active {
+  transform: scale(0.95);
 }
 
 .addPhotoOuterContainer {
@@ -645,19 +689,31 @@
 
 .removePhoto,
 .removePhoto2 {
+  /* border-radius: 5px; */
   margin-left: 20px;
   height: 30px;
+  cursor: pointer;
   width: 105px;
   background-color: rgb(217, 217, 217);
   font-size: 12.5px;
   font-weight: bold;
   display: flex;
+  transition: 0.15s ease-in-out;
   justify-content: center;
   align-items: center;
 }
 
+.removePhoto:hover {
+  background-color: rgba(0, 0, 0, 0.175);
+}
+
 .removePhoto2 {
   background-color: transparent;
+}
+
+.removePhoto:active,
+.removePhoto2:active {
+  transform: scale(0.95);
 }
 
 .addPhotoButtonContainer {
@@ -675,7 +731,16 @@
   border: none;
   font-size: 11px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   margin-left: 20px;
+}
+
+.addPhotoButton2:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.addPhotoButton2:active {
+  transform: scale(0.95);
 }
 
 .selectFileContainer {
@@ -701,7 +766,13 @@
   height: 20px;
   top: 0;
   left: 129px;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
   color: rgba(238, 42, 40, 0.8);
+}
+
+.removeImageIconContainer:active {
+  transform: scale(1.05);
 }
 
 .required {

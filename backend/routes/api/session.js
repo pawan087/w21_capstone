@@ -45,7 +45,8 @@ router.post(
   })
 );
 
-// Edit
+// Edit (Old)
+
 router.put(
   "/edit",
   asyncHandler(async (req, res, next) => {
@@ -132,7 +133,72 @@ router.put(
 router.put(
   "/update",
   asyncHandler(async (req, res, next) => {
-    const { id, firstName, lastName, phone, address1, address2 } = req.body;
+    const { id, phone, address1, address2 } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      phone,
+      address1,
+      address2,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+router.put(
+  "/updateprofile",
+  asyncHandler(async (req, res, next) => {
+    const { id, phone, address1, address2, firstName, lastName } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      phone,
+      address1,
+      address2,
+      lastName,
+      firstName,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Update Name
+router.put(
+  "/name",
+  asyncHandler(async (req, res, next) => {
+    const { id, firstName, lastName } = req.body;
 
     const user = await User.findByPk(id);
 
@@ -149,9 +215,74 @@ router.put(
     await user.update({
       firstName,
       lastName,
-      phone,
-      address1,
-      address2,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Update Email
+router.put(
+  "/email",
+  asyncHandler(async (req, res, next) => {
+    const { id, email, currentPassword } = req.body;
+
+    const user = await User.findByPk(id);
+    const validPassword = await User.checkPassword({ id, currentPassword });
+
+    if (!validPassword) {
+      const err = new Error("Incorrect Password");
+
+      err.status = 401;
+      err.title = "Incorrect Password";
+      err.errors = ["The provided password was invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      email,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
+// Update Password
+router.put(
+  "/password",
+  asyncHandler(async (req, res, next) => {
+    const { id, oldPassword, newPassword } = req.body;
+
+    const user = await User.findByPk(id);
+    const validPassword = await User.checkPassword({
+      id,
+      currentPassword: oldPassword,
+    });
+
+    if (!validPassword) {
+      const err = new Error("Incorrect Password");
+
+      err.status = 401;
+      err.title = "Incorrect Password";
+      err.errors = ["The provided password was invalid."];
+
+      return next(err);
+    }
+
+    let hashedPassword;
+    hashedPassword = bcrypt.hashSync(newPassword);
+
+    await user.update({
+      hashedPassword,
     });
 
     await setTokenCookie(res, user);

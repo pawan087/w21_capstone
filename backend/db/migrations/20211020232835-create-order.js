@@ -33,6 +33,14 @@ module.exports = {
         type: Sequelize.STRING(100),
         allowNull: true,
       },
+      firstName: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
+      lastName: {
+        type: Sequelize.STRING(100),
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
 import { Button } from "./Styles";
+import styles from './scrollup.module.css'
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
     const scrolled = document.documentElement.scrollTop;
-
+    // 85
     if (scrolled > 85) {
       setVisible(true);
     } else if (scrolled <= 85) {
@@ -27,7 +28,7 @@ const ScrollButton = () => {
   window.addEventListener("scroll", toggleVisible);
 
   return (
-    <Button>
+    <Button className='scrollToTop'>
       <FaAngleUp
         onClick={scrollToTop}
         style={{ display: visible ? "inline" : "none" }}

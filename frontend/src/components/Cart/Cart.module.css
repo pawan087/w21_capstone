@@ -28,6 +28,7 @@
   margin: 0 auto;
   /* margin-top: 35px; */
   padding-top: 35px;
+  min-height: 817.5px;
   /* padding-bottom: 5px; */
 }
 
@@ -44,6 +45,8 @@
   /* margin-bottom: 25px; */
   display: flex;
   justify-content: left;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   align-items: center;
 }
 
@@ -52,6 +55,8 @@
   width: 1025px;
   background-color: white;
   height: 260px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   /* margin-bottom: 25px; */
   display: flex;
   margin-bottom: 25px;
@@ -123,6 +128,7 @@
   flex-direction: column;
   align-items: center;
   position: sticky;
+  border-radius: 5px;
   top: 115px;
   z-index: 10;
 }
@@ -172,9 +178,19 @@
   background-color: rgb(231, 35, 13);
   color: white;
   outline: none;
+  border-radius: 5px;
   font-size: 12.5px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
   border: none;
+}
+
+.button:hover {
+  background-color: rgb(211, 35, 13);
+}
+
+.button:active {
+  transform: scale(0.95);
 }
 
 .homeIconContainer {
@@ -278,9 +294,9 @@ input[type="radio"]:checked {
 }
 
 .fakeShippingCost {
-  color: rgb(231, 35, 13);
   font-size: 15px;
   font-weight: bold;
+  color: rgb(14, 134, 88);
 }
 
 .right3rdContainer {
@@ -291,8 +307,7 @@ input[type="radio"]:checked {
 
 .backContainer {
   width: 100%;
-  min-height: 925px;
-  min-height: 817.5px;
+  height: auto;
   background-color: rgb(242, 244, 247);
   /* background-color: red; */
 }
@@ -338,6 +353,7 @@ input[type="radio"]:checked {
   font-weight: 900;
   margin: 0 auto;
   text-align: center;
+  height: 817.5px;
 }
 
 /* REMOVE CONFIRMATION */
@@ -423,6 +439,10 @@ input[type="radio"]:checked {
   font-size: 12.75px;
 }
 
+.cancelButton:active {
+  transform: scale(0.95);
+}
+
 .reviewSubmissionConfirmationContainer {
   background-color: rgba(231, 35, 13, 0.25);
   width: 1145px;
@@ -455,9 +475,19 @@ input[type="radio"]:checked {
   outline: none;
   color: white;
   font-weight: bold;
+  border-radius: 5px;
   font-size: 12.5px;
   border: none;
   background-color: rgb(231, 35, 13);
+  transition: 0.15s ease-in-out;
+}
+
+.yesButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.yesButton:active {
+  transform: scale(0.95);
 }
 
 .removeLink {
@@ -468,4 +498,11 @@ input[type="radio"]:checked {
 
 .removeLink:hover {
   color: rgb(231, 35, 13);
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

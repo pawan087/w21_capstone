@@ -86,14 +86,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
   align-self: center;
+  align-items: center;
 }
 
 .imageContainer:hover {
   display: block;
+  text-align: center;
 }
 
 .descriptionContainer {
@@ -182,8 +181,18 @@
   font-size: 12.5px;
   outline: none;
   border: none;
+  border-radius: 5px;
   width: 100%;
   height: 100%;
+  transition: 0.15s ease-in-out;
+}
+
+.addToCartButton:hover {
+  background-color: rgb(211, 35, 13);
+}
+
+.addToCartButton:active {
+  transform: scale(0.95);
 }
 
 .categoryContainer {
@@ -272,9 +281,20 @@
   background-color: rgb(231, 35, 13);
   outline: none;
   border: none;
+  border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
+  transition: 0.15s ease-in-out;
 }
+
+.viewCartButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.viewCartButton:active {
+  transform: scale(0.95);
+}
+
 
 .keepShoppingCancelLink {
   height: 35px;
@@ -338,4 +358,11 @@
   color: rgba(231, 35, 13, 0.75);
   padding-top: 12.5px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

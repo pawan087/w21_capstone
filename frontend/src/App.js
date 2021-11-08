@@ -7,11 +7,14 @@ import { Modal } from "./context/Modal";
 import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
+import AccountSettings from "./components/AccountDashboard/AccountSettings";
+import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
+import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import Search from "./components/Products/Testing.js";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
@@ -78,7 +81,7 @@ function App() {
               <OrderConfirmation />
             </Route>
 
-            <Route path="/orders" exact={true}>
+            <Route path="/oldorders" exact={true}>
               <Orders />
             </Route>
 
@@ -105,18 +108,30 @@ function App() {
               <PostOrder />
             </Route>
 
-            <Route path="/dashboard" exact={true}>
+            <Route path="/orders" exact={true}>
               <AccountDashboard />
+            </Route>
+
+            <Route path="/account/1" exact={true}>
+              <AccountSettings />
+            </Route>
+
+            <Route path="/account/2" exact={true}>
+              <AccountSettings2 />
+            </Route>
+
+            <Route path="/account/3" exact={true}>
+              <AccountSettings3 />
             </Route>
           </Switch>
         </AnimatePresence>
       )}
 
       <ScrollUpButton />
-
-      <Footer />
     </>
   );
 }
 
 export default App;
+
+// <Footer />

@@ -286,6 +286,16 @@ input[type="radio"]:checked {
   outline: none;
   border: none;
   font-size: 12.5px;
+  border-radius: 5px;
+  transition: 0.15s ease-in-out;
+}
+
+.saveButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.viewCartButton:active {
+  transform: scale(0.95);
 }
 
 .saveButton2 {
@@ -424,8 +434,18 @@ input[type="radio"]:checked {
   outline: none;
   border: none;
   color: white;
+  transition: 0.15s ease-in-out;
+  border-radius: 5px;
   font-weight: bold;
   font-size: 17.5px;
+}
+
+.placeOrderButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.placeOrderButton:active {
+  transform: scale(0.95);
 }
 
 .placeOrderButton2 {
@@ -456,6 +476,7 @@ input[type="radio"]:checked {
 
 .underline {
   text-decoration: underline;
+  cursor: not-allowed;
 }
 
 .right7thContainer {
@@ -567,6 +588,7 @@ input[type="number"] {
   height: 85px;
   /* background-color: skyblue; */
   display: flex;
+  margin-bottom: 10px;
 }
 
 .editLastNameInput {
@@ -609,6 +631,7 @@ input[type="number"] {
 
 .left2ndContainer22ndContainer {
   height: 170px;
+  margin-bottom: 20px;
   /* background-color: rosybrown; */
 }
 
@@ -618,6 +641,12 @@ input[type="number"] {
 
 .editAddress2Input {
   width: 920px;
+}
+
+.divisor {
+  height: 10px;
+  width: 10px;
+  opacity: 0;
 }
 
 .editAddress1Input input {
@@ -710,11 +739,47 @@ input[type="number"] {
   font-size: 12.5px;
   width: 230px;
   height: 40px;
+  /* border-radius: 5px; */
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 35px;
+  transition: 0.15s ease-in-out;
   cursor: pointer;
+}
+
+.saveEditButton2 {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: rgb(231, 35, 13);
+  font-weight: bold;
+  font-size: 12.5px;
+  width: 230px;
+  height: 40px;
+  /* border-radius: 5px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35px;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  opacity: .8;
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.saveEditButton:hover {
+  background-color: rgb(211, 18, 9);
+}
+
+.saveEditButton:active {
+  transform: scale(0.95);
 }
 
 .saveEditButton2 {
@@ -732,6 +797,7 @@ input[type="number"] {
   margin-left: 45px;
   opacity: 0.5;
   cursor: not-allowed;
+  transition: 0.15s ease-in-out;
 }
 
 .cancellation {
@@ -835,17 +901,18 @@ input[type="number"] {
   cursor: pointer;
   top: 42.5px;
   right: 415px;
+  transition: 0.15s ease-in-out;
 }
 
 .demoCard:hover {
-  color:rgba(31, 153, 106, 1)
+  color: rgba(31, 153, 106, 1);
 }
 
 .untouchable {
   cursor: pointer;
   position: absolute;
   top: 0;
-  right: 225px;
+  right: 220px;
   height: 82.5px;
   width: 100px;
   background-color: red;

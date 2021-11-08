@@ -10,6 +10,7 @@ import "react-form-input-fields/dist/index.css";
 import ReactLoading from "react-loading";
 import { motion } from "framer-motion/dist/framer-motion";
 
+import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 import * as sessionActions from "../../store/session";
 import { updateProfile } from "../../store/session";
@@ -25,9 +26,9 @@ export default function OrderConfirmation() {
   const cartItems = useSelector((state) => state.cartItems);
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
-  const [creditCardNumber, setCreditCardNumber] = useState();
+  const [creditCardNumber, setCreditCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
-  const [focus, setFocus] = useState();
+  const [focus, setFocus] = useState("");
   const [payed, setPayed] = useState(false);
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
@@ -135,18 +136,6 @@ export default function OrderConfirmation() {
     });
   });
 
-  const handleSubmit = async () => {
-    await dispatch(
-      createOrderItemsAndOrder({
-        user,
-        cartItems: shoppingCartItems,
-        lastOrderId: orderItems[orderItems?.length - 1].id,
-      })
-    );
-
-    history.push("/orders");
-  };
-
   const handleSubmit2 = async () => {
     setLoader(true);
 
@@ -175,21 +164,20 @@ export default function OrderConfirmation() {
     }
 
     if (!phone) {
-      // setWarningPhone(true);
+      setWarningPhone(true);
     } else {
       setWarningPhone(false);
     }
 
-    if (firstName && lastName && address1 && address2) {
+    if (firstName && lastName && address1 && address2 && phone) {
       if (!defaultOption) {
         setShowEdit(false);
       } else {
         // EDIT USER
+
         await dispatch(
           updateProfile({
             id: user.id,
-            firstName,
-            lastName,
             phone,
             address1,
             address2,
@@ -209,24 +197,66 @@ export default function OrderConfirmation() {
     setFocus(e.target.name);
   };
 
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
-    dispatch(setAllOrderItems());
+    (async () => {
+      await dispatch(setAllOrderItems());
+      setLoad(true);
+    })();
   }, [dispatch]);
 
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
+
   const handleOnChange = (value) => {
+    if (warningLastName) {
+      setWarningLastName(false);
+    }
+
     setLastName(value);
   };
 
   const handleOnChange2 = (value) => {
+    if (warningFirstName) {
+      setWarningFirstName(false);
+    }
+
     setFirstName(value);
   };
 
   const handleOnChange3 = (value) => {
+    if (warningAddress1) {
+      setWarningAddress1(false);
+    }
+
     setAddress1(value);
   };
 
   const handleOnChange4 = (value) => {
+    if (warningAddress2) {
+      setWarningAddress2(false);
+    }
+
     setAddress2(value);
+  };
+
+  const changePhone = (x) => {
+    if (warningPhone) {
+      setWarningPhone(false);
+    }
+
+    setPhone(x);
   };
 
   const clear = () => {
@@ -266,6 +296,8 @@ export default function OrderConfirmation() {
         address1,
         address2,
         phone,
+        firstName,
+        lastName,
       })
     );
 
@@ -278,6 +310,8 @@ export default function OrderConfirmation() {
         address2,
         creditCard: creditCardNumber,
         expirationDate: expirationDate,
+        firstName,
+        lastName,
       })
     );
 
@@ -379,6 +413,8 @@ export default function OrderConfirmation() {
                   )}
                 </div>
 
+                <div className={styles.divisor}>Divisor</div>
+
                 <div className={styles.editAddress2Input}>
                   <FormField
                     type="text"
@@ -405,7 +441,7 @@ export default function OrderConfirmation() {
                     value={phone}
                     keys={"phone"}
                     effect={"effect_9"}
-                    handleOnChange={(value) => setPhone(value)}
+                    handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
                   {warningPhone && (
@@ -439,12 +475,33 @@ export default function OrderConfirmation() {
                   Cancel
                 </div>
 
-                <div
-                  onClick={() => handleSubmit2()}
-                  className={styles.saveEditButton}
-                >
-                  SAVE & CONTINUE
-                </div>
+                {firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0 && (
+                    <div
+                      onClick={() => handleSubmit2()}
+                      className={styles.saveEditButton}
+                    >
+                      SAVE & CONTINUE
+                    </div>
+                  )}
+
+                {!(
+                  firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0
+                ) && (
+                  <div
+                    onClick={() => handleSubmit2()}
+                    className={styles.saveEditButton2}
+                  >
+                    SAVE & CONTINUE
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -471,8 +528,8 @@ export default function OrderConfirmation() {
 
           <div className={styles.left4thContainer}>
             <div className={styles.arrivesContainer}>
-              <input checked className={styles.fakeRadio} type="radio" /> 
-              <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
+               <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
             </div>
 
             <div className={styles.freeLabel}>FREE</div>
@@ -486,8 +543,12 @@ export default function OrderConfirmation() {
             <>
               <div className={styles.left6thContainer}>
                 <div className={styles.creditCardTitle}>
-                  <input checked className={styles.fakeRadio} type="radio" /> 
-                  <div className={styles.ccTitle}>Credit Cart</div>
+                  <input
+                    defaultChecked
+                    className={styles.fakeRadio}
+                    type="radio"
+                  />
+                   <div className={styles.ccTitle}>Credit Cart</div>
                 </div>
               </div>
 
@@ -501,7 +562,7 @@ export default function OrderConfirmation() {
                 <div className={styles.left8thLeftContainer}>
                   <div className={styles.leftInputContainer}>
                     <input
-                      maxlength="16"
+                      maxLength="16"
                       onChange={(e) => ccNum(e)}
                       onFocus={(e) => handleInputFocus(e)}
                       placeholder={"Card number"}
@@ -519,7 +580,7 @@ export default function OrderConfirmation() {
 
                   <div className={styles.rightInputContainer}>
                     <input
-                      maxlength="5"
+                      maxLength="5"
                       placeholder={"MM/YY"}
                       type="tel"
                       value={expirationDate}
@@ -543,6 +604,7 @@ export default function OrderConfirmation() {
                         name={`${user.firstName} ${user.lastName}`}
                         expiry={expirationDate}
                         focused={focus}
+                        cvc={"123"}
                       />
                     </div>
                   )}
@@ -595,6 +657,7 @@ export default function OrderConfirmation() {
                       name={`${user.firstName} ${user.lastName}`}
                       expiry={expirationDate}
                       focused={focus}
+                      cvc={"123"}
                     />
                   </div>
                 )}
@@ -746,7 +809,6 @@ export default function OrderConfirmation() {
         <div className={styles.loader}>
           <ReactLoading
             type={"bubbles"}
-            color={"rgba(0,0,0,.75)"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}
@@ -756,6 +818,7 @@ export default function OrderConfirmation() {
       <div onClick={() => history.push("/cart")} className={styles.untouchable}>
         Can't touch this
       </div>
+      <Footer />
     </motion.div>
   );
 }

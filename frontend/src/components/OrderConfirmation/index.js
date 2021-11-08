@@ -17,8 +17,6 @@ export default function OrderConfirmation() {
   const orderItems = useSelector((state) => state.orderItems);
   const products = useSelector((state) => state.products);
   const [creditCardNumber, setCreditCardNumber] = useState(5555555555555555);
-  const [nameOnCard, setNameOnCard] = useState();
-  const [expirationDate, setExpirationDate] = useState();
   const [focus, setFocus] = useState();
 
   const usersCartItems = cartItems?.filter((cartItem) => {

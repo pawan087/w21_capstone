@@ -534,8 +534,8 @@ export default function IndividualTopReview({ review }) {
           {loading && (
             <div className={styles.loader}>
               <ReactLoading
-                type={"spin"}
-                color={"rgba(0,0,0,.75)"}
+                type={"bubbles"}
+                color={"rgb(231,35,13)"}
                 height={"0px"}
                 width={"57.5px"}
               />
@@ -585,7 +585,7 @@ export default function IndividualTopReview({ review }) {
       >
         <div className={styles.writeReviewOuterContainer}>
           <div className={styles.writeReviewTopContainer}>
-            <div className={styles.writeReviewTitle}>Edit review</div>
+            <div className={styles.writeReviewTitle}>Edit Review</div>
 
             <div className={styles.writeReviewSubtitle}>
               <div className={styles.productImageContainer}>

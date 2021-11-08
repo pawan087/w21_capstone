@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(200),
         allowNull: false,
         unique: true,
       },
@@ -42,7 +42,7 @@ module.exports = {
         references: { model: "FurtherSubcategories" },
       },
       images: {
-        type: Sequelize.ARRAY(Sequelize.STRING(1000)),
+        type: Sequelize.ARRAY(Sequelize.STRING(200)),
         defaultValue: [],
       },
       rating: {

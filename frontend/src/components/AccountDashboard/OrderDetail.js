@@ -1,8 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { FaAngleLeft, FaBoxOpen } from "react-icons/fa";
+
 import styles from "./styles.module.css";
 
 export default function OrderDetail({ order, status, user }) {
+  const history = useHistory();
+
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -73,7 +77,8 @@ export default function OrderDetail({ order, status, user }) {
                 <div className={styles.leftBottom1stContainer}>
                   <div className={styles.bottom1stLeftContainer}>
                     <div className={styles.bottom1stLeftTopContainer}>
-                      Status: <span className={styles.greenLabel}>{status}</span>
+                      Status:{" "}
+                      <span className={styles.greenLabel}>{status}</span>
                     </div>
 
                     <div className={styles.bottom1stLeftBottomContainer}>
@@ -96,6 +101,7 @@ export default function OrderDetail({ order, status, user }) {
                 <div className={styles.leftBottom2ndContainer}>
                   <div className={styles.bottom2ndLeftContainer}>
                     <img
+                      onClick={() => history.push(`/products/${x.product.id}`)}
                       className={styles.orderProductImage}
                       alt="productImage"
                       src={x.product.images[0]}
@@ -169,7 +175,8 @@ export default function OrderDetail({ order, status, user }) {
 
           <div className={styles.userInfoContainer}>
             <div className={styles.userFullName}>
-              {user?.firstName} {user?.lastName}
+
+              {order?.firstName} {order?.lastName}
             </div>
             <div className={styles.address1Container}>{order.address1}</div>
             <div className={styles.address2Container}>{order.address2}</div>

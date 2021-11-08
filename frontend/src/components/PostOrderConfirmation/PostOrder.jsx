@@ -4,7 +4,9 @@ import styles from "./PostOrder.module.css";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 import { useHistory } from "react-router";
+import ReactLoading from "react-loading";
 
+import Footer from "../Footer";
 import { setAllProducts } from "../../store/products";
 import { setAllOrderItems } from "../../store/orderItems";
 import { setAllOrders } from "../../store/orders.js";
@@ -30,12 +32,30 @@ export default function PostOrder() {
     return;
   });
 
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
-    dispatch(setAllProducts());
-    dispatch(setAllOrderItems());
-    dispatch(setAllOrders());
-    dispatch(setAllCartItems());
+    (async () => {
+      await dispatch(setAllProducts());
+      await dispatch(setAllOrderItems());
+      await dispatch(setAllOrders());
+      await dispatch(setAllCartItems());
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   return (
     <motion.div
@@ -75,7 +95,7 @@ export default function PostOrder() {
             </div>
 
             <div
-              onClick={() => history.push("/dashboard")}
+              onClick={() => history.push("/orders")}
               className={styles.accountDashboardButton}
             >
               ACCOUNT DASHBOARD
@@ -186,7 +206,7 @@ export default function PostOrder() {
             <div className={styles.addressLabel}>Shipping Address</div>
 
             <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
+              {justOrdered?.firstName} {justOrdered?.lastName}
             </div>
 
             <div className={styles.address1}>{justOrdered?.address1}</div>
@@ -202,7 +222,7 @@ export default function PostOrder() {
             <div className={styles.addressLabel}>Billing Address</div>
 
             <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
+              {justOrdered?.firstName} {justOrdered?.lastName}
             </div>
 
             <div className={styles.address1}>{justOrdered?.address1}</div>
@@ -215,9 +235,15 @@ export default function PostOrder() {
 
             <div className={styles.email}>Credit Card</div>
 
-            <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
-            </div>
+            {justOrdered?.cc?.slice(justOrdered?.cc?.length - 4) === "9509" && (
+              <div className={styles.usersName}>Pawan Chahal</div>
+            )}
+
+            {justOrdered?.cc?.slice(justOrdered?.cc?.length - 4) !== "9509" && (
+              <div className={styles.usersName}>
+                {justOrdered?.firstName} {justOrdered?.lastName}
+              </div>
+            )}
 
             <div className={styles.email}>
               ************{justOrdered?.cc?.slice(justOrdered?.cc?.length - 4)}
@@ -247,6 +273,8 @@ export default function PostOrder() {
           />
         </div>
       </div>
+
+      <Footer />
     </motion.div>
   );
 }

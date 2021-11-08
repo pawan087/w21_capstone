@@ -67,6 +67,8 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
+// Old
+
 export const profileEdit = (obj) => async (dispatch) => {
   const {
     id,
@@ -103,22 +105,15 @@ export const profileEdit = (obj) => async (dispatch) => {
   return data;
 };
 
+// New
+
 export const updateProfile = (obj) => async (dispatch) => {
-  const {
-    id,
-    firstName,
-    lastName,
-    phone,
-    address1,
-    address2,
-  } = obj;
+  const { id, phone, address1, address2 } = obj;
 
   const response = await csrfFetch("/api/session/update", {
     method: "PUT",
     body: JSON.stringify({
       id,
-      firstName,
-      lastName,
       phone,
       address1,
       address2,
@@ -130,6 +125,89 @@ export const updateProfile = (obj) => async (dispatch) => {
 
   return data;
 };
+
+export const updateUserInformation = (obj) => async (dispatch) => {
+  const { id, phone, address1, address2, firstName, lastName } = obj;
+
+  const response = await csrfFetch("/api/session/updateprofile", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      phone,
+      address1,
+      address2,
+      firstName,
+      lastName,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// Update name
+
+export const updateName = (obj) => async (dispatch) => {
+  const { id, firstName, lastName } = obj;
+
+  const response = await csrfFetch("/api/session/name", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      firstName,
+      lastName,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// Update e-mail
+
+export const updateEmail = (obj) => async (dispatch) => {
+  const { id, email, currentPassword } = obj;
+
+  const response = await csrfFetch("/api/session/email", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      email,
+      currentPassword,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// Update Password
+
+export const updatePassword = (obj) => async (dispatch) => {
+  const { id, oldPassword, newPassword } = obj;
+
+  const response = await csrfFetch("/api/session/password", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      oldPassword,
+      newPassword,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// End New
 
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch("/api/session", {

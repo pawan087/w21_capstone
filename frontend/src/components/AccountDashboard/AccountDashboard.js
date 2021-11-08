@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import {
@@ -7,12 +9,12 @@ import {
   FaAngleRight,
   FaAngleLeft,
 } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
+import ReactLoading from "react-loading";
 
+import Footer from "../../components/Footer";
 import OrderDetail from "./OrderDetail";
 import { setAllOrderItems } from "../../store/orderItems.js";
-
 import { setAllProducts } from "../../store/products.js";
 import { setAllOrders } from "../../store/orders.js";
 import styles from "./styles.module.css";
@@ -20,9 +22,12 @@ import "@szhsin/react-menu/dist/index.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [sortBy, setSortBy] = useState("All Orders");
   const [orderHistory, setOrderHistory] = useState(true);
   const [orderDetail, setOrderDetail] = useState(false);
+  const [load, setLoad] = useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -119,11 +124,37 @@ export default function AccountDashboard() {
     }
   });
 
+  const [detailArr, setDetailArr] = useState([]);
+  const [status, setStatus] = useState("");
+  const [currentPage, setCurrentPage] = useState(0);
+  const [data, setData] = useState([]);
+  let copy = [...usersOrdersAndItems];
+  const reversed = copy?.reverse();
+
   useEffect(() => {
-    dispatch(setAllProducts());
-    dispatch(setAllOrderItems());
-    dispatch(setAllOrders());
+    setData(reversed);
+  }, [orders]);
+  useEffect(() => {
+    (async () => {
+      await dispatch(setAllProducts());
+      await dispatch(setAllOrderItems());
+      await dispatch(setAllOrders());
+      setLoad(true);
+    })();
   }, [dispatch]);
+
+  if (!load) {
+    return (
+      <div className={styles.loaderCotnainer}>
+        <ReactLoading
+          type={"spin"}
+          color={"rgba(0,0,0,.75)"}
+          height={"0px"}
+          width={"57.5px"}
+        />
+      </div>
+    );
+  }
 
   if (sortBy === "All Orders" && usersOrdersAndItems.length === 0) {
     bool = true;
@@ -140,9 +171,6 @@ export default function AccountDashboard() {
   ) {
     bool = true;
   }
-
-  const [detailArr, setDetailArr] = useState([]);
-  const [status, setStatus] = useState("");
 
   const showOrderDetail = (x) => {
     setOrderHistory(false);
@@ -169,31 +197,22 @@ export default function AccountDashboard() {
     return;
   };
 
-  const showOrderHistory = () => {
-    setOrderDetail(false);
-    setOrderHistory(true);
-  };
-
   const clearAndShowOrderHistory = () => {
     // Clean up
     setOrderDetail(false);
+    setCurrentPage(0);
+    setAllTheOrders();
 
     // Show
     setOrderHistory(true);
   };
-
-  const [currentPage, setCurrentPage] = useState(0);
-  let copy = [...usersOrdersAndItems];
-  const reversed = copy?.reverse();
-
-  const [data, setData] = useState([]);
 
   const PER_PAGE = 3;
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
     window.scrollTo({
-      top: 1250,
+      top: 0,
       left: 0,
       behavior: "smooth",
     });
@@ -296,10 +315,6 @@ export default function AccountDashboard() {
 
   const pageCount = Math.ceil(data?.length / PER_PAGE);
 
-  useEffect(() => {
-    setData(reversed);
-  }, [orders]);
-
   const setAllTheOrders = () => {
     setData([...reversed]);
     setSortBy("All Orders");
@@ -334,7 +349,7 @@ export default function AccountDashboard() {
         <div className={styles.widthContainer}>
           {
             /* LEFT MENU */
-            <div className={styles.mainLeftContainer}>
+            <div className={styles.mainLeftContainer2}>
               <div className={styles.mainLeftTopContainer}>
                 <div className={styles.firstContainer}>
                   <div className={styles.powerIcon}>
@@ -353,19 +368,30 @@ export default function AccountDashboard() {
 
                 <div className={styles.secondContainer}>ACCOUNT SETTINGS</div>
 
-                <div className={styles.thirdContainer}>Personal Data</div>
+                <div className={styles.thirdContainer}>
+                  <span onClick={() => history.push("/account/1")}>
+                    Personal Data
+                  </span>
+                </div>
 
-                <div className={styles.fourthContainer}>Password</div>
+                <div className={styles.fourthContainer}>
+                  <span onClick={() => history.push("/account/2")}>
+                    Password
+                  </span>
+                </div>
 
-                <div className={styles.fifthContainer}>Address Book</div>
+                <div className={styles.fifthContainer}>
+                  <span onClick={() => history.push("/account/3")}>
+                    Address Book
+                  </span>
+                </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
-                <div
-                  onClick={() => clearAndShowOrderHistory()}
-                  className={styles.sixthContainer}
-                >
-                  Order History
+                <div className={styles.sixthContainer}>
+                  <span onClick={() => clearAndShowOrderHistory()}>
+                    Order History
+                  </span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>
@@ -400,12 +426,17 @@ export default function AccountDashboard() {
             </div>
           }
 
-          {orderDetail && <OrderDetail status={status} order={detailArr} />}
+          {orderDetail && (
+            <OrderDetail user={user} status={status} order={detailArr} />
+          )}
 
           {orderDetail && (
             <div className={styles.goBack}>
               <div className={styles.leftTop1stContainer2}>
-                <div className={styles.leftChevronIconContainer}>
+                <div
+                  onClick={() => clearAndShowOrderHistory()}
+                  className={styles.leftChevronIconContainer}
+                >
                   <FaAngleLeft
                     style={{
                       height: "20px",
@@ -416,7 +447,7 @@ export default function AccountDashboard() {
                   />
                 </div>
                 <span
-                  onClick={() => showOrderHistory()}
+                  onClick={() => clearAndShowOrderHistory()}
                   className={styles.backLinkLabel}
                 >
                   BACK TO MY ORDERS
@@ -714,6 +745,7 @@ export default function AccountDashboard() {
           }
         </div>
       </div>
+      <Footer />
     </motion.div>
   );
 }

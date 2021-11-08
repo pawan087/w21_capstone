@@ -32,6 +32,8 @@ export const createOrderItemsAndOrder = (data) => async (dispatch) => {
     address2,
     creditCard,
     expirationDate,
+    firstName,
+    lastName,
   } = data;
 
   const res = await csrfFetch("/api/orders/complete", {
@@ -44,6 +46,8 @@ export const createOrderItemsAndOrder = (data) => async (dispatch) => {
       address2,
       creditCard,
       expirationDate,
+      firstName,
+      lastName,
     }),
   });
 
