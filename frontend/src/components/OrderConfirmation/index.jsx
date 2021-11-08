@@ -10,7 +10,7 @@ import "react-form-input-fields/dist/index.css";
 import ReactLoading from "react-loading";
 import { motion } from "framer-motion/dist/framer-motion";
 
-import Footer from '../Footer'
+import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 import * as sessionActions from "../../store/session";
 import { updateProfile } from "../../store/session";
@@ -136,18 +136,6 @@ export default function OrderConfirmation() {
     });
   });
 
-  // const handleSubmit = async () => {
-  //   await dispatch(
-  //     createOrderItemsAndOrder({
-  //       user,
-  //       cartItems: shoppingCartItems,
-  //       lastOrderId: orderItems[orderItems?.length - 1].id,
-  //     })
-  //   );
-
-  //   history.push("/orders");
-  // };
-
   const handleSubmit2 = async () => {
     setLoader(true);
 
@@ -176,12 +164,12 @@ export default function OrderConfirmation() {
     }
 
     if (!phone) {
-      // setWarningPhone(true);
+      setWarningPhone(true);
     } else {
       setWarningPhone(false);
     }
 
-    if (firstName && lastName && address1 && address2) {
+    if (firstName && lastName && address1 && address2 && phone) {
       if (!defaultOption) {
         setShowEdit(false);
       } else {
@@ -233,19 +221,43 @@ export default function OrderConfirmation() {
   }
 
   const handleOnChange = (value) => {
+    if (warningLastName) {
+      setWarningLastName(false);
+    }
+
     setLastName(value);
   };
 
   const handleOnChange2 = (value) => {
+    if (warningFirstName) {
+      setWarningFirstName(false);
+    }
+
     setFirstName(value);
   };
 
   const handleOnChange3 = (value) => {
+    if (warningAddress1) {
+      setWarningAddress1(false);
+    }
+
     setAddress1(value);
   };
 
   const handleOnChange4 = (value) => {
+    if (warningAddress2) {
+      setWarningAddress2(false);
+    }
+
     setAddress2(value);
+  };
+
+  const changePhone = (x) => {
+    if (warningPhone) {
+      setWarningPhone(false);
+    }
+
+    setPhone(x);
   };
 
   const clear = () => {
@@ -398,6 +410,8 @@ export default function OrderConfirmation() {
                   )}
                 </div>
 
+                <div className={styles.divisor}>Divisor</div>
+
                 <div className={styles.editAddress2Input}>
                   <FormField
                     type="text"
@@ -424,7 +438,7 @@ export default function OrderConfirmation() {
                     value={phone}
                     keys={"phone"}
                     effect={"effect_9"}
-                    handleOnChange={(value) => setPhone(value)}
+                    handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
                   {warningPhone && (
@@ -458,12 +472,33 @@ export default function OrderConfirmation() {
                   Cancel
                 </div>
 
-                <div
-                  onClick={() => handleSubmit2()}
-                  className={styles.saveEditButton}
-                >
-                  SAVE & CONTINUE
-                </div>
+                {firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0 && (
+                    <div
+                      onClick={() => handleSubmit2()}
+                      className={styles.saveEditButton}
+                    >
+                      SAVE & CONTINUE
+                    </div>
+                  )}
+
+                {!(
+                  firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0
+                ) && (
+                  <div
+                    onClick={() => handleSubmit2()}
+                    className={styles.saveEditButton2}
+                  >
+                    SAVE & CONTINUE
+                  </div>
+                )}
               </div>
             </div>
           )}

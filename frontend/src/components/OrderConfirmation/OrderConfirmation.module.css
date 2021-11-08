@@ -588,6 +588,7 @@ input[type="number"] {
   height: 85px;
   /* background-color: skyblue; */
   display: flex;
+  margin-bottom: 10px;
 }
 
 .editLastNameInput {
@@ -630,6 +631,7 @@ input[type="number"] {
 
 .left2ndContainer22ndContainer {
   height: 170px;
+  margin-bottom: 20px;
   /* background-color: rosybrown; */
 }
 
@@ -639,6 +641,12 @@ input[type="number"] {
 
 .editAddress2Input {
   width: 920px;
+}
+
+.divisor {
+  height: 10px;
+  width: 10px;
+  opacity: 0;
 }
 
 .editAddress1Input input {
@@ -738,6 +746,25 @@ input[type="number"] {
   margin-left: 35px;
   transition: 0.15s ease-in-out;
   cursor: pointer;
+}
+
+.saveEditButton2 {
+  outline: none;
+  border: none;
+  color: white;
+  background-color: rgb(231, 35, 13);
+  font-weight: bold;
+  font-size: 12.5px;
+  width: 230px;
+  height: 40px;
+  /* border-radius: 5px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35px;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  opacity: .8;
 }
 
 .loaderCotnainer {
@@ -885,7 +912,7 @@ input[type="number"] {
   cursor: pointer;
   position: absolute;
   top: 0;
-  right: 105px;
+  right: 220px;
   height: 82.5px;
   width: 100px;
   background-color: red;

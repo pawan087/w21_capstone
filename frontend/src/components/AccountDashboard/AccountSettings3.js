@@ -207,7 +207,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeFirstName(value)}
                     placeholder={"First Name"}
                   />
-                  {false && (
+                  {true && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
