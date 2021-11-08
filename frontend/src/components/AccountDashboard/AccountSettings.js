@@ -11,6 +11,7 @@ import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
 import styles from "./styles.module.css";
 import "@szhsin/react-menu/dist/index.css";
+import { set } from "js-cookie";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
@@ -31,23 +32,40 @@ export default function AccountDashboard() {
   const [incorrectFormatEmail, setIncorrectFormatEmail] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
   const [invalidPassword, setInvalidPassword] = useState(false);
+  const [emptyPasswordWarning, setEmptyPasswordWarning] = useState(false);
 
   const changeFirstName = (x) => {
+    if (invalidFirstName) {
+      setInvalidFirstName(false);
+    }
+
     setFirstName(x);
     return;
   };
 
   const changeLastName = (x) => {
+    if (invalidLastName) {
+      setInvalidLastName(false);
+    }
+
     setLastName(x);
     return;
   };
 
   const changeEmail = (x) => {
+    if (incorrectFormatEmail) {
+      setIncorrectFormatEmail(false);
+    }
+
     setEmail(x);
     return;
   };
 
   const changePassword = (x) => {
+    if (emptyPasswordWarning) {
+      setEmptyPasswordWarning(false);
+    }
+
     setCurrentPassword(x);
     return;
   };
@@ -85,7 +103,10 @@ export default function AccountDashboard() {
   const handleEmailWarning = () => {
     if (!email) {
       setInvalidEmail(true);
-      return;
+    }
+
+    if (!currentPassword) {
+      setEmptyPasswordWarning(true);
     }
   };
 
@@ -206,6 +227,10 @@ export default function AccountDashboard() {
     history.push("/orders");
   };
 
+  const showPassword = () => {
+    history.push("/account/2");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -246,7 +271,12 @@ export default function AccountDashboard() {
 
                 <div className={styles.thirdContainer}>Personal Data</div>
 
-                <div className={styles.fourthContainer}>Password</div>
+                <div
+                  onClick={() => showPassword()}
+                  className={styles.fourthContainer}
+                >
+                  Password
+                </div>
 
                 <div className={styles.fifthContainer}>Address Book</div>
 
@@ -461,6 +491,11 @@ export default function AccountDashboard() {
                     {invalidPassword && (
                       <span className={styles.requiredLabel}>
                         The provided password was invalid.
+                      </span>
+                    )}
+                    {emptyPasswordWarning && (
+                      <span className={styles.requiredLabel}>
+                        Please fill out this field.
                       </span>
                     )}
                   </div>

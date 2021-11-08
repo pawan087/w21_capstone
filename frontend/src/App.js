@@ -8,6 +8,7 @@ import { setAllProducts } from "../src/store/products";
 import * as sessionActions from "./store/session";
 
 import AccountSettings from "./components/AccountDashboard/AccountSettings";
+import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
@@ -110,8 +111,12 @@ function App() {
               <AccountDashboard />
             </Route>
 
-            <Route path="/account/:id" exact={true}>
+            <Route path="/account/1" exact={true}>
               <AccountSettings />
+            </Route>
+
+            <Route path="/account/2" exact={true}>
+              <AccountSettings2 />
             </Route>
           </Switch>
         </AnimatePresence>

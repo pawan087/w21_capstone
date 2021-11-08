@@ -450,8 +450,8 @@ export default function MyNavBar() {
               animate={visible ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 275,
-                damping: 20,
+                stiffness: 500,
+                damping: 50,
               }}
               variants={variants1}
               className={styles.sidebar}
@@ -521,8 +521,8 @@ export default function MyNavBar() {
               animate={visible2 ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 275,
-                damping: 20,
+                stiffness: 500,
+                damping: 50,
               }}
               variants={variants}
               id="mySidebar2"
