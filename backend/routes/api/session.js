@@ -161,6 +161,39 @@ router.put(
   })
 );
 
+router.put(
+  "/updateprofile",
+  asyncHandler(async (req, res, next) => {
+    const { id, phone, address1, address2, firstName, lastName } = req.body;
+
+    const user = await User.findByPk(id);
+
+    if (!user) {
+      const err = new Error("Login failed");
+
+      err.status = 401;
+      err.title = "Login failed";
+      err.errors = ["The provided credentials were invalid."];
+
+      return next(err);
+    }
+
+    await user.update({
+      phone,
+      address1,
+      address2,
+      lastName,
+      firstName,
+    });
+
+    await setTokenCookie(res, user);
+
+    return res.json({
+      user,
+    });
+  })
+);
+
 // Update Name
 router.put(
   "/name",

@@ -99,6 +99,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     width: 470,
     zoomWidth: 900,
     zoomPosition: "original",
+    zoomStyle: 'transform: translateX(00px)',
     img: `${product[0]?.images[0]}`,
   };
 

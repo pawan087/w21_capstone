@@ -126,6 +126,27 @@ export const updateProfile = (obj) => async (dispatch) => {
   return data;
 };
 
+export const updateUserInformation = (obj) => async (dispatch) => {
+  const { id, phone, address1, address2, firstName, lastName } = obj;
+
+  const response = await csrfFetch("/api/session/updateprofile", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      phone,
+      address1,
+      address2,
+      firstName,
+      lastName,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
 // Update name
 
 export const updateName = (obj) => async (dispatch) => {

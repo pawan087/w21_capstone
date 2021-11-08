@@ -32,6 +32,7 @@ export default function AccountDashboard() {
   const [emptyPhoneWarning, setEmptyPhoneWarning] = useState(false);
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);
+  const [sameInformationWarning, setSameInformationWarning] = useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
     useState(false);
 
@@ -114,6 +115,37 @@ export default function AccountDashboard() {
     }
 
     return;
+  };
+
+  const saveAddressEdit = async () => {
+    if (
+      firstName === user.firstName &&
+      lastName === user.lastName &&
+      address1 === user.address1 &&
+      address2 === address2 &&
+      phone === user.phone
+    ) {
+      return;
+    }
+
+    setLoader2(true);
+
+    await dispatch(
+      sessionActions.updateUserInformation({
+        id: user.id,
+        phone,
+        address1,
+        address2,
+        firstName,
+        lastName,
+      })
+    );
+
+    await dispatch(sessionActions.restoreUser());
+
+    setShowSuccessfulPasswordChange(true);
+
+    setLoader2(false);
   };
 
   useEffect(() => {
@@ -370,21 +402,33 @@ export default function AccountDashboard() {
                   lastName.length > 0 &&
                   address1.length > 0 &&
                   address2.length > 0 &&
-                  phone.length > 0 && (
+                  phone.length > 0 &&
+                  !(
+                    firstName === user.firstName &&
+                    lastName === user.lastName &&
+                    address1 === user.address1 &&
+                    address2 === address2 &&
+                    phone === user.phone
+                  ) && (
                     <div
-                      onClick={() => console.log("SAVE CHANGES")}
+                      onClick={() => saveAddressEdit()}
                       className={styles.button12}
                     >
                       SAVE
                     </div>
                   )}
-                {!(
+                {(!(
                   firstName.length > 0 &&
                   lastName.length > 0 &&
                   address1.length > 0 &&
                   address2.length > 0 &&
                   phone.length > 0
-                ) && (
+                ) ||
+                  (firstName === user.firstName &&
+                    lastName === user.lastName &&
+                    address1 === user.address1 &&
+                    address2 === address2 &&
+                    phone === user.phone)) && (
                   <div
                     onClick={() => issueWarnings()}
                     className={styles.button32}
@@ -426,7 +470,7 @@ export default function AccountDashboard() {
         onClose={hide}
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
-          Your password was updated!
+          Your address has been updated!
         </div>
       </Rodal>
     </motion.div>
