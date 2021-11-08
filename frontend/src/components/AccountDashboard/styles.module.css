@@ -85,6 +85,17 @@
   z-index: 48; */
 }
 
+.mainLeftContainer2 {
+  height: 600px;
+  width: 305px;
+  margin-right: 20px;
+  /* margin-right: 25px; */
+  /* background-color: white; */
+  position: sticky;
+  top: 250px;
+  z-index: 48;
+}
+
 .mainLeftTopContainer {
   width: 305px;
   /* background-color: white; */
@@ -153,7 +164,6 @@
 .sixthContainer span:hover {
   color: rgb(238, 42, 40);
 }
-
 
 .mainLeftBottomContainer {
   background-color: rgb(242, 244, 247);
@@ -864,10 +874,29 @@
   height: 360px;
 }
 
+.personalDataContainer2 {
+  background-color: white;
+  padding-left: 20px;
+  border-radius: 5px;
+  width: 980px;
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-top: 20px;
+  height: 360px;
+}
+
 .pd1stContainer {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.pd1stContainer2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .pd2ndContainer {
@@ -969,13 +998,30 @@
   border: 1px solid rgba(0, 0, 0, 0.33);
   margin-bottom: 35px;
   height: 55px;
-  margin-top: 5px;
+  margin-top: 25px;
 }
 
 .passwordInputContainer2 {
   width: 745px;
   border: 1px solid rgba(0, 0, 0, 0.33);
   /* margin-bottom: 20px; */
+  height: 55px;
+  margin-top: 20px;
+}
+
+.address1InputContainer {
+  width: 760px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  /* margin-bottom: 20px; */
+  height: 55px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fNamelNameInputContainer {
+  width: 370px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  margin-bottom: 20px;
   height: 55px;
   margin-top: 20px;
 }
@@ -1032,13 +1078,56 @@
   margin-bottom: 25px;
 }
 
+.editNameBottomContainer2 {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
 .button1,
 .button2 {
   width: 105px;
   height: 40px;
 }
 
+.button22 {
+  width: 85px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.68);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.68);
+  font-weight: bold;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.button22:hover {
+  background-color: rgba(0, 0, 0, 0.03125);
+}
+
+.button22:active {
+  transform: scale(0.95);
+}
+
 .button1 {
+  background-color: rgba(224, 59, 47, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  margin-right: 12.5px;
+}
+
+.button12 {
+  width: 130px;
+  height: 50px;
   background-color: rgba(224, 59, 47, 0.95);
   display: flex;
   justify-content: center;
@@ -1086,6 +1175,21 @@
 .button3 {
   width: 105px;
   height: 40px;
+  background-color: rgba(224, 59, 47, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  /* border-radius: 5px; */
+  font-size: 12.5px;
+  cursor: not-allowed;
+  margin-right: 12.5px;
+}
+
+.button32 {
+  width: 130px;
+  height: 50px;
   background-color: rgba(224, 59, 47, 0.45);
   display: flex;
   justify-content: center;
@@ -1150,4 +1254,10 @@
   color: rgb(71, 112, 72);
   padding-top: 12.5px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.namesContainer {
+  display: flex;
+  width: 760px;
+  justify-content: space-between;
 }

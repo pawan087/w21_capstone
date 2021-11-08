@@ -349,7 +349,7 @@ export default function AccountDashboard() {
         <div className={styles.widthContainer}>
           {
             /* LEFT MENU */
-            <div className={styles.mainLeftContainer}>
+            <div className={styles.mainLeftContainer2}>
               <div className={styles.mainLeftTopContainer}>
                 <div className={styles.firstContainer}>
                   <div className={styles.powerIcon}>
@@ -368,28 +368,30 @@ export default function AccountDashboard() {
 
                 <div className={styles.secondContainer}>ACCOUNT SETTINGS</div>
 
-                <div
-                  onClick={() => history.push("/account/1")}
-                  className={styles.thirdContainer}
-                >
-                  <span>Personal Data</span>
+                <div className={styles.thirdContainer}>
+                  <span onClick={() => history.push("/account/1")}>
+                    Personal Data
+                  </span>
                 </div>
 
                 <div className={styles.fourthContainer}>
-                  <span>Password</span>
+                  <span onClick={() => history.push("/account/2")}>
+                    Password
+                  </span>
                 </div>
 
                 <div className={styles.fifthContainer}>
-                  <span>Address Book</span>
+                  <span onClick={() => history.push("/account/3")}>
+                    Address Book
+                  </span>
                 </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
-                <div
-                  onClick={() => clearAndShowOrderHistory()}
-                  className={styles.sixthContainer}
-                >
-                  <span>Order History</span>
+                <div className={styles.sixthContainer}>
+                  <span onClick={() => clearAndShowOrderHistory()}>
+                    Order History
+                  </span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>

@@ -270,24 +270,20 @@ export default function AccountDashboard() {
                   <span>Personal Data</span>
                 </div>
 
-                <div
-                  onClick={() => showPassword()}
-                  className={styles.fourthContainer}
-                >
-                  <span>Password</span>
+                <div className={styles.fourthContainer}>
+                  <span onClick={() => showPassword()}>Password</span>
                 </div>
 
                 <div className={styles.fifthContainer}>
-                  <span>Address Book</span>
+                  <span onClick={() => history.push("/account/3")}>
+                    Address Book
+                  </span>
                 </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
-                <div
-                  onClick={() => showOrderHistory()}
-                  className={styles.sixthContainer}
-                >
-                  <span>Order History</span>
+                <div className={styles.sixthContainer}>
+                  <span onClick={() => showOrderHistory()}>Order History</span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>

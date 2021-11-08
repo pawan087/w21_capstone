@@ -41,6 +41,12 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope("currentUser").findByPk(id);
     }
 
+    static async checkPassword({ id, currentPassword }) {
+      const user = await User.scope("loginUser").findByPk(id);
+
+      return user.validatePassword(currentPassword);
+    }
+
     static async login({ credential, password }) {
       const { Op } = require("sequelize");
 

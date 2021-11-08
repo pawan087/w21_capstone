@@ -20,21 +20,14 @@ export default function AccountDashboard() {
 
   const user = useSelector((state) => state.session.user);
 
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [emptyFirstNameWarning, setEmptyFirstNameWarning] = useState(false);
+  const [lastName, setLastName] = useState(user.lastName);
+  const [address1, setAddress1] = useState(user.address1);
+  const [address2, setAddress2] = useState(user.address2);
+  const [phone, setPhone] = useState(user.phone);
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);
-  const [currentPassword, setCurrentPassword] = useState("");
-  const [emptyCurrentPasswordWarning, setEmptyCurrentPasswordWarning] =
-    useState(false);
-  const [newPassword, setNewPassword] = useState("");
-  const [emptyNewPasswordWarning, setEmptyNewPasswordWarning] = useState(false);
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const [emptyConfirmNewPasswordWarning, setEmptyConfirmNewPasswordWarning] =
-    useState(false);
-  const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
-  const [invalidNewPasswordWarning, setInvalidNewPasswordWarning] =
-    useState(false);
-  const [incorrectPasswordWarning, setIncorrectPasswordWarning] =
-    useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
     useState(false);
 
@@ -42,100 +35,35 @@ export default function AccountDashboard() {
     setShowSuccessfulPasswordChange(false);
   };
 
-  const changePassword = (x) => {
-    if (emptyCurrentPasswordWarning) {
-      setEmptyCurrentPasswordWarning(false);
-    }
-
-    if (incorrectPasswordWarning) {
-      setIncorrectPasswordWarning(false);
-    }
-
-    setCurrentPassword(x);
-    return;
+  const changeFirstName = (x) => {
+    setFirstName(x);
   };
 
-  const changeNewPassword = (x) => {
-    if (emptyNewPasswordWarning) {
-      setEmptyNewPasswordWarning(false);
-    }
-
-    if (invalidNewPasswordWarning) {
-      setInvalidNewPasswordWarning(false);
-    }
-
-    setNewPassword(x);
-    return;
+  const changeLastName = (x) => {
+    setLastName(x);
   };
 
-  const changeConfirmNewPassword = (x) => {
-    if (emptyConfirmNewPasswordWarning) {
-      setEmptyConfirmNewPasswordWarning(false);
-    }
-
-    if (invalidConfirmPassword) {
-      setInvalidConfirmPassword(false);
-    }
-
-    setConfirmNewPassword(x);
-    return;
+  const changeAddress1 = (x) => {
+    setAddress1(x);
   };
 
-  const handlePasswordWarning = () => {
-    if (!currentPassword) {
-      setEmptyCurrentPasswordWarning(true);
-    }
-
-    if (!newPassword) {
-      setEmptyNewPasswordWarning(true);
-    }
-
-    if (!confirmNewPassword) {
-      setEmptyConfirmNewPasswordWarning(true);
-    }
+  const changeAddress2 = (x) => {
+    setAddress2(x);
   };
 
-  const savePasswordChange = () => {
-    if (newPassword !== confirmNewPassword) {
-      setInvalidConfirmPassword(true);
-    }
+  const changePhone = (x) => {
+    setPhone(x);
+  };
 
-    if (newPassword.length < 6) {
-      setInvalidNewPasswordWarning(true);
-    }
+  const clear = () => {
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setAddress1(user.address1);
+    setAddress2(user.address2);
+    setPhone(user.phone);
+  };
 
-    if (newPassword === confirmNewPassword && newPassword.length > 5) {
-      setLoader2(true);
-
-      return dispatch(
-        sessionActions.updatePassword({
-          id: user.id,
-          oldPassword: currentPassword,
-          newPassword,
-          confirmNewPassword,
-        })
-      )
-        .then(async () => {
-          setCurrentPassword("");
-          setNewPassword("");
-          setConfirmNewPassword("");
-          await dispatch(sessionActions.restoreUser());
-
-          setShowSuccessfulPasswordChange(true);
-        })
-        .catch(async (res) => {
-          const data = await res.json();
-
-          if (data && data.errors) {
-            setIncorrectPasswordWarning(true);
-            return;
-          }
-        })
-        .finally(async () => {
-          setLoader2(false);
-        });
-    }
-
+  const issueWarnings = () => {
     return;
   };
 
@@ -209,13 +137,13 @@ export default function AccountDashboard() {
                 </div>
 
                 <div className={styles.fourthContainer}>
-                  <span>Password</span>
+                  <span onClick={() => history.push("/account/2")}>
+                    Password
+                  </span>
                 </div>
 
                 <div className={styles.fifthContainer}>
-                  <span onClick={() => history.push("/account/3")}>
-                    Address Book
-                  </span>
+                  <span>Address Book</span>
                 </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
@@ -258,123 +186,156 @@ export default function AccountDashboard() {
 
           {
             /* RIGHT - ACCOUNT SETTINGS SECTION */
-            <div className={styles.personalDataContainer}>
-              <div className={styles.pd1stContainer}>Change Password</div>
+            <div className={styles.personalDataContainer2}>
+              <div className={styles.pd1stContainer2}>Edit Address</div>
 
-              <div className={styles.pd2ndContainer3}>
+              <div className={styles.namesContainer}>
                 <div
                   className={
                     false
                       ? styles.passwordInputContainerRed
-                      : styles.passwordInputContainer3
+                      : styles.fNamelNameInputContainer
                   }
                 >
                   <FormField
-                    type="password"
+                    type="text"
                     standard="labeleffect"
-                    value={currentPassword}
-                    keys={"currentPassword"}
+                    value={firstName}
+                    keys={"firstName"}
                     className={styles.firstNameInput}
                     effect={"effect_9"}
-                    handleOnChange={(value) => changePassword(value)}
-                    placeholder={"Current Password"}
+                    handleOnChange={(value) => changeFirstName(value)}
+                    placeholder={"First Name"}
                   />
-                  {emptyCurrentPasswordWarning && (
+                  {false && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
                   )}
-                  {incorrectPasswordWarning && (
+                </div>
+                <div
+                  className={
+                    false
+                      ? styles.passwordInputContainerRed
+                      : styles.fNamelNameInputContainer
+                  }
+                >
+                  <FormField
+                    type="text"
+                    standard="labeleffect"
+                    value={lastName}
+                    keys={"lastName"}
+                    className={styles.firstNameInput}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => changeLastName(value)}
+                    placeholder={"Last Name"}
+                  />
+                  {false && (
                     <span className={styles.requiredLabel}>
-                      The provided password was invalid.
+                      Please fill out this field.
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className={styles.pd2ndContainer4}>
+              <div className={styles.address1Container}>
                 <div
                   className={
                     false
                       ? styles.passwordInputContainerRed
-                      : styles.passwordInputContainer
+                      : styles.address1InputContainer
                   }
                 >
                   <FormField
-                    type="password"
+                    type="text"
                     standard="labeleffect"
-                    value={newPassword}
-                    keys={"currentPassword"}
+                    value={address1}
+                    keys={"address1"}
                     className={styles.firstNameInput}
                     effect={"effect_9"}
-                    handleOnChange={(value) => changeNewPassword(value)}
-                    placeholder={"New Password"}
+                    handleOnChange={(value) => changeAddress1(value)}
+                    placeholder={"Street Address"}
                   />
-                  {emptyNewPasswordWarning && (
+                  {false && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
-                    </span>
-                  )}
-                  {invalidNewPasswordWarning && (
-                    <span className={styles.requiredLabel}>
-                      Use 6 or more characters
-                    </span>
-                  )}
-                </div>
-
-                <div
-                  className={
-                    false
-                      ? styles.passwordInputContainerRed
-                      : styles.passwordInputContainer2
-                  }
-                >
-                  <FormField
-                    type="password"
-                    standard="labeleffect"
-                    value={confirmNewPassword}
-                    keys={"currentPassword"}
-                    className={styles.firstNameInput}
-                    effect={"effect_9"}
-                    handleOnChange={(value) => changeConfirmNewPassword(value)}
-                    placeholder={"Confirm New Password"}
-                  />
-                  {emptyConfirmNewPasswordWarning && (
-                    <span className={styles.requiredLabel}>
-                      Please fill out this field.
-                    </span>
-                  )}
-                  {invalidConfirmPassword && (
-                    <span className={styles.requiredLabel}>
-                      Passwords do not match.
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className={styles.editNameBottomContainer}>
-                {!(
-                  currentPassword.length === 0 ||
-                  newPassword.length === 0 ||
-                  confirmNewPassword.length === 0
-                ) && (
+              <div className={styles.address2Container}>
+                <div
+                  className={
+                    false
+                      ? styles.passwordInputContainerRed
+                      : styles.address1InputContainer
+                  }
+                >
+                  <FormField
+                    type="text"
+                    standard="labeleffect"
+                    value={address2}
+                    keys={"address2"}
+                    className={styles.firstNameInput}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => changeAddress2(value)}
+                    placeholder={"City, State, ZIP"}
+                  />
+                  {false && (
+                    <span className={styles.requiredLabel}>
+                      Please fill out this field.
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.phoneContainer}>
+                <div
+                  className={
+                    false
+                      ? styles.passwordInputContainerRed
+                      : styles.address1InputContainer
+                  }
+                >
+                  <FormField
+                    type="text"
+                    standard="labeleffect"
+                    value={phone}
+                    keys={"phone"}
+                    className={styles.firstNameInput}
+                    effect={"effect_9"}
+                    handleOnChange={(value) => changePhone(value)}
+                    placeholder={"Phone Number"}
+                  />
+                  {false && (
+                    <span className={styles.requiredLabel}>
+                      Please fill out this field.
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.editNameBottomContainer2}>
+                {false && (
                   <div
-                    onClick={() => savePasswordChange()}
-                    className={styles.button4}
+                    onClick={() => console.log("SAVE CHANGES")}
+                    className={styles.button12}
                   >
-                    Save Changes
+                    SAVE
                   </div>
                 )}
-                {(currentPassword.length === 0 ||
-                  newPassword.length === 0 ||
-                  confirmNewPassword.length === 0) && (
+                {true && (
                   <div
-                    onClick={() => handlePasswordWarning()}
-                    className={styles.button5}
+                    onClick={() => issueWarnings()}
+                    className={styles.button32}
                   >
-                    Save Changes
+                    SAVE
                   </div>
                 )}
+                <div onClick={() => clear()} className={styles.button22}>
+                  CANCEL
+                </div>
               </div>
             </div>
 
