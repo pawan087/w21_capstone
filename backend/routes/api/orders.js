@@ -76,11 +76,11 @@ router.post(
       address2,
       creditCard,
       expirationDate,
+      firstName,
+      lastName,
     } = req.body;
 
     const userId = user.id;
-    // const address1 = user.address1;
-    // const address2 = user.address2;
     const items = [];
 
     await cartItems.forEach(async (cartitem) => {
@@ -108,6 +108,8 @@ router.post(
       address2,
       creditCard,
       expirationDate,
+      firstName,
+      lastName,
     });
 
     const orders = await Order.findAll();
@@ -132,38 +134,6 @@ router.post(
     res.json(orders);
   })
 );
-
-// router.put(
-//   "/update",
-//   asyncHandler(async (req, res) => {
-//     const { id, address1, address2, orderItem, quantity } = req.body;
-
-//     const orderToUpdate = await Order.findByPk(id);
-
-//     if (address1 && address2) {
-//       orderToUpdate.update({ address1, address2 });
-//     }
-
-//     const orderItemId = orderItem.id;
-//     const orderItemToUpdate = await orderItem.findByPk(orderItemId);
-
-//     if (quantity > 0) {
-//       await orderItemToUpdate.update({ quantity });
-//     } else {
-//       await orderItemToUpdate.destroy();
-//     }
-
-//     const options = {
-//       attributes: {
-//         exclude: ["createdAt", "updatedAt"],
-//       },
-//     };
-
-//     const cartItems = await cartItem.findAll(options);
-
-//     res.json(cartItems);
-//   })
-// );
 
 router.put(
   "/address",

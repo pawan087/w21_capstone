@@ -174,11 +174,10 @@ export default function OrderConfirmation() {
         setShowEdit(false);
       } else {
         // EDIT USER
+
         await dispatch(
           updateProfile({
             id: user.id,
-            firstName,
-            lastName,
             phone,
             address1,
             address2,
@@ -297,6 +296,8 @@ export default function OrderConfirmation() {
         address1,
         address2,
         phone,
+        firstName,
+        lastName,
       })
     );
 
@@ -309,6 +310,8 @@ export default function OrderConfirmation() {
         address2,
         creditCard: creditCardNumber,
         expirationDate: expirationDate,
+        firstName,
+        lastName,
       })
     );
 

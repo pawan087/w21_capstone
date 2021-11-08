@@ -108,14 +108,12 @@ export const profileEdit = (obj) => async (dispatch) => {
 // New
 
 export const updateProfile = (obj) => async (dispatch) => {
-  const { id, firstName, lastName, phone, address1, address2 } = obj;
+  const { id, phone, address1, address2 } = obj;
 
   const response = await csrfFetch("/api/session/update", {
     method: "PUT",
     body: JSON.stringify({
       id,
-      firstName,
-      lastName,
       phone,
       address1,
       address2,

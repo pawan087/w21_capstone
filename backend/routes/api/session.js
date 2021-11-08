@@ -129,11 +129,11 @@ router.put(
   })
 );
 
-// Update (oldest)
+// Update
 router.put(
   "/update",
   asyncHandler(async (req, res, next) => {
-    const { id, firstName, lastName, phone, address1, address2 } = req.body;
+    const { id, phone, address1, address2 } = req.body;
 
     const user = await User.findByPk(id);
 
@@ -148,8 +148,6 @@ router.put(
     }
 
     await user.update({
-      firstName,
-      lastName,
       phone,
       address1,
       address2,

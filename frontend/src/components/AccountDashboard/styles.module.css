@@ -1018,9 +1018,26 @@
   margin-bottom: 20px;
 }
 
+.address1InputContainerRed {
+  width: 760px;
+  border: 1px solid rgba(224, 59, 47, 1);
+  /* margin-bottom: 20px; */
+  height: 55px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .fNamelNameInputContainer {
   width: 370px;
   border: 1px solid rgba(0, 0, 0, 0.33);
+  margin-bottom: 20px;
+  height: 55px;
+  margin-top: 20px;
+}
+
+.fNamelNameInputContainerRed {
+  width: 370px;
+  border: 1px solid rgba(224, 59, 47, 1);
   margin-bottom: 20px;
   height: 55px;
   margin-top: 20px;

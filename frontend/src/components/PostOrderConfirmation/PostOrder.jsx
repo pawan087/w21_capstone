@@ -206,7 +206,7 @@ export default function PostOrder() {
             <div className={styles.addressLabel}>Shipping Address</div>
 
             <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
+              {justOrdered?.firstName} {justOrdered?.lastName}
             </div>
 
             <div className={styles.address1}>{justOrdered?.address1}</div>
@@ -222,7 +222,7 @@ export default function PostOrder() {
             <div className={styles.addressLabel}>Billing Address</div>
 
             <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
+              {justOrdered?.firstName} {justOrdered?.lastName}
             </div>
 
             <div className={styles.address1}>{justOrdered?.address1}</div>
@@ -235,9 +235,15 @@ export default function PostOrder() {
 
             <div className={styles.email}>Credit Card</div>
 
-            <div className={styles.usersName}>
-              {user.firstName} {user.lastName}
-            </div>
+            {justOrdered?.cc?.slice(justOrdered?.cc?.length - 4) === "9509" && (
+              <div className={styles.usersName}>Pawan Chahal</div>
+            )}
+
+            {justOrdered?.cc?.slice(justOrdered?.cc?.length - 4) !== "9509" && (
+              <div className={styles.usersName}>
+                {justOrdered?.firstName} {justOrdered?.lastName}
+              </div>
+            )}
 
             <div className={styles.email}>
               ************{justOrdered?.cc?.slice(justOrdered?.cc?.length - 4)}

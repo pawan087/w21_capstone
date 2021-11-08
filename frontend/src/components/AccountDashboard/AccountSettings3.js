@@ -23,9 +23,13 @@ export default function AccountDashboard() {
   const [firstName, setFirstName] = useState(user.firstName);
   const [emptyFirstNameWarning, setEmptyFirstNameWarning] = useState(false);
   const [lastName, setLastName] = useState(user.lastName);
+  const [emptyLastNameWarning, setEmptyLastNameWarning] = useState(false);
   const [address1, setAddress1] = useState(user.address1);
+  const [emptyAddress1Warning, setEmptyAddress1Warning] = useState(false);
   const [address2, setAddress2] = useState(user.address2);
+  const [emptyAddress2Warning, setEmptyAddress2Warning] = useState(false);
   const [phone, setPhone] = useState(user.phone);
+  const [emptyPhoneWarning, setEmptyPhoneWarning] = useState(false);
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
@@ -36,22 +40,42 @@ export default function AccountDashboard() {
   };
 
   const changeFirstName = (x) => {
+    if (emptyFirstNameWarning) {
+      setEmptyFirstNameWarning(false);
+    }
+
     setFirstName(x);
   };
 
   const changeLastName = (x) => {
+    if (emptyLastNameWarning) {
+      setEmptyLastNameWarning(false);
+    }
+
     setLastName(x);
   };
 
   const changeAddress1 = (x) => {
+    if (emptyAddress1Warning) {
+      setEmptyAddress1Warning(false);
+    }
+
     setAddress1(x);
   };
 
   const changeAddress2 = (x) => {
+    if (emptyAddress2Warning) {
+      setEmptyAddress2Warning(false);
+    }
+
     setAddress2(x);
   };
 
   const changePhone = (x) => {
+    if (emptyPhoneWarning) {
+      setEmptyPhoneWarning(false);
+    }
+
     setPhone(x);
   };
 
@@ -61,9 +85,34 @@ export default function AccountDashboard() {
     setAddress1(user.address1);
     setAddress2(user.address2);
     setPhone(user.phone);
+    setEmptyPhoneWarning(false);
+    setEmptyLastNameWarning(false);
+    setEmptyFirstNameWarning(false);
+    setEmptyAddress1Warning(false);
+    setEmptyAddress2Warning(false);
   };
 
   const issueWarnings = () => {
+    if (firstName.length === 0) {
+      setEmptyFirstNameWarning(true);
+    }
+
+    if (lastName.length === 0) {
+      setEmptyLastNameWarning(true);
+    }
+
+    if (address1.length === 0) {
+      setEmptyAddress1Warning(true);
+    }
+
+    if (address2.length === 0) {
+      setEmptyAddress2Warning(true);
+    }
+
+    if (phone.length === 0) {
+      setEmptyPhoneWarning(true);
+    }
+
     return;
   };
 
@@ -192,8 +241,8 @@ export default function AccountDashboard() {
               <div className={styles.namesContainer}>
                 <div
                   className={
-                    false
-                      ? styles.passwordInputContainerRed
+                    emptyFirstNameWarning
+                      ? styles.fNamelNameInputContainerRed
                       : styles.fNamelNameInputContainer
                   }
                 >
@@ -207,7 +256,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeFirstName(value)}
                     placeholder={"First Name"}
                   />
-                  {true && (
+                  {emptyFirstNameWarning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
@@ -215,8 +264,8 @@ export default function AccountDashboard() {
                 </div>
                 <div
                   className={
-                    false
-                      ? styles.passwordInputContainerRed
+                    emptyLastNameWarning
+                      ? styles.fNamelNameInputContainerRed
                       : styles.fNamelNameInputContainer
                   }
                 >
@@ -230,7 +279,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeLastName(value)}
                     placeholder={"Last Name"}
                   />
-                  {false && (
+                  {emptyLastNameWarning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
@@ -241,8 +290,8 @@ export default function AccountDashboard() {
               <div className={styles.address1Container}>
                 <div
                   className={
-                    false
-                      ? styles.passwordInputContainerRed
+                    emptyAddress1Warning
+                      ? styles.address1InputContainerRed
                       : styles.address1InputContainer
                   }
                 >
@@ -256,7 +305,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeAddress1(value)}
                     placeholder={"Street Address"}
                   />
-                  {false && (
+                  {emptyAddress1Warning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
@@ -282,7 +331,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeAddress2(value)}
                     placeholder={"City, State, ZIP"}
                   />
-                  {false && (
+                  {emptyAddress2Warning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
@@ -308,7 +357,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
-                  {false && (
+                  {emptyPhoneWarning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
@@ -317,15 +366,25 @@ export default function AccountDashboard() {
               </div>
 
               <div className={styles.editNameBottomContainer2}>
-                {false && (
-                  <div
-                    onClick={() => console.log("SAVE CHANGES")}
-                    className={styles.button12}
-                  >
-                    SAVE
-                  </div>
-                )}
-                {true && (
+                {firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0 && (
+                    <div
+                      onClick={() => console.log("SAVE CHANGES")}
+                      className={styles.button12}
+                    >
+                      SAVE
+                    </div>
+                  )}
+                {!(
+                  firstName.length > 0 &&
+                  lastName.length > 0 &&
+                  address1.length > 0 &&
+                  address2.length > 0 &&
+                  phone.length > 0
+                ) && (
                   <div
                     onClick={() => issueWarnings()}
                     className={styles.button32}
