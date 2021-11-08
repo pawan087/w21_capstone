@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
 import ReactLoading from "react-loading";
+
 import { FormField } from "react-form-input-fields";
-import "react-form-input-fields/dist/index.css";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
 import styles from "./styles.module.css";
 import "@szhsin/react-menu/dist/index.css";
-import { set } from "js-cookie";
+import "react-form-input-fields/dist/index.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
@@ -174,6 +174,10 @@ export default function AccountDashboard() {
             currentPassword: currentPassword,
           })
         )
+          .then(async () => {
+            cancelEditEmail();
+            await dispatch(sessionActions.restoreUser());
+          })
           .catch(async (res) => {
             const data = await res.json();
 
@@ -183,15 +187,8 @@ export default function AccountDashboard() {
               return;
             }
           })
-          .finally(async () => {
-            await dispatch(sessionActions.restoreUser());
-
-            let func = () => {
-              cancelEditEmail();
-              setLoader2(false);
-            };
-
-            await setTimeout(() => func(), 1000);
+          .finally(() => {
+            setLoader2(false);
           });
       }
     } else {
@@ -269,16 +266,20 @@ export default function AccountDashboard() {
 
                 <div className={styles.secondContainer}>ACCOUNT SETTINGS</div>
 
-                <div className={styles.thirdContainer}>Personal Data</div>
+                <div className={styles.thirdContainer}>
+                  <span>Personal Data</span>
+                </div>
 
                 <div
                   onClick={() => showPassword()}
                   className={styles.fourthContainer}
                 >
-                  Password
+                  <span>Password</span>
                 </div>
 
-                <div className={styles.fifthContainer}>Address Book</div>
+                <div className={styles.fifthContainer}>
+                  <span>Address Book</span>
+                </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
@@ -286,7 +287,7 @@ export default function AccountDashboard() {
                   onClick={() => showOrderHistory()}
                   className={styles.sixthContainer}
                 >
-                  Order History
+                  <span>Order History</span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>

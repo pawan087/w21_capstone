@@ -372,12 +372,16 @@ export default function AccountDashboard() {
                   onClick={() => history.push("/account/1")}
                   className={styles.thirdContainer}
                 >
-                  Personal Data
+                  <span>Personal Data</span>
                 </div>
 
-                <div className={styles.fourthContainer}>Password</div>
+                <div className={styles.fourthContainer}>
+                  <span>Password</span>
+                </div>
 
-                <div className={styles.fifthContainer}>Address Book</div>
+                <div className={styles.fifthContainer}>
+                  <span>Address Book</span>
+                </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
@@ -385,7 +389,7 @@ export default function AccountDashboard() {
                   onClick={() => clearAndShowOrderHistory()}
                   className={styles.sixthContainer}
                 >
-                  Order History
+                  <span>Order History</span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>

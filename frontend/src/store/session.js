@@ -158,7 +158,27 @@ export const updateEmail = (obj) => async (dispatch) => {
     body: JSON.stringify({
       id,
       email,
-      currentPassword
+      currentPassword,
+    }),
+  });
+
+  const data = await response.json();
+  dispatch(setUser(data));
+
+  return data;
+};
+
+// Update Password
+
+export const updatePassword = (obj) => async (dispatch) => {
+  const { id, oldPassword, newPassword } = obj;
+
+  const response = await csrfFetch("/api/session/password", {
+    method: "PUT",
+    body: JSON.stringify({
+      id,
+      oldPassword,
+      newPassword,
     }),
   });
 

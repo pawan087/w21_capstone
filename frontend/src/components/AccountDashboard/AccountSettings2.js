@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
 import ReactLoading from "react-loading";
+import Rodal from "rodal";
 import { FormField } from "react-form-input-fields";
-import "react-form-input-fields/dist/index.css";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
 import styles from "./styles.module.css";
 import "@szhsin/react-menu/dist/index.css";
+import "react-form-input-fields/dist/index.css";
+import "rodal/lib/rodal.css";
 
 export default function AccountDashboard() {
   const dispatch = useDispatch();
@@ -31,10 +33,22 @@ export default function AccountDashboard() {
   const [invalidConfirmPassword, setInvalidConfirmPassword] = useState(false);
   const [invalidNewPasswordWarning, setInvalidNewPasswordWarning] =
     useState(false);
+  const [incorrectPasswordWarning, setIncorrectPasswordWarning] =
+    useState(false);
+  const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
+    useState(false);
+
+  const hide = () => {
+    setShowSuccessfulPasswordChange(false);
+  };
 
   const changePassword = (x) => {
     if (emptyCurrentPasswordWarning) {
       setEmptyCurrentPasswordWarning(false);
+    }
+
+    if (incorrectPasswordWarning) {
+      setIncorrectPasswordWarning(false);
     }
 
     setCurrentPassword(x);
@@ -84,12 +98,42 @@ export default function AccountDashboard() {
   const savePasswordChange = () => {
     if (newPassword !== confirmNewPassword) {
       setInvalidConfirmPassword(true);
-      return;
     }
 
     if (newPassword.length < 6) {
       setInvalidNewPasswordWarning(true);
-      return;
+    }
+
+    if (newPassword === confirmNewPassword && newPassword.length > 5) {
+      setLoader2(true);
+
+      return dispatch(
+        sessionActions.updatePassword({
+          id: user.id,
+          oldPassword: currentPassword,
+          newPassword,
+          confirmNewPassword,
+        })
+      )
+        .then(async () => {
+          setCurrentPassword("");
+          setNewPassword("");
+          setConfirmNewPassword("");
+          await dispatch(sessionActions.restoreUser());
+
+          setShowSuccessfulPasswordChange(true);
+        })
+        .catch(async (res) => {
+          const data = await res.json();
+
+          if (data && data.errors) {
+            setIncorrectPasswordWarning(true);
+            return;
+          }
+        })
+        .finally(async () => {
+          setLoader2(false);
+        });
     }
 
     return;
@@ -162,12 +206,16 @@ export default function AccountDashboard() {
                   onClick={() => history.push("/account/1")}
                   className={styles.thirdContainer}
                 >
-                  Personal Data
+                  <span>Personal Data</span>
                 </div>
 
-                <div className={styles.fourthContainer}>Password</div>
+                <div className={styles.fourthContainer}>
+                  <span>Password</span>
+                </div>
 
-                <div className={styles.fifthContainer}>Address Book</div>
+                <div className={styles.fifthContainer}>
+                  <span>Address Book</span>
+                </div>
 
                 <div className={styles.secondContainer}>MY ORDERS</div>
 
@@ -175,7 +223,7 @@ export default function AccountDashboard() {
                   onClick={() => showOrderHistory()}
                   className={styles.sixthContainer}
                 >
-                  Order History
+                  <span>Order History</span>
                 </div>
 
                 <div className={styles.fifthContainer}></div>
@@ -213,7 +261,7 @@ export default function AccountDashboard() {
           {
             /* RIGHT - ACCOUNT SETTINGS SECTION */
             <div className={styles.personalDataContainer}>
-              <div className={styles.pd1stContainer}>Personal Data</div>
+              <div className={styles.pd1stContainer}>Change Password</div>
 
               <div className={styles.pd2ndContainer3}>
                 <div
@@ -236,6 +284,11 @@ export default function AccountDashboard() {
                   {emptyCurrentPasswordWarning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
+                    </span>
+                  )}
+                  {incorrectPasswordWarning && (
+                    <span className={styles.requiredLabel}>
+                      The provided password was invalid.
                     </span>
                   )}
                 </div>
@@ -344,6 +397,20 @@ export default function AccountDashboard() {
       )}
 
       <Footer />
+
+      <Rodal
+        closeOnEsc={true}
+        enterAnimation={"zoom"}
+        leaveAnimation={"fade"}
+        width={1145}
+        height={55}
+        visible={showSuccessfulPasswordChange}
+        onClose={hide}
+      >
+        <div className={styles.reviewSubmissionConfirmationContainer}>
+          Your password was updated!
+        </div>
+      </Rodal>
     </motion.div>
   );
 }

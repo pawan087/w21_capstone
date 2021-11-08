@@ -139,20 +139,21 @@
   padding-left: 47.5px;
 }
 
-.thirdContainer,
-.fourthContainer,
-.fifthContainer,
-.sixthContainer {
+.thirdContainer span,
+.fourthContainer span,
+.fifthContainer span,
+.sixthContainer span {
   transition: 0.15s ease-in-out;
   cursor: pointer;
 }
 
-.thirdContainer:hover,
-.fourthContainer:hover,
-.fifthContainer:hover,
-.sixthContainer:hover {
+.thirdContainer span:hover,
+.fourthContainer span:hover,
+.fifthContainer span:hover,
+.sixthContainer span:hover {
   color: rgb(238, 42, 40);
 }
+
 
 .mainLeftBottomContainer {
   background-color: rgb(242, 244, 247);
@@ -968,7 +969,7 @@
   border: 1px solid rgba(0, 0, 0, 0.33);
   margin-bottom: 35px;
   height: 55px;
-  margin-top: 35px;
+  margin-top: 5px;
 }
 
 .passwordInputContainer2 {
@@ -1137,4 +1138,16 @@
   font-size: 12.5px;
   position: absolute;
   transform: translateY(-20px);
+}
+
+.reviewSubmissionConfirmationContainer {
+  background-color: rgb(205, 225, 206);
+  width: 1145px;
+  height: 55px;
+  transform: translate(-15px, -15px);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgb(71, 112, 72);
+  padding-top: 12.5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }
