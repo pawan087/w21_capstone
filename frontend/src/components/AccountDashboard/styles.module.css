@@ -879,7 +879,7 @@
 }
 
 .pd2ndContainer2 {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -937,11 +937,27 @@
   height: 55px;
 }
 
+.passwordInputContainer {
+  width: 745px;
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  margin-bottom: 20px;
+  height: 55px;
+  margin-top: 20px;
+}
+
 .nameInputContainerRed {
   width: 365px;
   height: 55px;
   border: 1px solid rgba(224, 59, 47, 1);
   margin-bottom: 20px;
+}
+
+.passwordInputContainerRed {
+  width: 745px;
+  height: 55px;
+  border: 1px solid rgba(224, 59, 47, 1);
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .emailInputContainerRed {
@@ -970,7 +986,7 @@
 .editNameBottomContainer {
   display: flex;
   margin-top: 2.5px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .button1,
@@ -1001,7 +1017,7 @@
   align-items: center;
   color: white;
   font-weight: bold;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   font-size: 12.5px;
   cursor: not-allowed;
   margin-right: 12.5px;
@@ -1036,6 +1052,13 @@
 }
 
 .requiredLabel {
+  color: rgba(224, 59, 47, 1);
+  font-size: 12.5px;
+  position: absolute;
+  transform: translateY(-20px);
+}
+
+.requiredLabel2 {
   color: rgba(224, 59, 47, 1);
   font-size: 12.5px;
   position: absolute;

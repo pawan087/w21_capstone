@@ -29,6 +29,8 @@ export default function AccountDashboard() {
   const [invalidLastName, setInvalidLastName] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
   const [incorrectFormatEmail, setIncorrectFormatEmail] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [invalidPassword, setInvalidPassword] = useState(false);
 
   const changeFirstName = (x) => {
     setFirstName(x);
@@ -45,13 +47,21 @@ export default function AccountDashboard() {
     return;
   };
 
+  const changePassword = (x) => {
+    setCurrentPassword(x);
+    return;
+  };
+
   const showEditName = () => {
+    cancelEditEmail();
     setEditEmail(false);
     setEditName(true);
   };
 
   const showEditEmail = () => {
+    cancelEditName();
     setEditName(false);
+    setEmail(user.email);
     setEditEmail(true);
   };
 
@@ -68,6 +78,8 @@ export default function AccountDashboard() {
     setInvalidEmail(false);
     setIncorrectFormatEmail(false);
     setEditEmail(false);
+    setCurrentPassword("");
+    setInvalidPassword(false);
   };
 
   const handleEmailWarning = () => {
@@ -101,7 +113,7 @@ export default function AccountDashboard() {
     setInvalidFirstName(false);
     setInvalidLastName(false);
 
-    if (firstName === user.firstName && lastName && user.lastName) {
+    if (firstName === user.firstName && lastName === user.lastName) {
       // Didn't do anything
       setLoader2(false);
       cancelEditName();
@@ -120,7 +132,7 @@ export default function AccountDashboard() {
     setLoader2(false);
   };
 
-  const saveEmailChange = () => {
+  const saveEmailChange = async () => {
     setLoader2(true);
 
     let regExp =
@@ -133,7 +145,34 @@ export default function AccountDashboard() {
         return;
       }
 
-      console.log("CORRECT FORMAT --> UPDATE EMAIL");
+      if (email !== user.email) {
+        return dispatch(
+          sessionActions.updateEmail({
+            id: user.id,
+            email,
+            currentPassword: currentPassword,
+          })
+        )
+          .catch(async (res) => {
+            const data = await res.json();
+
+            if (data && data.errors) {
+              setInvalidPassword(true);
+
+              return;
+            }
+          })
+          .finally(async () => {
+            await dispatch(sessionActions.restoreUser());
+
+            let func = () => {
+              cancelEditEmail();
+              setLoader2(false);
+            };
+
+            await setTimeout(() => func(), 1000);
+          });
+      }
     } else {
       setInvalidEmail(false);
       setIncorrectFormatEmail(true);
@@ -395,34 +434,39 @@ export default function AccountDashboard() {
                         </span>
                       )}
                       {invalidEmail && (
-                        <span className={styles.requiredLabel}>
+                        <span className={styles.requiredLabel2}>
                           Please fill out this field.
                         </span>
                       )}
                     </div>
-
-                    <div
-                      className={
-                        email.length === 0
-                          ? styles.emailInputContainerRed
-                          : styles.emailInputContainer
-                      }
-                    >
-                      <FormField
-                        type="text"
-                        standard="labeleffect"
-                        value={email}
-                        keys={"email"}
-                        className={styles.firstNameInput}
-                        effect={"effect_9"}
-                        handleOnChange={(value) => changeEmail(value)}
-                        placeholder={"Email"}
-                      />
-                      {/* Errors Go Here */}
-                    </div>
                   </div>
+
+                  <div
+                    className={
+                      invalidPassword
+                        ? styles.passwordInputContainerRed
+                        : styles.passwordInputContainer
+                    }
+                  >
+                    <FormField
+                      type="password"
+                      standard="labeleffect"
+                      value={currentPassword}
+                      keys={"currentPassword"}
+                      className={styles.firstNameInput}
+                      effect={"effect_9"}
+                      handleOnChange={(value) => changePassword(value)}
+                      placeholder={"Current Password"}
+                    />
+                    {invalidPassword && (
+                      <span className={styles.requiredLabel}>
+                        The provided password was invalid.
+                      </span>
+                    )}
+                  </div>
+
                   <div className={styles.editNameBottomContainer}>
-                    {email.length > 0 && (
+                    {currentPassword.length > 0 && (
                       <div
                         onClick={() => saveEmailChange()}
                         className={styles.button1}
@@ -430,7 +474,7 @@ export default function AccountDashboard() {
                         SAVE
                       </div>
                     )}
-                    {email.length === 0 && (
+                    {currentPassword.length === 0 && (
                       <div
                         onClick={() => handleEmailWarning()}
                         className={styles.button3}

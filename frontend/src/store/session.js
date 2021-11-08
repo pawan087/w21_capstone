@@ -128,6 +128,8 @@ export const updateProfile = (obj) => async (dispatch) => {
   return data;
 };
 
+// Update name
+
 export const updateName = (obj) => async (dispatch) => {
   const { id, firstName, lastName } = obj;
 
@@ -146,14 +148,17 @@ export const updateName = (obj) => async (dispatch) => {
   return data;
 };
 
+// Update e-mail
+
 export const updateEmail = (obj) => async (dispatch) => {
-  const { id, email } = obj;
+  const { id, email, currentPassword } = obj;
 
   const response = await csrfFetch("/api/session/email", {
     method: "PUT",
     body: JSON.stringify({
       id,
       email,
+      currentPassword
     }),
   });
 
