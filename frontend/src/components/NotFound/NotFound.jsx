@@ -1,10 +1,17 @@
 import React from "react";
+import { motion } from "framer-motion/dist/framer-motion";
+
 import styles from "./styles.module.css";
 import Footer from "../Footer/index";
 
 export default function NotFound() {
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.outerContainer}
+    >
       <div className={styles.pageContainer}>
         <div className={styles.firstContainer}>
           Sorry we could not find the page you were looking for.
@@ -62,7 +69,9 @@ export default function NotFound() {
         </div>
       </div>
 
-      <Footer />
-    </div>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
+    </motion.div>
   );
 }

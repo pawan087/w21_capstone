@@ -1,3 +1,13 @@
+.outerContainer {
+  background-color: rgb(242, 244, 247);
+  width: 100%;
+  height: 902.5px;
+}
+
+.footer {
+  transform: translateY(302.5px)
+}
+
 .pageContainer {
   display: flex;
   flex-direction: column;
@@ -7,7 +17,7 @@
   width: 100%;
   background-color: rgb(242, 244, 247);
   color: rgb(57, 34, 21);
-  height: 817.5px;
+  /* height: 832.5px; */
 }
 
 .firstContainer {
@@ -74,11 +84,13 @@
   object-fit: contain;
 }
 
-.third1stContainer, .third2ndContainer, .third3rdContainer {
+.third1stContainer,
+.third2ndContainer,
+.third3rdContainer {
   border-right: 1px solid rgba(0, 0, 0, 0.125);
   height: 130px;
 }
 
 .third4thContainer {
-    height: 130px;
+  height: 130px;
 }

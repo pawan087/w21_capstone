@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FormField } from "react-form-input-fields";
 import { FaCheck } from "react-icons/fa";
@@ -12,6 +13,7 @@ import styles from "./styles.module.css";
 
 export default function SignIn() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -303,7 +305,7 @@ export default function SignIn() {
         </div>
 
         <div className={styles.eightContainer}>
-          <div className={styles.createAccountButton}>CREATE ACCOUNT</div>
+          <div onClick={() => history.push('/signup')} className={styles.createAccountButton}>CREATE ACCOUNT</div>
         </div>
       </div>
 

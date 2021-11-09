@@ -9,6 +9,8 @@ import * as sessionActions from "./store/session";
 
 import AccountSettings from "./components/AccountDashboard/AccountSettings";
 import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
+import SplashPage from "./components/SplashPage/SplashPage";
+import CreateAccount from "./components/CreateAccount/CreateAccount";
 import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
@@ -59,9 +61,11 @@ function App() {
               <LoginFormPage />
             </Route>
 
-            <Route path="/signup" exact={true}>
-              <SignupFormPage />
-            </Route>
+            {false && (
+              <Route path="/signup" exact={true}>
+                <SignupFormPage />
+              </Route>
+            )}
 
             <Route path="/products" exact={true}>
               <ProductsPage />
@@ -105,6 +109,14 @@ function App() {
 
             <Route path="/signin" exact={true}>
               <SignIn />
+            </Route>
+
+            <Route path="/signup" exact={true}>
+              <CreateAccount />
+            </Route>
+
+            <Route path="/" exact={true}>
+              <SplashPage />
             </Route>
 
             <Route>

@@ -1,0 +1,8 @@
+.splashPage {
+  color: burlywood;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  margin-bottom: 630px;
+}
