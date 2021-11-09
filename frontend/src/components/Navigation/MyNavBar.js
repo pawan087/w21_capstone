@@ -173,6 +173,8 @@ export default function MyNavBar() {
 
     setVisible2(false);
     setLoader(false);
+
+    history.push("/");
   };
 
   return (

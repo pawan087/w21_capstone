@@ -32,8 +32,10 @@ router.put(
     if (!userToUpdate.recentlyViewed.includes(productId)) {
       arr2 = [...arr, productId];
 
-      if (arr2.length > 5) {
-        arr3 = arr2.slice(1);
+      if (arr2.length > 13) {
+        // originally set to 5
+        // max len of 12
+        arr3 = arr2.slice(1); // remove one since adding one
         await userToUpdate.update({ recentlyViewed: arr3 });
       } else {
         await userToUpdate.update({ recentlyViewed: arr2 });

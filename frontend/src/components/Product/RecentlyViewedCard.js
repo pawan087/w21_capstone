@@ -79,22 +79,6 @@ export default function RecentlyViewedCard() {
                   </Carousel.Item>
                 );
               })}
-
-              {recentlyViewedProducts?.map((product, i) => {
-                return (
-                  <Carousel.Item className={styles.item} key={i}>
-                    <IndividualRecentlyViewed product={product} />
-                  </Carousel.Item>
-                );
-              })}
-
-              {recentlyViewedProducts?.map((product, i) => {
-                return (
-                  <Carousel.Item className={styles.item} key={i}>
-                    <IndividualRecentlyViewed product={product} />
-                  </Carousel.Item>
-                );
-              })}
             </Carousel>
           </div>
         </div>
