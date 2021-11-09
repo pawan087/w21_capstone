@@ -2,15 +2,26 @@ import React, { useState } from "react";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FormField } from "react-form-input-fields";
 import { FaCheck } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+import ReactLoading from "react-loading";
 
+import * as sessionActions from "../../store/session";
 import Footer from "../Footer";
 import styles from "./styles.module.css";
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
+  const sessionUser = useSelector((state) => state.session.user);
+
+  const [credential, setCredential] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   const [inputType, setInputType] = useState("password");
   const [defaultOption, setDefaultOption] = useState(false);
-  const [checkBoxContainerStyle, setCheckBoxContainerStyle] =
-    useState("checkBoxContainer");
+  const [warning, setWarning] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const showPassword = (e) => {
     e.preventDefault();
@@ -23,6 +34,64 @@ export default function SignIn() {
 
     setInputType("password");
   };
+
+  const handleCredential = (value) => {
+    if (errors.length) {
+      setErrors([]);
+    }
+
+    if (warning) {
+      setWarning(false);
+    }
+
+    setCredential(value);
+  };
+
+  const handlePassword = (value) => {
+    if (errors.length) {
+      setErrors([]);
+    }
+
+    if (warning) {
+      setWarning(false);
+    }
+
+    setPassword(value);
+  };
+
+  const handleSubmit = (e) => {
+    setLoader(true);
+    setErrors([]);
+
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+
+        if (data && data.errors) setErrors(data.errors);
+      })
+      .finally(() => {
+        setLoader(false);
+      });
+  };
+
+  const handleWarnings = (e) => {
+    setWarning(true);
+    return;
+  };
+
+  const handleDefaultOption = () => {
+    setDefaultOption(!defaultOption);
+
+    if (!defaultOption) {
+      setCredential("demo@aa.io");
+      setPassword("password");
+    } else {
+      setCredential("");
+      setPassword("");
+    }
+  };
+
+  if (sessionUser) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -38,15 +107,69 @@ export default function SignIn() {
           Sign in to your GameStop account
         </div>
 
+        {errors.length > 0 && (
+          <div className={styles.errorContainer}>
+            <div className={styles.errorContainerLeft}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div className={styles.errorContainerRight}>
+              Your email or password was incorrect. Please try again.
+            </div>
+          </div>
+        )}
+
+        {warning && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={styles.errorContainer}
+          >
+            <div className={styles.errorContainerLeft}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div className={styles.errorContainerRight}>
+              Email and password fields are required. Please try again.
+            </div>
+          </motion.div>
+        )}
+
         <div className={styles.thirdContainer}>
           <FormField
             type="text"
             standard="labeleffect"
-            value={"chahal.pawanpreet@gmail.com"}
+            value={credential}
             keys={"email"}
             className={styles.emailInput}
             effect={"effect_9"}
-            handleOnChange={(value) => console.log(value)}
+            handleOnChange={(value) => handleCredential(value)}
+            required
             placeholder={"Email"}
           />
         </div>
@@ -55,12 +178,13 @@ export default function SignIn() {
           <FormField
             type={inputType}
             standard="labeleffect"
-            value={"Martinez61!"}
+            value={password}
             keys={"email"}
             className={styles.emailInput}
             effect={"effect_9"}
-            handleOnChange={(value) => console.log(value)}
+            handleOnChange={(value) => handlePassword(value)}
             placeholder={"Password"}
+            required
           />
 
           {inputType === "password" && (
@@ -142,15 +266,26 @@ export default function SignIn() {
                 ? styles.fifthRightContainer
                 : styles.fifthRightContainer2
             }
-            onClick={() => setDefaultOption(!defaultOption)}
+            onClick={() => handleDefaultOption()}
           >
             Sign in as demo user
           </div>
         </div>
 
-        <div className={styles.sixthContainer}>
-          <div className={styles.signInButton}>SIGN IN</div>
-        </div>
+        {credential.length > 0 && password.length > 0 && (
+          <div onClick={() => handleSubmit()} className={styles.sixthContainer}>
+            <div className={styles.signInButton}>SIGN IN</div>
+          </div>
+        )}
+
+        {(credential.length === 0 || password.length === 0) && (
+          <div
+            onClick={() => handleWarnings()}
+            className={styles.sixthContainer}
+          >
+            <div className={styles.signInButton2}>SIGN IN</div>
+          </div>
+        )}
 
         <div className={styles.divisorContainer}>
           <span className={styles.middleDivisor}>OR</span>
@@ -165,6 +300,17 @@ export default function SignIn() {
       <div className={styles.demoUserButton}>Demo</div>
 
       <Footer />
+
+      {loader && (
+        <div className={styles.loaderCotnainer}>
+          <ReactLoading
+            type={"bubbles"}
+            color={"rgb(231,35,13)"}
+            height={"0px"}
+            width={"120px"}
+          />
+        </div>
+      )}
     </motion.div>
   );
 }

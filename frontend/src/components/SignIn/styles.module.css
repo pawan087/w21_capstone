@@ -109,7 +109,8 @@
 
 .fifthRightContainer2 {
   font-size: 12.5px;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(231, 35, 24, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   transition: 0.15s ease-in-out;
   /* font-weight: bold; */
   margin-left: 10px;
@@ -141,6 +142,25 @@
 
 .signInButton:active {
   transform: scale(0.975);
+}
+
+.signInButton2 {
+  width: 485px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: rgb(231, 35, 24);
+  margin-bottom: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  cursor: not-allowed;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s ease-in-out;
+  opacity: 0.75;
+  /* border-radius: 2.5px; */
 }
 
 .divisorContainer {
@@ -217,12 +237,39 @@
 }
 
 .demoUserButton:hover {
-  opacity: 0.95;
+  background-color: rgba(231, 35, 24, 0.9);
+  /* opacity: 0.95; */
   --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .demoUserButton:active {
-  transform: scale(.9);
+  transform: scale(0.9);
+}
+
+.errorContainer {
+  display: flex;
+  height: 60px;
+  width: auto;
+  color: rgba(194, 62, 46, 0.8);
+  background-color: rgb(250, 238, 238);
+  font-size: 15px;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.errorContainerLeft {
+  height: 40px;
+  width: 40px;
+  color: rgba(231, 35, 24, 0.8);
+  margin-right: 10px;
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
