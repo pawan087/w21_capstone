@@ -11,6 +11,7 @@ import ReactLoading from "react-loading";
 import { FaStoreAlt } from "react-icons/fa";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
+import * as sessionActions from "../../store/session";
 import SearchComponent from "../Search";
 import { setAllCartItems, deleteCartItem } from "../../store/cartItems";
 import styles from "./Navigation.module.css";
@@ -71,7 +72,7 @@ export default function MyNavBar() {
     setCartItemId(id2);
     setRemoveConfirmation(true);
 
-    return productId
+    return productId;
   };
 
   const hideRemoveConfirmationModal = () => {
@@ -162,6 +163,17 @@ export default function MyNavBar() {
     history.push("/cart");
   };
 
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+
+    setLoader(true);
+
+    await dispatch(sessionActions.logout());
+
+    setVisible2(false);
+    setLoader(false);
+  };
+
   return (
     <div className={styles.myNavbar}>
       <div className={styles.outerContainer}>
@@ -225,15 +237,51 @@ export default function MyNavBar() {
         </div>
 
         <div className={styles.rightSection}>
-          <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
-            <div className={styles.userInitials}>
-              {user?.firstName &&
-                user?.lastName &&
-                `${user.firstName[0]}${user.lastName[0]}`}
-            </div>
+          {user && (
+            <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
+              <div className={styles.userInitials}>
+                {user?.firstName &&
+                  user?.lastName &&
+                  `${user.firstName[0]}${user.lastName[0]}`}
+              </div>
 
-            <div className={styles.accountLabel}>Account</div>
-          </div>
+              <div className={styles.accountLabel}>Account</div>
+            </div>
+          )}
+
+          {!user && (
+            <div
+              onClick={() => history.push("/signin")}
+              className={styles.button2}
+            >
+              <div className={styles.cartButtonContainer}>
+                <div className={styles.carButton}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                </div>
+
+                <div className={styles.cartLabel2}>Sign In</div>
+
+                {user && inCartProducts.length > 0 && (
+                  <div className={styles.numOfCartItems}>
+                    {inCartProducts.length !== 0 && sum}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {inCartProducts.length > 0 && (
             <Menu
@@ -344,10 +392,42 @@ export default function MyNavBar() {
             </Menu>
           )}
 
-          {inCartProducts.length === 0 && (
+          {user && inCartProducts.length === 0 && (
             <div
               onClick={() => history.push("/cart")}
-              className={styles.cartButtonContainer}
+              className={styles.cartButtonContainer2}
+            >
+              <div className={styles.carButton}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+
+              <div className={styles.cartLabel}>Cart</div>
+
+              {user && inCartProducts.length > 0 && (
+                <div className={styles.numOfCartItems}>
+                  {inCartProducts.length !== 0 && sum}
+                </div>
+              )}
+            </div>
+          )}
+
+          {!user && inCartProducts.length === 0 && (
+            <div
+              onClick={() => history.push("/login")}
+              className={styles.cartButtonContainer3}
             >
               <div className={styles.carButton}>
                 <svg
@@ -558,7 +638,12 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2MenuItemsContainer2}>
-                <div className={styles.sidebar2MenuItem2}>Sign Out</div>
+                <div
+                  onClick={(e) => handleSignOut(e)}
+                  className={styles.sidebar2MenuItem2}
+                >
+                  Sign Out
+                </div>
               </div>
             </motion.div>
           }

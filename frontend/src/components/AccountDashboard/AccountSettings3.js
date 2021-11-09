@@ -271,7 +271,7 @@ export default function AccountDashboard() {
           {
             /* RIGHT - ACCOUNT SETTINGS SECTION */
             <div className={styles.personalDataContainer2}>
-              <div className={styles.pd1stContainer2}>Edit Address</div>
+              <div className={styles.pd1stContainer2}>Edit Default Address</div>
 
               {false && (
                 <div className={styles.namesContainer}>
