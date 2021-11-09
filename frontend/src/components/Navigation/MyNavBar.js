@@ -136,6 +136,7 @@ export default function MyNavBar() {
   useEffect(() => {
     (async () => {
       await dispatch(setAllCartItems());
+      await dispatch(sessionActions.restoreUser());
 
       setLoad(true);
     })();
@@ -508,11 +509,10 @@ export default function MyNavBar() {
       {loader && (
         <div className={styles.loader}>
           <ReactLoading
-            type={"bubbles"}
-            color={"rgb(231,35,13)"}
-            /*       color={"rgb(231,35,13)"} */
+            type={"spin"}
+            color={"rgba(0,0,0,.75)"}
             height={"0px"}
-            width={"120px"}
+            width={"57.5px"}
           />
         </div>
       )}

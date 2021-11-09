@@ -59,11 +59,11 @@ export default function SignIn() {
     setPassword(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     setLoader(true);
     setErrors([]);
 
-    return dispatch(sessionActions.login({ credential, password }))
+    return await dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
 
@@ -72,6 +72,16 @@ export default function SignIn() {
       .finally(() => {
         setLoader(false);
       });
+  };
+
+  const handleDemoLogin = async () => {
+    setLoader(true);
+
+    await dispatch(
+      sessionActions.login({ credential: "demo@aa.io", password: "password" })
+    );
+
+    setLoader(false);
   };
 
   const handleWarnings = (e) => {
@@ -297,20 +307,22 @@ export default function SignIn() {
         </div>
       </div>
 
-      <div className={styles.demoUserButton}>Demo</div>
-
-      <Footer />
+      <div onClick={() => handleDemoLogin()} className={styles.demoUserButton}>
+        Demo
+      </div>
 
       {loader && (
         <div className={styles.loaderCotnainer}>
           <ReactLoading
-            type={"bubbles"}
-            color={"rgb(231,35,13)"}
+            type={"spin"}
+            color={"rgba(0,0,0,.75)"}
             height={"0px"}
-            width={"120px"}
+            width={"57.5px"}
           />
         </div>
       )}
+
+      <Footer />
     </motion.div>
   );
 }
