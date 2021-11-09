@@ -12,6 +12,7 @@ import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
 import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
+import NotFound from "./components/NotFound/NotFound";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import SignIn from "../src/components/SignIn/index.jsx";
 // import Footer from "./components/Footer";
@@ -104,6 +105,10 @@ function App() {
 
             <Route path="/signin" exact={true}>
               <SignIn />
+            </Route>
+
+            <Route>
+              <NotFound />
             </Route>
           </Switch>
         </AnimatePresence>
