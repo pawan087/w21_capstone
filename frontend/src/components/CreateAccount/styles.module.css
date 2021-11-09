@@ -1,3 +1,103 @@
-.createAccount {
-  color: orange;
+.createAccountContainer {
+  background-color: orange;
+  width: 100%;
+  display: flex;
+}
+
+.createAccountLeftContainer {
+  background-color: skyblue;
+}
+
+.createAccountRightContainer {
+  background-color: springgreen;
+  width: 50%;
+}
+
+.left1stContainer {
+  background-color: yellow;
+}
+
+.left2ndContainer {
+  background-color: lightblue;
+}
+
+.left3rdContainer {
+  display: flex;
+}
+
+.left3rd1stContainer {
+  background-color: orange;
+}
+
+.left3rd2ndContainer {
+  background-color: pink;
+}
+
+.left4thContainer {
+  background-color: palevioletred;
+  display: flex;
+}
+
+.left5thContainer {
+  background-color: powderblue;
+}
+
+.left14thContainer {
+  background-color: yellow;
+}
+
+.left6thContainer {
+  background-color: pink;
+}
+
+.left7thContainer {
+  background-color: yellowgreen;
+}
+
+.left8thContainer {
+  background-color: palegreen;
+}
+
+.left9thContainer {
+  display: flex;
+  background-color: yellowgreen;
+}
+
+.left10thContainer {
+  background-color: pink;
+}
+
+.left11thContainer {
+  background-color: rosybrown;
+}
+
+.left12thContainer {
+  background-color: palegreen;
+}
+
+.createAccountRight1st {
+  background-color: skyblue;
+}
+
+.createAccountRight2nd {
+  display: flex;
+  background-color: pink;
+}
+
+.createAccountRight3rd {
+  background-color: orange;
+}
+
+.createAccountRight4th {
+  display: flex;
+  background-color: lime;
+}
+
+.createAccountRight4thLeft {
+  background-color: lightskyblue;
+}
+
+
+.createAccountRight4thRight {
+  background-color: tomato;
 }
