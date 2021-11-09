@@ -3,9 +3,9 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
+import { FormField } from "react-form-input-fields";
 import ReactLoading from "react-loading";
 import Rodal from "rodal";
-import { FormField } from "react-form-input-fields";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
@@ -32,7 +32,7 @@ export default function AccountDashboard() {
   const [emptyPhoneWarning, setEmptyPhoneWarning] = useState(false);
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);
-  const [sameInformationWarning, setSameInformationWarning] = useState(false);
+  // const [sameInformationWarning, setSameInformationWarning] = useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
     useState(false);
 
@@ -131,7 +131,7 @@ export default function AccountDashboard() {
     setLoader2(true);
 
     await dispatch(
-      sessionActions.updateUserInformation({
+      sessionActions.updateProfile({
         id: user.id,
         phone,
         address1,
@@ -270,7 +270,7 @@ export default function AccountDashboard() {
             <div className={styles.personalDataContainer2}>
               <div className={styles.pd1stContainer2}>Edit Address</div>
 
-              <div className={styles.namesContainer}>
+              {false && <div className={styles.namesContainer}>
                 <div
                   className={
                     emptyFirstNameWarning
@@ -290,7 +290,7 @@ export default function AccountDashboard() {
                   />
                   {emptyFirstNameWarning && (
                     <span className={styles.requiredLabel}>
-                      Please fill out this field.
+                      This is a required field.
                     </span>
                   )}
                 </div>
@@ -313,11 +313,11 @@ export default function AccountDashboard() {
                   />
                   {emptyLastNameWarning && (
                     <span className={styles.requiredLabel}>
-                      Please fill out this field.
+                      This is a required field.
                     </span>
                   )}
                 </div>
-              </div>
+              </div>}
 
               <div className={styles.address1Container}>
                 <div
@@ -339,7 +339,7 @@ export default function AccountDashboard() {
                   />
                   {emptyAddress1Warning && (
                     <span className={styles.requiredLabel}>
-                      Please fill out this field.
+                      This is a required field.
                     </span>
                   )}
                 </div>
@@ -365,7 +365,7 @@ export default function AccountDashboard() {
                   />
                   {emptyAddress2Warning && (
                     <span className={styles.requiredLabel}>
-                      Please fill out this field.
+                      This is a required field.
                     </span>
                   )}
                 </div>
@@ -391,7 +391,7 @@ export default function AccountDashboard() {
                   />
                   {emptyPhoneWarning && (
                     <span className={styles.requiredLabel}>
-                      Please fill out this field.
+                      This is a required field.
                     </span>
                   )}
                 </div>
@@ -476,13 +476,3 @@ export default function AccountDashboard() {
     </motion.div>
   );
 }
-
-<FormField
-  type="text"
-  standard="labeleffect"
-  value={"firstName"}
-  keys={"firstName"}
-  effect={"effect_9"}
-  handleOnChange={(value) => console.log(value)}
-  placeholder={"First Name"}
-/>;

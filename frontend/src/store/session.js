@@ -67,46 +67,6 @@ export const signup = (user) => async (dispatch) => {
   return response;
 };
 
-// Old
-
-export const profileEdit = (obj) => async (dispatch) => {
-  const {
-    id,
-    username,
-    email,
-    newPassword,
-    password,
-    firstName,
-    lastName,
-    phone,
-    address1,
-    address2,
-  } = obj;
-
-  const response = await csrfFetch("/api/session/edit", {
-    method: "PUT",
-    body: JSON.stringify({
-      id,
-      username,
-      email,
-      newPassword,
-      password,
-      firstName,
-      lastName,
-      phone,
-      address1,
-      address2,
-    }),
-  });
-
-  const data = await response.json();
-  dispatch(setUser(data));
-
-  return data;
-};
-
-// New
-
 export const updateProfile = (obj) => async (dispatch) => {
   const { id, phone, address1, address2 } = obj;
 
@@ -126,29 +86,7 @@ export const updateProfile = (obj) => async (dispatch) => {
   return data;
 };
 
-export const updateUserInformation = (obj) => async (dispatch) => {
-  const { id, phone, address1, address2, firstName, lastName } = obj;
-
-  const response = await csrfFetch("/api/session/updateprofile", {
-    method: "PUT",
-    body: JSON.stringify({
-      id,
-      phone,
-      address1,
-      address2,
-      firstName,
-      lastName,
-    }),
-  });
-
-  const data = await response.json();
-  dispatch(setUser(data));
-
-  return data;
-};
-
 // Update name
-
 export const updateName = (obj) => async (dispatch) => {
   const { id, firstName, lastName } = obj;
 
@@ -168,7 +106,6 @@ export const updateName = (obj) => async (dispatch) => {
 };
 
 // Update e-mail
-
 export const updateEmail = (obj) => async (dispatch) => {
   const { id, email, currentPassword } = obj;
 
@@ -188,7 +125,6 @@ export const updateEmail = (obj) => async (dispatch) => {
 };
 
 // Update Password
-
 export const updatePassword = (obj) => async (dispatch) => {
   const { id, oldPassword, newPassword } = obj;
 
@@ -206,8 +142,6 @@ export const updatePassword = (obj) => async (dispatch) => {
 
   return data;
 };
-
-// End New
 
 export const logout = () => async (dispatch) => {
   const response = await csrfFetch("/api/session", {

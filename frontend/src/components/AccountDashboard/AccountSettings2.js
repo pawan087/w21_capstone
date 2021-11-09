@@ -3,9 +3,9 @@ import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
+import { FormField } from "react-form-input-fields";
 import ReactLoading from "react-loading";
 import Rodal from "rodal";
-import { FormField } from "react-form-input-fields";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
@@ -412,13 +412,3 @@ export default function AccountDashboard() {
     </motion.div>
   );
 }
-
-<FormField
-  type="text"
-  standard="labeleffect"
-  value={"firstName"}
-  keys={"firstName"}
-  effect={"effect_9"}
-  handleOnChange={(value) => console.log(value)}
-  placeholder={"First Name"}
-/>;

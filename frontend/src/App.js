@@ -13,18 +13,14 @@ import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
-import Search from "./components/Products/Testing.js";
 // import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
-import EditOrderPage from "./components/Orders/EditOrderPage";
-import EditUser from "./components/EditUser.js/EditUser";
 import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation/index.jsx";
-import Orders from "./components/Orders";
 import Cart from "./components/Cart/index.jsx";
 import PostOrder from "./components/PostOrderConfirmation/PostOrder";
 
@@ -79,25 +75,6 @@ function App() {
 
             <Route path="/confirm" exact={true}>
               <OrderConfirmation />
-            </Route>
-
-            <Route path="/oldorders" exact={true}>
-              <Orders />
-            </Route>
-
-            <Route
-              path="/edit/:id/:num/:items/:address1/:address2"
-              exact={true}
-            >
-              <EditOrderPage />
-            </Route>
-
-            <Route path="/search/:criteria" exact={true}>
-              <Search />
-            </Route>
-
-            <Route path="/profile" exact={true}>
-              <EditUser />
             </Route>
 
             <Route path="/test" exact={true}>

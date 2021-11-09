@@ -9,13 +9,12 @@ import {
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
 import { FaStoreAlt } from "react-icons/fa";
-
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-// import { SubMenu } from "@szhsin/react-menu";
+
+import SearchComponent from "../Search";
 import { setAllCartItems, deleteCartItem } from "../../store/cartItems";
 import styles from "./Navigation.module.css";
 import "@szhsin/react-menu/dist/index.css";
-import SearchComponent from "../Search";
 
 export default function MyNavBar() {
   const dispatch = useDispatch();
@@ -450,8 +449,8 @@ export default function MyNavBar() {
               animate={visible ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 500,
-                damping: 50,
+                stiffness: 300,
+                damping: 30,
               }}
               variants={variants1}
               className={styles.sidebar}
@@ -521,8 +520,8 @@ export default function MyNavBar() {
               animate={visible2 ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 500,
-                damping: 50,
+                stiffness: 300,
+                damping: 30,
               }}
               variants={variants}
               id="mySidebar2"

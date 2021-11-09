@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./PostOrder.module.css";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
-import { useHistory } from "react-router";
 import ReactLoading from "react-loading";
 
 import Footer from "../Footer";
@@ -11,6 +10,7 @@ import { setAllProducts } from "../../store/products";
 import { setAllOrderItems } from "../../store/orderItems";
 import { setAllOrders } from "../../store/orders.js";
 import { setAllCartItems } from "../../store/cartItems.js";
+import styles from "./PostOrder.module.css";
 
 export default function PostOrder() {
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ export default function PostOrder() {
   const justOrdered = useSelector((state) => state.postOrderReducer);
   const orders = useSelector((state) => state.orders);
 
-  // console.log(String(new Date (orders[orders.length - 1]?.updatedAt)).slice(4, 15));
   let subtotal = 0;
   justOrdered?.shoppingCart?.forEach((x) => {
     subtotal += x.quantity * x.product.price;

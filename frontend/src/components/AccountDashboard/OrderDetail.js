@@ -109,7 +109,10 @@ export default function OrderDetail({ order, status, user }) {
                   </div>
 
                   <div className={styles.bottom2ndRightContainer}>
-                    <div className={styles.secondRight1stContainer}>
+                    <div
+                      onClick={() => history.push(`/products/${x.product.id}`)}
+                      className={styles.secondRight1stContainer}
+                    >
                       {x.product.name}
                     </div>
 
@@ -175,7 +178,6 @@ export default function OrderDetail({ order, status, user }) {
 
           <div className={styles.userInfoContainer}>
             <div className={styles.userFullName}>
-
               {order?.firstName} {order?.lastName}
             </div>
             <div className={styles.address1Container}>{order.address1}</div>

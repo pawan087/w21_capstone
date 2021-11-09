@@ -745,6 +745,7 @@ export default function AccountDashboard() {
           }
         </div>
       </div>
+
       <Footer />
     </motion.div>
   );

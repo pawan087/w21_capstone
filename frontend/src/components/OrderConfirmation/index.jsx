@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Cards from "react-credit-cards";
-import "react-credit-cards/es/styles-compiled.css";
-import { FaCheck } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa";
+import { FaCheck, FaAngleDown } from "react-icons/fa";
 import { FormField } from "react-form-input-fields";
-import "react-form-input-fields/dist/index.css";
-import ReactLoading from "react-loading";
 import { motion } from "framer-motion/dist/framer-motion";
+import Cards from "react-credit-cards";
+import ReactLoading from "react-loading";
 
 import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
@@ -16,6 +13,8 @@ import * as sessionActions from "../../store/session";
 import { updateProfile } from "../../store/session";
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
+import "react-form-input-fields/dist/index.css";
+import "react-credit-cards/es/styles-compiled.css";
 import styles from "./OrderConfirmation.module.css";
 
 export default function OrderConfirmation() {
@@ -71,7 +70,6 @@ export default function OrderConfirmation() {
 
   if (regExp.test(creditCardNumber)) {
     legitCard = false;
-    // setPayed(false);
   } else {
     if (creditCardNumber.length === 16) {
       legitCard = true;
@@ -818,6 +816,7 @@ export default function OrderConfirmation() {
       <div onClick={() => history.push("/cart")} className={styles.untouchable}>
         Can't touch this
       </div>
+
       <Footer />
     </motion.div>
   );
