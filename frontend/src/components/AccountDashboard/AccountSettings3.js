@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
 import { FormField } from "react-form-input-fields";
@@ -20,15 +21,15 @@ export default function AccountDashboard() {
 
   const user = useSelector((state) => state.session.user);
 
-  const [firstName, setFirstName] = useState(user.firstName);
+  const [firstName, setFirstName] = useState(user?.firstName);
   const [emptyFirstNameWarning, setEmptyFirstNameWarning] = useState(false);
-  const [lastName, setLastName] = useState(user.lastName);
+  const [lastName, setLastName] = useState(user?.lastName);
   const [emptyLastNameWarning, setEmptyLastNameWarning] = useState(false);
-  const [address1, setAddress1] = useState(user.address1);
+  const [address1, setAddress1] = useState(user?.address1);
   const [emptyAddress1Warning, setEmptyAddress1Warning] = useState(false);
-  const [address2, setAddress2] = useState(user.address2);
+  const [address2, setAddress2] = useState(user?.address2);
   const [emptyAddress2Warning, setEmptyAddress2Warning] = useState(false);
-  const [phone, setPhone] = useState(user.phone);
+  const [phone, setPhone] = useState(user?.phone);
   const [emptyPhoneWarning, setEmptyPhoneWarning] = useState(false);
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);
@@ -122,7 +123,7 @@ export default function AccountDashboard() {
       firstName === user.firstName &&
       lastName === user.lastName &&
       address1 === user.address1 &&
-      address2 === address2 &&
+      address2 === user.address2 &&
       phone === user.phone
     ) {
       return;
@@ -172,6 +173,8 @@ export default function AccountDashboard() {
   const showOrderHistory = () => {
     history.push("/orders");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -270,54 +273,56 @@ export default function AccountDashboard() {
             <div className={styles.personalDataContainer2}>
               <div className={styles.pd1stContainer2}>Edit Address</div>
 
-              {false && <div className={styles.namesContainer}>
-                <div
-                  className={
-                    emptyFirstNameWarning
-                      ? styles.fNamelNameInputContainerRed
-                      : styles.fNamelNameInputContainer
-                  }
-                >
-                  <FormField
-                    type="text"
-                    standard="labeleffect"
-                    value={firstName}
-                    keys={"firstName"}
-                    className={styles.firstNameInput}
-                    effect={"effect_9"}
-                    handleOnChange={(value) => changeFirstName(value)}
-                    placeholder={"First Name"}
-                  />
-                  {emptyFirstNameWarning && (
-                    <span className={styles.requiredLabel}>
-                      This is a required field.
-                    </span>
-                  )}
+              {false && (
+                <div className={styles.namesContainer}>
+                  <div
+                    className={
+                      emptyFirstNameWarning
+                        ? styles.fNamelNameInputContainerRed
+                        : styles.fNamelNameInputContainer
+                    }
+                  >
+                    <FormField
+                      type="text"
+                      standard="labeleffect"
+                      value={firstName}
+                      keys={"firstName"}
+                      className={styles.firstNameInput}
+                      effect={"effect_9"}
+                      handleOnChange={(value) => changeFirstName(value)}
+                      placeholder={"First Name"}
+                    />
+                    {emptyFirstNameWarning && (
+                      <span className={styles.requiredLabel}>
+                        This is a required field.
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    className={
+                      emptyLastNameWarning
+                        ? styles.fNamelNameInputContainerRed
+                        : styles.fNamelNameInputContainer
+                    }
+                  >
+                    <FormField
+                      type="text"
+                      standard="labeleffect"
+                      value={lastName}
+                      keys={"lastName"}
+                      className={styles.firstNameInput}
+                      effect={"effect_9"}
+                      handleOnChange={(value) => changeLastName(value)}
+                      placeholder={"Last Name"}
+                    />
+                    {emptyLastNameWarning && (
+                      <span className={styles.requiredLabel}>
+                        This is a required field.
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div
-                  className={
-                    emptyLastNameWarning
-                      ? styles.fNamelNameInputContainerRed
-                      : styles.fNamelNameInputContainer
-                  }
-                >
-                  <FormField
-                    type="text"
-                    standard="labeleffect"
-                    value={lastName}
-                    keys={"lastName"}
-                    className={styles.firstNameInput}
-                    effect={"effect_9"}
-                    handleOnChange={(value) => changeLastName(value)}
-                    placeholder={"Last Name"}
-                  />
-                  {emptyLastNameWarning && (
-                    <span className={styles.requiredLabel}>
-                      This is a required field.
-                    </span>
-                  )}
-                </div>
-              </div>}
+              )}
 
               <div className={styles.address1Container}>
                 <div
@@ -407,7 +412,7 @@ export default function AccountDashboard() {
                     firstName === user.firstName &&
                     lastName === user.lastName &&
                     address1 === user.address1 &&
-                    address2 === address2 &&
+                    address2 === user.address2 &&
                     phone === user.phone
                   ) && (
                     <div
@@ -427,7 +432,7 @@ export default function AccountDashboard() {
                   (firstName === user.firstName &&
                     lastName === user.lastName &&
                     address1 === user.address1 &&
-                    address2 === address2 &&
+                    address2 === user.address2 &&
                     phone === user.phone)) && (
                   <div
                     onClick={() => issueWarnings()}

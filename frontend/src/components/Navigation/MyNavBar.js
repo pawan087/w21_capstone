@@ -70,6 +70,8 @@ export default function MyNavBar() {
     setProductId(id);
     setCartItemId(id2);
     setRemoveConfirmation(true);
+
+    return productId
   };
 
   const hideRemoveConfirmationModal = () => {

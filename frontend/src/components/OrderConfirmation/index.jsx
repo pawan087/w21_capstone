@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { FaCheck, FaAngleDown } from "react-icons/fa";
 import { FormField } from "react-form-input-fields";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -315,7 +315,9 @@ export default function OrderConfirmation() {
 
     const func = () => {
       setLoader(false);
-      history.push("/orderconfirmation");
+
+      history.push("/ordered");
+      
       window.scrollTo({
         top: 0,
         left: 0,
@@ -327,6 +329,8 @@ export default function OrderConfirmation() {
 
     return;
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div

@@ -30,16 +30,13 @@ export default function Cart() {
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
 
-  // const byPassReactConsoleError = () => {
-  //   return productId;
-  // }
-
   const showRemoveConfirmationModal = (name, id, id2) => {
-    // byPassReactConsoleError();
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
     setRemoveConfirmation(true);
+
+    return productId;
   };
 
   const hideRemoveConfirmationModal = () => {
@@ -420,7 +417,7 @@ export default function Cart() {
           />
         </div>
       )}
-      
+
       <Footer />
     </motion.div>
   );

@@ -213,7 +213,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
-      <RecentlyViewedCard />
+      {user && <RecentlyViewedCard />}
 
       {loader && (
         <div className={styles.loader}>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
 import { Button } from "./Styles";
-import styles from './scrollup.module.css'
+// import styles from './scrollup.module.css'
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
@@ -22,9 +23,9 @@ export default function AccountDashboard() {
   const [loader2, setLoader2] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
-  const [email, setEmail] = useState(user.email);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user?.email);
+  const [firstName, setFirstName] = useState(user?.firstName);
+  const [lastName, setLastName] = useState(user?.lastName);
   const [invalidFirstName, setInvalidFirstName] = useState(false);
   const [invalidLastName, setInvalidLastName] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
@@ -226,6 +227,8 @@ export default function AccountDashboard() {
   const showPassword = () => {
     history.push("/account/2");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div

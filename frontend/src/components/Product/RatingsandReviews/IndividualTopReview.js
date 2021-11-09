@@ -33,7 +33,6 @@ export default function IndividualTopReview({ review }) {
         reviewLike.reviewId === review.id &&
         reviewLike.like
       ) {
-        // console.log("Already liked");
         alreadyLiked = true;
         id = reviewLike.id;
       }

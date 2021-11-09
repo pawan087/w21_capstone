@@ -10,7 +10,7 @@ export default function TopReviewsCard({ reviews, avgRating }) {
   const [bool2, setBool2] = useState(true);
 
   if (reviews.length === 0) {
-    console.log("NO REVIEWS");
+    // console.log("NO REVIEWS");
   }
 
   const showAllHideTop = () => {

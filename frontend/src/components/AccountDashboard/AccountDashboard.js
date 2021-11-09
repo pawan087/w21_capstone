@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import {
@@ -329,6 +330,8 @@ export default function AccountDashboard() {
     setData([...currentOrders, ...currentOrders2]);
     setSortBy("Last 1 Minute");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div

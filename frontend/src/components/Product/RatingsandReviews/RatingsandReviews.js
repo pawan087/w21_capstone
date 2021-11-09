@@ -338,7 +338,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
                     placeholder={"Your email"}
                     className={styles.emailInput}
                     type="email"
-                    value={user.email}
+                    value={user?.email}
                     readOnly
                   ></input>
                 </div>
@@ -541,14 +541,3 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     </>
   );
 }
-
-// <div className={styles.loaderContainer}>
-// <div className={styles.loader}>
-//   <ReactLoading
-//     type={"spinningBubbles"}
-//     color={"#E7230D"}
-//     height={"20%"}
-//     width={"20%"}
-//   />
-// </div>
-// </div>

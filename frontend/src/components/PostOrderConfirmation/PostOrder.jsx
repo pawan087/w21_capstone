@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { Redirect, useHistory } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaAngleRight } from "react-icons/fa";
 import ReactLoading from "react-loading";
@@ -55,6 +55,8 @@ export default function PostOrder() {
       </div>
     );
   }
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div

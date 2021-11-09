@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import {
   motion,
@@ -17,7 +16,7 @@ import ReactLoading from "react-loading";
 // import { setAllQuestions } from "../../store/questions.js";
 import Footer from "../Footer";
 import ProductDetail from "./ProductDetail";
-import WriteReviewCard from "./WriteReviewCard";
+
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
@@ -79,14 +78,14 @@ function ProductPage() {
   useEffect(() => {
     // dispatch(setAllQuestions());
     (async () => {
-      dispatch(addToRecent({ productId: +params.id, userId: user.id }));
+      dispatch(addToRecent({ productId: +params.id, userId: user?.id }));
       dispatch(setAllProducts());
       dispatch(setAllReviews());
       dispatch(setAllReviewLikes());
 
       setLoad(true);
     })();
-  }, [params.id, user.id, dispatch]);
+  }, [params.id, user?.id, dispatch]);
 
   if (!load) {
     return (
@@ -101,8 +100,6 @@ function ProductPage() {
     );
   }
 
-  if (!user) return <Redirect to="/" />;
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -115,8 +112,6 @@ function ProductPage() {
         product={product}
         reviews={productReviews}
       />
-
-      <WriteReviewCard />
 
       <Footer />
     </motion.div>

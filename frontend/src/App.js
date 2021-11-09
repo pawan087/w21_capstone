@@ -40,7 +40,7 @@ function App() {
     <>
       <MyNavBar />
 
-      {false && <Navigation isLoaded={isLoaded} />}
+      {true && <Navigation isLoaded={isLoaded} />}
 
       {false && <button onClick={() => setShowModal(true)}>Modal</button>}
 
@@ -81,7 +81,7 @@ function App() {
               <Test />
             </Route>
 
-            <Route path="/orderconfirmation" exact={true}>
+            <Route path="/ordered" exact={true}>
               <PostOrder />
             </Route>
 

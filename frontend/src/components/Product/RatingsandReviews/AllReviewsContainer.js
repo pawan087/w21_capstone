@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate";
 
 import IndividualAllReview from "../../Product/RatingsandReviews/IndividualAllReview";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-// import { SubMenu } from "@szhsin/react-menu";
 
 import styles from "./AllReviewsContainer.module.css";
 import "@szhsin/react-menu/dist/index.css";
@@ -34,9 +33,6 @@ export default function AllReviewsContainer({ reviews }) {
     ?.slice(offset, offset + PER_PAGE)
     ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
-
-   
-
   const pageCount = Math.ceil(data?.length / PER_PAGE);
 
   const setRecent = (e) => {
@@ -60,7 +56,6 @@ export default function AllReviewsContainer({ reviews }) {
       return a.rating - +b.rating;
     });
     e.stopPropagation = true;
-    // setArr([...lowestToHighestRating]);
     setData([...lowestToHighestRating]);
     setSortBy("Lowest to Highest Rating");
   };
@@ -78,12 +73,9 @@ export default function AllReviewsContainer({ reviews }) {
 
   useEffect(() => {
     setData(reversed);
+
     setSortBy("Most Recent");
   }, [reviews]);
-
-  // useEffect(() => {
-
-  // }, [reversed]);
 
   return (
     <div className={styles.allReviewsContainer}>
@@ -188,25 +180,3 @@ export default function AllReviewsContainer({ reviews }) {
     </div>
   );
 }
-
-// Filter
-/* <div className={styles.topBottomContainer}>
-  <div className={styles.filterIcon}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-      />
-    </svg>
-  </div> */
-
-//   <div className={styles.filterText}>Filter</div>
-// </div>

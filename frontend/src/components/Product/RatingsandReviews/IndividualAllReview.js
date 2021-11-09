@@ -105,8 +105,6 @@ export default function IndividualTopReview({ review }) {
   };
 
   const hide3 = () => {
-    // setVisible2(false);
-    // setVisible(true);
     setVisible3(false);
   };
 
@@ -167,7 +165,6 @@ export default function IndividualTopReview({ review }) {
     await dispatch(setAllReviews());
     setShowEditReview(false);
     setLoading(false);
-    // setPreview(null);
     setImage("");
     setSelectedFile();
     setUploadMsg("Upload Picture");
@@ -241,7 +238,6 @@ export default function IndividualTopReview({ review }) {
         reviewLike.reviewId === review.id &&
         reviewLike.like
       ) {
-        // console.log("Already liked");
         alreadyLiked = true;
         id = reviewLike.id;
       }
@@ -372,7 +368,7 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.username}>
             {review?.User?.username}
 
-            {review.userId === user.id && (
+            {review.userId === user?.id && (
               <div className={styles.reviewLinks}>
                 <div onClick={showShowEditReview} className={styles.editLink}>
                   Edit
@@ -627,7 +623,7 @@ export default function IndividualTopReview({ review }) {
                   placeholder={"Your email"}
                   className={styles.emailInput}
                   type="email"
-                  value={user.email}
+                  value={user?.email}
                   readOnly
                 ></input>
               </div>

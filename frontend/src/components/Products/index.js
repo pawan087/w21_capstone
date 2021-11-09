@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import {
   motion,
   // Frame,
@@ -21,10 +21,11 @@ function ProductsPage() {
 
   useEffect(() => {
     dispatch(setAllProducts());
-    dispatch(setAllRecentlyViewed(user.id));
-  }, [user.id, dispatch]);
 
-  if (!user) return <Redirect to="/" />;
+    dispatch(setAllRecentlyViewed(user?.id));
+  }, [user?.id, dispatch]);
+
+  // if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -43,7 +44,7 @@ function ProductsPage() {
 
       <br />
 
-      <Recent user={user} products={products} />
+      {user && <Recent user={user} products={products} />}
     </motion.div>
   );
 }

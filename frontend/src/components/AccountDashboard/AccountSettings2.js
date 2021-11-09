@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
@@ -163,6 +164,8 @@ export default function AccountDashboard() {
   const showOrderHistory = () => {
     history.push("/orders");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
