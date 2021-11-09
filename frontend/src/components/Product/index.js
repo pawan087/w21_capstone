@@ -113,7 +113,17 @@ function ProductPage() {
         reviews={productReviews}
       />
 
-      <Footer />
+      {user && (
+        <div className={styles.footerWithUserContainer}>
+          <Footer />
+        </div>
+      )}
+
+      {!user && (
+        <div className={styles.footerWithoutUserContainer}>
+          <Footer />
+        </div>
+      )}
     </motion.div>
   );
 }

@@ -324,7 +324,7 @@ export default function SignIn() {
         </div>
       )}
 
-      <Footer />
+      {true && <Footer />}
     </motion.div>
   );
 }

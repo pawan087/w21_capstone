@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion/dist/framer-motion";
+import { FormField } from "react-form-input-fields";
+import { FaCheck } from "react-icons/fa";
 
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
 export default function CreateAccount() {
+  const [notRobot, setNotRobot] = useState(true);
+
   return (
-    <div className={styles.outerContainer}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.outerContainer}
+    >
       <div className={styles.createAccountContainer}>
         <div className={styles.createAccountLeftContainer}>
           <div className={styles.left1stContainer}>Create Account</div>
@@ -17,7 +27,15 @@ export default function CreateAccount() {
 
           <div className={styles.left3rdContainer}>
             <div className={styles.left3rd1stContainer}>
-              RED RADIO BUTTON GOES HERE
+              <div className={styles.left6thContainer}>
+                <div className={styles.creditCardTitle}>
+                  <input
+                    defaultChecked
+                    className={styles.fakeRadio}
+                    type="radio"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className={styles.left3rd2ndContainer}>
@@ -30,42 +48,148 @@ export default function CreateAccount() {
           </div>
 
           <div className={styles.left4thContainer}>
-            <div className={styles.firstNameInputContainer}>
-              FIRST NAME INPUT FIELD HERE
+            <div className={styles.nameInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"firstName"}
+                keys={"firstName"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"First Name"}
+              />
             </div>
 
-            <div className={styles.lastNameInputContainer}>
-              LAST NAME INPUT FIELD HERE
+            <div className={styles.nameInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"lastName"}
+                keys={"lastName"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"Last Name"}
+              />
             </div>
           </div>
 
-          <div className={styles.left5thContainer}>EMAIL INPUT FIELD HERE</div>
+          <div className={styles.left5thContainer}>
+            <div className={styles.emailInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"email"}
+                keys={"email"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"Email"}
+              />
+            </div>
+          </div>
 
           <div className={styles.left14thContainer}>
-            PASSWORD INPUT FIELD HERE
+            <div className={styles.emailInputContainer}>
+              <FormField
+                type="password"
+                standard="labeleffect"
+                value={"password"}
+                keys={"password"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"Password"}
+              />
+            </div>
           </div>
 
           <div className={styles.left6thContainer}>
-            STREET ADDRESS INPUT HERE
+            <div className={styles.emailInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"streetAddress"}
+                keys={"address1"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"Street Address"}
+              />
+            </div>
           </div>
 
           <div className={styles.left7thContainer}>
-            CITY STATE ZIP INPUT HERE
+            <div className={styles.emailInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"cityStateZip"}
+                keys={"address2"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"City, State, ZIP"}
+              />
+            </div>
           </div>
 
-          <div className={styles.left8thContainer}>PHONE INPUT HERE</div>
+          <div className={styles.left8thContainer}>
+            <div className={styles.emailInputContainer}>
+              <FormField
+                type="text"
+                standard="labeleffect"
+                value={"phoneNumber"}
+                keys={"phone"}
+                className={styles.nameInput}
+                effect={"effect_9"}
+                handleOnChange={(value) => console.log(value)}
+                placeholder={"Phone Number"}
+              />
+            </div>
+          </div>
 
           <div className={styles.left9thContainer}>
-            <div className={styles.checkBoxContainer}>CHECK BOX GOES HERE</div>
+            <div
+              onClick={() => setNotRobot(!notRobot)}
+              className={
+                !notRobot
+                  ? styles.checkIconContainer
+                  : styles.checkIconContainer2
+              }
+            >
+              {!notRobot && (
+                <motion.div
+                  transition={{ duration: 0.275 }}
+                  animate={{
+                    scale: [1, 1.25, 1.5, 1.25, 1],
+                    rotate: [0, 90, 180, 270, 360],
+                  }}
+                >
+                  <FaCheck
+                    style={{
+                      display: "inline",
+                      color: "rgb(0,158,85)",
+                      width: "20px",
+                      height: "20px",
+                    }}
+                    className={styles.checkIcon}
+                  />
+                </motion.div>
+              )}
+            </div>
 
-            <div>I'm not a robot</div>
+            <div className={styles.notRobotLabel}>I'm not a robot</div>
 
             <div className={styles.recaptchaContainer}>
               <div className={styles.signContainer}>
-                <img alt="recaptchaSign" src="" />
+                <img
+                  alt="recaptchaSign"
+                  className={styles.recaptchaLogo}
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/ad/RecaptchaLogo.svg"
+                />
               </div>
-
-              <div className={styles.fakeRecaptchaLabel}>reCAPTCHA</div>
 
               <div className={styles.fakePrivacyTerms}>Privacy - Terms</div>
             </div>
@@ -77,11 +201,14 @@ export default function CreateAccount() {
             PowerUp Rewards <span>Terms & Conditions</span>.
           </div>
 
-          <div className={styles.left11thContainer}>
-            <div className={styles.submitButton}>SUBMIT</div>
-          </div>
+          <div className={styles.left11thContainer}>SUBMIT</div>
 
-          <div className={styles.left12thContainer}>OR DIVISOR GOES HERE</div>
+          <div className={styles.left12thContainer}>
+            <div className={styles.divisorContainer}>
+              <span className={styles.middleDivisor}>OR</span>
+              <div className={styles.underline}></div>
+            </div>
+          </div>
 
           <div className={styles.left13thContainer}>Sign In</div>
         </div>
@@ -159,9 +286,11 @@ export default function CreateAccount() {
         </div>
       </div>
 
-      <div className={styles.footerContainer}>
-        <Footer />
-      </div>
-    </div>
+      {true && (
+        <div className={styles.footerContainer}>
+          <Footer />
+        </div>
+      )}
+    </motion.div>
   );
 }

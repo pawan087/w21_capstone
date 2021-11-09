@@ -317,7 +317,7 @@ export default function OrderConfirmation() {
       setLoader(false);
 
       history.push("/ordered");
-      
+
       window.scrollTo({
         top: 0,
         left: 0,
