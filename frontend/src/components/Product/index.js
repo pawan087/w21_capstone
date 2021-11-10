@@ -78,7 +78,12 @@ function ProductPage() {
   useEffect(() => {
     // dispatch(setAllQuestions());
     (async () => {
-      await dispatch(addToRecent({ productId: +params.id, userId: user?.id }));
+      if (user) {
+        await dispatch(
+          addToRecent({ productId: +params.id, userId: user?.id })
+        );
+      }
+
       await dispatch(setAllProducts());
       await dispatch(setAllReviews());
       await dispatch(setAllReviewLikes());

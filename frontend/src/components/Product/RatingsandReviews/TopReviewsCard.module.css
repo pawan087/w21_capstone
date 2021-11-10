@@ -62,7 +62,7 @@
 
 .reviewCardBottomContainer {
   background-color: #ffffff;
-  margin-top: 2.5px;
+  padding-top: 2.5px;
   height: 75px;
   display: flex;
 }

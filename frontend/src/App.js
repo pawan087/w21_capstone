@@ -57,9 +57,9 @@ function App() {
       {isLoaded && (
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
-            <Route path="/login" exact={true}>
+            {false && <Route path="/login" exact={true}>
               <LoginFormPage />
-            </Route>
+            </Route>}
 
             {false && (
               <Route path="/signup" exact={true}>
@@ -83,9 +83,9 @@ function App() {
               <OrderConfirmation />
             </Route>
 
-            <Route path="/test" exact={true}>
+            {false && <Route path="/test" exact={true}>
               <Test />
-            </Route>
+            </Route>}
 
             <Route path="/ordered" exact={true}>
               <PostOrder />

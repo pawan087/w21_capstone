@@ -63,8 +63,15 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     showLoader();
+
+    if (!user) {
+      history.push("/signin");
+
+      hideLoader();
+
+      return;
+    }
 
     if (usersCartItems.length > 0) {
       if (usersCartItems[0].quantity === 5) {
@@ -99,7 +106,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     width: 470,
     zoomWidth: 900,
     zoomPosition: "original",
-    zoomStyle: 'transform: translateX(00px)',
+    zoomStyle: "transform: translateX(00px)",
     img: `${product[0]?.images[0]}`,
   };
 
@@ -190,10 +197,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               }
             </div>
 
-            <div
-              onClick={showLimitQuantityModal}
-              className={styles.priceContainer}
-            >
+            <div className={styles.priceContainer}>
               <div className={styles.price}>${product[0]?.price}</div>
             </div>
 

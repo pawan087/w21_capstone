@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import ReactLoading from "react-loading";
 import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
@@ -24,6 +25,7 @@ import "rodal/lib/rodal.css";
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
@@ -231,6 +233,12 @@ export default function IndividualTopReview({ review }) {
   let curTime = new Date();
 
   const handleLike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return
+    }
+
     let alreadyLiked = false;
     let alreadyDisliked = false;
     let id;
@@ -281,6 +289,12 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleDislike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return
+    }
+
     let alreadyDisliked = false;
     let alreadyLiked = false;
 

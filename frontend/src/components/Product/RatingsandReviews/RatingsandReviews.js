@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import ReactLoading from "react-loading";
 import StarPicker from "react-star-picker";
@@ -15,6 +16,7 @@ import "rodal/lib/rodal.css";
 export default function RatingsandReviews({ avgRating, reviews }) {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
@@ -52,6 +54,15 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   };
 
   const show = () => {
+    if (!user) {
+      setLoading(true)
+
+      history.push("/signin");
+
+      setLoading(false)
+      return;
+    }
+
     setVisible(true);
   };
 
