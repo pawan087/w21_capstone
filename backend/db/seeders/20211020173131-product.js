@@ -1319,7 +1319,7 @@ module.exports = {
         {
           name: "Pokemon Brilliant Diamond - Nintendo Switch",
           description:
-            "https://media.gamestop.com/i/gamestop/11120692/Pokemon-Brilliant-Diamond---Nintendo-Switch?$pdp$$&fmt=webp",
+            "Experience the nostalgic story from the Pokémon Diamond Version game in a reimagined adventure, Pokémon™ Brilliant Diamond, now on the Nintendo Switch™ system! Adventures in the Pokémon Brilliant Diamond game will take place in the familiar Sinnoh region. Rich in nature and with mighty Mount Coronet at its heart, Sinnoh is a land of many myths passed down through the ages. You’ll choose either Turtwig, Chimchar, or Piplup to be your first partner Pokémon and then set off on your journey to become the Champion of the Pokémon League. Along the way, you’ll be able to encounter the Legendary Pokémon Dialga.",
           brandId: 8,
           price: 59.88,
           categoryId: 1,
