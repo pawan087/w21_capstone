@@ -7,6 +7,8 @@ import TopSellers from "./TopSellers";
 import PromotionalCard1 from "./PromotionalCard1";
 import TopBrands from "./TopBrands";
 import FornitePromo from "./FornitePromo";
+import CellPhonePromo from "./CellPhonePromo";
+import CODApparelPromo from "./CODApparelPromo";
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
@@ -23,6 +25,9 @@ export default function SplashPage() {
       <TopSellers />
       <PromotionalCard1 />
       <TopBrands />
+      <FornitePromo />
+      <CellPhonePromo />
+      <CODApparelPromo />
 
       <Footer />
     </motion.div>
