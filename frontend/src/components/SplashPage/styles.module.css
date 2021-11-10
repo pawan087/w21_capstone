@@ -55,7 +55,7 @@
 }
 
 .openCODBannerContainer {
-  transition: .25s ease-in-out;
+  transition: 0.25s ease-in-out;
   display: flex;
   margin-top: 20px;
   /* justify-content: center; */
@@ -67,7 +67,8 @@
   width: 680px;
 }
 
-.codBanner, .codBanner2 {
+.codBanner,
+.codBanner2 {
   margin-bottom: 40px;
 }
 
@@ -80,7 +81,8 @@
   margin-bottom: 30px;
 }
 
-.newReleasesContainer, .codSubBannerContainer {
+.newReleasesContainer,
+.codSubBannerContainer {
   height: 465px;
   width: 685px;
 }
@@ -100,11 +102,62 @@
   margin-top: 10px;
   font-size: 17.5px;
   font-weight: bold;
-  color: rgb(40,40,40);
+  color: rgb(40, 40, 40);
 }
 
 .subBannerPicSubtitle {
   font-size: 12.5px;
   font-weight: normal;
   /* margin-top: 5px; */
+}
+
+.topSellersContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 1400px;
+}
+
+.topSellersTitle {
+  font-weight: bold;
+  margin-bottom: 25px;
+  font-size: 25px;
+}
+
+.topReviewsMiddleContainer {
+  height: 360px;
+  /* width: 1400px; */
+  width: 1400px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+}
+
+.carnival {
+  /* width: 1400px; */
+  width: 1400px;
+}
+
+.topSellerPicContainer {
+  height: 260px;
+  width: 260px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.topSellerPic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.itemName {
+  font-size: 15px;
+  color: rgb(40, 40, 40);
+  font-weight: bold;
+  width: 260px;
+  cursor: pointer;
 }

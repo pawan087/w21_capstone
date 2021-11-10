@@ -3,6 +3,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 
 import CODBanner from "./CODBanner";
 import SubBanner from "./Subbanner";
+import TopSellers from "./TopSellers";
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
@@ -15,8 +16,8 @@ export default function SplashPage() {
       className={styles.splashPageOuterContainer}
     >
       <CODBanner />
-
       <SubBanner />
+      <TopSellers />
 
       <Footer />
     </motion.div>
