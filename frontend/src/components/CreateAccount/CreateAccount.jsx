@@ -355,6 +355,8 @@ export default function CreateAccount() {
     if (notRobot) {
       setMissingRobot(true);
     }
+
+    scrollToTop();
   };
 
   if (sessionUser) return <Redirect to="/" />;

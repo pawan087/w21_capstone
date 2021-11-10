@@ -78,10 +78,10 @@ function ProductPage() {
   useEffect(() => {
     // dispatch(setAllQuestions());
     (async () => {
-      dispatch(addToRecent({ productId: +params.id, userId: user?.id }));
-      dispatch(setAllProducts());
-      dispatch(setAllReviews());
-      dispatch(setAllReviewLikes());
+      await dispatch(addToRecent({ productId: +params.id, userId: user?.id }));
+      await dispatch(setAllProducts());
+      await dispatch(setAllReviews());
+      await dispatch(setAllReviewLikes());
 
       setLoad(true);
     })();
