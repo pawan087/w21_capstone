@@ -109,6 +109,10 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleSubmit2 = async () => {
+    if (rating === review?.rating && content === review?.content) {
+      return;
+    }
+
     setLoading(true);
     setBool(false);
     let arr = [];

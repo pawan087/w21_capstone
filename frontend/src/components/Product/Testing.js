@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Testing({ reviews }) {
   let obj = {};
+  let total = 0;
 
   for (let i = 1; i < 6; i++) {
     obj[i] = 0;
@@ -13,18 +14,11 @@ export default function Testing({ reviews }) {
   reviews?.forEach((review) => {
     if (review?.rating !== "0") {
       obj[Math.round(review?.rating)] += 1;
+      total++;
     }
   });
 
   let arr = Object.entries(obj);
-
-  let count = 0;
-
-  arr?.forEach((x) => {
-    if (x[1]) {
-      count++;
-    }
-  });
 
   // let colors = {
   //   1: "danger",
@@ -47,7 +41,7 @@ export default function Testing({ reviews }) {
                 max={100}
                 className={styles.stars}
                 color={"black"}
-                value={(x[1] / count) * 100}
+                value={(x[1] / total) * 100}
               />
             </div>
           );
