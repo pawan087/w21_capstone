@@ -10,7 +10,7 @@ function SignupFormPage() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-/*   const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
+  /*   const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
   const [username, setUsername] = useState("pawan087");
   const [password, setPassword] = useState("password");
   const [confirmPassword, setConfirmPassword] = useState("password");
@@ -59,6 +59,7 @@ function SignupFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
     }
+
     return setErrors([
       "Confirm Password field must be the same as the Password field",
     ]);
