@@ -1,20 +1,24 @@
 import React from "react";
+import { motion } from "framer-motion/dist/framer-motion";
 
+import CODBanner from "./CODBanner";
+import SubBanner from "./Subbanner";
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
 export default function SplashPage() {
   return (
-    <div>
-      <h1 className={styles.splashPage}>Splash Page</h1>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.splashPageOuterContainer}
+    >
+      <CODBanner />
 
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <SubBanner />
 
       <Footer />
-    </div>
+    </motion.div>
   );
 }

@@ -1,8 +1,110 @@
-.splashPage {
-  color: burlywood;
+.splashPageOuterContainer {
+  margin-top: 50px;
+}
+
+.codBanner {
+  height: 115px;
+  width: 1400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.codBanner2 {
+  height: 540px;
+  width: 1400px;
+  background-color: black;
+  position: relative;
+  margin: 0 auto;
+}
+
+.codBannerPic {
+  height: 115px;
+  width: 1400px;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.arrowDownContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 35px;
-  margin-bottom: 630px;
+  position: absolute;
+  padding: 2.5px;
+  border-radius: 100px;
+  background-color: rgb(255, 255, 255);
+  height: 35px;
+  width: 35px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.0625), 0 3px 6px rgba(0, 0, 0, 0.0625);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-20px);
+}
+
+.openCODBannerLeftImageContainer {
+  height: 375px;
+  width: 680px;
+  margin-right: 25px;
+  margin-left: 5px;
+}
+
+.codLeftImage {
+  height: 100%;
+
+  width: 100%;
+  object-fit: contain;
+}
+
+.openCODBannerContainer {
+  transition: .25s ease-in-out;
+  display: flex;
+  margin-top: 20px;
+  /* justify-content: center; */
+  width: 100%;
+}
+
+.embeddedYoutubeContainer {
+  height: 385px;
+  width: 680px;
+}
+
+.codBanner, .codBanner2 {
+  margin-bottom: 40px;
+}
+
+.subBannerContainer {
+  display: flex;
+  width: 1400px;
+  height: 520px;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.newReleasesContainer, .codSubBannerContainer {
+  height: 465px;
+  width: 685px;
+}
+
+.newReleasesContainer {
+  /* margin-right: 20px; */
+}
+
+.subBannerPic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.subBannerPicCaptions {
+  margin-top: 10px;
+  font-size: 17.5px;
+  font-weight: bold;
+  color: rgb(40,40,40);
+}
+
+.subBannerPicSubtitle {
+  font-size: 12.5px;
+  font-weight: normal;
+  /* margin-top: 5px; */
 }

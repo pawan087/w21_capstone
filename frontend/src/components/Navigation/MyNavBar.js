@@ -434,7 +434,7 @@ export default function MyNavBar() {
 
           {!user && inCartProducts.length === 0 && (
             <div
-              onClick={() => history.push("/login")}
+              onClick={() => history.push("/signin")}
               className={styles.cartButtonContainer3}
             >
               <div className={styles.carButton}>
