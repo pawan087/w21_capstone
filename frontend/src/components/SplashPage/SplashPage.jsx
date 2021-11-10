@@ -4,6 +4,8 @@ import { motion } from "framer-motion/dist/framer-motion";
 import CODBanner from "./CODBanner";
 import SubBanner from "./Subbanner";
 import TopSellers from "./TopSellers";
+import PromotionalCard1 from "./PromotionalCard1";
+import TopBrands from "./TopBrands";
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
@@ -18,6 +20,8 @@ export default function SplashPage() {
       <CODBanner />
       <SubBanner />
       <TopSellers />
+      <PromotionalCard1 />
+      <TopBrands />
 
       <Footer />
     </motion.div>

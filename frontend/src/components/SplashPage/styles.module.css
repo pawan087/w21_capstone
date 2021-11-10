@@ -102,7 +102,7 @@
   margin-top: 10px;
   font-size: 17.5px;
   font-weight: bold;
-  color: rgb(40, 40, 40);
+  color: rgb(86, 86, 86);
 }
 
 .subBannerPicSubtitle {
@@ -117,13 +117,16 @@
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
+  /* background-color: red; */
   width: 1400px;
+  height: 390px;
 }
 
 .topSellersTitle {
   font-weight: bold;
   margin-bottom: 25px;
   font-size: 25px;
+  color: rgb(40, 40, 40);
 }
 
 .topReviewsMiddleContainer {
@@ -156,8 +159,74 @@
 
 .itemName {
   font-size: 15px;
-  color: rgb(40, 40, 40);
+  color: rgb(86, 86, 86);
   font-weight: bold;
   width: 260px;
   cursor: pointer;
+}
+
+.promoCard1Container {
+  display: flex;
+  width: 1400px;
+  margin: 0 auto;
+  /* background-color: yellow; */
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.leftPromoCard,
+.rightPromoCard {
+  height: 220px;
+  width: 685px;
+}
+
+.promoCardPic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.topBrandsContainer {
+  height: 370px;
+  margin: 0 auto;
+  width: 1400px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.topBrandsTitle {
+  font-weight: bold;
+  margin-bottom: 25px;
+  font-size: 25px;
+  color: rgb(40, 40, 40);
+}
+
+.topBrandsMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+  gap: 25px;
+}
+
+.topBrandsRowContainer {
+  display: flex;
+  gap: 25px;
+  justify-content: space-between;
+  /* align-items: space-between; */
+}
+
+.topBrandTile {
+  height: 150px;
+  width: 260px;
+  cursor: pointer;
+}
+
+.topBrandTileImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
