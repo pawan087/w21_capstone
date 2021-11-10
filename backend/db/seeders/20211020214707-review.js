@@ -1,69 +1,41 @@
 "use strict";
 
+var faker = require("faker");
+
+function randomIntFromInterval(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+let users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let ratings = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0];
+let reviewsArr = [];
+
+for (let i = 1; i <= 154; i++) {
+  const rndInt = randomIntFromInterval(6, 30)
+
+  for (let j = 1; j <= rndInt; j++) {
+    let review = {};
+    let randomUsersIndex = Math.floor(Math.random() * 12);
+    let randomRatingsIndex = Math.floor(Math.random() * 10);
+    let randomParagraph = faker.lorem.paragraph();
+
+    review["userId"] = users[randomUsersIndex];
+    review["productId"] = i;
+    review["content"] = randomParagraph;
+    review["rating"] = ratings[randomRatingsIndex];
+
+    if (j === rndInt) {
+      let randomImgUrl4 = faker.image.imageUrl();
+      review["imageUrl"] = randomImgUrl4;
+    }
+
+    reviewsArr.push(review);
+  }
+}
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
-      "Reviews",
-      [
-        {
-          userId: 1,
-          productId: 1,
-          content: "This is single handedly the best video game of all time.",
-          rating: 5,
-          imageUrl: 'https://sd.keepcalms.com/i-w600/i-love-gta-5-online-but-i-love-my-life-too.jpg'
-        },
-        {
-          userId: 2,
-          productId: 1,
-          content: "It was okay. Too much violence for my taste.",
-          rating: 2.5,
-        },
-        {
-          userId: 3,
-          productId: 1,
-          content:
-            "I would not recommend this product to my kids but otherwise, yea, it was great.",
-          rating: 3.5,
-        },
-        {
-          userId: 1,
-          productId: 5,
-          content: "This iPhone is the best iPhone I have ever owned",
-          rating: 5,
-        },
-        {
-          userId: 2,
-          productId: 5,
-          content: "I just think android does it so much better tbh.",
-          rating: 1,
-        },
-        {
-          userId: 3,
-          productId: 5,
-          content: "It is great until it is not. You know what I mean.",
-          rating: 3,
-        },
-        {
-          userId: 1,
-          productId: 4,
-          content: "I love the Vizio hardware integrated into these TVs.",
-          rating: 4.5,
-        },
-        {
-          userId: 2,
-          productId: 4,
-          content: "It is not worth the money if you do not watch a lot of TV.",
-          rating: 2.5,
-        },
-        {
-          userId: 3,
-          productId: 4,
-          content: "I prefer a Samsung over a Vizio but to each their own.",
-          rating: 3,
-        },
-      ],
-      {}
-    );
+    return queryInterface.bulkInsert("Reviews", reviewsArr, {});
   },
 
   down: async (queryInterface, Sequelize) => {

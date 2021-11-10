@@ -766,18 +766,18 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.addPhotoLowerContainer}>
             {!selectedFile && (
               <div className={styles.selectFileContainer}>
-                <div className="fileinputs">
+                <div className={styles.fileinputs}>
                   <input
-                    className="inputContainer file"
+                    className={styles.inputContainer}
                     type="file"
                     accept="image/*"
                     onChange={updateImage}
                   />
 
-                  <div className="inputContainer fakefile">
-                    <label className="uploadLabel">{uploadMsg}</label>
+                  <div className={styles.inputContainer2}>
+                    <label className={styles.uploadLabel}>{uploadMsg}</label>
 
-                    <div className="uploadPic">
+                    <div className={styles.uploadPic}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"

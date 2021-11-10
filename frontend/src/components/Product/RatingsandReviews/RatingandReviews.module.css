@@ -358,22 +358,23 @@
 div.fileinputs {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .uploadLabel {
   /* margin-right: 12.5px; */
-  cursor: pointer;
-  transform: translateX(-75%);
+  /* cursor: pointer; */
+  transform: translateY(7.5px);
   position: absolute;
 }
 
 .uploadPic {
-  cursor: pointer;
+  /* cursor: pointer; */
   height: 20px;
   width: 20px;
-  /* margin-left: 95px; */
   position: absolute;
-  right: 10px;
+  right: -25px;
+  top: 25px;
 }
 
 .inputContainer {
@@ -388,6 +389,7 @@ div.fileinputs {
   width: 270px;
   padding-left: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .inputContainer2 {
@@ -400,8 +402,7 @@ div.fileinputs {
   align-items: center;
   border-radius: 3px;
   width: 270px;
-  /* padding-left: 10px; */
-  text-align: center;
+  padding-left: 10px;
   margin-bottom: 10px;
 }
 
