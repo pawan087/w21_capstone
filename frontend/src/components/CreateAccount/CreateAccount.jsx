@@ -26,15 +26,13 @@ export default function CreateAccount() {
           </div>
 
           <div className={styles.left3rdContainer}>
-            <div className={styles.left3rd1stContainer}>
-              <div className={styles.left6thContainer}>
-                <div className={styles.creditCardTitle}>
-                  <input
-                    defaultChecked
-                    className={styles.fakeRadio}
-                    type="radio"
-                  />
-                </div>
+            <div className={styles.left6thContainer}>
+              <div className={styles.creditCardTitle}>
+                <input
+                  defaultChecked
+                  className={styles.fakeRadio}
+                  type="radio"
+                />
               </div>
             </div>
 
@@ -214,79 +212,81 @@ export default function CreateAccount() {
         </div>
 
         <div className={styles.createAccountRightContainer}>
-          <div className={styles.createAccountRight1st}>
-            <div className={styles.createAccountRight1st1st}>
-              Sign up for FREE PLAYER PowerUp Rewards™
+          <div className={styles.rightHolder}>
+            <div className={styles.createAccountRight1st}>
+              <div className={styles.createAccountRight1st1st}>
+                Sign up for FREE PLAYER PowerUp Rewards™
+              </div>
+              <div className={styles.createAccountRight1st2nd}>
+                and enjoy these benefits:
+              </div>
             </div>
-            <div className={styles.createAccountRight1st2nd}>
-              and enjoy these benefits:
+            <div className={styles.createAccountRight2nd}>
+              <div className={styles.createAccountRight2nd1st}>
+                <div className={styles.arrowRight}></div>
+              </div>
+              <div className={styles.createAccountRight2nd2nd}>
+                <span className={styles.pureEarnIcon}></span>
+              </div>
+              <div className={styles.createAccountRight2nd3rd}>
+                Earn <span>250 points</span> today
+              </div>
+              <div className={styles.createAccountRight2nd4th}>
+                <span className={styles.purSpentIcon}></span>
+              </div>
+              <div className={styles.createAccountRight2nd5th}>
+                Earn <span>10 points</span> on every dollar spent
+              </div>
             </div>
-          </div>
-          <div className={styles.createAccountRight2nd}>
-            <div className={styles.createAccountRight2nd1st}>
-              TRIANGLE GOES HERE
-            </div>
-            <div className={styles.createAccountRight2nd2nd}>
-              STAR BOX ICON GOES HERE
-            </div>
-            <div className={styles.createAccountRight2nd3rd}>
-              Earn <span>250 points</span> today
-            </div>
-            <div className={styles.createAccountRight2nd4th}>
-              MONEY AND STAR ICON GOES HERE
-            </div>
-            <div className={styles.createAccountRight2nd5th}>
-              Earn 10 points on every dollar spent
-            </div>
-          </div>
 
-          <div className={styles.createAccountRight3rd}>
-            PowerUp Rewards™ exclusive benefits:
-          </div>
-
-          <div className={styles.createAccountRight4th}>
-            <div className={styles.createAccountRight4thLeft}>
-              <div className={styles.createAccountRight4thLeft1st}>
-                EARN POINTS
-              </div>
-              <div className={styles.createAccountRight4thLeft2nd}>
-                Earn points with every purchase and redeem fun rewards.
-              </div>
+            <div className={styles.createAccountRight3rd}>
+              PowerUp Rewards™ exclusive benefits:
             </div>
-            <div className={styles.createAccountRight4thRight}>
-              <div className={styles.createAccountRight4thLeft1st}>
-                ALL ACCESS
-              </div>
-              <div className={styles.createAccountRight4thLeft2nd}>
-                Access all of your download codes and digital purchases.
-              </div>
-            </div>
-          </div>
 
-          {
             <div className={styles.createAccountRight4th}>
               <div className={styles.createAccountRight4thLeft}>
                 <div className={styles.createAccountRight4thLeft1st}>
-                  ORDER TRACKING
+                  EARN POINTS
                 </div>
                 <div className={styles.createAccountRight4thLeft2nd}>
-                  Check the current status on all your orders.
+                  Earn points with every purchase and redeem fun rewards.
                 </div>
               </div>
               <div className={styles.createAccountRight4thRight}>
                 <div className={styles.createAccountRight4thLeft1st}>
-                  SPEEDY CHECKOUT
+                  ALL ACCESS
                 </div>
                 <div className={styles.createAccountRight4thLeft2nd}>
-                  Save your info for quick checkout.
+                  Access all of your download codes and digital purchases.
                 </div>
               </div>
             </div>
-          }
+
+            {
+              <div className={styles.createAccountRight4th}>
+                <div className={styles.createAccountRight4thLeft}>
+                  <div className={styles.createAccountRight4thLeft1st}>
+                    ORDER TRACKING
+                  </div>
+                  <div className={styles.createAccountRight4thLeft2nd}>
+                    Check the current status on all your orders.
+                  </div>
+                </div>
+                <div className={styles.createAccountRight4thRight}>
+                  <div className={styles.createAccountRight4thLeft1st}>
+                    SPEEDY CHECKOUT
+                  </div>
+                  <div className={styles.createAccountRight4thLeft2nd}>
+                    Save your info for quick checkout.
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
         </div>
       </div>
 
-      {true && (
+      {false && (
         <div className={styles.footerContainer}>
           <Footer />
         </div>
