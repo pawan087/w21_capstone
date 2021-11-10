@@ -159,14 +159,19 @@ export default function AccountDashboard() {
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 

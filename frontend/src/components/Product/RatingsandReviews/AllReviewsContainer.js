@@ -21,7 +21,7 @@ export default function AllReviewsContainer({ reviews }) {
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
     window.scrollTo({
-      top: 1250,
+      top: 1050,
       left: 0,
       behavior: "smooth",
     });

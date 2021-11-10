@@ -387,14 +387,19 @@ export default function AccountDashboard() {
       </div>
 
       {loader2 && (
-        <div className={styles.loader}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={styles.loader}
+        >
           <ReactLoading
             type={"bubbles"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}
           />
-        </div>
+        </motion.div>
       )}
 
       <Footer />

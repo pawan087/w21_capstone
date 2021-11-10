@@ -685,8 +685,15 @@
 }
 
 .loaderCotnainer {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
   position: absolute;
   top: 50%;
+  width: 500px;
+  height: 500px;
   left: 50%;
   transform: translate(-50%, -50%);
 }

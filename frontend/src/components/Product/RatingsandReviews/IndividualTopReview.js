@@ -184,7 +184,9 @@ export default function IndividualTopReview({ review }) {
           )
         ) < 1 && <div className={styles.timeAgo}>Today</div>}
 
-        <div className={styles.reviewContent}>{review?.content}</div>
+        <div className={styles.reviewContainer}>
+          <div className={styles.reviewContent}>{review?.content}</div>
+        </div>
       </div>
 
       <div className={styles.reviewCardBottomContainer}>
