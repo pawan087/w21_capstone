@@ -6,6 +6,7 @@ import SubBanner from "./Subbanner";
 import TopSellers from "./TopSellers";
 import PromotionalCard1 from "./PromotionalCard1";
 import TopBrands from "./TopBrands";
+import FornitePromo from "./FornitePromo";
 import Footer from "../Footer/index";
 import styles from "./styles.module.css";
 
