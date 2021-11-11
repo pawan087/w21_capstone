@@ -6,20 +6,23 @@
 }
 
 .outerContainer {
-  height: 850px;
+  /* height: 850px; */
+  min-height: 525px;
   width: 1400px;
   margin: 0 auto;
   margin-top: 35px;
-  background-color: lightcoral;
+  /* background-color: lightcoral; */
   display: flex;
+  border-bottom: 1px solid rgb(237, 237, 237);
   justify-content: space-between;
 }
 
 .leftContainer {
-  background-color: springgreen;
+  /* background-color: springgreen; */
   display: flex;
   flex-direction: column;
   width: 320px;
+  /* min-height: 470px; */
 }
 
 .rightContainer {
@@ -28,31 +31,51 @@
 }
 
 .categorySelectorContainer {
-  background-color: yellow;
+  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
 }
 
 .priceSelectorContainer {
-  background-color: orange;
+  /* background-color: orange; */
   display: flex;
-  
+  border-bottom: 1px solid rgb(237, 237, 237);
   flex-direction: column;
 }
 
 .priceSelectionContainer {
   display: flex;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.priceSelection {
+  font-size: 12.5px;
+  color: rgb(40, 40, 40);
 }
 
 .customerRatingSelectorContainer {
-  background-color: pink;
+  /* background-color: skyblue; */
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid rgb(237,237,237); */
+}
+
+.andUpContainer {
+  font-size: 12.5px;
+  color: rgb(40, 40, 40);
+  transform: translate(-55px, -2.5px);
 }
 
 .fourStarsSelectionContainer {
   display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.customerRatingSpacer {
+  height: 22.5px;
 }
 
 .rightTopContainer {
@@ -62,43 +85,60 @@
 }
 
 .categoryName {
-  font-size: 15px;
-  color: rgb(0, 0, 66);
-  padding-bottom: 25px;
-  border-bottom: 1px solid black;
+  font-size: 12.5px;
+  color: rgb(40, 40, 40);
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(237, 237, 237);
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.categoryName:hover {
+  text-decoration: underline;
 }
 
 .categorySelectorContainer {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .categorySelectorTitle {
   font-size: 17.5px;
   font-weight: bold;
-  margin-bottom: 17.5px;
+  margin-bottom: 12.5px;
   color: rgb(40, 40, 40);
 }
 
 .categoryNames {
-  font-size: 15px;
-  color: rgb(0, 0, 66);
+  font-size: 12.5px;
+  color: rgb(40, 40, 40);
+  margin-bottom: 10px;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.categoryNames:hover {
+  color: rgb(233,105,131);
+}
+
+.categorySpacer {
+  height: 15px;
 }
 
 .mappableCategoriesContainer {
-  background-color: salmon;
+  /* background-color: salmon; */
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(237, 237, 237);
 }
 
 .priceSelectorContainer {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .priceSelectorTitle {
   font-size: 17.5px;
   font-weight: bold;
-  margin-bottom: 17.5px;
+  margin-bottom: 15px;
   color: rgb(40, 40, 40);
 }
 
@@ -112,32 +152,39 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-bottom: 20px;
-  background-color: rgb(231, 35, 24);
-  border-radius: 2.5px;
+  /* margin-bottom: 20px; */
+  /* background-color: rgb(231, 35, 24); */
+  border: 1px solid rgb(226, 226, 226);
+  /* padding: 2.5px; */
+  /* border-radius: 2.5px; */
+  margin-right: 10px;
 }
 
 .checkBoxContainer2 {
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  border: 1px solid rgb(226, 226, 226);
   background-color: white;
+  /* padding: 2.5px; */
+  margin-right: 10px;
 }
 
 .checkIconContainer {
-  height: 15px;
-  width: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  border-radius: 2.5px;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  /* border: 1px solid rgb(226, 226, 226); */
+  /* border-radius: 2.5px; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .checkIconContainer2 {
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   /* border: 1px solid rgba(0, 0, 0, .75); */
   border-radius: 2.5px;
   display: flex;
@@ -147,31 +194,66 @@
 
 .fakeRadio {
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.priceSpacer {
+  /* height: 15px; */
 }
 
 .customerRatingSelectorTopContainer {
   display: flex;
+  /* align-items: center; */
   position: relative;
 }
 
 .customerRatingSelectorContainer {
-  margin-top: 20px;
+  /* margin-top: 15px; */
+  transform: translateY(10px);
 }
 
 .customerRatingSelectorTitle {
   font-size: 17.5px;
   font-weight: bold;
-  margin-bottom: 17.5px;
+  margin-bottom: 12.5px;
   color: rgb(40, 40, 40);
   width: 150px;
+  cursor: pointer;
 }
 
 .menuIcon {
   position: absolute;
-  top: 7.5px;
-  right: 25px;
+  top: 2.5px;
+  right: 15px;
   display: flex;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   cursor: pointer;
+}
+
+.stars {
+  transform: scale(0.65);
+}
+
+.starsContainer {
+  transform: translate(-30px, -2.5px);
+}
+
+
+.ratingSelectionOuterContainer {
+  /* background-color: red; */
+}
+
+.starRatingSelectionContainer {
+  /* background-color: yellow; */
+}
+
+.hiddenButton {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-color: red;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1000;
 }
