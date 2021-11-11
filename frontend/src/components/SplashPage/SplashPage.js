@@ -68,7 +68,7 @@ export default function SplashPage() {
       className={styles.splashPageOuterContainer}
     >
       <CODBanner />
-      <SubBanner />
+      <SubBanner />d 
       <TopSellers />
       <PromotionalCard1 />
       <TopBrands />
@@ -81,7 +81,8 @@ export default function SplashPage() {
       <FakeTopDeals />
       <ConsolesCard />
       <FeaturedCategories />
-      <RecentlyViewedCard />
+
+      {user && <RecentlyViewedCard />}
 
       <Footer />
     </motion.div>
