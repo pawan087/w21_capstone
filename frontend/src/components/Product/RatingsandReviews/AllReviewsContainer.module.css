@@ -112,10 +112,13 @@
   border: 1px solid rgba(0, 0, 0, 0.75);
 }
 
+.pagination__linkactive {
+  color: white;
+}
+
 .pagination__linkactive a {
   color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.75);
-  /* background-color: rgba(0, 0, 0, 0.0325); */
+  background-color: rgb(40, 40, 40);
 }
 
 .pagination__linkdisabled a {
