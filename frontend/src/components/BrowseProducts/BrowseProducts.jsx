@@ -6,10 +6,12 @@ import { FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
 import StarPicker from "react-star-picker";
+import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 
 import { setAllRecentlyViewed } from "../../store/recentlyViewed";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
+import "@szhsin/react-menu/dist/index.css";
 import styles from "./styles.module.css";
 
 export default function BrowseProducts() {
@@ -418,11 +420,55 @@ export default function BrowseProducts() {
         <div className={styles.rightContainer}>
           <div className={styles.rightTopContainer}>
             <div className={styles.rightSideTitle}>
-              1 - 24 of 6,535 Results for "<span>Conses & Hardware</span>"
+              1 - 24 of 6,535 Results for <span>"Consoles & Hardware"</span>
             </div>
 
-            <div className={styles.rightSideMenuContainer}>
-              SORT BY MENU GOES HERE
+            <div className={styles.topMiddleContainer}>
+              <Menu
+                arrow={true}
+                align={"center"}
+                className={styles.menu}
+                menuButton={
+                  <MenuButton className={styles.button}>
+                    <span>Sort by:</span> {"Best Matches"}
+                    <div className={styles.downIcon}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </MenuButton>
+                }
+              >
+                <MenuItem
+                  onClick={(e) => console.log(e)}
+                  className={styles.menuItem}
+                >
+                  Best Matches
+                </MenuItem>
+                <MenuItem
+                  onClick={(e) => console.log(e)}
+                  className={styles.menuItem}
+                >
+                  Price Low To High
+                </MenuItem>
+                <MenuItem
+                  onClick={(e) => console.log(e)}
+                  className={styles.menuItem}
+                >
+                  Price High To Low
+                </MenuItem>
+              </Menu>
             </div>
           </div>
 

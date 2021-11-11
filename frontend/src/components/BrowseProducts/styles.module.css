@@ -27,7 +27,7 @@
 
 .rightContainer {
   width: 1080px;
-  background-color: skyblue;
+  /* background-color: skyblue; */
 }
 
 .categorySelectorContainer {
@@ -74,6 +74,13 @@
   margin-bottom: 0px;
 }
 
+
+.topMiddleContainer {
+  /* position: absolute; */
+  margin-right: 10px;
+  /* background-color: red; */
+}
+
 .customerRatingSpacer {
   height: 22.5px;
 }
@@ -81,7 +88,46 @@
 .rightTopContainer {
   height: 90px;
   display: flex;
-  background-color: rosybrown;
+  justify-content: space-between;
+  /* position: relative; */
+  align-items: center;
+  /* background-color: rosybrown; */
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.menu {
+  /* z-index: 50; */
+  /* width: 230px; */
+  /* height: 160px; */
+}
+
+.button {
+  position: relative;
+  outline: 0;
+  border: 1px solid rgb(0, 0, 0, 0.75);
+  min-width: 195px;
+  height: 40px;
+  background-color: white;
+  font-size: 15px;
+  padding-right: 45px;
+}
+
+.button span {
+  font-weight: bold;
+}
+
+.downIcon {
+  width: 20px;
+  height: 12.5px;
+  position: absolute;
+  top: 5px;
+  right: 12.5px;
+}
+
+
+.menuItem:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
 }
 
 .categoryName {
@@ -256,4 +302,14 @@
   opacity: 0;
   cursor: pointer;
   z-index: 1000;
+}
+
+.rightSideTitle {
+  font-size: 12.5px;
+  color: rgb(40, 40, 40);
+}
+
+.rightSideTitle span {
+  font-size: 15px;
+  font-weight: bold;
 }
