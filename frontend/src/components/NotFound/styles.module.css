@@ -11,7 +11,7 @@
 .pageContainer {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   padding-top: 65px;
   width: 100%;

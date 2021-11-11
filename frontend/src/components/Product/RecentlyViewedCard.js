@@ -15,10 +15,22 @@ export default function RecentlyViewedCard() {
   const recentlyViewed = useSelector((state) => state.recentlyViewed);
 
   let recentlyViewedProducts = [];
+  let count = 0;
 
-  products?.forEach((product) => {
-    if (recentlyViewed.includes(+product.id) && product.id !== +params.id) {
+  products?.forEach((product, i) => {
+    if (
+      params.id !== undefined &&
+      recentlyViewed.includes(+product.id) &&
+      product.id !== +params.id
+    ) {
       recentlyViewedProducts.push(product);
+    }
+
+    if (params.id === undefined && recentlyViewed.includes(+product.id)) {
+      if (count < 12) {
+        recentlyViewedProducts.push(product);
+        count++;
+      }
     }
   });
 
