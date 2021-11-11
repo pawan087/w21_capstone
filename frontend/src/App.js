@@ -9,7 +9,7 @@ import * as sessionActions from "./store/session";
 
 import AccountSettings from "./components/AccountDashboard/AccountSettings";
 import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
-import SplashPage from "./components/SplashPage/SplashPage";
+import SplashPage from "./components/SplashPage/SplashPage.js";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";

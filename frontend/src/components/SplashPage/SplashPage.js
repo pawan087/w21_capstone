@@ -10,6 +10,11 @@ import FornitePromo from "./FornitePromo";
 import CellPhonePromo from "./CellPhonePromo";
 import CODApparelPromo from "./CODApparelPromo";
 import Footer from "../Footer/index";
+import UpcomingVideoGamePromo from "./UpcomingVideoGamePromo";
+import PreOrderVideoGames from "./PreOrderVideoGames";
+import ClothingPromo from "./ClothingPromo";
+import FakeTopDeals from "./FakeTopDeals";
+import ConsolesCard from "./ConsolesCard";
 import styles from "./styles.module.css";
 
 export default function SplashPage() {
@@ -28,6 +33,11 @@ export default function SplashPage() {
       <FornitePromo />
       <CellPhonePromo />
       <CODApparelPromo />
+      <UpcomingVideoGamePromo />
+      <PreOrderVideoGames />
+      <ClothingPromo />
+      <FakeTopDeals />
+      <ConsolesCard />
 
       <Footer />
     </motion.div>

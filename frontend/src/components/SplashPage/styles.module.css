@@ -81,6 +81,15 @@
   margin-bottom: 30px;
 }
 
+.subBannerContainer2 {
+  display: flex;
+  width: 1400px;
+  height: 520px;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
 .newReleasesContainer,
 .codSubBannerContainer {
   /* margin-top: 200px; */
@@ -317,6 +326,46 @@
   cursor: pointer;
 }
 
+.cellPhoneImageContainer2 {
+  height: 280px;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  /* transform: translateX(35px); */
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.consoleImageContainer {
+  height: 250px;
+  width: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  /* transform: translateX(35px); */
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.consoleImageContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.consoleImageContainer:hover {
+  transform: scale(1.025);
+  opacity: .9;
+}
+
+.cellPhoneImageContainer2:hover {
+  transform: scale(1.025);
+  opacity: .9;
+}
+
 .cellPhoneImageContainer:hover {
   transform: translateX(35px) scale(1.025);
   opacity: .9;
@@ -328,11 +377,22 @@
   object-fit: cover;
 }
 
+.cellPhoneImageContainer2 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .cellPhonePriceContainer {
   font-size: 17.5px;
   font-weight: bold;
   color: rgb(231, 53, 65);
+}
 
+.clothingPriceContainer {
+  font-size: 17.5px;
+  font-weight: bold;
+  color: rgb(40,40,40);
 }
 
 .strikeout {
@@ -352,16 +412,54 @@
   color: rgba(39, 39, 39, .85);
 }
 
+.clothingNameContainer {
+  font-size: 12.5px;
+  /* font-weight: bold; */
+  color: rgba(39, 39, 39, .85);
+}
+
+.consoleNameContainer {
+  font-size: 12.5px;
+  font-weight: bold;
+  color: rgba(39, 39, 39, .85);
+}
+
 .codClothingPromoContainer {
   width: 1400px;
   height: 245px;
   margin: 0 auto;
   cursor: pointer;
   margin-top: 45px;
+  margin-bottom: 20px;
 }
 
 .codClothingPromoContainer img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.spacer {
+  width: 1400px;
+  margin: 0 auto;
+  height: 80px;
+}
+
+.fakeNew {
+  color: rgb(114,114,114);
+  font-weight: normal;
+  font-size: 10px;
+}
+
+.fakeDealsContainer {
+  height: 200px;
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 35px;
+}
+
+.fakeDealsContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

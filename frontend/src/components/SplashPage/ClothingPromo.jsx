@@ -1,0 +1,132 @@
+import React from "react";
+import { motion } from "framer-motion/dist/framer-motion";
+
+import styles from "./styles.module.css";
+
+export default function ClothingPromo() {
+  return (
+    <>
+      <div className={styles.spacer} />
+
+      <div className={styles.cellPhonePromoContainer}>
+        <div className={styles.leftBannerContainer}>
+          <img
+            alt="phoneBannerLeft"
+            src="https://media.gamestop.com/i/gamestop/Apparel_VerticalBlade_386x680.webp"
+          />
+        </div>
+
+        <div className={styles.rightPhoneBannerContainer}>
+          <div className={styles.rightTopPhoneBannerContainer}>
+            <div className={styles.cellPhoneContainer}>
+              <div className={styles.cellPhoneImageContainer2}>
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11166189/GameStop-Logo-Unisex-Joggers?$pdp2x$"
+                  alt="cellPhoneImage"
+                />
+              </div>
+
+              <div className={styles.clothingPriceContainer}>
+                $49.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Logo Unisex Joggers
+              </div>
+            </div>
+
+            <div className={styles.cellPhoneContainer}>
+              <div className={styles.cellPhoneImageContainer2}>
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11151222_black/GameStop-Premium-Logo-Unisex-T-Shirt-black?$pdp$$&fmt=webp"
+                  alt="cellPhoneImage"
+                />
+              </div>
+
+              <div className={styles.clothingPriceContainer}>
+                $29.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Premium Logo Unisex T-Shirt
+              </div>
+            </div>
+
+            <div className={styles.cellPhoneContainer}>
+              <div className={styles.cellPhoneImageContainer2}>
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11166187/GameStop-Rocket-Unisex-Button-Up-Short-Sleeve-Shirt?$pdp2x$"
+                  alt="cellPhoneImage"
+                />
+              </div>
+
+              <div className={styles.clothingPriceContainer}>
+                $69.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Rocket Unisex Button Up Short Sleeve Shirt
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.rightTopPhoneBannerContainer}>
+            <div className={styles.cellPhoneContainer}>
+              <div className={styles.cellPhoneImageContainer2}>
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11166186/GameStop-Logo-Unisex-Hooded-Sweatshirt?$pdp$$&fmt=webp"
+                  alt="cellPhoneImage"
+                />
+              </div>
+
+              <div className={styles.clothingPriceContainer}>
+                $52.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Logo Unisex Hooded Sweatshirt
+              </div>
+            </div>
+
+            <div className={styles.cellPhoneContainer}>
+              <div className={styles.cellPhoneImageContainer2}>
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11166665/GameStop-Power-To-The-Players-Unisex-T-Shirt?$pdp$$&fmt=webp"
+                  alt="cellPhoneImage"
+                />
+              </div>
+
+              <div className={styles.clothingPriceContainer}>
+                $29.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Power To The Players Unisex T-Shirt
+              </div>
+            </div>
+
+            <div className={styles.cellPhoneContainer}>
+              <motion.div
+                /* whileHover={{ filter: `invert()` }} */
+                className={styles.cellPhoneImageContainer2}
+              >
+                <img
+                  src="https://media.gamestop.com/i/gamestop/11166184/GameStop-Logo-Unisex-Beanie?$pdp$$&fmt=webp"
+                  alt="cellPhoneImage"
+                />
+              </motion.div>
+
+              <div className={styles.clothingPriceContainer}>
+                $14.99 <span className={styles.fakeNew}>New</span>
+              </div>
+
+              <div className={styles.clothingNameContainer}>
+                GameStop Logo Unisex Beanie
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
