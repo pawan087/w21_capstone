@@ -17,6 +17,7 @@ import Test from "./components/Test";
 import NotFound from "./components/NotFound/NotFound";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import SignIn from "../src/components/SignIn/index.jsx";
+import BrowseProducts from "./components/BrowseProducts/BrowseProducts";
 // import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -57,9 +58,11 @@ function App() {
       {isLoaded && (
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
-            {false && <Route path="/login" exact={true}>
-              <LoginFormPage />
-            </Route>}
+            {false && (
+              <Route path="/login" exact={true}>
+                <LoginFormPage />
+              </Route>
+            )}
 
             {false && (
               <Route path="/signup" exact={true}>
@@ -83,9 +86,11 @@ function App() {
               <OrderConfirmation />
             </Route>
 
-            {false && <Route path="/test" exact={true}>
-              <Test />
-            </Route>}
+            {false && (
+              <Route path="/test" exact={true}>
+                <Test />
+              </Route>
+            )}
 
             <Route path="/ordered" exact={true}>
               <PostOrder />
@@ -113,6 +118,10 @@ function App() {
 
             <Route path="/signup" exact={true}>
               <CreateAccount />
+            </Route>
+
+            <Route path="/p/:category/:subcategory/:price/:rating" exact={true}>
+              <BrowseProducts />
             </Route>
 
             <Route path="/" exact={true}>

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
 
-
 import { setAllRecentlyViewed } from "../../store/recentlyViewed";
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
@@ -34,9 +33,11 @@ export default function SplashPage() {
 
   useEffect(() => {
     (async () => {
-      await dispatch(setAllRecentlyViewed(user?.id));
-      await dispatch(setAllProducts());
-      await dispatch(setAllReviews());
+      if (user) {
+        await dispatch(setAllRecentlyViewed(user?.id));
+        await dispatch(setAllProducts());
+        await dispatch(setAllReviews());
+      }
 
       setLoad(true);
     })();
@@ -68,7 +69,7 @@ export default function SplashPage() {
       className={styles.splashPageOuterContainer}
     >
       <CODBanner />
-      <SubBanner />d 
+      <SubBanner />d
       <TopSellers />
       <PromotionalCard1 />
       <TopBrands />
@@ -81,9 +82,7 @@ export default function SplashPage() {
       <FakeTopDeals />
       <ConsolesCard />
       <FeaturedCategories />
-
       {user && <RecentlyViewedCard />}
-
       <Footer />
     </motion.div>
   );
