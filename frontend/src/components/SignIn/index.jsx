@@ -199,7 +199,7 @@ export default function SignIn() {
             required
           />
 
-          {inputType === "password" && (
+          {inputType === "password" && !defaultOption && (
             <div
               onClick={(e) => showPassword(e)}
               className={styles.revealPasswordIconContainer}
@@ -220,7 +220,7 @@ export default function SignIn() {
             </div>
           )}
 
-          {inputType === "text" && (
+          {inputType === "text" && !defaultOption && (
             <div
               onClick={(e) => hidePassword(e)}
               className={styles.revealPasswordIconContainer}
@@ -252,7 +252,7 @@ export default function SignIn() {
               }
             >
               <div
-                onClick={() => setDefaultOption(!defaultOption)}
+                onClick={() => handleDefaultOption()}
                 className={
                   !defaultOption
                     ? styles.checkIconContainer
@@ -305,7 +305,12 @@ export default function SignIn() {
         </div>
 
         <div className={styles.eightContainer}>
-          <div onClick={() => history.push('/signup')} className={styles.createAccountButton}>CREATE ACCOUNT</div>
+          <div
+            onClick={() => history.push("/signup")}
+            className={styles.createAccountButton}
+          >
+            CREATE ACCOUNT
+          </div>
         </div>
       </div>
 
