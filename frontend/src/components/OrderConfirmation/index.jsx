@@ -536,6 +536,7 @@ export default function OrderConfirmation() {
           <div className={styles.left4thContainer}>
             <div className={styles.arrivesContainer}>
               <input defaultChecked className={styles.fakeRadio} type="radio" />
+
                <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
             </div>
 

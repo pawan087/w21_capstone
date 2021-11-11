@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
 
@@ -17,11 +18,13 @@ export default function BrowseProducts() {
   const user = useSelector((state) => state.session.user);
 
   const [load, setLoad] = useState(false);
+  const [bool, setBool] = useState(false);
   const [categoriesArr, setCategoriesArr] = useState([
     "PlayStation 4",
     "Nintendo Switch",
     "Xbox One",
   ]);
+  const [defaultOption, setDefaultOption] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -67,7 +70,7 @@ export default function BrowseProducts() {
             <div className={styles.mappableCategoriesContainer}>
               {categoriesArr?.map((category, i) => {
                 return (
-                  <div key={i}>
+                  <div className={styles.categoryNames} key={i}>
                     <p>{category}</p>
                   </div>
                 );
@@ -79,112 +82,270 @@ export default function BrowseProducts() {
             <div className={styles.priceSelectorTitle}>Price</div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$0 - $10</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$10 - $25</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$50 - $75</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$75 - $100</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$100 - $200</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$200 - $300</div>
             </div>
 
             <div className={styles.priceSelectionContainer}>
-              <div className={styles.radioButton}>Radio Button Here</div>
+              <input defaultChecked className={styles.fakeRadio} type="radio" />
 
               <div className={styles.priceSelection}>$300+</div>
             </div>
           </div>
 
           <div className={styles.customerRatingSelectorContainer}>
-            <div className={styles.customerRatingSelectorTitle}>
-              Customer Rating
-            </div>
-
-            <div className={styles.openCloseIconContainer}>
-              Plus/Minus Icon Goes Here
-            </div>
-
-            <div className={styles.starRatingSelectionContainer}>
-              <div className={styles.fourStarsSelectionContainer}>
-                <div className={styles.checkBoxContainer}>
-                  Checkbox Goes Here
-                </div>
-
-                <div className={styles.fourStarsContainer}>
-                  4 Star Rating Goes Here
-                </div>
-
-                <div className={styles.andUpContainer}>& Up</div>
+            <div className={styles.customerRatingSelectorTopContainer}>
+              <div className={styles.customerRatingSelectorTitle}>
+                Customer Rating
               </div>
+
+              {bool && (
+                <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 12H4"
+                    />
+                  </svg>
+                </div>
+              )}
+
+              {!bool && (
+                <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </div>
+              )}
             </div>
 
-            <div className={styles.starRatingSelectionContainer}>
-              <div className={styles.fourStarsSelectionContainer}>
-                <div className={styles.checkBoxContainer}>
-                  Checkbox Goes Here
-                </div>
+            {bool && <div className={styles.ratingSelectionOuterContainer}>
+              <div className={styles.starRatingSelectionContainer}>
+                <div className={styles.fourStarsSelectionContainer}>
+                  {true && (
+                    <div className={styles.fifthContainer}>
+                      <div className={styles.fifthLeftContainer}>
+                        <div
+                          className={
+                            defaultOption
+                              ? styles.checkBoxContainer
+                              : styles.checkBoxContainer2
+                          }
+                        >
+                          <div
+                            onClick={() => setDefaultOption(!defaultOption)}
+                            className={
+                              !defaultOption
+                                ? styles.checkIconContainer
+                                : styles.checkIconContainer2
+                            }
+                          >
+                            {defaultOption && (
+                              <FaCheck
+                                style={{
+                                  display: "inline",
+                                  color: "white",
+                                  width: "10px",
+                                  height: "10px",
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
-                <div className={styles.fourStarsContainer}>
-                  3 Star Rating Goes Here
-                </div>
+                  <div className={styles.fourStarsContainer}>
+                    4 Star Rating Goes Here
+                  </div>
 
-                <div className={styles.andUpContainer}>& Up</div>
+                  <div className={styles.andUpContainer}>& Up</div>
+                </div>
               </div>
-            </div>
 
-            <div className={styles.starRatingSelectionContainer}>
-              <div className={styles.fourStarsSelectionContainer}>
-                <div className={styles.checkBoxContainer}>
-                  Checkbox Goes Here
+              <div className={styles.starRatingSelectionContainer}>
+                <div className={styles.fourStarsSelectionContainer}>
+                  {true && (
+                    <div className={styles.fifthContainer}>
+                      <div className={styles.fifthLeftContainer}>
+                        <div
+                          className={
+                            defaultOption
+                              ? styles.checkBoxContainer
+                              : styles.checkBoxContainer2
+                          }
+                        >
+                          <div
+                            onClick={() => setDefaultOption(!defaultOption)}
+                            className={
+                              !defaultOption
+                                ? styles.checkIconContainer
+                                : styles.checkIconContainer2
+                            }
+                          >
+                            {defaultOption && (
+                              <FaCheck
+                                style={{
+                                  display: "inline",
+                                  color: "white",
+                                  width: "10px",
+                                  height: "10px",
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className={styles.fourStarsContainer}>
+                    3 Star Rating Goes Here
+                  </div>
+
+                  <div className={styles.andUpContainer}>& Up</div>
                 </div>
-
-                <div className={styles.fourStarsContainer}>
-                  2 Star Rating Goes Here
-                </div>
-
-                <div className={styles.andUpContainer}>& Up</div>
               </div>
-            </div>
 
-            <div className={styles.starRatingSelectionContainer}>
-              <div className={styles.fourStarsSelectionContainer}>
-                <div className={styles.checkBoxContainer}>
-                  Checkbox Goes Here
+              <div className={styles.starRatingSelectionContainer}>
+                <div className={styles.fourStarsSelectionContainer}>
+                  {true && (
+                    <div className={styles.fifthContainer}>
+                      <div className={styles.fifthLeftContainer}>
+                        <div
+                          className={
+                            defaultOption
+                              ? styles.checkBoxContainer
+                              : styles.checkBoxContainer2
+                          }
+                        >
+                          <div
+                            onClick={() => setDefaultOption(!defaultOption)}
+                            className={
+                              !defaultOption
+                                ? styles.checkIconContainer
+                                : styles.checkIconContainer2
+                            }
+                          >
+                            {defaultOption && (
+                              <FaCheck
+                                style={{
+                                  display: "inline",
+                                  color: "white",
+                                  width: "10px",
+                                  height: "10px",
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className={styles.fourStarsContainer}>
+                    2 Star Rating Goes Here
+                  </div>
+
+                  <div className={styles.andUpContainer}>& Up</div>
                 </div>
-
-                <div className={styles.fourStarsContainer}>
-                  1 Star Rating Goes Here
-                </div>
-
-                <div className={styles.andUpContainer}>& Up</div>
               </div>
-            </div>
+
+              <div className={styles.starRatingSelectionContainer}>
+                <div className={styles.fourStarsSelectionContainer}>
+                  {true && (
+                    <div className={styles.fifthContainer}>
+                      <div className={styles.fifthLeftContainer}>
+                        <div
+                          className={
+                            defaultOption
+                              ? styles.checkBoxContainer
+                              : styles.checkBoxContainer2
+                          }
+                        >
+                          <div
+                            onClick={() => setDefaultOption(!defaultOption)}
+                            className={
+                              !defaultOption
+                                ? styles.checkIconContainer
+                                : styles.checkIconContainer2
+                            }
+                          >
+                            {defaultOption && (
+                              <FaCheck
+                                style={{
+                                  display: "inline",
+                                  color: "white",
+                                  width: "10px",
+                                  height: "10px",
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className={styles.fourStarsContainer}>
+                    1 Star Rating Goes Here
+                  </div>
+
+                  <div className={styles.andUpContainer}>& Up</div>
+                </div>
+              </div>
+            </div>}
           </div>
         </div>
         {/* End Left Side */}
