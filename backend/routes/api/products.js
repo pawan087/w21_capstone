@@ -21,7 +21,7 @@ router.get(
 
     const options = {
       include: [
-        { model: Category, as: "Category", attributes: ["name"] },
+        { model: Category, as: "Category", attributes: ["name", 'id'] },
         { model: Brand, attributes: ["name"] },
         { model: Subcategory, attributes: ["name"] },
         { model: FurtherSubcategory, attributes: ["name"] },
