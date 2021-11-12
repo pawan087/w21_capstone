@@ -431,7 +431,6 @@
   flex-direction: column;
   transition: 0.15s ease-in-out;
   cursor: pointer;
-  justify-content: center;
 }
 
 .productContainer:hover {

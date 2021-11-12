@@ -66,7 +66,7 @@ export default function BrowseProducts() {
       } else if (params.subcategory === "0") {
         return product.Category.id === 1;
       } else {
-        return;
+        return false;
       }
     }
 
@@ -97,7 +97,36 @@ export default function BrowseProducts() {
 
       pageCategory = "Consoles & Hardware";
 
-      return product.Category.id === 4;
+      if (
+        params.subcategory === "switch" &&
+        product.Subcategory.name === "Nintendo Switch"
+      ) {
+        return product.Category.id === 4;
+      } else if (
+        params.subcategory === "ps4" &&
+        product.Subcategory.name === "PlayStation 4"
+      ) {
+        return product.Category.id === 4;
+      } else if (
+        params.subcategory === "pc" &&
+        product.Subcategory.name === "PC Gaming"
+      ) {
+        return product.Category.id === 4;
+      } else if (
+        params.subcategory === "vr" &&
+        product.Subcategory.name === "Virtual Reality"
+      ) {
+        return product.Category.id === 4;
+      } else if (
+        params.subcategory === "xbox1" &&
+        product.Subcategory.name === "Xbox One"
+      ) {
+        return product.Category.id === 4;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 4;
+      } else {
+        return false;
+      }
     }
 
     if (params.category === "accessories") {
@@ -226,9 +255,9 @@ export default function BrowseProducts() {
     let first = videoGames[i];
     let second = videoGames[i + 1];
 
-    if (second === undefined) {
-      break;
-    }
+    // if (second === undefined) {
+    //   break;
+    // }
 
     let third = videoGames[i + 2];
     let fourth = videoGames[i + 3];
@@ -332,28 +361,52 @@ export default function BrowseProducts() {
   }
 
   const handleCategorySelection = (category) => {
-    if (category === "Nintendo Switch") {
+    if (category === "Nintendo Switch" && params.category === "videogames") {
       history.push(`/p/videogames/switch/${params.price}/${params.rating}`);
     }
 
-    if (category === "PlayStation 4") {
+    if (category === "PlayStation 4" && params.category === "videogames") {
       history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
     }
 
-    if (category === "PlayStation 4") {
+    if (category === "PlayStation 4" && params.category === "videogames") {
       history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
     }
 
-    if (category === "PlayStation 5") {
+    if (category === "PlayStation 5" && params.category === "videogames") {
       history.push(`/p/videogames/ps5/${params.price}/${params.rating}`);
     }
 
-    if (category === "Xbox One") {
+    if (category === "Xbox One" && params.category === "videogames") {
       history.push(`/p/videogames/xbox1/${params.price}/${params.rating}`);
     }
 
-    if (category === "Xbox Series X") {
+    if (category === "Xbox Series X" && params.category === "videogames") {
       history.push(`/p/videogames/xboxx/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Nintendo Switch" && params.category === "consoles") {
+      history.push(`/p/consoles/switch/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PlayStation 4" && params.category === "consoles") {
+      history.push(`/p/consoles/ps4/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PlayStation 5" && params.category === "consoles") {
+      history.push(`/p/consoles/ps5/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PC Gaming" && params.category === "consoles") {
+      history.push(`/p/consoles/pc/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Virtual Reality" && params.category === "consoles") {
+      history.push(`/p/consoles/vr/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Xbox One" && params.category === "consoles") {
+      history.push(`/p/consoles/xbox1/${params.price}/${params.rating}`);
     }
 
     return;
@@ -362,6 +415,10 @@ export default function BrowseProducts() {
   const handlePageCategory = () => {
     if (pageCategory === "Video Games") {
       history.push(`/p/videogames/0/${params.price}/${params.rating}`);
+    }
+
+    if (pageCategory === "Consoles & Hardware") {
+      history.push(`/p/consoles/0/${params.price}/${params.rating}`);
     }
 
     return;
@@ -414,6 +471,16 @@ export default function BrowseProducts() {
                     category === "Xbox Series X"
                   ) {
                     className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "pc" &&
+                    category === "PC Gaming"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "vr" &&
+                    category === "Virtual Reality"
+                  ) {
+                    className1 = styles.categoryNames2;
                   } else {
                     className1 = styles.categoryNames;
                   }
@@ -437,7 +504,7 @@ export default function BrowseProducts() {
           </div>
 
           <div className={styles.priceSelectorContainer}>
-          <div className={styles.categorySpacer} />
+            <div className={styles.categorySpacer} />
             <div className={styles.priceSelectorTitle}>Price</div>
 
             <div className={styles.priceSelectionContainer}>
@@ -536,7 +603,7 @@ export default function BrowseProducts() {
 
           <div className={styles.customerRatingSelectorContainer}>
             <div className={styles.customerRatingSelectorTopContainer}>
-            <div className={styles.categorySpacer} />
+              <div className={styles.categorySpacer} />
               <div
                 onClick={() => setBool(!bool)}
                 className={styles.customerRatingSelectorTitle}
@@ -725,8 +792,13 @@ export default function BrowseProducts() {
           <div className={styles.rightTopContainer}>
             <div className={styles.rightSideTitle}>
               {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
-              {currentPage === 0 ? 12 : currentPage * 12 + 1 + 11} of{" "}
-              {videoGames.length} Results for <span>"{pageCategory}"</span>
+              {videoGames.length > 11 &&
+                (currentPage === 0 ? 12 : currentPage * 12 + 1 + 11)}{" "}
+              {videoGames.length < 12 &&
+                (currentPage === 0
+                  ? videoGames.length
+                  : currentPage * 12 + 1 + 11)}{" "}
+              of {videoGames.length} Results for <span>"{pageCategory}"</span>
             </div>
 
             <div className={styles.topMiddleContainer}>

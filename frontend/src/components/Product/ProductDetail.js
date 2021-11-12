@@ -121,14 +121,107 @@ function ProductDetail({ num, product, avgRating, reviews }) {
   }, []);
   if (!didMount) return null;
 
+  const handleClickCategoryName = () => {
+    if (product[0]?.Category?.name === "Video Games") {
+      history.push("/p/videogames/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Consoles & Hardware") {
+      history.push("/p/consoles/0/0/0");
+    }
+    return;
+  };
+
+  const handleClickSubcategoryName = () => {
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 4" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/ps4/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Nintendo Switch" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/switch/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 5" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/ps5/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox Series X" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/xboxx/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Nintendo Switch" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/switch/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PC Gaming" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/pc/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 4" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/ps4/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Virtual Reality" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/vr/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/xbox1/0/0");
+    }
+
+    return;
+  };
+
   return (
     <>
       <div className={styles.categoryContainer}>
-        <div className={styles.category}>{product[0]?.Category?.name}</div>
+        <div
+          onClick={() => handleClickCategoryName()}
+          className={styles.category}
+        >
+          {product[0]?.Category?.name}
+        </div>
 
         <div className={styles.lighter}>/</div>
 
-        <div className={styles.subcategory}>
+        <div
+          onClick={() => handleClickSubcategoryName()}
+          className={styles.category}
+        >
           {product[0]?.Subcategory?.name}
         </div>
 

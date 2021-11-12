@@ -90,7 +90,7 @@ function ProductPage() {
 
       setLoad(true);
     })();
-  }, [params.id, user, user?.id, dispatch]);
+  }, [params.id, user, dispatch]);
 
   const [didMount, setDidMount] = useState(false);
   useEffect(() => {

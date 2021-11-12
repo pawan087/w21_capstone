@@ -213,6 +213,16 @@
   align-self: center; */
 }
 
+.category {
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.category:hover {
+  text-decoration: underline;
+}
+
+
 .categoryContainer div {
   margin-right: 15px;
 }

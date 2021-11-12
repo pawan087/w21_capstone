@@ -69,7 +69,7 @@ export default function ProductsRow({ products }) {
               </div>
 
               <div className={styles.productDetailContainer3}>
-                <div className={styles.productName}>{product?.name}</div>
+                <div className={styles.productName}>{product?.name.slice(0, 70)}{product?.name?.length > 70 ? '...' : null}</div>
 
                 <div className={styles.productSubcategory}>
                   {product?.Subcategory.name}

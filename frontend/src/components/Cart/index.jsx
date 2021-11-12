@@ -96,7 +96,7 @@ export default function Cart() {
 
       setLoad(true);
     })();
-  }, [dispatch]);
+  }, [user, dispatch]);
 
   if (!load) {
     return (
@@ -134,12 +134,11 @@ export default function Cart() {
 
   const updateQuantity = async (id, val) => {
     setLoader(true);
-
     await dispatch(editCartItem({ id, quantity: val }));
-
     await dispatch(setAllCartItems());
-
     setLoader(false);
+
+    window.location.reload(false);
   };
 
   const theme = (theme) => ({
