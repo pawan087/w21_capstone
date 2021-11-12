@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FaCheck } from "react-icons/fa";
@@ -21,6 +21,7 @@ import styles from "./styles.module.css";
 export default function BrowseProducts() {
   const params = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
@@ -37,7 +38,36 @@ export default function BrowseProducts() {
 
       pageCategory = "Video Games";
 
-      return product.Category.id === 1;
+      if (
+        params.subcategory === "switch" &&
+        product.Subcategory.name === "Nintendo Switch"
+      ) {
+        return product.Category.id === 1;
+      } else if (
+        params.subcategory === "ps4" &&
+        product.Subcategory.name === "PlayStation 4"
+      ) {
+        return product.Category.id === 1;
+      } else if (
+        params.subcategory === "ps5" &&
+        product.Subcategory.name === "PlayStation 5"
+      ) {
+        return product.Category.id === 1;
+      } else if (
+        params.subcategory === "xbox1" &&
+        product.Subcategory.name === "Xbox One"
+      ) {
+        return product.Category.id === 1;
+      } else if (
+        params.subcategory === "xboxx" &&
+        product.Subcategory.name === "Xbox Series X"
+      ) {
+        return product.Category.id === 1;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 1;
+      } else {
+        return;
+      }
     }
 
     if (params.category === "toysgames") {
@@ -215,9 +245,6 @@ export default function BrowseProducts() {
   const [bool, setBool] = useState(false);
   const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
-  // const [data, setData] = useState(videoGamesByFour);
-  // const [data2, setData2] = useState(videoGamesByFourSortedHighToLow);
-  // const [data3, setData3] = useState(videoGamesByFourSortedLowToHigh);
 
   const PER_PAGE = 3;
 
@@ -304,6 +331,44 @@ export default function BrowseProducts() {
     );
   }
 
+  const handleCategorySelection = (category) => {
+    if (category === "Nintendo Switch") {
+      history.push(`/p/videogames/switch/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PlayStation 4") {
+      history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PlayStation 4") {
+      history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PlayStation 5") {
+      history.push(`/p/videogames/ps5/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Xbox One") {
+      history.push(`/p/videogames/xbox1/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Xbox Series X") {
+      history.push(`/p/videogames/xboxx/${params.price}/${params.rating}`);
+    }
+
+    return;
+  };
+
+  const handlePageCategory = () => {
+    if (pageCategory === "Video Games") {
+      history.push(`/p/videogames/0/${params.price}/${params.rating}`);
+    }
+
+    return;
+  };
+
+  let className1 = styles.categoryNames;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -314,17 +379,55 @@ export default function BrowseProducts() {
         {/* Left Side (sorting) */}
         <div className={styles.leftContainer}>
           <div className={styles.categoryName}>
-            <span>{pageCategory}</span>
+            <span onClick={() => handlePageCategory()}>{pageCategory}</span>
           </div>
 
           <div className={styles.categorySelectorContainer}>
+            <div className={styles.categorySpacer} />
             <div className={styles.categorySelectorTitle}>Category</div>
 
             <div className={styles.mappableCategoriesContainer}>
               {videoGameSubcategoriesArr?.map((category, i) => {
+                const chooseClassName = () => {
+                  if (
+                    params.subcategory === "ps4" &&
+                    category === "PlayStation 4"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "switch" &&
+                    category === "Nintendo Switch"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "ps5" &&
+                    category === "PlayStation 5"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "xbox1" &&
+                    category === "Xbox One"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "xboxx" &&
+                    category === "Xbox Series X"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else {
+                    className1 = styles.categoryNames;
+                  }
+
+                  return;
+                };
+
+                chooseClassName();
+
                 return (
-                  <div className={styles.categoryNames} key={i}>
-                    {category}
+                  <div className={className1} key={i}>
+                    <span onClick={() => handleCategorySelection(category)}>
+                      {category}
+                    </span>
                   </div>
                 );
               })}
@@ -334,6 +437,7 @@ export default function BrowseProducts() {
           </div>
 
           <div className={styles.priceSelectorContainer}>
+          <div className={styles.categorySpacer} />
             <div className={styles.priceSelectorTitle}>Price</div>
 
             <div className={styles.priceSelectionContainer}>
@@ -427,11 +531,12 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$300+</div>
             </div>
 
-            <div className={styles.priceSpacer} />
+            <div className={styles.categorySpacer} />
           </div>
 
           <div className={styles.customerRatingSelectorContainer}>
             <div className={styles.customerRatingSelectorTopContainer}>
+            <div className={styles.categorySpacer} />
               <div
                 onClick={() => setBool(!bool)}
                 className={styles.customerRatingSelectorTitle}

@@ -148,6 +148,7 @@
 .categoryName span:hover {
   cursor: pointer;
   text-decoration: underline;
+  /* color: rgb(238, 42, 40); */
 }
 
 .categorySelectorContainer {
@@ -164,17 +165,38 @@
 .categoryNames {
   font-size: 12.5px;
   color: rgb(40, 40, 40);
-  margin-bottom: 10px;
+
+  margin-bottom: 15px;
   transition: 0.15s ease-in-out;
+}
+
+.categoryNames span {
   cursor: pointer;
 }
 
-.categoryNames:hover {
+.categoryNames2 {
+  font-size: 12.5px;
+  margin-bottom: 15px;
+  transition: 0.15s ease-in-out;
   color: rgb(238, 42, 40);
 }
 
+.categoryNames2 span {
+  cursor: pointer;
+}
+
+.categoryNames2 span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.categoryNames span:hover {
+  color: rgb(238, 42, 40);
+  text-decoration: underline;
+}
+
 .categorySpacer {
-  height: 15px;
+  height: 10px;
 }
 
 .mappableCategoriesContainer {
@@ -413,8 +435,10 @@
 }
 
 .productContainer:hover {
-  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .footerContainer {

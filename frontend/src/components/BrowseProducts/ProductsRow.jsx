@@ -50,48 +50,50 @@ export default function ProductsRow({ products }) {
         const avgRating = sum / product?.reviewsArr.length;
 
         return (
-          <div
-            onClick={() => history.push(`/products/${product.id}`)}
-            key={i}
-            className={styles.productContainer}
-          >
-            <div className={styles.productDetailContainer1}>
-              <img
-                className={styles.productImage}
-                src={product?.images[0]}
-                alt="resultsProductImage"
-              />
-            </div>
-
-            <div className={styles.productDetailContainer2}>
-              ${product?.price}
-            </div>
-
-            <div className={styles.productDetailContainer3}>
-              <div className={styles.productName}>{product?.name}</div>
-
-              <div className={styles.productSubcategory}>
-                {product?.Subcategory.name}
+          product && (
+            <div
+              onClick={() => history.push(`/products/${product.id}`)}
+              key={i}
+              className={styles.productContainer}
+            >
+              <div className={styles.productDetailContainer1}>
+                <img
+                  className={styles.productImage}
+                  src={product?.images[0]}
+                  alt="resultsProductImage"
+                />
               </div>
 
-              <div className={styles.starsRatingContainer}>
-                <div className={styles.starsContainer}>
-                  <div className={styles.stars2}>
-                    <StarPicker
-                      starDimension="15px"
-                      disabled={true}
-                      value={formatter.format(avgRating)}
-                      halfStars
-                    />
+              <div className={styles.productDetailContainer2}>
+                ${product?.price}
+              </div>
+
+              <div className={styles.productDetailContainer3}>
+                <div className={styles.productName}>{product?.name}</div>
+
+                <div className={styles.productSubcategory}>
+                  {product?.Subcategory.name}
+                </div>
+
+                <div className={styles.starsRatingContainer}>
+                  <div className={styles.starsContainer}>
+                    <div className={styles.stars2}>
+                      <StarPicker
+                        starDimension="15px"
+                        disabled={true}
+                        value={formatter.format(avgRating)}
+                        halfStars
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.productReviewCount}>
+                    ({product?.reviewsArr.length})
                   </div>
                 </div>
-
-                <div className={styles.productReviewCount}>
-                  ({product?.reviewsArr.length})
-                </div>
               </div>
             </div>
-          </div>
+          )
         );
       })}
     </div>
