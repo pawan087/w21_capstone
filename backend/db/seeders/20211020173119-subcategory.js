@@ -6,7 +6,7 @@ module.exports = {
       "Subcategories",
       [
         {
-          name: "Playstation 5",
+          name: "PlayStation 5",
         },
         {
           name: "Audio",
@@ -103,6 +103,9 @@ module.exports = {
         },
         {
           name: "Mounts", // 33
+        },
+        {
+          name: "Square Enix", // 34
         },
       ],
       {}

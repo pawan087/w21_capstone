@@ -2197,6 +2197,34 @@ module.exports = {
           ],
           rating: 0.0,
         },
+        {
+          name: "Marvel's Spider-Man: Miles Morales - PlayStation 4",
+          description:
+            "There's a new Spider-Man in town and his name is Miles Morales. Take Spider-Man to new heights in Marvel's Spider-Man: Miles Morales on PS4 from GameStop. Be greater. Be yourself. Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.",
+          brandId: 9,
+          price: 49.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "FINAL FANTASY VII Remake",
+          description:
+            "The first entry in a multi-part saga, delivering a level of depth inconceivable for the original. The mind-blowing story, unforgettable characters, epic battles and technical excellence collide. The world has fallen under the control of the Shinra Electric Power Company, a shadowy corporation controlling the planet's very life force as mako energy. In the sprawling city of Midgar, an anti-Shinra organization calling themselves Avalanche has stepped up its resistance. Cloud Strife, a former member of Shinra's elite SOLDIER unit now turned mercenary, lends his aid to the group, unaware of the epic consequences that await him.",
+          brandId: 34,
+          price: 24.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
       ],
       {}
     );
