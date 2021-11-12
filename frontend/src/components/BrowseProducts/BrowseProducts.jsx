@@ -27,11 +27,53 @@ export default function BrowseProducts() {
   let videoGameSubCategories = new Set();
 
   const videoGames = products?.filter((product) => {
-    if (product.Category.id === 1) {
-      videoGameSubCategories.add(product.Subcategory.name);
+    if (params.category === "videogames") {
+      if (product.Category.id === 1) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 1;
     }
 
-    return product.Category.id === 1;
+    if (params.category === "toysgames") {
+      if (product.Category.id === 2) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 2;
+    }
+
+    if (params.category === "electronics") {
+      if (product.Category.id === 3) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 3;
+    }
+
+    if (params.category === "consoles") {
+      if (product.Category.id === 4) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 4;
+    }
+
+    if (params.category === "accessories") {
+      if (product.Category.id === 5) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 5;
+    }
+
+    if (params.category === "clothing") {
+      if (product.Category.id === 6) {
+        videoGameSubCategories.add(product.Subcategory.name);
+      }
+
+      return product.Category.id === 6;
+    }
   });
 
   let videoGameSubcategoriesArr = Array.from(videoGameSubCategories);
@@ -92,6 +134,7 @@ export default function BrowseProducts() {
     let arr = [];
 
     let first = sortedVideoGamesHighToLow[i];
+    
     let second = sortedVideoGamesHighToLow[i + 1];
 
     if (second === undefined) {

@@ -21,7 +21,11 @@
   display: flex;
   flex-direction: column;
   width: 320px;
-  /* min-height: 470px; */
+  height: 730px;
+  min-height: 470px;
+  position: sticky;
+  top: 115px;
+  z-index: 50;
 }
 
 .rightContainer {
@@ -325,13 +329,13 @@
 }
 .pagination {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-evenly;
   margin: 0 0;
   list-style: none;
   cursor: pointer;
   color: black;
   margin-bottom: 35px;
-  gap: 135px;
+  /* gap: 135px; */
 }
 
 .pagination a {
