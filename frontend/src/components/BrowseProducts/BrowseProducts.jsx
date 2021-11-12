@@ -9,6 +9,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import StarPicker from "react-star-picker";
 import ReactPaginate from "react-paginate";
 
+import Footer from "../Footer/index";
 import ProductsRow from "./ProductsRow";
 import { setAllRecentlyViewed } from "../../store/recentlyViewed";
 import { setAllProducts } from "../../store/products.js";
@@ -75,7 +76,7 @@ export default function BrowseProducts() {
   ]);
 
   const [load, setLoad] = useState(false);
-  const [bool, setBool] = useState(true);
+  const [bool, setBool] = useState(false);
   const [sortBy, setSortBy] = useState("Best Matches");
   const [currentPage, setCurrentPage] = useState(0);
   const [data, setData] = useState([]);
@@ -440,18 +441,8 @@ export default function BrowseProducts() {
         <div className={styles.rightContainer}>
           <div className={styles.rightTopContainer}>
             <div className={styles.rightSideTitle}>
-              {currentPage === 0 ? 1 : ((currentPage * 12) + 1)} - {
-
-
-
-                      currentPage === 0 ? 12 : ((currentPage * 12) + 1) + 11
-
-
-
-
-
-
-              } of{" "}
+              {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
+              {currentPage === 0 ? 12 : currentPage * 12 + 1 + 11} of{" "}
               {videoGames.length} Results for <span>"Video Games"</span>
             </div>
 
@@ -550,6 +541,10 @@ export default function BrowseProducts() {
       </div>
 
       {/* RECENTLY VIEWED PRODUCTS GO HERE */}
+
+      <div className={styles.footerContainer}>
+        <Footer />
+      </div>
     </motion.div>
   );
 }

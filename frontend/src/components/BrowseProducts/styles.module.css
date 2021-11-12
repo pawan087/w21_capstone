@@ -18,7 +18,6 @@
 }
 
 .leftContainer {
-  /* background-color: springgreen; */
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -28,6 +27,7 @@
 .rightContainer {
   width: 1080px;
   margin-left: 15px;
+  /* border-bottom: 1px solid rgb(237, 237, 237); */
   /* background-color: skyblue; */
 }
 
@@ -166,7 +166,7 @@
 }
 
 .categoryNames:hover {
-  color:rgb(238,42,40)
+  color: rgb(238, 42, 40);
 }
 
 .categorySpacer {
@@ -284,6 +284,10 @@
   transform: scale(0.65);
 }
 
+.stars2 {
+  transform: scale(0.45) translate(-20px, -20px);
+}
+
 .starsContainer {
   transform: translate(-30px, -2.5px);
 }
@@ -317,17 +321,18 @@
 }
 
 .holder {
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 .pagination {
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-between; */
   margin: 0 0;
   list-style: none;
   cursor: pointer;
   color: black;
   margin-bottom: 35px;
-  /* gap: 50px; */
+  gap: 135px;
 }
 
 .pagination a {
@@ -386,12 +391,86 @@
 
 .productsRowOfFourContainer {
   display: flex;
-  height: 250px;
-  width: 1000px;
+  /* height: 270px; */
+  justify-content: space-evenly;
+  /* width: 1000px; */
+  margin-bottom: 10px;
 }
 
 .productContainer {
-  height: 250px;
-  margin-right: 25px;
-  width: 250px;
+  width: 255px;
+  height: 370px;
+  /* background-color: skyblue; */
+  display: flex;
+  flex-direction: column;
+  transition: 0.15s ease-in-out;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.productContainer:hover {
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.footerContainer {
+  margin-top: 20px;
+}
+
+.productDetailContainer1 {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 22.5px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productDetailContainer2 {
+  font-size: 17.5px;
+  font-weight: bold;
+  color: rgb(40, 40, 40);
+  color: rgb(238, 42, 40);
+  margin-bottom: 0px;
+  padding-left: 10px;
+}
+
+.productName {
+  font-size: 15px;
+  color: rgba(40, 40, 40, 0.8);
+  width: 255px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.productSubcategory {
+  font-size: 15px;
+  font-weight: normal;
+  color: rgb(153, 153, 153);
+  padding-left: 10px;
+}
+
+.starsRatingContainer {
+  display: flex;
+}
+
+.productReviewCount {
+  font-size: 10px;
+  transform: translate(-80px, 0px);
+  font-weight: normal;
+  color: rgb(153, 153, 153);
+}
+
+.productDetailContainer3 {
+  /* width: px; */
 }
