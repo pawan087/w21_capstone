@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion/dist/framer-motion";
 import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
 
@@ -74,7 +75,9 @@ export default function ProductsRow({ products }) {
                   </div>
                 </div>
 
-                <div className={styles.productReviewCount}>({product.reviewsArr.length})</div>
+                <div className={styles.productReviewCount}>
+                  ({product.reviewsArr.length})
+                </div>
               </div>
             </div>
           </div>

@@ -46,7 +46,89 @@ export default function BrowseProducts() {
     return 0;
   });
 
+  videoGames.sort(function (a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+
+  let sortedVideoGamesLowToHigh = [...videoGames];
+  let sortedVideoGamesHighToLow = [...videoGames];
+
+  sortedVideoGamesLowToHigh.sort(function (a, b) {
+    if (+a.price < +b.price) {
+      return -1;
+    }
+
+    if (+a.price > +b.price) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  sortedVideoGamesHighToLow.sort(function (a, b) {
+    if (+a.price > +b.price) {
+      return -1;
+    }
+
+    if (+a.price < +b.price) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   let videoGamesByFour = [];
+  let videoGamesByFourSortedLowToHigh = [];
+  let videoGamesByFourSortedHighToLow = [];
+
+  for (let i = 0; i < sortedVideoGamesHighToLow.length; i += 4) {
+    let arr = [];
+
+    let first = sortedVideoGamesHighToLow[i];
+    let second = sortedVideoGamesHighToLow[i + 1];
+
+    if (second === undefined) {
+      break;
+    }
+
+    let third = sortedVideoGamesHighToLow[i + 2];
+    let fourth = sortedVideoGamesHighToLow[i + 3];
+
+    arr.push(first);
+    arr.push(second);
+    arr.push(third);
+    arr.push(fourth);
+
+    videoGamesByFourSortedHighToLow.push(arr);
+  }
+
+  for (let i = 0; i < sortedVideoGamesLowToHigh.length; i += 4) {
+    let arr = [];
+
+    let first = sortedVideoGamesLowToHigh[i];
+    let second = sortedVideoGamesLowToHigh[i + 1];
+
+    if (second === undefined) {
+      break;
+    }
+
+    let third = sortedVideoGamesLowToHigh[i + 2];
+    let fourth = sortedVideoGamesLowToHigh[i + 3];
+
+    arr.push(first);
+    arr.push(second);
+    arr.push(third);
+    arr.push(fourth);
+
+    videoGamesByFourSortedLowToHigh.push(arr);
+  }
 
   for (let i = 0; i < videoGames.length; i += 4) {
     let arr = [];
@@ -69,15 +151,9 @@ export default function BrowseProducts() {
     videoGamesByFour.push(arr);
   }
 
-  const [categoriesArr, setCategoriesArr] = useState([
-    "PlayStation 4",
-    "Nintendo Switch",
-    "Xbox One",
-  ]);
-
   const [load, setLoad] = useState(false);
   const [bool, setBool] = useState(false);
-  const [sortBy, setSortBy] = useState("Best Matches");
+  const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
   const [data, setData] = useState([]);
 
@@ -102,16 +178,19 @@ export default function BrowseProducts() {
 
   // console.log(+params.price === 0);
 
-  const handleSortByBestMatches = () => {
-    setSortBy("Best Matches");
+  const handleSortByName = () => {
+    setSortBy("Name");
+    setData(videoGamesByFour);
   };
 
   const handleSortByLowToHigh = () => {
     setSortBy("Price Low To High");
+    setData(videoGamesByFourSortedLowToHigh);
   };
 
   const handleSortByHighToLow = () => {
     setSortBy("Prices High To Low");
+    setData(videoGamesByFourSortedHighToLow);
   };
 
   useEffect(() => {
@@ -453,7 +532,7 @@ export default function BrowseProducts() {
                 className={styles.menu}
                 menuButton={
                   <MenuButton className={styles.button}>
-                    <span>Sort by:</span> {sortBy}
+                    <span>Sort By:</span> {sortBy}
                     <div className={styles.downIcon}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -474,10 +553,10 @@ export default function BrowseProducts() {
                 }
               >
                 <MenuItem
-                  onClick={() => handleSortByBestMatches()}
+                  onClick={() => handleSortByName()}
                   className={styles.menuItem}
                 >
-                  Best Matches
+                  Name
                 </MenuItem>
                 <MenuItem
                   onClick={() => handleSortByLowToHigh()}
@@ -495,47 +574,53 @@ export default function BrowseProducts() {
             </div>
           </div>
 
-          <div>
-            <div className={styles.holder}>{currentPageData}</div>
-            <ReactPaginate
-              previousLabel={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              }
-              nextLabel={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              }
-              marginPagesDisplayed={500}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName={styles.pagination}
-              previousLinkClassName={styles.pagination__link}
-              nextLinkClassName={styles.next}
-              disabledClassName={styles.pagination__linkdisabled}
-              activeClassName={styles.pagination__linkactive}
-            />
-          </div>
+          {
+            /* Start */
+            true && (
+              <div>
+                <div className={styles.holder}>{currentPageData}</div>
+                <ReactPaginate
+                  previousLabel={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  }
+                  nextLabel={
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  }
+                  marginPagesDisplayed={500}
+                  pageCount={pageCount}
+                  onPageChange={handlePageClick}
+                  containerClassName={styles.pagination}
+                  previousLinkClassName={styles.pagination__link}
+                  nextLinkClassName={styles.next}
+                  disabledClassName={styles.pagination__linkdisabled}
+                  activeClassName={styles.pagination__linkactive}
+                />
+              </div>
+            )
+            /* End */
+          }
         </div>
         {/* End Right Side */}
       </div>
