@@ -30,6 +30,36 @@ export default function MyNavBar() {
   const [visible2, setVisible2] = useState(false);
   const [load, setLoad] = useState(false);
 
+  const handleVideoGames = () => {
+    history.push("/p/videogames/0/0/0");
+    closeNav();
+  };
+
+  const handleConsoles = () => {
+    history.push("/p/consoles/0/0/0");
+    closeNav();
+  };
+
+  const handleAccessories = () => {
+    history.push("/p/accessories/0/0/0");
+    closeNav();
+  };
+
+  const handleElectronics = () => {
+    history.push("/p/electronics/0/0/0");
+    closeNav();
+  };
+
+  const handleToysGames = () => {
+    history.push("/p/toysgames/0/0/0");
+    closeNav();
+  };
+
+  const handleClothing = () => {
+    history.push("/p/clothing/0/0/0");
+    closeNav();
+  };
+
   const sendToOrders = () => {
     closeNav2();
     history.push("/orders");
@@ -556,21 +586,47 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebarMenuItemsContainer3}>
-                <div className={styles.sidebarMenuItem3}>Video Games</div>
+                <div
+                  onClick={() => handleVideoGames()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Video Games
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>
+                <div
+                  onClick={() => handleConsoles()}
+                  className={styles.sidebarMenuItem3}
+                >
                   Consoles & Hardware
                 </div>
 
-                <div className={styles.sidebarMenuItem3}>
+                <div
+                  onClick={() => handleAccessories()}
+                  className={styles.sidebarMenuItem3}
+                >
                   Gaming Accessories
                 </div>
 
-                <div className={styles.sidebarMenuItem3}>Electronics</div>
+                <div
+                  onClick={() => handleElectronics()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Electronics
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>Toys & Games</div>
+                <div
+                  onClick={() => handleToysGames()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Toys & Games
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>Clothing</div>
+                <div
+                  onClick={() => handleClothing()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Clothing
+                </div>
               </div>
 
               <div className={styles.fakeSidebarFooter}>

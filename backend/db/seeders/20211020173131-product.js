@@ -173,7 +173,7 @@ module.exports = {
           description:
             "In this Monopoly board game, players can enjoy island life and immerse themselves in the colorful and creative world of Animal Crossing New Horizons. Moving around the board with tokens inspired by the video game, players complete island tasks and meet other characters. Instead of buying properties and paying rent, players collect bugs, fish, fossils, and fruit. They can also stop at Nook's Cranny and cash in Bells to buy decorations. Decorations are worth Nook Miles and the player with the most Nook Miles wins the game. Monopoly: Animal Crossing New Horizons board game is for ages 8 and up and makes a fun indoor activity for kids.",
           brandId: 11,
-          price: 19.8,
+          price: 19.79,
           categoryId: 2,
           subcategoryId: 10,
           furtherSubcategoryId: null,
@@ -425,7 +425,7 @@ module.exports = {
           description:
             "Introducing Joy-Con, controllers that make new kinds of gaming possible, for use with Nintendo Switch.The versatile Joy-Con offer multiple surprising new ways for players to have fun. Two Joy-Con can be used independently in each hand, or together as one game controller when attached to the Joy-Con grip. They can also attach to the main console for use in handheld mode, or be shared with friends to enjoy two-player action in supported games. Each Joy-Con has a full set of buttons and can act as a standalone controller, and each includes an accelerometer and gyro-sensor, making independent left and right motion control possible.",
           brandId: 8,
-          price: 69.0,
+          price: 69.99,
           categoryId: 5,
           subcategoryId: 8,
           furtherSubcategoryId: null,
@@ -467,7 +467,7 @@ module.exports = {
           description:
             "A 27 inch IPS gaming monitor with a blazing 240Hz refresh rate and true 1ms response time. Now featuring both AMD FreeSync and NVIDIA® G-SYNC® compatibility for effortlessly smooth gaming.",
           brandId: 21,
-          price: 299.0,
+          price: 299.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
@@ -495,7 +495,7 @@ module.exports = {
           description:
             "Your Journey Starts Here. The Pulse GL66 Gaming Laptop is packed with the latest 11th Gen. Intel ® Core™ i7 processors and NVIDIA® GeForce RTX™ 30 series graphics. The titanium gray metal armor and contour lines is perfect for those who loves a sturdy and futuristic design. At every corner of the universe and every scenario, the Tribe of the Dragon marches through the galaxy, unstoppable and invincible. They are the possessors of endless knowledge and power. They can withstand countless artillery fire and still prevail. As the legions of Dragon Warriors march on and spacecraft fly by, the soldiers stand out in their titanium powered-armor armed with Pulse Energy weapons. The claw blades overflowing with electric current hum in the background as they conquer the galaxy... GeForce RTX™ 30 Series GPUs deliver the ultimate performance for gamers and creators. They’re powered by Ampere—NVIDIA’s 2nd gen RTX architecture—with new RT Cores, Tensor Cores, and streaming multiprocessors for the most realistic ray-traced graphics and cutting-edge AI features. Enjoy every detail in games at 1920x1080 resolution and the blazing fast 144Hz refresh rate panel. It's time for a more vibrant visual experience.",
           brandId: 23,
-          price: 1149.0,
+          price: 1149.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
@@ -1135,7 +1135,7 @@ module.exports = {
           rating: 5.0,
         },
         {
-          name: "Jurassic World Evolution 2 PS4",
+          name: "Jurassic World Evolution 2 - PS4",
           description:
             "Jurassic World Evolution 2 is the much-anticipated sequel to Frontier’s highly successful Jurassic World Evolution, building upon the groundbreaking and immersive 2018 management simulation. It introduces a compelling, new narrative campaign, incredible new features, and awe-inspiring new dinosaurs brought to life with captivating authenticity. Together with expanded construction and more customisation options, the result is an even bigger, better and authentic Jurassic World game.",
           brandId: 42,
@@ -1997,7 +1997,7 @@ module.exports = {
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
-            "https://media.gamestop.com/i/gamestop/11127309/Hasbro-Star-Wars-The-Black-Series-The-Mandalorian---Death-Watch-Helmet-GameStop-Exclusive?$pdp2x$",
+            "https://media.gamestop.com/i/gamestop/11158704/Horizon-Forbidden-West-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
           ],
           rating: 5.0,
         },
@@ -2152,6 +2152,48 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11150356/TygerClaw-42-in-to-70-in-Full-Motion-Flat-Panel-TV-Wall-Mount?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "GameStop Logo Toddler Unisex Hooded Sweatshirt",
+          description:
+            "At GameStop, we’re all about fun for all ages. Look out! Here comes the Toddler Squad! Now your kiddos can show off their favorite spot for games and collectibles with this awesome toddler hoodie. It’s the perfect attire for your little co-op partner in training.",
+          brandId: 47,
+          price: 24.99,
+          categoryId: 6,
+          subcategoryId: 28,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11166668/GameStop-Logo-Toddler-Unisex-Hooded-Sweatshirt?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Sony DUALSHOCK 4 Wireless Controller",
+          description:
+            "Enhance your gaming experience with the Sony DualShock 4 Wireless Controller for PlayStation 4. Play your favorite video games with a PS4 controller that combines revolutionary features and comfort with intuitive, precision controls. Its definitive analog sticks and trigger buttons deliver greater response and sensitivity along with a multi touch pad for more instinctive and natural gameplay. In addition, the PlayStation Camera and Share button features makes social media capabilities and playing with friends easy and painless. Join a new era of gaming with the Sony PlayStation 4 DualShock 4 Wireless Controller.",
+          brandId: 9,
+          price: 54.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11157867_glacier-white/Sony-DUALSHOCK-4-Wireless-Controller-for-PlayStation-4-glacier-white?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Nintendo Switch Joy-Con (L)/(R) Neon Purple/Orange",
+          description:
+            "Take your gaming to a whole new level with this Joy-Con L/R in Neon Purple and Neon Orange from Nintendo Switch. Share it with your friends or attach it to the main console, each Joy-Con controller includes a gyro-sensor and accelerometer providing greater flexibility to jump, shoot, run and attack.",
+          brandId: 8,
+          price: 68.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11095815/Nintendo-Switch-Joy-Con-L/R-Wireless-Controller-Neon-Purple/Orange?$pdp$$&fmt=webp",
           ],
           rating: 0.0,
         },

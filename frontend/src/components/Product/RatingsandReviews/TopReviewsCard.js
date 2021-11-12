@@ -13,6 +13,11 @@ export default function TopReviewsCard({ reviews, avgRating }) {
   const showAllHideTop = () => {
     setBool(!bool);
     setBool2(!bool2);
+    window.scrollTo({
+      top: 1075,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   return (

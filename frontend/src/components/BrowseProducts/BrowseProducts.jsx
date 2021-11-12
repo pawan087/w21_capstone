@@ -9,6 +9,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import StarPicker from "react-star-picker";
 import ReactPaginate from "react-paginate";
 
+import RecentlyViewedCard from "../Product/RecentlyViewedCard";
 import Footer from "../Footer/index";
 import ProductsRow from "./ProductsRow";
 import { setAllRecentlyViewed } from "../../store/recentlyViewed";
@@ -24,6 +25,8 @@ export default function BrowseProducts() {
   const user = useSelector((state) => state.session.user);
   const products = useSelector((state) => state.products);
 
+  let pageCategory;
+
   let videoGameSubCategories = new Set();
 
   const videoGames = products?.filter((product) => {
@@ -31,6 +34,8 @@ export default function BrowseProducts() {
       if (product.Category.id === 1) {
         videoGameSubCategories.add(product.Subcategory.name);
       }
+
+      pageCategory = "Video Games";
 
       return product.Category.id === 1;
     }
@@ -40,6 +45,8 @@ export default function BrowseProducts() {
         videoGameSubCategories.add(product.Subcategory.name);
       }
 
+      pageCategory = "Toys & Games";
+
       return product.Category.id === 2;
     }
 
@@ -47,6 +54,8 @@ export default function BrowseProducts() {
       if (product.Category.id === 3) {
         videoGameSubCategories.add(product.Subcategory.name);
       }
+
+      pageCategory = "Electronics";
 
       return product.Category.id === 3;
     }
@@ -56,6 +65,8 @@ export default function BrowseProducts() {
         videoGameSubCategories.add(product.Subcategory.name);
       }
 
+      pageCategory = "Consoles & Hardware";
+
       return product.Category.id === 4;
     }
 
@@ -63,6 +74,8 @@ export default function BrowseProducts() {
       if (product.Category.id === 5) {
         videoGameSubCategories.add(product.Subcategory.name);
       }
+
+      pageCategory = "Gaming Accessories";
 
       return product.Category.id === 5;
     }
@@ -72,8 +85,12 @@ export default function BrowseProducts() {
         videoGameSubCategories.add(product.Subcategory.name);
       }
 
+      pageCategory = "Clothing";
+
       return product.Category.id === 6;
     }
+
+    return false;
   });
 
   let videoGameSubcategoriesArr = Array.from(videoGameSubCategories);
@@ -134,7 +151,7 @@ export default function BrowseProducts() {
     let arr = [];
 
     let first = sortedVideoGamesHighToLow[i];
-    
+
     let second = sortedVideoGamesHighToLow[i + 1];
 
     if (second === undefined) {
@@ -297,7 +314,7 @@ export default function BrowseProducts() {
         {/* Left Side (sorting) */}
         <div className={styles.leftContainer}>
           <div className={styles.categoryName}>
-            <span>Video Games</span>
+            <span>{pageCategory}</span>
           </div>
 
           <div className={styles.categorySelectorContainer}>
@@ -604,7 +621,7 @@ export default function BrowseProducts() {
             <div className={styles.rightSideTitle}>
               {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
               {currentPage === 0 ? 12 : currentPage * 12 + 1 + 11} of{" "}
-              {videoGames.length} Results for <span>"Video Games"</span>
+              {videoGames.length} Results for <span>"{pageCategory}"</span>
             </div>
 
             <div className={styles.topMiddleContainer}>
@@ -815,7 +832,7 @@ export default function BrowseProducts() {
         {/* End Right Side */}
       </div>
 
-      {/* RECENTLY VIEWED PRODUCTS GO HERE */}
+      {user && <RecentlyViewedCard />}
 
       <div className={styles.footerContainer}>
         <Footer />

@@ -21,7 +21,8 @@
   display: flex;
   flex-direction: column;
   width: 320px;
-  height: 730px;
+  height: 875px;
+  /* background-color: red; */
   min-height: 470px;
   position: sticky;
   top: 115px;
@@ -417,7 +418,7 @@
 }
 
 .footerContainer {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .productDetailContainer1 {
