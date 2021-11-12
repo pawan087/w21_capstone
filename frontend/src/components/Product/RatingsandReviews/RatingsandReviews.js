@@ -54,7 +54,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const variants = {
     closed: { height: "0px" },
-    open: showAllReviews ? { height: "1075px" } : { height: "605px" },
+    open: showAllReviews ? { minheight: "1075px" } : { minheight: "605px" },
   };
 
   const contentSetter = (e) => {
@@ -258,17 +258,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             </div>
           )}
         </div>
-        {
-          <motion.div
-            initial={{ height: "0px" }}
-            animate={bool ? "open" : "closed"}
-            transition={{
-              type: "spring",
-              stiffness: 500,
-              damping: 50,
-            }}
-            variants={variants}
-          >
+
             {reviews.length !== 0 && bool && (
               <motion.div
                 initial={{ opacity: 0 }}
@@ -316,8 +306,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             {reviews.length !== 0 && bool && (
               <TopReviewsCard reviews={reviews} avgRating={avgRating} />
             )}
-          </motion.div>
-        }
+
 
         {reviews.length === 0 && bool && (
           <div onClick={show} className={styles.noReviews}>

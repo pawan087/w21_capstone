@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
+import { motion } from "framer-motion/dist/framer-motion";
 import Carousel from "react-grid-carousel";
 
 import IndividualRecentlyViewed from "./IndividualRecentlyViewed";
@@ -13,6 +14,11 @@ export default function RecentlyViewedCard() {
 
   const products = useSelector((state) => state.products);
   const recentlyViewed = useSelector((state) => state.recentlyViewed);
+
+  const variants = {
+    closed: { height: "0px" },
+    open: { height: "385px" },
+  };
 
   let recentlyViewedProducts = [];
   let count = 0;
@@ -60,28 +66,35 @@ export default function RecentlyViewedCard() {
           </div>
         )}
 
-        {!bool && (
-          <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 4v16m8-8H4"
-              />
-            </svg>
-          </div>
-        )}
+        <div>
+          {!bool && (
+            <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+            </div>
+          )}
+        </div>
       </div>
 
       {bool && (
-        <div className={styles.topReviewsMiddleContainer}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={styles.topReviewsMiddleContainer}
+        >
           <div className={styles.carnival}>
             <Carousel shoDots cols={6} rows={1} gap={0} loop>
               {recentlyViewedProducts?.map((product, i) => {
@@ -93,7 +106,7 @@ export default function RecentlyViewedCard() {
               })}
             </Carousel>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
