@@ -114,6 +114,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     return () => setLoader(false);
   }, [dispatch]);
 
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
+
   return (
     <>
       <div className={styles.categoryContainer}>

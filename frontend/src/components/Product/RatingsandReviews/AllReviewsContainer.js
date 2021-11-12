@@ -12,10 +12,22 @@ export default function AllReviewsContainer({ reviews }) {
   const [sortBy, setSortBy] = useState("Most Recent");
   const [currentPage, setCurrentPage] = useState(0);
 
-  let copy = [...reviews];
-  const reversed = copy?.reverse();
+  let highestToLowestRating = [...reviews];
+  let lowestToHighestRating = [...reviews];
+  let mostHelpful = [...reviews];
+  let recent = reviews.slice().reverse();
 
-  const [data, setData] = useState([]);
+  highestToLowestRating.sort(function (a, b) {
+    return +b.rating - +a.rating;
+  });
+
+  lowestToHighestRating.sort(function (a, b) {
+    return +b.likeCount - +a.likeCount;
+  });
+
+  mostHelpful?.sort(function (a, b) {
+    return a.rating - +b.rating;
+  });
 
   const PER_PAGE = 3;
 
@@ -27,56 +39,56 @@ export default function AllReviewsContainer({ reviews }) {
       behavior: "smooth",
     });
   }
-
   const offset = currentPage * PER_PAGE;
 
-  const currentPageData = data
+  const currentPageData = recent
     ?.slice(offset, offset + PER_PAGE)
     ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
-  const pageCount = Math.ceil(data?.length / PER_PAGE);
+  const currentPageData2 = highestToLowestRating
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
+
+  const currentPageData3 = lowestToHighestRating
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
+
+  const currentPageData4 = mostHelpful
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
+
+  const pageCount = Math.ceil(recent?.length / PER_PAGE);
+  const pageCount2 = Math.ceil(highestToLowestRating?.length / PER_PAGE);
+  const pageCount3 = Math.ceil(lowestToHighestRating?.length / PER_PAGE);
+  const pageCount4 = Math.ceil(mostHelpful?.length / PER_PAGE);
 
   const setRecent = (e) => {
     e.stopPropagation = true;
-    setData([...reversed]);
     setSortBy("Most Recent");
+    setCurrentPage(0);
   };
 
   const setHighestToLowest = (e) => {
-    let highestToLowestRating = copy?.sort(function (a, b) {
-      return +b.rating - +a.rating;
-    });
-
     e.stopPropagation = true;
-    setData([...highestToLowestRating]);
     setSortBy("Highest to Lowest Rating");
+    setCurrentPage(0);
   };
 
   const setLowestToHighest = (e) => {
-    let lowestToHighestRating = copy?.sort(function (a, b) {
-      return a.rating - +b.rating;
-    });
     e.stopPropagation = true;
-    setData([...lowestToHighestRating]);
     setSortBy("Lowest to Highest Rating");
+    setCurrentPage(0);
   };
 
   const setMostHelpful = (e) => {
-    let mostHelpful = copy?.sort(function (a, b) {
-      return +b.likeCount - +a.likeCount;
-    });
-
     e.stopPropagation = true;
-    setData([...mostHelpful]);
-
     setSortBy("Most Helpful");
+    setCurrentPage(0);
   };
 
   useEffect(() => {
-    setData(reversed);
-
     setSortBy("Most Recent");
-  }, [reviews]);
+  }, []);
 
   return (
     <motion.div
@@ -144,7 +156,7 @@ export default function AllReviewsContainer({ reviews }) {
 
       {
         /* MOST RECENT */
-        true && (
+        sortBy === "Most Recent" && (
           <div>
             <div className={styles.holder}>{currentPageData}</div>
             <ReactPaginate
@@ -191,9 +203,9 @@ export default function AllReviewsContainer({ reviews }) {
 
       {
         /* HIGHEST TO LOWEST RATING */
-        true && (
+        sortBy === "Highest to Lowest Rating" && (
           <div>
-            <div className={styles.holder}>{currentPageData}</div>
+            <div className={styles.holder}>{currentPageData2}</div>
             <ReactPaginate
               previousLabel={
                 <svg
@@ -224,7 +236,7 @@ export default function AllReviewsContainer({ reviews }) {
                 </svg>
               }
               marginPagesDisplayed={500}
-              pageCount={pageCount}
+              pageCount={pageCount2}
               onPageChange={handlePageClick}
               containerClassName={styles.pagination}
               previousLinkClassName={styles.pagination__link}
@@ -238,9 +250,9 @@ export default function AllReviewsContainer({ reviews }) {
 
       {
         /* LOWEST TO HIGHEST RATING */
-        false && (
+        sortBy === "Lowest to Highest Rating" && (
           <div>
-            <div className={styles.holder}>{currentPageData}</div>
+            <div className={styles.holder}>{currentPageData3}</div>
             <ReactPaginate
               previousLabel={
                 <svg
@@ -271,7 +283,7 @@ export default function AllReviewsContainer({ reviews }) {
                 </svg>
               }
               marginPagesDisplayed={500}
-              pageCount={pageCount}
+              pageCount={pageCount3}
               onPageChange={handlePageClick}
               containerClassName={styles.pagination}
               previousLinkClassName={styles.pagination__link}
@@ -285,9 +297,9 @@ export default function AllReviewsContainer({ reviews }) {
 
       {
         /* MOST HELPFUL */
-        false && (
+        sortBy === "Most Helpful" && (
           <div>
-            <div className={styles.holder}>{currentPageData}</div>
+            <div className={styles.holder}>{currentPageData4}</div>
             <ReactPaginate
               previousLabel={
                 <svg
@@ -318,7 +330,7 @@ export default function AllReviewsContainer({ reviews }) {
                 </svg>
               }
               marginPagesDisplayed={500}
-              pageCount={pageCount}
+              pageCount={pageCount4}
               onPageChange={handlePageClick}
               containerClassName={styles.pagination}
               previousLinkClassName={styles.pagination__link}
