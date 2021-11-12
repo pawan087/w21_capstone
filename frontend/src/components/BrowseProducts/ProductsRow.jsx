@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { motion } from "framer-motion/dist/framer-motion";
-import { useHistory } from "react-router-dom";
+// import { motion } from "framer-motion/dist/framer-motion";
+// import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
 
 import styles from "./styles.module.css";
 
 export default function ProductsRow({ products }) {
-  const history = useHistory();
+  // const history = useHistory();
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
@@ -33,7 +33,7 @@ export default function ProductsRow({ products }) {
 
   return (
     <div className={styles.productsRowOfFourContainer}>
-      {products?.map((product) => {
+      {products?.map((product, i) => {
         let sum = 0;
 
         product.reviewsArr.forEach((review) => {
@@ -43,7 +43,7 @@ export default function ProductsRow({ products }) {
         const avgRating = sum / product.reviewsArr.length;
 
         return (
-          <div className={styles.productContainer}>
+          <div key={i} className={styles.productContainer}>
             <div className={styles.productDetailContainer1}>
               <img
                 className={styles.productImage}

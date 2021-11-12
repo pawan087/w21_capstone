@@ -227,3 +227,8 @@
   height: 370px;
   background-color: red;
 }
+
+.topReviewCardMotionDiv {
+  transition: 0.25s ease-in-out;
+
+}

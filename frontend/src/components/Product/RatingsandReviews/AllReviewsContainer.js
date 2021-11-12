@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { motion } from "framer-motion/dist/framer-motion";
 
 import IndividualAllReview from "../../Product/RatingsandReviews/IndividualAllReview";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
@@ -78,7 +79,12 @@ export default function AllReviewsContainer({ reviews }) {
   }, [reviews]);
 
   return (
-    <div className={styles.allReviewsContainer}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.allReviewsContainer}
+    >
       <div className={styles.topContainer}>
         <div className={styles.topTopContainer}>
           <div className={styles.allReviewsTitle}>All Reviews </div>
@@ -177,6 +183,6 @@ export default function AllReviewsContainer({ reviews }) {
           activeClassName={styles.pagination__linkactive}
         />
       </div>
-    </div>
+    </motion.div>
   );
 }

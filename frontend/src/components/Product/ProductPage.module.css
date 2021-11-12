@@ -370,3 +370,16 @@
 .footerWithoutUserContainer {
   /* margin-top: 115px; */
 }
+
+.thirdImageZoom img {
+    /* object-fit: contain; */
+}
+
+.smallImage {
+  object-fit: contain;
+}
+
+.largeImage {
+  object-fit: contain;
+  background-color: white;
+}

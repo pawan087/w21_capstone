@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
 import ShowMoreText from "react-show-more-text";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
 import { FaCheck } from "react-icons/fa";
+import ReactImageMagnify from "react-image-magnify";
 
 import {
   createCartItem,
@@ -143,9 +143,30 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
-          <div className={styles.imageContainer}>
-            <ReactImageZoom className={styles.pic} {...props} />
-          </div>
+
+
+          {true && (
+            <div className={styles.thirdImageZoom}>
+              <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: "Wristwatch by Ted Baker London",
+                    width: 920,
+                    height: 515,
+                    src: product[0]?.images[0],
+                  },
+                  largeImage: {
+                    src: product[0]?.images[0],
+                    width: 1840,
+                    height: 1030,
+                  },
+                  enlargedImagePosition: "over",
+                  imageClassName: `${styles.smallImage}`,
+                  enlargedImageClassName: `${styles.largeImage}`,
+                }}
+              />
+            </div>
+          )}
 
           <div className={styles.descriptionContainer}>
             <div className={styles.descriptionLabel}>Product Description</div>

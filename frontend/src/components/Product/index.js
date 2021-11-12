@@ -90,7 +90,14 @@ function ProductPage() {
 
       setLoad(true);
     })();
-  }, [params.id, user?.id, dispatch]);
+  }, [params.id, user, user?.id, dispatch]);
+
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
 
   if (!load) {
     return (

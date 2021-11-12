@@ -11,6 +11,7 @@ import cartItems from "./cartItems";
 import orders from "./orders";
 import orderItems from "./orderItems";
 import recentlyViewed from "./recentlyViewed";
+import showAllReviewsReducer from "./ShowAllReviews";
 // import deleteConfirmationReducer from "./deleteConfirmation";
 import postOrderReducer from "./postOrderConfirmation";
 
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   orderItems,
   recentlyViewed,
   postOrderReducer,
+  showAllReviewsReducer
 });
 
 let enhancer;

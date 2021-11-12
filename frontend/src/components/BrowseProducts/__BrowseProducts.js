@@ -1,7 +1,7 @@
 /* WITH REACT ERRORS */
 
 import React, { useState, useEffect } from "react";
-// import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FaCheck } from "react-icons/fa";
@@ -210,7 +210,7 @@ export default function BrowseProducts() {
     })();
 
     setData(videoGamesByFour);
-  }, [user, user?.id, dispatch]);
+  }, [user?.id, dispatch]);
 
   const [didMount, setDidMount] = useState(false);
 

@@ -4,9 +4,11 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import ReactLoading from "react-loading";
+import { motion } from "framer-motion/dist/framer-motion";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
+import { setShowAllReviews } from "../../../store/ShowAllReviews";
 import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
 import { createReview, setAllReviews } from "../../../store/reviews";
@@ -19,6 +21,8 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
+  const showAllReviews = useSelector((state) => state.showAllReviewsReducer);
+
   const products = useSelector((state) => state.products);
   const deleteConfirmation = useSelector(
     (state) => state.deleteConfirmationReducer
@@ -48,6 +52,11 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
 
+  const variants = {
+    closed: { height: "0px" },
+    open: showAllReviews ? { height: "1075px" } : { height: "605px" },
+  };
+
   const contentSetter = (e) => {
     setContent(e.target.value);
     setBool2(false);
@@ -55,11 +64,11 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const show = () => {
     if (!user) {
-      setLoading(true)
+      setLoading(true);
 
       history.push("/signin");
 
-      setLoading(false)
+      setLoading(false);
       return;
     }
 
@@ -195,16 +204,24 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setUploadMsg("Upload Picture");
   };
 
+  const handleSetBoot = () => {
+    setBool(!bool);
+
+    if (bool === false) {
+      dispatch(setShowAllReviews(false));
+    }
+  };
+
   // console.log(thisPagesProduct[0]?.images[0])
 
   return (
     <>
       <div className={styles.outerContainer}>
-        <div onClick={() => setBool(!bool)} className={styles.topContainer}>
+        <div onClick={() => handleSetBoot()} className={styles.topContainer}>
           <div className={styles.title}>Ratings and Reviews</div>
 
           {bool && (
-            <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+            <div onClick={() => handleSetBoot()} className={styles.menuIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -223,7 +240,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           )}
 
           {!bool && (
-            <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+            <div onClick={() => handleSetBoot()} className={styles.menuIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -241,49 +258,66 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             </div>
           )}
         </div>
-
-        {reviews.length !== 0 && bool && (
-          <div className={styles.bottomContainer}>
-            <div className={styles.leftContainer}>
-              <div className={styles.leftTopContainer}>
-                <div className={styles.reviewNumber}>
-                  {" "}
-                  {formatter.format(avgRating)}
-                  <div className={styles.starsContainer}>
-                    <div className={styles.starRating}>
-                      <StarPicker
-                        starDimension="10px"
-                        disabled={true}
-                        value={avgRating}
-                        halfStars
-                      />
+        {
+          <motion.div
+            initial={{ height: "0px" }}
+            animate={bool ? "open" : "closed"}
+            transition={{
+              type: "spring",
+              stiffness: 500,
+              damping: 50,
+            }}
+            variants={variants}
+          >
+            {reviews.length !== 0 && bool && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className={styles.bottomContainer}
+              >
+                <div className={styles.leftContainer}>
+                  <div className={styles.leftTopContainer}>
+                    <div className={styles.reviewNumber}>
+                      {" "}
+                      {formatter.format(avgRating)}
+                      <div className={styles.starsContainer}>
+                        <div className={styles.starRating}>
+                          <StarPicker
+                            starDimension="10px"
+                            disabled={true}
+                            value={avgRating}
+                            halfStars
+                          />
+                        </div>
+                      </div>
                     </div>
+
+                    <div className={styles.ratingText}>
+                      {reviews.length} Ratings
+                    </div>
+                  </div>
+
+                  <div className={styles.leftBottomContainer}>
+                    <button onClick={show} className={styles.writeReview}>
+                      Write A Review
+                    </button>
                   </div>
                 </div>
 
-                <div className={styles.ratingText}>
-                  {reviews.length} Ratings
+                <div className={styles.rightContainer}>
+                  <div className={styles.barChartsContainer}>
+                    <Testing reviews={reviews} />
+                  </div>
                 </div>
-              </div>
+              </motion.div>
+            )}
 
-              <div className={styles.leftBottomContainer}>
-                <button onClick={show} className={styles.writeReview}>
-                  Write A Review
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.rightContainer}>
-              <div className={styles.barChartsContainer}>
-                <Testing reviews={reviews} />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {reviews.length !== 0 && bool && (
-          <TopReviewsCard reviews={reviews} avgRating={avgRating} />
-        )}
+            {reviews.length !== 0 && bool && (
+              <TopReviewsCard reviews={reviews} avgRating={avgRating} />
+            )}
+          </motion.div>
+        }
 
         {reviews.length === 0 && bool && (
           <div onClick={show} className={styles.noReviews}>

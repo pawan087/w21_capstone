@@ -41,7 +41,7 @@ export default function SplashPage() {
 
       setLoad(true);
     })();
-  }, [user?.id, dispatch]);
+  }, [user, user?.id, dispatch]);
 
   if (!load) {
     return (

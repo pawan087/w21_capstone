@@ -204,6 +204,7 @@ export default function CreateAccount() {
     scrollToTop();
 
     let regExp =
+      // eslint-disable-next-line
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (regExp.test(email)) {
@@ -212,7 +213,7 @@ export default function CreateAccount() {
       // console.log("wrong format");
       setIncorrectFormatEmail(true);
     }
-
+    // eslint-disable-next-line
     let regExp2 = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
 
     if (regExp2.test(phone)) {
