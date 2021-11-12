@@ -10,15 +10,15 @@ import styles from "./RecentlyViewed.module.css";
 export default function RecentlyViewedCard() {
   const params = useParams();
 
-  const [bool, setBool] = useState(true); // <-- set to false after dev
+  const [bool, setBool] = useState(true);
 
   const products = useSelector((state) => state.products);
   const recentlyViewed = useSelector((state) => state.recentlyViewed);
 
-  const variants = {
-    closed: { height: "0px" },
-    open: { height: "385px" },
-  };
+  // const variants = {
+  //   closed: { height: "0px" },
+  //   open: { height: "385px" },
+  // };
 
   let recentlyViewedProducts = [];
   let count = 0;

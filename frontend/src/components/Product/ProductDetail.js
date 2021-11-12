@@ -102,14 +102,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     maximumFractionDigits: 1,
   });
 
-  const props = {
-    width: 470,
-    zoomWidth: 900,
-    zoomPosition: "original",
-    zoomStyle: "transform: translateX(00px)",
-    img: `${product[0]?.images[0]}`,
-  };
-
   let rating = formatter.format(avgRating);
 
   useEffect(() => {
@@ -143,8 +135,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
-
-
           {true && (
             <div className={styles.thirdImageZoom}>
               <ReactImageMagnify

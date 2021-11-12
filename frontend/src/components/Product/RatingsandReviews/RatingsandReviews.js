@@ -8,7 +8,6 @@ import { motion } from "framer-motion/dist/framer-motion";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
-import { setShowAllReviews } from "../../../store/ShowAllReviews";
 import Testing from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
 import { createReview, setAllReviews } from "../../../store/reviews";
@@ -21,7 +20,6 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
-  const showAllReviews = useSelector((state) => state.showAllReviewsReducer);
 
   const products = useSelector((state) => state.products);
   const deleteConfirmation = useSelector(
@@ -52,10 +50,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
 
-  const variants = {
-    closed: { height: "0px" },
-    open: showAllReviews ? { minheight: "1075px" } : { minheight: "605px" },
-  };
+  // const variants = {
+  //   closed: { height: "0px" },
+  //   open: showAllReviews ? { minheight: "1075px" } : { minheight: "605px" },
+  // };
 
   const contentSetter = (e) => {
     setContent(e.target.value);
@@ -206,13 +204,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const handleSetBoot = () => {
     setBool(!bool);
-
-    if (bool === false) {
-      dispatch(setShowAllReviews(false));
-    }
   };
-
-  // console.log(thisPagesProduct[0]?.images[0])
 
   return (
     <>

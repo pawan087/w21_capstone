@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import Carousel from "react-grid-carousel";
-import { useDispatch, useSelector } from "react-redux";
+
 import IndividualTopReview from "./IndividualTopReview";
 import AllReviewsContainer from "./AllReviewsContainer";
 import styles from "./TopReviewsCard.module.css";
 import { motion } from "framer-motion/dist/framer-motion";
 
-import { setShowAllReviews } from "../../../store/ShowAllReviews";
-
 export default function TopReviewsCard({ reviews, avgRating }) {
-  const dispatch = useDispatch();
   const [bool, setBool] = useState(false);
   const [bool2, setBool2] = useState(true);
-
-  if (reviews.length === 0) {
-    // console.log("NO REVIEWS");
-  }
 
   const showAllHideTop = () => {
     setBool(!bool);
     setBool2(!bool2);
-
-    dispatch(setShowAllReviews(true));
   };
 
   return (
