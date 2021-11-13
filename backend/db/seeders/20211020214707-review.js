@@ -33,7 +33,7 @@ for (let i = 1; i <= 154; i++) {
     review["productId"] = i;
     review["content"] = randomParagraph;
 
-    if (j === rndInt) {
+    if (j === 1) {
       let randomImgUrl4 = faker.image.imageUrl();
       review["imageUrl"] = randomImgUrl4;
     }
