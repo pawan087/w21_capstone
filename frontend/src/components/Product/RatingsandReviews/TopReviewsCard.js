@@ -10,6 +10,12 @@ export default function TopReviewsCard({ reviews, avgRating }) {
   const [bool, setBool] = useState(false);
   const [bool2, setBool2] = useState(true);
 
+  let recent = [...reviews];
+
+  recent.sort(function (a, b) {
+    return b.id - a.id;
+  });
+
   const showAllHideTop = () => {
     setBool(!bool);
     setBool2(!bool2);
@@ -36,18 +42,16 @@ export default function TopReviewsCard({ reviews, avgRating }) {
           <div className={styles.topReviewsMiddleContainer}>
             <div className={styles.carnival}>
               <Carousel shoDots cols={3} rows={1} gap={0} loop>
-                {reviews
-                  ?.map((review, i) => {
-                    return (
-                      <Carousel.Item className={styles.item} key={i}>
-                        <IndividualTopReview
-                          review={review}
-                          avgRating={avgRating}
-                        />
-                      </Carousel.Item>
-                    );
-                  })
-                  .reverse()}
+                {recent?.map((review, i) => {
+                  return (
+                    <Carousel.Item className={styles.item} key={i}>
+                      <IndividualTopReview
+                        review={review}
+                        avgRating={avgRating}
+                      />
+                    </Carousel.Item>
+                  );
+                })}
               </Carousel>
             </div>
           </div>

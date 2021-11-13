@@ -15,18 +15,22 @@ export default function AllReviewsContainer({ reviews }) {
   let highestToLowestRating = [...reviews];
   let lowestToHighestRating = [...reviews];
   let mostHelpful = [...reviews];
-  let recent = reviews.slice().reverse();
+  let recent = [...reviews];
+
+  recent.sort(function (a, b) {
+    return b.id - a.id;
+  });
 
   highestToLowestRating.sort(function (a, b) {
     return +b.rating - +a.rating;
   });
 
   lowestToHighestRating.sort(function (a, b) {
-    return +b.likeCount - +a.likeCount;
+    return +a.rating - +b.rating;
   });
 
   mostHelpful?.sort(function (a, b) {
-    return a.rating - +b.rating;
+    return +b.likeCount - +a.likeCount;
   });
 
   const PER_PAGE = 3;
