@@ -271,7 +271,7 @@ export default function CreateAccount() {
       !missingAddress1 &&
       !missingAddress2 &&
       !missingPhone &&
-      !incorrectFormatPhone &&
+      incorrectFormatPhone === false &&
       !missingUsername &&
       !invalidUsername &&
       !invalidEmailLength &&

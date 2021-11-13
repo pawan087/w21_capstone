@@ -32,6 +32,7 @@ export default function AccountDashboard() {
   const [phone, setPhone] = useState(user?.phone);
   const [emptyPhoneWarning, setEmptyPhoneWarning] = useState(false);
   const [load, setLoad] = useState(false);
+  const [incorrectFormatPhone, setIncorrectFormatPhone] = useState(false);
   const [loader2, setLoader2] = useState(false);
   // const [sameInformationWarning, setSameInformationWarning] = useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
@@ -76,6 +77,10 @@ export default function AccountDashboard() {
   const changePhone = (x) => {
     if (emptyPhoneWarning) {
       setEmptyPhoneWarning(false);
+    }
+
+    if (incorrectFormatPhone) {
+      setIncorrectFormatPhone(false);
     }
 
     setPhone(x);
@@ -126,6 +131,18 @@ export default function AccountDashboard() {
       address2 === user.address2 &&
       phone === user.phone
     ) {
+      return;
+    }
+
+    // eslint-disable-next-line
+    let regExp2 = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    if (regExp2.test(phone)) {
+      // console.log("correct format");
+    } else {
+      // console.log("wrong format");
+      setIncorrectFormatPhone(true);
+
       return;
     }
 
@@ -402,6 +419,12 @@ export default function AccountDashboard() {
                   {emptyPhoneWarning && (
                     <span className={styles.requiredLabel}>
                       This is a required field.
+                    </span>
+                  )}
+
+                  {incorrectFormatPhone && (
+                    <span className={styles.requiredLabel}>
+                      Please enter a 10 digit phone number, ex. 888 123-4567
                     </span>
                   )}
                 </div>

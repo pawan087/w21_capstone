@@ -19,6 +19,15 @@
   z-index: 48;
 }
 
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 .createAccountRightContainer {
   background-color: rgb(0, 0, 0);
   padding-left: 70px;

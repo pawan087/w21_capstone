@@ -251,54 +251,53 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           )}
         </div>
 
-            {reviews.length !== 0 && bool && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className={styles.bottomContainer}
-              >
-                <div className={styles.leftContainer}>
-                  <div className={styles.leftTopContainer}>
-                    <div className={styles.reviewNumber}>
-                      {" "}
-                      {formatter.format(avgRating)}
-                      <div className={styles.starsContainer}>
-                        <div className={styles.starRating}>
-                          <StarPicker
-                            starDimension="10px"
-                            disabled={true}
-                            value={avgRating}
-                            halfStars
-                          />
-                        </div>
-                      </div>
+        {reviews.length !== 0 && bool && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={styles.bottomContainer}
+          >
+            <div className={styles.leftContainer}>
+              <div className={styles.leftTopContainer}>
+                <div className={styles.reviewNumber}>
+                  {" "}
+                  {formatter.format(avgRating)}
+                  <div className={styles.starsContainer}>
+                    <div className={styles.starRating}>
+                      <StarPicker
+                        starDimension="10px"
+                        disabled={true}
+                        value={avgRating}
+                        halfStars
+                      />
                     </div>
-
-                    <div className={styles.ratingText}>
-                      {reviews.length} Ratings
-                    </div>
-                  </div>
-
-                  <div className={styles.leftBottomContainer}>
-                    <button onClick={show} className={styles.writeReview}>
-                      Write A Review
-                    </button>
                   </div>
                 </div>
 
-                <div className={styles.rightContainer}>
-                  <div className={styles.barChartsContainer}>
-                    <Testing reviews={reviews} />
-                  </div>
+                <div className={styles.ratingText}>
+                  {reviews.length} Ratings
                 </div>
-              </motion.div>
-            )}
+              </div>
 
-            {reviews.length !== 0 && bool && (
-              <TopReviewsCard reviews={reviews} avgRating={avgRating} />
-            )}
+              <div className={styles.leftBottomContainer}>
+                <button onClick={show} className={styles.writeReview}>
+                  Write A Review
+                </button>
+              </div>
+            </div>
 
+            <div className={styles.rightContainer}>
+              <div className={styles.barChartsContainer}>
+                <Testing reviews={reviews} />
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {reviews.length !== 0 && bool && (
+          <TopReviewsCard reviews={reviews} avgRating={avgRating} />
+        )}
 
         {reviews.length === 0 && bool && (
           <div onClick={show} className={styles.noReviews}>

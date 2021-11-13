@@ -130,7 +130,9 @@ export default function Cart() {
 
     hideRemoveConfirmationModal();
 
-    setTimeout(() => setLoader(false), 250);
+    setLoader(false);
+
+    // setTimeout(() => setLoader(false), 250);
   };
 
   const updateQuantity = async (id, val) => {
