@@ -649,7 +649,7 @@ module.exports = {
           description:
             "Fully immerse yourself in the amazing aerial views and unbridled speed of drone flying with the combo version of the DJI FPV Drone. Using the bundled FPV Goggles V2, you get a first-person view of what the drone sees, with footage that makes it feel like you're the one flying through the sky. The onboard 4K60 fps gimbal camera can send low-latency video to your goggles for a near real-time experience. The 150° super-wide FOV lets you take in and appreciate the scope of the vistas you fly over.",
           brandId: 32,
-          price: 1299.0,
+          price: 1299.99,
           categoryId: 3,
           subcategoryId: 19,
           furtherSubcategoryId: null,
@@ -677,7 +677,7 @@ module.exports = {
           description:
             "This true 360° speaker was engineered to spread deep, jaw-dropping sound in every direction. That means, when everyone stands around it, everyone gets the same experience. If you set it near a wall, sound will radiate and reflect around the room, immersing you in that same feeling you felt at your favorite concert. And with a flexible handle, it’s designed to go wherever you want to bring the music.",
           brandId: 34,
-          price: 329.0,
+          price: 329.99,
           categoryId: 3,
           subcategoryId: 2,
           furtherSubcategoryId: null,
@@ -691,7 +691,7 @@ module.exports = {
           description:
             "World-class adjustable noise cancellation — with situational awareness for when you want to let the world in. High-fidelity audio with adjustable EQ so you can tune music to your liking. Unrivaled voice pickup for the clearest calls. And protein leather cushions for all-day comfort. It’s everything you demand from wireless Bluetooth headphones — amplified. Bose Noise Cancelling Headphones 700, our most advanced headphones ever.",
           brandId: 34,
-          price: 379.0,
+          price: 379.99,
           categoryId: 3,
           subcategoryId: 2,
           furtherSubcategoryId: null,

@@ -52,7 +52,7 @@ export default function Cart() {
     return cartItem?.userId === user?.id;
   });
 
-  let shoppingCartItems = [];
+  const shoppingCartItems = [];
   let num = 0;
   let subtotal = 0;
 
@@ -87,7 +87,6 @@ export default function Cart() {
     { value: 5, label: "Qty 5" },
   ];
   const [load, setLoad] = useState(false);
-  const [showCart, setShowCart] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -135,10 +134,10 @@ export default function Cart() {
 
   const updateQuantity = async (id, val) => {
     setLoader(true);
-    setShowCart(false);
     await dispatch(editCartItem({ id, quantity: val }));
-    setShowCart(true);
+    await dispatch(setAllCartItems());
     setLoader(false);
+
     // window.location.reload(false);
   };
 
@@ -207,12 +206,9 @@ export default function Cart() {
               </div>
             </div>
 
-            {showCart && shoppingCartItems?.map((cartItem, i) => {
+            {shoppingCartItems?.map((cartItem, i) => {
               return (
-                <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }} key={i} className={styles.leftBottomContainer}>
+                <div key={i} className={styles.leftBottomContainer}>
                   <div className={styles.leftBottom1stContainer}>
                     <div
                       onClick={() =>
@@ -226,13 +222,15 @@ export default function Cart() {
                         alt="shoppingCartImage"
                       />
                     </div>
-                    {console.log(cartItem.quan)}
+
                     <div className={styles.quantityContainer}>
                       <Select
                         options={options}
                         theme={theme}
                         defaultValue={options[cartItem?.quantity - 1]}
-                        onChange={(e) => updateQuantity(cartItem.id, e.value)}
+                        onChange={(e) =>
+                          updateQuantity(cartItem.id, e.value, e)
+                        }
                       />
                     </div>
                   </div>
@@ -306,7 +304,7 @@ export default function Cart() {
                       </div>
                     </div>
                   )}
-                </motion.div>
+                </div>
               );
             })}
           </div>

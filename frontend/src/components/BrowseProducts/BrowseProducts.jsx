@@ -136,7 +136,36 @@ export default function BrowseProducts() {
 
       pageCategory = "Gaming Accessories";
 
-      return product.Category.id === 5;
+      if (
+        params.subcategory === "controllers" &&
+        product.Subcategory.name === "Controllers"
+      ) {
+        return product.Category.id === 5;
+      } else if (
+        params.subcategory === "memory" &&
+        product.Subcategory.name === "Memory"
+      ) {
+        return product.Category.id === 5;
+      } else if (
+        params.subcategory === "mounts" &&
+        product.Subcategory.name === "Mounts"
+      ) {
+        return product.Category.id === 5;
+      } else if (
+        params.subcategory === "pc" &&
+        product.Subcategory.name === "PC Gaming"
+      ) {
+        return product.Category.id === 5;
+      } else if (
+        params.subcategory === "xbox1" &&
+        product.Subcategory.name === "Xbox One"
+      ) {
+        return product.Category.id === 5;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 5;
+      } else {
+        return false;
+      }
     }
 
     if (params.category === "clothing") {
@@ -409,6 +438,32 @@ export default function BrowseProducts() {
       history.push(`/p/consoles/xbox1/${params.price}/${params.rating}`);
     }
 
+    if (category === "Controllers" && params.category === "accessories") {
+      history.push(
+        `/p/accessories/controllers/${params.price}/${params.rating}`
+      );
+    }
+
+    if (category === "Memory" && params.category === "accessories") {
+      history.push(`/p/accessories/memory/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Memory" && params.category === "accessories") {
+      history.push(`/p/accessories/memory/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Mounts" && params.category === "accessories") {
+      history.push(`/p/accessories/mounts/${params.price}/${params.rating}`);
+    }
+
+    if (category === "PC Gaming" && params.category === "accessories") {
+      history.push(`/p/accessories/pc/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Xbox One" && params.category === "accessories") {
+      history.push(`/p/accessories/xbox1/${params.price}/${params.rating}`);
+    }
+
     return;
   };
 
@@ -419,6 +474,10 @@ export default function BrowseProducts() {
 
     if (pageCategory === "Consoles & Hardware") {
       history.push(`/p/consoles/0/${params.price}/${params.rating}`);
+    }
+
+    if (pageCategory === "Gaming Accessories") {
+      history.push(`/p/accessories/0/${params.price}/${params.rating}`);
     }
 
     return;
@@ -479,6 +538,31 @@ export default function BrowseProducts() {
                   } else if (
                     params.subcategory === "vr" &&
                     category === "Virtual Reality"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "controllers" &&
+                    category === "Controllers"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "memory" &&
+                    category === "Memory"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "mounts" &&
+                    category === "Mounts"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "pc" &&
+                    category === "PC Gaming"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "xbox1" &&
+                    category === "Xbox One"
                   ) {
                     className1 = styles.categoryNames2;
                   } else {
