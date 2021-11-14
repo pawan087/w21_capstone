@@ -77,7 +77,63 @@ export default function BrowseProducts() {
 
       pageCategory = "Toys & Games";
 
-      return product.Category.id === 2;
+      // return product.Category.id === 2;
+
+      if (
+        params.subcategory === "art" &&
+        product.Subcategory.name === "Arts & Crafts Toys"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "boardgames" &&
+        product.Subcategory.name === "Board Games"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "construction" &&
+        product.Subcategory.name === "Building & Construction Sets"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "dolls" &&
+        product.Subcategory.name === "Dolls & Dollhouses"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "nerf" &&
+        product.Subcategory.name === "NERF"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "vehicles" &&
+        product.Subcategory.name === "Play Vehicles"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "puzzles" &&
+        product.Subcategory.name === "Puzzles"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "scooters" &&
+        product.Subcategory.name === "Scooters & Ride Ons"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "plush" &&
+        product.Subcategory.name === "Stuffed Animals & Plush"
+      ) {
+        return product.Category.id === 2;
+      } else if (
+        params.subcategory === "cards" &&
+        product.Subcategory.name === "Trading Cards"
+      ) {
+        return product.Category.id === 2;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 2;
+      } else {
+        return false;
+      }
     }
 
     if (params.category === "electronics") {
@@ -211,7 +267,48 @@ export default function BrowseProducts() {
 
       pageCategory = "Clothing";
 
-      return product.Category.id === 6;
+      // return product.Category.id === 6;
+
+      if (
+        params.subcategory === "accessories" &&
+        product.Subcategory.name === "Accessories"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "bags" &&
+        product.Subcategory.name === "Bags"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "footwear" &&
+        product.Subcategory.name === "Footwear"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "jackets" &&
+        product.Subcategory.name === "Jackets & Outerwear"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "pants" &&
+        product.Subcategory.name === "Pants & Shorts"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "shirts" &&
+        product.Subcategory.name === "T-Shirts"
+      ) {
+        return product.Category.id === 6;
+      } else if (
+        params.subcategory === "watches" &&
+        product.Subcategory.name === "Watches"
+      ) {
+        return product.Category.id === 6;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 6;
+      } else {
+        return false;
+      }
     }
 
     return false;
@@ -514,12 +611,135 @@ export default function BrowseProducts() {
       history.push(`/p/electronics/drone/${params.price}/${params.rating}`);
     }
 
-    if (category === "Smart Home Automation" && params.category === "electronics") {
+    if (
+      category === "Smart Home Automation" &&
+      params.category === "electronics"
+    ) {
       history.push(`/p/electronics/home/${params.price}/${params.rating}`);
     }
 
     if (category === "TV & Home Theater" && params.category === "electronics") {
       history.push(`/p/electronics/theater/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Arts & Crafts Toys" && params.category === "toysgames") {
+      history.push(`/p/toysgames/art/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Board Games" && params.category === "toysgames") {
+      history.push(`/p/toysgames/boardgames/${params.price}/${params.rating}`);
+    }
+
+    if (
+      category === "Building & Construction Sets" &&
+      params.category === "toysgames"
+    ) {
+      history.push(
+        `/p/toysgames/construction/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Building & Construction Sets" &&
+      params.category === "toysgames"
+    ) {
+      history.push(
+        `/p/toysgames/construction/${params.price}/${params.rating}`
+      );
+    }
+
+    if (category === "Dolls & Dollhouses" && params.category === "toysgames") {
+      history.push(`/p/toysgames/dolls/${params.price}/${params.rating}`);
+    }
+
+    if (category === "NERF" && params.category === "toysgames") {
+      history.push(`/p/toysgames/nerf/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Play Vehicles" && params.category === "toysgames") {
+      history.push(`/p/toysgames/vehicles/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Puzzles" && params.category === "toysgames") {
+      history.push(`/p/toysgames/puzzles/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Scooters & Ride Ons" && params.category === "toysgames") {
+      history.push(`/p/toysgames/scooters/${params.price}/${params.rating}`);
+    }
+
+    if (
+      category === "Stuffed Animals & Plush" &&
+      params.category === "toysgames"
+    ) {
+      history.push(`/p/toysgames/plush/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Trading Cards" && params.category === "toysgames") {
+      history.push(`/p/toysgames/cards/${params.price}/${params.rating}`);
+    }
+
+    if (
+      category === "Accessories" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/accessories/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Bags" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/bags/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Footwear" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/footwear/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Jackets & Outerwear" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/jackets/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Pants & Shorts" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/pants/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "T-Shirts" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/shirts/${params.price}/${params.rating}`
+      );
+    }
+
+    if (
+      category === "Watches" &&
+      params.category === "clothing"
+    ) {
+      history.push(
+        `/p/clothing/watches/${params.price}/${params.rating}`
+      );
     }
 
     return;
@@ -540,6 +760,14 @@ export default function BrowseProducts() {
 
     if (pageCategory === "Electronics") {
       history.push(`/p/electronics/0/${params.price}/${params.rating}`);
+    }
+
+    if (pageCategory === "Toys & Games") {
+      history.push(`/p/toysgames/0/${params.price}/${params.rating}`);
+    }
+
+    if (pageCategory === "Clothing") {
+      history.push(`/p/clothing/0/${params.price}/${params.rating}`);
     }
 
     return;

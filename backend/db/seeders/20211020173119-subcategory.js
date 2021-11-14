@@ -36,7 +36,7 @@ module.exports = {
           name: "Board Games", // 10
         },
         {
-          name: "Accessories & Watches", // 11
+          name: "Accessories", // 11
         },
         {
           name: "Stuffed Animals & Plush", // 12

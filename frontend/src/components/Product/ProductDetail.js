@@ -138,6 +138,14 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       history.push("/p/electronics/0/0/0");
     }
 
+    if (product[0]?.Category?.name === "Toys & Games") {
+      history.push("/p/toysgames/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Clothing") {
+      history.push("/p/clothing/0/0/0");
+    }
+
     return;
   };
 
@@ -261,6 +269,174 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       history.push("/p/electronics/cameras/0/0");
     }
 
+    if (
+      product[0]?.Subcategory?.name === "Cell Phones" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/phones/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Cell Phones" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/phones/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Drone" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/drone/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Drone" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/drone/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Smart Home Automation" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/home/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "TV & Home Theater" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/theater/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Arts & Crafts Toys" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/art/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Board Games" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/boardgames/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Building & Construction Sets" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/construction/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Dolls & Dollhouses" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/dolls/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "NERF" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/nerf/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Play Vehicles" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/vehicles/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Puzzles" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/puzzles/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Scooters & Ride Ons" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/scooters/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Stuffed Animals & Plush" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/plush/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Stuffed Animals & Plush" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/plush/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Trading Cards" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/cards/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Accessories" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/accessories/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Bags" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/bags/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Footwear" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/footwear/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Jackets & Outerwear" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/jackets/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Pants & Shorts" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/pants/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "T-Shirts" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/shirts/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Watches" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/watches/0/0");
+    }
+
     return;
   };
 
@@ -283,13 +459,11 @@ function ProductDetail({ num, product, avgRating, reviews }) {
           {product[0]?.Subcategory?.name}
         </div>
 
-        {product[0]?.FurtherSubcategory && (
-          <div className={styles.lighter}>/</div>
+        {false && (
+          <div className={styles.furtherSubcategory}>
+            {product[0]?.FurtherSubcategory?.name}
+          </div>
         )}
-
-        <div className={styles.furtherSubcategory}>
-          {product[0]?.FurtherSubcategory?.name}
-        </div>
       </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
