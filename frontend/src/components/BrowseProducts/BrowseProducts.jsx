@@ -87,7 +87,43 @@ export default function BrowseProducts() {
 
       pageCategory = "Electronics";
 
-      return product.Category.id === 3;
+      // return product.Category.id === 3;
+
+      if (
+        params.subcategory === "audio" &&
+        product.Subcategory.name === "Audio"
+      ) {
+        return product.Category.id === 3;
+      } else if (
+        params.subcategory === "cameras" &&
+        product.Subcategory.name === "Cameras"
+      ) {
+        return product.Category.id === 3;
+      } else if (
+        params.subcategory === "phones" &&
+        product.Subcategory.name === "Cell Phones"
+      ) {
+        return product.Category.id === 3;
+      } else if (
+        params.subcategory === "drone" &&
+        product.Subcategory.name === "Drone"
+      ) {
+        return product.Category.id === 3;
+      } else if (
+        params.subcategory === "home" &&
+        product.Subcategory.name === "Smart Home Automation"
+      ) {
+        return product.Category.id === 3;
+      } else if (
+        params.subcategory === "theater" &&
+        product.Subcategory.name === "TV & Home Theater"
+      ) {
+        return product.Category.id === 3;
+      } else if (params.subcategory === "0") {
+        return product.Category.id === 3;
+      } else {
+        return false;
+      }
     }
 
     if (params.category === "consoles") {
@@ -331,8 +367,6 @@ export default function BrowseProducts() {
 
   const pageCount = Math.ceil(videoGamesByFour?.length / PER_PAGE);
 
-  // console.log(+params.price === 0);
-
   const handleSortByName = () => {
     setSortBy("Name");
     setCurrentPage(0);
@@ -464,6 +498,30 @@ export default function BrowseProducts() {
       history.push(`/p/accessories/xbox1/${params.price}/${params.rating}`);
     }
 
+    if (category === "Audio" && params.category === "electronics") {
+      history.push(`/p/electronics/audio/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Cameras" && params.category === "electronics") {
+      history.push(`/p/electronics/cameras/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Cell Phones" && params.category === "electronics") {
+      history.push(`/p/electronics/phones/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Drone" && params.category === "electronics") {
+      history.push(`/p/electronics/drone/${params.price}/${params.rating}`);
+    }
+
+    if (category === "Smart Home Automation" && params.category === "electronics") {
+      history.push(`/p/electronics/home/${params.price}/${params.rating}`);
+    }
+
+    if (category === "TV & Home Theater" && params.category === "electronics") {
+      history.push(`/p/electronics/theater/${params.price}/${params.rating}`);
+    }
+
     return;
   };
 
@@ -478,6 +536,10 @@ export default function BrowseProducts() {
 
     if (pageCategory === "Gaming Accessories") {
       history.push(`/p/accessories/0/${params.price}/${params.rating}`);
+    }
+
+    if (pageCategory === "Electronics") {
+      history.push(`/p/electronics/0/${params.price}/${params.rating}`);
     }
 
     return;

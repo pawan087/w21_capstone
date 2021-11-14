@@ -129,6 +129,15 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     if (product[0]?.Category?.name === "Consoles & Hardware") {
       history.push("/p/consoles/0/0/0");
     }
+
+    if (product[0]?.Category?.name === "Gaming Accessories") {
+      history.push("/p/accessories/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Electronics") {
+      history.push("/p/electronics/0/0/0");
+    }
+
     return;
   };
 
@@ -201,6 +210,55 @@ function ProductDetail({ num, product, avgRating, reviews }) {
       product[0]?.Category?.name === "Consoles & Hardware"
     ) {
       history.push("/p/consoles/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Controllers" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/controllers/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Memory" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/memory/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Mounts" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/mounts/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PC Gaming" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/pc/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Audio" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/audio/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Cameras" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/cameras/0/0");
     }
 
     return;
