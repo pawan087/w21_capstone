@@ -1,10 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 
 import styles from "./styles.module.css";
 import Footer from "../Footer/index";
 
 export default function NotFound() {
+  const history = useHistory();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,12 +22,25 @@ export default function NotFound() {
 
         <div className={styles.secondContainer}>
           Looking for the latest games? Or maybe even hard-to-find games for{" "}
-          <span>Xbox One</span>, <span>PS4</span>, <span>Nintendo Switch</span>,
-          or <span>PC</span>? We have them available online and in-store.
+          <span onClick={() => history.push("/p/videogames/xbox1/0/0")}>
+            Xbox One
+          </span>
+          ,{" "}
+          <span onClick={() => history.push("/p/videogames/ps4/0/0")}>PS4</span>
+          ,{" "}
+          <span onClick={() => history.push("/p/videogames/ps5/0/0")}>PS5</span>
+          , or{" "}
+          <span onClick={() => history.push("/p/videogames/switch/0/0")}>
+            Nintendo Switch
+          </span>
+          ? We have them available online and in-store.
         </div>
 
         <div className={styles.thirdContainer}>
-          <div className={styles.third1stContainer}>
+          <div
+            onClick={() => history.push("/p/videogames/0/0/0")}
+            className={styles.third1stContainer}
+          >
             <div className={styles.third1stTopContainer}>
               <img
                 alt="picOfCategories"
@@ -34,7 +50,10 @@ export default function NotFound() {
             <div className={styles.third1stBottomContainer}>Video Games</div>
           </div>
 
-          <div className={styles.third2ndContainer}>
+          <div
+            onClick={() => history.push("/p/toysgames/0/0/0")}
+            className={styles.third2ndContainer}
+          >
             <div className={styles.third1stTopContainer}>
               <img
                 alt="picOfCategories"
@@ -46,7 +65,10 @@ export default function NotFound() {
             </div>
           </div>
 
-          <div className={styles.third3rdContainer}>
+          <div
+            onClick={() => history.push("/p/clothing/0/0/0")}
+            className={styles.third3rdContainer}
+          >
             <div className={styles.third1stTopContainer}>
               <img
                 alt="picOfCategories"
@@ -56,7 +78,10 @@ export default function NotFound() {
             <div className={styles.third1stBottomContainer}>Clothing</div>
           </div>
 
-          <div className={styles.third4thContainer}>
+          <div
+            onClick={() => history.push("/p/electronics/0/0/0")}
+            className={styles.third4thContainer}
+          >
             {" "}
             <div className={styles.third1stTopContainer}>
               <img
