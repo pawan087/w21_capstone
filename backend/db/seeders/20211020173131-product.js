@@ -2221,7 +2221,7 @@ module.exports = {
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
-            "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+            "https://media.gamestop.com/i/gamestop/10177032/Final-Fantasy-VII-Remake---PlayStation-4?$pdp2x$",
           ],
           rating: 0.0,
         },

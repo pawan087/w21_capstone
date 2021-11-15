@@ -9,6 +9,7 @@ import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import StarPicker from "react-star-picker";
 import ReactPaginate from "react-paginate";
 
+import { SortPriceRating } from "./ProductSorting";
 import RecentlyViewedCard from "../Product/RecentlyViewedCard";
 import Footer from "../Footer/index";
 import ProductsRow from "./ProductsRow";
@@ -42,29 +43,29 @@ export default function BrowseProducts() {
         params.subcategory === "switch" &&
         product.Subcategory.name === "Nintendo Switch"
       ) {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else if (
         params.subcategory === "ps4" &&
         product.Subcategory.name === "PlayStation 4"
       ) {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else if (
         params.subcategory === "ps5" &&
         product.Subcategory.name === "PlayStation 5"
       ) {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else if (
         params.subcategory === "xbox1" &&
         product.Subcategory.name === "Xbox One"
       ) {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else if (
         params.subcategory === "xboxx" &&
         product.Subcategory.name === "Xbox Series X"
       ) {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 1;
+        return SortPriceRating(1, product);
       } else {
         return false;
       }
@@ -516,27 +517,27 @@ export default function BrowseProducts() {
 
   const handleCategorySelection = (category) => {
     if (category === "Nintendo Switch" && params.category === "videogames") {
-      history.push(`/p/videogames/switch/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/switch/0/${params.rating}`);
     }
 
     if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/ps4/0/${params.rating}`);
     }
 
     if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/ps4/0/${params.rating}`);
     }
 
     if (category === "PlayStation 5" && params.category === "videogames") {
-      history.push(`/p/videogames/ps5/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/ps5/0/${params.rating}`);
     }
 
     if (category === "Xbox One" && params.category === "videogames") {
-      history.push(`/p/videogames/xbox1/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/xbox1/0/${params.rating}`);
     }
 
     if (category === "Xbox Series X" && params.category === "videogames") {
-      history.push(`/p/videogames/xboxx/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/xboxx/0/${params.rating}`);
     }
 
     if (category === "Nintendo Switch" && params.category === "consoles") {
@@ -706,7 +707,7 @@ export default function BrowseProducts() {
 
   const handlePageCategory = () => {
     if (pageCategory === "Video Games") {
-      history.push(`/p/videogames/0/${params.price}/${params.rating}`);
+      history.push(`/p/videogames/0/0/0`);
     }
 
     if (pageCategory === "Consoles & Hardware") {
@@ -927,6 +928,102 @@ export default function BrowseProducts() {
     ) {
       history.push(
         `/p/${params.category}/${params.subcategory}/7/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams11 = () => {
+    if (params.rating === "4") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/0`
+      );
+    }
+
+    if (params.rating === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/4`
+      );
+    }
+
+    if (
+      params.rating === "1" ||
+      params.rating === "2" ||
+      params.rating === "3"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/4`
+      );
+    }
+  };
+
+  let sendParams12 = () => {
+    if (params.rating === "3") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/0`
+      );
+    }
+
+    if (params.rating === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/3`
+      );
+    }
+
+    if (
+      params.rating === "1" ||
+      params.rating === "2" ||
+      params.rating === "4"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/3`
+      );
+    }
+  };
+
+  let sendParams13 = () => {
+    if (params.rating === "2") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/0`
+      );
+    }
+
+    if (params.rating === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/2`
+      );
+    }
+
+    if (
+      params.rating === "1" ||
+      params.rating === "3" ||
+      params.rating === "4"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/2`
+      );
+    }
+  };
+
+  let sendParams14 = () => {
+    if (params.rating === "1") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/0`
+      );
+    }
+
+    if (params.rating === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/1`
+      );
+    }
+
+    if (
+      params.rating === "2" ||
+      params.rating === "3" ||
+      params.rating === "4"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/${params.price}/1`
       );
     }
   };
@@ -1153,10 +1250,7 @@ export default function BrowseProducts() {
             <div className={styles.categorySpacer} />
             <div className={styles.priceSelectorTitle}>Price</div>
 
-            <div
-              onClick={() => sendParams1()}
-              className={styles.priceSelectionContainer}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
@@ -1164,14 +1258,21 @@ export default function BrowseProducts() {
                 checked={+params.price === 1 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
+                onClick={() => sendParams1()}
               />
-              <div className={styles.priceSelection}>$0 - $10</div>
+              <div
+                onClick={() => sendParams1()}
+                className={
+                  params.price === "1"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+              >
+                $0 - $10
+              </div>
             </div>
 
-            <div
-              onClick={() => sendParams2()}
-              className={styles.priceSelectionContainer}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
@@ -1179,15 +1280,22 @@ export default function BrowseProducts() {
                 checked={+params.price === 2 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
+                onClick={() => sendParams2()}
               />
 
-              <div className={styles.priceSelection}>$10 - $25</div>
+              <div
+                onClick={() => sendParams2()}
+                className={
+                  params.price === "2"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+              >
+                $10 - $25
+              </div>
             </div>
 
-            <div
-              className={styles.priceSelectionContainer}
-              onClick={() => sendParams3()}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
@@ -1195,63 +1303,91 @@ export default function BrowseProducts() {
                 checked={+params.price === 3 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
+                onClick={() => sendParams3()}
               />
 
-              <div className={styles.priceSelection}>$50 - $75</div>
+              <div
+                onClick={() => sendParams3()}
+                className={
+                  params.price === "3"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+              >
+                $50 - $75
+              </div>
             </div>
 
-            <div
-              className={styles.priceSelectionContainer}
-              onClick={() => sendParams4()}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
                 }}
+                onClick={() => sendParams4()}
                 checked={+params.price === 4 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
               />
 
-              <div className={styles.priceSelection}>$75 - $100</div>
+              <div
+                className={
+                  params.price === "4"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+                onClick={() => sendParams4()}
+              >
+                $75 - $100
+              </div>
             </div>
 
-            <div
-              className={styles.priceSelectionContainer}
-              onClick={() => sendParams5()}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
                 }}
+                onClick={() => sendParams5()}
                 checked={+params.price === 5 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
               />
 
-              <div className={styles.priceSelection}>$100 - $200</div>
+              <div
+                className={
+                  params.price === "5"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+                onClick={() => sendParams5()}
+              >
+                $100 - $200
+              </div>
             </div>
 
-            <div
-              onClick={() => sendParams6()}
-              className={styles.priceSelectionContainer}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
                 }}
+                onClick={() => sendParams6()}
                 checked={+params.price === 6 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
               />
 
-              <div className={styles.priceSelection}>$200 - $300</div>
+              <div
+                onClick={() => sendParams6()}
+                className={
+                  params.price === "6"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+              >
+                $200 - $300
+              </div>
             </div>
 
-            <div
-              className={styles.priceSelectionContainer}
-              onClick={() => sendParams7()}
-            >
+            <div className={styles.priceSelectionContainer}>
               <input
                 onChange={() => {
                   return;
@@ -1259,9 +1395,19 @@ export default function BrowseProducts() {
                 checked={+params.price === 7 ? true : false}
                 className={styles.fakeRadio}
                 type="radio"
+                onClick={() => sendParams7()}
               />
 
-              <div className={styles.priceSelection}>$300+</div>
+              <div
+                onClick={() => sendParams7()}
+                className={
+                  params.price === "7"
+                    ? styles.priceSelection2
+                    : styles.priceSelection
+                }
+              >
+                $300+
+              </div>
             </div>
 
             <div className={styles.categorySpacer} />
@@ -1335,7 +1481,10 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.starsContainer}>
+                    <div
+                      className={styles.starsContainer}
+                      onClick={() => sendParams11()}
+                    >
                       <div className={styles.stars}>
                         <StarPicker
                           starDimension="10px"
@@ -1367,7 +1516,10 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.starsContainer}>
+                    <div
+                      onClick={() => sendParams12()}
+                      className={styles.starsContainer}
+                    >
                       <div className={styles.stars}>
                         <StarPicker
                           starDimension="10px"
@@ -1399,7 +1551,10 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.starsContainer}>
+                    <div
+                      className={styles.starsContainer}
+                      onClick={() => sendParams13()}
+                    >
                       <div className={styles.stars}>
                         <StarPicker
                           starDimension="10px"
@@ -1431,7 +1586,10 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.starsContainer}>
+                    <div
+                      className={styles.starsContainer}
+                      onClick={() => sendParams14()}
+                    >
                       <div className={styles.stars}>
                         <StarPicker
                           starDimension="10px"
@@ -1514,6 +1672,14 @@ export default function BrowseProducts() {
                     Price High To Low
                   </MenuItem>
                 </Menu>
+              </div>
+            </div>
+          )}
+
+          {videoGames.length === 0 && (
+            <div className={styles.rightTopContainer}>
+              <div className={styles.rightSideTitle}>
+                {videoGames.length} Results for <span>"{pageCategory}"</span>
               </div>
             </div>
           )}
