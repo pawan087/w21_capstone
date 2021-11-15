@@ -69,7 +69,7 @@ export default function SplashPage() {
       className={styles.splashPageOuterContainer}
     >
       <CODBanner />
-      <SubBanner />d
+      <SubBanner />
       <TopSellers />
       <PromotionalCard1 />
       <TopBrands />
@@ -83,6 +83,7 @@ export default function SplashPage() {
       <ConsolesCard />
       <FeaturedCategories />
       {user && <RecentlyViewedCard />}
+
       <Footer />
     </motion.div>
   );

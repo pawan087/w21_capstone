@@ -77,8 +77,6 @@ export default function BrowseProducts() {
 
       pageCategory = "Toys & Games";
 
-      // return product.Category.id === 2;
-
       if (
         params.subcategory === "art" &&
         product.Subcategory.name === "Arts & Crafts Toys"
@@ -142,8 +140,6 @@ export default function BrowseProducts() {
       }
 
       pageCategory = "Electronics";
-
-      // return product.Category.id === 3;
 
       if (
         params.subcategory === "audio" &&
@@ -266,8 +262,6 @@ export default function BrowseProducts() {
       }
 
       pageCategory = "Clothing";
-
-      // return product.Category.id === 6;
 
       if (
         params.subcategory === "accessories" &&
@@ -433,7 +427,7 @@ export default function BrowseProducts() {
   }
 
   const [load, setLoad] = useState(false);
-  const [bool, setBool] = useState(false);
+  const [bool, setBool] = useState(params.rating !== "0");
   const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -679,67 +673,32 @@ export default function BrowseProducts() {
       history.push(`/p/toysgames/cards/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Accessories" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/accessories/${params.price}/${params.rating}`
-      );
+    if (category === "Accessories" && params.category === "clothing") {
+      history.push(`/p/clothing/accessories/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Bags" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/bags/${params.price}/${params.rating}`
-      );
+    if (category === "Bags" && params.category === "clothing") {
+      history.push(`/p/clothing/bags/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Footwear" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/footwear/${params.price}/${params.rating}`
-      );
+    if (category === "Footwear" && params.category === "clothing") {
+      history.push(`/p/clothing/footwear/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Jackets & Outerwear" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/jackets/${params.price}/${params.rating}`
-      );
+    if (category === "Jackets & Outerwear" && params.category === "clothing") {
+      history.push(`/p/clothing/jackets/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Pants & Shorts" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/pants/${params.price}/${params.rating}`
-      );
+    if (category === "Pants & Shorts" && params.category === "clothing") {
+      history.push(`/p/clothing/pants/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "T-Shirts" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/shirts/${params.price}/${params.rating}`
-      );
+    if (category === "T-Shirts" && params.category === "clothing") {
+      history.push(`/p/clothing/shirts/${params.price}/${params.rating}`);
     }
 
-    if (
-      category === "Watches" &&
-      params.category === "clothing"
-    ) {
-      history.push(
-        `/p/clothing/watches/${params.price}/${params.rating}`
-      );
+    if (category === "Watches" && params.category === "clothing") {
+      history.push(`/p/clothing/watches/${params.price}/${params.rating}`);
     }
 
     return;
@@ -775,6 +734,203 @@ export default function BrowseProducts() {
 
   let className1 = styles.categoryNames;
 
+  let sendParams1 = () => {
+    if (params.price === "1") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/1/${params.rating}`
+      );
+    }
+
+    if (
+      params.price === "2" ||
+      params.price === "3" ||
+      params.price === "4" ||
+      params.price === "5" ||
+      params.price === "6" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/1/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams2 = () => {
+    if (params.price === "2") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+
+      return;
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/2/${params.rating}`
+      );
+
+      return;
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "3" ||
+      params.price === "4" ||
+      params.price === "5" ||
+      params.price === "6" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/2/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams3 = () => {
+    if (params.price === "3") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+
+      return;
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/3/${params.rating}`
+      );
+
+      return;
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "2" ||
+      params.price === "4" ||
+      params.price === "5" ||
+      params.price === "6" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/3/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams4 = () => {
+    if (params.price === "4") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/4/${params.rating}`
+      );
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "2" ||
+      params.price === "3" ||
+      params.price === "5" ||
+      params.price === "6" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/4/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams5 = () => {
+    if (params.price === "5") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/5/${params.rating}`
+      );
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "2" ||
+      params.price === "3" ||
+      params.price === "4" ||
+      params.price === "6" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/5/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams6 = () => {
+    if (params.price === "6") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/6/${params.rating}`
+      );
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "2" ||
+      params.price === "3" ||
+      params.price === "4" ||
+      params.price === "5" ||
+      params.price === "7"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/6/${params.rating}`
+      );
+    }
+  };
+
+  let sendParams7 = () => {
+    if (params.price === "7") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/0/${params.rating}`
+      );
+    }
+
+    if (params.price === "0") {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/7/${params.rating}`
+      );
+    }
+
+    if (
+      params.price === "1" ||
+      params.price === "2" ||
+      params.price === "3" ||
+      params.price === "4" ||
+      params.price === "5" ||
+      params.price === "6"
+    ) {
+      history.push(
+        `/p/${params.category}/${params.subcategory}/7/${params.rating}`
+      );
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -783,6 +939,7 @@ export default function BrowseProducts() {
     >
       <div className={styles.outerContainer}>
         {/* Left Side (sorting) */}
+        {console.log(params.price === "7")}
         <div className={styles.leftContainer}>
           <div className={styles.categoryName}>
             <span onClick={() => handlePageCategory()}>{pageCategory}</span>
@@ -855,6 +1012,121 @@ export default function BrowseProducts() {
                     category === "Xbox One"
                   ) {
                     className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "audio" &&
+                    category === "Audio"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "cameras" &&
+                    category === "Cameras"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "phones" &&
+                    category === "Cell Phones"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "drone" &&
+                    category === "Drone"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "home" &&
+                    category === "Smart Home Automation"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "theater" &&
+                    category === "TV & Home Theater"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "art" &&
+                    category === "Arts & Crafts Toys"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "boardgames" &&
+                    category === "Board Games"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "construction" &&
+                    category === "Building & Construction Sets"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "dolls" &&
+                    category === "Dolls & Dollhouses"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "nerf" &&
+                    category === "NERF"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "vehicles" &&
+                    category === "Play Vehicles"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "puzzles" &&
+                    category === "Puzzles"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "scooters" &&
+                    category === "Scooters & Ride Ons"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "plush" &&
+                    category === "Stuffed Animals & Plush"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "cards" &&
+                    category === "Trading Cards"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "accessories" &&
+                    category === "Accessories"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "bags" &&
+                    category === "Bags"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "footwear" &&
+                    category === "Footwear"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "jackets" &&
+                    category === "Jackets & Outerwear"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "pants" &&
+                    category === "Pants & Shorts"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "shirts" &&
+                    category === "T-Shirts"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "watches" &&
+                    category === "Watches"
+                  ) {
+                    className1 = styles.categoryNames2;
                   } else {
                     className1 = styles.categoryNames;
                   }
@@ -881,7 +1153,10 @@ export default function BrowseProducts() {
             <div className={styles.categorySpacer} />
             <div className={styles.priceSelectorTitle}>Price</div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              onClick={() => sendParams1()}
+              className={styles.priceSelectionContainer}
+            >
               <input
                 onChange={() => {
                   return;
@@ -890,11 +1165,13 @@ export default function BrowseProducts() {
                 className={styles.fakeRadio}
                 type="radio"
               />
-
               <div className={styles.priceSelection}>$0 - $10</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              onClick={() => sendParams2()}
+              className={styles.priceSelectionContainer}
+            >
               <input
                 onChange={() => {
                   return;
@@ -907,7 +1184,10 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$10 - $25</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              className={styles.priceSelectionContainer}
+              onClick={() => sendParams3()}
+            >
               <input
                 onChange={() => {
                   return;
@@ -920,7 +1200,10 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$50 - $75</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              className={styles.priceSelectionContainer}
+              onClick={() => sendParams4()}
+            >
               <input
                 onChange={() => {
                   return;
@@ -933,7 +1216,10 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$75 - $100</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              className={styles.priceSelectionContainer}
+              onClick={() => sendParams5()}
+            >
               <input
                 onChange={() => {
                   return;
@@ -946,7 +1232,10 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$100 - $200</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              onClick={() => sendParams6()}
+              className={styles.priceSelectionContainer}
+            >
               <input
                 onChange={() => {
                   return;
@@ -959,7 +1248,10 @@ export default function BrowseProducts() {
               <div className={styles.priceSelection}>$200 - $300</div>
             </div>
 
-            <div className={styles.priceSelectionContainer}>
+            <div
+              className={styles.priceSelectionContainer}
+              onClick={() => sendParams7()}
+            >
               <input
                 onChange={() => {
                   return;
@@ -1163,66 +1455,68 @@ export default function BrowseProducts() {
 
         {/* Right Side (products) */}
         <div className={styles.rightContainer}>
-          <div className={styles.rightTopContainer}>
-            <div className={styles.rightSideTitle}>
-              {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
-              {videoGames.length > 11 &&
-                (currentPage === 0 ? 12 : currentPage * 12 + 1 + 11)}{" "}
-              {videoGames.length < 12 &&
-                (currentPage === 0
-                  ? videoGames.length
-                  : currentPage * 12 + 1 + 11)}{" "}
-              of {videoGames.length} Results for <span>"{pageCategory}"</span>
-            </div>
+          {videoGames.length > 0 && (
+            <div className={styles.rightTopContainer}>
+              <div className={styles.rightSideTitle}>
+                {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
+                {videoGames.length > 11 &&
+                  (currentPage === 0 ? 12 : currentPage * 12 + 1 + 11)}{" "}
+                {videoGames.length < 12 &&
+                  (currentPage === 0
+                    ? videoGames.length
+                    : currentPage * 12 + 1 + 11)}{" "}
+                of {videoGames.length} Results for <span>"{pageCategory}"</span>
+              </div>
 
-            <div className={styles.topMiddleContainer}>
-              <Menu
-                arrow={true}
-                align={"center"}
-                className={styles.menu}
-                menuButton={
-                  <MenuButton className={styles.button}>
-                    <span>Sort By:</span> {sortBy}
-                    <div className={styles.downIcon}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </div>
-                  </MenuButton>
-                }
-              >
-                <MenuItem
-                  onClick={() => handleSortByName()}
-                  className={styles.menuItem}
+              <div className={styles.topMiddleContainer}>
+                <Menu
+                  arrow={true}
+                  align={"center"}
+                  className={styles.menu}
+                  menuButton={
+                    <MenuButton className={styles.button}>
+                      <span>Sort By:</span> {sortBy}
+                      <div className={styles.downIcon}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
+                    </MenuButton>
+                  }
                 >
-                  Name
-                </MenuItem>
-                <MenuItem
-                  onClick={() => handleSortByLowToHigh()}
-                  className={styles.menuItem}
-                >
-                  Price Low To High
-                </MenuItem>
-                <MenuItem
-                  onClick={() => handleSortByHighToLow()}
-                  className={styles.menuItem}
-                >
-                  Price High To Low
-                </MenuItem>
-              </Menu>
+                  <MenuItem
+                    onClick={() => handleSortByName()}
+                    className={styles.menuItem}
+                  >
+                    Name
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => handleSortByLowToHigh()}
+                    className={styles.menuItem}
+                  >
+                    Price Low To High
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => handleSortByHighToLow()}
+                    className={styles.menuItem}
+                  >
+                    Price High To Low
+                  </MenuItem>
+                </Menu>
+              </div>
             </div>
-          </div>
+          )}
 
           {
             /* Start */
@@ -1233,44 +1527,47 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData}</div>
-                <ReactPaginate
-                  previousLabel={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  }
-                  nextLabel={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  }
-                  marginPagesDisplayed={500}
-                  pageCount={pageCount}
-                  onPageChange={handlePageClick}
-                  containerClassName={styles.pagination}
-                  previousLinkClassName={styles.pagination__link}
-                  nextLinkClassName={styles.next}
-                  disabledClassName={styles.pagination__linkdisabled}
-                  activeClassName={styles.pagination__linkactive}
-                />
+                {console.log(currentPageData)}
+                {currentPageData.length === 3 && (
+                  <ReactPaginate
+                    previousLabel={
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
+                    nextLabel={
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
+                    marginPagesDisplayed={500}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={styles.pagination}
+                    previousLinkClassName={styles.pagination__link}
+                    nextLinkClassName={styles.next}
+                    disabledClassName={styles.pagination__linkdisabled}
+                    activeClassName={styles.pagination__linkactive}
+                  />
+                )}
               </motion.div>
             )
             /* End */

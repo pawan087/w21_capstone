@@ -257,7 +257,7 @@ export default function MyNavBar() {
               dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
               dragElastic={0.6}
               whileTap={{ cursor: "grabbing" }}
-              onClick={() => history.push("/products")}
+              onClick={() => history.push("/")}
               className={styles.navLogo}
             >
               <img
