@@ -31,6 +31,8 @@ export default function BrowseProducts() {
 
   let videoGameSubCategories = new Set();
 
+
+
   const videoGames = products?.filter((product) => {
     if (params.category === "videogames") {
       if (product.Category.id === 1) {
@@ -82,54 +84,54 @@ export default function BrowseProducts() {
         params.subcategory === "art" &&
         product.Subcategory.name === "Arts & Crafts Toys"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "boardgames" &&
         product.Subcategory.name === "Board Games"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "construction" &&
         product.Subcategory.name === "Building & Construction Sets"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "dolls" &&
         product.Subcategory.name === "Dolls & Dollhouses"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "nerf" &&
         product.Subcategory.name === "NERF"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "vehicles" &&
         product.Subcategory.name === "Play Vehicles"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "puzzles" &&
         product.Subcategory.name === "Puzzles"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "scooters" &&
         product.Subcategory.name === "Scooters & Ride Ons"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "plush" &&
         product.Subcategory.name === "Stuffed Animals & Plush"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (
         params.subcategory === "cards" &&
         product.Subcategory.name === "Trading Cards"
       ) {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 2;
+        return SortPriceRating(2, product);
       } else {
         return false;
       }
@@ -146,34 +148,34 @@ export default function BrowseProducts() {
         params.subcategory === "audio" &&
         product.Subcategory.name === "Audio"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (
         params.subcategory === "cameras" &&
         product.Subcategory.name === "Cameras"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (
         params.subcategory === "phones" &&
         product.Subcategory.name === "Cell Phones"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (
         params.subcategory === "drone" &&
         product.Subcategory.name === "Drone"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (
         params.subcategory === "home" &&
         product.Subcategory.name === "Smart Home Automation"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (
         params.subcategory === "theater" &&
         product.Subcategory.name === "TV & Home Theater"
       ) {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 3;
+        return SortPriceRating(3, product);
       } else {
         return false;
       }
@@ -190,29 +192,29 @@ export default function BrowseProducts() {
         params.subcategory === "switch" &&
         product.Subcategory.name === "Nintendo Switch"
       ) {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else if (
         params.subcategory === "ps4" &&
         product.Subcategory.name === "PlayStation 4"
       ) {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else if (
         params.subcategory === "pc" &&
         product.Subcategory.name === "PC Gaming"
       ) {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else if (
         params.subcategory === "vr" &&
         product.Subcategory.name === "Virtual Reality"
       ) {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else if (
         params.subcategory === "xbox1" &&
         product.Subcategory.name === "Xbox One"
       ) {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 4;
+        return SortPriceRating(4, product);
       } else {
         return false;
       }
@@ -229,29 +231,29 @@ export default function BrowseProducts() {
         params.subcategory === "controllers" &&
         product.Subcategory.name === "Controllers"
       ) {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else if (
         params.subcategory === "memory" &&
         product.Subcategory.name === "Memory"
       ) {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else if (
         params.subcategory === "mounts" &&
         product.Subcategory.name === "Mounts"
       ) {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else if (
         params.subcategory === "pc" &&
         product.Subcategory.name === "PC Gaming"
       ) {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else if (
         params.subcategory === "xbox1" &&
         product.Subcategory.name === "Xbox One"
       ) {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 5;
+        return SortPriceRating(5, product);
       } else {
         return false;
       }
@@ -268,39 +270,39 @@ export default function BrowseProducts() {
         params.subcategory === "accessories" &&
         product.Subcategory.name === "Accessories"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "bags" &&
         product.Subcategory.name === "Bags"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "footwear" &&
         product.Subcategory.name === "Footwear"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "jackets" &&
         product.Subcategory.name === "Jackets & Outerwear"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "pants" &&
         product.Subcategory.name === "Pants & Shorts"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "shirts" &&
         product.Subcategory.name === "T-Shirts"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (
         params.subcategory === "watches" &&
         product.Subcategory.name === "Watches"
       ) {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else if (params.subcategory === "0") {
-        return product.Category.id === 6;
+        return SortPriceRating(6, product);
       } else {
         return false;
       }
@@ -517,189 +519,183 @@ export default function BrowseProducts() {
 
   const handleCategorySelection = (category) => {
     if (category === "Nintendo Switch" && params.category === "videogames") {
-      history.push(`/p/videogames/switch/0/${params.rating}`);
+      history.push(`/p/videogames/switch/0/0`);
     }
 
     if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/0/${params.rating}`);
+      history.push(`/p/videogames/ps4/0/0`);
     }
 
     if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/0/${params.rating}`);
+      history.push(`/p/videogames/ps4/0/0`);
     }
 
     if (category === "PlayStation 5" && params.category === "videogames") {
-      history.push(`/p/videogames/ps5/0/${params.rating}`);
+      history.push(`/p/videogames/ps5/0/0`);
     }
 
     if (category === "Xbox One" && params.category === "videogames") {
-      history.push(`/p/videogames/xbox1/0/${params.rating}`);
+      history.push(`/p/videogames/xbox1/0/0`);
     }
 
     if (category === "Xbox Series X" && params.category === "videogames") {
-      history.push(`/p/videogames/xboxx/0/${params.rating}`);
+      history.push(`/p/videogames/xboxx/0/0`);
     }
 
     if (category === "Nintendo Switch" && params.category === "consoles") {
-      history.push(`/p/consoles/switch/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/switch/0/0`);
     }
 
     if (category === "PlayStation 4" && params.category === "consoles") {
-      history.push(`/p/consoles/ps4/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/ps4/0/0`);
     }
 
     if (category === "PlayStation 5" && params.category === "consoles") {
-      history.push(`/p/consoles/ps5/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/ps5/0/0`);
     }
 
     if (category === "PC Gaming" && params.category === "consoles") {
-      history.push(`/p/consoles/pc/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/pc/0/0`);
     }
 
     if (category === "Virtual Reality" && params.category === "consoles") {
-      history.push(`/p/consoles/vr/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/vr/0/0`);
     }
 
     if (category === "Xbox One" && params.category === "consoles") {
-      history.push(`/p/consoles/xbox1/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/xbox1/0/0`);
     }
 
     if (category === "Controllers" && params.category === "accessories") {
-      history.push(
-        `/p/accessories/controllers/${params.price}/${params.rating}`
-      );
+      history.push(`/p/accessories/controllers/0/0`);
     }
 
     if (category === "Memory" && params.category === "accessories") {
-      history.push(`/p/accessories/memory/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/memory/0/0`);
     }
 
     if (category === "Memory" && params.category === "accessories") {
-      history.push(`/p/accessories/memory/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/memory/0/0`);
     }
 
     if (category === "Mounts" && params.category === "accessories") {
-      history.push(`/p/accessories/mounts/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/mounts/0/0`);
     }
 
     if (category === "PC Gaming" && params.category === "accessories") {
-      history.push(`/p/accessories/pc/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/pc/0/0`);
     }
 
     if (category === "Xbox One" && params.category === "accessories") {
-      history.push(`/p/accessories/xbox1/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/xbox1/0/0`);
     }
 
     if (category === "Audio" && params.category === "electronics") {
-      history.push(`/p/electronics/audio/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/audio/0/0`);
     }
 
     if (category === "Cameras" && params.category === "electronics") {
-      history.push(`/p/electronics/cameras/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/cameras/0/0`);
     }
 
     if (category === "Cell Phones" && params.category === "electronics") {
-      history.push(`/p/electronics/phones/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/phones/0/0`);
     }
 
     if (category === "Drone" && params.category === "electronics") {
-      history.push(`/p/electronics/drone/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/drone/0/0`);
     }
 
     if (
       category === "Smart Home Automation" &&
       params.category === "electronics"
     ) {
-      history.push(`/p/electronics/home/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/home/0/0`);
     }
 
     if (category === "TV & Home Theater" && params.category === "electronics") {
-      history.push(`/p/electronics/theater/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/theater/0/0`);
     }
 
     if (category === "Arts & Crafts Toys" && params.category === "toysgames") {
-      history.push(`/p/toysgames/art/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/art/0/0`);
     }
 
     if (category === "Board Games" && params.category === "toysgames") {
-      history.push(`/p/toysgames/boardgames/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/boardgames/0/0`);
     }
 
     if (
       category === "Building & Construction Sets" &&
       params.category === "toysgames"
     ) {
-      history.push(
-        `/p/toysgames/construction/${params.price}/${params.rating}`
-      );
+      history.push(`/p/toysgames/construction/0/0`);
     }
 
     if (
       category === "Building & Construction Sets" &&
       params.category === "toysgames"
     ) {
-      history.push(
-        `/p/toysgames/construction/${params.price}/${params.rating}`
-      );
+      history.push(`/p/toysgames/construction/0/0`);
     }
 
     if (category === "Dolls & Dollhouses" && params.category === "toysgames") {
-      history.push(`/p/toysgames/dolls/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/dolls/0/0`);
     }
 
     if (category === "NERF" && params.category === "toysgames") {
-      history.push(`/p/toysgames/nerf/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/nerf/0/0`);
     }
 
     if (category === "Play Vehicles" && params.category === "toysgames") {
-      history.push(`/p/toysgames/vehicles/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/vehicles/0/0`);
     }
 
     if (category === "Puzzles" && params.category === "toysgames") {
-      history.push(`/p/toysgames/puzzles/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/puzzles/0/0`);
     }
 
     if (category === "Scooters & Ride Ons" && params.category === "toysgames") {
-      history.push(`/p/toysgames/scooters/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/scooters/0/0`);
     }
 
     if (
       category === "Stuffed Animals & Plush" &&
       params.category === "toysgames"
     ) {
-      history.push(`/p/toysgames/plush/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/plush/0/0`);
     }
 
     if (category === "Trading Cards" && params.category === "toysgames") {
-      history.push(`/p/toysgames/cards/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/cards/0/0`);
     }
 
     if (category === "Accessories" && params.category === "clothing") {
-      history.push(`/p/clothing/accessories/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/accessories/0/0`);
     }
 
     if (category === "Bags" && params.category === "clothing") {
-      history.push(`/p/clothing/bags/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/bags/0/0`);
     }
 
     if (category === "Footwear" && params.category === "clothing") {
-      history.push(`/p/clothing/footwear/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/footwear/0/0`);
     }
 
     if (category === "Jackets & Outerwear" && params.category === "clothing") {
-      history.push(`/p/clothing/jackets/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/jackets/0/0`);
     }
 
     if (category === "Pants & Shorts" && params.category === "clothing") {
-      history.push(`/p/clothing/pants/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/pants/0/0`);
     }
 
     if (category === "T-Shirts" && params.category === "clothing") {
-      history.push(`/p/clothing/shirts/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/shirts/0/0`);
     }
 
     if (category === "Watches" && params.category === "clothing") {
-      history.push(`/p/clothing/watches/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/watches/0/0`);
     }
 
     return;
@@ -711,23 +707,23 @@ export default function BrowseProducts() {
     }
 
     if (pageCategory === "Consoles & Hardware") {
-      history.push(`/p/consoles/0/${params.price}/${params.rating}`);
+      history.push(`/p/consoles/0/0/0`);
     }
 
     if (pageCategory === "Gaming Accessories") {
-      history.push(`/p/accessories/0/${params.price}/${params.rating}`);
+      history.push(`/p/accessories/0/0/0`);
     }
 
     if (pageCategory === "Electronics") {
-      history.push(`/p/electronics/0/${params.price}/${params.rating}`);
+      history.push(`/p/electronics/0/0/0`);
     }
 
     if (pageCategory === "Toys & Games") {
-      history.push(`/p/toysgames/0/${params.price}/${params.rating}`);
+      history.push(`/p/toysgames/0/0/0`);
     }
 
     if (pageCategory === "Clothing") {
-      history.push(`/p/clothing/0/${params.price}/${params.rating}`);
+      history.push(`/p/clothing/0/0/0`);
     }
 
     return;
@@ -1036,7 +1032,7 @@ export default function BrowseProducts() {
     >
       <div className={styles.outerContainer}>
         {/* Left Side (sorting) */}
-        {console.log(params.price === "7")}
+
         <div className={styles.leftContainer}>
           <div className={styles.categoryName}>
             <span onClick={() => handlePageCategory()}>{pageCategory}</span>
@@ -1693,7 +1689,7 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData}</div>
-                {console.log(currentPageData)}
+
                 {currentPageData.length === 3 && (
                   <ReactPaginate
                     previousLabel={
