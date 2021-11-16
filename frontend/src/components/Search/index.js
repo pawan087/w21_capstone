@@ -34,6 +34,7 @@ export default function SearchComponent({ products }) {
 
   const handleOnClear = () => {
     // console.log("Cleared");
+    setCriteria('');
   };
 
   const handleSubmit = (e) => {

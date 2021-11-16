@@ -1,8 +1,13 @@
 import React from "react";
+// import { useHistory } from "react-router";
 
 import styles from "./styles.module.css";
 
 export default function PromotionalCard1() {
+  // const history = useHistory();
+
+  // onClick={() => history.push("/p/electronics/iphone/0/0")}
+
   return (
     <div className={styles.promoCard1Container}>
       <div className={styles.leftPromoCard}>

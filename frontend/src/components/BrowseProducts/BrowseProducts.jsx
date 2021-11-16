@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion/dist/framer-motion";
+import { Redirect } from "react-router-dom";
 import ReactLoading from "react-loading";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import StarPicker from "react-star-picker";
@@ -175,6 +176,11 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "theater" &&
         product.Subcategory.name === "TV & Home Theater"
+      ) {
+        return SortPriceRating(3, product);
+      } else if (
+        params.subcategory === "iphone" &&
+        product.name.includes("iPhone")
       ) {
         return SortPriceRating(3, product);
       } else if (params.subcategory === "0") {
@@ -1205,6 +1211,62 @@ export default function BrowseProducts() {
     }
   };
 
+  if (
+    !(
+      params.category === "videogames" ||
+      params.category === "consoles" ||
+      params.category === "accessories" ||
+      params.category === "electronics" ||
+      params.category === "toysgames" ||
+      params.category === "clothing"
+    )
+  ) {
+    return <Redirect to="/404" />;
+  }
+
+  if (
+    !(
+      params.subcategory === "0" ||
+      params.subcategory === "switch" ||
+      params.subcategory === "ps4" ||
+      params.subcategory === "ps5" ||
+      params.subcategory === "xbox1" ||
+      params.subcategory === "xboxx" ||
+      params.subcategory === "cod" ||
+      params.subcategory === "art" ||
+      params.subcategory === "boardgames" ||
+      params.subcategory === "construction" ||
+      params.subcategory === "dolls" ||
+      params.subcategory === "nerf" ||
+      params.subcategory === "vehicles" ||
+      params.subcategory === "puzzles" ||
+      params.subcategory === "scooters" ||
+      params.subcategory === "plush" ||
+      params.subcategory === "cards" ||
+      params.subcategory === "audio" ||
+      params.subcategory === "cameras" ||
+      params.subcategory === "phones" ||
+      params.subcategory === "iphone" ||
+      params.subcategory === "drone" ||
+      params.subcategory === "home" ||
+      params.subcategory === "theater" ||
+      params.subcategory === "pc" ||
+      params.subcategory === "vr" ||
+      params.subcategory === "controllers" ||
+      params.subcategory === "memory" ||
+      params.subcategory === "mounts" ||
+      params.subcategory === "accessories" ||
+      params.subcategory === "bags" ||
+      params.subcategory === "footwear" ||
+      params.subcategory === "jackets" ||
+      params.subcategory === "pants" ||
+      params.subcategory === "shirts" ||
+      params.subcategory === "watches"
+    )
+  ) {
+    return <Redirect to="/404" />;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -1871,7 +1933,7 @@ export default function BrowseProducts() {
               >
                 <div className={styles.holder}>{currentPageData}</div>
 
-                {currentPageData.length === 3 && (
+                {true && (
                   <ReactPaginate
                     previousLabel={
                       <svg
@@ -1925,7 +1987,7 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData2}</div>
-                {currentPageData2.length === 3 && (
+                {true && (
                   <ReactPaginate
                     previousLabel={
                       <svg
@@ -1979,7 +2041,7 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData3}</div>
-                {currentPageData3.length === 3 && (
+                {true && (
                   <ReactPaginate
                     previousLabel={
                       <svg

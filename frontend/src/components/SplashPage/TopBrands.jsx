@@ -1,8 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 import styles from "./styles.module.css";
 
 export default function TopBrands() {
+  const history = useHistory();
+
   return (
     <div className={styles.topBrandsContainer}>
       <div className={styles.topBrandsTitle}>Top Brands</div>
@@ -15,6 +18,7 @@ export default function TopBrands() {
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Xbox-Logo-224x126@2x.webp"
               alt="topBrandTile"
+        
             />
           </div>
 

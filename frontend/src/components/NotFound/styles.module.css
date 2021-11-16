@@ -1,11 +1,13 @@
 .outerContainer {
   background-color: rgb(242, 244, 247);
   width: 100%;
-  height: 902.5px;
+  /* height: 902.5px; */
+  height: 887.5px;
 }
 
 .footer {
-  transform: translateY(302.5px)
+  /* transform: translateY(302.5px); */
+  transform: translateY(287.5px)
 }
 
 .pageContainer {
