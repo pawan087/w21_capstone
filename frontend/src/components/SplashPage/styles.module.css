@@ -358,17 +358,17 @@
 
 .consoleImageContainer:hover {
   transform: scale(1.025);
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .cellPhoneImageContainer2:hover {
   transform: scale(1.025);
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .cellPhoneImageContainer:hover {
   transform: translateX(35px) scale(1.025);
-  opacity: .9;
+  opacity: 0.9;
 }
 
 .cellPhoneImageContainer img {
@@ -392,7 +392,7 @@
 .clothingPriceContainer {
   font-size: 17.5px;
   font-weight: bold;
-  color: rgb(40,40,40);
+  color: rgb(40, 40, 40);
 }
 
 .strikeout {
@@ -409,19 +409,20 @@
 .cellPhoneNameContainer {
   font-size: 12.5px;
   font-weight: bold;
-  color: rgba(39, 39, 39, .85);
+  color: rgba(39, 39, 39, 0.85);
+  cursor: pointer;
 }
 
 .clothingNameContainer {
   font-size: 12.5px;
   /* font-weight: bold; */
-  color: rgba(39, 39, 39, .85);
+  color: rgba(39, 39, 39, 0.85);
 }
 
 .consoleNameContainer {
   font-size: 12.5px;
   font-weight: bold;
-  color: rgba(39, 39, 39, .85);
+  color: rgba(39, 39, 39, 0.85);
 }
 
 .codClothingPromoContainer {
@@ -446,7 +447,7 @@
 }
 
 .fakeNew {
-  color: rgb(114,114,114);
+  color: rgb(114, 114, 114);
   font-weight: normal;
   font-size: 10px;
 }

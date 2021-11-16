@@ -70,6 +70,23 @@ export default function BrowseProducts() {
         product.name.includes("Duty")
       ) {
         return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "fortnite" &&
+        product.name.includes("Fortnite")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "xbox" &&
+        (product.Subcategory.name === "Xbox Series X" ||
+          product.Subcategory.name === "Xbox One")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "playstation" &&
+        (product.Subcategory.name === "PlayStation 4" ||
+          product.Subcategory.name === "PlayStation 5")
+      ) {
+        return SortPriceRating(1, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(1, product);
       } else {
@@ -132,6 +149,16 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "cards" &&
         product.Subcategory.name === "Trading Cards"
+      ) {
+        return SortPriceRating(2, product);
+      } else if (
+        params.subcategory === "hasbro" &&
+        product.Brand.name === "Hasbro"
+      ) {
+        return SortPriceRating(2, product);
+      } else if (
+        params.subcategory === "pokemon" &&
+        product.name.includes("Pokemon")
       ) {
         return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
@@ -220,6 +247,11 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "xbox1" &&
         product.Subcategory.name === "Xbox One"
+      ) {
+        return SortPriceRating(4, product);
+      } else if (
+        params.subcategory === "razer" &&
+        product.name.includes("Razer")
       ) {
         return SortPriceRating(4, product);
       } else if (params.subcategory === "0") {
@@ -1230,8 +1262,10 @@ export default function BrowseProducts() {
       params.subcategory === "switch" ||
       params.subcategory === "ps4" ||
       params.subcategory === "ps5" ||
+      params.subcategory === "playstation" ||
       params.subcategory === "xbox1" ||
       params.subcategory === "xboxx" ||
+      params.subcategory === "xbox" ||
       params.subcategory === "cod" ||
       params.subcategory === "art" ||
       params.subcategory === "boardgames" ||
@@ -1261,7 +1295,11 @@ export default function BrowseProducts() {
       params.subcategory === "jackets" ||
       params.subcategory === "pants" ||
       params.subcategory === "shirts" ||
-      params.subcategory === "watches"
+      params.subcategory === "watches" ||
+      params.subcategory === "hasbro" ||
+      params.subcategory === "pokemon" ||
+      params.subcategory === "razer" ||
+      params.subcategory === "fortnite"
     )
   ) {
     return <Redirect to="/404" />;
@@ -1299,6 +1337,16 @@ export default function BrowseProducts() {
                   ) {
                     className1 = styles.categoryNames2;
                   } else if (
+                    params.subcategory === "playstation" &&
+                    category === "PlayStation 4"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "playstation" &&
+                    category === "PlayStation 5"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
                     params.subcategory === "ps5" &&
                     category === "PlayStation 5"
                   ) {
@@ -1309,7 +1357,12 @@ export default function BrowseProducts() {
                   ) {
                     className1 = styles.categoryNames2;
                   } else if (
-                    params.subcategory === "xboxx" &&
+                    params.subcategory === "xbox" &&
+                    category === "Xbox One"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "xbox" &&
                     category === "Xbox Series X"
                   ) {
                     className1 = styles.categoryNames2;
