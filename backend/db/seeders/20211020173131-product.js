@@ -481,7 +481,7 @@ module.exports = {
           description:
             "Skytech Blaze 3.0 Powerful Gaming at 1440p and VR Ready. Take your game to the next level. Skytech's Blaze 3.0 lets you play with higher settings, faster frame rates and more powerful multi-tasking capabilities than standard gaming PCs. Featuring more power to game and stream simultaneously with no lag, a Skytech Blaze 3.0 gives gamers even more power to back up your team mates and create better content",
           brandId: 22,
-          price: 2329.0,
+          price: 2329.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
