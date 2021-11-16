@@ -768,44 +768,48 @@ export default function AccountDashboard() {
                       {!bool && (
                         <>
                           <div className={styles.holder}>{currentPageData}</div>
-                          {currentPageData.length === 3 && <ReactPaginate
-                            previousLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            nextLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            marginPagesDisplayed={500}
-                            pageCount={pageCount}
-                            onPageChange={handlePageClick}
-                            containerClassName={styles.pagination}
-                            previousLinkClassName={styles.pagination__link}
-                            nextLinkClassName={styles.pagination__link}
-                            disabledClassName={styles.pagination__linkdisabled}
-                            activeClassName={styles.pagination__linkactive}
-                          />}
+                          {reversed?.length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
+                            />
+                          )}
                         </>
                       )}
                     </motion.div>
@@ -845,44 +849,48 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData2}
                           </div>
-                          {currentPageData2.length === 3 && <ReactPaginate
-                            previousLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            nextLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            marginPagesDisplayed={500}
-                            pageCount={pageCount2}
-                            onPageChange={handlePageClick}
-                            containerClassName={styles.pagination}
-                            previousLinkClassName={styles.pagination__link}
-                            nextLinkClassName={styles.pagination__link}
-                            disabledClassName={styles.pagination__linkdisabled}
-                            activeClassName={styles.pagination__linkactive}
-                          />}
+                          {currentOrders?.length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount2}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
+                            />
+                          )}
                         </>
                       )}
                     </motion.div>
@@ -922,44 +930,48 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData3}
                           </div>
-                          {currentPageData3.length === 3 && <ReactPaginate
-                            previousLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            nextLabel={
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                            }
-                            marginPagesDisplayed={500}
-                            pageCount={pageCount3}
-                            onPageChange={handlePageClick}
-                            containerClassName={styles.pagination}
-                            previousLinkClassName={styles.pagination__link}
-                            nextLinkClassName={styles.pagination__link}
-                            disabledClassName={styles.pagination__linkdisabled}
-                            activeClassName={styles.pagination__linkactive}
-                          />}
+                          {[...currentOrders, ...currentOrders2].length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount3}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
+                            />
+                          )}
                         </>
                       )}
                     </motion.div>

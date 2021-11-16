@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
@@ -111,6 +112,16 @@ function ProductPage() {
       </motion.div>
     );
   }
+
+  // let productIdsArr = [];
+
+  // for (let i = 1; i < products.length; i++) {
+  //   productIdsArr.push(i);
+  // }
+
+  // if (!productIdsArr.includes(params.id)) {
+  //   return <Redirect to="/404" />;
+  // }
 
   return (
     <motion.div

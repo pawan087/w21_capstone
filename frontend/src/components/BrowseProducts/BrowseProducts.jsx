@@ -76,6 +76,26 @@ export default function BrowseProducts() {
       ) {
         return SortPriceRating(1, product);
       } else if (
+        params.subcategory === "starwars" &&
+        product.name.includes("Jedi")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "starwars2" &&
+        product.name.includes("Racer")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "smurfs" &&
+        product.name.includes("Smurfs")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "battlefield" &&
+        product.name.includes("Battlefield")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
         params.subcategory === "xbox" &&
         (product.Subcategory.name === "Xbox Series X" ||
           product.Subcategory.name === "Xbox One")
@@ -449,6 +469,19 @@ export default function BrowseProducts() {
     videoGamesByFourSortedLowToHigh.push(arr);
   }
 
+  // const [needPagination, setNeedPagination] = useState(false);
+  let needPagination = false;
+
+  if (videoGames.length > 12) {
+    // setNeedPagination(true);
+    needPagination = true;
+  }
+
+  if (videoGames.length <= 12) {
+    // setNeedPagination(false);
+    needPagination = false;
+  }
+
   for (let i = 0; i < videoGames.length; i += 4) {
     let arr = [];
 
@@ -471,7 +504,7 @@ export default function BrowseProducts() {
   }
 
   const [load, setLoad] = useState(false);
-  const [bool, setBool] = useState(params.rating !== "0");
+  const [bool, setBool] = useState(false);
   const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -1299,7 +1332,11 @@ export default function BrowseProducts() {
       params.subcategory === "hasbro" ||
       params.subcategory === "pokemon" ||
       params.subcategory === "razer" ||
-      params.subcategory === "fortnite"
+      params.subcategory === "fortnite" ||
+      params.subcategory === "starwars" ||
+      params.subcategory === "starwars2" ||
+      params.subcategory === "smurfs" ||
+      params.subcategory === "battlefield"
     )
   ) {
     return <Redirect to="/404" />;
@@ -1986,7 +2023,7 @@ export default function BrowseProducts() {
               >
                 <div className={styles.holder}>{currentPageData}</div>
 
-                {true && (
+                {needPagination && (
                   <ReactPaginate
                     previousLabel={
                       <svg
