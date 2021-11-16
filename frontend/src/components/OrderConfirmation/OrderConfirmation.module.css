@@ -825,6 +825,13 @@ input[type="number"] {
   transform: translateY(-20px);
 }
 
+.warning3 {
+  color: rgb(231, 35, 13);
+  font-size: 12.5px;
+  position: absolute;
+  transform: translate(55px, 0px);
+}
+
 .loader {
   position: fixed;
   top: 50%;

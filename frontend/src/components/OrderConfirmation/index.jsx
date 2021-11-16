@@ -7,6 +7,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import Cards from "react-credit-cards";
 import ReactLoading from "react-loading";
 
+
 import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 import * as sessionActions from "../../store/session";
@@ -42,6 +43,9 @@ export default function OrderConfirmation() {
   const [warningAddress2, setWarningAddress2] = useState(false);
   const [warningPhone, setWarningPhone] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [legitCardWarning, setLegitCardWarning] = useState(false);
+  const [legitExpirationDateWarning, setLegitExpirationWarning] =
+    useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -85,6 +89,10 @@ export default function OrderConfirmation() {
   }
 
   const ccNum = (e) => {
+    if (legitCardWarning) {
+      setLegitCardWarning(false);
+    }
+
     setCreditCardNumber(e.target.value);
 
     setPayed(false);
@@ -99,6 +107,10 @@ export default function OrderConfirmation() {
         setExpirationDate(newExpNum);
         return;
       }
+    }
+
+    if (legitExpirationDateWarning) {
+      setLegitExpirationWarning(false);
     }
 
     setExpirationDate(e.target.value);
@@ -335,6 +347,22 @@ export default function OrderConfirmation() {
     return;
   };
 
+  const handleWarnings = () => {
+    if (!legitCard) {
+      setLegitCardWarning(true);
+    }
+
+    if (!legitExpirationDate) {
+      setLegitExpirationWarning(true);
+    }
+
+    return;
+  };
+
+  if (shoppingCartItems.length === 0) {
+    return <Redirect to="/cart" />;
+  }
+
   if (!user) return <Redirect to="/" />;
 
   return (
@@ -536,7 +564,6 @@ export default function OrderConfirmation() {
           <div className={styles.left4thContainer}>
             <div className={styles.arrivesContainer}>
               <input defaultChecked className={styles.fakeRadio} type="radio" />
-
                <div className={styles.fakeArrives}>Arrives in 2- 4 days</div>
             </div>
 
@@ -579,11 +606,13 @@ export default function OrderConfirmation() {
                       name="number"
                     />
 
-                    {true && (
-                      <p onClick={() => demoCard()} className={styles.demoCard}>
-                        Pay with Demo Card
-                      </p>
+                    {legitCardWarning && (
+                      <div className={styles.warning3}>Invalid Credit Card</div>
                     )}
+
+                    <p onClick={() => demoCard()} className={styles.demoCard}>
+                      Pay with Demo Card
+                    </p>
                   </div>
 
                   <div className={styles.rightInputContainer}>
@@ -596,9 +625,9 @@ export default function OrderConfirmation() {
                       onChange={(e) => expNum(e)}
                       onFocus={(e) => handleInputFocus(e)}
                     />
-                    {false && (
+                    {legitExpirationDateWarning && (
                       <p className={styles.invalidExp}>
-                        Invalid expiration date.
+                        Invalid Exp. Date
                       </p>
                     )}
                   </div>
@@ -647,7 +676,12 @@ export default function OrderConfirmation() {
 
                   {(!legitCard || !legitExpirationDate) && (
                     <div className={styles.saveButtonContainer2}>
-                      <div className={styles.saveButton2}>SAVE & CONTINUE</div>
+                      <div
+                        onClick={() => handleWarnings()}
+                        className={styles.saveButton2}
+                      >
+                        SAVE & CONTINUE
+                      </div>
                     </div>
                   )}
                 </div>

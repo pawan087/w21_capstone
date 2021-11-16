@@ -61,6 +61,10 @@ export default function PostOrder() {
     );
   }
 
+  if (justOrdered?.length === 0) {
+    return <Redirect to="/orders" />;
+  }
+
   if (!user) return <Redirect to="/" />;
 
   return (
@@ -265,7 +269,7 @@ export default function PostOrder() {
       </div>
 
       <div className={styles.bottomContainer}>
-        <div className={styles.returnLink}>
+        <div onClick={() => history.push("/")} className={styles.returnLink}>
           <span className={styles.toRed}>{"RETURN TO SHOPPING "}</span>
           <FaAngleRight
             style={{

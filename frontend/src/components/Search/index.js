@@ -24,6 +24,8 @@ export default function SearchComponent({ products }) {
     handleOnClear();
 
     history.push(`/products/${item.id}`);
+
+    return criteria;
   };
 
   const handleOnFocus = () => {
@@ -35,10 +37,9 @@ export default function SearchComponent({ products }) {
   };
 
   const handleSubmit = (e) => {
-    const searchCriteria = criteria.split(" ").join("_").toLowerCase();
+    // const searchCriteria = criteria.split(" ").join("_").toLowerCase();
 
-    history.push(`/search/${searchCriteria}`);
-
+    // history.push(`/search/${searchCriteria}`);
     setCriteria("");
   };
 
@@ -84,8 +85,6 @@ export default function SearchComponent({ products }) {
           />
         </div>
       </header>
-
-      {false && <button onClick={handleSubmit}>Search</button>}
     </div>
   );
 }

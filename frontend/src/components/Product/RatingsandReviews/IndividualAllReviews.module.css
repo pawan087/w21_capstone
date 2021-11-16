@@ -311,7 +311,7 @@
 }
 
 .deleteReviewContent {
-  height: 160px;
+  max-height: 145px;
   /* width: 350px; */
   width: 320px;
   overflow: auto;

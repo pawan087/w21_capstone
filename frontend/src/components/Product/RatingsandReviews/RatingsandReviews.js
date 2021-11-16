@@ -156,6 +156,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
       })
     );
 
+    setDidMount(false);
+    setVisible(false);
+    setDidMount(true);
+
     await dispatch(setAllReviews());
 
     setContent("");
@@ -187,6 +191,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [deleteConfirmation, selectedFile]);
+
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
 
   const updateImage = (e) => {
     const file = e.target.files[0];

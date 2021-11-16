@@ -20,7 +20,7 @@ export default function TopReviewsCard({ reviews, avgRating }) {
     setBool(!bool);
     setBool2(!bool2);
     window.scrollTo({
-      top: 1075,
+      top: 1125,
       left: 0,
       behavior: "smooth",
     });

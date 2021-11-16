@@ -101,9 +101,20 @@ export default function AccountDashboard() {
       setInvalidConfirmPassword(true);
     }
 
-    if (newPassword.length < 6) {
+    let mediumPassword = new RegExp(
+      "((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))"
+    );
+
+    if (mediumPassword.test(newPassword)) {
+      // console.log("strong password");
+    } else {
+      // console.log("weak password");
       setInvalidNewPasswordWarning(true);
     }
+
+    // if (newPassword.length < 6) {
+    //   setInvalidNewPasswordWarning(true);
+    // }
 
     if (newPassword === confirmNewPassword && newPassword.length > 5) {
       setLoader2(true);
@@ -320,7 +331,9 @@ export default function AccountDashboard() {
                   )}
                   {invalidNewPasswordWarning && (
                     <span className={styles.requiredLabel}>
-                      Use 6 or more characters
+                      Password must be a minimum of 8 characters with at least
+                      one upper case letter, one lower case letter, one digit
+                      and one special character.
                     </span>
                   )}
                 </div>

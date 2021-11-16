@@ -25,6 +25,7 @@ export default function MyNavBar() {
   const [loader, setLoader] = useState(false);
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
+  const [productPic, setProductPic] = useState();
   const [cartItemId, setCartItemId] = useState();
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
@@ -96,11 +97,12 @@ export default function MyNavBar() {
     setVisible2(false);
   }
 
-  const showRemoveConfirmationModal = (name, id, id2) => {
+  const showRemoveConfirmationModal = (name, id, id2, img) => {
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
     setRemoveConfirmation(true);
+    setProductPic(img);
 
     return productId;
   };
@@ -219,8 +221,18 @@ export default function MyNavBar() {
   };
 
   return (
-    <div className={styles.myNavbar}>
-      <div className={styles.outerContainer}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.myNavbar}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.outerContainer}
+      >
         <div className={styles.leftSection}>
           <div onClick={openNav} className={styles.leftMenuButtonContainer}>
             <div className={styles.leftMenuButton}>
@@ -369,7 +381,12 @@ export default function MyNavBar() {
                   return (
                     <MenuItem key={i} className={styles.menuItemOuterContainer}>
                       <div className={styles.menuItemLeftContainer}>
-                        <div className={styles.menuItemProductImageContainer}>
+                        <div
+                          onClick={() =>
+                            history.push(`/products/${product.id}`)
+                          }
+                          className={styles.menuItemProductImageContainer}
+                        >
                           <img
                             className={styles.menuItemProductImage}
                             alt="productImageInSubMenu"
@@ -380,8 +397,14 @@ export default function MyNavBar() {
 
                       <div className={styles.menuItemRightContainer}>
                         <div className={styles.menuItemRightTopContainer}>
-                          <div className={styles.menuItemProductName}>
-                            {product?.name}
+                          <div
+                            onClick={() =>
+                              history.push(`/products/${product.id}`)
+                            }
+                            className={styles.menuItemProductName}
+                          >
+                            {product?.name.slice(0, 45)}
+                            {product?.name?.length > 45 ? "..." : null}
                           </div>
 
                           <div className={styles.menuItemProductQuantity}>
@@ -395,7 +418,8 @@ export default function MyNavBar() {
                               showRemoveConfirmationModal(
                                 product.name,
                                 product.id,
-                                product.cartItemId
+                                product.cartItemId,
+                                product.images[0]
                               )
                             }
                             className={styles.removeLink}
@@ -500,7 +524,7 @@ export default function MyNavBar() {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
       <Rodal
         closeOnEsc={true}
@@ -524,6 +548,7 @@ export default function MyNavBar() {
           </div>
 
           <div className={styles.secondContainer}>
+            <img alt="productPic" src={productPic} />
             <div className={styles.reviewUsername}>{productName}</div>
           </div>
 
@@ -720,6 +745,6 @@ export default function MyNavBar() {
 
         /* END SIDE BARS */
       }
-    </div>
+    </motion.div>
   );
 }

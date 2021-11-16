@@ -768,7 +768,7 @@ export default function AccountDashboard() {
                       {!bool && (
                         <>
                           <div className={styles.holder}>{currentPageData}</div>
-                          <ReactPaginate
+                          {currentPageData.length === 3 && <ReactPaginate
                             previousLabel={
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -805,7 +805,7 @@ export default function AccountDashboard() {
                             nextLinkClassName={styles.pagination__link}
                             disabledClassName={styles.pagination__linkdisabled}
                             activeClassName={styles.pagination__linkactive}
-                          />
+                          />}
                         </>
                       )}
                     </motion.div>
@@ -845,7 +845,7 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData2}
                           </div>
-                          <ReactPaginate
+                          {currentPageData2.length === 3 && <ReactPaginate
                             previousLabel={
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -882,7 +882,7 @@ export default function AccountDashboard() {
                             nextLinkClassName={styles.pagination__link}
                             disabledClassName={styles.pagination__linkdisabled}
                             activeClassName={styles.pagination__linkactive}
-                          />
+                          />}
                         </>
                       )}
                     </motion.div>
@@ -922,7 +922,7 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData3}
                           </div>
-                          <ReactPaginate
+                          {currentPageData3.length === 3 && <ReactPaginate
                             previousLabel={
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -959,7 +959,7 @@ export default function AccountDashboard() {
                             nextLinkClassName={styles.pagination__link}
                             disabledClassName={styles.pagination__linkdisabled}
                             activeClassName={styles.pagination__linkactive}
-                          />
+                          />}
                         </>
                       )}
                     </motion.div>

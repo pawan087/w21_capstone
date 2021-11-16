@@ -42,7 +42,8 @@ export default function IndividualTopReview({ review }) {
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
   const [rating, setRating] = useState(review?.rating);
-  const [content, setContent] = useState(review?.content);
+  const [thisReview, setThisReview] = useState({ ...review });
+  const [content, setContent] = useState(thisReview?.content);
   const [preview, setPreview] = useState(review.imageUrl);
   const [selectedFile, setSelectedFile] = useState(false);
   const [uploadMsg, setUploadMsg] = useState("Upload Picture");
@@ -111,9 +112,9 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleSubmit2 = async () => {
-    if (rating === review?.rating && content === review?.content) {
-      return;
-    }
+    // if (rating === review?.rating && content === review?.content) {
+    //   return;
+    // }
 
     setLoading(true);
     setBool(false);
@@ -126,7 +127,11 @@ export default function IndividualTopReview({ review }) {
     });
 
     await dispatch(deleteReview({ id: review.id, arr }));
+    setThisReview({ ...review });
 
+    setDidMount(false);
+    setVisible2(false);
+    setDidMount(true);
     await dispatch(setAllReviews());
 
     setLoading(false);
@@ -192,6 +197,13 @@ export default function IndividualTopReview({ review }) {
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
 
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
+
   const updateImage = (e) => {
     const file = e.target.files[0];
 
@@ -236,7 +248,7 @@ export default function IndividualTopReview({ review }) {
     if (!user) {
       history.push("/signin");
 
-      return
+      return;
     }
 
     let alreadyLiked = false;
@@ -292,7 +304,7 @@ export default function IndividualTopReview({ review }) {
     if (!user) {
       history.push("/signin");
 
-      return
+      return;
     }
 
     let alreadyDisliked = false;
