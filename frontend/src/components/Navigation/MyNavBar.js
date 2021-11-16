@@ -221,10 +221,8 @@ export default function MyNavBar() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <div
+
       className={styles.myNavbar}
     >
       <motion.div
@@ -745,6 +743,6 @@ export default function MyNavBar() {
 
         /* END SIDE BARS */
       }
-    </motion.div>
+    </div>
   );
 }

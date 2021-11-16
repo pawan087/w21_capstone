@@ -632,10 +632,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
         onClose={hideLimitQuantityModal}
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
-          {product[0]?.name}{" "}
-          {
-            "cannot be added to the cart. You can only purchase 5 of this item per transaction."
-          }
+          <span className={styles.errorMessageTextContainer}>
+            {product[0]?.name.slice(0, 70)}
+            {product[0]?.name.length >= 70 ? "... " : null}
+            {
+              "cannot be added to the cart. You can only purchase 5 of this item per transaction."
+            }
+          </span>
         </div>
       </Rodal>
     </>

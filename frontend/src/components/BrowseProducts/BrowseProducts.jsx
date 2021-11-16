@@ -517,183 +517,361 @@ export default function BrowseProducts() {
 
   const handleCategorySelection = (category) => {
     if (category === "Nintendo Switch" && params.category === "videogames") {
-      history.push(`/p/videogames/switch/0/0`);
+      if (params.subcategory !== "switch") {
+        history.push(`/p/videogames/switch/0/0`);
+      } else {
+        history.push("/p/videogames/0/0/0");
+      }
     }
 
     if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/0/0`);
-    }
-
-    if (category === "PlayStation 4" && params.category === "videogames") {
-      history.push(`/p/videogames/ps4/0/0`);
+      if (params.subcategory === "ps4") {
+        history.push("/p/videogames/0/0/0");
+      } else {
+        history.push("/p/videogames/ps4/0/0");
+      }
     }
 
     if (category === "PlayStation 5" && params.category === "videogames") {
-      history.push(`/p/videogames/ps5/0/0`);
+      // history.push(`/p/videogames/ps5/0/0`);
+      if (params.subcategory === "ps5") {
+        history.push("/p/videogames/0/0/0");
+      } else {
+        history.push("/p/videogames/ps5/0/0");
+      }
     }
 
     if (category === "Xbox One" && params.category === "videogames") {
-      history.push(`/p/videogames/xbox1/0/0`);
+      // history.push(`/p/videogames/xbox1/0/0`);
+      if (params.subcategory === "xbox1") {
+        history.push("/p/videogames/0/0/0");
+      } else {
+        history.push("/p/videogames/xbox1/0/0");
+      }
     }
 
     if (category === "Xbox Series X" && params.category === "videogames") {
-      history.push(`/p/videogames/xboxx/0/0`);
+      // history.push(`/p/videogames/xboxx/0/0`);
+      if (params.subcategory === "xboxx") {
+        history.push("/p/videogames/0/0/0");
+      } else {
+        history.push("/p/videogames/xboxx/0/0");
+      }
     }
 
     if (category === "Nintendo Switch" && params.category === "consoles") {
-      history.push(`/p/consoles/switch/0/0`);
+      // history.push(`/p/consoles/switch/0/0`);
+      if (params.subcategory === "switch") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/switch/0/0");
+      }
     }
 
     if (category === "PlayStation 4" && params.category === "consoles") {
-      history.push(`/p/consoles/ps4/0/0`);
+      // history.push(`/p/consoles/ps4/0/0`);
+      if (params.subcategory === "ps4") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/ps4/0/0");
+      }
     }
 
     if (category === "PlayStation 5" && params.category === "consoles") {
-      history.push(`/p/consoles/ps5/0/0`);
+      // history.push(`/p/consoles/ps5/0/0`);
+      if (params.subcategory === "ps5") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/ps5/0/0");
+      }
     }
 
     if (category === "PC Gaming" && params.category === "consoles") {
-      history.push(`/p/consoles/pc/0/0`);
+      // history.push(`/p/consoles/pc/0/0`);
+      if (params.subcategory === "pc") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/pc/0/0");
+      }
     }
 
     if (category === "Virtual Reality" && params.category === "consoles") {
-      history.push(`/p/consoles/vr/0/0`);
+      // history.push(`/p/consoles/vr/0/0`);
+      if (params.subcategory === "vr") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/vr/0/0");
+      }
     }
 
     if (category === "Xbox One" && params.category === "consoles") {
-      history.push(`/p/consoles/xbox1/0/0`);
+      // history.push(`/p/consoles/xbox1/0/0`);
+      if (params.subcategory === "xbox1") {
+        history.push("/p/consoles/0/0/0");
+      } else {
+        history.push("/p/consoles/xbox1/0/0");
+      }
     }
 
     if (category === "Controllers" && params.category === "accessories") {
-      history.push(`/p/accessories/controllers/0/0`);
+      // history.push(`/p/accessories/controllers/0/0`);
+      if (params.subcategory === "controllers") {
+        history.push("/p/accessories/0/0/0");
+      } else {
+        history.push("/p/accessories/controllers/0/0");
+      }
     }
 
     if (category === "Memory" && params.category === "accessories") {
-      history.push(`/p/accessories/memory/0/0`);
-    }
-
-    if (category === "Memory" && params.category === "accessories") {
-      history.push(`/p/accessories/memory/0/0`);
+      // history.push(`/p/accessories/memory/0/0`);
+      if (params.subcategory === "memory") {
+        history.push("/p/accessories/0/0/0");
+      } else {
+        history.push("/p/accessories/memory/0/0");
+      }
     }
 
     if (category === "Mounts" && params.category === "accessories") {
-      history.push(`/p/accessories/mounts/0/0`);
+      // history.push(`/p/accessories/mounts/0/0`);
+      if (params.subcategory === "mounts") {
+        history.push("/p/accessories/0/0/0");
+      } else {
+        history.push("/p/accessories/mounts/0/0");
+      }
     }
 
     if (category === "PC Gaming" && params.category === "accessories") {
-      history.push(`/p/accessories/pc/0/0`);
+      // history.push(`/p/accessories/pc/0/0`);
+      if (params.subcategory === "pc") {
+        history.push("/p/accessories/0/0/0");
+      } else {
+        history.push("/p/accessories/pc/0/0");
+      }
     }
 
     if (category === "Xbox One" && params.category === "accessories") {
-      history.push(`/p/accessories/xbox1/0/0`);
+      // history.push(`/p/accessories/xbox1/0/0`);
+      if (params.subcategory === "xbox1") {
+        history.push("/p/accessories/0/0/0");
+      } else {
+        history.push("/p/accessories/xbox1/0/0");
+      }
     }
 
     if (category === "Audio" && params.category === "electronics") {
-      history.push(`/p/electronics/audio/0/0`);
+      // history.push(`/p/electronics/audio/0/0`);
+      if (params.subcategory === "audio") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/audio/0/0");
+      }
     }
 
     if (category === "Cameras" && params.category === "electronics") {
-      history.push(`/p/electronics/cameras/0/0`);
+      // history.push(`/p/electronics/cameras/0/0`);
+      if (params.subcategory === "cameras") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/cameras/0/0");
+      }
     }
 
     if (category === "Cell Phones" && params.category === "electronics") {
-      history.push(`/p/electronics/phones/0/0`);
+      // history.push(`/p/electronics/phones/0/0`);
+      if (params.subcategory === "phones") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/phones/0/0");
+      }
     }
 
     if (category === "Drone" && params.category === "electronics") {
-      history.push(`/p/electronics/drone/0/0`);
+      // history.push(`/p/electronics/drone/0/0`);
+      if (params.subcategory === "drone") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/drone/0/0");
+      }
     }
 
     if (
       category === "Smart Home Automation" &&
       params.category === "electronics"
     ) {
-      history.push(`/p/electronics/home/0/0`);
+      // history.push(`/p/electronics/home/0/0`);
+      if (params.subcategory === "home") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/home/0/0");
+      }
     }
 
     if (category === "TV & Home Theater" && params.category === "electronics") {
-      history.push(`/p/electronics/theater/0/0`);
+      // history.push(`/p/electronics/theater/0/0`);
+      if (params.subcategory === "theater") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/theater/0/0");
+      }
     }
 
     if (category === "Arts & Crafts Toys" && params.category === "toysgames") {
-      history.push(`/p/toysgames/art/0/0`);
+      // history.push(`/p/toysgames/art/0/0`);
+      if (params.subcategory === "art") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/art/0/0");
+      }
     }
 
     if (category === "Board Games" && params.category === "toysgames") {
-      history.push(`/p/toysgames/boardgames/0/0`);
+      // history.push(`/p/toysgames/boardgames/0/0`);
+      if (params.subcategory === "boardgames") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/boardgames/0/0");
+      }
     }
 
     if (
       category === "Building & Construction Sets" &&
       params.category === "toysgames"
     ) {
-      history.push(`/p/toysgames/construction/0/0`);
-    }
-
-    if (
-      category === "Building & Construction Sets" &&
-      params.category === "toysgames"
-    ) {
-      history.push(`/p/toysgames/construction/0/0`);
+      // history.push(`/p/toysgames/construction/0/0`);
+      if (params.subcategory === "construciton") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/construciton/0/0");
+      }
     }
 
     if (category === "Dolls & Dollhouses" && params.category === "toysgames") {
-      history.push(`/p/toysgames/dolls/0/0`);
+      // history.push(`/p/toysgames/dolls/0/0`);
+      if (params.subcategory === "dolls") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/dolls/0/0");
+      }
     }
 
     if (category === "NERF" && params.category === "toysgames") {
-      history.push(`/p/toysgames/nerf/0/0`);
+      // history.push(`/p/toysgames/nerf/0/0`);
+      if (params.subcategory === "nerf") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/nerf/0/0");
+      }
     }
 
     if (category === "Play Vehicles" && params.category === "toysgames") {
-      history.push(`/p/toysgames/vehicles/0/0`);
+      // history.push(`/p/toysgames/vehicles/0/0`);
+      if (params.subcategory === "vehicles") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/vehicles/0/0");
+      }
     }
 
     if (category === "Puzzles" && params.category === "toysgames") {
-      history.push(`/p/toysgames/puzzles/0/0`);
+      // history.push(`/p/toysgames/puzzles/0/0`);
+      if (params.subcategory === "puzzles") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/puzzles/0/0");
+      }
     }
 
     if (category === "Scooters & Ride Ons" && params.category === "toysgames") {
-      history.push(`/p/toysgames/scooters/0/0`);
+      // history.push(`/p/toysgames/scooters/0/0`);
+      if (params.subcategory === "scooters") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/scooters/0/0");
+      }
     }
 
     if (
       category === "Stuffed Animals & Plush" &&
       params.category === "toysgames"
     ) {
-      history.push(`/p/toysgames/plush/0/0`);
+      // history.push(`/p/toysgames/plush/0/0`);
+      if (params.subcategory === "plush") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/plush/0/0");
+      }
     }
 
     if (category === "Trading Cards" && params.category === "toysgames") {
-      history.push(`/p/toysgames/cards/0/0`);
+      // history.push(`/p/toysgames/cards/0/0`);
+      if (params.subcategory === "cards") {
+        history.push("/p/toysgames/0/0/0");
+      } else {
+        history.push("/p/toysgames/cards/0/0");
+      }
     }
 
     if (category === "Accessories" && params.category === "clothing") {
-      history.push(`/p/clothing/accessories/0/0`);
+      // history.push(`/p/clothing/accessories/0/0`);
+      if (params.subcategory === "accessories") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/accessories/0/0");
+      }
     }
 
     if (category === "Bags" && params.category === "clothing") {
-      history.push(`/p/clothing/bags/0/0`);
+      // history.push(`/p/clothing/bags/0/0`);
+      if (params.subcategory === "bags") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/bags/0/0");
+      }
     }
 
     if (category === "Footwear" && params.category === "clothing") {
-      history.push(`/p/clothing/footwear/0/0`);
+      // history.push(`/p/clothing/footwear/0/0`);
+      if (params.subcategory === "footwear") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/footwear/0/0");
+      }
     }
 
     if (category === "Jackets & Outerwear" && params.category === "clothing") {
-      history.push(`/p/clothing/jackets/0/0`);
+      // history.push(`/p/clothing/jackets/0/0`);
+      if (params.subcategory === "jackets") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/jackets/0/0");
+      }
     }
 
     if (category === "Pants & Shorts" && params.category === "clothing") {
-      history.push(`/p/clothing/pants/0/0`);
+      // history.push(`/p/clothing/pants/0/0`);
+      if (params.subcategory === "pants") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/pants/0/0");
+      }
     }
 
     if (category === "T-Shirts" && params.category === "clothing") {
-      history.push(`/p/clothing/shirts/0/0`);
+      // history.push(`/p/clothing/shirts/0/0`);
+      if (params.subcategory === "shirts") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/shirts/0/0");
+      }
     }
 
     if (category === "Watches" && params.category === "clothing") {
-      history.push(`/p/clothing/watches/0/0`);
+      // history.push(`/p/clothing/watches/0/0`);
+      if (params.subcategory === "watches") {
+        history.push("/p/clothing/0/0/0");
+      } else {
+        history.push("/p/clothing/watches/0/0");
+      }
     }
 
     return;
