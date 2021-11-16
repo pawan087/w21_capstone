@@ -2225,6 +2225,20 @@ module.exports = {
           ],
           rating: 0.0,
         },
+        {
+          name: "Sony DualSense Wireless Controller White",
+          description:
+            "Discover a deeper, highly immersive gaming experience that brings the action to life in the palms of your hands. The PlayStation 5 DualSense™ wireless controller offers immersive haptic feedback, dynamic adaptive triggers and a built-in microphone, all integrated into an iconic comfortable design. Take gaming to the next level with this wireless PS5 controller.",
+          brandId: 9,
+          price: 69.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11106262/Sony-DualSense-Wireless-Controller-White?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
       ],
       {}
     );

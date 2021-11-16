@@ -1,14 +1,18 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 import styles from "./styles.module.css";
 
 export default function SubBanner() {
+  const history = useHistory();
+
   return (
     <div className={styles.subBannerContainer}>
       <div className={styles.newReleasesContainer}>
         <img
           alt="newRelPic"
           className={styles.subBannerPic}
+          onClick={() => history.push("/p/videogames/0/0/0")}
           src="https://media.gamestop.com/i/gamestop/NewReleases_596x400_D2ColumnFeature_4.webp"
         />
         <div className={styles.subBannerPicCaptions}>
@@ -21,6 +25,7 @@ export default function SubBanner() {
         <img
           className={styles.subBannerPic}
           alt="newRelPic"
+          onClick={() => history.push("/p/videogames/cod/0/0")}
           src="https://media.gamestop.com/i/gamestop/CODVanguard_596x400_D2ColumnFeature_1.webp"
         />
         <div className={styles.subBannerPicCaptions}>

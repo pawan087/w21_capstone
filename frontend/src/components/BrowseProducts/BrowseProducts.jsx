@@ -64,6 +64,11 @@ export default function BrowseProducts() {
         product.Subcategory.name === "Xbox Series X"
       ) {
         return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "cod" &&
+        product.name.includes("Duty")
+      ) {
+        return SortPriceRating(1, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(1, product);
       } else {

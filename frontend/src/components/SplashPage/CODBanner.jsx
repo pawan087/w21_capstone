@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import ReactPlayer from "react-player";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -6,6 +7,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import styles from "./styles.module.css";
 
 export default function CODBanner() {
+  const history = useHistory();
   const [arrowUp, setArrowUp] = useState(false);
 
   const variants = {
@@ -28,6 +30,7 @@ export default function CODBanner() {
       <img
         alt="codBanner"
         className={styles.codBannerPic}
+        onClick={() => history.push("/p/videogames/cod/0/0")}
         src="https://media.gamestop.com/i/gamestop/COD_Vanguard_GME_HomepageTakeover_DeskTop_1280x100_A_2R1.webp"
       />
 
