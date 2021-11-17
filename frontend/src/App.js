@@ -70,9 +70,11 @@ function App() {
               </Route>
             )}
 
-            <Route path="/products" exact={true}>
-              <ProductsPage />
-            </Route>
+            {false && (
+              <Route path="/products" exact={true}>
+                <ProductsPage />
+              </Route>
+            )}
 
             <Route path="/products/:id" exact={true}>
               <ProductPage />

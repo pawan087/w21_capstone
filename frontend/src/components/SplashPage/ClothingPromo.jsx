@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 
 import styles from "./styles.module.css";
 
 export default function ClothingPromo() {
+  const history = useHistory();
+
   return (
     <>
       <div className={styles.spacer} />
@@ -13,6 +16,7 @@ export default function ClothingPromo() {
           <img
             alt="phoneBannerLeft"
             src="https://media.gamestop.com/i/gamestop/Apparel_VerticalBlade_386x680.webp"
+            onClick={() => history.push("/p/clothing/0/0/0")}
           />
         </div>
 
@@ -23,6 +27,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11166189/GameStop-Logo-Unisex-Joggers?$pdp2x$"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/111")}
                 />
               </div>
 
@@ -30,7 +35,10 @@ export default function ClothingPromo() {
                 $49.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/111")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Logo Unisex Joggers
               </div>
             </div>
@@ -40,6 +48,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11151222_black/GameStop-Premium-Logo-Unisex-T-Shirt-black?$pdp$$&fmt=webp"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/113")}
                 />
               </div>
 
@@ -47,7 +56,10 @@ export default function ClothingPromo() {
                 $29.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/113")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Premium Logo Unisex T-Shirt
               </div>
             </div>
@@ -57,6 +69,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11166187/GameStop-Rocket-Unisex-Button-Up-Short-Sleeve-Shirt?$pdp2x$"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/116")}
                 />
               </div>
 
@@ -64,7 +77,10 @@ export default function ClothingPromo() {
                 $69.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/116")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Rocket Unisex Button Up Short Sleeve Shirt
               </div>
             </div>
@@ -76,6 +92,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11166186/GameStop-Logo-Unisex-Hooded-Sweatshirt?$pdp$$&fmt=webp"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/115")}
                 />
               </div>
 
@@ -83,7 +100,10 @@ export default function ClothingPromo() {
                 $52.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/115")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Logo Unisex Hooded Sweatshirt
               </div>
             </div>
@@ -93,6 +113,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11166665/GameStop-Power-To-The-Players-Unisex-T-Shirt?$pdp$$&fmt=webp"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/118")}
                 />
               </div>
 
@@ -100,7 +121,10 @@ export default function ClothingPromo() {
                 $29.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/118")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Power To The Players Unisex T-Shirt
               </div>
             </div>
@@ -113,6 +137,7 @@ export default function ClothingPromo() {
                 <img
                   src="https://media.gamestop.com/i/gamestop/11166184/GameStop-Logo-Unisex-Beanie?$pdp$$&fmt=webp"
                   alt="cellPhoneImage"
+                  onClick={() => history.push("/products/121")}
                 />
               </motion.div>
 
@@ -120,7 +145,10 @@ export default function ClothingPromo() {
                 $14.99 <span className={styles.fakeNew}>New</span>
               </div>
 
-              <div className={styles.clothingNameContainer}>
+              <div
+                onClick={() => history.push("/products/121")}
+                className={styles.clothingNameContainer}
+              >
                 GameStop Logo Unisex Beanie
               </div>
             </div>

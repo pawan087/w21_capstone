@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 
 import styles from "./styles.module.css";
 
 export default function ConsolesCard() {
+  const history = useHistory();
+
   return (
     <>
       <div className={styles.spacer} />
@@ -11,7 +14,10 @@ export default function ConsolesCard() {
       <div className={styles.cellPhonePromoContainer}>
         <div className={styles.rightPhoneBannerContainer}>
           <div className={styles.rightTopPhoneBannerContainer}>
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/99")}
+              className={styles.cellPhoneContainer}
+            >
               <div className={styles.consoleImageContainer}>
                 <img
                   src="https://media.gamestop.com/i/gamestop/11095775/Nintendo-Switch-Lite-Console-Turquoise?$pdp$$&fmt=webp"
@@ -28,7 +34,10 @@ export default function ConsolesCard() {
               </div>
             </div>
 
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/100")}
+              className={styles.cellPhoneContainer}
+            >
               <div className={styles.consoleImageContainer}>
                 <img
                   src="https://media.gamestop.com/i/gamestop/11095821/Nintendo-Switch-Console-Gray-Joy-Con?$pdp$$&fmt=webp"
@@ -45,7 +54,10 @@ export default function ConsolesCard() {
               </div>
             </div>
 
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/101")}
+              className={styles.cellPhoneContainer}
+            >
               <div className={styles.consoleImageContainer}>
                 <img
                   src="https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp2x$"
@@ -64,7 +76,10 @@ export default function ConsolesCard() {
           </div>
 
           <div className={styles.rightTopPhoneBannerContainer}>
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/102")}
+              className={styles.cellPhoneContainer}
+            >
               <div className={styles.consoleImageContainer}>
                 <img
                   src="https://media.gamestop.com/i/gamestop/10134659/Sony-PlayStation-4-Pro-1TB-Console-Black?$pdp2x$"
@@ -81,7 +96,10 @@ export default function ConsolesCard() {
               </div>
             </div>
 
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/104")}
+              className={styles.cellPhoneContainer}
+            >
               <div className={styles.consoleImageContainer}>
                 <img
                   src="https://media.gamestop.com/i/gamestop/10115705/Microsoft-Xbox-One-500GB-Console-Black-with-Original-Controller?$pdp$$&fmt=webp"
@@ -98,7 +116,10 @@ export default function ConsolesCard() {
               </div>
             </div>
 
-            <div className={styles.cellPhoneContainer}>
+            <div
+              onClick={() => history.push("/products/103")}
+              className={styles.cellPhoneContainer}
+            >
               <motion.div
                 /* whileHover={{ filter: `invert()` }} */
                 className={styles.consoleImageContainer}
@@ -124,6 +145,7 @@ export default function ConsolesCard() {
           <img
             alt="phoneBannerLeft"
             src="https://media.gamestop.com/i/gamestop/Pre_Owned_Consoles_VerticalBlade_D.webp"
+            onClick={() => history.push("/p/consoles/0/0/0")}
           />
         </div>
       </div>

@@ -78,7 +78,12 @@ export default function TopSellers() {
                       onClick={() => history.push(`/products/${x.id}`)}
                     />
                   </div>
-                  <div className={styles.itemName}>{x.name}</div>
+                  <div
+                    onClick={() => history.push(`/products/${x.id}`)}
+                    className={styles.itemName}
+                  >
+                    {x.name}
+                  </div>
                 </Carousel.Item>
               );
             })}

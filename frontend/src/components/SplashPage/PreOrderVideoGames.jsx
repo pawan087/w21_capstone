@@ -77,6 +77,26 @@ export default function PreOrderVideoGames() {
       history.push("/p/videogames/battlefield/0/0");
     }
 
+    if (i === 5) {
+      history.push("/products/123");
+    }
+
+    if (i === 6) {
+      history.push("/p/videogames/kena/0/0");
+    }
+
+    if (i === 7) {
+      history.push("/products/98");
+    }
+
+    if (i === 8) {
+      history.push("/p/videogames/disney/0/0");
+    }
+
+    if (i === 9) {
+      history.push("/products/141");
+    }
+
     return;
   };
 
@@ -98,7 +118,12 @@ export default function PreOrderVideoGames() {
                       onClick={() => handleClick(x, i)}
                     />
                   </div>
-                  <div className={styles.itemName}>{x.name}</div>
+                  <div
+                    onClick={() => handleClick(x, i)}
+                    className={styles.itemName}
+                  >
+                    {x.name}
+                  </div>
                 </Carousel.Item>
               );
             })}

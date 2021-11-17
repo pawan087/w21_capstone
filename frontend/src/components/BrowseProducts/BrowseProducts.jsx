@@ -96,6 +96,16 @@ export default function BrowseProducts() {
       ) {
         return SortPriceRating(1, product);
       } else if (
+        params.subcategory === "kena" &&
+        product.name.includes("Kena")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
+        params.subcategory === "disney" &&
+        product.name.includes("Disney")
+      ) {
+        return SortPriceRating(1, product);
+      } else if (
         params.subcategory === "xbox" &&
         (product.Subcategory.name === "Xbox Series X" ||
           product.Subcategory.name === "Xbox One")
@@ -469,16 +479,13 @@ export default function BrowseProducts() {
     videoGamesByFourSortedLowToHigh.push(arr);
   }
 
-  // const [needPagination, setNeedPagination] = useState(false);
   let needPagination = false;
 
   if (videoGames.length > 12) {
-    // setNeedPagination(true);
     needPagination = true;
   }
 
   if (videoGames.length <= 12) {
-    // setNeedPagination(false);
     needPagination = false;
   }
 
@@ -1336,7 +1343,9 @@ export default function BrowseProducts() {
       params.subcategory === "starwars" ||
       params.subcategory === "starwars2" ||
       params.subcategory === "smurfs" ||
-      params.subcategory === "battlefield"
+      params.subcategory === "battlefield" ||
+      params.subcategory === "kena" ||
+      params.subcategory === "disney"
     )
   ) {
     return <Redirect to="/404" />;

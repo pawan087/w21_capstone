@@ -113,6 +113,7 @@
   font-size: 17.5px;
   font-weight: bold;
   color: rgb(86, 86, 86);
+  cursor: pointer;
 }
 
 .subBannerPicSubtitle {
@@ -308,6 +309,7 @@
   width: 325px;
   transition: 0.15s ease-in-out;
   justify-content: center;
+  cursor: pointer;
 }
 
 .cellPhoneContainer:hover {
@@ -417,6 +419,7 @@
   font-size: 12.5px;
   /* font-weight: bold; */
   color: rgba(39, 39, 39, 0.85);
+  cursor: pointer;
 }
 
 .consoleNameContainer {
