@@ -2239,6 +2239,34 @@ module.exports = {
           ],
           rating: 0.0,
         },
+        {
+          name: "Disney Classic Games Collection - PlayStation 4",
+          description:
+            "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
+          brandId: 57,
+          price: 29.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11162654/Disney-Classic-Games-Collection---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Disney Classic Games Collection - Xbox One",
+          description:
+            "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
+          brandId: 57,
+          price: 29.99,
+          categoryId: 1,
+          subcategoryId: 13,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11162655/Disney-Classic-Games-Collection---Xbox-One?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
       ],
       {}
     );

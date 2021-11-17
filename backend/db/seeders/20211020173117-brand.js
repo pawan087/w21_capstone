@@ -179,6 +179,9 @@ module.exports = {
         {
           name: "Next Level Racing", // 56
         },
+        {
+          name: "Nighthawk Interactive", // 57
+        },
       ],
       {}
     );
