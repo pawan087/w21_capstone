@@ -16,7 +16,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10161250/Grand-Theft-Auto-V-Premium-Edition---PlayStation-4?$pdp$$&fmt=webp",
-            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/01.webp?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMSJHMEUCIDH9kXt1PxKncqINU0LApPdXol5CrkH82UgUeMS8Tm2zAiEA1HbKqt6u4v%2FGqaHomg8NXvXOdf%2BN1HnG8xpAGDELtCsq%2FwIInf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw4NzIyNzc1MTQ1NjUiDMI85mk8oTQfuonuHCrTAjlGVF7cuPs4ig3IvqVLUKTTcdJVxNXYtEAMoJnKazsMIE%2B2EOYzVSwd96myUy1ZJ2Q0P9Gv8rfoCX%2BGLVoWDfAY52A2Sn7M6oGyE1wEa70y3E6w1Vj5aSw8%2BAm7vDN7chYwkkug3f83NI9qvNE6rA6Pol6qa2Gw%2Ff6rVoy0j6khmf1PP49ZTzTxe0h4lnfndUCnxTpkj9G%2FvrTK457iHwqyAhw8BrUUqB1q9RXeJ3ugG8EZr4jKrqn5U2e5dXssCOKxMZq3pqSYO1YU2FOoRQXQWcX3n%2FeLwWJWOh0npBR3ccYzPO9HLIcHNlzSvhM6Bu5SMy8verNUtf4A2vUj%2FrZcuaH2gpF4KCJeHkWPxJy4kufaJNR4lTf6%2B3rNEiAIHQ%2Bo3O%2FFzlaSt22D0aS3BPeyLrZEoyIwEb%2BMA7%2BG0c%2BtE0vZTxPL9xUort5K5TYIu7yfMTClhNKMBjqzAtjZCcqrK17DRwCS2HJlfOKsgCt2DDGTtWayjtvG3mN4YMyhnZkSI49GtTW%2B2s6zlLXBm60jH2yQiv4FUGMT1%2Fzy1LTeCVH6Csw7FIbFtevhyEboDOmHbgKc0IOtgwwfidciyCRawIKnmQ8h2LMMDEmZBsen9csL%2By%2FDZdzzaJKwV5igfrqdl5HMYvLopqZKL5Oh5shA9388NuP0BkU0XqgcY5Cnt%2B8HtyawbNOIzV9genzHVfvuGN8SzlOuQ9HPt%2BIkM%2Be8fN2zVOLsGzoqlEeHN1TzA%2F7q0lM%2BQJlkQP9FJ1G1nkNk55cH1ld6ZqeUUcxjpASnr8%2BMapkxZnWPHnOrNpjfHTejPtvJ5O3ucniuzTZ5SLMCP6ACCsu6PnoteLHXXTrfSstW%2Fq59ByTTiZptoXo%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20211117T042601Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIA4WF6KTFC6X5FTERM%2F20211117%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Signature=19574fb667c7256f86eb9b92a206bff494be83a0c171f1ad97729198f80d2196",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/01.webp",
           ],
           rating: 5.0,
         },
@@ -910,6 +910,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11121396/Jazwares-Squishville-Mini-Squishmallows-Brilliant-Besties-14-Pack-2.6-In-Plushes?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/61.jpg",
           ],
           rating: 4.0,
         },
@@ -924,6 +925,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11146074/Knex-K-Force-Battle-Bow-Building-Set?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/62.jpg",
           ],
           rating: 4.0,
         },
@@ -938,6 +940,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11140776/Connect-4-Shots-Space-Jam-A-New-Legacy-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/64.jpg",
           ],
           rating: 5.0,
         },
@@ -952,6 +955,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11152237/Disney-Princess-Ultimate-Celebration-Castle?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/65.jpg",
           ],
           rating: 1.0,
         },
@@ -966,6 +970,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156211/Play-Doh-65-Ultra-Color-Collection-Set?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/63.jpg",
           ],
           rating: 0.0,
         },
@@ -980,6 +985,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156216/Transformers-Cyberverse-Dinobots-Unite-Roll-N-Change-Optimus-Prime?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/66.jpg",
           ],
           rating: 0.0,
         },
@@ -994,6 +1000,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153616/Nerf-Roblox-MM2-Shark-Seeker-Blaster?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/67.jpg",
           ],
           rating: 4.6,
         },
@@ -1008,6 +1015,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11100218/Magic-The-Gathering-Unsanctioned?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/68.jpg",
           ],
           rating: 5.0,
         },
@@ -1022,6 +1030,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11105163/Jenga-Super-Mario-Bros.-Edition-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/69.jpg",
           ],
           rating: 4.4,
         },
@@ -1036,6 +1045,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148583/The-Game-of-Life-Super-Mario-Edition-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/69.jpg",
           ],
           rating: 4.9,
         },
@@ -1050,6 +1060,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153708/Sheriff-of-Nottingham-Second-Edition-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/71.jpg",
           ],
           rating: 0.0,
         },
@@ -1064,6 +1075,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153713/Star-Wars-Legion-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/72.jpg",
           ],
           rating: 0.0,
         },
@@ -1078,6 +1090,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11112992/YAHTZEE-Cup-Noodles?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/73.jpg",
           ],
           rating: 5.0,
         },
@@ -1092,6 +1105,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11112984/USAopoly-Clue-The-Office-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/74.jpg",
           ],
           rating: 0.0,
         },
@@ -1106,6 +1120,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114625_silver/iPhone-12-Pro-128GB---Unlocked-silver?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/75.jpg",
           ],
           rating: 0.0,
         },
@@ -1120,6 +1135,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098256_space-gray/iPhone-11-Pro-Max-256GB---Unlocked-space-gray?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/76.jpg",
           ],
           rating: 0.0,
         },
@@ -1134,6 +1150,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114626_silver/iPhone-12-Pro-256GB---Unlocked-silver?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/77.jpg",
           ],
           rating: 0.0,
         },
@@ -1148,6 +1165,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160384_blue/iPhone-12-Pro-Max-128GB---Unlocked-blue?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/78.jpg",
           ],
           rating: 4.4,
         },
@@ -1162,6 +1180,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098255_green/iPhone-11-Pro-Max-64GB---Unlocked-green?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/79.jpg",
           ],
           rating: 0.0,
         },
@@ -1176,6 +1195,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114628_blue/iPhone-12-Pro-Max-128GB---ATT-blue?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/80.jpg",
           ],
           rating: 0.0,
         },
@@ -1190,6 +1210,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157921/Jurassic-World-Evolution-2---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/81.webp",
           ],
           rating: 5.0,
         },
@@ -1204,6 +1225,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157919/Jurassic-World-Evolution-2---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/82.webp",
           ],
           rating: 5.0,
         },
@@ -1218,6 +1240,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148773/Forza-Horizons-5---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/83.webp",
           ],
           rating: 5.0,
         },
@@ -1232,6 +1255,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149943/Shin-Megami-Tensei-V-SteelBook-Launch-Edition----Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/84.webp",
           ],
           rating: 5.0,
         },
@@ -1246,6 +1270,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158712/Star-Wars-Jedi-Knight-Collection---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/85.webp",
           ],
           rating: 5.0,
         },
@@ -1260,6 +1285,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11161600/Star-Wars-Jedi-Knight-Collection---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/86.webp",
           ],
           rating: 5.0,
         },
@@ -1274,6 +1300,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158713/Star-Wars-Racer-and-Commando-Combo---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/87.webp",
           ],
           rating: 5.0,
         },
@@ -1288,6 +1315,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11161601/Star-Wars-Racer-and-Commando-Combo---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/89.webp",
           ],
           rating: 5.0,
         },
@@ -1302,6 +1330,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156034/The-Smurfs-Mission-Vileaf-Smurftastic-Edition----Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/89a.webp",
           ],
           rating: 0.0,
         },
@@ -1316,6 +1345,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156033/The-Smurfs-Mission-Vileaf-Smurftastic-Edition----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/91.webp",
           ],
           rating: 0.0,
         },
@@ -1330,6 +1360,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148122/Battlefield-2042---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/91a.webp",
           ],
           rating: 2.7,
         },
@@ -1344,6 +1375,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148121/Battlefield-2042---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/92.webp",
           ],
           rating: 2.7,
         },
@@ -1358,6 +1390,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148124/Battlefield-2042----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/93.webp",
           ],
           rating: 4.2,
         },
@@ -1372,6 +1405,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120693/Pokemon-Shining-Pearl---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/94.webp",
           ],
           rating: 5.0,
         },
@@ -1386,6 +1420,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120693/Pokemon-Shining-Pearl---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/95.webp",
           ],
           rating: 2.0,
         },
@@ -1400,6 +1435,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11165934/Kena-Bridge-of-Spirits-Deluxe-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/96.webp",
           ],
           rating: 5.0,
         },
@@ -1414,6 +1450,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11165933/Kena-Bridge-of-Spirits-Deluxe-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/97.webp",
           ],
           rating: 5.0,
         },
@@ -1428,6 +1465,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149939/Farming-Simulator-22---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/98.webp",
           ],
           rating: 4.0,
         },
@@ -1442,6 +1480,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095775/Nintendo-Switch-Lite-Console-Turquoise?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/99.jpg",
           ],
           rating: 4.7,
         },
@@ -1456,6 +1495,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095821/Nintendo-Switch-Console-Gray-Joy-Con?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/100.jpg",
           ],
           rating: 4.7,
         },
@@ -1470,6 +1510,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/101.jpg",
           ],
           rating: 4.4,
         },
@@ -1484,6 +1525,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10134659/Sony-PlayStation-4-Pro-1TB-Console-Black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/102.jpg",
           ],
           rating: 4.6,
         },
@@ -1498,6 +1540,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10174659/Microsoft-Xbox-One-X-1TB-Console-Black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/103.jpg",
           ],
           rating: 3.9,
         },
@@ -1512,6 +1555,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10115705/Microsoft-Xbox-One-500GB-Console-Black-with-Original-Controller?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/104.jpg",
           ],
           rating: 4.0,
         },
@@ -1526,6 +1570,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157532/Pokemon-Journeys-Ash-Ketchum-Baseball-Cap?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/105.jpg",
           ],
           rating: 4.9,
         },
@@ -1540,6 +1585,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11110007/Pokemon-Pikachu-Graffiti-Tote-Bag?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/106.jpg",
           ],
           rating: 4.8,
         },
@@ -1554,6 +1600,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11159109/Loungefly-The-Nightmare-Before-Christmas-Simply-Meant-to-Be-Mini-Backpack?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/107.jpg",
           ],
           rating: 2.7,
         },
@@ -1568,6 +1615,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098266/Pokemon-Go-tcha-Evolve-Watch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/108.jpg",
           ],
           rating: 3.6,
         },
@@ -1582,6 +1630,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166188/GameStop-Logo-Zip-Unisex-Hooded-Jacket?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/109.jpg",
           ],
           rating: 5.0,
         },
@@ -1596,6 +1645,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10147896/Pokemon-GO-Tcha-Bracelet?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/110.jpg",
           ],
           rating: 3.0,
         },
@@ -1610,6 +1660,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166189/GameStop-Logo-Unisex-Joggers?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/111.jpg",
           ],
           rating: 5.0,
         },
@@ -1623,6 +1674,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11121558_black/GameStop-Logo-Hooded-Sweatshirt-black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/112.jpg",
           ],
           rating: 4.7,
         },
@@ -1637,6 +1689,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11151222_black/GameStop-Premium-Logo-Unisex-T-Shirt-black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/113.jpg",
           ],
           rating: 4.8,
         },
@@ -1651,6 +1704,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11116337/WandaVision-Power-Pack-Jewelry-Set-Only-at-GameStop?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/114.jpg",
           ],
           rating: 3.9,
         },
@@ -1665,6 +1719,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166186/GameStop-Logo-Unisex-Hooded-Sweatshirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/115.jpg",
           ],
           rating: 5.0,
         },
@@ -1679,6 +1734,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166187/GameStop-Rocket-Unisex-Button-Up-Short-Sleeve-Shirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/116.jpg",
           ],
           rating: 4.8,
         },
@@ -1693,6 +1749,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166181/GameStop-Logo-Unisex-Sweat-Shorts?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/117.jpg",
           ],
           rating: 4.9,
         },
@@ -1707,6 +1764,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166665/GameStop-Power-To-The-Players-Unisex-T-Shirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/118.jpg",
           ],
           rating: 4.9,
         },
@@ -1721,6 +1779,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166182_white?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/119.jpg",
           ],
           rating: 5.0,
         },
@@ -1735,6 +1794,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11146877/Godzilla-Big-Print-Crew-Socks?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/119.jpg",
           ],
           rating: 0.0,
         },
@@ -1749,6 +1809,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166184/GameStop-Logo-Unisex-Beanie?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/121.jpg",
           ],
           rating: 4.9,
         },
@@ -1763,6 +1824,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160790/Fortnite-Minty-Legends-Pack---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/122.jpg",
           ],
           rating: 3.0,
         },
@@ -1777,6 +1839,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11147420/Pokemon-Brilliant-Diamond-and-Shining-Pearl-Double-Pack----Nintendo-Switch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/123.jpg",
           ],
           rating: 5.0,
         },
@@ -1791,6 +1854,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160793/Fortnite-Minty-Legends-Pack---Xbox-Series-X?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/124.jpg",
           ],
           rating: 5.0,
         },
@@ -1805,6 +1869,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160792/Fortnite-Minty-Legends-Pack---PlayStation-5?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/125.jpg",
           ],
           rating: 0.0,
         },
@@ -1819,6 +1884,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148894/Just-Dance-2022---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/126.webp",
           ],
           rating: 0.0,
         },
@@ -1833,6 +1899,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148897/Just-Dance-2022---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/127.webp",
           ],
           rating: 0.0,
         },
@@ -1847,6 +1914,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148895/Just-Dance-2022---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/128.webp",
           ],
           rating: 1.0,
         },
