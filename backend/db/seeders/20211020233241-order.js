@@ -1,37 +1,72 @@
 "use strict";
 
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function AddMinutesToDate(date, minutes) {
+  return new Date(date.getTime() + minutes * 60000);
+}
+
+let curTime = new Date();
+
+let address1Arr = [
+  "123 Main St.",
+  "456 Central Ave.",
+  "789 George Washington Blvd.",
+];
+
+let address2Arr = [
+  "San Jose, CA 95127",
+  "Martinez, CA 94553",
+  "San Ramon, CA 94583",
+];
+
+let arr = [];
+
+for (let i = 1; i <= 12; i++) {
+  const rndInt1 = randomIntFromInterval(0, 2);
+
+  let obj = {};
+
+  obj["userId"] = 1;
+  obj["address1"] = address1Arr[rndInt1];
+  obj["address2"] = address2Arr[rndInt1];
+  obj["creditCard"] = "1234123412341234";
+  obj["expirationDate"] = "01/26";
+
+  const rndInt4 = randomIntFromInterval(1, 180);
+
+  let pastTime = AddMinutesToDate(curTime, -(rndInt4 * 1440));
+
+  obj["createdAt"] = pastTime;
+  obj["updatedAt"] = pastTime;
+
+  const rndInt2 = randomIntFromInterval(1, 5);
+
+  let items = [];
+
+  let notChoose = [];
+
+  for (let i = 0; i < rndInt2; i++) {
+    const rndInt3 = randomIntFromInterval(1, 100);
+    if (!notChoose.includes(rndInt3)) {
+      notChoose.push(rndInt3);
+      items.push(rndInt3);
+    } else {
+      continue;
+    }
+  }
+
+  obj["items"] = [...items];
+
+  arr.push(obj);
+}
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
-      "Orders",
-      [
-        {
-          userId: 1,
-          items: [1],
-          address1: "123 Main St.",
-          address2: "San Jose, CA 95127",
-          creditCard: "1234123412341234",
-          expirationDate: "01/26",
-        },
-        {
-          userId: 2,
-          items: [2],
-          address1: "123 Main St.",
-          address2: "San Jose, CA 95127",
-          creditCard: "1234123412344321",
-          expirationDate: "01/25",
-        },
-        {
-          userId: 3,
-          items: [3],
-          address1: "123 Main St.",
-          address2: "San Jose, CA 95127",
-          creditCard: "1234123412345678",
-          expirationDate: "01/27",
-        },
-      ],
-      {}
-    );
+    return queryInterface.bulkInsert("Orders", arr, {});
   },
 
   down: async (queryInterface, Sequelize) => {

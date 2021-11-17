@@ -778,7 +778,7 @@
   font-weight: normal;
   color: rgb(0, 0, 0, 1);
   text-decoration: underline;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 .goBack {

@@ -472,7 +472,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               <ReactImageMagnify
                 {...{
                   smallImage: {
-                    alt: "Wristwatch by Ted Baker London",
+                    alt: "productImage",
                     width: 920,
                     height: 515,
                     src: product[0]?.images[0],

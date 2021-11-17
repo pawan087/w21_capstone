@@ -1779,7 +1779,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166182_white?$pdp2x$",
-            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/119.jpg",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/118.5.jpg",
           ],
           rating: 5.0,
         },
@@ -1929,6 +1929,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108586/Riders-Republic-Gold-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/129.webp",
           ],
           rating: 4.0,
         },
@@ -1943,6 +1944,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108584/Riders-Republic---Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/130.webp",
           ],
           rating: 5.0,
         },
@@ -1957,6 +1959,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108585/Riders-Republic---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/131.webp",
           ],
           rating: 3.0,
         },
@@ -1971,6 +1974,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149082/Marvels-Guardians-of-the-Galaxy----PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/132.webp",
           ],
           rating: 4.6,
         },
@@ -1985,6 +1989,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149081/Marvels-Guardians-of-the-Galaxy---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/133.webp",
           ],
           rating: 4.4,
         },
@@ -1999,6 +2004,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149080/Marvels-Guardians-of-the-Galaxy----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/134.webp",
           ],
           rating: 4.0,
         },
@@ -2013,6 +2019,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113148/Back-4-Blood---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/135.webp",
           ],
           rating: 3.5,
         },
@@ -2027,6 +2034,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113001/Back-4-Blood---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/136.webp",
           ],
           rating: 3.9,
         },
@@ -2041,6 +2049,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113149/Back-4-Blood---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/137.webp",
           ],
           rating: 4.1,
         },
@@ -2055,6 +2064,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156048/NHL-22---Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/138.webp",
           ],
           rating: 4.6,
         },
@@ -2069,6 +2079,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156049/NHL-22---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/139.webp",
           ],
           rating: 4.2,
         },
@@ -2083,6 +2094,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156046/NHL-22---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/140.webp",
           ],
           rating: 4.5,
         },
@@ -2097,6 +2109,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108375/Halo-Infinite---Xbox-Series-X?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/141.jpg",
           ],
           rating: 4.5,
         },
@@ -2111,6 +2124,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11127309/Hasbro-Star-Wars-The-Black-Series-The-Mandalorian---Death-Watch-Helmet-GameStop-Exclusive?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/142.jpg",
           ],
           rating: 4.1,
         },
@@ -2125,6 +2139,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158704/Horizon-Forbidden-West-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/144.webp",
           ],
           rating: 5.0,
         },
@@ -2139,6 +2154,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158740/Horizon-Forbidden-West-Launch-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/143.webp",
           ],
           rating: 5.0,
         },
@@ -2153,6 +2169,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157662/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/145.webp",
           ],
           rating: 1.8,
         },
@@ -2167,6 +2184,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157661/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/146.webp",
           ],
           rating: 1.8,
         },
@@ -2181,6 +2199,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157663/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/147.webp",
           ],
           rating: 1.8,
         },
@@ -2195,6 +2214,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162003/Gran-Turismo-7-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/148.webp",
           ],
           rating: 5.0,
         },
@@ -2209,6 +2229,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162004/Gran-Turismo-7-Launch-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/149.webp",
           ],
           rating: 5.0,
         },
@@ -2223,6 +2244,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10156940/SanDisk-128GB-microSDXC-Card-for-Nintendo-Switch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/150.jpg",
           ],
           rating: 4.7,
         },
@@ -2237,6 +2259,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10123892/Seagate-2TB-Game-Drive-for-Xbox-One-Green?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/151.jpg",
           ],
           rating: 4.7,
         },
@@ -2251,6 +2274,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11159868/Next-Level-Racing-F-GT-Lite-Foldable-Simulator-Cockpit-iRacing-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/152.jpg",
           ],
           rating: 0.0,
         },
@@ -2265,6 +2289,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11137441/Samsung-CHG90-QLED-49-Inch-Gaming-Monitor?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/153.jpg",
           ],
           rating: 0.0,
         },
@@ -2279,6 +2304,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11150356/TygerClaw-42-in-to-70-in-Full-Motion-Flat-Panel-TV-Wall-Mount?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/154.jpg",
           ],
           rating: 0.0,
         },
@@ -2293,6 +2319,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166668/GameStop-Logo-Toddler-Unisex-Hooded-Sweatshirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/155.jpg",
           ],
           rating: 0.0,
         },
@@ -2307,6 +2334,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157867_glacier-white/Sony-DUALSHOCK-4-Wireless-Controller-for-PlayStation-4-glacier-white?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/156.jpg",
           ],
           rating: 0.0,
         },
@@ -2321,6 +2349,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095815/Nintendo-Switch-Joy-Con-L/R-Wireless-Controller-Neon-Purple/Orange?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/157.webp",
           ],
           rating: 0.0,
         },
@@ -2335,6 +2364,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/158.jpg",
           ],
           rating: 0.0,
         },
@@ -2349,6 +2379,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10177032/Final-Fantasy-VII-Remake---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/159.jpg",
           ],
           rating: 0.0,
         },
@@ -2363,6 +2394,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11106262/Sony-DualSense-Wireless-Controller-White?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/160.jpg",
           ],
           rating: 0.0,
         },
@@ -2377,6 +2409,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162654/Disney-Classic-Games-Collection---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/161.jpg",
           ],
           rating: 0.0,
         },
@@ -2391,6 +2424,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162655/Disney-Classic-Games-Collection---Xbox-One?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/162.jpg",
           ],
           rating: 0.0,
         },

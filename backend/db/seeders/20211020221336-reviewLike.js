@@ -8,7 +8,7 @@ function randomIntFromInterval(min, max) {
 let reviewLikes = [];
 
 for (let i = 1; i <= 12; i++) {
-  for (let j = 1; j < 924; j++) {
+  for (let j = 1; j < 972; j++) {
     let reviewLike = {};
 
     reviewLike["userId"] = i;
