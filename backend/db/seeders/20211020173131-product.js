@@ -173,7 +173,7 @@ module.exports = {
           description:
             "In this Monopoly board game, players can enjoy island life and immerse themselves in the colorful and creative world of Animal Crossing New Horizons. Moving around the board with tokens inspired by the video game, players complete island tasks and meet other characters. Instead of buying properties and paying rent, players collect bugs, fish, fossils, and fruit. They can also stop at Nook's Cranny and cash in Bells to buy decorations. Decorations are worth Nook Miles and the player with the most Nook Miles wins the game. Monopoly: Animal Crossing New Horizons board game is for ages 8 and up and makes a fun indoor activity for kids.",
           brandId: 11,
-          price: 19.8,
+          price: 19.79,
           categoryId: 2,
           subcategoryId: 10,
           furtherSubcategoryId: null,
@@ -425,7 +425,7 @@ module.exports = {
           description:
             "Introducing Joy-Con, controllers that make new kinds of gaming possible, for use with Nintendo Switch.The versatile Joy-Con offer multiple surprising new ways for players to have fun. Two Joy-Con can be used independently in each hand, or together as one game controller when attached to the Joy-Con grip. They can also attach to the main console for use in handheld mode, or be shared with friends to enjoy two-player action in supported games. Each Joy-Con has a full set of buttons and can act as a standalone controller, and each includes an accelerometer and gyro-sensor, making independent left and right motion control possible.",
           brandId: 8,
-          price: 69.0,
+          price: 69.99,
           categoryId: 5,
           subcategoryId: 8,
           furtherSubcategoryId: null,
@@ -467,7 +467,7 @@ module.exports = {
           description:
             "A 27 inch IPS gaming monitor with a blazing 240Hz refresh rate and true 1ms response time. Now featuring both AMD FreeSync and NVIDIA® G-SYNC® compatibility for effortlessly smooth gaming.",
           brandId: 21,
-          price: 299.0,
+          price: 299.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
@@ -481,7 +481,7 @@ module.exports = {
           description:
             "Skytech Blaze 3.0 Powerful Gaming at 1440p and VR Ready. Take your game to the next level. Skytech's Blaze 3.0 lets you play with higher settings, faster frame rates and more powerful multi-tasking capabilities than standard gaming PCs. Featuring more power to game and stream simultaneously with no lag, a Skytech Blaze 3.0 gives gamers even more power to back up your team mates and create better content",
           brandId: 22,
-          price: 2329.0,
+          price: 2329.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
@@ -495,7 +495,7 @@ module.exports = {
           description:
             "Your Journey Starts Here. The Pulse GL66 Gaming Laptop is packed with the latest 11th Gen. Intel ® Core™ i7 processors and NVIDIA® GeForce RTX™ 30 series graphics. The titanium gray metal armor and contour lines is perfect for those who loves a sturdy and futuristic design. At every corner of the universe and every scenario, the Tribe of the Dragon marches through the galaxy, unstoppable and invincible. They are the possessors of endless knowledge and power. They can withstand countless artillery fire and still prevail. As the legions of Dragon Warriors march on and spacecraft fly by, the soldiers stand out in their titanium powered-armor armed with Pulse Energy weapons. The claw blades overflowing with electric current hum in the background as they conquer the galaxy... GeForce RTX™ 30 Series GPUs deliver the ultimate performance for gamers and creators. They’re powered by Ampere—NVIDIA’s 2nd gen RTX architecture—with new RT Cores, Tensor Cores, and streaming multiprocessors for the most realistic ray-traced graphics and cutting-edge AI features. Enjoy every detail in games at 1920x1080 resolution and the blazing fast 144Hz refresh rate panel. It's time for a more vibrant visual experience.",
           brandId: 23,
-          price: 1149.0,
+          price: 1149.99,
           categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
@@ -649,7 +649,7 @@ module.exports = {
           description:
             "Fully immerse yourself in the amazing aerial views and unbridled speed of drone flying with the combo version of the DJI FPV Drone. Using the bundled FPV Goggles V2, you get a first-person view of what the drone sees, with footage that makes it feel like you're the one flying through the sky. The onboard 4K60 fps gimbal camera can send low-latency video to your goggles for a near real-time experience. The 150° super-wide FOV lets you take in and appreciate the scope of the vistas you fly over.",
           brandId: 32,
-          price: 1299.0,
+          price: 1299.99,
           categoryId: 3,
           subcategoryId: 19,
           furtherSubcategoryId: null,
@@ -677,7 +677,7 @@ module.exports = {
           description:
             "This true 360° speaker was engineered to spread deep, jaw-dropping sound in every direction. That means, when everyone stands around it, everyone gets the same experience. If you set it near a wall, sound will radiate and reflect around the room, immersing you in that same feeling you felt at your favorite concert. And with a flexible handle, it’s designed to go wherever you want to bring the music.",
           brandId: 34,
-          price: 329.0,
+          price: 329.99,
           categoryId: 3,
           subcategoryId: 2,
           furtherSubcategoryId: null,
@@ -691,7 +691,7 @@ module.exports = {
           description:
             "World-class adjustable noise cancellation — with situational awareness for when you want to let the world in. High-fidelity audio with adjustable EQ so you can tune music to your liking. Unrivaled voice pickup for the clearest calls. And protein leather cushions for all-day comfort. It’s everything you demand from wireless Bluetooth headphones — amplified. Bose Noise Cancelling Headphones 700, our most advanced headphones ever.",
           brandId: 34,
-          price: 379.0,
+          price: 379.99,
           categoryId: 3,
           subcategoryId: 2,
           furtherSubcategoryId: null,
@@ -748,8 +748,8 @@ module.exports = {
             "Play like a Pro! The ASTRO Gaming A40 TR Headset is the premier gaming headset for professional gamers, including esports athletes, content creators and live steamers. It was developed with esports athletes to meet their rigorous standards for audio fidelity, comfort, and durability. Mod Kit Ready, the A40 TR Xbox One headset adapts to any gaming environment. The A40 TR headphones arrive as an open-back headset featuring a swappable boom mic and customizable Speaker Tags. For loud tournament environments, one can transform the A40 TR into a closed-back noise-isolating headset by adding a Mod Kit (sold separately) with sealed Speaker Tags, synthetic leather ear cushions, and a voice-isolating microphone.",
           brandId: 35,
           price: 129.99,
-          categoryId: 5,
-          subcategoryId: 13,
+          categoryId: 3,
+          subcategoryId: 2,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11048300/Astro-Gaming-A40-TR-Generation-4-Wired-Gaming-Headset-for-Xbox-One?$pdp$$&fmt=webp",
@@ -1135,7 +1135,7 @@ module.exports = {
           rating: 5.0,
         },
         {
-          name: "Jurassic World Evolution 2 PS4",
+          name: "Jurassic World Evolution 2 - PS4",
           description:
             "Jurassic World Evolution 2 is the much-anticipated sequel to Frontier’s highly successful Jurassic World Evolution, building upon the groundbreaking and immersive 2018 management simulation. It introduces a compelling, new narrative campaign, incredible new features, and awe-inspiring new dinosaurs brought to life with captivating authenticity. Together with expanded construction and more customisation options, the result is an even bigger, better and authentic Jurassic World game.",
           brandId: 42,
@@ -1319,7 +1319,7 @@ module.exports = {
         {
           name: "Pokemon Brilliant Diamond - Nintendo Switch",
           description:
-            "https://media.gamestop.com/i/gamestop/11120692/Pokemon-Brilliant-Diamond---Nintendo-Switch?$pdp$$&fmt=webp",
+            "Experience the nostalgic story from the Pokémon Diamond Version game in a reimagined adventure, Pokémon™ Brilliant Diamond, now on the Nintendo Switch™ system! Adventures in the Pokémon Brilliant Diamond game will take place in the familiar Sinnoh region. Rich in nature and with mighty Mount Coronet at its heart, Sinnoh is a land of many myths passed down through the ages. You’ll choose either Turtwig, Chimchar, or Piplup to be your first partner Pokémon and then set off on your journey to become the Champion of the Pokémon League. Along the way, you’ll be able to encounter the Legendary Pokémon Dialga.",
           brandId: 8,
           price: 59.88,
           categoryId: 1,
@@ -1997,7 +1997,7 @@ module.exports = {
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
-            "https://media.gamestop.com/i/gamestop/11127309/Hasbro-Star-Wars-The-Black-Series-The-Mandalorian---Death-Watch-Helmet-GameStop-Exclusive?$pdp2x$",
+            "https://media.gamestop.com/i/gamestop/11158704/Horizon-Forbidden-West-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
           ],
           rating: 5.0,
         },
@@ -2133,7 +2133,7 @@ module.exports = {
             "The ultra-wide 49-inch screen with its innovative 32:9 aspect ratio means you always get to see game scenes in their entirety, exactly as their developers intended. And the 1800R curved panel immerses you in gameplay and delivers cinematic viewing for movies and video content.",
           brandId: 24,
           price: 899.99,
-          categoryId: 5,
+          categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
           images: [
@@ -2152,6 +2152,118 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11150356/TygerClaw-42-in-to-70-in-Full-Motion-Flat-Panel-TV-Wall-Mount?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "GameStop Logo Toddler Unisex Hooded Sweatshirt",
+          description:
+            "At GameStop, we’re all about fun for all ages. Look out! Here comes the Toddler Squad! Now your kiddos can show off their favorite spot for games and collectibles with this awesome toddler hoodie. It’s the perfect attire for your little co-op partner in training.",
+          brandId: 47,
+          price: 24.99,
+          categoryId: 6,
+          subcategoryId: 28,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11166668/GameStop-Logo-Toddler-Unisex-Hooded-Sweatshirt?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Sony DUALSHOCK 4 Wireless Controller",
+          description:
+            "Enhance your gaming experience with the Sony DualShock 4 Wireless Controller for PlayStation 4. Play your favorite video games with a PS4 controller that combines revolutionary features and comfort with intuitive, precision controls. Its definitive analog sticks and trigger buttons deliver greater response and sensitivity along with a multi touch pad for more instinctive and natural gameplay. In addition, the PlayStation Camera and Share button features makes social media capabilities and playing with friends easy and painless. Join a new era of gaming with the Sony PlayStation 4 DualShock 4 Wireless Controller.",
+          brandId: 9,
+          price: 54.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11157867_glacier-white/Sony-DUALSHOCK-4-Wireless-Controller-for-PlayStation-4-glacier-white?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Nintendo Switch Joy-Con (L)/(R) Neon Purple/Orange",
+          description:
+            "Take your gaming to a whole new level with this Joy-Con L/R in Neon Purple and Neon Orange from Nintendo Switch. Share it with your friends or attach it to the main console, each Joy-Con controller includes a gyro-sensor and accelerometer providing greater flexibility to jump, shoot, run and attack.",
+          brandId: 8,
+          price: 68.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11095815/Nintendo-Switch-Joy-Con-L/R-Wireless-Controller-Neon-Purple/Orange?$pdp$$&fmt=webp",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Marvel's Spider-Man: Miles Morales - PlayStation 4",
+          description:
+            "There's a new Spider-Man in town and his name is Miles Morales. Take Spider-Man to new heights in Marvel's Spider-Man: Miles Morales on PS4 from GameStop. Be greater. Be yourself. Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.",
+          brandId: 9,
+          price: 49.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "FINAL FANTASY VII Remake",
+          description:
+            "The first entry in a multi-part saga, delivering a level of depth inconceivable for the original. The mind-blowing story, unforgettable characters, epic battles and technical excellence collide. The world has fallen under the control of the Shinra Electric Power Company, a shadowy corporation controlling the planet's very life force as mako energy. In the sprawling city of Midgar, an anti-Shinra organization calling themselves Avalanche has stepped up its resistance. Cloud Strife, a former member of Shinra's elite SOLDIER unit now turned mercenary, lends his aid to the group, unaware of the epic consequences that await him.",
+          brandId: 34,
+          price: 24.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/10177032/Final-Fantasy-VII-Remake---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Sony DualSense Wireless Controller White",
+          description:
+            "Discover a deeper, highly immersive gaming experience that brings the action to life in the palms of your hands. The PlayStation 5 DualSense™ wireless controller offers immersive haptic feedback, dynamic adaptive triggers and a built-in microphone, all integrated into an iconic comfortable design. Take gaming to the next level with this wireless PS5 controller.",
+          brandId: 9,
+          price: 69.99,
+          categoryId: 5,
+          subcategoryId: 8,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11106262/Sony-DualSense-Wireless-Controller-White?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Disney Classic Games Collection - PlayStation 4",
+          description:
+            "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
+          brandId: 57,
+          price: 29.99,
+          categoryId: 1,
+          subcategoryId: 14,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11162654/Disney-Classic-Games-Collection---PlayStation-4?$pdp2x$",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Disney Classic Games Collection - Xbox One",
+          description:
+            "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
+          brandId: 57,
+          price: 29.99,
+          categoryId: 1,
+          subcategoryId: 13,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11162655/Disney-Classic-Games-Collection---Xbox-One?$pdp2x$",
           ],
           rating: 0.0,
         },

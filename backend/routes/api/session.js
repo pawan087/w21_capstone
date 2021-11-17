@@ -45,90 +45,6 @@ router.post(
   })
 );
 
-// Edit (Old)
-
-router.put(
-  "/edit",
-  asyncHandler(async (req, res, next) => {
-    const {
-      id,
-      username,
-      email,
-      newPassword,
-      password,
-      firstName,
-      lastName,
-      phone,
-      address1,
-      address2,
-    } = req.body;
-
-    const user = await User.findByPk(id);
-
-    if (!user) {
-      const err = new Error("Login failed");
-
-      err.status = 401;
-      err.title = "Login failed";
-      err.errors = ["The provided credentials were invalid."];
-
-      return next(err);
-    }
-
-    let validPassword = bcrypt.compareSync(
-      password,
-      user.hashedPassword.toString()
-    );
-
-    if (!validPassword) {
-      const err = new Error("Incorrect Password");
-
-      err.status = 401;
-      err.title = "Incorrect Password";
-      err.errors = ["The provided password was invalid."];
-
-      return next(err);
-    }
-
-    let hashedPassword;
-
-    if (newPassword) {
-      hashedPassword = bcrypt.hashSync(newPassword);
-    }
-
-    if (newPassword && password !== newPassword) {
-      await user.update({
-        username,
-        email,
-        hashedPassword,
-        firstName,
-        lastName,
-        phone,
-        address1,
-        address2,
-      });
-    }
-
-    if (!newPassword) {
-      await user.update({
-        username,
-        email,
-        firstName,
-        lastName,
-        phone,
-        address1,
-        address2,
-      });
-    }
-
-    await setTokenCookie(res, user);
-
-    return res.json({
-      user,
-    });
-  })
-);
-
 // Update
 router.put(
   "/update",
@@ -151,39 +67,6 @@ router.put(
       phone,
       address1,
       address2,
-    });
-
-    await setTokenCookie(res, user);
-
-    return res.json({
-      user,
-    });
-  })
-);
-
-router.put(
-  "/updateprofile",
-  asyncHandler(async (req, res, next) => {
-    const { id, phone, address1, address2, firstName, lastName } = req.body;
-
-    const user = await User.findByPk(id);
-
-    if (!user) {
-      const err = new Error("Login failed");
-
-      err.status = 401;
-      err.title = "Login failed";
-      err.errors = ["The provided credentials were invalid."];
-
-      return next(err);
-    }
-
-    await user.update({
-      phone,
-      address1,
-      address2,
-      lastName,
-      firstName,
     });
 
     await setTokenCookie(res, user);

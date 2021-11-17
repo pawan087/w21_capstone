@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import Cards from "react-credit-cards";
-import "react-credit-cards/es/styles-compiled.css";
-import { FaCheck } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa";
+import { Redirect, useHistory } from "react-router-dom";
+import { FaCheck, FaAngleDown } from "react-icons/fa";
 import { FormField } from "react-form-input-fields";
-import "react-form-input-fields/dist/index.css";
-import ReactLoading from "react-loading";
 import { motion } from "framer-motion/dist/framer-motion";
+import Cards from "react-credit-cards";
+import ReactLoading from "react-loading";
+
 
 import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
@@ -16,6 +14,8 @@ import * as sessionActions from "../../store/session";
 import { updateProfile } from "../../store/session";
 import { createOrderItemsAndOrder } from "../../store/orders";
 import { setAllOrderItems } from "../../store/orderItems.js";
+import "react-form-input-fields/dist/index.css";
+import "react-credit-cards/es/styles-compiled.css";
 import styles from "./OrderConfirmation.module.css";
 
 export default function OrderConfirmation() {
@@ -43,6 +43,9 @@ export default function OrderConfirmation() {
   const [warningAddress2, setWarningAddress2] = useState(false);
   const [warningPhone, setWarningPhone] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [legitCardWarning, setLegitCardWarning] = useState(false);
+  const [legitExpirationDateWarning, setLegitExpirationWarning] =
+    useState(false);
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 2,
@@ -71,7 +74,6 @@ export default function OrderConfirmation() {
 
   if (regExp.test(creditCardNumber)) {
     legitCard = false;
-    // setPayed(false);
   } else {
     if (creditCardNumber.length === 16) {
       legitCard = true;
@@ -87,6 +89,10 @@ export default function OrderConfirmation() {
   }
 
   const ccNum = (e) => {
+    if (legitCardWarning) {
+      setLegitCardWarning(false);
+    }
+
     setCreditCardNumber(e.target.value);
 
     setPayed(false);
@@ -101,6 +107,10 @@ export default function OrderConfirmation() {
         setExpirationDate(newExpNum);
         return;
       }
+    }
+
+    if (legitExpirationDateWarning) {
+      setLegitExpirationWarning(false);
     }
 
     setExpirationDate(e.target.value);
@@ -208,14 +218,19 @@ export default function OrderConfirmation() {
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -317,7 +332,9 @@ export default function OrderConfirmation() {
 
     const func = () => {
       setLoader(false);
-      history.push("/orderconfirmation");
+
+      history.push("/ordered");
+
       window.scrollTo({
         top: 0,
         left: 0,
@@ -329,6 +346,24 @@ export default function OrderConfirmation() {
 
     return;
   };
+
+  const handleWarnings = () => {
+    if (!legitCard) {
+      setLegitCardWarning(true);
+    }
+
+    if (!legitExpirationDate) {
+      setLegitExpirationWarning(true);
+    }
+
+    return;
+  };
+
+  if (shoppingCartItems.length === 0) {
+    return <Redirect to="/cart" />;
+  }
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -571,11 +606,13 @@ export default function OrderConfirmation() {
                       name="number"
                     />
 
-                    {true && (
-                      <p onClick={() => demoCard()} className={styles.demoCard}>
-                        Pay with Demo Card
-                      </p>
+                    {legitCardWarning && (
+                      <div className={styles.warning3}>Invalid Credit Card</div>
                     )}
+
+                    <p onClick={() => demoCard()} className={styles.demoCard}>
+                      Pay with Demo Card
+                    </p>
                   </div>
 
                   <div className={styles.rightInputContainer}>
@@ -588,9 +625,9 @@ export default function OrderConfirmation() {
                       onChange={(e) => expNum(e)}
                       onFocus={(e) => handleInputFocus(e)}
                     />
-                    {false && (
+                    {legitExpirationDateWarning && (
                       <p className={styles.invalidExp}>
-                        Invalid expiration date.
+                        Invalid Exp. Date
                       </p>
                     )}
                   </div>
@@ -639,7 +676,12 @@ export default function OrderConfirmation() {
 
                   {(!legitCard || !legitExpirationDate) && (
                     <div className={styles.saveButtonContainer2}>
-                      <div className={styles.saveButton2}>SAVE & CONTINUE</div>
+                      <div
+                        onClick={() => handleWarnings()}
+                        className={styles.saveButton2}
+                      >
+                        SAVE & CONTINUE
+                      </div>
                     </div>
                   )}
                 </div>
@@ -818,6 +860,7 @@ export default function OrderConfirmation() {
       <div onClick={() => history.push("/cart")} className={styles.untouchable}>
         Can't touch this
       </div>
+
       <Footer />
     </motion.div>
   );

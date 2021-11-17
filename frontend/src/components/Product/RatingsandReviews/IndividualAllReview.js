@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import ReactLoading from "react-loading";
 import ReactStars from "react-rating-stars-component";
 import StarPicker from "react-star-picker";
@@ -24,6 +25,7 @@ import "rodal/lib/rodal.css";
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
   const reviewLikes = useSelector((state) => state.reviewLikes);
@@ -40,7 +42,8 @@ export default function IndividualTopReview({ review }) {
   const [loading, setLoading] = useState(false);
   const [bool, setBool] = useState(true);
   const [rating, setRating] = useState(review?.rating);
-  const [content, setContent] = useState(review?.content);
+  const [thisReview, setThisReview] = useState({ ...review });
+  const [content, setContent] = useState(thisReview?.content);
   const [preview, setPreview] = useState(review.imageUrl);
   const [selectedFile, setSelectedFile] = useState(false);
   const [uploadMsg, setUploadMsg] = useState("Upload Picture");
@@ -105,12 +108,14 @@ export default function IndividualTopReview({ review }) {
   };
 
   const hide3 = () => {
-    // setVisible2(false);
-    // setVisible(true);
     setVisible3(false);
   };
 
   const handleSubmit2 = async () => {
+    // if (rating === review?.rating && content === review?.content) {
+    //   return;
+    // }
+
     setLoading(true);
     setBool(false);
     let arr = [];
@@ -122,7 +127,11 @@ export default function IndividualTopReview({ review }) {
     });
 
     await dispatch(deleteReview({ id: review.id, arr }));
+    setThisReview({ ...review });
 
+    setDidMount(false);
+    setVisible2(false);
+    setDidMount(true);
     await dispatch(setAllReviews());
 
     setLoading(false);
@@ -167,7 +176,6 @@ export default function IndividualTopReview({ review }) {
     await dispatch(setAllReviews());
     setShowEditReview(false);
     setLoading(false);
-    // setPreview(null);
     setImage("");
     setSelectedFile();
     setUploadMsg("Upload Picture");
@@ -188,6 +196,13 @@ export default function IndividualTopReview({ review }) {
     // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [selectedFile]);
+
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
 
   const updateImage = (e) => {
     const file = e.target.files[0];
@@ -230,6 +245,12 @@ export default function IndividualTopReview({ review }) {
   let curTime = new Date();
 
   const handleLike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return;
+    }
+
     let alreadyLiked = false;
     let alreadyDisliked = false;
     let id;
@@ -241,7 +262,6 @@ export default function IndividualTopReview({ review }) {
         reviewLike.reviewId === review.id &&
         reviewLike.like
       ) {
-        // console.log("Already liked");
         alreadyLiked = true;
         id = reviewLike.id;
       }
@@ -281,6 +301,12 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleDislike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return;
+    }
+
     let alreadyDisliked = false;
     let alreadyLiked = false;
 
@@ -372,7 +398,7 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.username}>
             {review?.User?.username}
 
-            {review.userId === user.id && (
+            {review.userId === user?.id && (
               <div className={styles.reviewLinks}>
                 <div onClick={showShowEditReview} className={styles.editLink}>
                   Edit
@@ -627,7 +653,7 @@ export default function IndividualTopReview({ review }) {
                   placeholder={"Your email"}
                   className={styles.emailInput}
                   type="email"
-                  value={user.email}
+                  value={user?.email}
                   readOnly
                 ></input>
               </div>
@@ -770,18 +796,18 @@ export default function IndividualTopReview({ review }) {
           <div className={styles.addPhotoLowerContainer}>
             {!selectedFile && (
               <div className={styles.selectFileContainer}>
-                <div className="fileinputs">
+                <div className={styles.fileinputs}>
                   <input
-                    className="inputContainer file"
+                    className={styles.inputContainer}
                     type="file"
                     accept="image/*"
                     onChange={updateImage}
                   />
 
-                  <div className="inputContainer fakefile">
-                    <label className="uploadLabel">{uploadMsg}</label>
+                  <div className={styles.inputContainer2}>
+                    <label className={styles.uploadLabel}>{uploadMsg}</label>
 
-                    <div className="uploadPic">
+                    <div className={styles.uploadPic}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"

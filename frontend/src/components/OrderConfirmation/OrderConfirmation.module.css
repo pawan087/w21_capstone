@@ -764,7 +764,7 @@ input[type="number"] {
   margin-left: 35px;
   transition: 0.15s ease-in-out;
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .loaderCotnainer {
@@ -823,6 +823,13 @@ input[type="number"] {
   font-size: 12.5px;
   position: absolute;
   transform: translateY(-20px);
+}
+
+.warning3 {
+  color: rgb(231, 35, 13);
+  font-size: 12.5px;
+  position: absolute;
+  transform: translate(55px, 0px);
 }
 
 .loader {

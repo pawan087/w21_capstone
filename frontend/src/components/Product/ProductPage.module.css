@@ -200,18 +200,28 @@
   height: 30px;
   width: 1400px;
   margin: 0 auto;
-  font-size: 16px;
-  color: rgba(0, 0, 0, 0.68);
+  font-size: 12.5px;
+  color: rgb(40,40,40);
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
-  margin-top: 15px;
+  margin-top: 35px;
   /* justify-content: left;
   justify-self: center;
   justify-items: center;
   align-content: center;
   align-self: center; */
 }
+
+.category {
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.category:hover {
+  text-decoration: underline;
+}
+
 
 .categoryContainer div {
   margin-right: 15px;
@@ -358,11 +368,28 @@
   color: rgba(231, 35, 13, 0.75);
   padding-top: 12.5px;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  position: relative;
 }
-
 .loaderCotnainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.footerWithoutUserContainer {
+  /* margin-top: 115px; */
+}
+
+.thirdImageZoom img {
+    /* object-fit: contain; */
+}
+
+.smallImage {
+  object-fit: contain;
+}
+
+.largeImage {
+  object-fit: contain;
+  background-color: white;
 }

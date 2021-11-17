@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ReactImageZoom from "react-image-zoom";
 import StarPicker from "react-star-picker";
 import ShowMoreText from "react-show-more-text";
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
 import { FaCheck } from "react-icons/fa";
+import ReactImageMagnify from "react-image-magnify";
 
 import {
   createCartItem,
@@ -63,8 +63,15 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     showLoader();
+
+    if (!user) {
+      history.push("/signin");
+
+      hideLoader();
+
+      return;
+    }
 
     if (usersCartItems.length > 0) {
       if (usersCartItems[0].quantity === 5) {
@@ -95,14 +102,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     maximumFractionDigits: 1,
   });
 
-  const props = {
-    width: 470,
-    zoomWidth: 900,
-    zoomPosition: "original",
-    zoomStyle: 'transform: translateX(00px)',
-    img: `${product[0]?.images[0]}`,
-  };
-
   let rating = formatter.format(avgRating);
 
   useEffect(() => {
@@ -115,30 +114,381 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     return () => setLoader(false);
   }, [dispatch]);
 
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
+
+  const handleClickCategoryName = () => {
+    if (product[0]?.Category?.name === "Video Games") {
+      history.push("/p/videogames/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Consoles & Hardware") {
+      history.push("/p/consoles/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Gaming Accessories") {
+      history.push("/p/accessories/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Electronics") {
+      history.push("/p/electronics/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Toys & Games") {
+      history.push("/p/toysgames/0/0/0");
+    }
+
+    if (product[0]?.Category?.name === "Clothing") {
+      history.push("/p/clothing/0/0/0");
+    }
+
+    return;
+  };
+
+  const handleClickSubcategoryName = () => {
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 4" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/ps4/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Nintendo Switch" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/switch/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 5" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/ps5/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox Series X" &&
+      product[0]?.Category?.name === "Video Games"
+    ) {
+      history.push("/p/videogames/xboxx/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Nintendo Switch" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/switch/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PC Gaming" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/pc/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PlayStation 4" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/ps4/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Virtual Reality" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/vr/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Consoles & Hardware"
+    ) {
+      history.push("/p/consoles/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Controllers" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/controllers/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Memory" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/memory/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Mounts" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/mounts/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "PC Gaming" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/pc/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Xbox One" &&
+      product[0]?.Category?.name === "Gaming Accessories"
+    ) {
+      history.push("/p/accessories/xbox1/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Audio" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/audio/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Cameras" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/cameras/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Cell Phones" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/phones/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Cell Phones" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/phones/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Drone" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/drone/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Drone" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/drone/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Smart Home Automation" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/home/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "TV & Home Theater" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/theater/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Arts & Crafts Toys" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/art/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Board Games" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/boardgames/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Building & Construction Sets" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/construction/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Dolls & Dollhouses" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/dolls/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "NERF" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/nerf/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Play Vehicles" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/vehicles/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Puzzles" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/puzzles/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Scooters & Ride Ons" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/scooters/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Stuffed Animals & Plush" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/plush/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Stuffed Animals & Plush" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/plush/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Trading Cards" &&
+      product[0]?.Category?.name === "Toys & Games"
+    ) {
+      history.push("/p/toysgames/cards/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Accessories" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/accessories/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Bags" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/bags/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Footwear" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/footwear/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Jackets & Outerwear" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/jackets/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Pants & Shorts" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/pants/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "T-Shirts" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/shirts/0/0");
+    }
+
+    if (
+      product[0]?.Subcategory?.name === "Watches" &&
+      product[0]?.Category?.name === "Clothing"
+    ) {
+      history.push("/p/clothing/watches/0/0");
+    }
+
+    return;
+  };
+
   return (
     <>
       <div className={styles.categoryContainer}>
-        <div className={styles.category}>{product[0]?.Category?.name}</div>
+        <div
+          onClick={() => handleClickCategoryName()}
+          className={styles.category}
+        >
+          {product[0]?.Category?.name}
+        </div>
 
         <div className={styles.lighter}>/</div>
 
-        <div className={styles.subcategory}>
+        <div
+          onClick={() => handleClickSubcategoryName()}
+          className={styles.category}
+        >
           {product[0]?.Subcategory?.name}
         </div>
 
-        {product[0]?.FurtherSubcategory && (
-          <div className={styles.lighter}>/</div>
+        {false && (
+          <div className={styles.furtherSubcategory}>
+            {product[0]?.FurtherSubcategory?.name}
+          </div>
         )}
-
-        <div className={styles.furtherSubcategory}>
-          {product[0]?.FurtherSubcategory?.name}
-        </div>
       </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
-          <div className={styles.imageContainer}>
-            <ReactImageZoom className={styles.pic} {...props} />
-          </div>
+          {true && (
+            <div className={styles.thirdImageZoom}>
+              <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: "Wristwatch by Ted Baker London",
+                    width: 920,
+                    height: 515,
+                    src: product[0]?.images[0],
+                  },
+                  largeImage: {
+                    src: product[0]?.images[0],
+                    width: 1840,
+                    height: 1030,
+                  },
+                  enlargedImagePosition: "over",
+                  imageClassName: `${styles.smallImage}`,
+                  enlargedImageClassName: `${styles.largeImage}`,
+                }}
+              />
+            </div>
+          )}
 
           <div className={styles.descriptionContainer}>
             <div className={styles.descriptionLabel}>Product Description</div>
@@ -190,10 +540,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               }
             </div>
 
-            <div
-              onClick={showLimitQuantityModal}
-              className={styles.priceContainer}
-            >
+            <div className={styles.priceContainer}>
               <div className={styles.price}>${product[0]?.price}</div>
             </div>
 
@@ -213,7 +560,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
 
       <RatingsandReviews avgRating={avgRating} reviews={reviews} />
 
-      <RecentlyViewedCard />
+      {user && <RecentlyViewedCard />}
 
       {loader && (
         <div className={styles.loader}>
@@ -285,10 +632,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
         onClose={hideLimitQuantityModal}
       >
         <div className={styles.reviewSubmissionConfirmationContainer}>
-          {product[0]?.name}{" "}
-          {
-            "cannot be added to the cart. You can only purchase 5 of this item per transaction."
-          }
+          <span className={styles.errorMessageTextContainer}>
+            {product[0]?.name.slice(0, 70)}
+            {product[0]?.name.length >= 70 ? "... " : null}
+            {
+              "cannot be added to the cart. You can only purchase 5 of this item per transaction."
+            }
+          </span>
         </div>
       </Rodal>
     </>

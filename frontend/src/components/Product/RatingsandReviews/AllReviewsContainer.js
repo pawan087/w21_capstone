@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { motion } from "framer-motion/dist/framer-motion";
 
 import IndividualAllReview from "../../Product/RatingsandReviews/IndividualAllReview";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-// import { SubMenu } from "@szhsin/react-menu";
 
 import styles from "./AllReviewsContainer.module.css";
 import "@szhsin/react-menu/dist/index.css";
@@ -12,81 +12,95 @@ export default function AllReviewsContainer({ reviews }) {
   const [sortBy, setSortBy] = useState("Most Recent");
   const [currentPage, setCurrentPage] = useState(0);
 
-  let copy = [...reviews];
-  const reversed = copy?.reverse();
+  let highestToLowestRating = [...reviews];
+  let lowestToHighestRating = [...reviews];
+  let mostHelpful = [...reviews];
+  let recent = [...reviews];
 
-  const [data, setData] = useState([]);
+  recent.sort(function (a, b) {
+    return b.id - a.id;
+  });
+
+  highestToLowestRating.sort(function (a, b) {
+    return +b.rating - +a.rating;
+  });
+
+  lowestToHighestRating.sort(function (a, b) {
+    return +a.rating - +b.rating;
+  });
+
+  mostHelpful?.sort(function (a, b) {
+    return +b.likeCount - +a.likeCount;
+  });
 
   const PER_PAGE = 3;
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
     window.scrollTo({
-      top: 1250,
+      top: 1125,
       left: 0,
       behavior: "smooth",
     });
   }
-
   const offset = currentPage * PER_PAGE;
 
-  const currentPageData = data
+  const currentPageData = recent
     ?.slice(offset, offset + PER_PAGE)
     ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
+  const currentPageData2 = highestToLowestRating
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
-   
+  const currentPageData3 = lowestToHighestRating
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
 
-  const pageCount = Math.ceil(data?.length / PER_PAGE);
+  const currentPageData4 = mostHelpful
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((review, i) => <IndividualAllReview key={i} review={review} />);
+
+  const pageCount = Math.ceil(recent?.length / PER_PAGE);
+  const pageCount2 = Math.ceil(highestToLowestRating?.length / PER_PAGE);
+  const pageCount3 = Math.ceil(lowestToHighestRating?.length / PER_PAGE);
+  const pageCount4 = Math.ceil(mostHelpful?.length / PER_PAGE);
 
   const setRecent = (e) => {
     e.stopPropagation = true;
-    setData([...reversed]);
     setSortBy("Most Recent");
+    setCurrentPage(0);
   };
 
   const setHighestToLowest = (e) => {
-    let highestToLowestRating = copy?.sort(function (a, b) {
-      return +b.rating - +a.rating;
-    });
-
     e.stopPropagation = true;
-    setData([...highestToLowestRating]);
     setSortBy("Highest to Lowest Rating");
+    setCurrentPage(0);
   };
 
   const setLowestToHighest = (e) => {
-    let lowestToHighestRating = copy?.sort(function (a, b) {
-      return a.rating - +b.rating;
-    });
     e.stopPropagation = true;
-    // setArr([...lowestToHighestRating]);
-    setData([...lowestToHighestRating]);
     setSortBy("Lowest to Highest Rating");
+    setCurrentPage(0);
   };
 
   const setMostHelpful = (e) => {
-    let mostHelpful = copy?.sort(function (a, b) {
-      return +b.likeCount - +a.likeCount;
-    });
-
     e.stopPropagation = true;
-    setData([...mostHelpful]);
-
     setSortBy("Most Helpful");
+    setCurrentPage(0);
   };
 
   useEffect(() => {
-    setData(reversed);
     setSortBy("Most Recent");
-  }, [reviews]);
-
-  // useEffect(() => {
-
-  // }, [reversed]);
+  }, []);
 
   return (
-    <div className={styles.allReviewsContainer}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={styles.allReviewsContainer}
+    >
       <div className={styles.topContainer}>
         <div className={styles.topTopContainer}>
           <div className={styles.allReviewsTitle}>All Reviews </div>
@@ -144,69 +158,193 @@ export default function AllReviewsContainer({ reviews }) {
         </div>
       </div>
 
-      <div>
-        <div className={styles.holder}>{currentPageData}</div>
-        <ReactPaginate
-          previousLabel={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          }
-          nextLabel={
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          }
-          marginPagesDisplayed={500}
-          pageCount={pageCount}
-          onPageChange={handlePageClick}
-          containerClassName={styles.pagination}
-          previousLinkClassName={styles.pagination__link}
-          nextLinkClassName={styles.pagination__link}
-          disabledClassName={styles.pagination__linkdisabled}
-          activeClassName={styles.pagination__linkactive}
-        />
-      </div>
-    </div>
+      {
+        /* MOST RECENT */
+        sortBy === "Most Recent" && (
+          <div>
+            <div className={styles.holder}>{currentPageData}</div>
+            <ReactPaginate
+              previousLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              nextLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              marginPagesDisplayed={500}
+              pageCount={pageCount}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousLinkClassName={styles.pagination__link}
+              nextLinkClassName={styles.pagination__link}
+              disabledClassName={styles.pagination__linkdisabled}
+              activeClassName={styles.pagination__linkactive}
+            />
+          </div>
+        )
+      }
+
+      {
+        /* HIGHEST TO LOWEST RATING */
+        sortBy === "Highest to Lowest Rating" && (
+          <div>
+            <div className={styles.holder}>{currentPageData2}</div>
+            <ReactPaginate
+              previousLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              nextLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              marginPagesDisplayed={500}
+              pageCount={pageCount2}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousLinkClassName={styles.pagination__link}
+              nextLinkClassName={styles.pagination__link}
+              disabledClassName={styles.pagination__linkdisabled}
+              activeClassName={styles.pagination__linkactive}
+            />
+          </div>
+        )
+      }
+
+      {
+        /* LOWEST TO HIGHEST RATING */
+        sortBy === "Lowest to Highest Rating" && (
+          <div>
+            <div className={styles.holder}>{currentPageData3}</div>
+            <ReactPaginate
+              previousLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              nextLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              marginPagesDisplayed={500}
+              pageCount={pageCount3}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousLinkClassName={styles.pagination__link}
+              nextLinkClassName={styles.pagination__link}
+              disabledClassName={styles.pagination__linkdisabled}
+              activeClassName={styles.pagination__linkactive}
+            />
+          </div>
+        )
+      }
+
+      {
+        /* MOST HELPFUL */
+        sortBy === "Most Helpful" && (
+          <div>
+            <div className={styles.holder}>{currentPageData4}</div>
+            <ReactPaginate
+              previousLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              nextLabel={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              marginPagesDisplayed={500}
+              pageCount={pageCount4}
+              onPageChange={handlePageClick}
+              containerClassName={styles.pagination}
+              previousLinkClassName={styles.pagination__link}
+              nextLinkClassName={styles.pagination__link}
+              disabledClassName={styles.pagination__linkdisabled}
+              activeClassName={styles.pagination__linkactive}
+            />
+          </div>
+        )
+      }
+    </motion.div>
   );
 }
-
-// Filter
-/* <div className={styles.topBottomContainer}>
-  <div className={styles.filterIcon}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-      />
-    </svg>
-  </div> */
-
-//   <div className={styles.filterText}>Filter</div>
-// </div>

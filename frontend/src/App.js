@@ -9,22 +9,23 @@ import * as sessionActions from "./store/session";
 
 import AccountSettings from "./components/AccountDashboard/AccountSettings";
 import AccountSettings2 from "./components/AccountDashboard/AccountSettings2";
+import SplashPage from "./components/SplashPage/SplashPage.js";
+import CreateAccount from "./components/CreateAccount/CreateAccount";
 import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
 import Test from "./components/Test";
+import NotFound from "./components/NotFound/NotFound";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
-import Search from "./components/Products/Testing.js";
+import SignIn from "../src/components/SignIn/index.jsx";
+import BrowseProducts from "./components/BrowseProducts/BrowseProducts";
 // import Footer from "./components/Footer";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
 import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
-import EditOrderPage from "./components/Orders/EditOrderPage";
-import EditUser from "./components/EditUser.js/EditUser";
 import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation/index.jsx";
-import Orders from "./components/Orders";
 import Cart from "./components/Cart/index.jsx";
 import PostOrder from "./components/PostOrderConfirmation/PostOrder";
 
@@ -57,17 +58,23 @@ function App() {
       {isLoaded && (
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
-            <Route path="/login" exact={true}>
-              <LoginFormPage />
-            </Route>
+            {false && (
+              <Route path="/login" exact={true}>
+                <LoginFormPage />
+              </Route>
+            )}
 
-            <Route path="/signup" exact={true}>
-              <SignupFormPage />
-            </Route>
+            {false && (
+              <Route path="/signup" exact={true}>
+                <SignupFormPage />
+              </Route>
+            )}
 
-            <Route path="/products" exact={true}>
-              <ProductsPage />
-            </Route>
+            {false && (
+              <Route path="/products" exact={true}>
+                <ProductsPage />
+              </Route>
+            )}
 
             <Route path="/products/:id" exact={true}>
               <ProductPage />
@@ -81,30 +88,13 @@ function App() {
               <OrderConfirmation />
             </Route>
 
-            <Route path="/oldorders" exact={true}>
-              <Orders />
-            </Route>
+            {false && (
+              <Route path="/test" exact={true}>
+                <Test />
+              </Route>
+            )}
 
-            <Route
-              path="/edit/:id/:num/:items/:address1/:address2"
-              exact={true}
-            >
-              <EditOrderPage />
-            </Route>
-
-            <Route path="/search/:criteria" exact={true}>
-              <Search />
-            </Route>
-
-            <Route path="/profile" exact={true}>
-              <EditUser />
-            </Route>
-
-            <Route path="/test" exact={true}>
-              <Test />
-            </Route>
-
-            <Route path="/orderconfirmation" exact={true}>
+            <Route path="/ordered" exact={true}>
               <PostOrder />
             </Route>
 
@@ -123,6 +113,26 @@ function App() {
             <Route path="/account/3" exact={true}>
               <AccountSettings3 />
             </Route>
+
+            <Route path="/signin" exact={true}>
+              <SignIn />
+            </Route>
+
+            <Route path="/signup" exact={true}>
+              <CreateAccount />
+            </Route>
+
+            <Route path="/p/:category/:subcategory/:price/:rating" exact={true}>
+              <BrowseProducts />
+            </Route>
+
+            <Route path="/" exact={true}>
+              <SplashPage />
+            </Route>
+
+            <Route>
+              <NotFound />
+            </Route>
           </Switch>
         </AnimatePresence>
       )}
@@ -133,5 +143,3 @@ function App() {
 }
 
 export default App;
-
-// <Footer />

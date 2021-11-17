@@ -36,10 +36,6 @@ function Navigation({ isLoaded }) {
 
         <NavLink to="/cart">Shopping Cart</NavLink>
 
-        <NavLink to="/orders">Orders</NavLink>
-
-        <NavLink to="/profile">Edit User Profile</NavLink>
-
         {isLoaded && sessionLinks}
       </li>
     </ul>

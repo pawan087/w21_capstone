@@ -9,13 +9,13 @@ import {
 import Rodal from "rodal";
 import ReactLoading from "react-loading";
 import { FaStoreAlt } from "react-icons/fa";
-
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
-// import { SubMenu } from "@szhsin/react-menu";
+
+import * as sessionActions from "../../store/session";
+import SearchComponent from "../Search";
 import { setAllCartItems, deleteCartItem } from "../../store/cartItems";
 import styles from "./Navigation.module.css";
 import "@szhsin/react-menu/dist/index.css";
-import SearchComponent from "../Search";
 
 export default function MyNavBar() {
   const dispatch = useDispatch();
@@ -25,10 +25,41 @@ export default function MyNavBar() {
   const [loader, setLoader] = useState(false);
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
+  const [productPic, setProductPic] = useState();
   const [cartItemId, setCartItemId] = useState();
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [load, setLoad] = useState(false);
+
+  const handleVideoGames = () => {
+    history.push("/p/videogames/0/0/0");
+    closeNav();
+  };
+
+  const handleConsoles = () => {
+    history.push("/p/consoles/0/0/0");
+    closeNav();
+  };
+
+  const handleAccessories = () => {
+    history.push("/p/accessories/0/0/0");
+    closeNav();
+  };
+
+  const handleElectronics = () => {
+    history.push("/p/electronics/0/0/0");
+    closeNav();
+  };
+
+  const handleToysGames = () => {
+    history.push("/p/toysgames/0/0/0");
+    closeNav();
+  };
+
+  const handleClothing = () => {
+    history.push("/p/clothing/0/0/0");
+    closeNav();
+  };
 
   const sendToOrders = () => {
     closeNav2();
@@ -66,11 +97,14 @@ export default function MyNavBar() {
     setVisible2(false);
   }
 
-  const showRemoveConfirmationModal = (name, id, id2) => {
+  const showRemoveConfirmationModal = (name, id, id2, img) => {
     setProductName(name);
     setProductId(id);
     setCartItemId(id2);
     setRemoveConfirmation(true);
+    setProductPic(img);
+
+    return productId;
   };
 
   const hideRemoveConfirmationModal = () => {
@@ -134,6 +168,7 @@ export default function MyNavBar() {
   useEffect(() => {
     (async () => {
       await dispatch(setAllCartItems());
+      await dispatch(sessionActions.restoreUser());
 
       setLoad(true);
     })();
@@ -141,14 +176,19 @@ export default function MyNavBar() {
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -161,9 +201,36 @@ export default function MyNavBar() {
     history.push("/cart");
   };
 
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+
+    setLoader(true);
+
+    await dispatch(sessionActions.logout());
+
+    setVisible2(false);
+    setLoader(false);
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
+    history.push("/");
+  };
+
   return (
-    <div className={styles.myNavbar}>
-      <div className={styles.outerContainer}>
+    <div
+
+      className={styles.myNavbar}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.outerContainer}
+      >
         <div className={styles.leftSection}>
           <div onClick={openNav} className={styles.leftMenuButtonContainer}>
             <div className={styles.leftMenuButton}>
@@ -200,7 +267,7 @@ export default function MyNavBar() {
               dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
               dragElastic={0.6}
               whileTap={{ cursor: "grabbing" }}
-              onClick={() => history.push("/products")}
+              onClick={() => history.push("/")}
               className={styles.navLogo}
             >
               <img
@@ -224,15 +291,51 @@ export default function MyNavBar() {
         </div>
 
         <div className={styles.rightSection}>
-          <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
-            <div className={styles.userInitials}>
-              {user?.firstName &&
-                user?.lastName &&
-                `${user.firstName[0]}${user.lastName[0]}`}
-            </div>
+          {user && (
+            <div onClick={openNav2} className={styles.rightMenuButtonContainer}>
+              <div className={styles.userInitials}>
+                {user?.firstName &&
+                  user?.lastName &&
+                  `${user.firstName[0]}${user.lastName[0]}`}
+              </div>
 
-            <div className={styles.accountLabel}>Account</div>
-          </div>
+              <div className={styles.accountLabel}>Account</div>
+            </div>
+          )}
+
+          {!user && (
+            <div
+              onClick={() => history.push("/signin")}
+              className={styles.button2}
+            >
+              <div className={styles.cartButtonContainer}>
+                <div className={styles.carButton}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                    />
+                  </svg>
+                </div>
+
+                <div className={styles.cartLabel2}>Sign In</div>
+
+                {user && inCartProducts.length > 0 && (
+                  <div className={styles.numOfCartItems}>
+                    {inCartProducts.length !== 0 && sum}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           {inCartProducts.length > 0 && (
             <Menu
@@ -276,7 +379,12 @@ export default function MyNavBar() {
                   return (
                     <MenuItem key={i} className={styles.menuItemOuterContainer}>
                       <div className={styles.menuItemLeftContainer}>
-                        <div className={styles.menuItemProductImageContainer}>
+                        <div
+                          onClick={() =>
+                            history.push(`/products/${product.id}`)
+                          }
+                          className={styles.menuItemProductImageContainer}
+                        >
                           <img
                             className={styles.menuItemProductImage}
                             alt="productImageInSubMenu"
@@ -287,8 +395,14 @@ export default function MyNavBar() {
 
                       <div className={styles.menuItemRightContainer}>
                         <div className={styles.menuItemRightTopContainer}>
-                          <div className={styles.menuItemProductName}>
-                            {product?.name}
+                          <div
+                            onClick={() =>
+                              history.push(`/products/${product.id}`)
+                            }
+                            className={styles.menuItemProductName}
+                          >
+                            {product?.name.slice(0, 45)}
+                            {product?.name?.length > 45 ? "..." : null}
                           </div>
 
                           <div className={styles.menuItemProductQuantity}>
@@ -302,7 +416,8 @@ export default function MyNavBar() {
                               showRemoveConfirmationModal(
                                 product.name,
                                 product.id,
-                                product.cartItemId
+                                product.cartItemId,
+                                product.images[0]
                               )
                             }
                             className={styles.removeLink}
@@ -343,10 +458,42 @@ export default function MyNavBar() {
             </Menu>
           )}
 
-          {inCartProducts.length === 0 && (
+          {user && inCartProducts.length === 0 && (
             <div
               onClick={() => history.push("/cart")}
-              className={styles.cartButtonContainer}
+              className={styles.cartButtonContainer2}
+            >
+              <div className={styles.carButton}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+
+              <div className={styles.cartLabel}>Cart</div>
+
+              {user && inCartProducts.length > 0 && (
+                <div className={styles.numOfCartItems}>
+                  {inCartProducts.length !== 0 && sum}
+                </div>
+              )}
+            </div>
+          )}
+
+          {!user && inCartProducts.length === 0 && (
+            <div
+              onClick={() => history.push("/signin")}
+              className={styles.cartButtonContainer3}
             >
               <div className={styles.carButton}>
                 <svg
@@ -375,7 +522,7 @@ export default function MyNavBar() {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
       <Rodal
         closeOnEsc={true}
@@ -399,6 +546,7 @@ export default function MyNavBar() {
           </div>
 
           <div className={styles.secondContainer}>
+            <img alt="productPic" src={productPic} />
             <div className={styles.reviewUsername}>{productName}</div>
           </div>
 
@@ -429,7 +577,6 @@ export default function MyNavBar() {
           <ReactLoading
             type={"bubbles"}
             color={"rgb(231,35,13)"}
-            /*       color={"rgb(231,35,13)"} */
             height={"0px"}
             width={"120px"}
           />
@@ -450,8 +597,8 @@ export default function MyNavBar() {
               animate={visible ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 500,
-                damping: 50,
+                stiffness: 300,
+                damping: 30,
               }}
               variants={variants1}
               className={styles.sidebar}
@@ -468,21 +615,47 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebarMenuItemsContainer3}>
-                <div className={styles.sidebarMenuItem3}>Video Games</div>
+                <div
+                  onClick={() => handleVideoGames()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Video Games
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>
+                <div
+                  onClick={() => handleConsoles()}
+                  className={styles.sidebarMenuItem3}
+                >
                   Consoles & Hardware
                 </div>
 
-                <div className={styles.sidebarMenuItem3}>
+                <div
+                  onClick={() => handleAccessories()}
+                  className={styles.sidebarMenuItem3}
+                >
                   Gaming Accessories
                 </div>
 
-                <div className={styles.sidebarMenuItem3}>Electronics</div>
+                <div
+                  onClick={() => handleElectronics()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Electronics
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>Toys & Games</div>
+                <div
+                  onClick={() => handleToysGames()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Toys & Games
+                </div>
 
-                <div className={styles.sidebarMenuItem3}>Clothing</div>
+                <div
+                  onClick={() => handleClothing()}
+                  className={styles.sidebarMenuItem3}
+                >
+                  Clothing
+                </div>
               </div>
 
               <div className={styles.fakeSidebarFooter}>
@@ -521,8 +694,8 @@ export default function MyNavBar() {
               animate={visible2 ? "open" : "closed"}
               transition={{
                 type: "spring",
-                stiffness: 500,
-                damping: 50,
+                stiffness: 300,
+                damping: 30,
               }}
               variants={variants}
               id="mySidebar2"
@@ -557,7 +730,12 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2MenuItemsContainer2}>
-                <div className={styles.sidebar2MenuItem2}>Sign Out</div>
+                <div
+                  onClick={(e) => handleSignOut(e)}
+                  className={styles.sidebar2MenuItem2}
+                >
+                  Sign Out
+                </div>
               </div>
             </motion.div>
           }

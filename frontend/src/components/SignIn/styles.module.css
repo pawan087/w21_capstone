@@ -1,0 +1,276 @@
+.backContainer {
+  width: 100%;
+  /* min-height: 875px; */
+}
+
+.signInOuterContainer {
+  background-color: white;
+  width: 485px;
+  height: 362.5px;
+  height: 450px;
+  margin: 0 auto;
+  margin-top: 35px;
+  margin-bottom: 347.5px;
+}
+
+.firstContainer {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.secondContainer {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.675);
+  transform: translateY(-5px);
+  margin-bottom: 15px;
+}
+
+.thirdContainer,
+.emailInput,
+.fourthContainer {
+  border: 1px solid black;
+  margin-top: 20px;
+  height: 55px;
+  width: 485px;
+  font-size: 15px;
+  background-color: rgb(236, 244, 251);
+  position: relative;
+}
+
+.thirdContainer * {
+  /* font-size: 15px; */
+}
+
+.revealPasswordIconContainer {
+  position: absolute;
+  height: 17.5px;
+  width: 17.5px;
+  top: 15px;
+  right: 17.5px;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.675);
+}
+
+.fourthContainer {
+  margin-bottom: 20px;
+}
+
+.fifthContainer {
+  /* background-color: skyblue; */
+  display: flex;
+}
+
+.checkBoxContainer {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: rgb(231, 35, 24);
+  border-radius: 2.5px;
+}
+
+.checkBoxContainer2 {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.checkIconContainer {
+  height: 15px;
+  width: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkIconContainer2 {
+  height: 15px;
+  width: 15px;
+  /* border: 1px solid rgba(0, 0, 0, .75); */
+  border-radius: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fifthRightContainer {
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.15s ease-in-out;
+  /* font-weight: bold; */
+  margin-left: 10px;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.fifthRightContainer2 {
+  font-size: 12.5px;
+  color: rgba(231, 35, 24, 0.9);
+  color: rgba(0, 0, 0, 0.9);
+  transition: 0.15s ease-in-out;
+  /* font-weight: bold; */
+  margin-left: 10px;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.signInButton {
+  width: 485px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: rgb(231, 35, 24);
+  margin-bottom: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s ease-in-out;
+  /* border-radius: 2.5px; */
+}
+
+.signInButton:hover {
+  opacity: 0.9;
+}
+
+.signInButton:active {
+  transform: scale(0.975);
+}
+
+.signInButton2 {
+  width: 485px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background-color: rgb(231, 35, 24);
+  margin-bottom: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  cursor: not-allowed;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s ease-in-out;
+  opacity: 0.75;
+  /* border-radius: 2.5px; */
+}
+
+.divisorContainer {
+  background-color: rgb(255, 255, 255);
+  /* background-color: skyblue; */
+  height: 30px;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  line-height: 0em;
+}
+
+.middleDivisor {
+  position: relative;
+  color: rgb(142, 142, 142);
+  font-size: 12.5px;
+  font-weight: 600;
+  height: 30px;
+  width: 55px;
+  padding: 0 7.5px;
+  background-color: white;
+}
+
+.underline {
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  /* background-color: red; */
+  height: 0px;
+}
+
+.createAccountButton {
+  width: 485px;
+  height: 50px;
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.createAccountButton:hover {
+  background-color: rgba(0, 0, 0, 0.03125);
+}
+
+.createAccountButton:active {
+  transform: scale(0.975);
+}
+
+.demoUserButton {
+  font-size: 12.5px;
+  font-weight: bold;
+  height: 62.5px;
+  cursor: pointer;
+  width: 62.5px;
+  background-color: rgb(231, 35, 24);
+  color: white;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  transition: 0.15s ease-in-out;
+  align-items: center;
+  position: absolute;
+  bottom: 25px;
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  right: 25px;
+}
+
+.demoUserButton:hover {
+  background-color: rgba(231, 35, 24, 0.9);
+  /* opacity: 0.95; */
+  --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.demoUserButton:active {
+  transform: scale(0.9);
+}
+
+.errorContainer {
+  display: flex;
+  height: 60px;
+  width: auto;
+  color: rgba(194, 62, 46, 0.8);
+  background-color: rgb(250, 238, 238);
+  font-size: 15px;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.errorContainerLeft {
+  height: 40px;
+  width: 40px;
+  color: rgba(231, 35, 24, 0.8);
+  margin-right: 10px;
+}
+
+.loaderCotnainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
+import { FormField } from "react-form-input-fields";
 import ReactLoading from "react-loading";
 import Rodal from "rodal";
-import { FormField } from "react-form-input-fields";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
@@ -100,9 +101,20 @@ export default function AccountDashboard() {
       setInvalidConfirmPassword(true);
     }
 
-    if (newPassword.length < 6) {
+    let mediumPassword = new RegExp(
+      "((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))"
+    );
+
+    if (mediumPassword.test(newPassword)) {
+      // console.log("strong password");
+    } else {
+      // console.log("weak password");
       setInvalidNewPasswordWarning(true);
     }
+
+    // if (newPassword.length < 6) {
+    //   setInvalidNewPasswordWarning(true);
+    // }
 
     if (newPassword === confirmNewPassword && newPassword.length > 5) {
       setLoader2(true);
@@ -163,6 +175,8 @@ export default function AccountDashboard() {
   const showOrderHistory = () => {
     history.push("/orders");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -317,7 +331,9 @@ export default function AccountDashboard() {
                   )}
                   {invalidNewPasswordWarning && (
                     <span className={styles.requiredLabel}>
-                      Use 6 or more characters
+                      Password must be a minimum of 8 characters with at least
+                      one upper case letter, one lower case letter, one digit
+                      and one special character.
                     </span>
                   )}
                 </div>
@@ -384,14 +400,19 @@ export default function AccountDashboard() {
       </div>
 
       {loader2 && (
-        <div className={styles.loader}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={styles.loader}
+        >
           <ReactLoading
             type={"bubbles"}
             color={"rgb(231,35,13)"}
             height={"0px"}
             width={"120px"}
           />
-        </div>
+        </motion.div>
       )}
 
       <Footer />
@@ -412,13 +433,3 @@ export default function AccountDashboard() {
     </motion.div>
   );
 }
-
-<FormField
-  type="text"
-  standard="labeleffect"
-  value={"firstName"}
-  keys={"firstName"}
-  effect={"effect_9"}
-  handleOnChange={(value) => console.log(value)}
-  placeholder={"First Name"}
-/>;

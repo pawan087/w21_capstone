@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { useHistory } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import ReactLoading from "react-loading";
+import { motion } from "framer-motion/dist/framer-motion";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
@@ -15,8 +17,10 @@ import "rodal/lib/rodal.css";
 export default function RatingsandReviews({ avgRating, reviews }) {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
+
   const products = useSelector((state) => state.products);
   const deleteConfirmation = useSelector(
     (state) => state.deleteConfirmationReducer
@@ -42,9 +46,14 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [uploadMsg, setUploadMsg] = useState("Upload Picutre");
+  const [uploadMsg, setUploadMsg] = useState("Upload Picture");
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
+
+  // const variants = {
+  //   closed: { height: "0px" },
+  //   open: showAllReviews ? { minheight: "1075px" } : { minheight: "605px" },
+  // };
 
   const contentSetter = (e) => {
     setContent(e.target.value);
@@ -52,6 +61,15 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   };
 
   const show = () => {
+    if (!user) {
+      setLoading(true);
+
+      history.push("/signin");
+
+      setLoading(false);
+      return;
+    }
+
     setVisible(true);
   };
 
@@ -138,6 +156,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
       })
     );
 
+    setDidMount(false);
+    setVisible(false);
+    setDidMount(true);
+
     await dispatch(setAllReviews());
 
     setContent("");
@@ -170,6 +192,13 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     return () => URL.revokeObjectURL(objectUrl);
   }, [deleteConfirmation, selectedFile]);
 
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
+
   const updateImage = (e) => {
     const file = e.target.files[0];
 
@@ -184,16 +213,18 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     setUploadMsg("Upload Picture");
   };
 
-  // console.log(thisPagesProduct[0]?.images[0])
+  const handleSetBoot = () => {
+    setBool(!bool);
+  };
 
   return (
     <>
       <div className={styles.outerContainer}>
-        <div onClick={() => setBool(!bool)} className={styles.topContainer}>
+        <div onClick={() => handleSetBoot()} className={styles.topContainer}>
           <div className={styles.title}>Ratings and Reviews</div>
 
           {bool && (
-            <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+            <div onClick={() => handleSetBoot()} className={styles.menuIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -212,7 +243,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
           )}
 
           {!bool && (
-            <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
+            <div onClick={() => handleSetBoot()} className={styles.menuIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -232,7 +263,12 @@ export default function RatingsandReviews({ avgRating, reviews }) {
         </div>
 
         {reviews.length !== 0 && bool && (
-          <div className={styles.bottomContainer}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={styles.bottomContainer}
+          >
             <div className={styles.leftContainer}>
               <div className={styles.leftTopContainer}>
                 <div className={styles.reviewNumber}>
@@ -267,7 +303,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
                 <Testing reviews={reviews} />
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {reviews.length !== 0 && bool && (
@@ -338,7 +374,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
                     placeholder={"Your email"}
                     className={styles.emailInput}
                     type="email"
-                    value={user.email}
+                    value={user?.email}
                     readOnly
                   ></input>
                 </div>
@@ -481,18 +517,18 @@ export default function RatingsandReviews({ avgRating, reviews }) {
             <div className={styles.addPhotoLowerContainer}>
               {!selectedFile && (
                 <div className={styles.selectFileContainer}>
-                  <div className="fileinputs">
+                  <div className={styles.fileinputs}>
                     <input
-                      className="inputContainer file"
+                      className={styles.inputContainer}
                       type="file"
                       accept="image/*"
                       onChange={updateImage}
                     />
 
-                    <div className="inputContainer fakefile">
-                      <label className="uploadLabel">{uploadMsg}</label>
+                    <div className={styles.inputContainer2}>
+                      <label className={styles.uploadLabel}>{uploadMsg}</label>
 
-                      <div className="uploadPic">
+                      <div className={styles.uploadPic}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -541,14 +577,3 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     </>
   );
 }
-
-// <div className={styles.loaderContainer}>
-// <div className={styles.loader}>
-//   <ReactLoading
-//     type={"spinningBubbles"}
-//     color={"#E7230D"}
-//     height={"20%"}
-//     width={"20%"}
-//   />
-// </div>
-// </div>

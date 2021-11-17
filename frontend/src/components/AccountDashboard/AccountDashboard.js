@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import { Menu, MenuItem, MenuButton } from "@szhsin/react-menu";
 import {
@@ -127,13 +128,11 @@ export default function AccountDashboard() {
   const [detailArr, setDetailArr] = useState([]);
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const [data, setData] = useState([]);
-  let copy = [...usersOrdersAndItems];
-  const reversed = copy?.reverse();
+  const reversed = usersOrdersAndItems?.reverse();
 
   useEffect(() => {
-    setData(reversed);
-  }, [orders]);
+    // setData(reversed);
+  }, []);
   useEffect(() => {
     (async () => {
       await dispatch(setAllProducts());
@@ -145,14 +144,19 @@ export default function AccountDashboard() {
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -220,7 +224,7 @@ export default function AccountDashboard() {
 
   const offset = currentPage * PER_PAGE;
 
-  const currentPageData = data
+  const currentPageData = reversed
     ?.slice(offset, offset + PER_PAGE)
     ?.map((x, i) => {
       return (
@@ -313,22 +317,216 @@ export default function AccountDashboard() {
       );
     });
 
-  const pageCount = Math.ceil(data?.length / PER_PAGE);
+  const pageCount = Math.ceil(reversed?.length / PER_PAGE);
+
+  const currentPageData2 = currentOrders
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((x, i) => {
+      return (
+        <div key={i}>
+          <div className={styles.mappableOrdersContainer}>
+            <div className={styles.right2ndContainer}>
+              <div className={styles.right2nd1stContainer}>
+                <div className={styles.orderDate}>
+                  Online | {String(new Date(x?.updatedAt)).slice(4, 15)}
+                </div>
+              </div>
+
+              <div className={styles.right2nd2ndContainer}>
+                Order # 11000000377356{x?.id} | $
+                {formatter.format(x.orderTotal + x.orderTotal * 0.0825)}
+                <div className={styles.mappableOrderItemPicturesContainer}>
+                  {x?.items?.map((y, i) => {
+                    return (
+                      <div key={i} className={styles.productImageContainer}>
+                        <img
+                          alt={"productImage"}
+                          className={styles.orderImages}
+                          src={y?.product?.images[0]}
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {x?.items?.length > 5 && (
+                    <div className={styles.plusTag}>
+                      +{x?.items?.length - 5}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.right2nd3rdContainer}>
+                <div
+                  onClick={() => showOrderDetail(x)}
+                  className={styles.orderDetailsLink}
+                >
+                  ORDER DETAILS
+                </div>
+
+                <div className={styles.rightArrowIconContainer}>
+                  <FaAngleRight
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "rgb(238,42,40)",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.right3rdContainer}>
+              <div className={styles.orderStatusLabel}>
+                <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
+                {new Date(x.updatedAt) > pastTime && (
+                  <span className={styles.notGreen2}>Order Processing: </span>
+                )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) > pastTime2 && (
+                    <span className={styles.notGreen}>
+                      Preparing for Shipment:{" "}
+                    </span>
+                  )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) < pastTime2 && (
+                    <span className={styles.notGreen}>Shipped: </span>
+                  )}
+                {String(new Date(x?.updatedAt)).slice(4, 15)}
+                <div className={styles.fakeTrackingNumber}>
+                  54599350{Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                </div>
+              </div>
+
+              <div className={styles.orderStatusLabel2}>
+                Preparing for shipment
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+  const pageCount2 = Math.ceil(currentOrders?.length / PER_PAGE);
+
+  const currentPageData3 = [...currentOrders, ...currentOrders2]
+    ?.slice(offset, offset + PER_PAGE)
+    ?.map((x, i) => {
+      return (
+        <div key={i}>
+          <div className={styles.mappableOrdersContainer}>
+            <div className={styles.right2ndContainer}>
+              <div className={styles.right2nd1stContainer}>
+                <div className={styles.orderDate}>
+                  Online | {String(new Date(x?.updatedAt)).slice(4, 15)}
+                </div>
+              </div>
+
+              <div className={styles.right2nd2ndContainer}>
+                Order # 11000000377356{x?.id} | $
+                {formatter.format(x.orderTotal + x.orderTotal * 0.0825)}
+                <div className={styles.mappableOrderItemPicturesContainer}>
+                  {x?.items?.map((y, i) => {
+                    return (
+                      <div key={i} className={styles.productImageContainer}>
+                        <img
+                          alt={"productImage"}
+                          className={styles.orderImages}
+                          src={y?.product?.images[0]}
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {x?.items?.length > 5 && (
+                    <div className={styles.plusTag}>
+                      +{x?.items?.length - 5}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.right2nd3rdContainer}>
+                <div
+                  onClick={() => showOrderDetail(x)}
+                  className={styles.orderDetailsLink}
+                >
+                  ORDER DETAILS
+                </div>
+
+                <div className={styles.rightArrowIconContainer}>
+                  <FaAngleRight
+                    style={{
+                      height: "20px",
+                      width: "20px",
+                      display: "inline",
+                      color: "rgb(238,42,40)",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.right3rdContainer}>
+              <div className={styles.orderStatusLabel}>
+                <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
+                {new Date(x.updatedAt) > pastTime && (
+                  <span className={styles.notGreen2}>Order Processing: </span>
+                )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) > pastTime2 && (
+                    <span className={styles.notGreen}>
+                      Preparing for Shipment:{" "}
+                    </span>
+                  )}
+
+                {new Date(x.updatedAt) < pastTime &&
+                  new Date(x.updatedAt) < pastTime2 && (
+                    <span className={styles.notGreen}>Shipped: </span>
+                  )}
+                {String(new Date(x?.updatedAt)).slice(4, 15)}
+                <div className={styles.fakeTrackingNumber}>
+                  54599350{Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                  {Math.floor(Math.random() * 10)}
+                </div>
+              </div>
+
+              <div className={styles.orderStatusLabel2}>
+                Preparing for shipment
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
+  const pageCount3 = Math.ceil(
+    [...currentOrders, ...currentOrders2]?.length / PER_PAGE
+  );
 
   const setAllTheOrders = () => {
-    setData([...reversed]);
     setSortBy("All Orders");
+    setCurrentPage(0);
   };
 
   const setLast30 = () => {
-    setData([...currentOrders]);
     setSortBy("Last 30 Seconds");
+    setCurrentPage(0);
   };
 
   const setLast60 = () => {
-    setData([...currentOrders, ...currentOrders2]);
     setSortBy("Last 1 Minute");
+    setCurrentPage(0);
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -542,7 +740,11 @@ export default function AccountDashboard() {
 
                 {
                   sortBy === "All Orders" && (
-                    <>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
                       {bool && (
                         /* NO ORDERS */
                         <div className={styles.noOrdersContainer}>
@@ -563,53 +765,65 @@ export default function AccountDashboard() {
                         </div>
                       )}
 
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
+                      {!bool && (
+                        <>
+                          <div className={styles.holder}>{currentPageData}</div>
+                          {reversed?.length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
                             />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
+                          )}
+                        </>
+                      )}
+                    </motion.div>
                   )
                   /* End */
                 }
 
                 {
                   sortBy === "Last 30 Seconds" && (
-                    <>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
                       {bool && (
                         /* NO ORDERS */
                         <div className={styles.noOrdersContainer}>
@@ -630,53 +844,67 @@ export default function AccountDashboard() {
                         </div>
                       )}
 
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
+                      {!bool && (
+                        <>
+                          <div className={styles.holder}>
+                            {currentPageData2}
+                          </div>
+                          {currentOrders?.length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount2}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
                             />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
+                          )}
+                        </>
+                      )}
+                    </motion.div>
                   )
                   /* End */
                 }
 
                 {
                   sortBy === "Last 1 Minute" && (
-                    <>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
                       {bool && (
                         /* NO ORDERS */
                         <div className={styles.noOrdersContainer}>
@@ -696,46 +924,57 @@ export default function AccountDashboard() {
                           </div>
                         </div>
                       )}
-                      <div className={styles.holder}>{currentPageData}</div>
-                      <ReactPaginate
-                        previousLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                              clipRule="evenodd"
+
+                      {!bool && (
+                        <>
+                          <div className={styles.holder}>
+                            {currentPageData3}
+                          </div>
+                          {[...currentOrders, ...currentOrders2].length > 3 && (
+                            <ReactPaginate
+                              previousLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              nextLabel={
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    fillRule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clipRule="evenodd"
+                                  />
+                                </svg>
+                              }
+                              marginPagesDisplayed={500}
+                              pageCount={pageCount3}
+                              onPageChange={handlePageClick}
+                              containerClassName={styles.pagination}
+                              previousLinkClassName={styles.pagination__link}
+                              nextLinkClassName={styles.pagination__link}
+                              disabledClassName={
+                                styles.pagination__linkdisabled
+                              }
+                              activeClassName={styles.pagination__linkactive}
                             />
-                          </svg>
-                        }
-                        nextLabel={
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                        }
-                        marginPagesDisplayed={500}
-                        pageCount={pageCount}
-                        onPageChange={handlePageClick}
-                        containerClassName={styles.pagination}
-                        previousLinkClassName={styles.pagination__link}
-                        nextLinkClassName={styles.pagination__link}
-                        disabledClassName={styles.pagination__linkdisabled}
-                        activeClassName={styles.pagination__linkactive}
-                      />
-                    </>
+                          )}
+                        </>
+                      )}
+                    </motion.div>
                   )
                   /* End All */
                 }
@@ -745,6 +984,7 @@ export default function AccountDashboard() {
           }
         </div>
       </div>
+
       <Footer />
     </motion.div>
   );

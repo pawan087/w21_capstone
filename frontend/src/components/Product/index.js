@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
-import {
-  motion,
-  // Frame,
-  // useTransform,
-  // useMotionValue,
-} from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
 
 // import NewCartItem from "./NewCartItem.js";
@@ -17,7 +12,7 @@ import ReactLoading from "react-loading";
 // import { setAllQuestions } from "../../store/questions.js";
 import Footer from "../Footer";
 import ProductDetail from "./ProductDetail";
-import WriteReviewCard from "./WriteReviewCard";
+
 import { setAllProducts } from "../../store/products.js";
 import { setAllReviews } from "../../store/reviews.js";
 import { setAllReviewLikes } from "../../store/reviewLikes";
@@ -79,29 +74,54 @@ function ProductPage() {
   useEffect(() => {
     // dispatch(setAllQuestions());
     (async () => {
-      dispatch(addToRecent({ productId: +params.id, userId: user.id }));
-      dispatch(setAllProducts());
-      dispatch(setAllReviews());
-      dispatch(setAllReviewLikes());
+      if (user) {
+        await dispatch(
+          addToRecent({ productId: +params.id, userId: user?.id })
+        );
+      }
+
+      await dispatch(setAllProducts());
+      await dispatch(setAllReviews());
+      await dispatch(setAllReviewLikes());
 
       setLoad(true);
     })();
-  }, [params.id, user.id, dispatch]);
+  }, [params.id, user, dispatch]);
+
+  const [didMount, setDidMount] = useState(false);
+  useEffect(() => {
+    setDidMount(true);
+    return () => setDidMount(false);
+  }, []);
+  if (!didMount) return null;
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
-  if (!user) return <Redirect to="/" />;
+  // let productIdsArr = [];
+
+  // for (let i = 1; i < products.length; i++) {
+  //   productIdsArr.push(i);
+  // }
+
+  // if (!productIdsArr.includes(params.id)) {
+  //   return <Redirect to="/404" />;
+  // }
 
   return (
     <motion.div
@@ -116,9 +136,17 @@ function ProductPage() {
         reviews={productReviews}
       />
 
-      <WriteReviewCard />
+      {user && (
+        <div className={styles.footerWithUserContainer}>
+          <Footer />
+        </div>
+      )}
 
-      <Footer />
+      {!user && (
+        <div className={styles.footerWithoutUserContainer}>
+          <Footer />
+        </div>
+      )}
     </motion.div>
   );
 }

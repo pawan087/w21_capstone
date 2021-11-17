@@ -6,7 +6,7 @@ module.exports = {
       "Subcategories",
       [
         {
-          name: "Playstation 5",
+          name: "PlayStation 5",
         },
         {
           name: "Audio",
@@ -36,7 +36,7 @@ module.exports = {
           name: "Board Games", // 10
         },
         {
-          name: "Accessories & Watches", // 11
+          name: "Accessories", // 11
         },
         {
           name: "Stuffed Animals & Plush", // 12
@@ -75,7 +75,7 @@ module.exports = {
           name: "Dolls & Dollhouses", // 23
         },
         {
-          name: "Arts & Crafits Toys", // 24
+          name: "Arts & Crafts Toys", // 24
         },
         {
           name: "Play Vehicles", // 25
@@ -103,6 +103,9 @@ module.exports = {
         },
         {
           name: "Mounts", // 33
+        },
+        {
+          name: "Square Enix", // 34
         },
       ],
       {}

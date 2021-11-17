@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import StarPicker from "react-star-picker";
 
 import {
@@ -12,6 +13,7 @@ import styles from "./TopReviewsCard.module.css";
 
 export default function IndividualTopReview({ review }) {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const formatter = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 1,
@@ -22,6 +24,12 @@ export default function IndividualTopReview({ review }) {
   const reviewLikes = useSelector((state) => state.reviewLikes);
 
   const handleLike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return;
+    }
+
     let alreadyLiked = false;
     let alreadyDisliked = false;
     let id;
@@ -33,7 +41,6 @@ export default function IndividualTopReview({ review }) {
         reviewLike.reviewId === review.id &&
         reviewLike.like
       ) {
-        // console.log("Already liked");
         alreadyLiked = true;
         id = reviewLike.id;
       }
@@ -73,6 +80,12 @@ export default function IndividualTopReview({ review }) {
   };
 
   const handleDislike = async () => {
+    if (!user) {
+      history.push("/signin");
+
+      return;
+    }
+
     let alreadyDisliked = false;
     let alreadyLiked = false;
 
@@ -185,7 +198,11 @@ export default function IndividualTopReview({ review }) {
           )
         ) < 1 && <div className={styles.timeAgo}>Today</div>}
 
-        <div className={styles.reviewContent}>{review?.content}</div>
+        <div className={styles.reviewContainer}>
+          <div className={styles.reviewContent}>
+            {review?.content.slice(0, 200)}
+          </div>
+        </div>
       </div>
 
       <div className={styles.reviewCardBottomContainer}>

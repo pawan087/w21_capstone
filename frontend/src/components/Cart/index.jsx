@@ -29,17 +29,16 @@ export default function Cart() {
   const [productName, setProductName] = useState();
   const [productId, setProductId] = useState();
   const [cartItemId, setCartItemId] = useState();
+  const [productPic, setProductPic] = useState("");
 
-  // const byPassReactConsoleError = () => {
-  //   return productId;
-  // }
-
-  const showRemoveConfirmationModal = (name, id, id2) => {
-    // byPassReactConsoleError();
-    setProductName(name);
-    setProductId(id);
-    setCartItemId(id2);
+  const showRemoveConfirmationModal = (cartItem) => {
+    setProductName(cartItem.product.name);
+    setProductId(cartItem.product.id);
+    setCartItemId(cartItem.id);
     setRemoveConfirmation(true);
+    setProductPic(cartItem.product.images[0]);
+
+    return productId;
   };
 
   const hideRemoveConfirmationModal = () => {
@@ -55,7 +54,7 @@ export default function Cart() {
     return cartItem?.userId === user?.id;
   });
 
-  const shoppingCartItems = [];
+  let shoppingCartItems = [];
   let num = 0;
   let subtotal = 0;
 
@@ -90,6 +89,7 @@ export default function Cart() {
     { value: 5, label: "Qty 5" },
   ];
   const [load, setLoad] = useState(false);
+  const [showCart, setShowCart] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -99,18 +99,23 @@ export default function Cart() {
 
       setLoad(true);
     })();
-  }, [dispatch]);
+  }, [user, dispatch]);
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -127,17 +132,18 @@ export default function Cart() {
 
     hideRemoveConfirmationModal();
 
-    setTimeout(() => setLoader(false), 250);
+    setLoader(false);
+
+    // setTimeout(() => setLoader(false), 250);
   };
 
   const updateQuantity = async (id, val) => {
     setLoader(true);
-
+    setShowCart(false);
     await dispatch(editCartItem({ id, quantity: val }));
-
-    await dispatch(setAllCartItems());
-
+    setShowCart(true);
     setLoader(false);
+    // window.location.reload(false);
   };
 
   const theme = (theme) => ({
@@ -205,105 +211,108 @@ export default function Cart() {
               </div>
             </div>
 
-            {shoppingCartItems?.map((cartItem, i) => {
-              return (
-                <div key={i} className={styles.leftBottomContainer}>
-                  <div className={styles.leftBottom1stContainer}>
-                    <div
-                      onClick={() =>
-                        history.push(`/products/${cartItem.product.id}`)
-                      }
-                      className={styles.productImageContainer}
-                    >
-                      <img
-                        className={styles.productImage}
-                        src={cartItem.product.images[0]}
-                        alt="shoppingCartImage"
-                      />
-                    </div>
-
-                    <div className={styles.quantityContainer}>
-                      <Select
-                        options={options}
-                        theme={theme}
-                        defaultValue={options[cartItem?.quantity - 1]}
-                        onChange={(e) => updateQuantity(cartItem.id, e.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className={styles.leftBottom2ndContainer}>
-                    <div className={styles.leftBottom2ndTopContainer}>
+            {showCart &&
+              shoppingCartItems?.map((cartItem, i) => {
+                return (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    key={i}
+                    className={styles.leftBottomContainer}
+                  >
+                    <div className={styles.leftBottom1stContainer}>
                       <div
                         onClick={() =>
                           history.push(`/products/${cartItem.product.id}`)
                         }
-                        className={styles.cartProductName}
+                        className={styles.productImageContainer}
                       >
-                        {cartItem?.product?.name}
+                        <img
+                          className={styles.productImage}
+                          src={cartItem.product.images[0]}
+                          alt="shoppingCartImage"
+                        />
                       </div>
-                      <div className={styles.cartProductBrandName}>
-                        {cartItem?.product?.Brand?.name}
+
+                      <div className={styles.quantityContainer}>
+                        <Select
+                          options={options}
+                          theme={theme}
+                          defaultValue={options[cartItem?.quantity - 1]}
+                          onChange={(e) => updateQuantity(cartItem.id, e.value)}
+                        />
                       </div>
                     </div>
-                    <div className={styles.leftBottom2ndBottomContainer}>
-                      <div className={styles.removeFromCartLink}>
+                    <div className={styles.leftBottom2ndContainer}>
+                      <div className={styles.leftBottom2ndTopContainer}>
                         <div
                           onClick={() =>
-                            showRemoveConfirmationModal(
-                              cartItem.product.name,
-                              cartItem.product.id,
-                              cartItem.id
-                            )
+                            history.push(`/products/${cartItem.product.id}`)
                           }
-                          className={styles.removeLink}
+                          className={styles.cartProductName}
                         >
-                          Remove
+                          {cartItem?.product?.name}
+                        </div>
+                        <div className={styles.cartProductBrandName}>
+                          {cartItem?.product?.Brand?.name}
+                        </div>
+                      </div>
+                      <div className={styles.leftBottom2ndBottomContainer}>
+                        <div className={styles.removeFromCartLink}>
+                          <div
+                            onClick={() =>
+                              showRemoveConfirmationModal(cartItem)
+                            }
+                            className={styles.removeLink}
+                          >
+                            Remove
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className={styles.leftBottom3rdContainer}>
-                    <input
-                      defaultChecked
-                      className={styles.fakeRadio}
-                      type="radio"
-                    />
-                     
-                    <div className={styles.fakeFreeShipping}>
-                      FREE shipping{" "}
-                      <span className={styles.shippingDetail}>
-                        on $10+ orders
-                      </span>
-                      <span className={styles.fakeArrive}>
-                        Arrives in 2- 4 days
-                      </span>
-                    </div>
-                  </div>
-                  {cartItem.quantity > 1 && (
-                    <div className={styles.leftBottom4thContainer}>
-                      <div className={styles.priceTag}>
-                        $
-                        {formatter.format(
-                          cartItem.product.price * cartItem.quantity
-                        )}{" "}
-                        <span className={styles.singlePrice}>
-                          ${cartItem.product.price}{" "}
-                          <span className={styles.smaller}>each</span>
+                    <div className={styles.leftBottom3rdContainer}>
+                      <input
+                        defaultChecked
+                        className={styles.fakeRadio}
+                        type="radio"
+                      />
+                       
+                      <div className={styles.fakeFreeShipping}>
+                        FREE shipping{" "}
+                        <span className={styles.shippingDetail}>
+                          on $10+ orders
+                        </span>
+                        <span className={styles.fakeArrive}>
+                          Arrives in 2- 4 days
                         </span>
                       </div>
                     </div>
-                  )}
-
-                  {cartItem.quantity === 1 && (
-                    <div className={styles.leftBottom4thContainer}>
-                      <div className={styles.priceTag}>
-                        ${cartItem.product.price}
+                    {cartItem.quantity > 1 && (
+                      <div className={styles.leftBottom4thContainer}>
+                        <div className={styles.priceTag}>
+                          $
+                          {formatter.format(
+                            cartItem.product.price * cartItem.quantity
+                          )}{" "}
+                          <span className={styles.singlePrice}>
+                            ${cartItem.product.price}{" "}
+                            <span className={styles.smaller}>each</span>
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                    )}
+
+                    {cartItem.quantity === 1 && (
+                      <div className={styles.leftBottom4thContainer}>
+                        <div className={styles.priceTag}>
+                          ${cartItem.product.price}
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
           </div>
 
           <div className={styles.cartRightContainer}>
@@ -385,6 +394,7 @@ export default function Cart() {
           </div>
 
           <div className={styles.secondContainer}>
+            <img alt='productPic' src={productPic} />
             <div className={styles.reviewUsername}>{productName}</div>
           </div>
 
@@ -420,6 +430,7 @@ export default function Cart() {
           />
         </div>
       )}
+
       <Footer />
     </motion.div>
   );

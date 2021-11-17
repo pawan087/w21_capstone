@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FaPowerOff, FaPhoneAlt } from "react-icons/fa";
-import ReactLoading from "react-loading";
-
 import { FormField } from "react-form-input-fields";
+import ReactLoading from "react-loading";
 
 import * as sessionActions from "../../store/session";
 import Footer from "../../components/Footer";
@@ -23,9 +23,9 @@ export default function AccountDashboard() {
   const [loader2, setLoader2] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
-  const [email, setEmail] = useState(user.email);
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
+  const [email, setEmail] = useState(user?.email);
+  const [firstName, setFirstName] = useState(user?.firstName);
+  const [lastName, setLastName] = useState(user?.lastName);
   const [invalidFirstName, setInvalidFirstName] = useState(false);
   const [invalidLastName, setInvalidLastName] = useState(false);
   const [invalidEmail, setInvalidEmail] = useState(false);
@@ -157,6 +157,7 @@ export default function AccountDashboard() {
     setLoader2(true);
 
     let regExp =
+    // eslint-disable-next-line
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (regExp.test(email)) {
@@ -209,14 +210,19 @@ export default function AccountDashboard() {
 
   if (!load) {
     return (
-      <div className={styles.loaderCotnainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.loaderCotnainer}
+      >
         <ReactLoading
           type={"spin"}
           color={"rgba(0,0,0,.75)"}
           height={"0px"}
           width={"57.5px"}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -227,6 +233,8 @@ export default function AccountDashboard() {
   const showPassword = () => {
     history.push("/account/2");
   };
+
+  if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div
@@ -544,13 +552,3 @@ export default function AccountDashboard() {
     </motion.div>
   );
 }
-
-<FormField
-  type="text"
-  standard="labeleffect"
-  value={"firstName"}
-  keys={"firstName"}
-  effect={"effect_9"}
-  handleOnChange={(value) => console.log(value)}
-  placeholder={"First Name"}
-/>;
