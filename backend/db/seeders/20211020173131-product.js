@@ -445,6 +445,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10126519/Logitech-G920-Driving-Force-Racing-Wheel-for-Xbox-One-and-PC?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/30.jpg",
           ],
           rating: 4.4,
         },
@@ -459,6 +460,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10141870/Nintendo-Switch-Joy-Con-L/R-Wireless-Controller-Neon-Red/Neon-Blue?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/31.webp",
           ],
           rating: 4.3,
         },
@@ -473,6 +475,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10109953/Sony-PlayStation-4-VR-Motion-Camera?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/33.jpg",
           ],
           rating: 2.3,
         },
@@ -487,6 +490,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156469/Razer-DeathAdder-V2-Wired-Optical-Gaming-Mouse---HALO-Infinite-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/34.jpg",
           ],
           rating: 4.8,
         },
@@ -501,6 +505,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166631/Alienware-27-In-Full-HD-Gaming-Monitor-AW2720HF?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/32.jpg",
           ],
           rating: 2.1,
         },
@@ -515,6 +520,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158594/Skytech-Gaming-Blaze-3.0-Gaming-PC-GeForce-RTX-3080-GPU-AMD-Ryzen-7-3700X-GPU-16GB-RAM-1TB-SSD?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/35.webp",
           ],
           rating: 0,
         },
@@ -529,6 +535,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11155944/MSI-Pulse-GL66-Intel-11th-Gen-i7-11800H-GeForce-RTX-3050-Series-16GB-GDDR6-SDRAM-Ram-1TB-NVMe-SSD-Gaming-Laptop?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/36.jpg",
           ],
           rating: 4.5,
         },
@@ -543,6 +550,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11137443/Samsung-Odyssey-G9-Series-Curved-49-Inch-Gaming-Monitor?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/37.jpg",
           ],
           rating: 3.2,
         },
@@ -557,6 +565,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156471_ALT01/Razer-BlackWidow-V3-Mechanical-Green-Switches-Gaming-Keyboard---HALO-Infinite-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/39.jpg",
           ],
           rating: 4.1,
         },
@@ -571,6 +580,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10131344/Yeti-Blackout-USB-Microphone?$pdp$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/40.webp",
           ],
           rating: 4.7,
         },
@@ -585,6 +595,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11100805/QuadCast-Red-and-Black-Microphone?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/41.jpg",
           ],
           rating: 4.7,
         },
@@ -599,6 +610,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11150754/Ring-Video-Doorbell-3?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/42.jpg",
           ],
           rating: 4.7,
         },
@@ -613,6 +625,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11118121/Netgear-Nighthawk-XR1000-AX5400-WiFi-6-Gaming-Router?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/42a.jpg",
           ],
           rating: 4.7,
         },
@@ -627,6 +640,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153227/GoPro-MAX-360-Degree-Action-Camera?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/43.jpg",
           ],
           rating: 3.7,
         },
@@ -641,6 +655,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120147/Minolta-20.0-Megapixel-1080p-Full-HD-Wi-Fi-MN35Z-Bridge-Red-Digital-Camera?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/44.jpg",
           ],
           rating: 5.0,
         },
@@ -655,6 +670,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11152307/GabbaGoods-720P-USB-Webcam-Black/Red?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/45.jpg",
           ],
           rating: 1.2,
         },
@@ -669,6 +685,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11170587/LG-65-In-C1-Class-4K-Smart-OLED-TV-with-AI-ThinQ-OLED65C1PUB?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/47.jpg",
           ],
           rating: 4.1,
         },
@@ -683,6 +700,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158639/DJI-FPV-Drone-with-FPV-Goggles-V2-and-FPV-Remote-Controller-2?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/48.jpg",
           ],
           rating: 4.9,
         },
@@ -697,6 +715,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11151461/JBL-True-Wireless-9.1-Surround-with-Dolby-Atmos-Soundbar?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/48a.jpg",
           ],
           rating: 3.7,
         },
@@ -711,6 +730,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158922_triple-black/Bose-SoundLink-Revolve-II-Bluetooth-Speaker-triple-black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/49.jpg",
           ],
           rating: 4.5,
         },
@@ -725,6 +745,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158915_luxe-silver/Bose-Noise-Cancelling-Headphones-700-luxe-silver?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/50.jpg",
           ],
           rating: 4.8,
         },
@@ -739,6 +760,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11155932/Razer-BlackWidow-V3-Pro-Wireless-Yellow-Switch-Mechanical-Gaming-Keyboard-Black-with-Chroma-RGB?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/52.jpg",
           ],
           rating: 2.7,
         },
@@ -753,6 +775,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11134715/Razer-Pro-Type-Wireless-Mechanical-Productivity-Keyboard?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/51.jpg",
           ],
           rating: 4.2,
         },
@@ -767,6 +790,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11105808_white/Razer-Huntsman-Mini-Mercury-Edition-60-Percent-Optical-Purple-Switches-Wired-Gaming-Keyboard-white?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/54.jpg",
           ],
           rating: 4.3,
         },
@@ -781,6 +805,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11048300/Astro-Gaming-A40-TR-Generation-4-Wired-Gaming-Headset-for-Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/54.webp",
           ],
           rating: 3.3,
         },
@@ -795,6 +820,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11116809/Pokemon-Trading-Card-Game-First-Partner-Kanto-Pack?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/56.jpg",
           ],
           rating: 4.7,
         },
@@ -809,6 +835,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120629_red/Vibe-Commuting-Electric-Scooter-with-Rubber-Tires-15.5MPH-and-7-Mile-Range-red?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/57.jpg",
           ],
           rating: 5.0,
         },
@@ -823,6 +850,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11168848/Nerf-LMTD-Halo-Needler-Blaster-with-Light-Up-Needles?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/57a.jpg",
           ],
           rating: 2.9,
         },
@@ -837,6 +865,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11100845/Pokemon-Bulbasaur-Plush-24-in?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/58.jpg",
           ],
           rating: 0,
         },
@@ -851,6 +880,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120626_pink/Nova-Hoverboard-with-LED-Lights-and-Self-Balancing-Mode-pink?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/60.jpg",
           ],
           rating: 4.2,
         },
@@ -865,6 +895,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166758/Razor-Pocket-Mod-Electric-Scooter-Purple?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/60a.jpg",
           ],
           rating: 4.8,
         },
