@@ -191,6 +191,11 @@ export default function BrowseProducts() {
         product.name.includes("Pokemon")
       ) {
         return SortPriceRating(2, product);
+      } else if (
+        params.subcategory === "toys" &&
+        product.Subcategory.name !== "Board Games"
+      ) {
+        return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(2, product);
       } else {
@@ -240,6 +245,11 @@ export default function BrowseProducts() {
         product.name.includes("iPhone")
       ) {
         return SortPriceRating(3, product);
+      } else if (
+        params.subcategory === "headsets" &&
+        (product.name.includes("Headset") || product.name.includes("Headphone"))
+      ) {
+        return SortPriceRating(3, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(3, product);
       } else {
@@ -267,6 +277,11 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "pc" &&
         product.Subcategory.name === "PC Gaming"
+      ) {
+        return SortPriceRating(4, product);
+      } else if (
+        params.subcategory === "keyboard" &&
+        product.name.includes("Keyboard")
       ) {
         return SortPriceRating(4, product);
       } else if (
@@ -1345,7 +1360,10 @@ export default function BrowseProducts() {
       params.subcategory === "smurfs" ||
       params.subcategory === "battlefield" ||
       params.subcategory === "kena" ||
-      params.subcategory === "disney"
+      params.subcategory === "disney" ||
+      params.subcategory === "keyboard" ||
+      params.subcategory === "headsets" ||
+      params.subcategory === "toys"
     )
   ) {
     return <Redirect to="/404" />;

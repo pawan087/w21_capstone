@@ -1,9 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router";
 import Carousel from "react-grid-carousel";
 
 import styles from "./styles.module.css";
 
 export default function FeaturedCategories() {
+  const history = useHistory();
+
   let topSellers = [
     {
       name: "Video Games",
@@ -47,6 +50,46 @@ export default function FeaturedCategories() {
     },
   ];
 
+  const handleClick = (x, i) => {
+    if (i === 0) {
+      history.push("/p/videogames/0/0/0");
+    }
+
+    if (i === 1) {
+      history.push("/p/accessories/controllers/0/0");
+    }
+
+    if (i === 2) {
+      history.push("/p/consoles/pc/0/0");
+    }
+
+    if (i === 3) {
+      history.push("/p/electronics/0/0/0");
+    }
+
+    if (i === 4) {
+      history.push("/p/consoles/keyboard/0/0");
+    }
+
+    if (i === 5) {
+      history.push("/p/electronics/headsets/0/0");
+    }
+
+    if (i === 6) {
+      history.push("/p/toysgames/toys/0/0");
+    }
+
+    if (i === 7) {
+      history.push("/p/toysgames/boardgames/0/0");
+    }
+
+    if (i === 8) {
+      history.push("/p/clothing/0/0/0");
+    }
+
+    return;
+  };
+
   return (
     <>
       <div className={styles.divisor2} />
@@ -65,9 +108,15 @@ export default function FeaturedCategories() {
                         className={styles.topSellerPic}
                         alt="topSellerPic"
                         src={x.img}
+                        onClick={() => handleClick(x, i)}
                       />
                     </div>
-                    <div className={styles.itemName}>{x.name}</div>
+                    <div
+                      onClick={() => handleClick(x, i)}
+                      className={styles.itemName}
+                    >
+                      {x.name}
+                    </div>
                   </Carousel.Item>
                 );
               })}

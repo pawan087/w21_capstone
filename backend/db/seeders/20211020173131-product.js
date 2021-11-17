@@ -748,8 +748,8 @@ module.exports = {
             "Play like a Pro! The ASTRO Gaming A40 TR Headset is the premier gaming headset for professional gamers, including esports athletes, content creators and live steamers. It was developed with esports athletes to meet their rigorous standards for audio fidelity, comfort, and durability. Mod Kit Ready, the A40 TR Xbox One headset adapts to any gaming environment. The A40 TR headphones arrive as an open-back headset featuring a swappable boom mic and customizable Speaker Tags. For loud tournament environments, one can transform the A40 TR into a closed-back noise-isolating headset by adding a Mod Kit (sold separately) with sealed Speaker Tags, synthetic leather ear cushions, and a voice-isolating microphone.",
           brandId: 35,
           price: 129.99,
-          categoryId: 5,
-          subcategoryId: 13,
+          categoryId: 3,
+          subcategoryId: 2,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11048300/Astro-Gaming-A40-TR-Generation-4-Wired-Gaming-Headset-for-Xbox-One?$pdp$$&fmt=webp",
@@ -2133,7 +2133,7 @@ module.exports = {
             "The ultra-wide 49-inch screen with its innovative 32:9 aspect ratio means you always get to see game scenes in their entirety, exactly as their developers intended. And the 1800R curved panel immerses you in gameplay and delivers cinematic viewing for movies and video content.",
           brandId: 24,
           price: 899.99,
-          categoryId: 5,
+          categoryId: 4,
           subcategoryId: 16,
           furtherSubcategoryId: null,
           images: [
