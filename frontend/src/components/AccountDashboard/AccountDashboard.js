@@ -128,7 +128,16 @@ export default function AccountDashboard() {
   const [detailArr, setDetailArr] = useState([]);
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const reversed = usersOrdersAndItems?.reverse();
+
+  usersOrdersAndItems.sort(function (a, b) {
+    if (a.updatedAt < b.updatedAt) {
+      return 1;
+    }
+    if (a.updatedAt > b.updatedAt) {
+      return -1;
+    }
+    return 0;
+  });
 
   useEffect(() => {
     // setData(reversed);
@@ -224,7 +233,7 @@ export default function AccountDashboard() {
 
   const offset = currentPage * PER_PAGE;
 
-  const currentPageData = reversed
+  const currentPageData = usersOrdersAndItems
     ?.slice(offset, offset + PER_PAGE)
     ?.map((x, i) => {
       return (
@@ -317,7 +326,7 @@ export default function AccountDashboard() {
       );
     });
 
-  const pageCount = Math.ceil(reversed?.length / PER_PAGE);
+  const pageCount = Math.ceil(usersOrdersAndItems?.length / PER_PAGE);
 
   const currentPageData2 = currentOrders
     ?.slice(offset, offset + PER_PAGE)
@@ -768,7 +777,7 @@ export default function AccountDashboard() {
                       {!bool && (
                         <>
                           <div className={styles.holder}>{currentPageData}</div>
-                          {reversed?.length > 3 && (
+                          {usersOrdersAndItems?.length > 3 && (
                             <ReactPaginate
                               previousLabel={
                                 <svg
