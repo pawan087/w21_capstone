@@ -13,6 +13,7 @@ export default function UpcomingVideoGamePromo() {
           alt="newRelPic"
           className={styles.subBannerPic}
           src="https://media.gamestop.com/i/gamestop/PokemonGWP_596x400_D2ColumnFeature_1.webp"
+          /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s20.webp" */
           onClick={() => history.push("/products/123")}
         />
         <div
@@ -29,6 +30,7 @@ export default function UpcomingVideoGamePromo() {
           className={styles.subBannerPic}
           alt="newRelPic"
           src="https://media.gamestop.com/i/gamestop/ShinMegamiTenseiV_596x400_D2ColumnFeature.webp"
+          /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s21.webp" */
           onClick={() => history.push("/products/84")}
         />
         <div

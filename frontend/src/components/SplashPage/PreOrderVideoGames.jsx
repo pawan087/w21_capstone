@@ -11,27 +11,33 @@ export default function PreOrderVideoGames() {
     {
       name: "11.12.21",
       img: "https://media.gamestop.com/i/gamestop/ShinMegamiTenseiV_224x224_D5Up_1.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s22.webp" */
       id: 84,
     },
     {
       name: "11.16.21",
       img: "https://media.gamestop.com/i/gamestop/StarWars_JKCollection_224x224_5Up_D.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s23.webp" */
     },
     {
       name: "11.16.21",
       img: "https://media.gamestop.com/i/gamestop/StarWars_RacerComCombo_224x224_5Up_D.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s24.webp" */
     },
     {
       name: "11.16.21",
       img: "https://media.gamestop.com/i/gamestop/SmurfsMissionVileaf_224x224_D5Up.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s25.webp" */
     },
     {
       name: "11.19.21",
       img: "https://media.gamestop.com/i/gamestop/Battlefield2042_224x224_KeyArtSquare_5Up_D.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s26.webp" */
     },
     {
       name: "11.19.21",
       img: "https://media.gamestop.com/i/gamestop/PokemonBrilliantShining_PO_224x224_.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s27.webp" */
       id: 0,
     },
     {
