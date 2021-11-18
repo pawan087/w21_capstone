@@ -221,10 +221,7 @@ export default function MyNavBar() {
   };
 
   return (
-    <div
-
-      className={styles.myNavbar}
-    >
+    <div className={styles.myNavbar}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -712,7 +709,9 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2SecondContainer}>
-                <div className={styles.sidebar2User}>Hi, {user.firstName}!</div>
+                <div className={styles.sidebar2User}>
+                  Hi, {user?.firstName}!
+                </div>
                 <div className={styles.sidebar2PowerUp}>PowerUP Player</div>
               </div>
 

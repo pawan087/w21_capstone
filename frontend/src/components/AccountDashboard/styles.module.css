@@ -15,6 +15,18 @@
   z-index: 48;
 }
 
+
+.revealPasswordIconContainer {
+  height: 17.5px;
+  width: 17.5px;
+  cursor: pointer;
+  color: rgb(96, 96, 96);
+  position: absolute;
+  top: 12.5px;
+  right: 20px;
+
+}
+
 .dashboardHeader {
   width: 1400px;
   height: 85px;
@@ -936,6 +948,7 @@
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.25); */
   width: 745px;
   margin-bottom: 20px;
+
 }
 
 .pd2nd1st1stContainer {
@@ -994,6 +1007,7 @@
   margin-bottom: 20px;
   height: 55px;
   margin-top: 20px;
+  position: relative;
 }
 
 .passwordInputContainer3 {
@@ -1001,6 +1015,7 @@
   border: 1px solid rgba(0, 0, 0, 0.33);
   margin-bottom: 35px;
   height: 55px;
+  position: relative;
   margin-top: 25px;
 }
 
@@ -1009,6 +1024,7 @@
   border: 1px solid rgba(0, 0, 0, 0.33);
   /* margin-bottom: 20px; */
   height: 55px;
+  position: relative;
   margin-top: 20px;
 }
 
@@ -1046,12 +1062,16 @@
   margin-top: 20px;
 }
 
+
+
 .passwordInputContainerRed2 {
   width: 745px;
   height: 55px;
+  position: relative;
   border: 1px solid rgba(224, 59, 47, 1);
   /* margin-bottom: 20px; */
   margin-top: 20px;
+  position: relative;
 }
 
 .nameInputContainerRed {
@@ -1254,6 +1274,7 @@
   color: rgba(224, 59, 47, 1);
   font-size: 12.5px;
   position: absolute;
+  width: 800px;
   transform: translateY(-20px);
 }
 
