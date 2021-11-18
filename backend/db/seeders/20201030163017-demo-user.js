@@ -2,6 +2,19 @@
 const faker = require("faker");
 const bcrypt = require("bcryptjs");
 
+let arr = [];
+
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+for (let i = 1; i <= 12; i++) {
+  const rndInt = randomIntFromInterval(1, 165);
+
+  arr.push(rndInt);
+}
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
@@ -13,11 +26,10 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           firstName: "Testy",
           lastName: "McTesterson",
-          phone: String(faker.phone.phoneNumber()),
+          phone: "(408) 555-5555",
           address1: "123 Main St.",
           address2: "San Jose, CA 95127",
-          cart: [1, 4],
-          recentlyViewed: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+          recentlyViewed: arr,
         },
         {
           email: faker.internet.email(),
@@ -28,7 +40,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -39,7 +50,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -50,7 +60,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -61,7 +70,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -72,7 +80,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -83,7 +90,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -94,7 +100,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -105,7 +110,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -116,7 +120,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -127,7 +130,6 @@ module.exports = {
           phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
         {
           email: faker.internet.email(),
@@ -135,10 +137,9 @@ module.exports = {
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
-          phone: "(408) 555-5555",
+          phone: String(faker.phone.phoneNumber()),
           address1: faker.address.streetAddress(),
           address2: `${faker.address.city()}, ${faker.address.state()}, ${faker.address.zipCode()}}`,
-          cart: [2, 5],
         },
       ],
       {}

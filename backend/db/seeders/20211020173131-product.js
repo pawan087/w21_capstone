@@ -2458,6 +2458,21 @@ module.exports = {
           ],
           rating: 0.0,
         },
+        {
+          name: "Pokemon Poke Ball Popcorn Popper",
+          description:
+            "Add a little whimsy to your kitchen with this Pokemon Pokeball Popcorn Maker. It's as easy as catching a Magikarp -- plug in, add corn kernels, and watch as it makes a healthy snack for movie night. When all else fails...this Pokeball Popcorn Maker will catch 'em all - kernels, that is.",
+          brandId: 3,
+          price: 49.99,
+          categoryId: 3,
+          subcategoryId: 34,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11047745/Pokemon-Poke-Ball-Popcorn-Popper?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/166.jpg",
+          ],
+          rating: 0.0,
+        },
       ],
       {}
     );

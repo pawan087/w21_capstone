@@ -87,6 +87,10 @@ export default function FeaturedCategories() {
       history.push("/p/clothing/0/0/0");
     }
 
+    if (i === 9) {
+      history.push("/products/165");
+    }
+
     return;
   };
 

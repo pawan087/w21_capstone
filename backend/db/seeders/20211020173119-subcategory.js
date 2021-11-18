@@ -105,7 +105,7 @@ module.exports = {
           name: "Mounts", // 33
         },
         {
-          name: "Square Enix", // 34
+          name: "Appliances", // 34
         },
       ],
       {}

@@ -8,7 +8,7 @@ function randomIntFromInterval(min, max) {
 let arr = [];
 
 for (let i = 1; i <= 100; i++) {
-  const rndInt1 = randomIntFromInterval(1, 162);
+  const rndInt1 = randomIntFromInterval(1, 165);
   const rndInt2 = randomIntFromInterval(1, 5);
 
   let obj = {};

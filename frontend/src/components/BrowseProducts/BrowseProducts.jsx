@@ -212,7 +212,7 @@ export default function BrowseProducts() {
         return SortPriceRating(2, product);
       } else if (
         params.subcategory === "funko" &&
-        product.name.includes('Funko')
+        product.name.includes("Funko")
       ) {
         return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
@@ -267,6 +267,11 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "headsets" &&
         (product.name.includes("Headset") || product.name.includes("Headphone"))
+      ) {
+        return SortPriceRating(3, product);
+      } else if (
+        params.subcategory === "appliances" &&
+        product.Subcategory.name === "Appliances"
       ) {
         return SortPriceRating(3, product);
       } else if (params.subcategory === "0") {
@@ -847,6 +852,14 @@ export default function BrowseProducts() {
       }
     }
 
+    if (category === "Appliances" && params.category === "electronics") {
+      if (params.subcategory === "appliances") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/appliances/0/0");
+      }
+    }
+
     if (category === "Arts & Crafts Toys" && params.category === "toysgames") {
       // history.push(`/p/toysgames/art/0/0`);
       if (params.subcategory === "art") {
@@ -1398,7 +1411,8 @@ export default function BrowseProducts() {
       params.subcategory === "keyboard" ||
       params.subcategory === "headsets" ||
       params.subcategory === "toys" ||
-      params.subcategory === "funko"
+      params.subcategory === "funko" ||
+      params.subcategory === "appliances"
     )
   ) {
     return <Redirect to="/404" />;
@@ -1613,6 +1627,11 @@ export default function BrowseProducts() {
                   } else if (
                     params.subcategory === "watches" &&
                     category === "Watches"
+                  ) {
+                    className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "appliances" &&
+                    category === "Appliances"
                   ) {
                     className1 = styles.categoryNames2;
                   } else {

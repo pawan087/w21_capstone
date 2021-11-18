@@ -396,6 +396,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     }
 
     if (
+      product[0]?.Subcategory?.name === "Appliances" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/appliances/0/0");
+    }
+
+    if (
       product[0]?.Subcategory?.name === "Bags" &&
       product[0]?.Category?.name === "Clothing"
     ) {

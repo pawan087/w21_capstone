@@ -398,8 +398,8 @@ export default function MyNavBar() {
                             }
                             className={styles.menuItemProductName}
                           >
-                            {product?.name.slice(0, 45)}
-                            {product?.name?.length > 45 ? "..." : null}
+                            {product?.name.slice(0, 42)}
+                            {product?.name?.length > 42 ? "..." : null}
                           </div>
 
                           <div className={styles.menuItemProductQuantity}>
