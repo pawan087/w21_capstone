@@ -27,6 +27,7 @@
   /* background-color: rgb(242, 244, 247); */
   width: 1400px;
   margin: 0 auto;
+
   /* margin-top: 35px; */
   padding-top: 35px;
   min-height: 817.5px;
@@ -310,7 +311,6 @@ input[type="radio"]:checked {
 .backContainer {
   width: 100%;
   height: 100%;
-  height: auto;
   background-color: rgb(242, 244, 247);
   /* background-color: red; */
 }

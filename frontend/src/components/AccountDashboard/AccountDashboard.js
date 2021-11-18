@@ -994,7 +994,11 @@ export default function AccountDashboard() {
         </div>
       </div>
 
-      <Footer />
+      <div className={styles.spacer} />
+
+      <div className={styles.footerContainer}>
+        <Footer />
+      </div>
     </motion.div>
   );
 }

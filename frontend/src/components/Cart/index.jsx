@@ -181,6 +181,16 @@ export default function Cart() {
     // menuGutter: baseUnit * 2
   });
 
+  shoppingCartItems.sort(function (a, b) {
+    if (a.product.name < b.product.name) {
+      return -1;
+    }
+    if (a.product.name > b.product.name) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -394,7 +404,7 @@ export default function Cart() {
           </div>
 
           <div className={styles.secondContainer}>
-            <img alt='productPic' src={productPic} />
+            <img alt="productPic" src={productPic} />
             <div className={styles.reviewUsername}>{productName}</div>
           </div>
 
