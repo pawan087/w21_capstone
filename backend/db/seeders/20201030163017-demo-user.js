@@ -12,6 +12,10 @@ function randomIntFromInterval(min, max) {
 for (let i = 1; i <= 12; i++) {
   const rndInt = randomIntFromInterval(1, 165);
 
+  while (arr.includes(rndInt)) {
+    rndInt = randomIntFromInterval(1, 165);
+  }
+
   arr.push(rndInt);
 }
 

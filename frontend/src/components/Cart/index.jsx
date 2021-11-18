@@ -182,10 +182,10 @@ export default function Cart() {
   });
 
   shoppingCartItems.sort(function (a, b) {
-    if (a.product.name < b.product.name) {
+    if (a.product.name.toLowerCase() < b.product.name.toLowerCase()) {
       return -1;
     }
-    if (a.product.name > b.product.name) {
+    if (a.product.name.toLowerCase() > b.product.name.toLowerCase()) {
       return 1;
     }
     return 0;

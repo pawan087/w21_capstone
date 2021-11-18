@@ -1,6 +1,7 @@
 "use strict";
 
 let arr = [];
+let used = [];
 
 function randomIntFromInterval(min, max) {
   // min and max included
@@ -12,14 +13,19 @@ const rndInt1 = randomIntFromInterval(1, 6);
 for (let i = 1; i <= rndInt1; i++) {
   let obj = {};
 
-  obj["userId"] = 1;
-
   const rndInt2 = randomIntFromInterval(1, 165);
+
+  while (used.includes(rndInt2)) {
+    rndInt2 = randomIntFromInterval(1, 165);
+  }
+
+  used.push(rndInt2);
 
   obj["productId"] = rndInt2;
 
   const rndInt3 = randomIntFromInterval(1, 5);
 
+  obj["userId"] = 1;
   obj["quantity"] = rndInt3;
 
   arr.push(obj);

@@ -144,6 +144,16 @@ export default function MyNavBar() {
     }
   });
 
+  inCartProducts.sort(function (a, b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+
   let sum = 0;
 
   cartItems?.forEach((cartItem) => {
