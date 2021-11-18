@@ -11,7 +11,7 @@ let users = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 let ratings = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0];
 let reviewsArr = [];
 
-for (let i = 1; i <= 165; i++) {
+for (let i = 1; i <= 166; i++) {
   const rndInt = randomIntFromInterval(6, 30);
 
   for (let j = 1; j <= rndInt; j++) {

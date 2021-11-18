@@ -1623,7 +1623,7 @@ module.exports = {
           name: "GameStop Logo Zip Unisex Hooded Jacket",
           description:
             "There was only one idea when we came up with this hoodie: It’s gotta be everyone’s favorite hoodie of all time. Yep. We’re going for it. This bad boy is comfy, cool, and with our GameStop logo it’s the perfect way to rep your favorite store for games, collectibles, consoles, apparel, and more.",
-          brandId: 47,
+          brandId: 49,
           price: 69.99,
           categoryId: 6,
           subcategoryId: 28,
@@ -1653,7 +1653,7 @@ module.exports = {
           name: "GameStop Logo Unisex Joggers",
           description:
             "We love a good jog. Especially when it’s a jog over to the console table to grab a controller. Or, a virtual jog through the post-apocalyptic landscape of Fallout. Anyway, we crafted these joggers to be the perfect companion for whatever type of jogger you are inclined (or reclined) to be! Enjoy responsibly.",
-          brandId: 47,
+          brandId: 49,
           price: 49.99,
           categoryId: 6,
           subcategoryId: 29,
@@ -1667,7 +1667,7 @@ module.exports = {
         {
           name: "GameStop Logo Hooded Sweatshirt",
           description: "Officially Licensed Art From Threadless",
-          brandId: 47,
+          brandId: 49,
           price: 39.99,
           categoryId: 6,
           subcategoryId: 28,
@@ -1682,7 +1682,7 @@ module.exports = {
           name: "GameStop Premium Logo Unisex T-Shirt",
           description:
             "There are the tees in the bottom of a t-shirt drawer, and then there are the ones you hang in the front of your closet. Your go-to, look-forward to wearing shirts. The ones that put you in a good mood because they’re so damn comfortable and aged perfectly. Well that feeling, that look, it’s right out of the package with the classic, semi-vintage black GameStop logo tee. It’s the t-shirt best friend you’ve been waiting for. Get a hangar ready.",
-          brandId: 47,
+          brandId: 49,
           price: 29.99,
           categoryId: 6,
           subcategoryId: 30,
@@ -1697,7 +1697,7 @@ module.exports = {
           name: "WandaVision Power Pack Jewelry Set Only at GameStop",
           description:
             "Everyone loves a good love story – and this set has it all. Wanda’s engagement and wedding ring, Vision’s wedding ring, a S.W.O.R.D. necklace, and of course, Wanda’s Scarlet Witch crown. This striking set comes in a special WandaVision collectible box, designed for ease of display, though the durable pieces within the box could be worn for cosplay or as everyday jewelry. This limited edition set is certain to delight anyone who loves the show, Scarlet Witch, and Vision.",
-          brandId: 49,
+          brandId: 51,
           price: 89.99,
           categoryId: 6,
           subcategoryId: 11,
@@ -1712,7 +1712,7 @@ module.exports = {
           name: "GameStop Logo Unisex Hooded Sweatshirt",
           description:
             "Load Game. You’re back in black with this totally awesome, totally comfy GameStop hoodie. Rep your favorite spot for games, collectibles, and more with this simple, cool hoodie. Sometimes you just can’t beat a classic.",
-          brandId: 47,
+          brandId: 49,
           price: 52.99,
           categoryId: 6,
           subcategoryId: 28,
@@ -1727,7 +1727,7 @@ module.exports = {
           name: "GameStop Rocket Unisex Button Up Short-Sleeve Shirt",
           description:
             "3. 2. 1. Let’s go. At GameStop we are big fans of exploration. We believe games are another way to explore ourselves and society and the universe. Nothing says, “Get out there and explore” like a rocket. Enjoy this shirt and blast off to the worlds that matter most in your gaming life.",
-          brandId: 47,
+          brandId: 49,
           price: 69.99,
           categoryId: 6,
           subcategoryId: 30,
@@ -1742,7 +1742,7 @@ module.exports = {
           name: "GameStop Logo Unisex Sweat Shorts",
           description:
             "You know the kind of game that makes you feel like you’re getting a workout? These sweat shorts are built for that game in mind. There’s no reason you should have to win the big boss fight in an ordinary pair of pants. Instead, embrace the gamer within and go with these comfy sweat shorts. Also good for fridge-runs, binge-watching, and answering the door when your in-laws come over.",
-          brandId: 47,
+          brandId: 49,
           price: 44.99,
           categoryId: 6,
           subcategoryId: 29,
@@ -1757,7 +1757,7 @@ module.exports = {
           name: "GameStop Power To The Players Unisex T-Shirt",
           description:
             "It’s your game. Your rules. Your way. “Power To The Players” is our motto at GameStop, because we believe in the power of playing -- in creating your own characters, in embodying the best that have ever been created, in action, in horror, in humor, in love. We believe that when you put the power in the hands of the player, anything is possible. We present this t-shirt so you can share in celebrating our motto and love of games.",
-          brandId: 47,
+          brandId: 49,
           price: 29.99,
           categoryId: 6,
           subcategoryId: 30,
@@ -1772,7 +1772,7 @@ module.exports = {
           name: "GameStop Logo Youth Crew Socks",
           description:
             "Socks are so in. It used to be that a white pair of socks was the norm, but now EVERYONE likes to rock socks as an accent piece. These socks dial it up to 11 and go beyond an accent straight into, “Yes, you’re looking at me,” territory. Level up your sock game with a logo that’s all about play.",
-          brandId: 47,
+          brandId: 49,
           price: 9.99,
           categoryId: 6,
           subcategoryId: 31,
@@ -1802,7 +1802,7 @@ module.exports = {
           name: "GameStop Logo Unisex Beanie",
           description:
             "Sup? How you doin’? Oh us, we’re doing F-I-N-E fine in our new GameStop beanie. Just in time for the fall, we’re rolling out this exclusive beanie for folks who like to look cool while keeping their noggins warm.",
-          brandId: 47,
+          brandId: 49,
           price: 14.99,
           categoryId: 6,
           subcategoryId: 11,
@@ -1817,7 +1817,7 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - PlayStation 4",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 14,
@@ -1847,7 +1847,7 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - Xbox Series X",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 15,
@@ -1862,7 +1862,7 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - PlayStation 5",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 1,
@@ -1967,7 +1967,7 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - PlayStation 5",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on PS5! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
@@ -1982,7 +1982,7 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - Xbox Series X",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on Xbox Series X! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
@@ -1997,7 +1997,7 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - PlayStation 4",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on PS4! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
@@ -2012,7 +2012,7 @@ module.exports = {
           name: "Back 4 Blood - Xbox One",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
@@ -2027,7 +2027,7 @@ module.exports = {
           name: "Back 4 Blood - PlayStation 4",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
@@ -2042,7 +2042,7 @@ module.exports = {
           name: "Back 4 Blood - PlayStation 5",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
@@ -2162,7 +2162,7 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - PlayStation 5",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
@@ -2177,7 +2177,7 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - PlayStation 4",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
@@ -2192,7 +2192,7 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - Xbox Series X",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
@@ -2237,7 +2237,7 @@ module.exports = {
           name: "microSDXC Card 128GB for Nintendo Switch",
           description:
             "With incredible speed, the officially licensed SanDisk® microSDXC™ card for the Nintendo Switch™ console lets you add up to 128GB of space to your system. Spend less time waiting and more time gaming with read and write speeds of up to 100MB/s and 90MB/s respectively. Perfect for keeping your favorite games in one place. Backed by a lifetime limited warranty, so you’re ready for the long haul. ",
-          brandId: 54,
+          brandId: 56,
           price: 19.99,
           categoryId: 5,
           subcategoryId: 32,
@@ -2252,7 +2252,7 @@ module.exports = {
           name: "Seagate 2TB Game Drive for Xbox One Green",
           description:
             "Add-on storage for your Xbox One® and Xbox 360®.Nothing says “Game Over” for the Xbox One® experience like a full hard drive. Boost your console’s storage capacity with the Seagate® Game Drive, the only external hard drive designed exclusively for Xbox. Designed to work in harmony with both the Xbox Series X|S and Xbox One — the Seagate Game Drive has no problems bringing all your favorite games to the next generation. Archive new Xbox Series X|S games, plus play your legacy titles straight from the external drive. Grab a Seagate Game Drive for your Xbox Series X|S and stay ahead of the game.",
-          brandId: 55,
+          brandId: 57,
           price: 84.99,
           categoryId: 5,
           subcategoryId: 32,
@@ -2267,7 +2267,7 @@ module.exports = {
           name: "Next Level Racing F-GT Lite Foldable Simulator Cockpit iRacing Edition",
           description:
             "Introducing the Next Level Racing F-GT Lite iRacing Edition. An officially licensed product based on the popular Next Level Racing F-GT Lite customized specifically for the iRacing community. The revolutionary design allows you to be in true racing positions for both Formula and GT racing in the comfort of your home. As a result of its minimalist design, F-GT Lite iRacing Edition is the ideal cockpit for any user with limited space. With new innovative Next Level Racing® Hubs, the user can switch racing positions in mere minutes and get racing immediately.",
-          brandId: 56,
+          brandId: 58,
           price: 349.99,
           categoryId: 5,
           subcategoryId: 33,
@@ -2312,7 +2312,7 @@ module.exports = {
           name: "GameStop Logo Toddler Unisex Hooded Sweatshirt",
           description:
             "At GameStop, we’re all about fun for all ages. Look out! Here comes the Toddler Squad! Now your kiddos can show off their favorite spot for games and collectibles with this awesome toddler hoodie. It’s the perfect attire for your little co-op partner in training.",
-          brandId: 47,
+          brandId: 49,
           price: 24.99,
           categoryId: 6,
           subcategoryId: 28,
@@ -2402,7 +2402,7 @@ module.exports = {
           name: "Disney Classic Games Collection - PlayStation 4",
           description:
             "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
-          brandId: 57,
+          brandId: 59,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 14,
@@ -2417,7 +2417,7 @@ module.exports = {
           name: "Funko Five Nights at Freddy's: Security Breach - Vannie 16-in Plush Gamestop Exclusive",
           description:
             "Want a safer, cuddlier way to bring your favorite Five Nights at Freddy’s Security characters home? Look no further than the 16-inch Five Nights at Freddy's plush of Vannie. Collectible plush is approximately 16-inches tall.",
-          brandId: 58,
+          brandId: 60,
           price: 29.99,
           categoryId: 2,
           subcategoryId: 12,
@@ -2432,7 +2432,7 @@ module.exports = {
           name: "Funko Five Nights at Freddy's: Freddy Fazbear's Pizzeria Simulator - Rockstar Freddy 16-in Plush Gamestop Exclusive",
           description:
             "Want a safer, cuddlier way to bring your favorite Five Nights at Freddy’s Pizzeria Simulator characters home? Look no further than the 16-inch Five Nights at Freddy's plush of Rockstar Freddy. Collectible plush is approximately 16-inches tall.",
-          brandId: 58,
+          brandId: 60,
           price: 29.99,
           categoryId: 2,
           subcategoryId: 12,
@@ -2447,7 +2447,7 @@ module.exports = {
           name: "Spam Can Plush",
           description:
             "Bring home a snack food favorite, Spam, as a fun Funko plush. A delicious addition to any Ad Icon collection. Collectible plush is approximately 7-inches tall.",
-          brandId: 58,
+          brandId: 60,
           price: 8.79,
           categoryId: 2,
           subcategoryId: 12,
@@ -2470,6 +2470,21 @@ module.exports = {
           images: [
             "https://media.gamestop.com/i/gamestop/11047745/Pokemon-Poke-Ball-Popcorn-Popper?$pdp2x$",
             "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/166.jpg",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "POP! and Tee: X-Men Cyclops First Appearance Glow in the Dark Only at GameStop",
+          description:
+            "From X-Men comes Cyclops in a T-Shirt and POP! figure combo from Funko! The Cyclops POP! collectible stands 3.75 inches tall. The T-shirt features a printed Cyclops graphic on front. Perfect for any X-Men fan! Collect all X-Men POP vinyl toy figures!",
+          brandId: 60,
+          price: 29.99,
+          categoryId: 6,
+          subcategoryId: 30,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11097893/Funko-POP-and-Tee-X-Men-Cyclops-First-Appearance-Glow-in-the-Dark-Only-at-GameStop?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/167.jpg",
           ],
           rating: 0.0,
         },

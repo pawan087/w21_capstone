@@ -153,7 +153,7 @@ module.exports = {
           name: "GameStop", // 47
         },
         {
-          name: "Datel", // 48
+          name: "Datel", //49 48
         },
         {
           name: "SalesOne", // 49
