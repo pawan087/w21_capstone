@@ -22,6 +22,7 @@
   flex-direction: column;
   width: 320px;
   height: 875px;
+  height: 950px;
   /* background-color: red; */
   min-height: 470px;
   position: sticky;
@@ -97,6 +98,7 @@
 .andUpContainer {
   font-size: 12.5px;
   color: rgb(40, 40, 40);
+  cursor: pointer;
   transform: translate(-55px, -2.5px);
 }
 
@@ -121,6 +123,16 @@
   height: 90px;
   display: flex;
   justify-content: space-between;
+  /* position: relative; */
+  align-items: center;
+  /* background-color: rosybrown; */
+  border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.rightTopContainer2 {
+  height: 90px;
+  display: flex;
+  justify-content: left;
   /* position: relative; */
   align-items: center;
   /* background-color: rosybrown; */
@@ -339,6 +351,10 @@
   transform: scale(0.65);
 }
 
+.stars * {
+  cursor: pointer !important;
+}
+
 .stars2 {
   transform: scale(0.45) translate(-20px, -20px);
 }
@@ -524,4 +540,43 @@
   transform: translate(-80px, 0px);
   font-weight: normal;
   color: rgb(153, 153, 153);
+}
+
+.noOrdersContainer {
+  /* background-color: red; */
+  height: 72.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  /* transform: translate(-160px, 0px); */
+}
+
+.noneFoundPic {
+  margin-bottom: 25px;
+}
+
+.viewAllButton {
+  margin-top: 25px;
+  width: 330px;
+  font-size: 12.5px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgb(0, 0, 0, 0.75);
+  border: 2px solid rgb(238, 42, 40);
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.viewAllButton:hover {
+  background-color: rgb(238, 42, 40);
+
+  color: white;
 }

@@ -179,6 +179,10 @@
   transform: scale(0.65);
 }
 
+.starRating * {
+  cursor: default !important;
+}
+
 .starsContainer {
   transform: translate(-35px, 0px);
 }

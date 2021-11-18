@@ -161,8 +161,11 @@
   font-size: 17.5px;
   text-decoration: underline;
   color: rgba(0, 0, 0, 0.75);
-  cursor: pointer;
   margin-top: 20px;
+}
+
+.showAllBtn {
+  cursor: pointer;
 }
 
 .showAllButton:hover {
@@ -184,6 +187,10 @@
 
 .starRating {
   transform: scale(0.65);
+}
+
+.starRating * {
+  cursor: default !important;
 }
 
 .starsContainer {

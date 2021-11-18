@@ -712,7 +712,7 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2SecondContainer}>
-                <div className={styles.sidebar2User}>Hi, Pawanpreet!</div>
+                <div className={styles.sidebar2User}>Hi, {user.firstName}!</div>
                 <div className={styles.sidebar2PowerUp}>PowerUP Player</div>
               </div>
 

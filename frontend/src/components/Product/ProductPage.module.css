@@ -137,6 +137,10 @@
   transform: scale(0.7);
 }
 
+.starRating * {
+  cursor: default !important;
+}
+
 .starsContainer {
   transform: translateX(-27.5px);
 }
@@ -201,7 +205,7 @@
   width: 1400px;
   margin: 0 auto;
   font-size: 12.5px;
-  color: rgb(40,40,40);
+  color: rgb(40, 40, 40);
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
@@ -221,7 +225,6 @@
 .category:hover {
   text-decoration: underline;
 }
-
 
 .categoryContainer div {
   margin-right: 15px;
@@ -305,7 +308,6 @@
   transform: scale(0.95);
 }
 
-
 .keepShoppingCancelLink {
   height: 35px;
   width: 400px;
@@ -382,7 +384,7 @@
 }
 
 .thirdImageZoom img {
-    /* object-fit: contain; */
+  /* object-fit: contain; */
 }
 
 .smallImage {

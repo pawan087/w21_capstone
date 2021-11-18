@@ -32,6 +32,20 @@ export default function BrowseProducts() {
 
   let videoGameSubCategories = new Set();
 
+  /*
+
+
+
+
+
+  START - MONSTER FILTER SYSTEM
+
+
+
+
+
+  */
+
   const videoGames = products?.filter((product) => {
     if (params.category === "videogames") {
       if (product.Category.id === 1) {
@@ -397,6 +411,20 @@ export default function BrowseProducts() {
     return false;
   });
 
+  /*
+
+
+
+
+
+  END - MONSTER FILTER SYSTEM
+
+
+
+
+
+  */
+
   let videoGameSubcategoriesArr = Array.from(videoGameSubCategories);
 
   videoGameSubcategoriesArr.sort(function (a, b) {
@@ -526,7 +554,8 @@ export default function BrowseProducts() {
   }
 
   const [load, setLoad] = useState(false);
-  const [bool, setBool] = useState(false);
+  // const [bool, setBool] = useState(params.rating !== "0");
+  const [bool, setBool] = useState(true);
   const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -1851,7 +1880,12 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.andUpContainer}>& Up</div>
+                    <div
+                      onClick={() => sendParams11()}
+                      className={styles.andUpContainer}
+                    >
+                      & Up
+                    </div>
                   </div>
                 </div>
 
@@ -2032,10 +2066,29 @@ export default function BrowseProducts() {
             </div>
           )}
 
-          {videoGames.length === 0 && (
-            <div className={styles.rightTopContainer}>
+          {false && videoGames.length === 0 && (
+            <div className={styles.rightTopContainer2}>
               <div className={styles.rightSideTitle}>
-                {videoGames.length} Results for <span>"{pageCategory}"</span>
+                No Results found for <span>{pageCategory}</span>
+              </div>
+            </div>
+          )}
+
+          {videoGames.length === 0 && (
+            <div className={styles.noOrdersContainer}>
+              <img
+                className={styles.noneFoundPic}
+                src={
+                  "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                }
+                alt={"noneFound"}
+              ></img>
+              No {pageCategory} found for selected criteria.{" "}
+              <div
+                onClick={() => history.push(`/p/${params.category}/0/0/0`)}
+                className={styles.viewAllButton}
+              >
+                VIEW ALL {pageCategory.toUpperCase()}
               </div>
             </div>
           )}

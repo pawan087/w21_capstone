@@ -7,7 +7,6 @@ import { motion } from "framer-motion/dist/framer-motion";
 import Cards from "react-credit-cards";
 import ReactLoading from "react-loading";
 
-
 import Footer from "../Footer";
 import { setPostOrderInfo } from "../../store/postOrderConfirmation";
 import * as sessionActions from "../../store/session";
@@ -52,6 +51,8 @@ export default function OrderConfirmation() {
     maximumFractionDigits: 2,
   });
 
+  let cur = new Date();
+
   const pay = async () => {
     if (creditCardNumber === "4024007103939509" && expirationDate === "09/25") {
       setPayed(true);
@@ -85,6 +86,14 @@ export default function OrderConfirmation() {
   if (regExp2.test(expirationDate)) {
     legitExpirationDate = true;
   } else {
+    legitExpirationDate = false;
+  }
+
+  let expiry = new Date(
+    `${expirationDate.slice(0, 2)}/1/${expirationDate.slice(2)}`
+  );
+
+  if (expiry < cur) {
     legitExpirationDate = false;
   }
 
@@ -626,9 +635,7 @@ export default function OrderConfirmation() {
                       onFocus={(e) => handleInputFocus(e)}
                     />
                     {legitExpirationDateWarning && (
-                      <p className={styles.invalidExp}>
-                        Invalid Exp. Date
-                      </p>
+                      <p className={styles.invalidExp}>Invalid Exp. Date</p>
                     )}
                   </div>
                 </div>
@@ -767,7 +774,12 @@ export default function OrderConfirmation() {
               )}
 
               {!payed && (
-                <div className={styles.placeOrderButton2}>Place Order</div>
+                <div
+                  onClick={() => handleWarnings()}
+                  className={styles.placeOrderButton2}
+                >
+                  Place Order
+                </div>
               )}
             </div>
           </div>

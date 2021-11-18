@@ -526,6 +526,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
                     disabled={true}
                     value={rating}
                     halfStars
+
                   />
                 </div>
               </div>

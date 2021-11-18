@@ -67,6 +67,7 @@
   font-size: 22.5px;
   font-weight: bold;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .reviewCardTopContainer {
@@ -126,6 +127,10 @@
 
 .stars {
   transform: scale(0.65);
+}
+
+.stars * {
+  cursor: pointer !important;
 }
 
 .starsContainer {
