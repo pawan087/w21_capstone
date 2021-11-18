@@ -182,6 +182,9 @@ module.exports = {
         {
           name: "Nighthawk Interactive", // 57
         },
+        {
+          name: "Funko", // 58
+        },
       ],
       {}
     );

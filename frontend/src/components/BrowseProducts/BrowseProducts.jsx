@@ -210,6 +210,11 @@ export default function BrowseProducts() {
         product.Subcategory.name !== "Board Games"
       ) {
         return SortPriceRating(2, product);
+      } else if (
+        params.subcategory === "funko" &&
+        product.name.includes('Funko')
+      ) {
+        return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(2, product);
       } else {
@@ -1392,7 +1397,8 @@ export default function BrowseProducts() {
       params.subcategory === "disney" ||
       params.subcategory === "keyboard" ||
       params.subcategory === "headsets" ||
-      params.subcategory === "toys"
+      params.subcategory === "toys" ||
+      params.subcategory === "funko"
     )
   ) {
     return <Redirect to="/404" />;
@@ -2088,7 +2094,7 @@ export default function BrowseProducts() {
                 }
                 alt={"noneFound"}
               ></img>
-              No {pageCategory} found for selected criteria.{" "}
+              No results found for selected criteria.{" "}
               <div
                 onClick={() => history.push(`/p/${params.category}/0/0/0`)}
                 className={styles.viewAllButton}

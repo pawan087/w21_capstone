@@ -324,7 +324,7 @@ export default function AccountDashboard() {
                       The provided password was invalid.
                     </span>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "password" && (
+                  {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
                       className={styles.revealPasswordIconContainer}
@@ -344,7 +344,7 @@ export default function AccountDashboard() {
                       </svg>
                     </div>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "text" && (
+                  {user.email !== "" && inputType === "text" && (
                     <div
                       onClick={(e) => hidePassword(e)}
                       className={styles.revealPasswordIconContainer}
@@ -397,7 +397,7 @@ export default function AccountDashboard() {
                       and one special character.
                     </span>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "password" && (
+                  {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
                       className={styles.revealPasswordIconContainer}
@@ -417,7 +417,7 @@ export default function AccountDashboard() {
                       </svg>
                     </div>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "text" && (
+                  {user.email !== "" && inputType === "text" && (
                     <div
                       onClick={(e) => hidePassword(e)}
                       className={styles.revealPasswordIconContainer}
@@ -466,7 +466,7 @@ export default function AccountDashboard() {
                       Passwords do not match.
                     </span>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "password" && (
+                  {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
                       className={styles.revealPasswordIconContainer}
@@ -486,7 +486,7 @@ export default function AccountDashboard() {
                       </svg>
                     </div>
                   )}
-                  {user.email !== "demo@aa.io" && inputType === "text" && (
+                  {user.email !== "" && inputType === "text" && (
                     <div
                       onClick={(e) => hidePassword(e)}
                       className={styles.revealPasswordIconContainer}

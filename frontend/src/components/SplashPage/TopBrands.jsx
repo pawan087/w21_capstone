@@ -45,6 +45,7 @@ export default function TopBrands() {
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Funko-Logo-224x126@2x.webp"
               alt="topBrandTile"
+              onClick={() => history.push("/p/toysgames/funko/0/0")}
             />
           </div>
 
