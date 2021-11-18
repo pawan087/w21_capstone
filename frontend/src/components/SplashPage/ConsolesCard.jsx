@@ -145,6 +145,7 @@ export default function ConsolesCard() {
           <img
             alt="phoneBannerLeft"
             src="https://media.gamestop.com/i/gamestop/Pre_Owned_Consoles_VerticalBlade_D.webp"
+            /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s34.webp" */
             onClick={() => history.push("/p/consoles/0/0/0")}
           />
         </div>

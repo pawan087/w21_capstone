@@ -16,6 +16,7 @@ export default function ClothingPromo() {
           <img
             alt="phoneBannerLeft"
             src="https://media.gamestop.com/i/gamestop/Apparel_VerticalBlade_386x680.webp"
+            /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s32.webp" */
             onClick={() => history.push("/p/clothing/0/0/0")}
           />
         </div>

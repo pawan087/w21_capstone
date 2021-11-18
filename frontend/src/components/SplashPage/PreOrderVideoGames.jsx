@@ -43,21 +43,25 @@ export default function PreOrderVideoGames() {
     {
       name: "11.19.21",
       img: "https://media.gamestop.com/i/gamestop/Kena_GIMP_224x224_5Up_D.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s28.webp" */
       id: 0,
     },
     {
       name: "11.22.21",
       img: "https://media.gamestop.com/i/gamestop/FarmingSimulator22_224x224_D5Up.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s29.webp" */
       id: 0,
     },
     {
       name: "11.23.21",
       img: "https://media.gamestop.com/i/gamestop/DisneyClassicCollection_224x224_D5Up.webp",
+      /* "https://s3.console.aws.amazon.com/s3/object/gamestopclonebucket?region=us-west-1&prefix=s30.webp" */
       id: 0,
     },
     {
       name: "12.08.21",
       img: "https://media.gamestop.com/i/gamestop/224x224_Halo.webp",
+      /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s31.webp" */
       id: 0,
     },
   ];
