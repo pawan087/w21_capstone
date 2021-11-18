@@ -7,7 +7,7 @@
 
 .outerContainer {
   /* height: 850px; */
-  min-height: 585px;
+  min-height: 400px;
   width: 1400px;
   margin: 0 auto;
   margin-top: 35px;
@@ -21,12 +21,13 @@
   display: flex;
   flex-direction: column;
   width: 320px;
-  height: 875px;
-  height: 950px;
+  /* height: 875px; */
+  max-height: 955px;
   /* background-color: red; */
   min-height: 470px;
   position: sticky;
   top: 115px;
+  padding-bottom: 5px;
   z-index: 50;
 }
 
@@ -334,7 +335,7 @@
   margin-bottom: 12.5px;
   color: rgb(40, 40, 40);
   width: 150px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .menuIcon {
@@ -396,6 +397,7 @@
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
 .pagination {
   display: flex;
   justify-content: space-evenly;
@@ -544,7 +546,7 @@
 
 .noOrdersContainer {
   /* background-color: red; */
-  height: 72.5%;
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: center;

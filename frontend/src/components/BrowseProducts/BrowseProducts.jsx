@@ -1802,13 +1802,13 @@ export default function BrowseProducts() {
             <div className={styles.customerRatingSelectorTopContainer}>
               <div className={styles.categorySpacer} />
               <div
-                onClick={() => setBool(!bool)}
+                o /* nClick={() => setBool(!bool)} */
                 className={styles.customerRatingSelectorTitle}
               >
                 Customer Rating
               </div>
 
-              {bool && (
+              {false && bool && (
                 <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1827,7 +1827,7 @@ export default function BrowseProducts() {
                 </div>
               )}
 
-              {!bool && (
+              {false && !bool && (
                 <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1996,7 +1996,7 @@ export default function BrowseProducts() {
               </div>
             )}
 
-            {bool && <div className={styles.customerRatingSpacer} />}
+            {true && <div className={styles.customerRatingSpacer} />}
           </div>
         </div>
         {/* End Left Side */}
@@ -2075,7 +2075,12 @@ export default function BrowseProducts() {
           )}
 
           {videoGames.length === 0 && (
-            <div className={styles.noOrdersContainer}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={styles.noOrdersContainer}
+            >
               <img
                 className={styles.noneFoundPic}
                 src={
@@ -2090,7 +2095,7 @@ export default function BrowseProducts() {
               >
                 VIEW ALL {pageCategory.toUpperCase()}
               </div>
-            </div>
+            </motion.div>
           )}
 
           {
