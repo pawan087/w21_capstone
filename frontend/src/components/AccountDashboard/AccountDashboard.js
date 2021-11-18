@@ -140,13 +140,13 @@ export default function AccountDashboard() {
   });
 
   useEffect(() => {
-    // setData(reversed);
-  }, []);
-  useEffect(() => {
     (async () => {
       await dispatch(setAllProducts());
+
       await dispatch(setAllOrderItems());
+
       await dispatch(setAllOrders());
+
       setLoad(true);
     })();
   }, [dispatch]);
@@ -187,7 +187,9 @@ export default function AccountDashboard() {
 
   const showOrderDetail = (x) => {
     setOrderHistory(false);
+
     setOrderDetail(true);
+
     setDetailArr(x);
 
     if (new Date(x.updatedAt) > pastTime) {
@@ -224,6 +226,7 @@ export default function AccountDashboard() {
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
+
     window.scrollTo({
       top: 0,
       left: 0,
@@ -309,7 +312,9 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
+
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
                   {Math.floor(Math.random() * 10)}
@@ -404,7 +409,9 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
+
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
                   {Math.floor(Math.random() * 10)}
@@ -484,6 +491,7 @@ export default function AccountDashboard() {
             <div className={styles.right3rdContainer}>
               <div className={styles.orderStatusLabel}>
                 <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
+
                 {new Date(x.updatedAt) > pastTime && (
                   <span className={styles.notGreen2}>Order Processing: </span>
                 )}
@@ -499,6 +507,7 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
@@ -681,12 +690,14 @@ export default function AccountDashboard() {
                             : "Orders"}
                         </>
                       )}
+
                       {sortBy === "Last 30 Seconds" && (
                         <>
                           {currentOrders.length}{" "}
                           {currentOrders.length === 1 ? "Order" : "Orders"}
                         </>
                       )}
+
                       {sortBy === "Last 1 Minute" && (
                         <>
                           {currentOrders2.length}{" "}
@@ -761,6 +772,7 @@ export default function AccountDashboard() {
                             className={styles.noneFoundPic}
                             src={
                               "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/empty.svg" */
                             }
                             alt={"noneFound"}
                           ></img>
@@ -939,6 +951,7 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData3}
                           </div>
+
                           {[...currentOrders, ...currentOrders2].length > 3 && (
                             <ReactPaginate
                               previousLabel={

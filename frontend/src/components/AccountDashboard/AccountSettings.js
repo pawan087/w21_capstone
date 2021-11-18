@@ -157,7 +157,7 @@ export default function AccountDashboard() {
     setLoader2(true);
 
     let regExp =
-    // eslint-disable-next-line
+      // eslint-disable-next-line
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (regExp.test(email)) {
@@ -194,8 +194,11 @@ export default function AccountDashboard() {
       }
     } else {
       setInvalidEmail(false);
+
       setIncorrectFormatEmail(true);
+
       setLoader2(false);
+
       return;
     }
   };
@@ -335,6 +338,7 @@ export default function AccountDashboard() {
                 <div className={styles.pd2ndContainer}>
                   <div className={styles.pd2nd1stContainer}>
                     <div className={styles.pd2nd1st1stContainer}>NAME</div>
+
                     <div className={styles.pd2nd1st2ndContainer}>
                       {user?.firstName} {user?.lastName}
                     </div>
@@ -408,6 +412,7 @@ export default function AccountDashboard() {
                         SAVE
                       </div>
                     )}
+
                     {(firstName.length === 0 || lastName.length === 0) && (
                       <div
                         onClick={() => handleWarning()}
@@ -416,6 +421,7 @@ export default function AccountDashboard() {
                         SAVE
                       </div>
                     )}
+
                     <div
                       onClick={() => cancelEditName()}
                       className={styles.button2}
@@ -493,11 +499,13 @@ export default function AccountDashboard() {
                       handleOnChange={(value) => changePassword(value)}
                       placeholder={"Current Password"}
                     />
+
                     {invalidPassword && (
                       <span className={styles.requiredLabel}>
                         The provided password was invalid.
                       </span>
                     )}
+
                     {emptyPasswordWarning && (
                       <span className={styles.requiredLabel}>
                         Please fill out this field.
@@ -522,6 +530,7 @@ export default function AccountDashboard() {
                         SAVE
                       </div>
                     )}
+
                     <div
                       onClick={() => cancelEditEmail()}
                       className={styles.button2}
