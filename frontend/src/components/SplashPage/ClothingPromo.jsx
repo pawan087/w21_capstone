@@ -132,7 +132,7 @@ export default function ClothingPromo() {
 
             <div className={styles.cellPhoneContainer}>
               <motion.div
-                /* whileHover={{ filter: `invert()` }} */
+             /*    whileHover={{ filter: `invert()` }}  */
                 className={styles.cellPhoneImageContainer2}
               >
                 <img

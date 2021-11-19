@@ -22,7 +22,6 @@
 /* CONFIRM PAGE STYLING */
 
 .outerContainer {
-  /* background-color: red; */
   display: flex;
   width: 1400px;
   justify-content: space-between;
@@ -32,8 +31,6 @@
 
 .leftContainer {
   width: 920px;
-  /* background-color: pink; */
-  /* min-height: 975px; */
   min-height: 792.5px;
   margin-bottom: 0px;
 }
@@ -42,7 +39,6 @@
   position: sticky;
   top: 105px;
   z-index: 25;
-  /* background-color: yellow; */
   width: 455px;
   min-height: 500px;
   height: 500px;
@@ -51,7 +47,6 @@
 
 .left1stContainer {
   height: 50px;
-  /* background-color: skyblue; */
   font-size: 22.5px;
   font-weight: bold;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -62,17 +57,14 @@
   display: flex;
   justify-content: space-between;
   height: 85px;
-  /* background-color: lightseagreen; */
   font-size: 15px;
   color: rgba(0, 0, 0, 1);
-  /* line-height: 20px; */
   margin-bottom: 20px;
 }
 
 .username {
   font-weight: bold;
   color: black;
-  /* padding-bottom: 5px; */
 }
 
 .editLink {
@@ -90,7 +82,6 @@
 
 .left3rdContainer {
   height: 110px;
-  /* background-color: lightsteelblue; */
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -171,8 +162,6 @@ input[type="radio"]:checked {
 
 .left5thContainer {
   height: 50px;
-  /* background-color: skyblue; */
-
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
@@ -216,7 +205,6 @@ input[type="radio"]:checked {
 .left8thLeftContainer {
   display: flex;
   justify-content: space-between;
-  /* background-color: yellowgreen; */
   width: 675px;
 }
 
@@ -227,18 +215,12 @@ input[type="radio"]:checked {
   width: 220px;
   display: flex;
   align-items: center;
-  /* background-color: hotpink; */
 }
 
 .left9thContainer {
   display: flex;
-  /* background-color: lawngreen; */
   height: 125px;
   justify-content: space-between;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
-}
-.left9thLeftContainer {
-  /* background-color: lightblue; */
 }
 
 .left9thRightContainer {
@@ -366,7 +348,6 @@ input[type="radio"]:checked {
 
 .right1stContainer {
   height: 40px;
-  /* background-color: yellowgreen; */
   display: flex;
   justify-content: space-between;
   margin: 0 25px;
@@ -381,7 +362,6 @@ input[type="radio"]:checked {
   display: flex;
   justify-content: space-between;
   height: 40px;
-  /* background-color: pink; */
   margin: 0 25px;
 }
 
@@ -395,7 +375,6 @@ input[type="radio"]:checked {
   display: flex;
   justify-content: space-between;
   height: 40px;
-  /* background-color: yellowgreen; */
   margin: 0 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
@@ -406,7 +385,6 @@ input[type="radio"]:checked {
   display: flex;
   justify-content: space-between;
   margin: 0 20px;
-  /* background-color: blanchedalmond; */
   margin-top: 20px;
   padding-bottom: 50px;
   height: 40px;
@@ -499,7 +477,6 @@ input[type="radio"]:checked {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* background-color: skyblue; */
 }
 
 .right8thContainer2 {
@@ -583,12 +560,10 @@ input[type="number"] {
 
 .left2ndContainer2 {
   height: 430px;
-  /* background-color: yellow; */
 }
 
 .left2ndContainer21stContainer {
   height: 85px;
-  /* background-color: skyblue; */
   display: flex;
   margin-bottom: 10px;
 }
@@ -634,7 +609,6 @@ input[type="number"] {
 .left2ndContainer22ndContainer {
   height: 170px;
   margin-bottom: 20px;
-  /* background-color: rosybrown; */
 }
 
 .editAddress1Input {
@@ -729,7 +703,6 @@ input[type="number"] {
   justify-content: right;
   align-items: center;
   height: 40px;
-  /* background-color: salmon; */
 }
 
 .saveEditButton {
@@ -752,7 +725,6 @@ input[type="number"] {
 
 .left2ndContainer25thContainer {
   transform: translate(0px, -22.5px);
-
 }
 
 .saveEditButton2 {
@@ -858,8 +830,6 @@ input[type="number"] {
 .confirmedPaymentContainer {
   margin-top: 25px;
   display: flex;
-  /* background-color: red; */
-  /* height: 35px; */
 }
 
 .fakeCC {
@@ -876,7 +846,6 @@ input[type="number"] {
   width: 220px;
   display: flex;
   align-items: center;
-  /* background-color: hotpink; */
 }
 
 .ccInfoContainer {

@@ -84,7 +84,11 @@ module.exports = (sequelize, DataTypes) => {
       }
 
       for (let i = 1; i <= 12; i++) {
-        const rndInt = randomIntFromInterval(1, 165);
+        let rndInt = randomIntFromInterval(1, 166);
+
+        while (arr.includes(rndInt)) {
+          rndInt = randomIntFromInterval(1, 166);
+        }
 
         arr.push(rndInt);
       }

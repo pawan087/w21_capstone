@@ -776,13 +776,19 @@ export default function AccountDashboard() {
                             }
                             alt={"noneFound"}
                           ></img>
-                          No orders found for selected period.{" "}
-                          <div
-                            onClick={() => setAllTheOrders()}
-                            className={styles.viewAllButton}
-                          >
-                            VIEW ALL ORDERS
-                          </div>
+                          {usersOrders.length > 0 &&
+                            "No orders found for selected period."}
+
+                          {usersOrders.length === 0 &&
+                            "No previous orders found."}
+                          {usersOrders.length > 0 && (
+                            <div
+                              onClick={() => setAllTheOrders()}
+                              className={styles.viewAllButton}
+                            >
+                              VIEW ALL ORDERS
+                            </div>
+                          )}
                         </div>
                       )}
 

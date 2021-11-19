@@ -1,4 +1,3 @@
-
 .title {
   background-color: black;
   color: white;
@@ -24,14 +23,10 @@
 .cartOuterContainer {
   display: flex;
   justify-content: space-between;
-  /* background-color: rgb(242, 244, 247); */
   width: 1400px;
   margin: 0 auto;
-
-  /* margin-top: 35px; */
   padding-top: 35px;
   min-height: 817.5px;
-  /* padding-bottom: 5px; */
 }
 
 .cartLeftContainer {
@@ -44,7 +39,6 @@
   color: white;
   width: 1025px;
   height: 50px;
-  /* margin-bottom: 25px; */
   display: flex;
   justify-content: left;
   border-top-left-radius: 5px;
@@ -59,14 +53,11 @@
   height: 260px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  /* margin-bottom: 25px; */
   display: flex;
   margin-bottom: 25px;
-  /* border: 1px solid rgba(0, 0, 0, 0.25); */
 }
 
 .leftBottom1stContainer {
-  /* background-color: skyblue; */
   width: 140px;
   height: auto;
   display: flex;
@@ -75,7 +66,6 @@
 }
 
 .productImageContainer {
-  /* background-color: yellowgreen; */
   height: 140px;
   width: 140px;
   margin-bottom: 15px;
@@ -103,7 +93,6 @@
 .leftBottom2ndContainer {
   display: flex;
   flex-direction: column;
-  /* background-color: orange; */
   width: 310px;
   height: 230px;
 }
@@ -112,14 +101,12 @@
   height: 150px;
   width: 310px;
   margin-left: 10px;
-  /* background-color: palevioletred; */
 }
 
 .leftBottom3rdContainer {
   display: flex;
   width: 500px;
   height: 230px;
-  /* background-color: lightseagreen; */
 }
 
 .cartRightContainer {
@@ -136,7 +123,6 @@
 }
 
 .right1stContainer {
-  /* background-color: skyblue; */
   height: 50px;
   width: 330px;
   text-align: center;
@@ -150,7 +136,6 @@
 .right2ndContainer {
   width: 295px;
   height: 115px;
-  /* background-color: greenyellow; */
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
@@ -165,7 +150,6 @@
 }
 
 .right3rdContainer {
-  /* background-color: khaki; */
   height: 55px;
   width: 295px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -243,23 +227,19 @@
 }
 
 input[type="radio"] {
-  /* remove standard background appearance */
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  /* create custom radiobutton appearance */
   display: inline-block;
   width: 20px;
   height: 20px;
   padding: 4.5px;
-  /* background-color only for content */
   background-clip: content-box;
   border: 1px solid #bbbbbb;
 
   border-radius: 50%;
 }
 
-/* appearance for checked radiobutton */
 input[type="radio"]:checked {
   background-color: black;
 }
@@ -278,7 +258,6 @@ input[type="radio"]:checked {
   display: flex;
   justify-content: right;
   width: 90px;
-  /* background-color: red; */
   font-weight: bold;
   text-align: right;
   font-size: 15px;
@@ -312,16 +291,10 @@ input[type="radio"]:checked {
   width: 100%;
   height: 100%;
   background-color: rgb(242, 244, 247);
-  /* background-color: red; */
 }
 
 .right4thContainer {
   padding-bottom: 25px;
-}
-
-.estimatedTotalAmount,
-.estimatedTotalLabel {
-  /* transform: translateY(-10px) */
 }
 
 .priceTag {
@@ -395,7 +368,6 @@ input[type="radio"]:checked {
   font-size: 15px;
   font-weight: bold;
   display: flex;
-  /* background-color: salmon; */
 }
 
 .secondContainer img {
@@ -407,7 +379,6 @@ input[type="radio"]:checked {
 
 .reviewUsername {
   height: 160px;
-  /* background-color: teal; */
   margin-right: 25px;
   width: 300px;
   color: rgba(0, 0, 0, 0.75);
@@ -416,7 +387,6 @@ input[type="radio"]:checked {
 .deleteReviewContent {
   font-weight: normal;
   height: 160px;
-  /* width: 350px; */
   width: 320px;
   overflow: auto;
   color: rgba(0, 0, 0, 0.75);
@@ -502,7 +472,6 @@ input[type="radio"]:checked {
 }
 
 .removeLink {
-  /* background-color: red; */
   width: 50px;
   cursor: pointer;
 }
@@ -518,7 +487,6 @@ input[type="radio"]:checked {
   transform: translate(-50%, -50%);
 }
 
-
 .removePicContainer {
   height: 75px;
   width: 75px;
@@ -526,6 +494,6 @@ input[type="radio"]:checked {
 
 .removePic {
   width: 100%;
-  height:100%;
+  height: 100%;
   object-fit: contain;
 }

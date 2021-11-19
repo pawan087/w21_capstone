@@ -88,13 +88,16 @@ export default function Cart() {
     { value: 4, label: "Qty 4" },
     { value: 5, label: "Qty 5" },
   ];
+
   const [load, setLoad] = useState(false);
   const [showCart, setShowCart] = useState(true);
 
   useEffect(() => {
     (async () => {
       await dispatch(setAllProducts());
+
       await dispatch(setAllOrderItems());
+
       await dispatch(setAllCartItems());
 
       setLoad(true);
@@ -133,17 +136,18 @@ export default function Cart() {
     hideRemoveConfirmationModal();
 
     setLoader(false);
-
-    // setTimeout(() => setLoader(false), 250);
   };
 
   const updateQuantity = async (id, val) => {
     setLoader(true);
+
     setShowCart(false);
+
     await dispatch(editCartItem({ id, quantity: val }));
+
     setShowCart(true);
+
     setLoader(false);
-    // window.location.reload(false);
   };
 
   const theme = (theme) => ({
@@ -254,6 +258,7 @@ export default function Cart() {
                         />
                       </div>
                     </div>
+
                     <div className={styles.leftBottom2ndContainer}>
                       <div className={styles.leftBottom2ndTopContainer}>
                         <div
@@ -264,6 +269,7 @@ export default function Cart() {
                         >
                           {cartItem?.product?.name}
                         </div>
+
                         <div className={styles.cartProductBrandName}>
                           {cartItem?.product?.Brand?.name}
                         </div>
@@ -281,6 +287,7 @@ export default function Cart() {
                         </div>
                       </div>
                     </div>
+
                     <div className={styles.leftBottom3rdContainer}>
                       <input
                         defaultChecked
@@ -298,6 +305,7 @@ export default function Cart() {
                         </span>
                       </div>
                     </div>
+
                     {cartItem.quantity > 1 && (
                       <div className={styles.leftBottom4thContainer}>
                         <div className={styles.priceTag}>
@@ -329,6 +337,7 @@ export default function Cart() {
             <div className={styles.right1stContainer}>
               <div className={styles.rightTitle}>ORDER SUMMARY</div>
             </div>
+
             <div className={styles.right2ndContainer}>
               <div className={styles.right2nd1stContainer}>
                 <div className={styles.subtotalLabel}>
@@ -405,6 +414,7 @@ export default function Cart() {
 
           <div className={styles.secondContainer}>
             <img alt="productPic" src={productPic} />
+
             <div className={styles.reviewUsername}>{productName}</div>
           </div>
 

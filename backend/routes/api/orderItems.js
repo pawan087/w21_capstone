@@ -61,8 +61,6 @@ router.delete(
 
     orderItemToDelete = await orderItem.findByPk(orderItemId);
 
-    // await orderItemToDelete.destroy();
-
     orderToUpdate = await Order.findByPk(orderId);
 
     let items = [...orderToUpdate.items];
@@ -75,8 +73,6 @@ router.delete(
     if (index > -1) {
       items.splice(index, 1);
     }
-
-    // console.log("\n\n\n", index, '\n\n\n');
 
     await orderToUpdate.destroy();
 

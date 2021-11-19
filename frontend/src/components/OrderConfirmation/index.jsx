@@ -133,6 +133,7 @@ export default function OrderConfirmation() {
   const shoppingCartItems = [];
   let subtotal = 0;
   let itemCount = 0;
+
   usersCartItems?.forEach((cartItem) => {
     let id1 = cartItem.productId;
 
@@ -204,7 +205,9 @@ export default function OrderConfirmation() {
         );
 
         await dispatch(sessionActions.restoreUser());
+
         setDefaultOption(false);
+
         setShowEdit(false);
       }
     }
@@ -285,27 +288,41 @@ export default function OrderConfirmation() {
 
   const clear = () => {
     setFirstName(user.firstName);
+
     setLastName(user.lastName);
+
     setAddress1(user.address1);
+
     setAddress2(user.address2);
+
     setPhone(user.phone);
+
     setWarningFirstName(false);
+
     setWarningLastName(false);
+
     setWarningAddress1(false);
+
     setWarningAddress2(false);
+
     setWarningPhone(false);
+
     setShowEdit(false);
+
     setDefaultOption(false);
   };
 
   const demoCard = () => {
     if (creditCardNumber === "4024007103939509" && expirationDate === "09/25") {
       setPayed(true);
+
       return;
     }
 
     setCreditCardNumber("4024007103939509");
+
     setExpirationDate("09/25");
+
     pay();
   };
 
@@ -390,8 +407,11 @@ export default function OrderConfirmation() {
                 <div className={styles.username}>
                   {firstName} {lastName}
                 </div>
+
                 <div className={styles.address1}>{address1}</div>
+
                 <div className={styles.address2}>{address2}</div>
+
                 <div className={styles.phoneNumber}>{phone}</div>
               </div>
 
@@ -417,6 +437,7 @@ export default function OrderConfirmation() {
                     handleOnChange={(value) => handleOnChange2(value)}
                     placeholder={"First Name"}
                   />
+
                   {warningFirstName && (
                     <div className={styles.warning}>First name is required</div>
                   )}
@@ -432,6 +453,7 @@ export default function OrderConfirmation() {
                     handleOnChange={(value) => handleOnChange(value)}
                     placeholder={"Last Name"}
                   />
+
                   {warningLastName && (
                     <div className={styles.warning}>Last name is required</div>
                   )}
@@ -469,6 +491,7 @@ export default function OrderConfirmation() {
                     handleOnChange={(value) => handleOnChange4(value)}
                     placeholder={"City, State, ZIP"}
                   />
+
                   {warningAddress2 && (
                     <div className={styles.warning2}>
                       City/State/Zip is required
@@ -488,6 +511,7 @@ export default function OrderConfirmation() {
                     handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
+
                   {warningPhone && (
                     <div className={styles.warning2}>
                       Phone number is required
@@ -634,6 +658,7 @@ export default function OrderConfirmation() {
                       onChange={(e) => expNum(e)}
                       onFocus={(e) => handleInputFocus(e)}
                     />
+
                     {legitExpirationDateWarning && (
                       <p className={styles.invalidExp}>Invalid Exp. Date</p>
                     )}
@@ -661,6 +686,7 @@ export default function OrderConfirmation() {
                     <div className={styles.left9thLeftTopLeftContainer}>
                       <FaCheck style={{ display: "inline", color: "red" }} />
                     </div>
+
                     <div className={styles.left9thLeftTopRightContainer}>
                       Billing address as same as shipping
                     </div>
@@ -668,6 +694,7 @@ export default function OrderConfirmation() {
 
                   <div className={styles.left9thLeftBottomContainer}>
                     <div className={styles.address12}>{address1}</div>
+
                     <div className={styles.address22}>{address2}</div>
                   </div>
                 </div>
@@ -717,6 +744,7 @@ export default function OrderConfirmation() {
                   Ending in{" "}
                   {creditCardNumber.substr(creditCardNumber.length - 4)}
                 </div>
+
                 <div className={styles.ccExpiration}>
                   Expires {expirationDate}
                 </div>
@@ -824,6 +852,7 @@ export default function OrderConfirmation() {
                   alt="cartItemImage"
                 />
               </div>
+
               <span className={styles.productName}>
                 {shoppingCartItems[0]?.product?.name}
               </span>
@@ -859,6 +888,7 @@ export default function OrderConfirmation() {
           )}
         </div>
       </div>
+
       {loader && (
         <div className={styles.loader}>
           <ReactLoading
@@ -869,6 +899,7 @@ export default function OrderConfirmation() {
           />
         </div>
       )}
+
       <div onClick={() => history.push("/cart")} className={styles.untouchable}>
         Can't touch this
       </div>

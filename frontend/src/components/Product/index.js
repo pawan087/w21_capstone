@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
 import ReactLoading from "react-loading";
@@ -69,10 +68,12 @@ function ProductPage() {
   // const productQuestions = questions?.filter((question) => {
   //   return question.productId === +params.id;
   // });
+
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
     // dispatch(setAllQuestions());
+
     (async () => {
       if (user) {
         await dispatch(
@@ -81,7 +82,9 @@ function ProductPage() {
       }
 
       await dispatch(setAllProducts());
+
       await dispatch(setAllReviews());
+
       await dispatch(setAllReviewLikes());
 
       setLoad(true);
@@ -89,10 +92,13 @@ function ProductPage() {
   }, [params.id, user, dispatch]);
 
   const [didMount, setDidMount] = useState(false);
+
   useEffect(() => {
     setDidMount(true);
+
     return () => setDidMount(false);
   }, []);
+
   if (!didMount) return null;
 
   if (!load) {
@@ -112,16 +118,6 @@ function ProductPage() {
       </motion.div>
     );
   }
-
-  // let productIdsArr = [];
-
-  // for (let i = 1; i < products.length; i++) {
-  //   productIdsArr.push(i);
-  // }
-
-  // if (!productIdsArr.includes(params.id)) {
-  //   return <Redirect to="/404" />;
-  // }
 
   return (
     <motion.div

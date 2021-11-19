@@ -523,6 +523,7 @@ export default function CreateAccount() {
                   />
                 </svg>
               </div>
+
               <div className={styles.errorContainerRight}>
                 An account with this email already exists.
               </div>
@@ -650,6 +651,7 @@ export default function CreateAccount() {
                 handleOnChange={(value) => changeEmail(value)}
                 placeholder={"Email"}
               />
+
               {incorrectFormatEmail && (
                 <span className={styles.requiredLabel}>
                   Please format your email: email@domain.com

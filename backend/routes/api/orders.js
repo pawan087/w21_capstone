@@ -94,6 +94,7 @@ router.post(
       });
 
       const cartItemToDelete = await cartItem.findByPk(cartitem.id);
+
       await cartItemToDelete.destroy();
     });
 

@@ -1,34 +1,7 @@
-/* .topReviewsContainer {
-  text-align: left;
-  flex-direction: column;
-  justify-content: space-between;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
-  margin: 0 auto;
-  width: 1400px;
-  height: 365px;
-  margin-top: 25px;
-} */
-
 .topReviewsTopContainer {
   background-color: #ffffff;
   height: 40px;
 }
-
-/* .topReviewsMiddleContainer {
-  height: 250px;
-  width: 1400px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  justify-self: space-between;
-  justify-items: space-between;
-  align-content: space-between;
-  align-self: space-between;
-} */
 
 .reviewCard1,
 .reviewCard2,
@@ -44,52 +17,17 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: 20px;
 }
-/*
-.reviewCard1:hover {
-  border: 1px solid rgba(0, 0, 0, 0.33);
-} */
 
 .reviewCardMiddleContainer {
   display: flex;
   flex-direction: column;
-  /* background-color: rosybrown; */
   padding-left: 20px;
 }
 
 .reviewCardBottomContainer {
   background-color: #ffffff;
   display: flex;
-  /* margin-bottom; */
 }
-
-/* .topReviewsBottomContainer {
-  background-color: #ffffff;
-  height: 90px;
-  width: 1400px;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
-} */
-
-/* .topReviewsBottomContainer {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  justify-items: center;
-  align-content: center;
-  align-self: center;
-} */
-
-/* .topReviewTitle {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-} */
 
 .reviewCardTopContainer {
   display: flex;
@@ -247,7 +185,6 @@
   width: 165px;
   height: 30px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   color: rgba(0, 0, 0, 0.75);
   text-decoration: underline;
@@ -300,7 +237,6 @@
   font-size: 15px;
   font-weight: bold;
   display: flex;
-  /* background-color: salmon; */
 }
 
 .deleteReviewContent {
@@ -309,14 +245,12 @@
 
 .reviewUsername {
   height: 160px;
-  /* background-color: teal; */
   margin-right: 25px;
   color: rgba(0, 0, 0, 0.75);
 }
 
 .deleteReviewContent {
   max-height: 145px;
-  /* width: 350px; */
   width: 320px;
   overflow: auto;
   color: rgba(0, 0, 0, 0.75);
@@ -507,7 +441,6 @@
   width: 97.5%;
   position: relative;
   min-height: 160px;
-  /* height: 200px; */
 }
 
 .reviewInput {
@@ -576,7 +509,6 @@
   font-weight: bold;
   font-size: 12.5px;
   transition: 0.15s ease-in-out;
-  /* border-radius: 5px; */
 }
 
 .writeReviewButton:hover {
@@ -694,7 +626,6 @@
 
 .removePhoto,
 .removePhoto2 {
-  /* border-radius: 5px; */
   margin-left: 20px;
   height: 30px;
   cursor: pointer;
@@ -774,7 +705,6 @@
 }
 
 .uploadPic {
-  /* cursor: pointer; */
   height: 20px;
   width: 20px;
   position: absolute;
@@ -783,8 +713,6 @@
 }
 
 .uploadLabel {
-  /* margin-right: 12.5px; */
-  /* cursor: pointer; */
   transform: translateY(7.5px);
   position: absolute;
 }

@@ -36,9 +36,13 @@ export default function PostOrder() {
   useEffect(() => {
     (async () => {
       await dispatch(setAllProducts());
+
       await dispatch(setAllOrderItems());
+
       await dispatch(setAllOrders());
+
       await dispatch(setAllCartItems());
+
       setLoad(true);
     })();
   }, [dispatch]);
@@ -116,6 +120,7 @@ export default function PostOrder() {
 
           <div className={styles.tableHeaders}>
             <div className={styles.productsHeader}>PRODUCTS</div>
+
             <div className={styles.shippingDetailsHeader}>SHIPPING DETAILS</div>
           </div>
 
@@ -182,6 +187,7 @@ export default function PostOrder() {
             <div className={styles.moneyContainer}>
               <div className={styles.subtotalCard}>
                 <div className={styles.subtotalLabel}>Subtotal</div>
+
                 <div className={styles.subtotalValue}>
                   ${formatter.format(subtotal)}
                 </div>
@@ -189,11 +195,13 @@ export default function PostOrder() {
 
               <div className={styles.shippingCard2}>
                 <div className={styles.shippingLabel2}>Shipping & Handling</div>
+
                 <div className={styles.freeShippingValue2}>FREE</div>
               </div>
 
               <div className={styles.taxCard}>
                 <div className={styles.taxLabel}>Estimated Tax</div>
+
                 <div className={styles.taxValue}>
                   ${formatter.format(subtotal * 0.0825)}
                 </div>
@@ -201,6 +209,7 @@ export default function PostOrder() {
 
               <div className={styles.totalCard}>
                 <div className={styles.totalLabel}>Total</div>
+
                 <div className={styles.totalValue}>
                   ${formatter.format(subtotal + subtotal * 0.0825)}
                 </div>

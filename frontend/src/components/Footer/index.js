@@ -37,6 +37,7 @@ const Footer = () => {
 
             }} src={githubImg} alt="Github Logo" />
           </motion.div>
+
           <div className={styles.gitLink}>
             <a
               target="_blank"
@@ -49,6 +50,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        
         <div className={styles.footerBottom}>
           <div className={styles.footerCopyright}>©2021 gameStopClone</div>
         </div>

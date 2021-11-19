@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Redirect } from "react-router-dom";
 import {
   motion,
-  // Frame,
-  // useTransform,
-  // useMotionValue,
 } from "framer-motion/dist/framer-motion";
 
 import Recent from "./Recent.js";
@@ -24,8 +20,6 @@ function ProductsPage() {
 
     dispatch(setAllRecentlyViewed(user?.id));
   }, [user?.id, dispatch]);
-
-  // if (!user) return <Redirect to="/" />;
 
   return (
     <motion.div

@@ -92,6 +92,7 @@ export default function AnswerLikeComponent({ answer }) {
 
     if (alreadyDisliked) {
       await dispatch(deleteLike(id));
+      
       await dispatch(setAllAnswerLikes());
     } else {
       if (alreadyLiked) {

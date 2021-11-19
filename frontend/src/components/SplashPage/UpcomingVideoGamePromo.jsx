@@ -16,14 +16,17 @@ export default function UpcomingVideoGamePromo() {
           /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s20.webp" */
           onClick={() => history.push("/products/123")}
         />
+
         <div
           onClick={() => history.push("/products/123")}
           className={styles.subBannerPicCaptions}
         >
           <div>Pokémon Brilliant Diamond & Shinning Pearl Double Pack</div>
+
           <div className={styles.subBannerPicSubtitle}>Pre-Order Now</div>
         </div>
       </div>
+
       <div className={styles.codSubBannerContainer}>
         {" "}
         <img
@@ -33,11 +36,13 @@ export default function UpcomingVideoGamePromo() {
           /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s21.webp" */
           onClick={() => history.push("/products/84")}
         />
+
         <div
           onClick={() => history.push("/products/84")}
           className={styles.subBannerPicCaptions}
         >
           <div>Shin Megami Tensei V</div>
+          
           <div className={styles.subBannerPicSubtitle}>Pre-Order Now</div>
         </div>
       </div>

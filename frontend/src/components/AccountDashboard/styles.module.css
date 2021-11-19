@@ -15,7 +15,6 @@
   z-index: 48;
 }
 
-
 .revealPasswordIconContainer {
   height: 17.5px;
   width: 17.5px;
@@ -24,7 +23,6 @@
   position: absolute;
   top: 12.5px;
   right: 20px;
-
 }
 
 .dashboardHeader {
@@ -49,9 +47,6 @@
 }
 
 /* MAIN CONTAINER */
-
-
-
 .mainContainer {
   min-height: 650px;
   min-height: 697.5px;
@@ -64,7 +59,6 @@
   min-height: 650px;
   min-height: 697.5px;
   width: 100%;
-  /* background-color: rgb(242, 244, 247); */
   background-color: white;
   display: flex;
 }
@@ -91,19 +85,12 @@
   height: 600px;
   width: 305px;
   margin-right: 20px;
-  /* margin-right: 25px; */
-  /* background-color: white; */
-  /* position: sticky;
-  top: 250px;
-  z-index: 48; */
 }
 
 .mainLeftContainer2 {
   height: 600px;
   width: 305px;
   margin-right: 20px;
-  /* margin-right: 25px; */
-  /* background-color: white; */
   position: sticky;
   top: 250px;
   z-index: 47;
@@ -111,16 +98,13 @@
 
 .mainLeftTopContainer {
   width: 305px;
-  /* background-color: white; */
   border-radius: 5px;
   background-color: white;
 }
 
 .firstContainer {
   display: flex;
-  /* background-color: yellow; */
   height: 80px;
-  /* padding-top: 35px; */
   padding-left: 20px;
   justify-content: left;
   align-items: center;
@@ -137,7 +121,6 @@
 
 .secondContainer {
   height: 35px;
-  /* background-color: yellowgreen; */
   font-size: 15px;
   font-weight: bold;
   padding-left: 47.5px;
@@ -147,7 +130,6 @@
 .fourthContainer,
 .fifthContainer {
   height: 35px;
-  /* background-color: yellowgreen; */
   font-size: 15px;
   padding-left: 47.5px;
 }
@@ -158,7 +140,6 @@
 
 .sixthContainer {
   height: 35px;
-  /* background-color: yellowgreen; */
   font-size: 15px;
   padding-left: 47.5px;
 }
@@ -180,17 +161,13 @@
 
 .mainLeftBottomContainer {
   background-color: rgb(242, 244, 247);
-  /* border: 1px solid red; */
   padding-left: 20px;
-  /* margin-top: 45px; */
 }
 
 .mainLeftBottomContainer2 {
   background-color: rgb(242, 244, 247);
   background-color: white;
-  /* border: 1px solid red; */
   padding-left: 20px;
-  /* margin-top: 45px; */
 }
 
 .bottom1stContainer {
@@ -233,7 +210,6 @@
 .mainRightContainer {
   margin-left: 00px;
   margin-bottom: 17.5px;
-  /* background-color: yellowgreen; */
 }
 
 .right1stContainer {
@@ -280,10 +256,6 @@
   padding-right: 30px;
 }
 
-.button span {
-  /* font-weight: bold; */
-}
-
 .downIcon {
   width: 20px;
   height: 12.5px;
@@ -301,16 +273,12 @@
   height: 125px;
   height: 132.5px;
   border-radius: 5px;
-  /* background-color: red; */
   background-color: rgb(255, 255, 255);
-  /* background-color: yellow; */
   margin-bottom: 20px;
 }
 
 .right2ndContainer {
   display: flex;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.0625); */
-  /* padding-bottom: 10px; */
 }
 
 .right3rdContainer {
@@ -333,13 +301,10 @@
 
 .right2ndContainer {
   padding-top: 10px;
-  /* padding-left: 20px; */
   display: flex;
-  /* background-color: yellow; */
   justify-content: space-between;
   margin: 0 20px;
   align-items: center;
-  /* margin-bottom: 20px; */
 }
 
 .orderDate {
@@ -369,7 +334,6 @@
 }
 
 .right3rdContainer {
-  /* background-color: skyblue; */
   display: flex;
   margin: 0 20px;
   justify-content: space-between;
@@ -379,7 +343,6 @@
   font-size: 12.5px;
   color: rgba(14, 134, 88, 1);
   font-weight: bold;
-  /* margin-right: 200px; */
   width: 250px;
 }
 
@@ -397,7 +360,6 @@
   font-size: 12.5px;
   color: rgb(14, 134, 88);
   font-weight: bold;
-  /* margin-right: 200px; */
   display: flex;
   justify-content: right;
   opacity: 0;
@@ -420,7 +382,6 @@
 }
 
 .noOrdersContainer {
-  /* background-color: red; */
   height: 290px;
   display: flex;
   flex-direction: column;
@@ -462,7 +423,6 @@
 /* ORDER DETAIL RIGHT CONTAINER */
 
 .orderDetailContainer {
-  /* background-color: yellow; */
   width: 1055px;
   margin-left: 0px;
   display: flex;
@@ -478,7 +438,6 @@
 }
 
 .orderDetailRightContainer {
-  /* background-color: skyblue; */
   display: flex;
   width: 455px;
   flex-direction: column;
@@ -628,7 +587,6 @@
 
 .leftMiddle2ndContainer {
   color: rgba(255, 255, 255, 0.68);
-  /* font-weight: bold; */
   font-size: 12.5px;
 }
 
@@ -791,13 +749,10 @@
   font-weight: normal;
   color: rgb(0, 0, 0, 1);
   text-decoration: underline;
-  /* cursor: not-allowed; */
 }
 
 .goBack {
   position: absolute;
-  /* left: 505px;
-  top: 282.5px; */
   transform: translate(342.5px, 22.5px);
 }
 
@@ -877,7 +832,6 @@
 /* Account Settings Section */
 
 .personalDataContainer {
-  /* margin-left: 95px; */
   background-color: white;
   padding-left: 20px;
   border-radius: 5px;
@@ -946,10 +900,8 @@
   margin-top: 15px;
   display: flex;
   flex-direction: column;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.25); */
   width: 745px;
   margin-bottom: 20px;
-
 }
 
 .pd2nd1st1stContainer {
@@ -1023,7 +975,6 @@
 .passwordInputContainer2 {
   width: 745px;
   border: 1px solid rgba(0, 0, 0, 0.33);
-  /* margin-bottom: 20px; */
   height: 55px;
   position: relative;
   margin-top: 20px;
@@ -1032,7 +983,6 @@
 .address1InputContainer {
   width: 760px;
   border: 1px solid rgba(0, 0, 0, 0.33);
-  /* margin-bottom: 20px; */
   height: 55px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1041,7 +991,6 @@
 .address1InputContainerRed {
   width: 760px;
   border: 1px solid rgba(224, 59, 47, 1);
-  /* margin-bottom: 20px; */
   height: 55px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -1063,14 +1012,11 @@
   margin-top: 20px;
 }
 
-
-
 .passwordInputContainerRed2 {
   width: 745px;
   height: 55px;
   position: relative;
   border: 1px solid rgba(224, 59, 47, 1);
-  /* margin-bottom: 20px; */
   margin-top: 20px;
   position: relative;
 }

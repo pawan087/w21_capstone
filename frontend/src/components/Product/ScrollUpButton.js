@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaAngleUp } from "react-icons/fa";
 import { Button } from "./Styles";
-// import styles from './scrollup.module.css'
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
@@ -20,8 +19,6 @@ const ScrollButton = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
     });
   };
 

@@ -13,16 +13,12 @@ import SplashPage from "./components/SplashPage/SplashPage.js";
 import CreateAccount from "./components/CreateAccount/CreateAccount";
 import AccountSettings3 from "./components/AccountDashboard/AccountSettings3";
 import AccountDashboard from "./components/AccountDashboard/AccountDashboard";
-import Test from "./components/Test";
 import NotFound from "./components/NotFound/NotFound";
 import ScrollUpButton from "../src/components/Product/ScrollUpButton";
 import SignIn from "../src/components/SignIn/index.jsx";
 import BrowseProducts from "./components/BrowseProducts/BrowseProducts";
 // import Footer from "./components/Footer";
-import SignupFormPage from "./components/SignupFormPage";
-import LoginFormPage from "./components/LoginFormPage";
 import Navigation from "./components/Navigation";
-import ProductsPage from "./components/Products";
 import ProductPage from "./components/Product";
 import MyNavBar from "./components/Navigation/MyNavBar";
 import OrderConfirmation from "./components/OrderConfirmation/index.jsx";
@@ -58,24 +54,6 @@ function App() {
       {isLoaded && (
         <AnimatePresence exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
-            {false && (
-              <Route path="/login" exact={true}>
-                <LoginFormPage />
-              </Route>
-            )}
-
-            {false && (
-              <Route path="/signup" exact={true}>
-                <SignupFormPage />
-              </Route>
-            )}
-
-            {false && (
-              <Route path="/products" exact={true}>
-                <ProductsPage />
-              </Route>
-            )}
-
             <Route path="/products/:id" exact={true}>
               <ProductPage />
             </Route>
@@ -87,12 +65,6 @@ function App() {
             <Route path="/confirm" exact={true}>
               <OrderConfirmation />
             </Route>
-
-            {false && (
-              <Route path="/test" exact={true}>
-                <Test />
-              </Route>
-            )}
 
             <Route path="/ordered" exact={true}>
               <PostOrder />

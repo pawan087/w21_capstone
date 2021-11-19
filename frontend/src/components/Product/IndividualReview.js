@@ -71,11 +71,17 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     }
 
     setBool(false);
+
     setBool2(false);
+
     setContent(review.content);
+
     setRating(review.rating);
+
     setUploadMsg("Upload Picture (Optional)");
+
     setPreview("");
+
     setSelectedFile();
   };
 
@@ -85,11 +91,17 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     await dispatch(setAllReviews());
 
     setBool(false);
+
     setBool2(false);
+
     setContent(review.content);
+
     setRating(review.rating);
+
     setUploadMsg("Upload Picture (Optional)");
+
     setPreview("");
+
     setSelectedFile();
   };
 
@@ -97,6 +109,7 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     // window.scrollTo(0, 0);
     if (!selectedFile) {
       setPreview(undefined);
+
       return;
     }
 
@@ -128,9 +141,10 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
     await dispatch(deleteReview({ id: review.id, arr }));
 
     await dispatch(setAllReviews());
-    setBool(false);
-    setBool2(false);
 
+    setBool(false);
+
+    setBool2(false);
   };
 
   const updateImage = (e) => {
@@ -145,12 +159,14 @@ export default function IndividualReview({ review, i, productReviewsLength }) {
   };
 
   const clear = () => {
-    // setBool(false);
-    // setBool2(false);
     setContent(review.content);
+
     setRating(review.rating);
+
     setUploadMsg("Upload Picture");
+
     setPreview("");
+    
     setSelectedFile();
   };
 

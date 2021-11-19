@@ -133,10 +133,6 @@ export default function AccountDashboard() {
       setInvalidNewPasswordWarning(true);
     }
 
-    // if (newPassword.length < 6) {
-    //   setInvalidNewPasswordWarning(true);
-    // }
-
     if (newPassword === confirmNewPassword && newPassword.length > 5) {
       setLoader2(true);
 
@@ -150,8 +146,11 @@ export default function AccountDashboard() {
       )
         .then(async () => {
           setCurrentPassword("");
+
           setNewPassword("");
+
           setConfirmNewPassword("");
+
           await dispatch(sessionActions.restoreUser());
 
           setShowSuccessfulPasswordChange(true);
@@ -210,6 +209,7 @@ export default function AccountDashboard() {
       <div className={styles.dashboardHeaderContainer}>
         <div className={styles.dashboardHeader}>
           <div className={styles.headerWelcome}>Welcome, {user?.firstName}</div>
+
           <div className={styles.logoutLink}>LOG OUT</div>
         </div>
       </div>
@@ -319,11 +319,13 @@ export default function AccountDashboard() {
                       Please fill out this field.
                     </span>
                   )}
+
                   {incorrectPasswordWarning && (
                     <span className={styles.requiredLabel}>
                       The provided password was invalid.
                     </span>
                   )}
+
                   {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
@@ -344,6 +346,7 @@ export default function AccountDashboard() {
                       </svg>
                     </div>
                   )}
+
                   {user.email !== "" && inputType === "text" && (
                     <div
                       onClick={(e) => hidePassword(e)}
@@ -390,6 +393,7 @@ export default function AccountDashboard() {
                       Please fill out this field.
                     </span>
                   )}
+
                   {invalidNewPasswordWarning && (
                     <span className={styles.requiredLabel}>
                       Password must be a minimum of 8 characters with at least
@@ -397,6 +401,7 @@ export default function AccountDashboard() {
                       and one special character.
                     </span>
                   )}
+
                   {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
@@ -456,16 +461,19 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeConfirmNewPassword(value)}
                     placeholder={"Confirm New Password"}
                   />
+
                   {emptyConfirmNewPasswordWarning && (
                     <span className={styles.requiredLabel}>
                       Please fill out this field.
                     </span>
                   )}
+
                   {invalidConfirmPassword && (
                     <span className={styles.requiredLabel}>
                       Passwords do not match.
                     </span>
                   )}
+
                   {user.email !== "" && inputType === "password" && (
                     <div
                       onClick={(e) => showPassword(e)}
@@ -486,6 +494,7 @@ export default function AccountDashboard() {
                       </svg>
                     </div>
                   )}
+
                   {user.email !== "" && inputType === "text" && (
                     <div
                       onClick={(e) => hidePassword(e)}
@@ -522,6 +531,7 @@ export default function AccountDashboard() {
                     Save Changes
                   </div>
                 )}
+
                 {(currentPassword.length === 0 ||
                   newPassword.length === 0 ||
                   confirmNewPassword.length === 0) && (

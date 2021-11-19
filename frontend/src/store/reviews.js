@@ -21,6 +21,7 @@ export const createReview = (data) => async (dispatch) => {
   const { userId, productId, content, rating, image } = data;
 
   const formData = new FormData();
+
   formData.append("userId", userId);
   formData.append("productId", productId);
   formData.append("content", content);
@@ -65,6 +66,7 @@ export const editReview = (data) => async (dispatch) => {
   const { id, rating, content, image } = data;
 
   const formData = new FormData();
+
   formData.append("id", id);
   formData.append("content", content);
   formData.append("rating", rating);

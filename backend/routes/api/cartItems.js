@@ -67,13 +67,11 @@ router.delete(
   asyncHandler(async (req, res) => {
     const { idsToDeleteArr } = req.body;
 
-    // console.log('\n\n\n', idsToDeleteArr, '\n\n\n')
-
     let itemToDelete;
 
     idsToDeleteArr.forEach(async (id) => {
       itemToDelete = await cartItem.findByPk(id);
-      // console.log(!!itemToDelete)
+      
       await itemToDelete.destroy();
     });
 

@@ -32,15 +32,19 @@ export default function OrderDetail({ order, status, user }) {
                 }}
               />
             </div>
+
             <span className={styles.backLinkLabel}>BACK TO MY ORDERS</span>
           </div>
+
           <div className={styles.leftTop2ndContainer}>
             ORDER: 11000000377356{order?.id}
           </div>
+
           <div className={styles.leftTop3rdContainer}>
             <span>Ordered Date:</span>{" "}
             {String(new Date(order?.updatedAt)).slice(4, 15)}
           </div>
+
           <div className={styles.leftTop4thContainer}>
             <span>Order Status:</span> {status}
           </div>
@@ -146,6 +150,7 @@ export default function OrderDetail({ order, status, user }) {
               <div className={styles.subtotalLabel}>
                 Subtotal ({numItems} {numItems === 1 ? "item" : "items"})
               </div>
+
               <div className={styles.subtotalValue}>
                 ${formatter.format(order.orderTotal)}
               </div>
@@ -153,11 +158,13 @@ export default function OrderDetail({ order, status, user }) {
 
             <div className={styles.top2nd2ndContainer}>
               <div className={styles.shippingLabel}>Shipping & Handling</div>
+
               <div className={styles.fakeFreeShipping}>FREE</div>
             </div>
 
             <div className={styles.top2nd3rdContainer}>
               <div className={styles.taxLabel}>Tax</div>
+
               <div className={styles.taxValue}>
                 ${formatter.format(order.orderTotal * 0.0825)}
               </div>
@@ -180,7 +187,9 @@ export default function OrderDetail({ order, status, user }) {
             <div className={styles.userFullName}>
               {order?.firstName} {order?.lastName}
             </div>
+
             <div className={styles.address1Container}>{order.address1}</div>
+
             <div className={styles.address2Container}>{order.address2}</div>
           </div>
 
@@ -188,6 +197,7 @@ export default function OrderDetail({ order, status, user }) {
 
           <div className={styles.ccInfoContainer}>
             <div className={styles.userFullName}>Credit Card</div>
+
             <div className={styles.address1Container}>
               Visa ************
               {order.creditCard.slice(order.creditCard.length - 4)} Ex.{" "}
