@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -117,6 +118,10 @@ function ProductPage() {
         />
       </motion.div>
     );
+  }
+
+  if (params.id < 1 || params.id > 166) {
+    return <Redirect to="/" />;
   }
 
   return (
