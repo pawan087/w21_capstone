@@ -136,18 +136,21 @@ export default function AllReviewsContainer({ reviews }) {
             <MenuItem onClick={(e) => setRecent(e)} className={styles.menuItem}>
               Most Recent
             </MenuItem>
+
             <MenuItem
               onClick={(e) => setHighestToLowest(e)}
               className={styles.menuItem}
             >
               Highest to Lowest Rating
             </MenuItem>
+
             <MenuItem
               onClick={(e) => setLowestToHighest(e)}
               className={styles.menuItem}
             >
               Lowest to Highest Rating
             </MenuItem>
+
             <MenuItem
               onClick={(e) => setMostHelpful(e)}
               className={styles.menuItem}

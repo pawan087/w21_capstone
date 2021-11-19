@@ -1,28 +1,28 @@
 "use strict";
 
+function randomIntFromInterval(min, max) {
+  // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+let arr = [];
+
+for (let i = 1; i <= 100; i++) {
+  const rndInt1 = randomIntFromInterval(1, 166);
+  const rndInt2 = randomIntFromInterval(1, 5);
+
+  let obj = {};
+
+  obj["userId"] = 1;
+  obj["quantity"] = rndInt2;
+  obj["productId"] = rndInt1;
+
+  arr.push(obj);
+}
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert(
-      "orderItems",
-      [
-        {
-          userId: 1,
-          productId: 4,
-          quantity: 1,
-        },
-        {
-          userId: 2,
-          productId: 5,
-          quantity: 4,
-        },
-        {
-          userId: 3,
-          productId: 4,
-          quantity: 1,
-        },
-      ],
-      {}
-    );
+    return queryInterface.bulkInsert("orderItems", arr, {});
   },
 
   down: async (queryInterface, Sequelize) => {

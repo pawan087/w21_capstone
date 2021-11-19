@@ -37,10 +37,10 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const [bool3, setBool3] = useState(false);
   const [bool2, setBool2] = useState(false);
-  const [bool, setBool] = useState(false); // <-- set to false after dev
-  const [visible, setVisible] = useState(false); // <-- set to true after dev
-  const [visible2, setVisible2] = useState(false); // <-- set to false after dev
-  const [visible3, setVisible3] = useState(false); // <-- set to false after dev
+  const [bool, setBool] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
 
@@ -49,11 +49,6 @@ export default function RatingsandReviews({ avgRating, reviews }) {
   const [uploadMsg, setUploadMsg] = useState("Upload Picture");
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
-
-  // const variants = {
-  //   closed: { height: "0px" },
-  //   open: showAllReviews ? { minheight: "1075px" } : { minheight: "605px" },
-  // };
 
   const contentSetter = (e) => {
     setContent(e.target.value);
@@ -75,31 +70,31 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const hide = () => {
     setLoading(false);
-    setVisible(false);
-    clear();
-    // setVisible3(true);
 
-    // setTimeout(setVisible3(false), 3000);
+    setVisible(false);
+
+    clear();
   };
 
   const show2 = () => {
     setVisible2(true);
+
     setVisible(false);
   };
 
   const hide2 = () => {
     if (!selectedFile) {
       setSelectedFile();
+
       setImage(null);
     }
 
     setVisible2(false);
+
     setVisible(true);
   };
 
   const hide3 = () => {
-    // setVisible2(false);
-    // setVisible(true);
     setVisible3(false);
   };
 
@@ -107,6 +102,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     if (!selectedFile) return;
 
     setVisible2(false);
+
     setVisible(true);
 
     setBool2(false);
@@ -114,33 +110,44 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
+
     setBool3(false);
   };
 
   const clear = () => {
     setContent("");
+
     setRating(0);
+
     setUploadMsg("Upload Picture");
+
     setPreview("");
+
     setSelectedFile();
+
     setBool2(false);
+
     setBool3(false);
   };
 
   const handleSubmit = async () => {
     if (content === "" && rating === 0) {
       setBool2(true);
+
       setBool3(true);
+
       return;
     }
 
     if (content === "") {
       setBool2(true);
+
       return;
     }
 
     if (rating === 0) {
       setBool3(true);
+
       return;
     }
 
@@ -157,28 +164,37 @@ export default function RatingsandReviews({ avgRating, reviews }) {
     );
 
     setDidMount(false);
+
     setVisible(false);
+
     setDidMount(true);
 
     await dispatch(setAllReviews());
 
     setContent("");
+
     setRating(0);
+
     setPreview("");
+
     setRating(0);
 
     setUploadMsg("Upload Picture");
+
     setImage(null);
+
     setSelectedFile();
+
     setLoading(false);
+
     hide();
+
     setVisible3(true);
+
     setTimeout(() => setVisible3(false), 2000);
-    // window.location.reload();
   };
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
     if (!selectedFile) {
       setPreview(undefined);
       return;
@@ -188,21 +204,24 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
     setPreview(objectUrl);
 
-    // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl);
   }, [deleteConfirmation, selectedFile]);
 
   const [didMount, setDidMount] = useState(false);
+
   useEffect(() => {
     setDidMount(true);
+
     return () => setDidMount(false);
   }, []);
+
   if (!didMount) return null;
 
   const updateImage = (e) => {
     const file = e.target.files[0];
 
     setUploadMsg(file["name"].slice(0, 36));
+
     setSelectedFile(e.target.files[0]);
 
     if (file) setImage(file);
@@ -210,6 +229,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
   const removePhoto = () => {
     setSelectedFile();
+
     setUploadMsg("Upload Picture");
   };
 
@@ -505,6 +525,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
                     Remove Photo
                   </div>
                 )}
+
                 {!selectedFile && (
                   <div
                     onClick={removePhoto}

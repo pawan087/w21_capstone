@@ -34,7 +34,6 @@ export default function AccountDashboard() {
   const [load, setLoad] = useState(false);
   const [incorrectFormatPhone, setIncorrectFormatPhone] = useState(false);
   const [loader2, setLoader2] = useState(false);
-  // const [sameInformationWarning, setSameInformationWarning] = useState(false);
   const [showSuccessfulPasswordChange, setShowSuccessfulPasswordChange] =
     useState(false);
 
@@ -88,14 +87,23 @@ export default function AccountDashboard() {
 
   const clear = () => {
     setFirstName(user.firstName);
+
     setLastName(user.lastName);
+
     setAddress1(user.address1);
+
     setAddress2(user.address2);
+
     setPhone(user.phone);
+
     setEmptyPhoneWarning(false);
+
     setEmptyLastNameWarning(false);
+
     setEmptyFirstNameWarning(false);
+
     setEmptyAddress1Warning(false);
+
     setEmptyAddress2Warning(false);
   };
 
@@ -209,6 +217,7 @@ export default function AccountDashboard() {
       <div className={styles.dashboardHeaderContainer}>
         <div className={styles.dashboardHeader}>
           <div className={styles.headerWelcome}>Welcome, {user?.firstName}</div>
+
           <div className={styles.logoutLink}>LOG OUT</div>
         </div>
       </div>
@@ -337,6 +346,7 @@ export default function AccountDashboard() {
                       handleOnChange={(value) => changeLastName(value)}
                       placeholder={"Last Name"}
                     />
+
                     {emptyLastNameWarning && (
                       <span className={styles.requiredLabel}>
                         This is a required field.
@@ -364,6 +374,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeAddress1(value)}
                     placeholder={"Street Address"}
                   />
+
                   {emptyAddress1Warning && (
                     <span className={styles.requiredLabel}>
                       This is a required field.
@@ -390,6 +401,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changeAddress2(value)}
                     placeholder={"City, State, ZIP"}
                   />
+
                   {emptyAddress2Warning && (
                     <span className={styles.requiredLabel}>
                       This is a required field.
@@ -416,6 +428,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
+                  
                   {emptyPhoneWarning && (
                     <span className={styles.requiredLabel}>
                       This is a required field.

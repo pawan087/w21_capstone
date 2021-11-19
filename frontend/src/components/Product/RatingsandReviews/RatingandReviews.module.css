@@ -7,7 +7,6 @@
   margin-bottom: 20px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgb(217, 217, 217);
-  /* background-color: red; */
 }
 
 .topContainer {
@@ -17,7 +16,6 @@
 }
 
 .bottomContainer {
-  /* background-color: royalblue; */
   display: flex;
   height: 200px;
   width: 100%;
@@ -48,6 +46,10 @@
 
 .starRating {
   transform: scale(0.65);
+}
+
+.starRating * {
+  cursor: default !important;
 }
 
 .starsContainer {
@@ -107,6 +109,7 @@
   text-align: left;
   transform: translateX(-5px);
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .menuIcon {
@@ -223,7 +226,6 @@
   width: 97.5%;
   position: relative;
   min-height: 160px;
-  /* height: 200px; */
 }
 
 .reviewInput {
@@ -363,14 +365,11 @@ div.fileinputs {
 }
 
 .uploadLabel {
-  /* margin-right: 12.5px; */
-  /* cursor: pointer; */
   transform: translateY(7.5px);
   position: absolute;
 }
 
 .uploadPic {
-  /* cursor: pointer; */
   height: 20px;
   width: 20px;
   position: absolute;
@@ -587,7 +586,6 @@ div.fileinputs {
 
 .noReviews {
   text-decoration: underline;
-  /* background-color: rebeccapurple; */
   font-size: 12.5px;
   transform: translate(-5px, 0px);
   color: rgba(0, 0, 0, 0.75);

@@ -16,7 +16,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10161250/Grand-Theft-Auto-V-Premium-Edition---PlayStation-4?$pdp$$&fmt=webp",
-            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/01.webp?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEOT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMSJHMEUCIDH9kXt1PxKncqINU0LApPdXol5CrkH82UgUeMS8Tm2zAiEA1HbKqt6u4v%2FGqaHomg8NXvXOdf%2BN1HnG8xpAGDELtCsq%2FwIInf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgw4NzIyNzc1MTQ1NjUiDMI85mk8oTQfuonuHCrTAjlGVF7cuPs4ig3IvqVLUKTTcdJVxNXYtEAMoJnKazsMIE%2B2EOYzVSwd96myUy1ZJ2Q0P9Gv8rfoCX%2BGLVoWDfAY52A2Sn7M6oGyE1wEa70y3E6w1Vj5aSw8%2BAm7vDN7chYwkkug3f83NI9qvNE6rA6Pol6qa2Gw%2Ff6rVoy0j6khmf1PP49ZTzTxe0h4lnfndUCnxTpkj9G%2FvrTK457iHwqyAhw8BrUUqB1q9RXeJ3ugG8EZr4jKrqn5U2e5dXssCOKxMZq3pqSYO1YU2FOoRQXQWcX3n%2FeLwWJWOh0npBR3ccYzPO9HLIcHNlzSvhM6Bu5SMy8verNUtf4A2vUj%2FrZcuaH2gpF4KCJeHkWPxJy4kufaJNR4lTf6%2B3rNEiAIHQ%2Bo3O%2FFzlaSt22D0aS3BPeyLrZEoyIwEb%2BMA7%2BG0c%2BtE0vZTxPL9xUort5K5TYIu7yfMTClhNKMBjqzAtjZCcqrK17DRwCS2HJlfOKsgCt2DDGTtWayjtvG3mN4YMyhnZkSI49GtTW%2B2s6zlLXBm60jH2yQiv4FUGMT1%2Fzy1LTeCVH6Csw7FIbFtevhyEboDOmHbgKc0IOtgwwfidciyCRawIKnmQ8h2LMMDEmZBsen9csL%2By%2FDZdzzaJKwV5igfrqdl5HMYvLopqZKL5Oh5shA9388NuP0BkU0XqgcY5Cnt%2B8HtyawbNOIzV9genzHVfvuGN8SzlOuQ9HPt%2BIkM%2Be8fN2zVOLsGzoqlEeHN1TzA%2F7q0lM%2BQJlkQP9FJ1G1nkNk55cH1ld6ZqeUUcxjpASnr8%2BMapkxZnWPHnOrNpjfHTejPtvJ5O3ucniuzTZ5SLMCP6ACCsu6PnoteLHXXTrfSstW%2Fq59ByTTiZptoXo%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20211117T042601Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIA4WF6KTFC6X5FTERM%2F20211117%2Fus-west-1%2Fs3%2Faws4_request&X-Amz-Signature=19574fb667c7256f86eb9b92a206bff494be83a0c171f1ad97729198f80d2196",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/01.webp",
           ],
           rating: 5.0,
         },
@@ -910,6 +910,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11121396/Jazwares-Squishville-Mini-Squishmallows-Brilliant-Besties-14-Pack-2.6-In-Plushes?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/61.jpg",
           ],
           rating: 4.0,
         },
@@ -924,6 +925,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11146074/Knex-K-Force-Battle-Bow-Building-Set?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/62.jpg",
           ],
           rating: 4.0,
         },
@@ -938,6 +940,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11140776/Connect-4-Shots-Space-Jam-A-New-Legacy-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/64.jpg",
           ],
           rating: 5.0,
         },
@@ -952,6 +955,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11152237/Disney-Princess-Ultimate-Celebration-Castle?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/65.jpg",
           ],
           rating: 1.0,
         },
@@ -966,6 +970,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156211/Play-Doh-65-Ultra-Color-Collection-Set?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/63.jpg",
           ],
           rating: 0.0,
         },
@@ -980,6 +985,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156216/Transformers-Cyberverse-Dinobots-Unite-Roll-N-Change-Optimus-Prime?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/66.jpg",
           ],
           rating: 0.0,
         },
@@ -994,6 +1000,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153616/Nerf-Roblox-MM2-Shark-Seeker-Blaster?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/67.jpg",
           ],
           rating: 4.6,
         },
@@ -1008,6 +1015,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11100218/Magic-The-Gathering-Unsanctioned?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/68.jpg",
           ],
           rating: 5.0,
         },
@@ -1022,6 +1030,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11105163/Jenga-Super-Mario-Bros.-Edition-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/69.jpg",
           ],
           rating: 4.4,
         },
@@ -1036,6 +1045,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148583/The-Game-of-Life-Super-Mario-Edition-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/69.jpg",
           ],
           rating: 4.9,
         },
@@ -1050,6 +1060,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153708/Sheriff-of-Nottingham-Second-Edition-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/71.jpg",
           ],
           rating: 0.0,
         },
@@ -1064,6 +1075,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11153713/Star-Wars-Legion-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/72.jpg",
           ],
           rating: 0.0,
         },
@@ -1078,6 +1090,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11112992/YAHTZEE-Cup-Noodles?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/73.jpg",
           ],
           rating: 5.0,
         },
@@ -1092,6 +1105,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11112984/USAopoly-Clue-The-Office-Board-Game?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/74.jpg",
           ],
           rating: 0.0,
         },
@@ -1106,6 +1120,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114625_silver/iPhone-12-Pro-128GB---Unlocked-silver?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/75.jpg",
           ],
           rating: 0.0,
         },
@@ -1120,6 +1135,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098256_space-gray/iPhone-11-Pro-Max-256GB---Unlocked-space-gray?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/76.jpg",
           ],
           rating: 0.0,
         },
@@ -1134,6 +1150,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114626_silver/iPhone-12-Pro-256GB---Unlocked-silver?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/77.jpg",
           ],
           rating: 0.0,
         },
@@ -1148,6 +1165,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160384_blue/iPhone-12-Pro-Max-128GB---Unlocked-blue?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/78.jpg",
           ],
           rating: 4.4,
         },
@@ -1162,6 +1180,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098255_green/iPhone-11-Pro-Max-64GB---Unlocked-green?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/79.jpg",
           ],
           rating: 0.0,
         },
@@ -1176,6 +1195,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11114628_blue/iPhone-12-Pro-Max-128GB---ATT-blue?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/80.jpg",
           ],
           rating: 0.0,
         },
@@ -1190,6 +1210,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157921/Jurassic-World-Evolution-2---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/81.webp",
           ],
           rating: 5.0,
         },
@@ -1204,6 +1225,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157919/Jurassic-World-Evolution-2---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/82.webp",
           ],
           rating: 5.0,
         },
@@ -1218,6 +1240,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148773/Forza-Horizons-5---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/83.webp",
           ],
           rating: 5.0,
         },
@@ -1232,6 +1255,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149943/Shin-Megami-Tensei-V-SteelBook-Launch-Edition----Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/84.webp",
           ],
           rating: 5.0,
         },
@@ -1246,6 +1270,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158712/Star-Wars-Jedi-Knight-Collection---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/85.webp",
           ],
           rating: 5.0,
         },
@@ -1260,6 +1285,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11161600/Star-Wars-Jedi-Knight-Collection---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/86.webp",
           ],
           rating: 5.0,
         },
@@ -1274,6 +1300,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158713/Star-Wars-Racer-and-Commando-Combo---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/87.webp",
           ],
           rating: 5.0,
         },
@@ -1288,6 +1315,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11161601/Star-Wars-Racer-and-Commando-Combo---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/89.webp",
           ],
           rating: 5.0,
         },
@@ -1302,6 +1330,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156034/The-Smurfs-Mission-Vileaf-Smurftastic-Edition----Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/89a.webp",
           ],
           rating: 0.0,
         },
@@ -1316,6 +1345,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156033/The-Smurfs-Mission-Vileaf-Smurftastic-Edition----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/91.webp",
           ],
           rating: 0.0,
         },
@@ -1330,6 +1360,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148122/Battlefield-2042---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/91a.webp",
           ],
           rating: 2.7,
         },
@@ -1344,6 +1375,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148121/Battlefield-2042---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/92.webp",
           ],
           rating: 2.7,
         },
@@ -1358,6 +1390,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148124/Battlefield-2042----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/93.webp",
           ],
           rating: 4.2,
         },
@@ -1372,6 +1405,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120693/Pokemon-Shining-Pearl---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/94.webp",
           ],
           rating: 5.0,
         },
@@ -1386,6 +1420,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11120693/Pokemon-Shining-Pearl---Nintendo-Switch?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/95.webp",
           ],
           rating: 2.0,
         },
@@ -1400,6 +1435,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11165934/Kena-Bridge-of-Spirits-Deluxe-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/96.webp",
           ],
           rating: 5.0,
         },
@@ -1414,6 +1450,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11165933/Kena-Bridge-of-Spirits-Deluxe-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/97.webp",
           ],
           rating: 5.0,
         },
@@ -1428,6 +1465,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149939/Farming-Simulator-22---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/98.webp",
           ],
           rating: 4.0,
         },
@@ -1442,6 +1480,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095775/Nintendo-Switch-Lite-Console-Turquoise?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/99.jpg",
           ],
           rating: 4.7,
         },
@@ -1456,6 +1495,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095821/Nintendo-Switch-Console-Gray-Joy-Con?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/100.jpg",
           ],
           rating: 4.7,
         },
@@ -1470,6 +1510,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10138875/Microsoft-Xbox-One-S-1TB-Console-White?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/101.jpg",
           ],
           rating: 4.4,
         },
@@ -1484,6 +1525,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10134659/Sony-PlayStation-4-Pro-1TB-Console-Black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/102.jpg",
           ],
           rating: 4.6,
         },
@@ -1498,6 +1540,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10174659/Microsoft-Xbox-One-X-1TB-Console-Black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/103.jpg",
           ],
           rating: 3.9,
         },
@@ -1512,6 +1555,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10115705/Microsoft-Xbox-One-500GB-Console-Black-with-Original-Controller?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/104.jpg",
           ],
           rating: 4.0,
         },
@@ -1526,6 +1570,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157532/Pokemon-Journeys-Ash-Ketchum-Baseball-Cap?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/105.jpg",
           ],
           rating: 4.9,
         },
@@ -1540,6 +1585,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11110007/Pokemon-Pikachu-Graffiti-Tote-Bag?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/106.jpg",
           ],
           rating: 4.8,
         },
@@ -1554,6 +1600,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11159109/Loungefly-The-Nightmare-Before-Christmas-Simply-Meant-to-Be-Mini-Backpack?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/107.jpg",
           ],
           rating: 2.7,
         },
@@ -1568,6 +1615,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11098266/Pokemon-Go-tcha-Evolve-Watch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/108.jpg",
           ],
           rating: 3.6,
         },
@@ -1575,13 +1623,14 @@ module.exports = {
           name: "GameStop Logo Zip Unisex Hooded Jacket",
           description:
             "There was only one idea when we came up with this hoodie: It’s gotta be everyone’s favorite hoodie of all time. Yep. We’re going for it. This bad boy is comfy, cool, and with our GameStop logo it’s the perfect way to rep your favorite store for games, collectibles, consoles, apparel, and more.",
-          brandId: 47,
+          brandId: 49,
           price: 69.99,
           categoryId: 6,
           subcategoryId: 28,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166188/GameStop-Logo-Zip-Unisex-Hooded-Jacket?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/109.jpg",
           ],
           rating: 5.0,
         },
@@ -1596,6 +1645,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10147896/Pokemon-GO-Tcha-Bracelet?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/110.jpg",
           ],
           rating: 3.0,
         },
@@ -1603,26 +1653,28 @@ module.exports = {
           name: "GameStop Logo Unisex Joggers",
           description:
             "We love a good jog. Especially when it’s a jog over to the console table to grab a controller. Or, a virtual jog through the post-apocalyptic landscape of Fallout. Anyway, we crafted these joggers to be the perfect companion for whatever type of jogger you are inclined (or reclined) to be! Enjoy responsibly.",
-          brandId: 47,
+          brandId: 49,
           price: 49.99,
           categoryId: 6,
           subcategoryId: 29,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166189/GameStop-Logo-Unisex-Joggers?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/111.jpg",
           ],
           rating: 5.0,
         },
         {
           name: "GameStop Logo Hooded Sweatshirt",
           description: "Officially Licensed Art From Threadless",
-          brandId: 47,
+          brandId: 49,
           price: 39.99,
           categoryId: 6,
           subcategoryId: 28,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11121558_black/GameStop-Logo-Hooded-Sweatshirt-black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/112.jpg",
           ],
           rating: 4.7,
         },
@@ -1630,13 +1682,14 @@ module.exports = {
           name: "GameStop Premium Logo Unisex T-Shirt",
           description:
             "There are the tees in the bottom of a t-shirt drawer, and then there are the ones you hang in the front of your closet. Your go-to, look-forward to wearing shirts. The ones that put you in a good mood because they’re so damn comfortable and aged perfectly. Well that feeling, that look, it’s right out of the package with the classic, semi-vintage black GameStop logo tee. It’s the t-shirt best friend you’ve been waiting for. Get a hangar ready.",
-          brandId: 47,
+          brandId: 49,
           price: 29.99,
           categoryId: 6,
           subcategoryId: 30,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11151222_black/GameStop-Premium-Logo-Unisex-T-Shirt-black?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/113.jpg",
           ],
           rating: 4.8,
         },
@@ -1644,13 +1697,14 @@ module.exports = {
           name: "WandaVision Power Pack Jewelry Set Only at GameStop",
           description:
             "Everyone loves a good love story – and this set has it all. Wanda’s engagement and wedding ring, Vision’s wedding ring, a S.W.O.R.D. necklace, and of course, Wanda’s Scarlet Witch crown. This striking set comes in a special WandaVision collectible box, designed for ease of display, though the durable pieces within the box could be worn for cosplay or as everyday jewelry. This limited edition set is certain to delight anyone who loves the show, Scarlet Witch, and Vision.",
-          brandId: 49,
+          brandId: 51,
           price: 89.99,
           categoryId: 6,
           subcategoryId: 11,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11116337/WandaVision-Power-Pack-Jewelry-Set-Only-at-GameStop?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/114.jpg",
           ],
           rating: 3.9,
         },
@@ -1658,13 +1712,14 @@ module.exports = {
           name: "GameStop Logo Unisex Hooded Sweatshirt",
           description:
             "Load Game. You’re back in black with this totally awesome, totally comfy GameStop hoodie. Rep your favorite spot for games, collectibles, and more with this simple, cool hoodie. Sometimes you just can’t beat a classic.",
-          brandId: 47,
+          brandId: 49,
           price: 52.99,
           categoryId: 6,
           subcategoryId: 28,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166186/GameStop-Logo-Unisex-Hooded-Sweatshirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/115.jpg",
           ],
           rating: 5.0,
         },
@@ -1672,13 +1727,14 @@ module.exports = {
           name: "GameStop Rocket Unisex Button Up Short-Sleeve Shirt",
           description:
             "3. 2. 1. Let’s go. At GameStop we are big fans of exploration. We believe games are another way to explore ourselves and society and the universe. Nothing says, “Get out there and explore” like a rocket. Enjoy this shirt and blast off to the worlds that matter most in your gaming life.",
-          brandId: 47,
+          brandId: 49,
           price: 69.99,
           categoryId: 6,
           subcategoryId: 30,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166187/GameStop-Rocket-Unisex-Button-Up-Short-Sleeve-Shirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/116.jpg",
           ],
           rating: 4.8,
         },
@@ -1686,13 +1742,14 @@ module.exports = {
           name: "GameStop Logo Unisex Sweat Shorts",
           description:
             "You know the kind of game that makes you feel like you’re getting a workout? These sweat shorts are built for that game in mind. There’s no reason you should have to win the big boss fight in an ordinary pair of pants. Instead, embrace the gamer within and go with these comfy sweat shorts. Also good for fridge-runs, binge-watching, and answering the door when your in-laws come over.",
-          brandId: 47,
+          brandId: 49,
           price: 44.99,
           categoryId: 6,
           subcategoryId: 29,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166181/GameStop-Logo-Unisex-Sweat-Shorts?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/117.jpg",
           ],
           rating: 4.9,
         },
@@ -1700,13 +1757,14 @@ module.exports = {
           name: "GameStop Power To The Players Unisex T-Shirt",
           description:
             "It’s your game. Your rules. Your way. “Power To The Players” is our motto at GameStop, because we believe in the power of playing -- in creating your own characters, in embodying the best that have ever been created, in action, in horror, in humor, in love. We believe that when you put the power in the hands of the player, anything is possible. We present this t-shirt so you can share in celebrating our motto and love of games.",
-          brandId: 47,
+          brandId: 49,
           price: 29.99,
           categoryId: 6,
           subcategoryId: 30,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166665/GameStop-Power-To-The-Players-Unisex-T-Shirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/118.jpg",
           ],
           rating: 4.9,
         },
@@ -1714,13 +1772,14 @@ module.exports = {
           name: "GameStop Logo Youth Crew Socks",
           description:
             "Socks are so in. It used to be that a white pair of socks was the norm, but now EVERYONE likes to rock socks as an accent piece. These socks dial it up to 11 and go beyond an accent straight into, “Yes, you’re looking at me,” territory. Level up your sock game with a logo that’s all about play.",
-          brandId: 47,
+          brandId: 49,
           price: 9.99,
           categoryId: 6,
           subcategoryId: 31,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166182_white?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/118.5.jpg",
           ],
           rating: 5.0,
         },
@@ -1735,6 +1794,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11146877/Godzilla-Big-Print-Crew-Socks?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/119.jpg",
           ],
           rating: 0.0,
         },
@@ -1742,13 +1802,14 @@ module.exports = {
           name: "GameStop Logo Unisex Beanie",
           description:
             "Sup? How you doin’? Oh us, we’re doing F-I-N-E fine in our new GameStop beanie. Just in time for the fall, we’re rolling out this exclusive beanie for folks who like to look cool while keeping their noggins warm.",
-          brandId: 47,
+          brandId: 49,
           price: 14.99,
           categoryId: 6,
           subcategoryId: 11,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166184/GameStop-Logo-Unisex-Beanie?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/121.jpg",
           ],
           rating: 4.9,
         },
@@ -1756,13 +1817,14 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - PlayStation 4",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160790/Fortnite-Minty-Legends-Pack---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/122.jpg",
           ],
           rating: 3.0,
         },
@@ -1777,6 +1839,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11147420/Pokemon-Brilliant-Diamond-and-Shining-Pearl-Double-Pack----Nintendo-Switch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/123.jpg",
           ],
           rating: 5.0,
         },
@@ -1784,13 +1847,14 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - Xbox Series X",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 15,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160793/Fortnite-Minty-Legends-Pack---Xbox-Series-X?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/124.jpg",
           ],
           rating: 5.0,
         },
@@ -1798,13 +1862,14 @@ module.exports = {
           name: "Fortnite Minty Legends Pack - PlayStation 5",
           description:
             "Keep it fresh and and fierce with the Fortnite Minty Legends Pack!",
-          brandId: 50,
+          brandId: 52,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11160792/Fortnite-Minty-Legends-Pack---PlayStation-5?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/125.jpg",
           ],
           rating: 0.0,
         },
@@ -1819,6 +1884,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148894/Just-Dance-2022---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/126.webp",
           ],
           rating: 0.0,
         },
@@ -1833,6 +1899,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148897/Just-Dance-2022---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/127.webp",
           ],
           rating: 0.0,
         },
@@ -1847,6 +1914,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11148895/Just-Dance-2022---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/128.webp",
           ],
           rating: 1.0,
         },
@@ -1861,6 +1929,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108586/Riders-Republic-Gold-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/129.webp",
           ],
           rating: 4.0,
         },
@@ -1875,6 +1944,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108584/Riders-Republic---Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/130.webp",
           ],
           rating: 5.0,
         },
@@ -1889,6 +1959,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108585/Riders-Republic---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/131.webp",
           ],
           rating: 3.0,
         },
@@ -1896,13 +1967,14 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - PlayStation 5",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on PS5! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149082/Marvels-Guardians-of-the-Galaxy----PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/132.webp",
           ],
           rating: 4.6,
         },
@@ -1910,13 +1982,14 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - Xbox Series X",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on Xbox Series X! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149081/Marvels-Guardians-of-the-Galaxy---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/133.webp",
           ],
           rating: 4.4,
         },
@@ -1924,13 +1997,14 @@ module.exports = {
           name: "Marvel's Guardians of the Galaxy - PlayStation 4",
           description:
             "GameStop is excited to bring you the new Marvel Guardians of the Galaxy video game on PS4! Set out on an adventure of a lifetime with Marvel’s mightiest band of misfits. Guardians of the Galaxy release date 10/26/2021.",
-          brandId: 51,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11149080/Marvels-Guardians-of-the-Galaxy----PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/134.webp",
           ],
           rating: 4.0,
         },
@@ -1938,13 +2012,14 @@ module.exports = {
           name: "Back 4 Blood - Xbox One",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113148/Back-4-Blood---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/135.webp",
           ],
           rating: 3.5,
         },
@@ -1952,13 +2027,14 @@ module.exports = {
           name: "Back 4 Blood - PlayStation 4",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113001/Back-4-Blood---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/136.webp",
           ],
           rating: 3.9,
         },
@@ -1966,13 +2042,14 @@ module.exports = {
           name: "Back 4 Blood - PlayStation 5",
           description:
             "Back 4 Blood is a thrilling cooperative first-person shooter from the creators of the critically acclaimed Left 4 Dead franchise. You are at the center of a war against the Ridden. Theseonce-human hosts of a deadly parasite have turned into terrifying creatures bent on devouring what remains of civilization. With humanity’s extinction on the line, it’s up to you and your friends to take the fight to the enemy, eradicate the Ridden, and reclaim the world.",
-          brandId: 52,
+          brandId: 53,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11113149/Back-4-Blood---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/137.webp",
           ],
           rating: 4.1,
         },
@@ -1987,6 +2064,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156048/NHL-22---Xbox-One?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/138.webp",
           ],
           rating: 4.6,
         },
@@ -2001,6 +2079,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156049/NHL-22---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/139.webp",
           ],
           rating: 4.2,
         },
@@ -2015,6 +2094,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11156046/NHL-22---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/140.webp",
           ],
           rating: 4.5,
         },
@@ -2029,6 +2109,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108375/Halo-Infinite---Xbox-Series-X?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/141.jpg",
           ],
           rating: 4.5,
         },
@@ -2043,6 +2124,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11127309/Hasbro-Star-Wars-The-Black-Series-The-Mandalorian---Death-Watch-Helmet-GameStop-Exclusive?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/142.jpg",
           ],
           rating: 4.1,
         },
@@ -2057,6 +2139,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158704/Horizon-Forbidden-West-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/144.webp",
           ],
           rating: 5.0,
         },
@@ -2071,6 +2154,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11158740/Horizon-Forbidden-West-Launch-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/143.webp",
           ],
           rating: 5.0,
         },
@@ -2078,13 +2162,14 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - PlayStation 5",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 1,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157662/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/145.webp",
           ],
           rating: 1.8,
         },
@@ -2092,13 +2177,14 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - PlayStation 4",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157661/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/146.webp",
           ],
           rating: 1.8,
         },
@@ -2106,13 +2192,14 @@ module.exports = {
           name: "Saints Row Criminal Custom Edition GameStop Exclusive - Xbox Series X",
           description:
             "Welcome to Santo Ileso, a vibrant fictional city in the heart of the American Southwest. In a world rife with crime, where lawless factions fight for power, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.",
-          brandId: 53,
+          brandId: 55,
           price: 59.99,
           categoryId: 1,
           subcategoryId: 15,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157663/Saints-Row-Criminal-Custom-Edition-GameStop-Exclusive---Xbox-Series-X?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/147.webp",
           ],
           rating: 1.8,
         },
@@ -2127,6 +2214,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162003/Gran-Turismo-7-Launch-Edition---PlayStation-5?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/148.webp",
           ],
           rating: 5.0,
         },
@@ -2141,6 +2229,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162004/Gran-Turismo-7-Launch-Edition---PlayStation-4?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/149.webp",
           ],
           rating: 5.0,
         },
@@ -2148,13 +2237,14 @@ module.exports = {
           name: "microSDXC Card 128GB for Nintendo Switch",
           description:
             "With incredible speed, the officially licensed SanDisk® microSDXC™ card for the Nintendo Switch™ console lets you add up to 128GB of space to your system. Spend less time waiting and more time gaming with read and write speeds of up to 100MB/s and 90MB/s respectively. Perfect for keeping your favorite games in one place. Backed by a lifetime limited warranty, so you’re ready for the long haul. ",
-          brandId: 54,
+          brandId: 56,
           price: 19.99,
           categoryId: 5,
           subcategoryId: 32,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10156940/SanDisk-128GB-microSDXC-Card-for-Nintendo-Switch?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/150.jpg",
           ],
           rating: 4.7,
         },
@@ -2162,13 +2252,14 @@ module.exports = {
           name: "Seagate 2TB Game Drive for Xbox One Green",
           description:
             "Add-on storage for your Xbox One® and Xbox 360®.Nothing says “Game Over” for the Xbox One® experience like a full hard drive. Boost your console’s storage capacity with the Seagate® Game Drive, the only external hard drive designed exclusively for Xbox. Designed to work in harmony with both the Xbox Series X|S and Xbox One — the Seagate Game Drive has no problems bringing all your favorite games to the next generation. Archive new Xbox Series X|S games, plus play your legacy titles straight from the external drive. Grab a Seagate Game Drive for your Xbox Series X|S and stay ahead of the game.",
-          brandId: 55,
+          brandId: 57,
           price: 84.99,
           categoryId: 5,
           subcategoryId: 32,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10123892/Seagate-2TB-Game-Drive-for-Xbox-One-Green?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/151.jpg",
           ],
           rating: 4.7,
         },
@@ -2176,13 +2267,14 @@ module.exports = {
           name: "Next Level Racing F-GT Lite Foldable Simulator Cockpit iRacing Edition",
           description:
             "Introducing the Next Level Racing F-GT Lite iRacing Edition. An officially licensed product based on the popular Next Level Racing F-GT Lite customized specifically for the iRacing community. The revolutionary design allows you to be in true racing positions for both Formula and GT racing in the comfort of your home. As a result of its minimalist design, F-GT Lite iRacing Edition is the ideal cockpit for any user with limited space. With new innovative Next Level Racing® Hubs, the user can switch racing positions in mere minutes and get racing immediately.",
-          brandId: 56,
+          brandId: 58,
           price: 349.99,
           categoryId: 5,
           subcategoryId: 33,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11159868/Next-Level-Racing-F-GT-Lite-Foldable-Simulator-Cockpit-iRacing-Edition?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/152.jpg",
           ],
           rating: 0.0,
         },
@@ -2197,6 +2289,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11137441/Samsung-CHG90-QLED-49-Inch-Gaming-Monitor?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/153.jpg",
           ],
           rating: 0.0,
         },
@@ -2211,6 +2304,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11150356/TygerClaw-42-in-to-70-in-Full-Motion-Flat-Panel-TV-Wall-Mount?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/154.jpg",
           ],
           rating: 0.0,
         },
@@ -2218,13 +2312,14 @@ module.exports = {
           name: "GameStop Logo Toddler Unisex Hooded Sweatshirt",
           description:
             "At GameStop, we’re all about fun for all ages. Look out! Here comes the Toddler Squad! Now your kiddos can show off their favorite spot for games and collectibles with this awesome toddler hoodie. It’s the perfect attire for your little co-op partner in training.",
-          brandId: 47,
+          brandId: 49,
           price: 24.99,
           categoryId: 6,
           subcategoryId: 28,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11166668/GameStop-Logo-Toddler-Unisex-Hooded-Sweatshirt?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/155.jpg",
           ],
           rating: 0.0,
         },
@@ -2239,6 +2334,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11157867_glacier-white/Sony-DUALSHOCK-4-Wireless-Controller-for-PlayStation-4-glacier-white?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/156.jpg",
           ],
           rating: 0.0,
         },
@@ -2253,6 +2349,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11095815/Nintendo-Switch-Joy-Con-L/R-Wireless-Controller-Neon-Purple/Orange?$pdp$$&fmt=webp",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/157.webp",
           ],
           rating: 0.0,
         },
@@ -2267,6 +2364,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11108924/Marvels-Spider-Man-Miles-Morales---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/158.jpg",
           ],
           rating: 0.0,
         },
@@ -2281,6 +2379,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/10177032/Final-Fantasy-VII-Remake---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/159.jpg",
           ],
           rating: 0.0,
         },
@@ -2295,6 +2394,7 @@ module.exports = {
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11106262/Sony-DualSense-Wireless-Controller-White?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/160.jpg",
           ],
           rating: 0.0,
         },
@@ -2302,27 +2402,89 @@ module.exports = {
           name: "Disney Classic Games Collection - PlayStation 4",
           description:
             "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
-          brandId: 57,
+          brandId: 59,
           price: 29.99,
           categoryId: 1,
           subcategoryId: 14,
           furtherSubcategoryId: null,
           images: [
             "https://media.gamestop.com/i/gamestop/11162654/Disney-Classic-Games-Collection---PlayStation-4?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/161.jpg",
           ],
           rating: 0.0,
         },
         {
-          name: "Disney Classic Games Collection - Xbox One",
+          name: "Funko Five Nights at Freddy's: Security Breach - Vannie 16-in Plush Gamestop Exclusive",
           description:
-            "Disney Classic Games Collection is the latest and greatest compilation of classic Disney games based on some of the most beloved Disney movies of all time: Aladdin, The Lion King, and now, The Jungle Book! This package combines Disney Classic Games: Aladdin and The Lion King with the ALL NEW “The Jungle Book and MORE Aladdin Pack”. Now you can play ALL of the critically acclaimed 16-Bit console versions of “Aladdin”, along with classic games based on Disney’s “The Jungle Book”! These all-new, fan requested, and beloved games complete this collection, making this the only way to experience all 16-bit console versions of Aladdin and The Jungle Book. Play as some of your favorite Disney characters, including Aladdin, Simba, and Mowgli, all while experiencing some of the best graphics the 16-Bit era had to offer. Play through multiple versions of each included game and enjoy tons of new features, enhancements, game modes, easy game saves, and display options. Retail Edition includes 1 of 4 retro style instruction manuals inside the box!(While supplies last)",
-          brandId: 57,
+            "Want a safer, cuddlier way to bring your favorite Five Nights at Freddy’s Security characters home? Look no further than the 16-inch Five Nights at Freddy's plush of Vannie. Collectible plush is approximately 16-inches tall.",
+          brandId: 60,
           price: 29.99,
-          categoryId: 1,
-          subcategoryId: 13,
+          categoryId: 2,
+          subcategoryId: 12,
           furtherSubcategoryId: null,
           images: [
-            "https://media.gamestop.com/i/gamestop/11162655/Disney-Classic-Games-Collection---Xbox-One?$pdp2x$",
+            "https://media.gamestop.com/i/gamestop/11118428/Funko-Five-Nights-at-Freddys-Security-Breach---Vannie-16-in-Plush-Gamestop-Exclusive?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/163.jpg",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Funko Five Nights at Freddy's: Freddy Fazbear's Pizzeria Simulator - Rockstar Freddy 16-in Plush Gamestop Exclusive",
+          description:
+            "Want a safer, cuddlier way to bring your favorite Five Nights at Freddy’s Pizzeria Simulator characters home? Look no further than the 16-inch Five Nights at Freddy's plush of Rockstar Freddy. Collectible plush is approximately 16-inches tall.",
+          brandId: 60,
+          price: 29.99,
+          categoryId: 2,
+          subcategoryId: 12,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11118429/Funko-Five-Nights-at-Freddys-Freddy-Fazbears-Pizzeria-Simulator---Rockstar-Freddy-16-in-Plush-Gamestop-Exclusive?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/164.jpg",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Spam Can Plush",
+          description:
+            "Bring home a snack food favorite, Spam, as a fun Funko plush. A delicious addition to any Ad Icon collection. Collectible plush is approximately 7-inches tall.",
+          brandId: 60,
+          price: 8.79,
+          categoryId: 2,
+          subcategoryId: 12,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11102960/Spam-Can-Plush?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/165.jpg",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "Pokemon Poke Ball Popcorn Popper",
+          description:
+            "Add a little whimsy to your kitchen with this Pokemon Pokeball Popcorn Maker. It's as easy as catching a Magikarp -- plug in, add corn kernels, and watch as it makes a healthy snack for movie night. When all else fails...this Pokeball Popcorn Maker will catch 'em all - kernels, that is.",
+          brandId: 3,
+          price: 49.99,
+          categoryId: 3,
+          subcategoryId: 34,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11047745/Pokemon-Poke-Ball-Popcorn-Popper?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/166.jpg",
+          ],
+          rating: 0.0,
+        },
+        {
+          name: "POP! and Tee: X-Men Cyclops First Appearance Glow in the Dark Only at GameStop",
+          description:
+            "From X-Men comes Cyclops in a T-Shirt and POP! figure combo from Funko! The Cyclops POP! collectible stands 3.75 inches tall. The T-shirt features a printed Cyclops graphic on front. Perfect for any X-Men fan! Collect all X-Men POP vinyl toy figures!",
+          brandId: 60,
+          price: 29.99,
+          categoryId: 6,
+          subcategoryId: 30,
+          furtherSubcategoryId: null,
+          images: [
+            "https://media.gamestop.com/i/gamestop/11097893/Funko-POP-and-Tee-X-Men-Cyclops-First-Appearance-Glow-in-the-Dark-Only-at-GameStop?$pdp2x$",
+            "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/167.jpg",
           ],
           rating: 0.0,
         },

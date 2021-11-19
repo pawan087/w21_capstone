@@ -79,6 +79,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
         showLimitQuantityModal();
         return;
       }
+
       dispatch(
         editCartItem({
           id: +usersCartItems[0]?.id,
@@ -94,6 +95,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     await dispatch(setAllCartItems());
 
     hideLoader();
+
     showConfirmationModal();
   };
 
@@ -115,10 +117,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
   }, [dispatch]);
 
   const [didMount, setDidMount] = useState(false);
+
   useEffect(() => {
     setDidMount(true);
+
     return () => setDidMount(false);
   }, []);
+
   if (!didMount) return null;
 
   const handleClickCategoryName = () => {
@@ -396,6 +401,13 @@ function ProductDetail({ num, product, avgRating, reviews }) {
     }
 
     if (
+      product[0]?.Subcategory?.name === "Appliances" &&
+      product[0]?.Category?.name === "Electronics"
+    ) {
+      history.push("/p/electronics/appliances/0/0");
+    }
+
+    if (
       product[0]?.Subcategory?.name === "Bags" &&
       product[0]?.Category?.name === "Clothing"
     ) {
@@ -458,12 +470,6 @@ function ProductDetail({ num, product, avgRating, reviews }) {
         >
           {product[0]?.Subcategory?.name}
         </div>
-
-        {false && (
-          <div className={styles.furtherSubcategory}>
-            {product[0]?.FurtherSubcategory?.name}
-          </div>
-        )}
       </div>
       <div className={styles.outerContainer}>
         <div className={styles.leftContainer}>
@@ -472,7 +478,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               <ReactImageMagnify
                 {...{
                   smallImage: {
-                    alt: "Wristwatch by Ted Baker London",
+                    alt: "productImage",
                     width: 920,
                     height: 515,
                     src: product[0]?.images[0],
@@ -588,6 +594,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
               {" "}
               <FaCheck style={{ display: "inline" }} />
             </div>
+
             <div className={styles.confirmationTitle}>Added to Cart</div>
           </div>
 
@@ -599,6 +606,7 @@ function ProductDetail({ num, product, avgRating, reviews }) {
                 src={product[0]?.images[0]}
               />
             </div>
+
             <div className={styles.confirmationProductName}>
               {product[0]?.name}
             </div>

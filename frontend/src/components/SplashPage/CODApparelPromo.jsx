@@ -11,6 +11,7 @@ export default function CODApparelPromo() {
       <img
         alt="codClothingPromoPic"
         src="https://media.gamestop.com/i/gamestop/COD_Aprl_1280x200_FullBlade_D.webp"
+        /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s19.webp" */
         onClick={() => history.push("/p/videogames/cod/0/0")}
       />
     </div>

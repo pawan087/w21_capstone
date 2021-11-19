@@ -153,7 +153,7 @@ module.exports = {
           name: "GameStop", // 47
         },
         {
-          name: "Datel", // 48
+          name: "Datel", //49 48
         },
         {
           name: "SalesOne", // 49
@@ -168,19 +168,22 @@ module.exports = {
           name: "Warner Bros Interactive Entertainment", // 52
         },
         {
-          name: "Deep Silver", // 53
+          name: "Deep Silver",
         },
         {
-          name: "SanDisk", // 54
+          name: "SanDisk",
         },
         {
-          name: "Seagate", // 55
+          name: "Seagate",
         },
         {
-          name: "Next Level Racing", // 56
+          name: "Next Level Racing",
         },
         {
-          name: "Nighthawk Interactive", // 57
+          name: "Nighthawk Interactive",
+        },
+        {
+          name: "Funko",
         },
       ],
       {}

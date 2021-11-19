@@ -11,6 +11,7 @@ export default function FornitePromo() {
       <img
         alt="fortnitePromo"
         src="https://media.gamestop.com/i/gamestop/Fortnite_ElDurrCode_TandG_1280x200_FullBlade_D_1.webp"
+        /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s17.webp" */
         onClick={() => history.push("/p/videogames/fortnite/0/0")}
       />
     </div>

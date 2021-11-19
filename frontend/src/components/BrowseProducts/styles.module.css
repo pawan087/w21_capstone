@@ -6,12 +6,10 @@
 }
 
 .outerContainer {
-  /* height: 850px; */
-  min-height: 585px;
+  min-height: 400px;
   width: 1400px;
   margin: 0 auto;
   margin-top: 35px;
-  /* background-color: lightcoral; */
   display: flex;
   border-bottom: 1px solid rgb(237, 237, 237);
   justify-content: space-between;
@@ -21,29 +19,25 @@
   display: flex;
   flex-direction: column;
   width: 320px;
-  height: 875px;
-  /* background-color: red; */
+  max-height: 955px;
   min-height: 470px;
   position: sticky;
   top: 115px;
+  padding-bottom: 5px;
   z-index: 50;
 }
 
 .rightContainer {
   width: 1080px;
   margin-left: 15px;
-  /* border-bottom: 1px solid rgb(237, 237, 237); */
-  /* background-color: skyblue; */
 }
 
 .categorySelectorContainer {
-  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
 }
 
 .priceSelectorContainer {
-  /* background-color: orange; */
   display: flex;
   border-bottom: 1px solid rgb(237, 237, 237);
   flex-direction: column;
@@ -58,7 +52,6 @@
   font-size: 12.5px;
   color: rgb(40, 40, 40);
   cursor: pointer;
-  /* color: rgb(238, 42, 40); */
   transition: 0.15s ease-in-out;
 }
 
@@ -69,7 +62,6 @@
 
 .priceSelection2 {
   font-size: 12.5px;
-  /* color: rgb(40, 40, 40); */
   cursor: pointer;
   color: rgb(238, 42, 40);
   transition: 0.15s ease-in-out;
@@ -77,7 +69,6 @@
 
 .priceSelection3 {
   font-size: 12.5px;
-  /* color: rgb(40, 40, 40); */
   cursor: pointer;
   color: rgb(238, 42, 40);
   transition: 0.15s ease-in-out;
@@ -88,15 +79,14 @@
 }
 
 .customerRatingSelectorContainer {
-  /* background-color: skyblue; */
   display: flex;
   flex-direction: column;
-  /* border-bottom: 1px solid rgb(237,237,237); */
 }
 
 .andUpContainer {
   font-size: 12.5px;
   color: rgb(40, 40, 40);
+  cursor: pointer;
   transform: translate(-55px, -2.5px);
 }
 
@@ -108,9 +98,7 @@
 }
 
 .topMiddleContainer {
-  /* position: absolute; */
   margin-right: 10px;
-  /* background-color: red; */
 }
 
 .customerRatingSpacer {
@@ -121,15 +109,16 @@
   height: 90px;
   display: flex;
   justify-content: space-between;
-  /* position: relative; */
   align-items: center;
-  /* background-color: rosybrown; */
   border-bottom: 1px solid rgb(226, 226, 226);
 }
 
-.menu {
-  /* z-index: 50; */
-  /* height: 160px; */
+.rightTopContainer2 {
+  height: 90px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 .button {
@@ -175,7 +164,6 @@
 .categoryName span:hover {
   cursor: pointer;
   text-decoration: underline;
-  /* color: rgb(238, 42, 40); */
 }
 
 .categorySelectorContainer {
@@ -227,7 +215,6 @@
 }
 
 .mappableCategoriesContainer {
-  /* background-color: salmon; */
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid rgb(237, 237, 237);
@@ -245,7 +232,6 @@
 }
 
 .fifthContainer {
-  /* background-color: skyblue; */
   display: flex;
 }
 
@@ -254,11 +240,7 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  /* margin-bottom: 20px; */
-  /* background-color: rgb(231, 35, 24); */
   border: 1px solid rgb(226, 226, 226);
-  /* padding: 2.5px; */
-  /* border-radius: 2.5px; */
   margin-right: 10px;
 }
 
@@ -266,10 +248,8 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  /* margin-bottom: 20px; */
   border: 1px solid rgb(226, 226, 226);
   background-color: white;
-  /* padding: 2.5px; */
   margin-right: 10px;
 }
 
@@ -277,8 +257,6 @@
   height: 20px;
   width: 20px;
   cursor: pointer;
-  /* border: 1px solid rgb(226, 226, 226); */
-  /* border-radius: 2.5px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,7 +265,6 @@
 .checkIconContainer2 {
   height: 20px;
   width: 20px;
-  /* border: 1px solid rgba(0, 0, 0, .75); */
   border-radius: 2.5px;
   display: flex;
   justify-content: center;
@@ -298,21 +275,14 @@
   margin-right: 10px;
   cursor: pointer;
   color: rgb(238, 42, 40);
-  /* border-color: rgb(238, 42, 40); */
-}
-
-.priceSpacer {
-  /* height: 15px; */
 }
 
 .customerRatingSelectorTopContainer {
   display: flex;
-  /* align-items: center; */
   position: relative;
 }
 
 .customerRatingSelectorContainer {
-  /* margin-top: 15px; */
   transform: translateY(10px);
 }
 
@@ -322,7 +292,6 @@
   margin-bottom: 12.5px;
   color: rgb(40, 40, 40);
   width: 150px;
-  cursor: pointer;
 }
 
 .menuIcon {
@@ -339,6 +308,10 @@
   transform: scale(0.65);
 }
 
+.stars * {
+  cursor: pointer !important;
+}
+
 .stars2 {
   transform: scale(0.45) translate(-20px, -20px);
 }
@@ -346,14 +319,6 @@
 .starsContainer {
   transform: translate(-30px, -2.5px);
   cursor: pointer;
-}
-
-.ratingSelectionOuterContainer {
-  /* background-color: red; */
-}
-
-.starRatingSelectionContainer {
-  /* background-color: yellow; */
 }
 
 .hiddenButton {
@@ -380,6 +345,7 @@
   margin-top: 20px;
   margin-bottom: 30px;
 }
+
 .pagination {
   display: flex;
   justify-content: space-evenly;
@@ -418,7 +384,6 @@
   color: #fff;
 
   border: 1px solid rgba(0, 0, 0, 0.75);
-  /* background-color: rgba(0, 0, 0, 0.0325); */
 }
 
 .pagination__linkdisabled a {
@@ -447,16 +412,13 @@
 
 .productsRowOfFourContainer {
   display: flex;
-  /* height: 270px; */
   justify-content: space-evenly;
-  /* width: 1000px; */
   margin-bottom: 10px;
 }
 
 .productContainer {
   width: 255px;
   height: 370px;
-  /* background-color: skyblue; */
   display: flex;
   flex-direction: column;
   transition: 0.15s ease-in-out;
@@ -468,10 +430,6 @@
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.footerContainer {
-  /* margin-top: 20px; */
 }
 
 .productDetailContainer1 {
@@ -524,4 +482,40 @@
   transform: translate(-80px, 0px);
   font-weight: normal;
   color: rgb(153, 153, 153);
+}
+
+.noOrdersContainer {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.noneFoundPic {
+  margin-bottom: 25px;
+}
+
+.viewAllButton {
+  margin-top: 25px;
+  width: 330px;
+  font-size: 12.5px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgb(0, 0, 0, 0.75);
+  border: 2px solid rgb(238, 42, 40);
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.viewAllButton:hover {
+  background-color: rgb(238, 42, 40);
+  color: white;
 }

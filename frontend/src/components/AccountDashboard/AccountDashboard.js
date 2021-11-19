@@ -128,16 +128,25 @@ export default function AccountDashboard() {
   const [detailArr, setDetailArr] = useState([]);
   const [status, setStatus] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
-  const reversed = usersOrdersAndItems?.reverse();
 
-  useEffect(() => {
-    // setData(reversed);
-  }, []);
+  usersOrdersAndItems.sort(function (a, b) {
+    if (a.updatedAt < b.updatedAt) {
+      return 1;
+    }
+    if (a.updatedAt > b.updatedAt) {
+      return -1;
+    }
+    return 0;
+  });
+
   useEffect(() => {
     (async () => {
       await dispatch(setAllProducts());
+
       await dispatch(setAllOrderItems());
+
       await dispatch(setAllOrders());
+
       setLoad(true);
     })();
   }, [dispatch]);
@@ -178,7 +187,9 @@ export default function AccountDashboard() {
 
   const showOrderDetail = (x) => {
     setOrderHistory(false);
+
     setOrderDetail(true);
+
     setDetailArr(x);
 
     if (new Date(x.updatedAt) > pastTime) {
@@ -215,6 +226,7 @@ export default function AccountDashboard() {
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
+
     window.scrollTo({
       top: 0,
       left: 0,
@@ -224,7 +236,7 @@ export default function AccountDashboard() {
 
   const offset = currentPage * PER_PAGE;
 
-  const currentPageData = reversed
+  const currentPageData = usersOrdersAndItems
     ?.slice(offset, offset + PER_PAGE)
     ?.map((x, i) => {
       return (
@@ -300,7 +312,9 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
+
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
                   {Math.floor(Math.random() * 10)}
@@ -317,7 +331,7 @@ export default function AccountDashboard() {
       );
     });
 
-  const pageCount = Math.ceil(reversed?.length / PER_PAGE);
+  const pageCount = Math.ceil(usersOrdersAndItems?.length / PER_PAGE);
 
   const currentPageData2 = currentOrders
     ?.slice(offset, offset + PER_PAGE)
@@ -395,7 +409,9 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
+
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
                   {Math.floor(Math.random() * 10)}
@@ -475,6 +491,7 @@ export default function AccountDashboard() {
             <div className={styles.right3rdContainer}>
               <div className={styles.orderStatusLabel}>
                 <div className={styles.fakeShipmentNumber}>Shipment 1 of 1</div>
+
                 {new Date(x.updatedAt) > pastTime && (
                   <span className={styles.notGreen2}>Order Processing: </span>
                 )}
@@ -490,6 +507,7 @@ export default function AccountDashboard() {
                   new Date(x.updatedAt) < pastTime2 && (
                     <span className={styles.notGreen}>Shipped: </span>
                   )}
+
                 {String(new Date(x?.updatedAt)).slice(4, 15)}
                 <div className={styles.fakeTrackingNumber}>
                   54599350{Math.floor(Math.random() * 10)}
@@ -672,12 +690,14 @@ export default function AccountDashboard() {
                             : "Orders"}
                         </>
                       )}
+
                       {sortBy === "Last 30 Seconds" && (
                         <>
                           {currentOrders.length}{" "}
                           {currentOrders.length === 1 ? "Order" : "Orders"}
                         </>
                       )}
+
                       {sortBy === "Last 1 Minute" && (
                         <>
                           {currentOrders2.length}{" "}
@@ -752,23 +772,30 @@ export default function AccountDashboard() {
                             className={styles.noneFoundPic}
                             src={
                               "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/empty.svg" */
                             }
                             alt={"noneFound"}
                           ></img>
-                          No orders found for selected period.{" "}
-                          <div
-                            onClick={() => setAllTheOrders()}
-                            className={styles.viewAllButton}
-                          >
-                            VIEW ALL ORDERS
-                          </div>
+                          {usersOrders.length > 0 &&
+                            "No orders found for selected period."}
+
+                          {usersOrders.length === 0 &&
+                            "No previous orders found."}
+                          {usersOrders.length > 0 && (
+                            <div
+                              onClick={() => setAllTheOrders()}
+                              className={styles.viewAllButton}
+                            >
+                              VIEW ALL ORDERS
+                            </div>
+                          )}
                         </div>
                       )}
 
                       {!bool && (
                         <>
                           <div className={styles.holder}>{currentPageData}</div>
-                          {reversed?.length > 3 && (
+                          {usersOrdersAndItems?.length > 3 && (
                             <ReactPaginate
                               previousLabel={
                                 <svg
@@ -930,6 +957,7 @@ export default function AccountDashboard() {
                           <div className={styles.holder}>
                             {currentPageData3}
                           </div>
+
                           {[...currentOrders, ...currentOrders2].length > 3 && (
                             <ReactPaginate
                               previousLabel={
@@ -985,7 +1013,11 @@ export default function AccountDashboard() {
         </div>
       </div>
 
-      <Footer />
+      <div className={styles.spacer} />
+
+      <div className={styles.footerContainer}>
+        <Footer />
+      </div>
     </motion.div>
   );
 }

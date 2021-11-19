@@ -13,6 +13,7 @@ export default function CellPhonePromo() {
         <img
           alt="phoneBannerLeft"
           src="https://media.gamestop.com/i/gamestop/Certified_Refurb_VerticalBlade_D.webp"
+          /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s18.webp" */
           onClick={() => history.push("/p/electronics/iphone/0/0")}
         />
       </div>

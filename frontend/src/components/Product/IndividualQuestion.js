@@ -24,10 +24,13 @@ export default function IndividualQuestion({
   // I was having a React console.warning when deleting a question
   // and adding the following helped rid of it
   const [didMount, setDidMount] = useState(false);
+  
   useEffect(() => {
     setDidMount(true);
+
     return () => setDidMount(false);
   }, []);
+
   if (!didMount) return null;
   // From: https://stackoverflow.com/questions/54954385/react-useeffect-causing-cant-perform-a-react-state-update-on-an-unmounted-comp
 

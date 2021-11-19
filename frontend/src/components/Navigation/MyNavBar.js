@@ -99,9 +99,13 @@ export default function MyNavBar() {
 
   const showRemoveConfirmationModal = (name, id, id2, img) => {
     setProductName(name);
+
     setProductId(id);
+
     setCartItemId(id2);
+
     setRemoveConfirmation(true);
+
     setProductPic(img);
 
     return productId;
@@ -144,6 +148,18 @@ export default function MyNavBar() {
     }
   });
 
+  inCartProducts.sort(function (a, b) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    }
+
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   let sum = 0;
 
   cartItems?.forEach((cartItem) => {
@@ -162,12 +178,14 @@ export default function MyNavBar() {
     await dispatch(setAllCartItems());
 
     setLoader(false);
+
     hideRemoveConfirmationModal();
   };
 
   useEffect(() => {
     (async () => {
       await dispatch(setAllCartItems());
+
       await dispatch(sessionActions.restoreUser());
 
       setLoad(true);
@@ -209,6 +227,7 @@ export default function MyNavBar() {
     await dispatch(sessionActions.logout());
 
     setVisible2(false);
+
     setLoader(false);
 
     window.scrollTo({
@@ -221,10 +240,7 @@ export default function MyNavBar() {
   };
 
   return (
-    <div
-
-      className={styles.myNavbar}
-    >
+    <div className={styles.myNavbar}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -389,7 +405,7 @@ export default function MyNavBar() {
                             className={styles.menuItemProductImage}
                             alt="productImageInSubMenu"
                             src={product?.images[0]}
-                          ></img>
+                          />
                         </div>
                       </div>
 
@@ -401,8 +417,8 @@ export default function MyNavBar() {
                             }
                             className={styles.menuItemProductName}
                           >
-                            {product?.name.slice(0, 45)}
-                            {product?.name?.length > 45 ? "..." : null}
+                            {product?.name.slice(0, 42)}
+                            {product?.name?.length > 42 ? "..." : null}
                           </div>
 
                           <div className={styles.menuItemProductQuantity}>
@@ -605,6 +621,7 @@ export default function MyNavBar() {
             >
               <div className={styles.closebtn}>
                 <span className={styles.sidebarAccountLabel2}>Shop</span>{" "}
+
                 <span onClick={closeNav} className={styles.closeSideBarButton}>
                   &times;
                 </span>
@@ -703,6 +720,7 @@ export default function MyNavBar() {
             >
               <div className={styles.closebtn2}>
                 <span className={styles.sidebar2AccountLabel}>Account</span>{" "}
+                
                 <span
                   onClick={closeNav2}
                   className={styles.closeSideBar2Button}
@@ -712,7 +730,10 @@ export default function MyNavBar() {
               </div>
 
               <div className={styles.sidebar2SecondContainer}>
-                <div className={styles.sidebar2User}>Hi, Pawanpreet!</div>
+                <div className={styles.sidebar2User}>
+                  Hi, {user?.firstName}!
+                </div>
+
                 <div className={styles.sidebar2PowerUp}>PowerUP Player</div>
               </div>
 

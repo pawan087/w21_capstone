@@ -12,8 +12,6 @@ router.post(
 
     const user = await User.findByPk(id);
 
-    // console.log("\n\n\n", id, "\n\n\n");
-
     res.json(user.recentlyViewed);
   })
 );
@@ -33,9 +31,8 @@ router.put(
       arr2 = [...arr, productId];
 
       if (arr2.length > 13) {
-        // originally set to 5
-        // max len of 12
-        arr3 = arr2.slice(1); // remove one since adding one
+        arr3 = arr2.slice(1);
+        
         await userToUpdate.update({ recentlyViewed: arr3 });
       } else {
         await userToUpdate.update({ recentlyViewed: arr2 });

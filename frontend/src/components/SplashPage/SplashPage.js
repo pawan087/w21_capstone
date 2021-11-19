@@ -69,19 +69,33 @@ export default function SplashPage() {
       className={styles.splashPageOuterContainer}
     >
       <CODBanner />
+
       <SubBanner />
+
       <TopSellers />
+
       <PromotionalCard1 />
+
       <TopBrands />
+
       <FornitePromo />
+
       <CellPhonePromo />
+
       <CODApparelPromo />
+
       <UpcomingVideoGamePromo />
+
       <PreOrderVideoGames />
+
       <ClothingPromo />
+
       <FakeTopDeals />
+
       <ConsolesCard />
+
       <FeaturedCategories />
+      
       {user && <RecentlyViewedCard />}
 
       <Footer />

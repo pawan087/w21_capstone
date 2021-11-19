@@ -55,8 +55,6 @@ router.post(
       imageUrl = await singlePublicFileUpload(req.file);
     }
 
-    // console.log("\n\n\n", req.file, "\n\n\n");
-
     if (imageUrl) {
       await Review.create({
         userId: +userId,
@@ -246,14 +244,14 @@ router.put(
 );
 
 // Image Upload Test
-router.post(
-  "/images",
-  singleMulterUpload("image"),
-  asyncHandler(async (req, res) => {
-    // const profileImageUrl = await singlePublicFileUpload(req.file);
+// router.post(
+//   "/images",
+//   singleMulterUpload("image"),
+//   asyncHandler(async (req, res) => {
+//     // const profileImageUrl = await singlePublicFileUpload(req.file);
 
-    console.log("\n\n\n", req.file, "\n\n\n");
-  })
-);
+//     console.log("\n\n\n", req.file, "\n\n\n");
+//   })
+// );
 
 module.exports = router;

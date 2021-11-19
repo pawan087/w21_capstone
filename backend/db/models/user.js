@@ -76,6 +76,23 @@ module.exports = (sequelize, DataTypes) => {
     }) {
       const hashedPassword = bcrypt.hashSync(password);
 
+      let arr = [];
+
+      function randomIntFromInterval(min, max) {
+        // min and max included
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+      for (let i = 1; i <= 12; i++) {
+        let rndInt = randomIntFromInterval(1, 166);
+
+        while (arr.includes(rndInt)) {
+          rndInt = randomIntFromInterval(1, 166);
+        }
+
+        arr.push(rndInt);
+      }
+
       const user = await User.create({
         username,
         email,
@@ -85,6 +102,7 @@ module.exports = (sequelize, DataTypes) => {
         phone,
         address1,
         address2,
+        recentlyViewed: arr,
       });
 
       return await User.scope("currentUser").findByPk(user.id);

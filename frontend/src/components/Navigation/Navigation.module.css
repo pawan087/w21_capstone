@@ -153,8 +153,6 @@
 }
 
 .accountLabel {
-  /* color: rgb(231, 35, 13); */
-  /* font-weight: bold; */
   font-size: 12px;
   margin-bottom: 15px;
 
@@ -191,7 +189,7 @@
   height: 3px;
   width: 3px;
   border-radius: 1000em;
-  font-size: 12.5px;
+  font-size: 10px;
   padding: 10px;
   position: absolute;
   right: -10px;
@@ -226,10 +224,6 @@
   color: rgb(231, 35, 13);
 }
 
-.cartButtonContainer3:hover .cartLabel {
-  /* color: rgb(231, 35, 13); */
-}
-
 .button {
   background-color: transparent;
   outline: none;
@@ -241,11 +235,6 @@
   margin-right: 35px;
 }
 
-.menuItem {
-  /* width: 500px; */
-  /* background-color: red; */
-}
-
 .cartSubMenu {
   max-height: 750px;
   overflow-y: auto;
@@ -253,7 +242,6 @@
 
 .menuItemOuterContainer {
   display: flex;
-  /* background-color: yellow; */
   width: 380px;
   height: 125px;
   cursor: default;
@@ -265,7 +253,6 @@
 }
 
 .menuItemLeftContainer {
-  /* background-color: tomato; */
   height: 125px;
   width: 140px;
   cursor: default;
@@ -291,7 +278,6 @@
 }
 
 .menuItemRightContainer {
-  /* background-color: yellow; */
   width: 100%;
   height: 100%;
   cursor: default;
@@ -312,14 +298,12 @@
   font-size: 15px;
   font-weight: bold;
   text-align: left;
-  /* transform: translate(-25px, 0px); */
   height: 50px;
   line-height: 17.5px;
   color: rgba(0, 0, 0, 0.75);
   margin-top: 5px;
   transition: 0.15s ease-in-out;
   cursor: pointer;
-  /* background-color: rebeccapurple; */
 }
 
 .menuItemProductName:hover {
@@ -328,11 +312,9 @@
 
 .menuItemProductQuantity {
   color: rgba(0, 0, 0, 1);
-  /* color: red; */
   text-align: left;
   display: flex;
   font-size: 12.5px;
-  /* transform: translate(-95px, -10px); */
 }
 
 .removeLink {
@@ -361,7 +343,6 @@
   height: 125px;
   cursor: default;
   width: 380px;
-  /* background-color: rgba(88, 33, 33, 0.0325); */
   display: flex;
   flex-direction: column;
   transition: 0.15s ease-in-out;
@@ -373,7 +354,6 @@
 
 .lowerSubMenuContainerTopContainer {
   display: flex;
-  /* background-color: yellow; */
   height: 50px;
   width: 380px;
   align-items: center;
@@ -462,12 +442,10 @@
   font-size: 15px;
   font-weight: bold;
   display: flex;
-  /* background-color: salmon; */
 }
 
 .reviewUsername {
   height: 160px;
-  /* background-color: teal; */
   margin-right: 25px;
   color: rgba(0, 0, 0, 0.75);
   width: 300px;
@@ -476,7 +454,6 @@
 .deleteReviewContent {
   font-weight: normal;
   height: 160px;
-  /* width: 350px; */
   width: 320px;
   overflow: auto;
   color: rgba(0, 0, 0, 0.75);
@@ -628,7 +605,6 @@
 .sidebar2SecondContainer {
   height: 90px;
   width: 400px;
-  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -783,7 +759,6 @@
 .sidebarSecondContainer {
   height: 90px;
   width: 400px;
-  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -796,7 +771,6 @@
 .sidebarSecondContainer2 {
   height: 90px;
   width: 400px;
-  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -17,6 +17,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Xbox-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s07.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/videogames/xbox/0/0")}
             />
@@ -26,6 +27,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Nintendo-Logo-224x126@2x_2.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s08.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/videogames/switch/0/0")}
             />
@@ -35,6 +37,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/PlayStation-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s09.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/videogames/playstation/0/0")}
             />
@@ -44,7 +47,9 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Funko-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s10.webp" */
               alt="topBrandTile"
+              onClick={() => history.push("/p/toysgames/funko/0/0")}
             />
           </div>
 
@@ -52,6 +57,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Oculus-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s11.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/products/7")}
             />
@@ -64,6 +70,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Hasbro-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s12.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/toysgames/hasbro/0/0")}
             />
@@ -73,6 +80,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/224x126_Pokemon_Logo.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s13.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/toysgames/pokemon/0/0")}
             />
@@ -82,6 +90,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Razer-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s14.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/consoles/razer/0/0")}
             />
@@ -91,6 +100,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/Logitech-Logo-224x126@2x.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s15.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/products/30")}
             />
@@ -100,6 +110,7 @@ export default function TopBrands() {
             <img
               className={styles.topBrandTileImg}
               src="https://media.gamestop.com/i/gamestop/apple_logo_224x126_D.webp"
+              /* "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s16.webp" */
               alt="topBrandTile"
               onClick={() => history.push("/p/electronics/iphone/0/0")}
             />

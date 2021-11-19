@@ -57,8 +57,10 @@ export default function TopReviewsCard({ reviews, avgRating }) {
           </div>
 
           <div className={styles.topReviewsBottomContainer}>
-            <div onClick={showAllHideTop} className={styles.showAllButton}>
-              Show All Reviews
+            <div className={styles.showAllButton}>
+              <span onClick={showAllHideTop} className={styles.showAllBtn}>
+                Show All Reviews
+              </span>
             </div>
           </div>
         </div>

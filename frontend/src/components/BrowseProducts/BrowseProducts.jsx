@@ -32,6 +32,20 @@ export default function BrowseProducts() {
 
   let videoGameSubCategories = new Set();
 
+  /*
+
+
+
+
+
+  START - MONSTER FILTER SYSTEM
+
+
+
+
+
+  */
+
   const videoGames = products?.filter((product) => {
     if (params.category === "videogames") {
       if (product.Category.id === 1) {
@@ -196,6 +210,11 @@ export default function BrowseProducts() {
         product.Subcategory.name !== "Board Games"
       ) {
         return SortPriceRating(2, product);
+      } else if (
+        params.subcategory === "funko" &&
+        product.name.includes("Funko")
+      ) {
+        return SortPriceRating(2, product);
       } else if (params.subcategory === "0") {
         return SortPriceRating(2, product);
       } else {
@@ -248,6 +267,11 @@ export default function BrowseProducts() {
       } else if (
         params.subcategory === "headsets" &&
         (product.name.includes("Headset") || product.name.includes("Headphone"))
+      ) {
+        return SortPriceRating(3, product);
+      } else if (
+        params.subcategory === "appliances" &&
+        product.Subcategory.name === "Appliances"
       ) {
         return SortPriceRating(3, product);
       } else if (params.subcategory === "0") {
@@ -397,6 +421,20 @@ export default function BrowseProducts() {
     return false;
   });
 
+  /*
+
+
+
+
+
+  END - MONSTER FILTER SYSTEM
+
+
+
+
+
+  */
+
   let videoGameSubcategoriesArr = Array.from(videoGameSubCategories);
 
   videoGameSubcategoriesArr.sort(function (a, b) {
@@ -526,7 +564,8 @@ export default function BrowseProducts() {
   }
 
   const [load, setLoad] = useState(false);
-  const [bool, setBool] = useState(false);
+  // const [bool, setBool] = useState(params.rating !== "0");
+  const [bool, setBool] = useState(true);
   const [sortBy, setSortBy] = useState("Name");
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -559,16 +598,19 @@ export default function BrowseProducts() {
 
   const handleSortByName = () => {
     setSortBy("Name");
+
     setCurrentPage(0);
   };
 
   const handleSortByLowToHigh = () => {
     setSortBy("Price Low To High");
+
     setCurrentPage(0);
   };
 
   const handleSortByHighToLow = () => {
     setSortBy("Price High To Low");
+
     setCurrentPage(0);
   };
 
@@ -579,6 +621,7 @@ export default function BrowseProducts() {
       }
 
       await dispatch(setAllProducts());
+
       await dispatch(setAllReviews());
 
       setLoad(true);
@@ -631,7 +674,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "PlayStation 5" && params.category === "videogames") {
-      // history.push(`/p/videogames/ps5/0/0`);
       if (params.subcategory === "ps5") {
         history.push("/p/videogames/0/0/0");
       } else {
@@ -640,7 +682,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Xbox One" && params.category === "videogames") {
-      // history.push(`/p/videogames/xbox1/0/0`);
       if (params.subcategory === "xbox1") {
         history.push("/p/videogames/0/0/0");
       } else {
@@ -649,7 +690,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Xbox Series X" && params.category === "videogames") {
-      // history.push(`/p/videogames/xboxx/0/0`);
       if (params.subcategory === "xboxx") {
         history.push("/p/videogames/0/0/0");
       } else {
@@ -658,7 +698,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Nintendo Switch" && params.category === "consoles") {
-      // history.push(`/p/consoles/switch/0/0`);
       if (params.subcategory === "switch") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -667,7 +706,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "PlayStation 4" && params.category === "consoles") {
-      // history.push(`/p/consoles/ps4/0/0`);
       if (params.subcategory === "ps4") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -676,7 +714,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "PlayStation 5" && params.category === "consoles") {
-      // history.push(`/p/consoles/ps5/0/0`);
       if (params.subcategory === "ps5") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -685,7 +722,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "PC Gaming" && params.category === "consoles") {
-      // history.push(`/p/consoles/pc/0/0`);
       if (params.subcategory === "pc") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -694,7 +730,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Virtual Reality" && params.category === "consoles") {
-      // history.push(`/p/consoles/vr/0/0`);
       if (params.subcategory === "vr") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -703,7 +738,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Xbox One" && params.category === "consoles") {
-      // history.push(`/p/consoles/xbox1/0/0`);
       if (params.subcategory === "xbox1") {
         history.push("/p/consoles/0/0/0");
       } else {
@@ -712,7 +746,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Controllers" && params.category === "accessories") {
-      // history.push(`/p/accessories/controllers/0/0`);
       if (params.subcategory === "controllers") {
         history.push("/p/accessories/0/0/0");
       } else {
@@ -721,7 +754,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Memory" && params.category === "accessories") {
-      // history.push(`/p/accessories/memory/0/0`);
       if (params.subcategory === "memory") {
         history.push("/p/accessories/0/0/0");
       } else {
@@ -730,7 +762,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Mounts" && params.category === "accessories") {
-      // history.push(`/p/accessories/mounts/0/0`);
       if (params.subcategory === "mounts") {
         history.push("/p/accessories/0/0/0");
       } else {
@@ -739,7 +770,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "PC Gaming" && params.category === "accessories") {
-      // history.push(`/p/accessories/pc/0/0`);
       if (params.subcategory === "pc") {
         history.push("/p/accessories/0/0/0");
       } else {
@@ -748,7 +778,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Xbox One" && params.category === "accessories") {
-      // history.push(`/p/accessories/xbox1/0/0`);
       if (params.subcategory === "xbox1") {
         history.push("/p/accessories/0/0/0");
       } else {
@@ -757,7 +786,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Audio" && params.category === "electronics") {
-      // history.push(`/p/electronics/audio/0/0`);
       if (params.subcategory === "audio") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -766,7 +794,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Cameras" && params.category === "electronics") {
-      // history.push(`/p/electronics/cameras/0/0`);
       if (params.subcategory === "cameras") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -775,7 +802,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Cell Phones" && params.category === "electronics") {
-      // history.push(`/p/electronics/phones/0/0`);
       if (params.subcategory === "phones") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -784,7 +810,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Drone" && params.category === "electronics") {
-      // history.push(`/p/electronics/drone/0/0`);
       if (params.subcategory === "drone") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -796,7 +821,6 @@ export default function BrowseProducts() {
       category === "Smart Home Automation" &&
       params.category === "electronics"
     ) {
-      // history.push(`/p/electronics/home/0/0`);
       if (params.subcategory === "home") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -805,7 +829,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "TV & Home Theater" && params.category === "electronics") {
-      // history.push(`/p/electronics/theater/0/0`);
       if (params.subcategory === "theater") {
         history.push("/p/electronics/0/0/0");
       } else {
@@ -813,8 +836,15 @@ export default function BrowseProducts() {
       }
     }
 
+    if (category === "Appliances" && params.category === "electronics") {
+      if (params.subcategory === "appliances") {
+        history.push("/p/electronics/0/0/0");
+      } else {
+        history.push("/p/electronics/appliances/0/0");
+      }
+    }
+
     if (category === "Arts & Crafts Toys" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/art/0/0`);
       if (params.subcategory === "art") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -823,7 +853,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Board Games" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/boardgames/0/0`);
       if (params.subcategory === "boardgames") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -835,7 +864,6 @@ export default function BrowseProducts() {
       category === "Building & Construction Sets" &&
       params.category === "toysgames"
     ) {
-      // history.push(`/p/toysgames/construction/0/0`);
       if (params.subcategory === "construciton") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -844,7 +872,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Dolls & Dollhouses" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/dolls/0/0`);
       if (params.subcategory === "dolls") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -853,7 +880,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "NERF" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/nerf/0/0`);
       if (params.subcategory === "nerf") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -862,7 +888,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Play Vehicles" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/vehicles/0/0`);
       if (params.subcategory === "vehicles") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -871,7 +896,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Puzzles" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/puzzles/0/0`);
       if (params.subcategory === "puzzles") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -880,7 +904,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Scooters & Ride Ons" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/scooters/0/0`);
       if (params.subcategory === "scooters") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -892,7 +915,6 @@ export default function BrowseProducts() {
       category === "Stuffed Animals & Plush" &&
       params.category === "toysgames"
     ) {
-      // history.push(`/p/toysgames/plush/0/0`);
       if (params.subcategory === "plush") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -901,7 +923,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Trading Cards" && params.category === "toysgames") {
-      // history.push(`/p/toysgames/cards/0/0`);
       if (params.subcategory === "cards") {
         history.push("/p/toysgames/0/0/0");
       } else {
@@ -910,7 +931,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Accessories" && params.category === "clothing") {
-      // history.push(`/p/clothing/accessories/0/0`);
       if (params.subcategory === "accessories") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -919,7 +939,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Bags" && params.category === "clothing") {
-      // history.push(`/p/clothing/bags/0/0`);
       if (params.subcategory === "bags") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -928,7 +947,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Footwear" && params.category === "clothing") {
-      // history.push(`/p/clothing/footwear/0/0`);
       if (params.subcategory === "footwear") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -937,7 +955,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Jackets & Outerwear" && params.category === "clothing") {
-      // history.push(`/p/clothing/jackets/0/0`);
       if (params.subcategory === "jackets") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -946,7 +963,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Pants & Shorts" && params.category === "clothing") {
-      // history.push(`/p/clothing/pants/0/0`);
       if (params.subcategory === "pants") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -955,7 +971,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "T-Shirts" && params.category === "clothing") {
-      // history.push(`/p/clothing/shirts/0/0`);
       if (params.subcategory === "shirts") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -964,7 +979,6 @@ export default function BrowseProducts() {
     }
 
     if (category === "Watches" && params.category === "clothing") {
-      // history.push(`/p/clothing/watches/0/0`);
       if (params.subcategory === "watches") {
         history.push("/p/clothing/0/0/0");
       } else {
@@ -1363,7 +1377,9 @@ export default function BrowseProducts() {
       params.subcategory === "disney" ||
       params.subcategory === "keyboard" ||
       params.subcategory === "headsets" ||
-      params.subcategory === "toys"
+      params.subcategory === "toys" ||
+      params.subcategory === "funko" ||
+      params.subcategory === "appliances"
     )
   ) {
     return <Redirect to="/404" />;
@@ -1385,6 +1401,7 @@ export default function BrowseProducts() {
 
           <div className={styles.categorySelectorContainer}>
             <div className={styles.categorySpacer} />
+
             <div className={styles.categorySelectorTitle}>Category</div>
 
             <div className={styles.mappableCategoriesContainer}>
@@ -1580,6 +1597,11 @@ export default function BrowseProducts() {
                     category === "Watches"
                   ) {
                     className1 = styles.categoryNames2;
+                  } else if (
+                    params.subcategory === "appliances" &&
+                    category === "Appliances"
+                  ) {
+                    className1 = styles.categoryNames2;
                   } else {
                     className1 = styles.categoryNames;
                   }
@@ -1604,6 +1626,7 @@ export default function BrowseProducts() {
 
           <div className={styles.priceSelectorContainer}>
             <div className={styles.categorySpacer} />
+
             <div className={styles.priceSelectorTitle}>Price</div>
 
             <div className={styles.priceSelectionContainer}>
@@ -1772,14 +1795,15 @@ export default function BrowseProducts() {
           <div className={styles.customerRatingSelectorContainer}>
             <div className={styles.customerRatingSelectorTopContainer}>
               <div className={styles.categorySpacer} />
+
               <div
-                onClick={() => setBool(!bool)}
+                o /* nClick={() => setBool(!bool)} */
                 className={styles.customerRatingSelectorTitle}
               >
                 Customer Rating
               </div>
 
-              {bool && (
+              {false && bool && (
                 <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1798,7 +1822,7 @@ export default function BrowseProducts() {
                 </div>
               )}
 
-              {!bool && (
+              {false && !bool && (
                 <div onClick={() => setBool(!bool)} className={styles.menuIcon}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -1851,7 +1875,12 @@ export default function BrowseProducts() {
                       </div>
                     </div>
 
-                    <div className={styles.andUpContainer}>& Up</div>
+                    <div
+                      onClick={() => sendParams11()}
+                      className={styles.andUpContainer}
+                    >
+                      & Up
+                    </div>
                   </div>
                 </div>
 
@@ -1962,7 +1991,7 @@ export default function BrowseProducts() {
               </div>
             )}
 
-            {bool && <div className={styles.customerRatingSpacer} />}
+            {true && <div className={styles.customerRatingSpacer} />}
           </div>
         </div>
         {/* End Left Side */}
@@ -1973,8 +2002,10 @@ export default function BrowseProducts() {
             <div className={styles.rightTopContainer}>
               <div className={styles.rightSideTitle}>
                 {currentPage === 0 ? 1 : currentPage * 12 + 1} -{" "}
+
                 {videoGames.length > 11 &&
                   (currentPage === 0 ? 12 : currentPage * 12 + 1 + 11)}{" "}
+
                 {videoGames.length < 12 &&
                   (currentPage === 0
                     ? videoGames.length
@@ -2032,12 +2063,36 @@ export default function BrowseProducts() {
             </div>
           )}
 
-          {videoGames.length === 0 && (
-            <div className={styles.rightTopContainer}>
+          {false && videoGames.length === 0 && (
+            <div className={styles.rightTopContainer2}>
               <div className={styles.rightSideTitle}>
-                {videoGames.length} Results for <span>"{pageCategory}"</span>
+                No Results found for <span>{pageCategory}</span>
               </div>
             </div>
+          )}
+
+          {videoGames.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={styles.noOrdersContainer}
+            >
+              <img
+                className={styles.noneFoundPic}
+                src={
+                  "https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw929621c1/images/svg-icons/empty.svg"
+                }
+                alt={"noneFound"}
+              ></img>
+              No results found for selected criteria.{" "}
+              <div
+                onClick={() => history.push(`/p/${params.category}/0/0/0`)}
+                className={styles.viewAllButton}
+              >
+                VIEW ALL {pageCategory.toUpperCase()}
+              </div>
+            </motion.div>
           )}
 
           {
@@ -2104,6 +2159,7 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData2}</div>
+
                 {true && (
                   <ReactPaginate
                     previousLabel={
@@ -2158,6 +2214,7 @@ export default function BrowseProducts() {
                 exit={{ opacity: 0 }}
               >
                 <div className={styles.holder}>{currentPageData3}</div>
+                
                 {true && (
                   <ReactPaginate
                     previousLabel={

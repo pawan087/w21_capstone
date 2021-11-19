@@ -13,12 +13,14 @@ import {
   deleteReview,
   deleteImage,
 } from "../../../store/reviews";
+
 import {
   createLike,
   setAllReviewLikes,
   deleteLike,
   deleteTheOpposingAndCreateLike,
 } from "../../../store/reviewLikes";
+
 import styles from "./IndividualAllReviews.module.css";
 import "rodal/lib/rodal.css";
 
@@ -32,7 +34,7 @@ export default function IndividualTopReview({ review }) {
   const products = useSelector((state) => state.products);
 
   const [visible, setVisible] = useState(false);
-  const [visible2, setVisible2] = useState(false); // <-- set to true after dev
+  const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
   const [contentRequired, setContentRequired] = useState(false);
   const [showEditReview, setShowEditReview] = useState(false);
@@ -66,6 +68,7 @@ export default function IndividualTopReview({ review }) {
 
   const showShowAddPic = () => {
     setShowEditReview(false);
+
     setShowAddPic(true);
 
     if (rating.imageUrl) {
@@ -77,8 +80,11 @@ export default function IndividualTopReview({ review }) {
     setShowEditReview(false);
 
     setPreview(null);
+
     setImage("");
+
     setSelectedFile();
+
     setUploadMsg("Upload Picture");
 
     if (review.imageUrl) {
@@ -88,6 +94,7 @@ export default function IndividualTopReview({ review }) {
 
   const closeAddPic = () => {
     setShowAddPic(false);
+
     setShowEditReview(true);
   };
 
@@ -97,13 +104,17 @@ export default function IndividualTopReview({ review }) {
 
   const contentSetter = (e) => {
     setContent(e.target.value);
+
     setContentRequired(false);
   };
 
   const removePhoto = () => {
     setPreview(null);
+
     setImage("");
+
     setSelectedFile();
+
     setUploadMsg("Upload Picture");
   };
 
@@ -130,14 +141,21 @@ export default function IndividualTopReview({ review }) {
     setThisReview({ ...review });
 
     setDidMount(false);
+
     setVisible2(false);
+
     setDidMount(true);
+
     await dispatch(setAllReviews());
 
     setLoading(false);
+
     setVisible2(false);
+
     setBool(true);
+
     setVisible3(true);
+
     setTimeout(() => setVisible3(false), 2000);
   };
 
@@ -174,12 +192,19 @@ export default function IndividualTopReview({ review }) {
     }
 
     await dispatch(setAllReviews());
+
     setShowEditReview(false);
+
     setLoading(false);
+
     setImage("");
+
     setSelectedFile();
+
     setUploadMsg("Upload Picture");
+
     setEditConfirmation(true);
+
     setTimeout(() => setEditConfirmation(false), 2000);
   };
 
@@ -784,6 +809,7 @@ export default function IndividualTopReview({ review }) {
                   Remove Photo
                 </div>
               )}
+              
               {!selectedFile && (
                 <div
                   onClick={removePhoto}

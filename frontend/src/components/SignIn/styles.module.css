@@ -1,6 +1,5 @@
 .backContainer {
   width: 100%;
-  /* min-height: 875px; */
 }
 
 .signInOuterContainer {
@@ -37,10 +36,6 @@
   position: relative;
 }
 
-.thirdContainer * {
-  /* font-size: 15px; */
-}
-
 .revealPasswordIconContainer {
   position: absolute;
   height: 17.5px;
@@ -56,7 +51,6 @@
 }
 
 .fifthContainer {
-  /* background-color: skyblue; */
   display: flex;
 }
 
@@ -91,7 +85,6 @@
 .checkIconContainer2 {
   height: 15px;
   width: 15px;
-  /* border: 1px solid rgba(0, 0, 0, .75); */
   border-radius: 2.5px;
   display: flex;
   justify-content: center;
@@ -102,7 +95,6 @@
   font-size: 12.5px;
   color: rgba(0, 0, 0, 0.5);
   transition: 0.15s ease-in-out;
-  /* font-weight: bold; */
   margin-left: 10px;
   transform: translateY(-2px);
   cursor: pointer;
@@ -113,7 +105,6 @@
   color: rgba(231, 35, 24, 0.9);
   color: rgba(0, 0, 0, 0.9);
   transition: 0.15s ease-in-out;
-  /* font-weight: bold; */
   margin-left: 10px;
   transform: translateY(-2px);
   cursor: pointer;
@@ -134,7 +125,6 @@
   justify-content: center;
   align-items: center;
   transition: 0.15s ease-in-out;
-  /* border-radius: 2.5px; */
 }
 
 .signInButton:hover {
@@ -161,12 +151,10 @@
   align-items: center;
   transition: 0.15s ease-in-out;
   opacity: 0.75;
-  /* border-radius: 2.5px; */
 }
 
 .divisorContainer {
   background-color: rgb(255, 255, 255);
-  /* background-color: skyblue; */
   height: 30px;
   position: relative;
   width: 100%;
@@ -188,7 +176,6 @@
 .underline {
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.125);
-  /* background-color: red; */
   height: 0px;
 }
 
@@ -239,7 +226,6 @@
 
 .demoUserButton:hover {
   background-color: rgba(231, 35, 24, 0.9);
-  /* opacity: 0.95; */
   --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);

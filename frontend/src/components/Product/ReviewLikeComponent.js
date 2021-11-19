@@ -10,6 +10,7 @@ import {
 
 export default function ReviewLikeComponent({ review }) {
   const dispatch = useDispatch();
+  
   const reviewLikes = useSelector((state) => state.reviewLikes);
   const user = useSelector((state) => state.session.user);
 

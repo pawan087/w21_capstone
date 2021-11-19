@@ -9,7 +9,6 @@ const load = (orderItems) => ({
   orderItems,
 });
 
-
 export const setAllOrderItems = () => async (dispatch) => {
   const res = await fetch("/api/orderitems");
 

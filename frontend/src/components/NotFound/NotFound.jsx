@@ -47,6 +47,7 @@ export default function NotFound() {
                 src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw8c223603/images/svg-icons/original-box.svg"
               />
             </div>
+            
             <div className={styles.third1stBottomContainer}>Video Games</div>
           </div>
 
@@ -60,6 +61,7 @@ export default function NotFound() {
                 src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw91e822c9/images/svg-icons/drones.svg"
               />
             </div>
+
             <div className={styles.third1stBottomContainer}>
               Toys & Collectibles
             </div>
@@ -75,6 +77,7 @@ export default function NotFound() {
                 src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw0460680f/images/svg-icons/smartwatches.svg"
               />
             </div>
+
             <div className={styles.third1stBottomContainer}>Clothing</div>
           </div>
 
@@ -89,6 +92,7 @@ export default function NotFound() {
                 src="https://www.gamestop.com/on/demandware.static/Sites-gamestop-us-Site/-/default/dw518ef149/images/svg-icons/smartphones.svg"
               />
             </div>
+
             <div className={styles.third1stBottomContainer}>Electronics</div>
           </div>
         </div>

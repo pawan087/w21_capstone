@@ -13,12 +13,6 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // const options = {
-    //   where: { role: "admin" },
-    // };
-
-    //   const spots = await Product.findAll(options);
-
     const options = {
       include: [
         { model: Category, as: "Category", attributes: ["name", "id"] },
@@ -40,16 +34,7 @@ router.get(
       order: [["id", "ASC"]],
     };
 
-    // const products = await Product.findByPk(1, options);
     const products = await Product.findAll(options);
-
-    // Albums.findAll({
-    //   include: [{
-    //     model: Artists,
-    //     as: 'Singer',
-    //     where: { name: 'Al Green' } //
-    //   }]
-    // })
 
     res.json(products);
   })

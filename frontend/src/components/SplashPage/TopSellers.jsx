@@ -78,6 +78,7 @@ export default function TopSellers() {
                       onClick={() => history.push(`/products/${x.id}`)}
                     />
                   </div>
+                  
                   <div
                     onClick={() => history.push(`/products/${x.id}`)}
                     className={styles.itemName}

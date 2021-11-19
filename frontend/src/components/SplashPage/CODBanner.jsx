@@ -32,6 +32,7 @@ export default function CODBanner() {
         className={styles.codBannerPic}
         onClick={() => history.push("/p/videogames/cod/0/0")}
         src="https://media.gamestop.com/i/gamestop/COD_Vanguard_GME_HomepageTakeover_DeskTop_1280x100_A_2R1.webp"
+        /*        "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s01.webp" */
       />
 
       {arrowUp && (
@@ -46,7 +47,8 @@ export default function CODBanner() {
               alt="codBannerImg2"
               className={styles.codLeftImage}
               src="https://media.gamestop.com/i/gamestop/COD_Vanguard_GME_HomepageTakeover_DeskTop_604x340_D_1R1.webp"
-            />
+/*               "https://gamestopclonebucket.s3.us-west-1.amazonaws.com/s02.webp"
+ */            />
           </div>
 
           <div className={styles.embeddedYoutubeContainer}>

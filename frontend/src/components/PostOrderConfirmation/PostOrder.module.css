@@ -77,7 +77,6 @@
 
 .accountDashboardButton:active {
   transform: scale(0.95);
-  /* border: 2.5px solid black; */
 }
 
 .shippingNowHeader {
@@ -144,12 +143,10 @@
 }
 
 .productDetailCard {
-  /* transform: translateY(-17.5px); */
   margin-left: 30px;
   background-color: rgb(255, 255, 255);
   height: 165px;
   width: 380px;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.25); */
 }
 
 .productName {
@@ -178,7 +175,6 @@
 
 .priceTag {
   font-size: 12.5px;
-  /* color: rgba(31, 153, 106, 1); */
 }
 
 .quantityCard {
@@ -308,9 +304,6 @@
   background-color: white;
   padding-top: 22.5px;
   padding-left: 22.5px;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 .shippingHeader {
@@ -348,9 +341,7 @@
   margin: 0 auto;
   margin-top: 35px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-  /* background-color: red; */
 }
 
 .returnLink {

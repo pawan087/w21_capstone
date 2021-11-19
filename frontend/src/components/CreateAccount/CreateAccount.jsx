@@ -15,25 +15,14 @@ export default function CreateAccount() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  // For development
-  const [firstName, setFirstName] = useState("Pawan");
-  const [lastName, setLastName] = useState("Chahal");
-  const [username, setUsername] = useState("pawan087");
-  const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
-  const [password, setPassword] = useState("SanRamon303!");
-  const [address1, setAddress1] = useState("303 Daybreak Court");
-  const [address2, setAddress2] = useState("San Ramon, CA, 95127");
-  const [phone, setPhone] = useState("(408) 836-1037");
-
-  // Set back after development
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [address1, setAddress1] = useState("");
-  // const [address2, setAddress2] = useState("");
-  // const [phone, setPhone] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [phone, setPhone] = useState("");
 
   const [notRobot, setNotRobot] = useState(true);
   const [inputType, setInputType] = useState("password");
@@ -534,6 +523,7 @@ export default function CreateAccount() {
                   />
                 </svg>
               </div>
+
               <div className={styles.errorContainerRight}>
                 An account with this email already exists.
               </div>
@@ -661,6 +651,7 @@ export default function CreateAccount() {
                 handleOnChange={(value) => changeEmail(value)}
                 placeholder={"Email"}
               />
+
               {incorrectFormatEmail && (
                 <span className={styles.requiredLabel}>
                   Please format your email: email@domain.com
