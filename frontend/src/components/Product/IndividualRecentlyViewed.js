@@ -52,7 +52,7 @@ export default function IndividualRecentlyViewed({ product }) {
         <div className={styles.productPriceTag}>${product.price}</div>
 
         <div className={styles.productDetail}>
-          <div className={styles.productName}>{product.name}</div>
+          <div className={styles.productName}>{product.name.slice(0, 50)}{product.name.length >= 50 ? '...' : null}</div>
 
           <div className={styles.productBrand}>{product.Brand.name}</div>
         </div>
