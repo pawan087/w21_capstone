@@ -1,0 +1,96 @@
+Table User {
+  UserID int [pk, increment]
+  FirstName string
+  LastName string
+  Phone int
+  Address1 string
+  Address2 string
+  Email string
+  HashedPassword string
+  RecentlyViewed int[]
+}
+
+Table Category {
+  CategoryID int [pk, increment]
+  Name string
+}
+
+Table SubCategory {
+  SubCategoryID int [pk, increment]
+  Name string
+}
+
+Table Brand {
+  BrandID int [pk, increment]
+  Name string
+}
+
+Table Product {
+  ProductID int [pk, increment]
+  Name string
+  Description string
+  BrandID int
+  Price numeric
+  CategoryID int
+  SubCategoryID int
+  Images string[]
+}
+
+Ref: Product.BrandID > Brand.BrandID
+Ref: Product.CategoryID > Category.CategoryID
+Ref: Product.SubCategoryID > SubCategory.SubCategoryID
+
+Table Review {
+  ReviewID int [pk, increment]
+  UserID int
+  ProductID int
+  Content string
+  Rating numeric
+}
+
+Ref: Review.UserID > User.UserID
+Ref: Review.ProductID > Product.ProductID
+
+Table ReviewLikes {
+  ReviewLikeID int [pk, increment]
+  UserID int
+  ReviewID int
+  Like boolean
+}
+
+Ref: ReviewLikes.UserID > User.UserID
+Ref: ReviewLikes.ReviewID > Review.ReviewID
+
+Table CartItem {
+  CartItemID int [pk, increment]
+  UserID int
+  ProductID int
+  Quantitiy int
+}
+
+Ref: CartItem.UserID > User.UserID
+Ref: CartItem.ProductID > Product.ProductID
+
+Table Order {
+  OrderID int [pk, increment]
+  UserID int
+  Items int[]
+  Address1 string
+  Address2 string
+  CreditCard string
+  ExpirationDate string
+  FirstName string
+  LastName string
+}
+
+Ref: Order.UserID > User.UserID
+
+Table OrderItem {
+  OrderItemId int [pk, increment]
+  UserID int
+  ProductID int
+  Quantitiy int
+}
+
+Ref: OrderItem.UserID > User.UserID
+Ref: OrderItem.ProductID > Product.ProductID

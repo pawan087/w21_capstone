@@ -1,0 +1,125 @@
+https://dbdiagram.io/d/616f0b316239e14647783ad9
+
+Table User {
+  UserID int [pk, increment]
+  FirstName string
+  LastName string
+  Phone int
+  Address1 string
+  Address2 string
+  Address3 string
+  Email string
+  HashedPassword string
+  RecentlyViewed int[]
+  CartArray int[]
+}
+
+Table Category {
+  CategoryID int [pk, increment]
+  Name string
+}
+
+Table SubCategory {
+  SubCategoryID int [pk, increment]
+  Name string
+}
+
+Table FurtherSubCategory {
+  FurtherSubCategoryID int [pk, increment]
+  Name string
+}
+
+Table Brand {
+  BrandID int [pk, increment]
+  Name string
+}
+
+Table Product {
+  ProductID int [pk, increment]
+  Name string
+  Description string
+  BrandID int
+  Price numeric
+  CategoryID int
+  SubCategoryID int
+  FurtherSubCategoryID int
+  Images string[]
+  Rating decimal
+}
+
+Ref: Product.BrandID > Brand.BrandID
+Ref: Product.CategoryID > Category.CategoryID
+Ref: Product.SubCategoryID > SubCategory.SubCategoryID
+Ref: Product.FurtherSubCategoryID > FurtherSubCategory.FurtherSubCategoryID
+
+Table Review {
+  ReviewID int [pk, increment]
+  UserID int
+  ProductID int
+  Content string
+  Rating numeric
+}
+
+Ref: Review.UserID > User.UserID
+Ref: Review.ProductID > Product.ProductID
+
+Table ReviewLikes {
+  ReviewLikeID int [pk, increment]
+  UserID int
+  ReviewID int
+  Like boolean
+}
+
+Ref: ReviewLikes.UserID > User.UserID
+Ref: ReviewLikes.ReviewID > Review.ReviewID
+
+Table Question {
+  QuestionID int [pk, increment]
+  UserID int
+  ProductID int
+  Content string
+}
+
+Ref: Question.UserID > User.UserID
+Ref: Question.ProductID > Product.ProductID
+
+Table Answer {
+  AnswerID int [pk, increment]
+  UserID int
+  QuestionID int
+  Content string
+}
+
+Ref: Answer.QuestionID > Question.QuestionID
+Ref: Answer.UserID > User.UserID
+
+Table AnswerLikes {
+  AnswerLikeID int [pk, increment]
+  UserID int
+  AnswerID int
+  Like boolean
+}
+
+Ref: AnswerLikes.UserID > User.UserID
+Ref: AnswerLikes.AnswerID > Answer.AnswerID
+
+Table CartItem {
+  CartItemID int [pk, increment]
+  UserID int
+  ProductID int
+  Quantitiy int
+}
+
+Ref: CartItem.UserID > User.UserID
+Ref: CartItem.ProductID > Product.ProductID
+
+Table Order {
+  OrderID int [pk, increment]
+  UserID int
+  Items int[]
+  Address1 string
+  Address2 string
+  Address3 string
+}
+
+Ref: Order.UserID > User.UserID

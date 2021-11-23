@@ -1,0 +1,79 @@
+# Users
+### _C_ reating a new User
+  > `POST "/api/users"`
+### _R_ eading all Users
+  > `GET "/api/users"`
+### _U_ pdating a User
+  > `PUT "/api/user/:id"`
+### _D_ eleting a User
+  > `DELETE "api/user/:id"`
+***
+# Products
+### _R_ eading all Products
+  > `GET "/api/products"`
+***
+# Shopping Cart
+### _C_ reating a new Shopping Cart
+  > `POST "/api/cart"`
+### _R_ eading a Shopping Cart
+  > `GET "/api/cart"`
+### _U_ pdating a Shopping Cart
+  > `PUT "/api/cart/:id"`
+### _D_ eleting a Shopping Cart
+  > `DELETE "/api/cart/:id"`
+***
+# Orders
+### _C_ reating a new Order
+  > `POST "/api/order"`
+### _R_ eading Orders
+  > `GET "/api/orders"`
+### _U_ pdating an Order
+  > `PUT "/api/order/:id"`
+### _D_ eleting an Order
+  > `DELETE "/api/order/:id"`
+***
+# Reviews
+### _C_ reating a new Review
+  > `POST "/api/review"`
+### _R_ eading all Reviews
+  > `GET "/api/reviews"`
+### _U_ pdating a Review
+  > `PUT "/api/reviews/:id"`
+### _D_ eleting a Review
+  > `DELETE "api/reviews/:id"`
+***
+# ReviewLikes
+### _C_ reating a new Like for a Review
+  > `POST "/api/reviewlikes"`
+### _R_ eading all Likes
+  > `GET "/api/reviewlikes"`
+### _D_ eleting a like on a Review
+  > `DELETE "api/reviewlikes/:id"`
+***
+# Questions
+### _C_ reating a new Question for a Product
+  > `POST "/api/question"`
+### _R_ eading all Questions
+  > `GET "/api/questions"`
+### _U_ pdating a Question
+  > `PUT "/api/questions/:id"`
+### _D_ eleting a Question
+  > `DELETE "api/questions/:id"`
+***
+# Answers
+### _C_ reating a new Answer for a Question
+  > `POST "/api/answer"`
+### _R_ eading all Answers
+  > `GET "/api/answers"`
+### _U_ pdating an Answer
+  > `PUT "/api/answers/:id"`
+### _D_ eleting an Answer
+  > `DELETE "api/answers/:id"`
+***
+# AnswerLikes
+### _C_ reating a new Like for a Answer
+  > `POST "/api/answerlikes"`
+### _R_ eading all Likes
+  > `GET "/api/answerlikes"`
+### _D_ eleting a like on a Answer
+  > `DELETE "api/answerlikes/:id"`
