@@ -1,0 +1,136 @@
+## Users
+
+### Sign Up
+
+  * As an unregistered and unauthorized user, I want to be able to sign up for the website via a sign-up form.
+    * When I’m on the sign-up page:
+      * I would like to be able to enter my email, username, and preferred password on a clearly laid out form.
+      * I would like the website to log me in upon successful completion of the sign-up form so that I can seamlessly access the site’s functionality
+    * When I enter invalid data on the sign-up form:
+      * I would like the website to inform me of the validations I failed to pass, and repopulate the form with my valid entries (except my password) so that I can try again without needing to refill forms I entered valid data into.
+
+### Log in
+
+  * As an unauthorized user, I want to be able to log in to the website via a log-in form.
+    * When I’m on the log-in form page:
+      * I would like to be able to enter my email and password on a clearly laid out form.
+      * I would like the website to log me in upon successful completion of the log-in form so that I can seamlessly access the site’s functionality
+    * When I enter invalid data on the log-in form:
+      * I would like the website to inform me of the validations I failed to pass and repopulate the form with my valid entries (except my password) so that I can try again without needing to refill forms I entered valid data into.
+
+### Demo User
+
+  * As an unauthorized user, I would like an easy to find and clear button on the sign-up page to allow me to visit the site as a guest without signing up or logging in.
+    * When I’m on the login section:
+      * I can click on a Demo User button to log me in and allow me access as a normal user so that I can test the site’s features and functionality without needing to stop and enter credentials.
+
+### Log out
+
+  * As a logged out user, I want to log out via an easy to find log out button on the navigation bar.
+    * While on any page of the site:
+      * I can log out of my account and be redirected to a page displaying the storefront
+
+***
+
+## Shopping Cart
+
+### Create a Shopping Cart
+
+  * As an registered and authorized user, I want to be able to create a shopping cart
+    * When I’m on the product detail page:
+      * I would like to be able to enter a quantity and add that/those item(s) to my shopping cart
+
+### Read Shopping Cart
+
+  * As a registered user, I want to be able to click on the shopping cart icon in the navigation bar and see its details
+    * When I’m on the /cart page:
+      * I would like to be able to view the content of the shopping cart
+
+### Update Shopping Cart
+
+  * As a registered and authorized user, I want to be able to edit the items that belongs to my shopping cart
+    * When I’m on the /cart page:
+      * I would like to be able to change the quantity of the items in my shopping cart
+
+### Delete Shopping Cart
+
+  * As a registered and authorized user, I want to be able to delete items from my shopping cart using a button
+    * When I’m on the /cart page:
+      * I should be able to see a button that allows me to delete the content(s) of my shopping cart
+
+***
+
+## Orders
+
+### Create an Order
+
+  * As an registered and authorized user, I want to be able to create an order via my shopping cart.
+    * When I’m on the order confirmation:
+      * I would like to be able to enter a shipping address, and faux payment information to place my order
+
+### Read Orders
+
+  * As a registered user, I want to be able to click on an order and see its details
+    * When I’m on the /orders page:
+      * I would like to be able to view the content of the order
+
+***
+
+## Reviewing a Product
+
+  * As a registered and logged-in/authorized user, I want to be able to write a review for a product.
+    * When I’m on the product page I want to be able to write a review from a field at the bottom of each product's card.
+    * On existing reviews I want to be able to edit or delete my reviews
+  * As a logged-out/unregistered user, I want to be able to see reviews on products
+    * I will not be able to write a review for a product
+    * I will not be able to edit or delete a review for a product
+
+***
+
+## Review Likes
+
+  * As a logged in user, I want to be able to like or dislike an individual review
+  * As a logged in or logged out user, I want to be able to view a review's associated like/dislike count
+    * I want to be able to view a particular reviews' like/dislike count on the corresponding product page
+  * As a logged in user I want to be able to remove a like if I’ve already liked the review beforehand
+    * I want the ability to add/remove a like or dislike for a review on the corresponding product's page
+  * As a logged in user I want to be able to remove a dislike if I’ve already disliked the review beforehand
+    * I want the ability to add/remove a like or dislike for a review on the corresponding product's page
+  * As a logged in user, upon clicking or un-clicking of a like or dislike icon, I want to see some indication of whether I added or removed a like or dislike for an already liked or disliked review by myself
+
+***
+
+## Asking a Question about a Product
+
+  * As a registered and logged-in/authorized user, I want to be able to post/ask a question regarding a specific product.
+    * When I’m on the product page I want to be able to ask a question from a field at the bottom of each product's card.
+    * When I’m on the product’s page I want to be able to ask a question from a field in the questions section.
+    * On existing questions I want to be able to edit or delete my questions
+  * As a logged-out/unregistered user, I want to be able to see questions about products
+    * I will not be able to ask a question about a product
+    * I will not be able to edit or delete a question about a product
+
+***
+
+## Answering a Question about a Product
+
+  * As a registered and logged-in/authorized user, I want to be able to answer a question regarding a specific product.
+    * When I’m on the product page I want to be able to answer a question from a field at the bottom of each product's card.
+    * When I’m on the product’s page I want to be able to answer a question from a field in the questions section.
+    * On existing answers I want to be able to edit or delete my answers
+  * As a logged-out/unregistered user, I want to be able to see answers along with their corresponding questions relating to a specific product
+    * I will not be able to answer a question about a product
+    * I will not be able to edit or delete an answer pertaining to any question
+
+***
+
+## Answer Likes
+
+  * As a logged in user, I want to be able to like or dislike an individual answer to specified question
+  * As a logged in user, I want to be able to view an answer's associated like/dislike count
+    * I want to be able to view a particular answers' like/dislike count on the corresponding product page
+  * As a logged in user I want to be able to remove a like if I’ve already liked the answer beforehand
+    * I want the ability to add/remove a like or dislike for an answer on the corresponding product's page
+  * As a logged in user I want to be able to remove a dislike if I’ve already disliked the answer beforehand
+    * I want the ability to add/remove a like or dislike for an answer on the corresponding product's page
+  * As a logged in user, upon clicking or un-clicking of a like or dislike icon, I want to see some indication of whether I added or removed a like or dislike for an already liked or disliked answer by myself

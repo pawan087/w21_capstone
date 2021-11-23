@@ -1,0 +1,121 @@
+## `/`
+### Splash Page
+
+This page displays the main page (storefront) regardless if a user is authenticated or not
+
+* `GET /`
+
+***
+
+## `/sign-up`
+### Sign-up Page
+
+This page displays a Sign-up form
+
+* `GET /sign-up`
+* `POST /sign-up`
+
+***
+
+## `/login`
+### Log-in Page
+
+This page displays a Log-in form
+
+* `GET /login`
+* `POST /login`
+
+***
+
+## `/:userProfile`
+### User's Info Page
+
+This page displays a user's information.
+
+* `GET /:userProfile`
+
+This page displays a form to edit a user's information
+
+* `POST /:userProfile`
+* `PUT /:userProfile`
+
+***
+
+## `/:productPage`
+### Product's info page
+
+This page displays a product's information.
+
+* `GET /:productPage`
+
+***
+
+## `/:productsPage`
+### All products page
+
+This page displays products.
+
+* `GET /:productPage`
+
+***
+
+## `/:cartPage`
+### User's Shopping Cart Page
+
+This page displays a user's shopping cart.
+
+* `GET /:cartPage`
+
+This page displays a form to edit a user's shopping cart.
+
+* `POST /:cartPage`
+* `PUT /:cartPage`
+
+***
+
+## `/:orderConfirmation`
+### Order Confirmation Page
+
+This page displays information to confirm a user's order.
+
+* `GET /:orderConfirmation`
+
+This page displays a form to finalize the user's order.
+
+* `POST /:orderConfirmation`
+
+***
+
+## `/:consolePage`
+### Video Game Console Page
+
+This page displays products specific to a video game console.
+
+* `GET /:consolePage`
+
+***
+
+## `/:accessoriesPage`
+### Video Game Accessories Page
+
+This page displays accessories specific to a platform.
+
+* `GET /:accessoriesPage`
+
+***
+
+## `/guardiansPage`
+### Promotional Page #1
+
+This page displays products specific to the promotion.
+
+* `GET /:guardiansPage`
+
+***
+
+## `/pokemonPage`
+### Promotional Page #2
+
+This page displays products specific to the promotion.
+
+* `GET /:pokemonPage`
