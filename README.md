@@ -1,6 +1,6 @@
 Welcome to gameStopClone!
 
-gameStopClone is a website designed to let users browse video games and other related products and make purchases of their liking.
+gameStopClone is a website designed to let users browse video games and other related products as well as make purchases of their liking.
 
 https://gamestopclone.herokuapp.com/
 
