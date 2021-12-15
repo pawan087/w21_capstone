@@ -239,3 +239,7 @@ Pawan Chahal:
 Project Repo Link: https://github.com/pawan087/w21_capstone
 
 Project Link: https://gamestopclone.herokuapp.com/
+
+<br>
+
+[Back to top](#table-of-contents)
