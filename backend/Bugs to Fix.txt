@@ -1,0 +1,15 @@
+-Update Kanban board
+-Fix page heights (footer placement isn't dynamic) (try zooming out)
+-Delete review bug: when deleting review and then edit a review, old review is shown
+-Add LinkedIn in about me links
+-Shorten product name in recently viewed
+-Username bug: when signing up, make sure username isn't email
+
+-Fix Reveal "Eye" bug
+-Clothing page, 2nd pagination leads to toys and games
+-Create account page loader background is white
+-Review Likes Bug
+-Create account page strong password bug
+-Setting "default address" in order confirmation page takes back to cart page
+-Rating bar graphs (not adding up to a 100%)
+-When deleting review, delete review confirmation modal loses content
