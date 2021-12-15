@@ -215,7 +215,7 @@ Sometimes we may wan't to reconsider what we say, especially publicly over the w
 
 ## Virtual Chat Assistant
 
-Chat assistants are more prevalent than ever now on e-commerce websites. Behind the scenes, a set of preprogrammed responses attempt to help users navigate to what they're looking for.
+Chat assistants are more prevalent than ever now on e-commerce websites. Behind the scenes, a set of preprogrammed responses attempt to help users navigate towards what they're looking for.
 
 How I would do it: The frontend implementation of this feature would not be where difficulty arise. A simple floating component rendered on the splash page towards the right hand corner would suffice. This chat box of some sorts would temporarily store user inputs and pseudo-AI responses into a data structure that holds string values. From the inputs, I would attempt to parse through the information for keywords that'll allow me to match the user with what they're looking for. I believe the difficult arise in predetermining what sort of inputs to respond to and how.
 
