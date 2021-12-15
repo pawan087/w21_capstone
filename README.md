@@ -179,7 +179,7 @@ Users can view their order history by utilizing the right-side navigation bar la
 
 ## Viewing Reviews
 
-To view a product's reviews, a user can navigate to a specific product's page and open the "Ratings and Reviews" subsection. This area will aid in the user in determining whether a particular product is right for them. Visually, through the use of bar graphs, a user can easily gauge the level of ratings past users have given a product. Reviews may be further viewed by clicking the "Show All Reviews" link which allows for a more tabulated format of past reviews. Here a user can seamlessly sort reviews by rating (highest to lowest and lowest to highest) as well as by "Most Helpful" which presents reviews with the most likes!
+To view a product's reviews, a user can navigate to a specific product's page and open the "Ratings and Reviews" subsection. This area will aid the user in determining whether a particular product is right for them. Visually, through the use of bar graphs, a user can easily gauge the level of ratings past users have given a product. Reviews may be further viewed by clicking the "Show All Reviews" link which allows for a more tabulated format of past reviews. Here a user can seamlessly sort reviews by rating (highest to lowest and lowest to highest) as well as by "Most Helpful" which presents reviews with the most likes!
 
 <br>
 
