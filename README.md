@@ -8,7 +8,7 @@
   <p align="center">
     A pixel-perfect clone of <a target="_blank" href="https://www.gamestop.com/">Gamestop.com</a>
     <br />
-    <a href="https://gamestopclone.herokuapp.com/" target="_blank"><strong>Explore the website »</strong></a>
+    <a href="https://gamestop-pawan.herokuapp.com/" target="_blank"><strong>Explore the website »</strong></a>
     <br />
     <br />
   </p>
@@ -238,7 +238,7 @@ Pawan Chahal:
 
 Project Repo Link: https://github.com/pawan087/w21_capstone
 
-Project Link: https://gamestopclone.herokuapp.com/
+Project Link: https://gamestop-pawan.herokuapp.com/
 
 <br>
 
