@@ -15,6 +15,15 @@ export default function CreateAccount() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
+  const [firstName, setFirstName] = useState("Pawan");
+  const [lastName, setLastName] = useState("Chahal");
+  const [username, setUsername] = useState("pawan087");
+  const [email, setEmail] = useState("chahal.pawanpreet@gmail");
+  const [password, setPassword] = useState("Martinez61!");
+  const [address1, setAddress1] = useState("619 Davenport Dr.");
+  const [address2, setAddress2] = useState("San Jose, CA 95127");
+  const [phone, setPhone] = useState("");
+
   // const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
   // const [username, setUsername] = useState("");
@@ -23,15 +32,6 @@ export default function CreateAccount() {
   // const [address1, setAddress1] = useState("");
   // const [address2, setAddress2] = useState("");
   // const [phone, setPhone] = useState("");
-
-  const [firstName, setFirstName] = useState("Pawan");
-  const [lastName, setLastName] = useState("Chahal");
-  const [username, setUsername] = useState("pawan087");
-  const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
-  const [password, setPassword] = useState("");
-  const [address1, setAddress1] = useState("619 Davenport Dr.");
-  const [address2, setAddress2] = useState("San Jose, CA 95127");
-  const [phone, setPhone] = useState("4088361037");
 
   const [notRobot, setNotRobot] = useState(true);
   const [inputType, setInputType] = useState("password");
@@ -198,7 +198,7 @@ export default function CreateAccount() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoader(true);
+    // setLoader(true);
     scrollToTop();
 
     let regExp =
@@ -219,6 +219,7 @@ export default function CreateAccount() {
     } else {
       // console.log("wrong format");
       setIncorrectFormatPhone(true);
+      return;
     }
 
     if (username.length > 30 || username.length < 5) {

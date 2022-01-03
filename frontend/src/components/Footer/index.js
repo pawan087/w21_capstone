@@ -49,8 +49,10 @@ const Footer = () => {
               Pawan Chahal
             </a>
           </div>
+
+          
         </div>
-        
+
         <div className={styles.footerBottom}>
           <div className={styles.footerCopyright}>©2021 gameStopClone</div>
         </div>

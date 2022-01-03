@@ -97,6 +97,7 @@ export default function SignIn() {
     if (!defaultOption) {
       setCredential("demo@aa.io");
       setPassword("password");
+      setInputType("password");
     } else {
       setCredential("");
       setPassword("");
