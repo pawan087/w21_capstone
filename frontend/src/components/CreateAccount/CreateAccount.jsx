@@ -15,14 +15,23 @@ export default function CreateAccount() {
 
   const sessionUser = useSelector((state) => state.session.user);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [address1, setAddress1] = useState("");
+  // const [address2, setAddress2] = useState("");
+  // const [phone, setPhone] = useState("");
+
+  const [firstName, setFirstName] = useState("Pawan");
+  const [lastName, setLastName] = useState("Chahal");
+  const [username, setUsername] = useState("pawan087");
+  const [email, setEmail] = useState("chahal.pawanpreet@gmail.com");
   const [password, setPassword] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [phone, setPhone] = useState("");
+  const [address1, setAddress1] = useState("619 Davenport Dr.");
+  const [address2, setAddress2] = useState("San Jose, CA 95127");
+  const [phone, setPhone] = useState("4088361037");
 
   const [notRobot, setNotRobot] = useState(true);
   const [inputType, setInputType] = useState("password");
@@ -246,9 +255,11 @@ export default function CreateAccount() {
 
     if (mediumPassword.test(password)) {
       // console.log("strong password");
+      setInvalidPassword(false);
     } else {
       // console.log("weak password");
       setInvalidPassword(true);
+      return;
     }
 
     if (
@@ -269,10 +280,11 @@ export default function CreateAccount() {
       !invalidAddress1Length &&
       !invalidAddress2Length &&
       !cannotBeSame &&
-      !invalidPassword &&
+      invalidPassword === false &&
       !missingRobot
     ) {
       // console.log("ready to sign up");
+
       setErrors([]);
 
       return await dispatch(
