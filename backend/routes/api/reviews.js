@@ -169,10 +169,37 @@ router.delete(
   })
 );
 
+// router.post(
+//   "/likesCheck",
+//   asyncHandler(async (req, res) => {
+//     const { userId, reviewId, like } = req.body;
+
+//     const alreadyExists = await ReviewLike.findAll({
+//       where: {
+//         reviewId: +reviewId,
+//         userId: +userId,
+//         like: like,
+//       },
+//     });
+
+//     return alreadyExists;
+//   })
+// );
+
 router.post(
   "/likes",
   asyncHandler(async (req, res) => {
     const { userId, reviewId, like } = req.body;
+
+    const alreadyExists = await ReviewLike.findAll({
+      where: {
+        reviewId: +reviewId,
+        userId: +userId,
+        like: like,
+      },
+    });
+
+    if (alreadyExists.length !== 0) return;
 
     await ReviewLike.create({
       userId: +userId,
@@ -200,6 +227,8 @@ router.delete(
 
     reviewLikeToDelete = await ReviewLike.findByPk(+id);
 
+    if (reviewLikeToDelete === null) return;
+
     await reviewLikeToDelete.destroy();
 
     const options = {
@@ -222,7 +251,19 @@ router.put(
 
     reviewLikeToDelete = await ReviewLike.findByPk(+idToDelete);
 
+    if (reviewLikeToDelete === null) return;
+
     await reviewLikeToDelete.destroy();
+
+    const alreadyExists = await ReviewLike.findAll({
+      where: {
+        reviewId: +reviewId,
+        userId: +userId,
+        like: like,
+      },
+    });
+
+    if (alreadyExists.length !== 0) return;
 
     await ReviewLike.create({
       userId: +userId,
