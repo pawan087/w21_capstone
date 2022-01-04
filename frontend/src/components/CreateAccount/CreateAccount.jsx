@@ -26,6 +26,9 @@ export default function CreateAccount() {
 
   const [notRobot, setNotRobot] = useState(true);
   const [inputType, setInputType] = useState("password");
+
+  setInputType("password");
+
   const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);
 
@@ -55,17 +58,17 @@ export default function CreateAccount() {
     setNotRobot(!notRobot);
   };
 
-  const showPassword = (e) => {
-    e.preventDefault();
+  // const showPassword = (e) => {
+  //   e.preventDefault();
 
-    setInputType("text");
-  };
+  //   setInputType("text");
+  // };
 
-  const hidePassword = (e) => {
-    e.preventDefault();
+  // const hidePassword = (e) => {
+  //   e.preventDefault();
 
-    setInputType("password");
-  };
+  //   setInputType("password");
+  // };
 
   const changeFirstName = (value) => {
     if (missingFirstName) {

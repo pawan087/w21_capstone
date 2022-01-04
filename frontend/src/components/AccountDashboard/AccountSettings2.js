@@ -23,17 +23,19 @@ export default function AccountDashboard() {
 
   const [inputType, setInputType] = useState("password");
 
-  const showPassword = (e) => {
-    e.preventDefault();
+  setInputType("password");
 
-    setInputType("text");
-  };
+  // const showPassword = (e) => {
+  //   e.preventDefault();
 
-  const hidePassword = (e) => {
-    e.preventDefault();
+  //   setInputType("text");
+  // };
 
-    setInputType("password");
-  };
+  // const hidePassword = (e) => {
+  //   e.preventDefault();
+
+  //   setInputType("password");
+  // };
 
   const [load, setLoad] = useState(false);
   const [loader2, setLoader2] = useState(false);

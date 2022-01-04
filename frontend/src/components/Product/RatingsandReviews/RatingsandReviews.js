@@ -8,7 +8,7 @@ import { motion } from "framer-motion/dist/framer-motion";
 import StarPicker from "react-star-picker";
 import Rodal from "rodal";
 
-import Testing from "../Testing";
+import Chart from "../Testing";
 import TopReviewsCard from "./TopReviewsCard";
 import { createReview, setAllReviews } from "../../../store/reviews";
 import styles from "./RatingandReviews.module.css";
@@ -320,7 +320,7 @@ export default function RatingsandReviews({ avgRating, reviews }) {
 
             <div className={styles.rightContainer}>
               <div className={styles.barChartsContainer}>
-                <Testing reviews={reviews} />
+                <Chart reviews={reviews} />
               </div>
             </div>
           </motion.div>

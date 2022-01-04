@@ -5,4 +5,3 @@
 -Username bug: when signing up, make sure username isn't email
 
 -Rating bar graphs (not adding up to a 100%)
--When deleting review, delete review confirmation modal loses content

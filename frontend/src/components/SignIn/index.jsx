@@ -21,21 +21,24 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [inputType, setInputType] = useState("password");
+
+  setInputType("password");
+
   const [defaultOption, setDefaultOption] = useState(false);
   const [warning, setWarning] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  const showPassword = (e) => {
-    e.preventDefault();
+  // const showPassword = (e) => {
+  //   e.preventDefault();
 
-    setInputType("text");
-  };
+  //   setInputType("text");
+  // };
 
-  const hidePassword = (e) => {
-    e.preventDefault();
+  // const hidePassword = (e) => {
+  //   e.preventDefault();
 
-    setInputType("password");
-  };
+  //   setInputType("password");
+  // };
 
   const handleCredential = (value) => {
     if (errors.length) {

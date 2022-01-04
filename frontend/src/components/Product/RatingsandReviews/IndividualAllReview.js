@@ -127,6 +127,8 @@ export default function IndividualTopReview({ review }) {
     //   return;
     // }
 
+    setVisible2(false);
+
     setLoading(true);
     setBool(false);
     let arr = [];
@@ -142,15 +144,11 @@ export default function IndividualTopReview({ review }) {
 
     setDidMount(false);
 
-    setVisible2(false);
-
     setDidMount(true);
 
     await dispatch(setAllReviews());
 
     setLoading(false);
-
-    setVisible2(false);
 
     setBool(true);
 
@@ -273,7 +271,7 @@ export default function IndividualTopReview({ review }) {
     if (!user) {
       history.push("/signin");
 
-      return
+      return;
     }
 
     let alreadyLiked = false;
