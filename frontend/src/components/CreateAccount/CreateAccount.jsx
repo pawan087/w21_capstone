@@ -25,9 +25,11 @@ export default function CreateAccount() {
   const [phone, setPhone] = useState("");
 
   const [notRobot, setNotRobot] = useState(true);
+
+  // eslint-disable-next-line
   const [inputType, setInputType] = useState("password");
 
-  setInputType("password");
+  // setInputType("password");
 
   const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);

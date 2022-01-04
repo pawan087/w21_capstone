@@ -21,9 +21,10 @@ export default function AccountDashboard() {
 
   const user = useSelector((state) => state.session.user);
 
+  // eslint-disable-next-line
   const [inputType, setInputType] = useState("password");
 
-  setInputType("password");
+  // setInputType("password");
 
   // const showPassword = (e) => {
   //   e.preventDefault();

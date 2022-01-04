@@ -15,8 +15,8 @@ const Footer = () => {
   const x2 = useMotionValue(0);
   const y2 = useMotionValue(0);
 
-  const rotateX = useTransform(y, [-100, 100], [60, -60]);
-  const rotateY = useTransform(x, [-100, 100], [-60, 60]);
+  const rotateX = useTransform(y2, [-100, 100], [60, -60]);
+  const rotateY = useTransform(x2, [-100, 100], [-60, 60]);
 
   const rotateX2 = useTransform(y, [-100, 100], [60, -60]);
   const rotateY2 = useTransform(x, [-100, 100], [-60, 60]);

@@ -22,7 +22,7 @@ export default function SignIn() {
   const [errors, setErrors] = useState([]);
   const [inputType, setInputType] = useState("password");
 
-  setInputType("password");
+  // setInputType("password");
 
   const [defaultOption, setDefaultOption] = useState(false);
   const [warning, setWarning] = useState(false);
