@@ -7,3 +7,4 @@
 -Setting "default address" in order confirmation page takes back to cart page
 -Rating bar graphs (not adding up to a 100%)
 -When deleting review, delete review confirmation modal loses content
+-Password update page bugs (plus eye reveal)
