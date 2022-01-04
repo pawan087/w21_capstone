@@ -209,6 +209,8 @@ export default function OrderConfirmation() {
         setDefaultOption(false);
 
         setShowEdit(false);
+
+        history.push("/confirm");
       }
     }
 

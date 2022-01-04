@@ -42,7 +42,10 @@ export default function IndividualTopReview({ review }) {
         reviewLike.like
       ) {
         alreadyLiked = true;
+        alreadyDisliked = false;
         id = reviewLike.id;
+        // console.log("ALREADY LIKED = ", alreadyLiked);
+        return;
       }
 
       if (
@@ -51,7 +54,10 @@ export default function IndividualTopReview({ review }) {
         !reviewLike.like
       ) {
         alreadyDisliked = true;
+        alreadyLiked = false;
         id2 = reviewLike.id;
+        // console.log("ALREADY DISLIKED = ", alreadyDisliked);
+        return;
       }
     });
 
@@ -70,14 +76,79 @@ export default function IndividualTopReview({ review }) {
           })
         );
       } else {
-        await dispatch(
-          createLike({ userId: user.id, reviewId: review.id, like: true })
-        );
+        if (alreadyLiked !== true && alreadyDisliked !== true) {
+          await dispatch(
+            createLike({ userId: user.id, reviewId: review.id, like: true })
+          );
+        }
       }
 
       await dispatch(setAllReviewLikes());
     }
   };
+
+  // const handleDislike = async () => {
+  //   if (!user) {
+  //     history.push("/signin");
+
+  //     return;
+  //   }
+
+  //   let alreadyDisliked = false;
+  //   let alreadyLiked = false;
+
+  //   let id;
+  //   let id2;
+
+  //   reviewLikes?.forEach((reviewLike) => {
+  //     if (
+  //       reviewLike.userId === user.id &&
+  //       reviewLike.reviewId === review.id &&
+  //       !reviewLike.like
+  //     ) {
+  //       alreadyDisliked = true;
+  //       alreadyLiked = false;
+  //       id = reviewLike.id;
+  //       return;
+  //     }
+
+  //     if (
+  //       reviewLike.userId === user.id &&
+  //       reviewLike.reviewId === review.id &&
+  //       reviewLike.like
+  //     ) {
+  //       alreadyLiked = true;
+  //       alreadyDisliked = false;
+  //       id2 = reviewLike.id;
+  //       return;
+  //     }
+  //   });
+
+  //   if (alreadyDisliked) {
+  //     await dispatch(deleteLike(id));
+
+  //     await dispatch(setAllReviewLikes());
+  //   } else {
+  //     if (alreadyLiked) {
+  //       await dispatch(
+  //         deleteTheOpposingAndCreateLike({
+  //           userId: user.id,
+  //           reviewId: review.id,
+  //           like: false,
+  //           idToDelete: id2,
+  //         })
+  //       );
+  //     } else {
+  //       if (alreadyLiked !== true && alreadyDisliked !== true) {
+  //         await dispatch(
+  //           createLike({ userId: user.id, reviewId: review.id, like: false })
+  //         );
+  //       }
+  //     }
+
+  //     await dispatch(setAllReviewLikes());
+  //   }
+  // };
 
   const handleDislike = async () => {
     if (!user) {
@@ -99,7 +170,9 @@ export default function IndividualTopReview({ review }) {
         !reviewLike.like
       ) {
         alreadyDisliked = true;
+        alreadyLiked = false;
         id = reviewLike.id;
+        return;
       }
 
       if (
@@ -108,7 +181,9 @@ export default function IndividualTopReview({ review }) {
         reviewLike.like
       ) {
         alreadyLiked = true;
+        alreadyDisliked = false;
         id2 = reviewLike.id;
+        return;
       }
     });
 
@@ -127,9 +202,11 @@ export default function IndividualTopReview({ review }) {
           })
         );
       } else {
-        await dispatch(
-          createLike({ userId: user.id, reviewId: review.id, like: false })
-        );
+        if (alreadyLiked !== true && alreadyDisliked !== true) {
+          await dispatch(
+            createLike({ userId: user.id, reviewId: review.id, like: false })
+          );
+        }
       }
 
       await dispatch(setAllReviewLikes());

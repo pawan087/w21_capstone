@@ -127,6 +127,8 @@ export default function IndividualTopReview({ review }) {
     //   return;
     // }
 
+    setVisible2(false);
+
     setLoading(true);
     setBool(false);
     let arr = [];
@@ -142,15 +144,11 @@ export default function IndividualTopReview({ review }) {
 
     setDidMount(false);
 
-    setVisible2(false);
-
     setDidMount(true);
 
     await dispatch(setAllReviews());
 
     setLoading(false);
-
-    setVisible2(false);
 
     setBool(true);
 
@@ -288,7 +286,10 @@ export default function IndividualTopReview({ review }) {
         reviewLike.like
       ) {
         alreadyLiked = true;
+        alreadyDisliked = false;
         id = reviewLike.id;
+        // console.log("ALREADY LIKED = ", alreadyLiked);
+        return;
       }
 
       if (
@@ -297,7 +298,10 @@ export default function IndividualTopReview({ review }) {
         !reviewLike.like
       ) {
         alreadyDisliked = true;
+        alreadyLiked = false;
         id2 = reviewLike.id;
+        // console.log("ALREADY DISLIKED = ", alreadyDisliked);
+        return;
       }
     });
 
@@ -342,28 +346,34 @@ export default function IndividualTopReview({ review }) {
       if (
         reviewLike.userId === user.id &&
         reviewLike.reviewId === review.id &&
-        !reviewLike.like
+        reviewLike.like === false
       ) {
         alreadyDisliked = true;
+        alreadyLiked = false;
         id = reviewLike.id;
+        return;
       }
 
       if (
         reviewLike.userId === user.id &&
         reviewLike.reviewId === review.id &&
-        reviewLike.like
+        reviewLike.like === true
       ) {
         alreadyLiked = true;
+        alreadyDisliked = false;
         id2 = reviewLike.id;
+        return;
       }
     });
 
-    if (alreadyDisliked) {
+    if (alreadyDisliked === true) {
       await dispatch(deleteLike(id));
 
       await dispatch(setAllReviewLikes());
+
+      return;
     } else {
-      if (alreadyLiked) {
+      if (alreadyLiked === true) {
         await dispatch(
           deleteTheOpposingAndCreateLike({
             userId: user.id,
@@ -809,7 +819,7 @@ export default function IndividualTopReview({ review }) {
                   Remove Photo
                 </div>
               )}
-              
+
               {!selectedFile && (
                 <div
                   onClick={removePhoto}
