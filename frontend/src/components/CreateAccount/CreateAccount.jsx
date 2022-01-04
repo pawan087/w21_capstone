@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { Redirect } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import { FormField } from "react-form-input-fields";
@@ -12,6 +13,7 @@ import styles from "./styles.module.css";
 
 export default function CreateAccount() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -942,7 +944,12 @@ export default function CreateAccount() {
             </div>
           </div>
 
-          <div className={styles.left13thContainer}>Sign In</div>
+          <div
+            onClick={() => history.push("/signin")}
+            className={styles.left13thContainer}
+          >
+            Sign In
+          </div>
         </div>
 
         <div className={styles.createAccountRightContainer}>
