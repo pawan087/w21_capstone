@@ -105,6 +105,8 @@ export default function AccountDashboard() {
     setEmptyAddress1Warning(false);
 
     setEmptyAddress2Warning(false);
+
+    setIncorrectFormatPhone(false);
   };
 
   const issueWarnings = () => {
@@ -428,7 +430,7 @@ export default function AccountDashboard() {
                     handleOnChange={(value) => changePhone(value)}
                     placeholder={"Phone Number"}
                   />
-                  
+
                   {emptyPhoneWarning && (
                     <span className={styles.requiredLabel}>
                       This is a required field.
